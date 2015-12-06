@@ -13,6 +13,17 @@
 #import "PersonalViewController.h"
 //设置
 #import "SetUpViewController.h"
+//钱包
+#import "WalletViewController.h"
+//我的档案
+#import "MyArchivesViewController.h"
+//我的预约
+#import "MyAppointmentViewController.h"
+//我的订单
+#import "MyOrdersViewController.h"
+//我的收藏
+#import "MyCollectionViewController.h"
+
 @interface MineViewController ()
 @property (nonatomic, strong) MineHeadView *headView;
 
@@ -105,7 +116,41 @@
     [self.navigationController pushViewController:personalVc animated:YES];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (indexPath.row ==0) {
+        
+        MyArchivesViewController *myArchivesVc = [[MyArchivesViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        myArchivesVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:myArchivesVc animated:YES];
+        
+    }else if (indexPath.row ==1){
+        
+        MyAppointmentViewController *myAppointmentVc = [[MyAppointmentViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        myAppointmentVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:myAppointmentVc animated:YES];
+        
+    }else if (indexPath.row ==2){
+        
+    }else if (indexPath.row ==3){
+        WalletViewController *walletVc = [[WalletViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        walletVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:walletVc animated:YES];
+    }else if (indexPath.row ==4){
+        
+        MyOrdersViewController *myOrdersVc = [[MyOrdersViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        myOrdersVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:myOrdersVc animated:YES];
+        
+    }else if(indexPath.row ==5){
+        
+        MyCollectionViewController *myCollectionVc= [[MyCollectionViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        myCollectionVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:myCollectionVc animated:YES];
+        
+    }else{
+        SetUpViewController *setUpVc = [[SetUpViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        setUpVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:setUpVc animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

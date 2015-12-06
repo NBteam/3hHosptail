@@ -12,6 +12,7 @@
 
 - (void)customView{
     [self.contentView addSubview:self.labTitle];
+    [self.contentView addSubview:self.imgArrow];
     [self.contentView addSubview:self.imgDoctorPic];
 
 }
@@ -29,7 +30,7 @@
 
 - (UIImageView *)imgDoctorPic{
     if (!_imgDoctorPic) {
-        _imgDoctorPic = [[UIImageView alloc] initWithFrame:CGRectMake(DeviceSize.width -50 -10, 15, 50, 50)];
+        _imgDoctorPic = [[UIImageView alloc] initWithFrame:CGRectMake(self.imgArrow.left -10 -50, 15, 50, 50)];
         _imgDoctorPic.backgroundColor = [UIColor grayColor];
         _imgDoctorPic.layer.masksToBounds = YES;
         _imgDoctorPic.layer.cornerRadius = 25.0f;
@@ -38,6 +39,14 @@
     
 }
 
+- (UIImageView *)imgArrow{
+    if (!_imgArrow) {
+        _imgArrow = [[UIImageView alloc] initWithFrame:CGRectMake(DeviceSize.width - 19/2 - 10, (80 - 34/2)/2, 19/2, 34/2)];
+        _imgArrow.image = [UIImage imageNamed:@"arrowImg"];
+        
+    }
+    return _imgArrow;
+}
 
 
 

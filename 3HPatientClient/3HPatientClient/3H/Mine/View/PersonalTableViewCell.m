@@ -41,7 +41,7 @@
 - (UIImageView *)imgArrow{
     if (!_imgArrow) {
         _imgArrow = [[UIImageView alloc] initWithFrame:CGRectMake(DeviceSize.width - 19/2 - 10, (45 - 34/2)/2, 19/2, 34/2)];
-        _imgArrow.image = [UIImage imageNamed:@"3H-首页_键"];
+        _imgArrow.image = [UIImage imageNamed:@"arrowImg"];
         
     }
     return _imgArrow;

@@ -1,24 +1,28 @@
 //
-//  PersonalViewController.m
+//  WalletViewController.m
 //  3HDoctorClient
 //
 //  Created by 范英强 on 15/12/4.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "PersonalViewController.h"
-#import "PersonalHeadTableViewCell.h"
-#import "PersonalTableViewCell.h"
-@interface PersonalViewController ()
+#import "WalletViewController.h"
+#import "WalletHeadTableViewCell.h"
+#import "WalletTableViewCell.h"
+//订单记录
+#import "IncomeRecordViewController.h"
+//充值
+#import "WithdrawalViewController.h"
+
+@interface WalletViewController ()
 
 @end
 
-@implementation PersonalViewController
+@implementation WalletViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"用户名",@"detail":@"未填写"},@{@"title":@"姓名",@"detail":@"未填写"},@{@"title":@"出生日期",@"detail":@"未填写"},@{@"title":@"性别",@"detail":@"未填写"},@{@"title":@"通讯地址",@"detail":@"未填写"},@{@"title":@"科室",@"detail":@"未填写"},@{@"title":@"电话",@"detail":@"未填写"},@{@"title":@"身份证号",@"detail":@"未填写"}]];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
 }
 
@@ -29,49 +33,46 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        static NSString *identifier = @"PersonalHeadTableViewCell";
-        PersonalHeadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        static NSString *identifier = @"WalletHeadTableViewCell";
+        WalletHeadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
-            cell = [[PersonalHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell = [[WalletHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dataArray[indexPath.row]];
+        [cell confingWithModel:nil];
         return cell;
     }else{
-        static NSString *identifier = @"PersonalTableViewCell";
-        PersonalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        static NSString *identifier = @"WalletTableViewCell";
+        WalletTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
-            cell = [[PersonalTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell = [[WalletTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dataArray[indexPath.row]];
+        [cell confingWithModel:indexPath.section];
         return cell;
     }
-    
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
-        return 1;
-    }else{
-        return self.dataArray.count;
-    }
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 80;
+        return 140;
     }else{
         return 45;
     }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return 0.01;
+    }
     return 10.0f;
 }
 
@@ -79,8 +80,19 @@
     return  [[UIView alloc] init];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 2) {
+        IncomeRecordViewController *incomeRecordVc = [[IncomeRecordViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:incomeRecordVc animated:YES];
+    }
+    
+    if (indexPath.section == 1) {
+        WithdrawalViewController *withdrawalVc = [[WithdrawalViewController alloc] init];
+        [self.navigationController pushViewController:withdrawalVc animated:YES];
+    }
+}
 - (NSString *)title{
-    return @"个人资料";
+    return @"我的钱包";
 }
 
 - (void)didReceiveMemoryWarning {

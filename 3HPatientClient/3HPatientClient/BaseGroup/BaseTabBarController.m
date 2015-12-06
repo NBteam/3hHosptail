@@ -44,7 +44,7 @@
     messageVc.title = @"消息";
     BaseNavigationController *naMessage = [[BaseNavigationController alloc] initWithRootViewController:messageVc];
     
-    MineViewController *mineVc = [[MineViewController alloc] init];
+    MineViewController *mineVc = [[MineViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     mineVc.title = @"我的";
     BaseNavigationController *naMine = [[BaseNavigationController alloc] initWithRootViewController:mineVc];
     
