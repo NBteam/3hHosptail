@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "HomeHeadView.h"
 #import "HomeTableViewCell.h"
+
 //患者中心
 #import "PatientCenterViewController.h"
 //咨询服务
@@ -44,6 +45,7 @@
 //    self.tableView.tableHeaderView = self.headView;
     [self.headView confingWithModel:@""];
     [self.view addSubview:self.labTitle];
+    [self getHomeInfo];
 }
 
 #pragma mark -UI
@@ -137,7 +139,23 @@
         
     }
 }
-
+#pragma mark -
+#pragma mark net
+- (void)getHomeInfo{
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(HomeViewController);
+    [[THNetWorkManager shareNetWork]getHomeCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"1"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+        ;
+    } ];
+}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

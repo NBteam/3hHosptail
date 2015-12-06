@@ -11,7 +11,7 @@
 @interface THHttpResponse : NSObject
 
 /// 响应码
-@property (nonatomic ,copy) NSString *responseCode;
+@property (nonatomic ,assign) NSInteger responseCode;
 /// 响应信息
 @property (nonatomic ,copy) NSString *message;
 /// 解析完成的data对应的数组数据，如果是数组 取值用这个属性

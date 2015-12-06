@@ -8,6 +8,7 @@
 
 #import "BaseTableViewCell.h"
 
+
 @interface DynamicDetailTableViewCell : BaseTableViewCell
 //标题
 @property (nonatomic, strong) UILabel *labTitle;

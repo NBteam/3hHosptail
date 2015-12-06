@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "InformationModel.h"
 
 @interface ConsultingDynamicTableViewCell : BaseTableViewCell
 
@@ -21,6 +22,6 @@
 @property (nonatomic, strong) UIImageView *imgTime;
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(InformationModel *)model;
 
 @end

@@ -8,9 +8,13 @@
 
 #import "DynamicDetailViewController.h"
 #import "DynamicDetailTableViewCell.h"
+#import "DynamicToolView.h"
+
 @interface DynamicDetailViewController ()
 //cell高度
 @property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, retain) NSMutableDictionary * dict;
+@property (nonatomic, retain) DynamicToolView * toolView;
 @end
 
 @implementation DynamicDetailViewController
@@ -20,7 +24,9 @@
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.view.backgroundColor = [UIColor colorWithHEX:0xffffff];
-    
+    self.tableView.height = DeviceSize.height-44;
+    [self.view addSubview:self.toolView];
+    [self getDetailInfo];
 }
 
 - (void)backAction{
@@ -35,7 +41,8 @@
         cell = [[DynamicDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.cellHeight = [cell confingWithModel:nil];
+
+    self.cellHeight = [cell confingWithModel:self.dict];
     return cell;
 }
 
@@ -50,7 +57,49 @@
 - (NSString *)title{
     return @"医疗资讯";
 }
-
+- (void)getDetailInfo{
+    WeakSelf(DynamicDetailViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    [[THNetWorkManager shareNetWork]getArtInfoId:@"1" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        [weakSelf.dataArray removeAllObjects];
+        if (response.responseCode == 1) {
+            weakSelf.dict = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
+            [weakSelf.toolView.btnLeft setTitle:[NSString stringWithFormat:@"评论(%@)",response.dataDic[@"good_num"]] forState:UIControlStateNormal];
+            [weakSelf.toolView.btnRight setTitle:[NSString stringWithFormat:@"点赞(%@)",response.dataDic[@"comment_num"]] forState:UIControlStateNormal];
+            [weakSelf.tableView reloadData];
+        } else {
+            [weakSelf showHudAuto:response.message];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt];
+    }];
+}
+- (DynamicToolView *)toolView{
+    if (!_toolView) {
+        WeakSelf(DynamicDetailViewController);
+        _toolView = [[DynamicToolView alloc]initWithFrame:CGRectMake(0, DeviceSize.height-44-64, DeviceSize.width, 44)];;
+        [_toolView setBtnRightBlock:^{
+            [weakSelf getGoodNetWork];
+        }];
+    }
+    return _toolView;
+}
+- (void)getGoodNetWork{
+    WeakSelf(DynamicDetailViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    [[THNetWorkManager shareNetWork]getArtInfoId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        [weakSelf.dataArray removeAllObjects];
+        if (response.responseCode == 1) {
+            [weakSelf.toolView.btnRight setTitle:[NSString stringWithFormat:@"点赞(%@)",response.dataDic[@"good_num"]] forState:UIControlStateNormal];
+        } else {
+            [weakSelf showHudAuto:response.message];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

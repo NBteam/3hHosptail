@@ -35,12 +35,17 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)model{
+- (void)confingWithModel:(NSDictionary *)model index:(NSUInteger)index{
     //    NSArray *arr = @[@"请输入药物名称",@"剂量",@"次数",@"用药时间",@"用药途径",@"开始时间",@"结束时间"];
     
+    if (index==0) {
+        self.labTitle.text = [NSString stringWithFormat:@"是否有过敏史:"];
+        self.labDetail.text = [NSString stringWithFormat:@"%@",model[@"guomin"]];
+    }else{
+        self.labTitle.text = [NSString stringWithFormat:@"血型:"];
+        self.labDetail.text = [NSString stringWithFormat:@"%@",model[@"blood_type"]];
+    }
     
-    self.labTitle.text = model[@"title"];
-    self.labDetail.text = model[@"detail"];
     if ([self.labDetail.text isEqualToString:@"未选择"]) {
         self.labDetail.textColor = [UIColor colorWithHEX:0x999999];
     }else{

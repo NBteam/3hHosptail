@@ -76,8 +76,8 @@
 }
 
 - (void)confingWithModel:(NSDictionary *)dic{
-    self.labDoctorName.text = @"刘晓光";
-    self.labDoctorInfo.text = @"北京360医院  主治医师";
+    self.labDoctorName.text = dic[@"truename"];
+    self.labDoctorInfo.text = [NSString stringWithFormat:@"%@  %@",dic[@"hospital"],dic[@"job_title"]] ;
 }
 
 /*

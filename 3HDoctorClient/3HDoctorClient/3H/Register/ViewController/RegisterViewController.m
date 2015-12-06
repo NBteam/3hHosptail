@@ -46,7 +46,6 @@
 @property (nonatomic, strong) UIButton *btnRegister;
 
 
-
 @end
 
 @implementation RegisterViewController
@@ -181,6 +180,22 @@
 }
 
 - (void)btnGetCodeAction{
+    if ([self.txtUserName.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入手机号" andDuration:@"1"];
+    }else{
+        [self showHudWaitingView:@"正在努力操作"];
+        WeakSelf(RegisterViewController);
+        [[THNetWorkManager shareNetWork] getCodeMobile:self.txtUserName.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+            [weakSelf removeMBProgressHudInManaual];
+            if (response.responseCode == 1) {
+                weakSelf.txtCode.text = @"936872";
+            }else{
+                [weakSelf showHudAuto:response.message andDuration:@"2"];
+            }
+        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+            [weakSelf showHudAuto:@"验证码获取失败，请重试" andDuration:@"1"];
+        }];
+    }
     
 }
 
@@ -292,7 +307,28 @@
 }
 
 - (void)btnRegisterAction{
-    
+    if ([self.txtUserName.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入手机号" andDuration:@"1"];
+    }else if ([self.txtCode.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入验证码" andDuration:@"1"];
+    }else if ([self.txtPassWord.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入密码" andDuration:@"1"];
+    }else if ([self.txtInvitation.text isEqualToString:@""]){
+        [self showHudAuto:@"请输入邀请码" andDuration:@"1"];
+    }else{
+        WeakSelf(RegisterViewController);
+        [weakSelf showHudWaitingView:WaitPrompt];
+        [[THNetWorkManager shareNetWork] getRegisteredMobile:self.txtUserName.text password:self.txtPassWord.text code:self.txtCode.text fromcode:self.txtInvitation.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+            [weakSelf removeMBProgressHudInManaual];
+            if (response.responseCode == 1) {
+                
+            }else{
+                [weakSelf showHudAuto:response.message andDuration:@"1"];
+            }
+        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+             [weakSelf showHudWaitingView:InternetFailerPrompt];;
+        }];
+    }
 }
 
 

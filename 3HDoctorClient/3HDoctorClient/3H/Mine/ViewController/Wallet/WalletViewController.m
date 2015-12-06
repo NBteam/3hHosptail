@@ -25,6 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    [self getMoneuInfo];
 }
 
 - (void)backAction{
@@ -106,7 +107,25 @@
 - (NSString *)title{
     return @"我的钱包";
 }
-
+- (void)getMoneuInfo{
+    WeakSelf(WalletViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];;
+    [[THNetWorkManager shareNetWork]getMyAccountCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        [weakSelf.dataArray removeAllObjects];
+        if (response.responseCode == 1) {
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                //                DepartmentModel * model = [response thParseDataFromDic:dict andModel:[DepartmentModel class]];
+                //                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+        } else {
+            [weakSelf showHudAuto:response.message];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt];
+    } ];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

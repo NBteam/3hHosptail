@@ -56,10 +56,10 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic{
-    self.labTitle.attributedText = [self getName:@"张文涛" AndAge:@"  26岁" AndSex:@"  男"];
+- (void)confingWithModel:(PatientListModel *)dic{
+    self.labTitle.attributedText = [self getName:dic.truename AndAge:[NSString stringWithFormat:@"  %@岁",dic.age] AndSex:[NSString stringWithFormat:@"  %@",dic.sex]];
   //  self.labDetail.attributedText
-    self.labDetail.text = @"张文涛张文涛张文涛张文涛张文涛张文涛张文涛张文涛张文涛张文涛张文涛张文涛";
+    self.labDetail.text = dic.sick_desc;
 }
 
 - (NSMutableAttributedString *)getName:(NSString *)name AndAge:(NSString *)age AndSex:(NSString *)sex{

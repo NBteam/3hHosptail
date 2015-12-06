@@ -32,7 +32,7 @@
     [[THNetWorkManager shareNetWork] getCityListCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         [weakSelf.dataArray removeAllObjects];
-        if ([response.responseCode isEqualToString:@"1"]) {
+        if (response.responseCode == 1) {
             
             for (NSDictionary *dict in response.dataArray) {
                 CityListModel *model = [response thParseDataFromDic:dict andModel:[CityListModel class]];

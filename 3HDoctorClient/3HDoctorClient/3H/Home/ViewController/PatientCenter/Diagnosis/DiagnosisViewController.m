@@ -15,6 +15,7 @@
 @interface DiagnosisViewController ()
 @property (nonatomic, strong) PatientCenterNotCustomView *customView;
 @property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, copy) NSMutableDictionary * dictInfo;
 @end
 
 @implementation DiagnosisViewController
@@ -24,9 +25,11 @@
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"编辑"];
+    self.dictInfo = [NSMutableDictionary dictionary];
    // [self.view addSubview:self.customView];
     
     self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"是否有过敏史:",@"detail":@"未选择"},@{@"title":@"血型:",@"detail":@"未选择"}]];
+    [self getPatientSickHistory];
 }
 
 - (void)backAction{
@@ -62,7 +65,7 @@
             cell = [[DiagnosisDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.cellHeight = [cell confingWithModel:nil];
+        self.cellHeight = [cell confingWithModel:self.dictInfo];
         return cell;
     }else{
         static NSString *identifier = @"idertifier";
@@ -71,7 +74,7 @@
             cell = [[DiagnosisTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dataArray[indexPath.section]];
+        [cell confingWithModel:self.dictInfo index:indexPath.section];
         return cell;
     }
 }
@@ -102,7 +105,22 @@
 - (NSString *)title{
     return @"病史";
 }
-
+- (void)getPatientSickHistory{
+    WeakSelf(DiagnosisViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];;
+    [[THNetWorkManager shareNetWork]getPatientSickHistoryMid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        [weakSelf.dataArray removeAllObjects];
+        if (response.responseCode == 1) {
+            weakSelf.dictInfo = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
+            [weakSelf.tableView reloadData];
+        } else {
+            [weakSelf showHudAuto:response.message];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

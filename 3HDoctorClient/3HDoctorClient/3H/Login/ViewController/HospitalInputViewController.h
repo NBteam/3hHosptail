@@ -9,6 +9,6 @@
 #import "BaseViewController.h"
 
 @interface HospitalInputViewController : BaseViewController
-
+@property (nonatomic, copy) NSString * titleStr;
 @property (nonatomic,copy) void (^hospitalBlock)(NSString *string);
 @end

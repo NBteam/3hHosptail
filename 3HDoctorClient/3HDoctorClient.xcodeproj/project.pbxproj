@@ -504,6 +504,14 @@
 		99DA45F51C0C7C8000573D4C /* PatientAddRequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA45F41C0C7C8000573D4C /* PatientAddRequestTableViewCell.m */; };
 		99DA45F81C0C82FC00573D4C /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA45F71C0C82FC00573D4C /* MineTableViewCell.m */; };
 		99DA45FB1C0C860600573D4C /* MineHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA45FA1C0C860600573D4C /* MineHeadTableViewCell.m */; };
+		A93F23101C13097100AA7756 /* PositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93F230F1C13097100AA7756 /* PositionViewController.m */; };
+		A93F23131C1310F800AA7756 /* DepartmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93F23121C1310F800AA7756 /* DepartmentViewController.m */; };
+		A93F23161C13120000AA7756 /* DepartmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A93F23151C13120000AA7756 /* DepartmentModel.m */; };
+		A93F23191C13153000AA7756 /* HospitalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93F23181C13153000AA7756 /* HospitalTableViewController.m */; };
+		A94B42E51C132D7900B6D6AE /* InformationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A94B42E41C132D7900B6D6AE /* InformationModel.m */; };
+		A94B42E81C13317900B6D6AE /* InfomationDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A94B42E71C13317900B6D6AE /* InfomationDetailModel.m */; };
+		A94B42EB1C1335C200B6D6AE /* DynamicToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = A94B42EA1C1335C200B6D6AE /* DynamicToolView.m */; };
+		A94B42EE1C134EBD00B6D6AE /* PatientListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A94B42ED1C134EBD00B6D6AE /* PatientListModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1235,6 +1243,22 @@
 		99DA45F71C0C82FC00573D4C /* MineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineTableViewCell.m; sourceTree = "<group>"; };
 		99DA45F91C0C860600573D4C /* MineHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineHeadTableViewCell.h; sourceTree = "<group>"; };
 		99DA45FA1C0C860600573D4C /* MineHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineHeadTableViewCell.m; sourceTree = "<group>"; };
+		A93F230E1C13097100AA7756 /* PositionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionViewController.h; sourceTree = "<group>"; };
+		A93F230F1C13097100AA7756 /* PositionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionViewController.m; sourceTree = "<group>"; };
+		A93F23111C1310F800AA7756 /* DepartmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentViewController.h; sourceTree = "<group>"; };
+		A93F23121C1310F800AA7756 /* DepartmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentViewController.m; sourceTree = "<group>"; };
+		A93F23141C13120000AA7756 /* DepartmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentModel.h; sourceTree = "<group>"; };
+		A93F23151C13120000AA7756 /* DepartmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentModel.m; sourceTree = "<group>"; };
+		A93F23171C13153000AA7756 /* HospitalTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HospitalTableViewController.h; sourceTree = "<group>"; };
+		A93F23181C13153000AA7756 /* HospitalTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HospitalTableViewController.m; sourceTree = "<group>"; };
+		A94B42E31C132D7900B6D6AE /* InformationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InformationModel.h; path = 3HDoctorClient/3H/Login/ViewController/InformationModel.h; sourceTree = SOURCE_ROOT; };
+		A94B42E41C132D7900B6D6AE /* InformationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InformationModel.m; path = 3HDoctorClient/3H/Login/ViewController/InformationModel.m; sourceTree = SOURCE_ROOT; };
+		A94B42E61C13317900B6D6AE /* InfomationDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfomationDetailModel.h; path = 3HDoctorClient/3H/Login/ViewController/InfomationDetailModel.h; sourceTree = SOURCE_ROOT; };
+		A94B42E71C13317900B6D6AE /* InfomationDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfomationDetailModel.m; path = 3HDoctorClient/3H/Login/ViewController/InfomationDetailModel.m; sourceTree = SOURCE_ROOT; };
+		A94B42E91C1335C200B6D6AE /* DynamicToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicToolView.h; sourceTree = "<group>"; };
+		A94B42EA1C1335C200B6D6AE /* DynamicToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicToolView.m; sourceTree = "<group>"; };
+		A94B42EC1C134EBD00B6D6AE /* PatientListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PatientListModel.h; path = 3HDoctorClient/3H/Home/View/PatientListModel.h; sourceTree = SOURCE_ROOT; };
+		A94B42ED1C134EBD00B6D6AE /* PatientListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PatientListModel.m; path = 3HDoctorClient/3H/Home/View/PatientListModel.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1909,6 +1933,12 @@
 		99DA405F1C0BE84D00573D4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A94B42E31C132D7900B6D6AE /* InformationModel.h */,
+				A94B42E41C132D7900B6D6AE /* InformationModel.m */,
+				A94B42E61C13317900B6D6AE /* InfomationDetailModel.h */,
+				A94B42E71C13317900B6D6AE /* InfomationDetailModel.m */,
+				A94B42EC1C134EBD00B6D6AE /* PatientListModel.h */,
+				A94B42ED1C134EBD00B6D6AE /* PatientListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1996,6 +2026,8 @@
 				99D6EED51C0EFC4900CB1829 /* DiagnosisEditorTableViewCell.m */,
 				99D6EEE11C0EFF9000CB1829 /* DiagnosisDetailEditorTableViewCell.h */,
 				99D6EEE21C0EFF9000CB1829 /* DiagnosisDetailEditorTableViewCell.m */,
+				A94B42E91C1335C200B6D6AE /* DynamicToolView.h */,
+				A94B42EA1C1335C200B6D6AE /* DynamicToolView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2151,6 +2183,8 @@
 			children = (
 				99DA43791C0C44F200573D4C /* CityListModel.h */,
 				99DA437A1C0C44F200573D4C /* CityListModel.m */,
+				A93F23141C13120000AA7756 /* DepartmentModel.h */,
+				A93F23151C13120000AA7756 /* DepartmentModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2171,10 +2205,16 @@
 				99DA434A1C0BF3E500573D4C /* LoginViewController.m */,
 				99DA435D1C0C1CAF00573D4C /* PerfectInformationViewController.h */,
 				99DA435E1C0C1CAF00573D4C /* PerfectInformationViewController.m */,
+				A93F23111C1310F800AA7756 /* DepartmentViewController.h */,
+				A93F23121C1310F800AA7756 /* DepartmentViewController.m */,
+				A93F230E1C13097100AA7756 /* PositionViewController.h */,
+				A93F230F1C13097100AA7756 /* PositionViewController.m */,
 				99DA43631C0C2D0C00573D4C /* NameInputViewController.h */,
 				99DA43641C0C2D0C00573D4C /* NameInputViewController.m */,
 				99DA43661C0C2D3100573D4C /* HospitalInputViewController.h */,
 				99DA43671C0C2D3100573D4C /* HospitalInputViewController.m */,
+				A93F23171C13153000AA7756 /* HospitalTableViewController.h */,
+				A93F23181C13153000AA7756 /* HospitalTableViewController.m */,
 				99DA43691C0C37B200573D4C /* ForgetPossWordViewController.h */,
 				99DA436A1C0C37B200573D4C /* ForgetPossWordViewController.m */,
 				99DA43731C0C44CF00573D4C /* CityListFirstLevelViewController.h */,
@@ -3353,14 +3393,17 @@
 				99D6EEBE1C0EEBBD00CB1829 /* LaboratoryTestsTopView.m in Sources */,
 				99DA40491C0BE59A00573D4C /* UIImageView+HighlightedWebCache.m in Sources */,
 				99DA3FFE1C0BE59A00573D4C /* NSString+Size.m in Sources */,
+				A94B42E81C13317900B6D6AE /* InfomationDetailModel.m in Sources */,
 				99D142211C0D8DDE002DA3AD /* DynamicDetailTableViewCell.m in Sources */,
 				99DA40091C0BE59A00573D4C /* FMDatabase.m in Sources */,
+				A93F23131C1310F800AA7756 /* DepartmentViewController.m in Sources */,
 				99DA436B1C0C37B200573D4C /* ForgetPossWordViewController.m in Sources */,
 				99D141DA1C0D5B15002DA3AD /* BookManagementTopView.m in Sources */,
 				99D1422D1C0D9614002DA3AD /* ConsultingCompleteViewController.m in Sources */,
 				99DA403D1C0BE59A00573D4C /* NSData+ImageContentType.m in Sources */,
 				991A30E21C11CA0000E0313F /* PersonalViewController.m in Sources */,
 				99DA40501C0BE59A00573D4C /* TQRichTextBaseRun.m in Sources */,
+				A94B42E51C132D7900B6D6AE /* InformationModel.m in Sources */,
 				99DA40241C0BE59A00573D4C /* MJRefreshHeader.m in Sources */,
 				99D141F61C0D5F27002DA3AD /* PatientAddRequestViewController.m in Sources */,
 				99DA3FFF1C0BE59A00573D4C /* NSURLRequest+Extension.m in Sources */,
@@ -3371,6 +3414,7 @@
 				99D6EEDD1C0EFF0A00CB1829 /* CustomTextView.m in Sources */,
 				99D141F51C0D5F27002DA3AD /* HomeViewController.m in Sources */,
 				99DA43651C0C2D0C00573D4C /* NameInputViewController.m in Sources */,
+				A93F23191C13153000AA7756 /* HospitalTableViewController.m in Sources */,
 				99DA40021C0BE59A00573D4C /* UIButton+Extension.m in Sources */,
 				99D6EE9A1C0ECE5100CB1829 /* ReviewAddChooseTableViewCell.m in Sources */,
 				99DA40421C0BE59A00573D4C /* SDWebImageDownloaderOperation.m in Sources */,
@@ -3401,6 +3445,7 @@
 				99DA404E1C0BE59A00573D4C /* TPKeyboardAvoidingTableView.m in Sources */,
 				99DA401F1C0BE59A00573D4C /* MBProgressHUD.m in Sources */,
 				99D6EE8E1C0EC58100CB1829 /* ReviewViewController.m in Sources */,
+				A93F23161C13120000AA7756 /* DepartmentModel.m in Sources */,
 				99DA40441C0BE59A00573D4C /* SDWebImagePrefetcher.m in Sources */,
 				99D6EEBB1C0EEAD600CB1829 /* CheckViewController.m in Sources */,
 				99DA435C1C0BF7E500573D4C /* THNetWorkManager.m in Sources */,
@@ -3471,6 +3516,7 @@
 				99DA43591C0BF7D100573D4C /* THHttpResponse.m in Sources */,
 				99DA3FF21C0BE59A00573D4C /* AFHTTPSessionManager.m in Sources */,
 				99D6EEAF1C0EDF1D00CB1829 /* MedicationAddHeadTableViewCell.m in Sources */,
+				A93F23101C13097100AA7756 /* PositionViewController.m in Sources */,
 				99DA45F51C0C7C8000573D4C /* PatientAddRequestTableViewCell.m in Sources */,
 				99DA40031C0BE59A00573D4C /* UIColor+ColorExtension.m in Sources */,
 				99DA40321C0BE59A00573D4C /* UIView+MJExtension.m in Sources */,
@@ -3503,6 +3549,7 @@
 				99DA3FF81C0BE59A00573D4C /* AFURLSessionManager.m in Sources */,
 				99D142421C0DA139002DA3AD /* ConsultingDetailDescribeTableViewCell.m in Sources */,
 				99DA40531C0BE59A00573D4C /* TQRichTextURLRun.m in Sources */,
+				A94B42EB1C1335C200B6D6AE /* DynamicToolView.m in Sources */,
 				99DA40271C0BE59A00573D4C /* MJRefreshAutoStateFooter.m in Sources */,
 				99DA3EE91C0BE50300573D4C /* AppDelegate.m in Sources */,
 				99DA3FF91C0BE59A00573D4C /* NSArray+SafeAccess.m in Sources */,
@@ -3527,6 +3574,7 @@
 				99D6EEC41C0EF0DC00CB1829 /* LaboratoryTestsAddViewController.m in Sources */,
 				99D6EE971C0ECD7D00CB1829 /* ReviewAddTitleTableViewCell.m in Sources */,
 				99DA43751C0C44CF00573D4C /* CityListFirstLevelViewController.m in Sources */,
+				A94B42EE1C134EBD00B6D6AE /* PatientListModel.m in Sources */,
 				99D141F11C0D5F27002DA3AD /* BookManagementViewController.m in Sources */,
 				99DA40891C0BE8DC00573D4C /* MineViewController.m in Sources */,
 				99D142151C0D7E41002DA3AD /* BookSuccessViewController.m in Sources */,

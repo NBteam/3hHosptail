@@ -51,8 +51,8 @@
          */
         
         
-        httpResponse.responseCode = [NSString stringWithFormat:@"%@",dic[@"status"]];
-        httpResponse.message = [dic objectForKey:@"msg"];
+        httpResponse.responseCode = [dic[@"status"] integerValue];
+        httpResponse.message = [dic objectForKey:@"info"];
         id data = [dic objectForKey:@"data"];
         if ([data isKindOfClass:[NSArray class]]) {
             httpResponse.dataArray = data;

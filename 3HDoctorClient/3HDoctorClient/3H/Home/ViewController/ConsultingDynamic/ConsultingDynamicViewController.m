@@ -11,6 +11,8 @@
 #import "ConsultingDynamicTableViewCell.h"
 //医疗资讯
 #import "DynamicDetailViewController.h"
+#import "InformationModel.h"
+
 @interface ConsultingDynamicViewController ()
 
 @property (nonatomic, strong) ConsultingDynamicHeadView *headView;
@@ -24,6 +26,7 @@
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.tableView.tableHeaderView = self.headView;
     [self.headView confingWithModel:nil];
+    [self getDetailInfo];
 }
 
 - (void)backAction{
@@ -45,7 +48,8 @@
         cell = [[ConsultingDynamicTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:nil];
+    InformationModel * model = self.dataArray[indexPath.section];
+    [cell confingWithModel:model];
     return cell;
 }
 
@@ -58,7 +62,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 6;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -70,8 +74,29 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    InformationModel * model = self.dataArray[indexPath.section];
     DynamicDetailViewController *dynamicDetailVc = [[DynamicDetailViewController alloc] init];
+    dynamicDetailVc.id = model.id;
     [self.navigationController pushViewController:dynamicDetailVc animated:YES];
+}
+- (void)getDetailInfo{
+    WeakSelf(ConsultingDynamicViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];;
+    [[THNetWorkManager shareNetWork]getArtListPage:1 pos:20 andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        [weakSelf.dataArray removeAllObjects];
+        if (response.responseCode == 1) {
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                InformationModel * model = [response thParseDataFromDic:dict andModel:[InformationModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+        } else {
+            [weakSelf showHudAuto:response.message];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt];
+    }];
 }
 - (NSString *)title{
     return @"资讯动态";

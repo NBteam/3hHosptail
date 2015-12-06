@@ -11,10 +11,14 @@
 //输入名字
 #import "NameInputViewController.h"
 //医院名称
-#import "HospitalInputViewController.h"
+#import "HospitalTableViewController.h"
 #import "AppDelegate.h"
 //所在城市
 #import "CityListFirstLevelViewController.h"
+//职称
+#import "PositionViewController.h"
+//科室
+#import "DepartmentViewController.h"
 
 @interface PerfectInformationViewController ()
 //友情提示
@@ -83,6 +87,7 @@
         cell = [[PerfectInformationTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = self.view.backgroundColor;
     [cell confingWithModel:self.dataArray[indexPath.row]];
     return cell;
 
@@ -121,10 +126,15 @@
         [self.navigationController pushViewController:cityListFirstLevelVc animated:YES];
         
     }else if (indexPath.row == 2){//您的职称
-        
+        PositionViewController * pvc = [[PositionViewController alloc]init];
+        [pvc setChoiceBlock:^(NSString *positionStr) {
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:positionStr];
+            [weakSelf.tableView reloadData];
+        }];
+        [self.navigationController pushViewController:pvc animated:YES];
     }else if (indexPath.row == 3){//医院名称
         
-        HospitalInputViewController *hospitalInputVc = [[HospitalInputViewController alloc] init];
+        HospitalTableViewController*hospitalInputVc = [[HospitalTableViewController alloc] init];
         
         [hospitalInputVc setHospitalBlock:^(NSString *str) {
             [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:str];
@@ -134,7 +144,12 @@
         [self.navigationController pushViewController:hospitalInputVc animated:YES];
         
     }else if (indexPath.row == 4){//科室名称
-        
+        DepartmentViewController * DepartmentVc = [[DepartmentViewController alloc]init];
+        [DepartmentVc setChoiceBlock:^(NSString *id, NSString *name, NSString *pid) {
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:name];
+            [weakSelf.tableView reloadData];
+        }];
+        [self.navigationController pushViewController:DepartmentVc animated:YES];
     }else if (indexPath.row == 5){//门诊时间
         
     }

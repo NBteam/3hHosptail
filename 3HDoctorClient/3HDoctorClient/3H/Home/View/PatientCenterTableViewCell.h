@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "PatientListModel.h"
 
 @interface PatientCenterTableViewCell : BaseTableViewCell
 //患者头像
@@ -18,5 +19,5 @@
 //箭头
 @property (nonatomic, strong) UIImageView *imgArrow;
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(PatientListModel *)dic;
 @end

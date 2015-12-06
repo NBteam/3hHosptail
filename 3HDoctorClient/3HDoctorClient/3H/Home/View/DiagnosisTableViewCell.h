@@ -15,6 +15,6 @@
 @property (nonatomic, strong) UILabel *labDetail;
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)model;
+- (void)confingWithModel:(NSDictionary *)model index:(NSUInteger)index;
 
 @end

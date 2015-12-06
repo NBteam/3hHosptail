@@ -138,13 +138,13 @@ static THNetWorkManager *thNetWorkManager = nil;
                 //访问所有接口，如果返回 {"data":"","info":"…","status":"-99"} status为 -99 则表示需要登录或重新登录
                 
                 //所有鉴权接口，每次请求需要传入token参数。
-                if ([response.responseCode isEqualToString:@"-99"]) {
+                if (response.responseCode == -99) {
                     //  保存上一次请求
                     self.previousURLSessionDataTask = urlSessionDataTask;
                     
                     [weakSelf getTokenForCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
                         
-                        if ([response.responseCode isEqualToString:@"1"]) {
+                        if (response.responseCode == 1 ) {
                             [weakSelf.previousURLSessionDataTask resume];
                         }
                         self.previousURLSessionDataTask = nil;
@@ -177,13 +177,13 @@ static THNetWorkManager *thNetWorkManager = nil;
                 //访问所有接口，如果返回 {"data":"","info":"…","status":"-99"} status为 -99 则表示需要登录或重新登录
                 
                 //所有鉴权接口，每次请求需要传入token参数。
-                if ([response.responseCode isEqualToString:@"-99"]) {
+                if (response.responseCode == -99) {
                     //  保存上一次请求
                     self.previousURLSessionDataTask = urlSessionDataTask;
                     
                     [weakSelf getTokenForCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
                         
-                        if ([response.responseCode isEqualToString:@"1"]) {
+                        if (response.responseCode == 1 ) {
                             [weakSelf.previousURLSessionDataTask resume];
                         }
                         self.previousURLSessionDataTask = nil;
@@ -278,6 +278,138 @@ static THNetWorkManager *thNetWorkManager = nil;
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
     
 }
-
-
+/**
+ *	获取客户端版本
+ */
+- (void)getDeviceVersiontypeCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getclientver",@"type":@"2"};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ *	注册
+ * @param mobile      手机号
+ * @param code        验证码
+ * @param password    密码
+ * @param fromcode    邀请码
+ */
+- (void)getRegisteredMobile:(NSString *)mobile password:(NSString *)password code:(NSString *)code fromcode:(NSString *)fromcode andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"reg",@"mobile":mobile,@"password":password,@"sms_code":code};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ *	获取验证码
+ * @param mobile      手机号
+ */
+- (void)getCodeMobile:(NSString *)mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMobilecode",@"mobile":mobile};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 登录
+ * @param mobile      手机号
+ * @param password    密码
+ */
+- (void)getLoginMobile:(NSString *)mobile password:(NSString *)password andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"login",@"mobile":mobile,@"password":password};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取首页信息
+ *
+ */
+- (void)getHomeCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getHomeInfo"};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取职称列表
+ *
+ */
+- (void)getJobposListCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getJobposList"};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取医院科室
+ *
+ */
+- (void)getHospitalDeptLisPid:(NSString *)pid andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getHospitalDeptList",@"pid":pid};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取医院列表
+ *
+ */
+- (void)getHospitalLisCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getHospitalList"};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 我的钱包
+ *
+ */
+- (void)getMyAccountCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMyAccount",@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取患者病史
+ *
+ */
+- (void)getPatientSickHistoryMid:(NSString *)mid andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getPatientSickHistory",@"mid":mid,@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 编辑患者病史
+ * @param mid         患者ID
+ * @param guomin      过敏史
+ * @param blood_type  血型
+ * @param desc        病情描述
+ */
+- (void)editPatientSickHistoryMid:(NSString *)mid guomin:(NSString *)guomin blood_type:(NSString *)blood_type desc:(NSString *)desc andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getPatientSickHistory",@"mid":mid,@"guomin":guomin,@"blood_type":blood_type,@"desc":desc,@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取文章列表
+ * @param page        分页
+ * @param pos         分页位置
+ */
+- (void)getArtListPage:(NSInteger)page pos:(NSInteger)pos andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getArtList",@"page":@(page),@"pos":@(pos)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取文章详情
+ * @param id        id
+ */
+- (void)getArtInfoId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getArtInfo",@"id":id,Token:GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 我的患者列表
+ * @param page        分页
+ */
+- (void)getMyPatientsPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"myPatients",@"page":@(page),Token:GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 文章点赞接口
+ * @param id        文章Id
+ */
+- (void)getVoteArtId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"voteArt",@"id":id,Token:GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取用户资料接口
+ */
+- (void)getUserInfoCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getuserinfo",Token:GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

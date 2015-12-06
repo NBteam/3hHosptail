@@ -11,6 +11,7 @@
 #import "PatientAddRequestViewController.h"
 //患者详情
 #import "PatientDetailViewController.h"
+#import "PatientListModel.h"
 
 @interface PatientCenterViewController ()
 
@@ -28,6 +29,7 @@
     [self.view addSubview:self.btnPatientAddNum];
     self.tableView.top = self.btnPatientAddNum.bottom;
     self.tableView.height = self.tableView.height - self.btnPatientAddNum.height;
+    [self getNetWorkInfo];
 }
 
 - (void)backAction{
@@ -68,13 +70,14 @@
         cell = [[PatientCenterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    PatientListModel * model = self.dataArray[indexPath.row];
     [cell confingWithModel:nil];
     return cell;
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return 6;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -93,6 +96,25 @@
     PatientDetailViewController *patientDetailVc= [[PatientDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:patientDetailVc animated:YES];
     
+}
+- (void)getNetWorkInfo{
+    WeakSelf(PatientCenterViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    [[THNetWorkManager shareNetWork]getMyPatientsPage:1 andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        [weakSelf.dataArray removeAllObjects];
+        if (response.responseCode == 1) {
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                PatientListModel * model = [response thParseDataFromDic:dict andModel:[PatientListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+        } else {
+            [weakSelf showHudAuto:response.message];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt];
+    }];
 }
 - (NSString *)title{
     return @"患者中心";

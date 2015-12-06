@@ -19,16 +19,19 @@
 #import "InvitationViewController.h"
 //预约设置
 #import "AppointViewController.h"
-@interface MineViewController ()
 
+@interface MineViewController ()
+@property (nonatomic, retain) NSDictionary * dict;
 @end
 
 @implementation MineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dict = [NSDictionary dictionary];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"个人中心";
+    [self getNetWorkInfo];
     self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"3H-我的_我的钱包-未点击",@"title":@"我的钱包"},@{@"img":@"3H-我的_预约设置-未点击",@"title":@"预约设置"},@{@"img":@"3H-我的_邀请同行-未点击",@"title":@"邀请同行"},@{@"img":@"3H-我的_设置-未点击",@"title":@"设置"}]];
 }
 
@@ -42,7 +45,7 @@
             cell = [[MineHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dataArray[indexPath.row]];
+        [cell confingWithModel:self.dict];
         return cell;
     }else{
         static NSString *identifier = @"idertifier";
@@ -112,6 +115,20 @@
             [self.navigationController pushViewController:setUpVc animated:YES];
         }
     }
+}
+- (void)getNetWorkInfo{
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(MineViewController);
+    [[THNetWorkManager shareNetWork]getUserInfoCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            weakSelf.dict = response.dataDic;
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"1"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

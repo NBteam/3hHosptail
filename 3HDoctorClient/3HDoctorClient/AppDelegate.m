@@ -10,6 +10,7 @@
 #import "BaseTabBarController.h"
 #import "BaseNavigationController.h"
 #import "LoginViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -19,14 +20,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [self uploadDeviceVersion];
     [self.window makeKeyAndVisible];
     [self setAppStyle];
     [self setWindowRootViewControllerIsLogin];
     
     return YES;
 }
-
+#pragma mark -- 版本升级
+- (void)uploadDeviceVersion{
+    WeakSelf(AppDelegate);
+    [[THNetWorkManager shareNetWork] getDeviceVersiontypeCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        if ([[NSString stringWithFormat:@"%@",response.dataDic[@"status"]] isEqualToString:@"1"]) {
+            
+        }else{
+        
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        
+    }];
+}
 
 - (void)setWindowRootViewControllerIsTabBar{
     self.window.rootViewController = [[BaseTabBarController alloc] init];

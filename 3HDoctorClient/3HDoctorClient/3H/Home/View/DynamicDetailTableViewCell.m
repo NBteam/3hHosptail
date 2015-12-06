@@ -67,10 +67,11 @@
 
 //赋值
 - (CGFloat )confingWithModel:(NSDictionary *)dic{
-    self.labTitle.text = @"前8个月我国医药制造业利润达1762.5亿元";
-    self.labAuthor.text = @"创建者:医疗百科";
-    self.labTime.text = @"2015-10-10";
-    self.labDetail.text = @"前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元前8个月我国医药制造业利润达1762.5亿元";
+    self.labTitle.text = dic[@"title"];
+    self.labAuthor.text = dic[@"author"];
+    self.labTime.text = dic[@"addtime"];
+    self.labDetail.text = dic[@"content"];
+    [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:dic[@"thumb"]] placeholderImage:[UIImage imageNamed:@""]];
     [self.labDetail sizeToFit];
     self.labDetail.top = self.imgLogo.bottom +10;
     return self.labDetail.bottom +44;

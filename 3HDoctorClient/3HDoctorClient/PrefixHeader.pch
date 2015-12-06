@@ -57,7 +57,7 @@
 #define DeviceModel [[UIDevice currentDevice] model]
 //  存储token的名字
 #define Token   @"token"
-
+#define GetToken  [SGSaveFile getIdFromObjectWithKey:Token]
 //app主打颜色
 #define AppDefaultColor [UIColor colorWithHEX:0x008aff]
 

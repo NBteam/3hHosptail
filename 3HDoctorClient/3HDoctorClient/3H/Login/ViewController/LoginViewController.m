@@ -115,7 +115,7 @@
 - (UITextField *)txtUserName{
     if (!_txtUserName) {
         _txtUserName = [[UITextField alloc] initWithFrame:CGRectMake(15, self.viewBlue.bottom +10, DeviceSize.width -30, 30)];
-    
+        _txtUserName.text = @"15313371669";
         //是否纠错
         _txtUserName.autocorrectionType = UITextAutocorrectionTypeNo;
         _txtUserName.keyboardType = UIKeyboardTypeNumberPad;
@@ -137,7 +137,7 @@
 - (UITextField *)txtPassWord{
     if (!_txtPassWord) {
         _txtPassWord = [[UITextField alloc] initWithFrame:CGRectMake(15, self.labLineUserName.bottom +10, DeviceSize.width -30, 30)];
-        
+        _txtPassWord.text = @"123456";
         //是否纠错
         _txtPassWord.autocorrectionType = UITextAutocorrectionTypeNo;
         _txtPassWord.secureTextEntry = YES;
@@ -180,7 +180,7 @@
         _btnLogin.frame = CGRectMake(15, self.btnForgetPassWord.bottom +15, self.labLinePassWord.width, 45);
         [_btnLogin setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
         _btnLogin.titleLabel.font = [UIFont systemFontOfSize:17];
-        [_btnLogin setTitle:@"立即登陆" forState:UIControlStateNormal];
+        [_btnLogin setTitle:@"立即登录" forState:UIControlStateNormal];
         _btnLogin.layer.masksToBounds = YES;
         _btnLogin.layer.cornerRadius = 5;
         _btnLogin.backgroundColor = AppDefaultColor;
@@ -192,9 +192,31 @@
 }
 
 - (void)btnLoginAction{
-//    [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
-    PerfectInformationViewController *perfectInformationVc = [[PerfectInformationViewController alloc] init];
-    [self.navigationController pushViewController:perfectInformationVc animated:YES];
+    if ([self.txtUserName.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入手机号" andDuration:@"2"];
+    }else if ([self.txtPassWord.text isEqualToString:@""]){
+        [self showHudAuto:@"请输入密码" andDuration:@"2"];
+    }else{
+        [self showHudAuto:WaitPrompt];
+        WeakSelf(LoginViewController);
+        [[THNetWorkManager shareNetWork]getLoginMobile:self.txtUserName.text password:self.txtPassWord.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+            [weakSelf removeMBProgressHudInManaual];
+            if (response.responseCode == 1) {
+                [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:@"token"];
+                if ([response.dataDic[@"is_fill"] doubleValue] == 0) {//未填写
+                    PerfectInformationViewController *perfectInformationVc = [[PerfectInformationViewController alloc] init];
+                    [self.navigationController pushViewController:perfectInformationVc animated:YES];
+                }else{
+                
+                }
+            }else{
+                [weakSelf showHudAuto:response.message andDuration:@"1"];
+            }
+        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+        } ];
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{

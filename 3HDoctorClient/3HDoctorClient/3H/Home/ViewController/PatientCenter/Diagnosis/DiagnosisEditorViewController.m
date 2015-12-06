@@ -9,10 +9,14 @@
 #import "DiagnosisEditorViewController.h"
 #import "DiagnosisEditorTableViewCell.h"
 #import "DiagnosisDetailEditorTableViewCell.h"
+#import "HospitalInputViewController.h"
 
 @interface DiagnosisEditorViewController ()
 
 @property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, copy) NSString * blood_type;
+@property (nonatomic, copy) NSString * guomin;
+@property (nonatomic, strong) NSIndexPath * nIndexPath;
 @end
 
 @implementation DiagnosisEditorViewController
@@ -30,6 +34,7 @@
     // [self.view addSubview:self.customView];
     
     self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"是否有过敏史:",@"detail":@"未选择"},@{@"title":@"血型:",@"detail":@"未选择"}]];
+    
 }
 
 - (void)backAction{
@@ -37,6 +42,16 @@
 }
 
 - (void)rightAction{
+    DiagnosisDetailEditorTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.nIndexPath];
+    if ([self.guomin isEqualToString:@""]) {
+        [self showHudAuto:@"请填写过敏史" andDuration:@"2"];
+    }else if([self.blood_type isEqualToString:@""]){
+        [self showHudAuto:@"请填写血型" andDuration:@"2"];
+    }else if([cell.txtView.text isEqualToString:@""]){
+        [self showHudAuto:@"请填写病情描述" andDuration:@"2"];
+    }else{
+        [self getDetailInfo:cell.txtView.text];
+    }
     
 }
 
@@ -51,6 +66,7 @@
             cell = [[DiagnosisDetailEditorTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.nIndexPath= indexPath;
         self.cellHeight = [cell confingWithModel:nil];
         return cell;
     }else{
@@ -76,7 +92,7 @@
     if (indexPath.section == 2) {
         return self.cellHeight;
     }else{
-        return 245;
+        return 45;
     }
 }
 
@@ -91,7 +107,43 @@
 - (NSString *)title{
     return @"病史";
 }
-
+- (void)getDetailInfo:(NSString *)desc{
+    WeakSelf(DiagnosisEditorViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];;
+    [[THNetWorkManager shareNetWork] editPatientSickHistoryMid:@"1" guomin:self.guomin blood_type:self.blood_type desc:desc andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        [weakSelf.dataArray removeAllObjects];
+        if (response.responseCode == 1) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } else {
+            [weakSelf showHudAuto:response.message];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt];
+    }];
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    WeakSelf(DiagnosisEditorViewController);
+    if (indexPath.section != 2) {
+        HospitalInputViewController * HospitalInputVc = [[HospitalInputViewController alloc]init];
+        if (indexPath.section == 0) {
+            HospitalInputVc.titleStr = @"过敏史";
+        }else{
+            HospitalInputVc.titleStr = @"血型";
+        }
+        DiagnosisEditorTableViewCell *cell = (DiagnosisEditorTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+        [HospitalInputVc setHospitalBlock:^(NSString *str) {
+            if (indexPath.section == 1) {
+                weakSelf.blood_type = str;
+            }else{
+                weakSelf.guomin = str;
+            }
+            cell.labDetail.text = str;
+        }];
+        [self.navigationController pushViewController:HospitalInputVc animated:YES];
+    }
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

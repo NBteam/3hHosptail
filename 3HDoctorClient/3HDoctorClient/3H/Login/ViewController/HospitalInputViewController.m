@@ -58,7 +58,7 @@
         //是否纠错
         _txtNameInput.autocorrectionType = UITextAutocorrectionTypeNo;
         _txtNameInput.font = [UIFont systemFontOfSize:15];
-        _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"医院名称" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
+        _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.titleStr attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
         _txtNameInput.backgroundColor = [UIColor whiteColor];
         
     }
