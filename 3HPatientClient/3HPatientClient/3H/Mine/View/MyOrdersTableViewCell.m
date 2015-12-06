@@ -45,6 +45,16 @@
     return _labTitle;
 }
 
+- (UILabel *)labState{
+    if (!_labState) {
+        _labState = [[UILabel alloc] initWithFrame:CGRectMake(DeviceSize.width -10 -DeviceSize.width/3, 10, DeviceSize.width/3, 15)];
+        _labState.textColor = AppDefaultColor;
+        _labState.font = [UIFont systemFontOfSize:13];
+        _labState.textAlignment = NSTextAlignmentRight;
+    }
+    return _labState;
+}
+
 - (UILabel *)labLine1{
     if (!_labLine1) {
         _labLine1 = [[UILabel alloc] initWithFrame:CGRectMake(10, self.imgLogo.bottom +10, DeviceSize.width - 20, 0.5)];
@@ -57,9 +67,7 @@
 - (UIImageView *)imgProduct{
     if (!_imgProduct) {
         _imgProduct = [[UIImageView alloc] initWithFrame:CGRectMake(10, self.labLine1.bottom +10, 75, 65)];
-        _imgProduct.backgroundColor = [UIColor whiteColor];
-        _imgProduct.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
-        _imgProduct.layer.cornerRadius = 0.5;
+        _imgProduct.backgroundColor = [UIColor grayColor];
         
     }
     return _imgProduct;
@@ -72,7 +80,7 @@
         _labProduct.font = [UIFont systemFontOfSize:15];
         _labProduct.numberOfLines = 3;
     }
-    return _labTitle;
+    return _labProduct;
 }
 
 - (UILabel *)labSingePrice{
@@ -80,6 +88,7 @@
         _labSingePrice = [[UILabel alloc] initWithFrame:CGRectMake(DeviceSize.width - 10 -DeviceSize.width/4, self.labLine1.bottom +10, DeviceSize.width/4, 15)];
         _labSingePrice.textColor = [UIColor colorWithHEX:0x333333];
         _labSingePrice.font = [UIFont systemFontOfSize:15];
+        _labSingePrice.textAlignment = NSTextAlignmentRight;
     }
     return _labSingePrice;
 }
@@ -89,6 +98,7 @@
         _labNum = [[UILabel alloc] initWithFrame:CGRectMake(DeviceSize.width - 10 -DeviceSize.width/4, self.labSingePrice.bottom +15, DeviceSize.width/4, 13)];
         _labNum.textColor = [UIColor colorWithHEX:0x888888];
         _labNum.font = [UIFont systemFontOfSize:13];
+        _labNum.textAlignment = NSTextAlignmentRight;
     }
     return _labNum;
 }
@@ -105,6 +115,9 @@
 - (UILabel *)labPrice{
     if (!_labPrice) {
         _labPrice = [[UILabel alloc] initWithFrame:CGRectMake(10, self.labLine2.bottom +10, DeviceSize.width -20, 15)];
+        _labPrice.textAlignment = NSTextAlignmentRight;
+        _labPrice.font = [UIFont systemFontOfSize:15];
+        _labPrice.textColor = [UIColor colorWithHEX:0x888888];
         _labPrice.textAlignment = NSTextAlignmentRight;
         
     }
@@ -164,6 +177,11 @@
 - (void)confingWithModel:(NSDictionary *)dic{
     self.labTitle.text = @"九康科技";
     self.labState.text = @"交易成功";
+    self.labProduct.text = @"交易成功交易成功交易成功交易成功交易成功交易成功交易成功";
+    self.labSingePrice.text = @"￥99.00";
+    self.labNum.text = @"X1";
+    self.labPrice.text = @"实付:￥99.00";
+    
 }
 /*
 // Only override drawRect: if you perform custom drawing.
