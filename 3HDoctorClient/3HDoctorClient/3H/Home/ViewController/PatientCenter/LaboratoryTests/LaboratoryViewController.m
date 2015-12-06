@@ -10,16 +10,24 @@
 #import "PatientCenterNotCustomView.h"
 #import "LaboratoryTestsTableViewCell.h"
 #import "LaboratoryTestsAddViewController.h"
+#import "PatientAssayListModel.h"
+
+
 @interface LaboratoryViewController ()
 @property (nonatomic, strong) PatientCenterNotCustomView *customView;
+@property (nonatomic, assign) NSInteger number;
 @end
 
 @implementation LaboratoryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.number = 0;
     self.tableView.height = self.tableView.height - 44;
     // Do any additional setup after loading the view.
+    self.isOpenFooterRefresh = YES;
+    self.isOpenHeaderRefresh = YES;
+    [self getNetWork];
     [self.view addSubview:self.customView];
 }
 #pragma mark - UI
@@ -46,7 +54,8 @@
         cell = [[LaboratoryTestsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:nil];
+    PatientAssayListModel * model = self.dataArray[indexPath.section];
+    [cell confingWithModel:model];
     return cell;
 }
 
@@ -55,7 +64,12 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 10;
+    if (self.dataArray.count==0) {
+        self.customView.hidden = NO;
+    }else{
+        self.customView.hidden = YES;
+    }
+    return self.dataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 75;
@@ -68,7 +82,44 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10.0f;
 }
-
+- (void)getNetWork{
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(LaboratoryViewController);
+    [[THNetWorkManager shareNetWork]getPatientAssayListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (weakSelf.number == 0) {
+            [weakSelf.dataArray removeAllObjects];
+        }
+        if (response.responseCode == 1) {
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                PatientAssayListModel * model = [response thParseDataFromDic:dict andModel:[PatientAssayListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"1"];
+        }
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        //  重新加载数据
+        [weakSelf.tableView reloadData];
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+    }];
+}
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    self.number = 0;
+    [self getNetWork];
+}
+- (void)footerRequestWithData
+{
+    self.number += 5;
+    [self getNetWork];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

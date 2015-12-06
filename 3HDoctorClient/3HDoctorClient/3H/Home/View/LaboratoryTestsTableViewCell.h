@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "PatientAssayListModel.h"
 
 @interface LaboratoryTestsTableViewCell : BaseTableViewCell
 //化验和检查共用一个
@@ -16,5 +17,5 @@
 @property (nonatomic, strong) UILabel *labDetail;
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)model;
+- (void)confingWithModel:(PatientAssayListModel *)model;
 @end

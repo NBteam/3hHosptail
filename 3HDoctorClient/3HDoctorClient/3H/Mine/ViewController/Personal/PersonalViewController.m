@@ -14,9 +14,10 @@
 #import "PositionViewController.h"
 #import "HospitalTableViewController.h"
 #import "DepartmentViewController.h"
+#import "SexViewController.h"
 
 @interface PersonalViewController ()
-
+@property (nonatomic, copy) NSString * sexStr;
 @end
 
 @implementation PersonalViewController
@@ -27,8 +28,33 @@
     // Do any additional setup after loading the view.
     self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"姓名",@"detail":@"未填写"},@{@"title":@"性别",@"detail":@"未填写"},@{@"title":@"医院",@"detail":@"未填写"},@{@"title":@"科室",@"detail":@"未填写"},@{@"title":@"职称",@"detail":@"未填写"},@{@"title":@"个人签名",@"detail":@"未填写"}]];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"保存"];
 }
-
+- (void)rightAction{
+    if ([self.dataArray[0][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[0][@"detail"] isEqualToString:@"未填写"]) {
+        [self showHudAuto:@"请填写姓名" andDuration:@"2"];
+    }else if ([self.dataArray[2][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[2][@"detail"] isEqualToString:@"未填写"]){
+        [self showHudAuto:@"请选择医院" andDuration:@"2"];
+    }else if ([self.dataArray[3][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[3][@"detail"] isEqualToString:@"未填写"]){
+        [self showHudAuto:@"请选择科室" andDuration:@"2"];
+    }else if ([self.dataArray[4][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[4][@"detail"] isEqualToString:@"未填写"]){
+        [self showHudAuto:@"请选择职称" andDuration:@"2"];
+    }
+    else{
+        [self showHudAuto:WaitPrompt];
+        WeakSelf(PersonalViewController);
+        [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.dataArray[0][@"detail"] sex:self.sexStr hospital:self.dataArray[2][@"detail"] department:self.dataArray[3][@"detail"] job_title:self.dataArray[4][@"detail"] sign_word:self.dataArray[5][@"detail"] work_week:@"" area_ids:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+            [weakSelf removeMBProgressHudInManaual];
+            if (response.responseCode == 1) {
+               
+            }else{
+                [weakSelf showHudAuto:response.message andDuration:@"1"];
+            }
+        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+        }];
+    }
+}
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -98,7 +124,9 @@
             NameInputViewController *nameInputVc = [[NameInputViewController alloc] init];
             
             [nameInputVc setNameBlock:^(NSString *str) {
-                [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:str];
+                
+                [weakSelf.dataArray replaceObjectAtIndex:0 withObject:@{@"title":@"姓名",@"detail":str}];
+                
                 [weakSelf.tableView reloadData];
             }];
             
@@ -106,10 +134,18 @@
             
         }else if (indexPath.row == 1){//
             
-            HospitalInputViewController *cityListFirstLevelVc= [[HospitalInputViewController alloc] init];
-            cityListFirstLevelVc.titleStr = @"请填写性别";
+            SexViewController *cityListFirstLevelVc= [[SexViewController alloc] init];
             [cityListFirstLevelVc setHospitalBlock:^(NSString *name) {
-                [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:name];
+                NSString * sex = @"";
+                if ([name isEqualToString:@"0"]) {
+                    sex = @"保密";
+                }else if ([name isEqualToString:@"1"]) {
+                    sex = @"男";
+                }else if ([name isEqualToString:@"2"]) {
+                    sex = @"女";
+                }
+                self.sexStr = name;
+                [weakSelf.dataArray replaceObjectAtIndex:1 withObject:@{@"title":@"性别",@"detail":sex}];
                 [weakSelf.tableView reloadData];
             }];
             
@@ -119,7 +155,7 @@
             HospitalTableViewController*hospitalInputVc = [[HospitalTableViewController alloc] init];
             
             [hospitalInputVc setHospitalBlock:^(NSString *str) {
-                [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:str];
+                [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"科室",@"detail":str}];
                 [weakSelf.tableView reloadData];
             }];
             
@@ -128,14 +164,14 @@
         }else if (indexPath.row == 3){//
             DepartmentViewController * DepartmentVc = [[DepartmentViewController alloc]init];
             [DepartmentVc setChoiceBlock:^(NSString *id, NSString *name, NSString *pid) {
-                [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:name];
+                [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"科室",@"detail":name}];
                 [weakSelf.tableView reloadData];
             }];
             [self.navigationController pushViewController:DepartmentVc animated:YES];
         }else if (indexPath.row == 4){//
             PositionViewController * pvc = [[PositionViewController alloc]init];
             [pvc setChoiceBlock:^(NSString *positionStr) {
-                [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:positionStr];
+                [weakSelf.dataArray replaceObjectAtIndex:4 withObject:@{@"title":@"职称",@"detail":positionStr}];
                 [weakSelf.tableView reloadData];
             }];
             [self.navigationController pushViewController:pvc animated:YES];
@@ -150,10 +186,28 @@
     [[THNetWorkManager shareNetWork]getUserInfoCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            if ([response.dataDic[@"truename"] isEqualToString:@""]) {
-                
+            if (![response.dataDic[@"truename"] isEqualToString:@""]) {
+                [weakSelf.dataArray replaceObjectAtIndex:0 withObject:@{@"title":@"姓名",@"detail":response.dataDic[@"truename"]}];
             }
-            [weakSelf.dataArray replaceObjectAtIndex:0 withObject:@{@"title":@"姓名",@"detail":response.dataDic[@"truename"]}];
+            NSString * sex = @"";
+            weakSelf.sexStr = response.dataDic[@"sex"];
+            if ([response.dataDic[@"sex"] isEqualToString:@"0"]) {
+                sex = @"保密";
+            }else if ([response.dataDic[@"sex"] isEqualToString:@"1"]) {
+                sex = @"男";
+            }else if ([response.dataDic[@"sex"] isEqualToString:@"2"]) {
+                sex = @"女";
+            }
+            [weakSelf.dataArray replaceObjectAtIndex:1 withObject:@{@"title":@"性别",@"detail":sex}];
+            if (![response.dataDic[@"hospital"] isEqualToString:@""]) {
+                [weakSelf.dataArray replaceObjectAtIndex:2 withObject:@{@"title":@"医院",@"detail":response.dataDic[@"hospital"]}];
+            }
+            if (![response.dataDic[@"department"] isEqualToString:@""]) {
+                [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"科室",@"detail":response.dataDic[@"department"]}];
+            }
+            if (![response.dataDic[@"job_title"] isEqualToString:@""]) {
+                [weakSelf.dataArray replaceObjectAtIndex:4 withObject:@{@"title":@"职称",@"detail":response.dataDic[@"job_title"]}];
+            }
             [weakSelf.tableView reloadData];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"1"];

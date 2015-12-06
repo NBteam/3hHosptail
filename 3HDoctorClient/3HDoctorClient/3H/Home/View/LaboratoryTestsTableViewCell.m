@@ -48,10 +48,10 @@
 
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)model{
-    
-    self.labTitle.text = @"赋值赋值赋值";
-    self.labDetail.text = @"赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值";
+- (void)confingWithModel:(PatientAssayListModel *)model{
+    [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:model.pic] placeholderImage:[UIImage imageNamed:@""]];
+    self.labTitle.text = model.name;
+    self.labDetail.text = model.hospital;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

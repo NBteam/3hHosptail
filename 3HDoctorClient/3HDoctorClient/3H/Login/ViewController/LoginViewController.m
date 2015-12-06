@@ -207,7 +207,7 @@
                     PerfectInformationViewController *perfectInformationVc = [[PerfectInformationViewController alloc] init];
                     [self.navigationController pushViewController:perfectInformationVc animated:YES];
                 }else{
-                
+                     [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
                 }
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"1"];

@@ -14,7 +14,7 @@
 #import "PatientListModel.h"
 
 @interface PatientCenterViewController ()
-
+@property (nonatomic, assign) NSInteger number;
 //患者添加请求
 @property (nonatomic, strong) UIButton *btnPatientAddNum;
 @end
@@ -23,12 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.number = 0;
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.navigationItem.rightBarButtonItems = @[[UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"],[UIBarButtonItemExtension rightButtonItem:@selector(searchAction) andTarget:self andImageName:@"首页-患者中心_搜索"]];
     [self.view addSubview:self.btnPatientAddNum];
     self.tableView.top = self.btnPatientAddNum.bottom;
     self.tableView.height = self.tableView.height - self.btnPatientAddNum.height;
+    self.isOpenHeaderRefresh = YES;
+    self.isOpenFooterRefresh = YES;
     [self getNetWorkInfo];
 }
 
@@ -100,9 +103,11 @@
 - (void)getNetWorkInfo{
     WeakSelf(PatientCenterViewController);
     [weakSelf showHudWaitingView:WaitPrompt];
-    [[THNetWorkManager shareNetWork]getMyPatientsPage:1 andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getMyPatientsPage:self.number andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
-        [weakSelf.dataArray removeAllObjects];
+        if (weakSelf.number == 0) {
+            [weakSelf.dataArray removeAllObjects];
+        }
         if (response.responseCode == 1) {
             for (NSDictionary * dict in response.dataDic[@"list"]) {
                 PatientListModel * model = [response thParseDataFromDic:dict andModel:[PatientListModel class]];
@@ -112,9 +117,26 @@
         } else {
             [weakSelf showHudAuto:response.message];
         }
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        //  重新加载数据
+        [weakSelf.tableView reloadData];
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
         [weakSelf showHudAuto:InternetFailerPrompt];
     }];
+}
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    self.number = 0;
+    [self getNetWorkInfo];
+}
+- (void)footerRequestWithData
+{
+    self.number += 5;
+    [self getNetWorkInfo];
 }
 - (NSString *)title{
     return @"患者中心";

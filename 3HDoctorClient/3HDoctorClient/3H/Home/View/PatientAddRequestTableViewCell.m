@@ -67,7 +67,9 @@
 }
 
 - (void)btnRefusedAction{
-    
+    if (self.btnRefusedBlock) {
+        self.btnRefusedBlock();
+    }
 }
 
 - (UIButton *)btnAgreed{
@@ -79,7 +81,7 @@
         _btnAgreed.layer.cornerRadius = 3;
         _btnAgreed.layer.borderColor = AppDefaultColor.CGColor;
         _btnAgreed.layer.borderWidth = 0.5;
-        [_btnAgreed setTitle:@"拒绝" forState:UIControlStateNormal];
+        [_btnAgreed setTitle:@"同意" forState:UIControlStateNormal];
         _btnAgreed.titleLabel.font = [UIFont systemFontOfSize:13];
         [_btnAgreed setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
         [_btnAgreed addTarget:self action:@selector(btnAgreedAction) forControlEvents:UIControlEventTouchUpInside];
@@ -88,14 +90,17 @@
 }
 
 - (void)btnAgreedAction{
-    
+    if (self.btnAgreedBlock) {
+        self.btnAgreedBlock();
+    }
 }
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic{
-    self.labTitle.attributedText = [self getName:@"张文涛" AndAge:@"  26岁" AndSex:@"  男"];
+- (void)confingWithModel:(PatientAddRequestModel *)dic{
+    [self.imgPatient sd_setImageWithURL:[NSURL URLWithString:dic.pic] placeholderImage:[UIImage imageNamed:@""]];
+    self.labTitle.attributedText = [self getName:dic.truename AndAge:[NSString stringWithFormat:@"  %@岁",dic.age] AndSex:[NSString stringWithFormat:@"  %@",dic.sex]];
     //  self.labDetail.attributedText
-    self.labDetail.text = @"张文涛张文涛张文涛张文涛张文涛张文涛张文涛张文涛张文涛张文涛张文涛张文涛";
+    self.labDetail.text = dic.sick_desc;
 }
 
 - (NSMutableAttributedString *)getName:(NSString *)name AndAge:(NSString *)age AndSex:(NSString *)sex{

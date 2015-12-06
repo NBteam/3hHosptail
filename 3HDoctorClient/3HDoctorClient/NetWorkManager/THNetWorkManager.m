@@ -412,4 +412,72 @@ static THNetWorkManager *thNetWorkManager = nil;
     NSDictionary *paramDic = @{@"a":@"getuserinfo",Token:GetToken};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+/**
+ * 获取用户资料接口
+ * @param  真实姓名
+ * @param    sex					0保密，1男，2女
+ * @param   hospital				医院
+ * @param   department			科室
+ * @param	job_title				职称
+ * @param	sign_word			个性签名
+ * @param	work_week			门诊时间，格式如：周一上午,周一下午,周三下午,周五上午
+ * @param   area_ids				城市id，格式：1,2  (省份ID,城市ID)
+ */
+- (void)getUpdateUserInfoTruename:(NSString *)truename sex:(NSString *)sex hospital:(NSString *)hospital department:(NSString *)department job_title:(NSString *)job_title sign_word:(NSString *)sign_word	work_week:(NSString *)work_week area_ids:(NSString *)area_ids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"updateuserinfo",Token:GetToken,@"truename":truename,@"sex":sex,@"hospital":hospital,@"department":department,@"job_title":job_title,@"work_week":work_week,@"area_ids":area_ids,@"sign_word":sign_word};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 我的患者请求列表
+ * @param page  分页
+ */
+- (void)getmyPatientReqsPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"myPatientReqs",Token:GetToken,@"page":@(page)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取患者化验列表
+ * @param page  分页
+ * @param mid   患者ID
+ */
+- (void)getPatientAssayListPage:(NSInteger)page mid:(NSString *)mid andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getPatientAssayList",Token:GetToken,@"page":@(page),@"mid":mid};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取患者检查列表
+ * @param page  分页
+ * @param mid   患者ID
+ */
+- (void)getPatientCheckListPage:(NSInteger)page mid:(NSString *)mid andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getPatientCheckList",Token:GetToken,@"page":@(page),@"mid":mid};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取患者用药提醒列表
+ * @param page  分页
+ * @param mid   患者ID
+ */
+- (void)getPatientDrugListPage:(NSInteger)page mid:(NSString *)mid andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getPatientDrugList",Token:GetToken,@"page":@(page),@"mid":mid};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取患者复查提醒列表
+ * @param page  分页
+ * @param mid   患者ID
+ */
+- (void)getPatientRecheckListPage:(NSInteger)page mid:(NSString *)mid andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getPatientRecheckList",Token:GetToken,@"page":@(page),@"mid":mid};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 处理患者添加请求
+ * @param req_id    请求ID
+ * @param process	1通过，-1拒绝
+ */
+- (void)getMyPatientReqProcessReq_id:(NSString *)req_id process:(NSInteger)process andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"myPatientReqProcess",Token:GetToken,@"process":@(process),@"req_id":req_id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

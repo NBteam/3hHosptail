@@ -11,7 +11,10 @@
 #import "ReviewTableViewCell.h"
 //复查添加
 #import "ReviewAddViewController.h"
+#import "PatientRecheckModel.h"
+
 @interface ReviewViewController ()
+@property (nonatomic, assign) NSInteger number;
 
 @property (nonatomic, strong) PatientCenterNotCustomView *customView;
 @end
@@ -20,10 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.number = 0;
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
    // self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"];
     [self.view addSubview:self.customView];
+    [self getNetWork];
 }
 
 - (void)backAction{
@@ -59,7 +64,8 @@
         cell = [[ReviewTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:@""];
+    PatientRecheckModel * model = self.dataArray[indexPath.section];
+    [cell confingWithModel:model];
     return cell;
 }
 
@@ -68,7 +74,12 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 6;
+    if (self.dataArray.count==0) {
+        self.customView.hidden = NO;
+    }else{
+        self.customView.hidden = YES;
+    }
+    return self.dataArray.count;;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 55;
@@ -84,6 +95,44 @@
 
 - (NSString *)title{
     return @"复查提醒";
+}
+- (void)getNetWork{
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(ReviewViewController);
+    [[THNetWorkManager shareNetWork]getPatientCheckListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (weakSelf.number == 0) {
+            [weakSelf.dataArray removeAllObjects];
+        }
+        if (response.responseCode == 1) {
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                PatientRecheckModel * model = [response thParseDataFromDic:dict andModel:[PatientRecheckModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"1"];
+        }
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        //  重新加载数据
+        [weakSelf.tableView reloadData];
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+    }];
+}
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    self.number = 0;
+    [self getNetWork];
+}
+- (void)footerRequestWithData
+{
+    self.number += 5;
+    [self getNetWork];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

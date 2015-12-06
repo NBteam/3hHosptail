@@ -36,16 +36,14 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSString *)model{
-    self.labTitle.text = @"血常规";
-    self.labDetail.text = @"请于2015-11-14上午到我院进行门诊随诊";
+- (void)confingWithModel:(PatientRecheckModel *)model{
+    self.labTitle.text = model.prj_name;
+    self.labDetail.text = [NSString stringWithFormat:@"请于%@上午到%@进行门诊随诊",model.check_date,model.hospital] ;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+//id				记录ID
+//check_date		复查日期
+//check_time		复查时段
+//hospital			医院
+//prj_name		复查项目
 
 @end

@@ -13,23 +13,27 @@
 @interface CheckViewController ()
 
 @property (nonatomic, strong) PatientCenterNotCustomView *customView;
-
+@property (nonatomic, assign) NSInteger number;
 @end
 
 @implementation CheckViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.number = 0;
     self.tableView.height = self.tableView.height - 44;
     // Do any additional setup after loading the view.
-   //  [self.view addSubview:self.customView];
+    self.isOpenHeaderRefresh = YES;
+    self.isOpenFooterRefresh = YES;
+     [self.view addSubview:self.customView];
+    [self getNetWork];
 }
 #pragma mark - UI
 
 - (PatientCenterNotCustomView *)customView{
     WeakSelf(CheckViewController);
     if (!_customView) {
-        _customView = [[PatientCenterNotCustomView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height -self.frameTopHeight) LabText:@"您还没有添加任何化验,请添加!" BtnText:@"添加化验"];
+        _customView = [[PatientCenterNotCustomView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height -self.frameTopHeight) LabText:@"您还没有添加任何检查,请添加!" BtnText:@"添加检查"];
         _customView.backgroundColor = self.view.backgroundColor;
         [_customView setBtnBlock:^{
             LaboratoryTestsAddViewController *laboratoryTestsAddVc= [[LaboratoryTestsAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
@@ -57,7 +61,12 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 10;
+    if (self.dataArray.count==0) {
+        self.customView.hidden = NO;
+    }else{
+        self.customView.hidden = YES;
+    }
+    return self.dataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 75;
@@ -70,7 +79,44 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10.0f;
 }
-
+- (void)getNetWork{
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(CheckViewController);
+    [[THNetWorkManager shareNetWork]getPatientCheckListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (weakSelf.number == 0) {
+            [weakSelf.dataArray removeAllObjects];
+        }
+        if (response.responseCode == 1) {
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                PatientAssayListModel * model = [response thParseDataFromDic:dict andModel:[PatientAssayListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"1"];
+        }
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        //  重新加载数据
+        [weakSelf.tableView reloadData];
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+    }];
+}
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    self.number = 0;
+    [self getNetWork];
+}
+- (void)footerRequestWithData
+{
+    self.number += 5;
+    [self getNetWork];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

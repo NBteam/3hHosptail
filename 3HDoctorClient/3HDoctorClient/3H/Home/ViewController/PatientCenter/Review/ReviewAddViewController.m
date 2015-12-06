@@ -11,6 +11,7 @@
 #import "ReviewAddChooseTableViewCell.h"
 #import "ReviewAddProjectTableViewCell.h"
 
+
 @interface ReviewAddViewController ()
 
 @property (nonatomic, strong) UIView *viewBack;
@@ -25,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     [self.view addSubview:self.viewBack];
@@ -32,6 +34,8 @@
     [self.viewBack addSubview:self.labLine];
     self.tableView.top = self.viewBack.bottom;
     self.tableView.height = self.tableView.height - 44 -65;
+    self.isOpenHeaderRefresh = YES;
+    self.isOpenFooterRefresh = YES;
     [self.view addSubview:self.btn];
     
 }
@@ -158,6 +162,7 @@
 - (NSString *)title{
     return @"复查提醒";
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "PatientAddRequestModel.h"
 
 @interface PatientAddRequestTableViewCell : BaseTableViewCell
 
@@ -21,5 +22,7 @@
 //同意
 @property (nonatomic, strong) UIButton *btnAgreed;
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(PatientAddRequestModel *)dic;
+@property (nonatomic, copy) void(^btnAgreedBlock)(void);
+@property (nonatomic, copy) void(^btnRefusedBlock)(void);
 @end
