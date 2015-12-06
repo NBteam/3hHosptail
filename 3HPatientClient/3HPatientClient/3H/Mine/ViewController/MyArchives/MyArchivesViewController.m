@@ -7,8 +7,10 @@
 //
 
 #import "MyArchivesViewController.h"
+#import "MyArchivesBaseTableViewCell.h"
+@interface MyArchivesViewController ()<UITableViewDataSource,UITableViewDelegate>
 
-@interface MyArchivesViewController ()
+@property (nonatomic, strong) TPKeyboardAvoidingTableView *tableView;
 
 @end
 
@@ -17,6 +19,63 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    [self.view addSubview:self.tableView];
+    
+}
+
+- (void)backAction{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - UI
+
+- (TPKeyboardAvoidingTableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height - self.frameTopHeight) style:UITableViewStyleGrouped];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.tableHeaderView = [[UIView alloc] init];
+    }
+    return _tableView;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"MyAppointmentTableViewCell";
+    MyArchivesBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil) {
+        cell = [[MyArchivesBaseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    cell.backgroundColor = self.view.backgroundColor;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+   // [cell confingWithModel:indexPath.row];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 175;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 5;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 10.0f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return  [[UIView alloc] init];
+}
+
+- (NSString *)title{
+    return @"我的健康档案";
 }
 
 - (void)didReceiveMemoryWarning {

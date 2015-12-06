@@ -23,4 +23,6 @@
 @property (nonatomic, strong) UIButton *btnCart;
 
 @property (nonatomic, strong) UILabel *labCart;
+//0 收藏 1 加入购物车 2  立即购买  购物车 3
+@property (nonatomic,copy) void(^ShopDetailToolBlock)(NSInteger index);
 @end

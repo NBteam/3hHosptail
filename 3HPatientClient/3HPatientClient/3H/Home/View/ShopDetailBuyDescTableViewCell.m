@@ -1,38 +1,60 @@
 //
-//  ShopDetailNumTableViewCell.m
+//  hopDetailBuyDescTableViewCell.m
 //  3HPatientClient
 //
-//  Created by 范英强 on 15/12/5.
+//  Created by 范英强 on 15/12/6.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "ShopDetailNumTableViewCell.h"
+#import "ShopDetailBuyDescTableViewCell.h"
 
-@implementation ShopDetailNumTableViewCell
-
+@implementation ShopDetailBuyDescTableViewCell
 
 - (void)customView{
+    [self.contentView addSubview:self.imgLogo];
     [self.contentView addSubview:self.labTitle];
+    [self.contentView addSubview:self.labNumName];
     [self.contentView addSubview:self.viewBack];
     [self.viewBack addSubview:self.btnReduct];
-    [self.viewBack addSubview:self.labNum];
     [self.viewBack addSubview:self.btnAdd];
+    [self.viewBack addSubview:self.labNum];
+    [self.contentView addSubview:self.labPrice];
+    [self.contentView addSubview:self.labCode];
 }
+
+- (UIImageView *)imgLogo{
+    if (!_imgLogo) {
+        _imgLogo = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 130, 110)];
+        _imgLogo.backgroundColor = [UIColor grayColor];
+    }
+    return _imgLogo;
+}
+
 - (UILabel *)labTitle{
     if (!_labTitle) {
-        _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 0, 0)];
+        _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.imgLogo.right +10, 10, DeviceSize.width -self.imgLogo.right -20, 0)];
         _labTitle.textColor = [UIColor colorWithHEX:0x333333];
         _labTitle.font = [UIFont systemFontOfSize:15];
-        _labTitle.text = @"数量";
-        [_labTitle sizeToFit];
-        _labTitle.top = (45 -_labTitle.height)/2;
+        _labTitle.numberOfLines = 2;
     }
     return _labTitle;
 }
 
+- (UILabel *)labNumName{
+    if (!_labNumName) {
+        _labNumName = [[UILabel alloc] initWithFrame:CGRectMake(self.imgLogo.right +10, self.imgLogo.bottom -30, 0, 30)];
+        _labNumName.textColor = [UIColor colorWithHEX:0x333333];
+        _labNumName.font = [UIFont systemFontOfSize:15];
+        _labNumName.text = @"数量";
+        CGSize size = [_labNumName.text sizeWithFont:[UIFont systemFontOfSize:15] maxSize:CGSizeMake(0, 15)];
+        _labNumName.width = size.width;
+    }
+    return _labNumName;
+}
+
 - (UIView *)viewBack{
     if (!_viewBack) {
-        _viewBack = [[UIView alloc] initWithFrame:CGRectMake(self.labTitle.right +10, 7.5, 90, 30)];
+        _viewBack = [[UIView alloc] initWithFrame:CGRectMake(self.labNumName.right +10, self.imgLogo.bottom -30, 90, 30)];
         _viewBack.backgroundColor = [UIColor colorWithHEX:0xffffff];
         _viewBack.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
         _viewBack.layer.borderWidth = 0.5;
@@ -94,6 +116,32 @@
         num ++;
         self.labNum.text = [NSString stringWithFormat:@"%li",num];
     }
+}
+
+- (UILabel *)labPrice{
+    if (!_labPrice) {
+        _labPrice = [[UILabel alloc] initWithFrame:CGRectMake(self.imgLogo.right +10, self.viewBack.top -5 -13, self.labTitle.width, 13)];
+        _labPrice.textColor = [UIColor colorWithHEX:0x999999];
+        _labPrice.font = [UIFont systemFontOfSize:13];
+    }
+    return _labPrice;
+}
+
+- (UILabel *)labCode{
+    if (!_labCode) {
+        _labCode = [[UILabel alloc] initWithFrame:CGRectMake(self.imgLogo.right +10, self.labPrice.top -5 -13, self.labTitle.width, 13)];
+        _labCode.textColor = [UIColor colorWithHEX:0x999999];
+        _labCode.font = [UIFont systemFontOfSize:13];
+    }
+    return _labCode;
+}
+
+//赋值
+- (void)confingWithModel:(NSString *)model{
+    self.labTitle.text = @"赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值";
+    [self.labTitle sizeToFit];
+    self.labCode.text = @"编号:10222";
+    self.labPrice.text = @"价格:99";
 }
 /*
 // Only override drawRect: if you perform custom drawing.

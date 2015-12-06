@@ -263,6 +263,14 @@
 		993669CA1C1404D000B3E1C7 /* MyArchivesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669C41C1404D000B3E1C7 /* MyArchivesTableViewCell.m */; };
 		993669CB1C1404D000B3E1C7 /* MyCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669C61C1404D000B3E1C7 /* MyCollectionTableViewCell.m */; };
 		993669CC1C1404D000B3E1C7 /* MyOrdersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669C81C1404D000B3E1C7 /* MyOrdersTableViewCell.m */; };
+		993669CF1C14387E00B3E1C7 /* MyArchivesBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669CE1C14387E00B3E1C7 /* MyArchivesBaseTableViewCell.m */; };
+		993669D21C1438A000B3E1C7 /* MyArchivesConditionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669D11C1438A000B3E1C7 /* MyArchivesConditionTableViewCell.m */; };
+		993669D51C1438CD00B3E1C7 /* MyArchivesConcurrentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669D41C1438CD00B3E1C7 /* MyArchivesConcurrentTableViewCell.m */; };
+		993669D81C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669D71C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.m */; };
+		993669DB1C144F2000B3E1C7 /* ShopDetailBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669DA1C144F2000B3E1C7 /* ShopDetailBuyViewController.m */; };
+		993669DE1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669DD1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.m */; };
+		993669E11C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669E01C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.m */; };
+		993669E41C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669E31C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.m */; };
 		99DA3EB41C0BE4CF00573D4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA3EB31C0BE4CF00573D4C /* main.m */; };
 		99DA3EB71C0BE4CF00573D4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA3EB61C0BE4CF00573D4C /* AppDelegate.m */; };
 		99DA3EBA1C0BE4CF00573D4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA3EB91C0BE4CF00573D4C /* ViewController.m */; };
@@ -695,6 +703,22 @@
 		993669C61C1404D000B3E1C7 /* MyCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionTableViewCell.m; sourceTree = "<group>"; };
 		993669C71C1404D000B3E1C7 /* MyOrdersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersTableViewCell.h; sourceTree = "<group>"; };
 		993669C81C1404D000B3E1C7 /* MyOrdersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrdersTableViewCell.m; sourceTree = "<group>"; };
+		993669CD1C14387E00B3E1C7 /* MyArchivesBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyArchivesBaseTableViewCell.h; sourceTree = "<group>"; };
+		993669CE1C14387E00B3E1C7 /* MyArchivesBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyArchivesBaseTableViewCell.m; sourceTree = "<group>"; };
+		993669D01C1438A000B3E1C7 /* MyArchivesConditionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyArchivesConditionTableViewCell.h; sourceTree = "<group>"; };
+		993669D11C1438A000B3E1C7 /* MyArchivesConditionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyArchivesConditionTableViewCell.m; sourceTree = "<group>"; };
+		993669D31C1438CD00B3E1C7 /* MyArchivesConcurrentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyArchivesConcurrentTableViewCell.h; sourceTree = "<group>"; };
+		993669D41C1438CD00B3E1C7 /* MyArchivesConcurrentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyArchivesConcurrentTableViewCell.m; sourceTree = "<group>"; };
+		993669D61C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyArchivesPreferencesTableViewCell.h; sourceTree = "<group>"; };
+		993669D71C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyArchivesPreferencesTableViewCell.m; sourceTree = "<group>"; };
+		993669D91C144F2000B3E1C7 /* ShopDetailBuyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailBuyViewController.h; sourceTree = "<group>"; };
+		993669DA1C144F2000B3E1C7 /* ShopDetailBuyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailBuyViewController.m; sourceTree = "<group>"; };
+		993669DC1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailBuyHeadTableViewCell.h; sourceTree = "<group>"; };
+		993669DD1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailBuyHeadTableViewCell.m; sourceTree = "<group>"; };
+		993669DF1C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailBuyDescTableViewCell.h; sourceTree = "<group>"; };
+		993669E01C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailBuyDescTableViewCell.m; sourceTree = "<group>"; };
+		993669E21C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailBuyPayTableViewCell.h; sourceTree = "<group>"; };
+		993669E31C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailBuyPayTableViewCell.m; sourceTree = "<group>"; };
 		99DA3EAE1C0BE4CF00573D4C /* 3HPatientClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 3HPatientClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DA3EB21C0BE4CF00573D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99DA3EB31C0BE4CF00573D4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1355,6 +1379,8 @@
 				9936695F1C132A8E00B3E1C7 /* ShopViewController.m */,
 				9936697A1C13331400B3E1C7 /* ShopDetailViewController.h */,
 				9936697B1C13331400B3E1C7 /* ShopDetailViewController.m */,
+				993669D91C144F2000B3E1C7 /* ShopDetailBuyViewController.h */,
+				993669DA1C144F2000B3E1C7 /* ShopDetailBuyViewController.m */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -1591,6 +1617,12 @@
 				9936698A1C13340D00B3E1C7 /* ShopDetailCommentsTableViewCell.m */,
 				9936698C1C13343F00B3E1C7 /* ShopDetailToolView.h */,
 				9936698D1C13343F00B3E1C7 /* ShopDetailToolView.m */,
+				993669DC1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.h */,
+				993669DD1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.m */,
+				993669DF1C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.h */,
+				993669E01C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.m */,
+				993669E21C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.h */,
+				993669E31C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1689,6 +1721,14 @@
 				993669C61C1404D000B3E1C7 /* MyCollectionTableViewCell.m */,
 				993669C71C1404D000B3E1C7 /* MyOrdersTableViewCell.h */,
 				993669C81C1404D000B3E1C7 /* MyOrdersTableViewCell.m */,
+				993669CD1C14387E00B3E1C7 /* MyArchivesBaseTableViewCell.h */,
+				993669CE1C14387E00B3E1C7 /* MyArchivesBaseTableViewCell.m */,
+				993669D01C1438A000B3E1C7 /* MyArchivesConditionTableViewCell.h */,
+				993669D11C1438A000B3E1C7 /* MyArchivesConditionTableViewCell.m */,
+				993669D31C1438CD00B3E1C7 /* MyArchivesConcurrentTableViewCell.h */,
+				993669D41C1438CD00B3E1C7 /* MyArchivesConcurrentTableViewCell.m */,
+				993669D61C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.h */,
+				993669D71C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2417,6 +2457,7 @@
 				99DA41EE1C0BEB0500573D4C /* TPKeyboardAvoidingTableView.m in Sources */,
 				99DA41D31C0BEB0500573D4C /* MJRefreshStateHeader.m in Sources */,
 				99DA41CB1C0BEB0500573D4C /* MJRefreshAutoGifFooter.m in Sources */,
+				993669E11C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.m in Sources */,
 				99DA41E31C0BEB0500573D4C /* SDWebImageManager.m in Sources */,
 				99DA41C91C0BEB0500573D4C /* MJRefreshFooter.m in Sources */,
 				993669731C132C7600B3E1C7 /* DynamicDetailToolView.m in Sources */,
@@ -2439,6 +2480,7 @@
 				99DA41C51C0BEB0500573D4C /* MBProgressHUD.m in Sources */,
 				9936698B1C13340D00B3E1C7 /* ShopDetailCommentsTableViewCell.m in Sources */,
 				991A33051C12F5D500E0313F /* MineHeadView.m in Sources */,
+				993669E41C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.m in Sources */,
 				99DA41BE1C0BEB0500573D4C /* NSArray+MTLManipulationAdditions.m in Sources */,
 				99DA41A41C0BEB0500573D4C /* NSString+Size.m in Sources */,
 				99DA41AD1C0BEB0500573D4C /* UIView+Tag.m in Sources */,
@@ -2464,6 +2506,7 @@
 				99DA41901C0BEB0500573D4C /* BaseModel.m in Sources */,
 				993669671C132C6800B3E1C7 /* DynamicDetailViewController.m in Sources */,
 				99DA41E01C0BEB0500573D4C /* SDWebImageDecoder.m in Sources */,
+				993669CF1C14387E00B3E1C7 /* MyArchivesBaseTableViewCell.m in Sources */,
 				993669881C1333ED00B3E1C7 /* ShopDetailTitleTableViewCell.m in Sources */,
 				993669A11C13FE5400B3E1C7 /* WithdrawalViewController.m in Sources */,
 				99DA419C1C0BEB0500573D4C /* AFURLRequestSerialization.m in Sources */,
@@ -2499,6 +2542,7 @@
 				99DA41A81C0BEB0500573D4C /* UIButton+Extension.m in Sources */,
 				99DA419A1C0BEB0500573D4C /* AFSecurityPolicy.m in Sources */,
 				99DA41D91C0BEB0500573D4C /* NRDatabase.m in Sources */,
+				993669D21C1438A000B3E1C7 /* MyArchivesConditionTableViewCell.m in Sources */,
 				991A32F41C12E60400E0313F /* ManageTableViewCell.m in Sources */,
 				991A31391C12DE8200E0313F /* HomeSlidingTableViewCell.m in Sources */,
 				99DA41DB1C0BEB0500573D4C /* NSString+MD5.m in Sources */,
@@ -2513,6 +2557,7 @@
 				99DA41DC1C0BEB0500573D4C /* MKAnnotationView+WebCache.m in Sources */,
 				9936698E1C13343F00B3E1C7 /* ShopDetailToolView.m in Sources */,
 				993669791C132DCB00B3E1C7 /* ShopCustomView.m in Sources */,
+				993669DE1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.m in Sources */,
 				993669851C13339200B3E1C7 /* ShopDetailDescTableViewCell.m in Sources */,
 				99DA41991C0BEB0500573D4C /* AFNetworkReachabilityManager.m in Sources */,
 				99DA41BF1C0BEB0500573D4C /* NSDictionary+MTLManipulationAdditions.m in Sources */,
@@ -2528,6 +2573,7 @@
 				99DA419E1C0BEB0500573D4C /* AFURLSessionManager.m in Sources */,
 				993669BD1C14047E00B3E1C7 /* MyCollectionViewController.m in Sources */,
 				993669C91C1404D000B3E1C7 /* MyAppointmentTableViewCell.m in Sources */,
+				993669D51C1438CD00B3E1C7 /* MyArchivesConcurrentTableViewCell.m in Sources */,
 				99DA41A91C0BEB0500573D4C /* UIColor+ColorExtension.m in Sources */,
 				99DA41DF1C0BEB0500573D4C /* SDWebImageCompat.m in Sources */,
 				99DA41CD1C0BEB0500573D4C /* MJRefreshAutoStateFooter.m in Sources */,
@@ -2536,6 +2582,7 @@
 				99DA41D21C0BEB0500573D4C /* MJRefreshNormalHeader.m in Sources */,
 				99DA41F51C0BEB0500573D4C /* UIBarButtonItemExtension.m in Sources */,
 				99DA41EA1C0BEB0500573D4C /* UIImageView+WebCache.m in Sources */,
+				993669D81C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.m in Sources */,
 				99DA41B11C0BEB0500573D4C /* FMDatabasePool.m in Sources */,
 				99DA41DA1C0BEB0500573D4C /* NSObject+DHF.m in Sources */,
 				99DA41D81C0BEB0500573D4C /* UIView+MJExtension.m in Sources */,
@@ -2543,6 +2590,7 @@
 				99DA41A51C0BEB0500573D4C /* NSURLRequest+Extension.m in Sources */,
 				99DA41D11C0BEB0500573D4C /* MJRefreshGifHeader.m in Sources */,
 				991A330C1C12FFDA00E0313F /* PersonalHeadTableViewCell.m in Sources */,
+				993669DB1C144F2000B3E1C7 /* ShopDetailBuyViewController.m in Sources */,
 				99DA418D1C0BEB0500573D4C /* HomeViewController.m in Sources */,
 				99DA41A01C0BEB0500573D4C /* NSDate+Extension.m in Sources */,
 				993669701C132C7600B3E1C7 /* ConsultingDynamicHeadView.m in Sources */,

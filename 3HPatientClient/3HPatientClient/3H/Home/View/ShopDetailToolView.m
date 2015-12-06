@@ -49,7 +49,9 @@
 }
 
 - (void)btnCollectionAction{
-    
+    if (self.ShopDetailToolBlock) {
+        self.ShopDetailToolBlock(0);
+    }
 }
 
 - (UILabel *)labCollection{
@@ -75,7 +77,9 @@
 }
 
 - (void)btnCartAction{
-    
+    if (self.ShopDetailToolBlock) {
+        self.ShopDetailToolBlock(3);
+    }
 }
 
 - (UILabel *)labCart{
@@ -105,7 +109,9 @@
 }
 
 - (void)btnAddCartAction{
-    
+    if (self.ShopDetailToolBlock) {
+        self.ShopDetailToolBlock(1);
+    }
 }
 
 - (UIButton *)btnBuy{
@@ -124,7 +130,9 @@
 }
 
 - (void)btnBuyAction{
-    
+    if (self.ShopDetailToolBlock) {
+        self.ShopDetailToolBlock(2);
+    }
 }
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -160,10 +160,10 @@
         _btnAppraise.titleLabel.font = [UIFont systemFontOfSize:13];
         [_btnAppraise setTitle:@"评价订单" forState:UIControlStateNormal];
         [_btnAppraise setTitleColor:AppDefaultColor forState:UIControlStateNormal];
-        _btnDelete.layer.masksToBounds = YES;
-        _btnDelete.layer.cornerRadius = 3;
-        _btnDelete.layer.borderColor = AppDefaultColor.CGColor;
-        _btnDelete.layer.borderWidth = 0.5;
+        _btnAppraise.layer.masksToBounds = YES;
+        _btnAppraise.layer.cornerRadius = 3;
+        _btnAppraise.layer.borderColor = AppDefaultColor.CGColor;
+        _btnAppraise.layer.borderWidth = 0.5;
         [_btnAppraise addTarget:self action:@selector(btnAppraiseAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnAppraise;
@@ -178,9 +178,21 @@
     self.labTitle.text = @"九康科技";
     self.labState.text = @"交易成功";
     self.labProduct.text = @"交易成功交易成功交易成功交易成功交易成功交易成功交易成功";
+    [self.labProduct sizeToFit];
     self.labSingePrice.text = @"￥99.00";
     self.labNum.text = @"X1";
-    self.labPrice.text = @"实付:￥99.00";
+    self.labPrice.attributedText = [self getLabTitle:[NSString stringWithFormat:@"共%@件商品 实付:",self.labNum.text] Detail:@"￥99.00"];
+    
+}
+
+- (NSMutableAttributedString *)getLabTitle:(NSString *)title Detail:(NSString *)detail{
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@",title,detail]];
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHEX:0x999999] range:NSMakeRange(0,title.length)];
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHEX:0x888888] range:NSMakeRange(title.length,detail.length)];
+    
+    [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0,title.length)];
+    [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(title.length,detail.length)];
+    return str;
     
 }
 /*

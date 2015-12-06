@@ -6,8 +6,8 @@
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "BaseTableViewController.h"
-
-@interface MyArchivesViewController : BaseTableViewController
+#import "BaseViewController.h"
+#import "TPKeyboardAvoidingTableView.h"
+@interface MyArchivesViewController : BaseViewController
 
 @end

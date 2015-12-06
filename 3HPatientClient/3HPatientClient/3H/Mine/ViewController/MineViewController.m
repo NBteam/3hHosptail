@@ -118,7 +118,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row ==0) {
         
-        MyArchivesViewController *myArchivesVc = [[MyArchivesViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        MyArchivesViewController *myArchivesVc = [[MyArchivesViewController alloc] init];
         myArchivesVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:myArchivesVc animated:YES];
         

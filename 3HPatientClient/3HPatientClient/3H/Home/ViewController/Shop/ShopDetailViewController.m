@@ -13,6 +13,7 @@
 #import "ShopDetailDescTableViewCell.h"
 #import "ShopDetailCommentsTableViewCell.h"
 #import "ShopDetailToolView.h"
+#import "ShopDetailBuyViewController.h"
 @interface ShopDetailViewController ()
 
 @property (nonatomic, strong) UIImageView *imgHead;
@@ -50,8 +51,21 @@
 }
 
 - (ShopDetailToolView *)toolView{
+    WeakSelf(ShopDetailViewController);
     if (!_toolView) {
         _toolView = [[ShopDetailToolView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, DeviceSize.width, 65)];
+        [_toolView setShopDetailToolBlock:^(NSInteger index) {
+            if (index == 0) {
+                
+            }else if(index == 1){
+                
+            }else if(index == 2){
+                ShopDetailBuyViewController *shopDetailBuyVc = [[ShopDetailBuyViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+                [weakSelf.navigationController pushViewController:shopDetailBuyVc animated:YES];
+            }else{
+                
+            }
+        }];
     }
     return _toolView;
 }
