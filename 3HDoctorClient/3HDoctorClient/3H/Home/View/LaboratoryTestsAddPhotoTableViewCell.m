@@ -59,7 +59,7 @@
         self.img.hidden = NO;
         return self.img.bottom +10;
     }else{
-        self.img.hidden = YES;
+//        self.img.hidden = YES;
         return self.btnTakingPictures.bottom;
     }
     

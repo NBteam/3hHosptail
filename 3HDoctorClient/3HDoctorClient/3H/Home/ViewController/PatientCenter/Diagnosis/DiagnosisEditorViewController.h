@@ -9,5 +9,5 @@
 #import "BaseTableViewController.h"
 
 @interface DiagnosisEditorViewController : BaseTableViewController
-
+@property (nonatomic, copy) void(^reloadBlock)(void);
 @end

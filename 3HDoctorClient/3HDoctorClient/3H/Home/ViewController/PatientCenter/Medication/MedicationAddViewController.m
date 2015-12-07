@@ -9,9 +9,15 @@
 #import "MedicationAddViewController.h"
 #import "MedicationAddHeadTableViewCell.h"
 #import "MedicationAddTableViewCell.h"
-@interface MedicationAddViewController ()
+#import "TimeView.h"
+#import "WayDrugViewController.h"
 
+@interface MedicationAddViewController ()
 @property (nonatomic, strong) UIButton *btn;
+@property (nonatomic, strong) TimeView *viewTime;
+@property (nonatomic, strong) UIView *viewGray;
+@property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) NSIndexPath * indexPaths;
 @end
 
 @implementation MedicationAddViewController
@@ -27,10 +33,11 @@
   @{@"title":@"开始时间",@"detail":@"未选择"},
   @{@"title":@"结束时间",@"detail":@"未选择"}]];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-
     self.tableView.height = self.tableView.height -65;
     [self.view addSubview:self.btn];
-    
+    [self.view addSubview:self.viewGray];
+    [self.view addSubview:self.viewTime];
+//    [self.viewTime addSubview:self.datePicker];
 }
 
 - (void)backAction{
@@ -90,9 +97,70 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10.0f;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 5||indexPath.section == 6) {
+        self.indexPaths = indexPath;
+        [self showViewAnimate];
+    }
+    if (indexPath.section == 4) {
+        WayDrugViewController * WayDrugVc = [[WayDrugViewController alloc]init];
+        [self.navigationController pushViewController:WayDrugVc animated:YES];
+    }
+}
 - (NSString *)title{
     return @"添加用药";
+}
+- (TimeView *)viewTime{
+    if (!_viewTime) {
+        _viewTime = [[TimeView alloc]initWithFrame:CGRectMake(0, DeviceSize.height, DeviceSize.width, 260) title:@"用药时间"];
+        WeakSelf(MedicationAddViewController);
+        _viewTime.backgroundColor = [UIColor whiteColor];
+        [_viewTime setSureBlock:^(NSString * str) {
+            [UIView animateWithDuration:.25 animations:^{
+                weakSelf.viewTime.frame = CGRectMake(0, DeviceSize.height, DeviceSize.width, 260);
+            } completion:^(BOOL finished) {
+                weakSelf.viewGray.hidden = YES;
+            }];
+            MedicationAddTableViewCell * cell = [weakSelf.tableView cellForRowAtIndexPath:weakSelf.indexPaths];
+            cell.labDetail.text = str;
+        }];
+        [_viewTime setCancelBlock:^{
+            [UIView animateWithDuration:.25 animations:^{
+                weakSelf.viewTime.frame = CGRectMake(0, DeviceSize.height, DeviceSize.width, 260);
+            } completion:^(BOOL finished) {
+                weakSelf.viewGray.hidden = YES;
+            }];
+        }];
+    }
+    return _viewTime;
+}
+- (UIView *)viewGray{
+    if (!_viewGray) {
+        _viewGray = [[UIView alloc]initWithFrame:CGRectMake(0,0 , DeviceSize.width, DeviceSize.height)];
+        _viewGray.backgroundColor = [UIColor grayColor];
+        _viewGray.alpha = 0.6;
+        _viewGray.hidden = YES;
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGray)];
+        
+        [_viewGray addGestureRecognizer:tap];
+    }
+    return _viewGray;
+}
+- (void)tapGray{
+    WeakSelf(MedicationAddViewController);
+    [UIView animateWithDuration:.25 animations:^{
+        weakSelf.viewTime.frame = CGRectMake(0, DeviceSize.height, DeviceSize.width, 260);
+    } completion:^(BOOL finished) {
+        weakSelf.viewGray.hidden = YES;
+    }];
+}
+- (void)showViewAnimate{
+    [UIView animateWithDuration:.25 animations:^{
+        self.viewTime.frame = CGRectMake(0, DeviceSize.height-260-self.frameTopHeight, DeviceSize.width, 260);
+        self.viewGray.hidden = NO;
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

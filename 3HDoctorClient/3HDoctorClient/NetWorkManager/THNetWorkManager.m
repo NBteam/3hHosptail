@@ -480,4 +480,30 @@ static THNetWorkManager *thNetWorkManager = nil;
     NSDictionary *paramDic = @{@"a":@"myPatientReqProcess",Token:GetToken,@"process":@(process),@"req_id":req_id};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+/**
+ * 获取患者化验详情
+ * @param mid   患者ID
+ * @param id	记录ID
+ */
+- (void)getPatientAssayMid:(NSString *)mid id:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getPatientAssay",Token:GetToken,@"id":id,@"mid":mid};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取患者检查详情
+ * @param mid   患者ID
+ * @param id	记录ID
+ */
+- (void)getPatientCheckMid:(NSString *)mid id:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getPatientCheck",Token:GetToken,@"id":id,@"mid":mid};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 获取患者诊断列表
+ * @param mid   患者ID
+ */
+- (void)getPatientDiagnosisListMid:(NSString *)mid andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getPatientDiagnosisList",Token:GetToken,@"mid":mid};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end
