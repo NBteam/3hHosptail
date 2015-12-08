@@ -522,6 +522,10 @@
 		A94B160E1C15CA8100034029 /* DiagnosisListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A94B160D1C15CA8100034029 /* DiagnosisListViewController.m */; };
 		A94B16111C15CD5900034029 /* DiagnosisListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A94B16101C15CD5900034029 /* DiagnosisListModel.m */; };
 		A94B42EB1C1335C200B6D6AE /* DynamicToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = A94B42EA1C1335C200B6D6AE /* DynamicToolView.m */; };
+		A9B5EA8E1C16E74400D4046B /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA8D1C16E74400D4046B /* SearchViewController.m */; };
+		A9B5EA931C16E75C00D4046B /* GuideSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA901C16E75C00D4046B /* GuideSearchView.m */; };
+		A9B5EA941C16E75C00D4046B /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA921C16E75C00D4046B /* SearchCell.m */; };
+		A9B5EA971C16E77E00D4046B /* OutpatientReservationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1289,6 +1293,14 @@
 		A94B16101C15CD5900034029 /* DiagnosisListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagnosisListModel.m; sourceTree = "<group>"; };
 		A94B42E91C1335C200B6D6AE /* DynamicToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicToolView.h; sourceTree = "<group>"; };
 		A94B42EA1C1335C200B6D6AE /* DynamicToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicToolView.m; sourceTree = "<group>"; };
+		A9B5EA8C1C16E74400D4046B /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		A9B5EA8D1C16E74400D4046B /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		A9B5EA8F1C16E75C00D4046B /* GuideSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideSearchView.h; sourceTree = "<group>"; };
+		A9B5EA901C16E75C00D4046B /* GuideSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideSearchView.m; sourceTree = "<group>"; };
+		A9B5EA911C16E75C00D4046B /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		A9B5EA921C16E75C00D4046B /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		A9B5EA951C16E77E00D4046B /* OutpatientReservationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutpatientReservationView.h; sourceTree = "<group>"; };
+		A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutpatientReservationView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1428,6 +1440,7 @@
 		99D141EB1C0D5F27002DA3AD /* PatientCenter */ = {
 			isa = PBXGroup;
 			children = (
+				A9B5EA8B1C16E74400D4046B /* Search */,
 				99D6EE871C0EC4AB00CB1829 /* Diagnosis */,
 				99D6EE881C0EC4AB00CB1829 /* LaboratoryTests */,
 				99D6EE891C0EC4AB00CB1829 /* MedicalHistory */,
@@ -2053,6 +2066,10 @@
 				A94B42EA1C1335C200B6D6AE /* DynamicToolView.m */,
 				A94B16031C15892F00034029 /* TimeView.h */,
 				A94B16041C15892F00034029 /* TimeView.m */,
+				A9B5EA8F1C16E75C00D4046B /* GuideSearchView.h */,
+				A9B5EA901C16E75C00D4046B /* GuideSearchView.m */,
+				A9B5EA911C16E75C00D4046B /* SearchCell.h */,
+				A9B5EA921C16E75C00D4046B /* SearchCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2121,6 +2138,8 @@
 			children = (
 				99DA45F61C0C82FC00573D4C /* MineTableViewCell.h */,
 				99DA45F71C0C82FC00573D4C /* MineTableViewCell.m */,
+				A9B5EA951C16E77E00D4046B /* OutpatientReservationView.h */,
+				A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */,
 				99DA45F91C0C860600573D4C /* MineHeadTableViewCell.h */,
 				99DA45FA1C0C860600573D4C /* MineHeadTableViewCell.m */,
 				991A30E61C11CA4800E0313F /* PersonalHeadTableViewCell.h */,
@@ -3035,6 +3054,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A9B5EA8B1C16E74400D4046B /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A9B5EA8C1C16E74400D4046B /* SearchViewController.h */,
+				A9B5EA8D1C16E74400D4046B /* SearchViewController.m */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3418,6 +3446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9B5EA971C16E77E00D4046B /* OutpatientReservationView.m in Sources */,
 				99DA40401C0BE59A00573D4C /* SDWebImageDecoder.m in Sources */,
 				99DA40051C0BE59A00573D4C /* UIScreen+Extension.m in Sources */,
 				99DA3FFA1C0BE59A00573D4C /* NSDate+Extension.m in Sources */,
@@ -3427,6 +3456,7 @@
 				99D142091C0D69D1002DA3AD /* BookDetailHeadTableViewCell.m in Sources */,
 				99DA3FF01C0BE59A00573D4C /* AFHTTPRequestOperation.m in Sources */,
 				99DA403F1C0BE59A00573D4C /* SDWebImageCompat.m in Sources */,
+				A9B5EA931C16E75C00D4046B /* GuideSearchView.m in Sources */,
 				99D6EEA31C0EDC0300CB1829 /* MedicationViewController.m in Sources */,
 				99D142271C0D9323002DA3AD /* AssistantDoctorTableViewCell.m in Sources */,
 				99DA40111C0BE59A00573D4C /* EXTScope.m in Sources */,
@@ -3459,6 +3489,7 @@
 				99DA3FFF1C0BE59A00573D4C /* NSURLRequest+Extension.m in Sources */,
 				A94B160E1C15CA8100034029 /* DiagnosisListViewController.m in Sources */,
 				A94B15FC1C144C6000034029 /* PatientAssayListModel.m in Sources */,
+				A9B5EA8E1C16E74400D4046B /* SearchViewController.m in Sources */,
 				A94B16111C15CD5900034029 /* DiagnosisListModel.m in Sources */,
 				99D1421B1C0D7EA1002DA3AD /* BookSuccessDetailTableViewCell.m in Sources */,
 				991A30FD1C11D65900E0313F /* IncomeRecordViewController.m in Sources */,
@@ -3482,6 +3513,7 @@
 				99DA407B1C0BE85600573D4C /* BaseTableViewCell.m in Sources */,
 				99D142451C0DA146002DA3AD /* ConsultingDetailHeadTableViewCell.m in Sources */,
 				99DA40861C0BE8D000573D4C /* MessageViewController.m in Sources */,
+				A9B5EA941C16E75C00D4046B /* SearchCell.m in Sources */,
 				99DA45D71C0C5AF300573D4C /* HomeHeadView.m in Sources */,
 				99DA401B1C0BE59A00573D4C /* NSObject+MTLComparisonAdditions.m in Sources */,
 				991A310C1C11DFB900E0313F /* InvitationViewController.m in Sources */,
