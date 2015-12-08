@@ -33,7 +33,8 @@
 - (void)rightAction{
     if ([self.dataArray[0][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[0][@"detail"] isEqualToString:@"未填写"]) {
         [self showHudAuto:@"请填写姓名" andDuration:@"2"];
-    }else if ([self.dataArray[2][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[2][@"detail"] isEqualToString:@"未填写"]){
+    }
+    else if ([self.dataArray[2][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[2][@"detail"] isEqualToString:@"未填写"]){
         [self showHudAuto:@"请选择医院" andDuration:@"2"];
     }else if ([self.dataArray[3][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[3][@"detail"] isEqualToString:@"未填写"]){
         [self showHudAuto:@"请选择科室" andDuration:@"2"];

@@ -114,6 +114,9 @@
         [weakSelf removeMBProgressHudInManaual];
         [weakSelf.dataArray removeAllObjects];
         if (response.responseCode == 1) {
+            if (weakSelf.reloadBlock) {
+                weakSelf.reloadBlock();
+            }
             [weakSelf.navigationController popViewControllerAnimated:YES];
         } else {
             [weakSelf showHudAuto:response.message];

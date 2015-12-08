@@ -169,4 +169,21 @@ typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSen
  * @param process	1通过，-1拒绝
  */
 - (void)getMyPatientReqProcessReq_id:(NSString *)req_id process:(NSInteger)process andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+/**
+ * 获取患者化验详情
+ * @param mid   患者ID
+ * @param id	记录ID
+ */
+- (void)getPatientAssayMid:(NSString *)mid id:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+/**
+ * 获取患者检查详情
+ * @param mid   患者ID
+ * @param id	记录ID
+ */
+- (void)getPatientCheckMid:(NSString *)mid id:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+/**
+ * 获取患者诊断列表
+ * @param mid   患者ID
+ */
+- (void)getPatientDiagnosisListMid:(NSString *)mid andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 @end

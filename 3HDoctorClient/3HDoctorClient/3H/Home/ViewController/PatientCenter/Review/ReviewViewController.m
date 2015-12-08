@@ -99,7 +99,7 @@
 - (void)getNetWork{
     [self showHudAuto:WaitPrompt];
     WeakSelf(ReviewViewController);
-    [[THNetWorkManager shareNetWork]getPatientCheckListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getPatientRecheckListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (weakSelf.number == 0) {
             [weakSelf.dataArray removeAllObjects];

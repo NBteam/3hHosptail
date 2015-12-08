@@ -38,6 +38,10 @@
 
 - (void)rightAction{
     DiagnosisEditorViewController *diagnosisEditorVc = [[DiagnosisEditorViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    WeakSelf(DiagnosisViewController);
+    [diagnosisEditorVc setReloadBlock:^{
+        [weakSelf getPatientSickHistory];
+    }];
     [self.navigationController pushViewController:diagnosisEditorVc animated:YES];
 }
 

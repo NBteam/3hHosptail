@@ -8,7 +8,7 @@
 
 #import "LaboratoryTestsTopView.h"
 
-@interface LaboratoryTestsTopView()
+@interface LaboratoryTestsTopView()<UIActionSheetDelegate>
 
 @property (nonatomic, strong) NSArray *titleArray;
 
