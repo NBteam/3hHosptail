@@ -16,7 +16,7 @@
 #import "WithdrawalViewController.h"
 
 @interface WalletViewController ()
-
+@property (nonatomic, strong) NSMutableDictionary * dict;
 @end
 
 @implementation WalletViewController
@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.dict = [NSMutableDictionary dictionary];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     [self getMoneuInfo];
 }
@@ -41,7 +42,7 @@
             cell = [[WalletHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:nil];
+        [cell confingWithModel:self.dict];
         return cell;
     }else if(indexPath.section == 1){
         static NSString *identifier = @"WalletTotalTableViewCell";
@@ -50,7 +51,7 @@
             cell = [[WalletTotalTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:nil];
+        [cell confingWithModel:self.dict];
         return cell;
     }else{
         static NSString *identifier = @"WalletTableViewCell";
@@ -114,10 +115,7 @@
         [weakSelf removeMBProgressHudInManaual];
         [weakSelf.dataArray removeAllObjects];
         if (response.responseCode == 1) {
-            for (NSDictionary * dict in response.dataDic[@"list"]) {
-                //                DepartmentModel * model = [response thParseDataFromDic:dict andModel:[DepartmentModel class]];
-                //                [weakSelf.dataArray addObject:model];
-            }
+            weakSelf.dict = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
             [weakSelf.tableView reloadData];
         } else {
             [weakSelf showHudAuto:response.message];

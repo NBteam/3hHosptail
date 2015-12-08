@@ -46,8 +46,8 @@
 
 //赋值
 - (void)confingWithModel:(NSDictionary *)dic{
-    self.labTitle.text = @"2015年10月份总收入";
-    self.labDetail.text = @"5000.00";
+    self.labTitle.text = [NSString stringWithFormat:@"%@份总收入",dic[@"cur_month"]] ;
+    self.labDetail.text = [NSString stringWithFormat:@"%@",dic[@"month_total"]];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

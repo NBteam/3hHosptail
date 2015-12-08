@@ -12,6 +12,7 @@
 //患者详情
 #import "PatientDetailViewController.h"
 #import "PatientListModel.h"
+#import "SearchViewController.h"
 
 @interface PatientCenterViewController ()
 @property (nonatomic, assign) NSInteger number;
@@ -40,7 +41,8 @@
 }
 
 - (void)searchAction{
-    
+    SearchViewController * SearchVc = [[SearchViewController alloc]init];
+    [self.navigationController pushViewController:SearchVc animated:YES];
 }
 
 - (void)addAction{

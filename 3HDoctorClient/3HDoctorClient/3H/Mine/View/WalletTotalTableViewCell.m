@@ -44,7 +44,7 @@
 
 //赋值
 - (void)confingWithModel:(NSDictionary *)dic{
-    self.labDetail.text = @"15000.00";
+    self.labDetail.text = [NSString stringWithFormat:@"%@",dic[@"account"]];
 }
 
 /*
