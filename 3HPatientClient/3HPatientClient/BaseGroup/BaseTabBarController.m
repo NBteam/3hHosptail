@@ -33,20 +33,27 @@
     HomeViewController *homeVc = [[HomeViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     homeVc.title = @"首页";
     BaseNavigationController *naHome = [[BaseNavigationController alloc] initWithRootViewController:homeVc];
-//    naFirst.tabBarItem.image = [[UIImage imageNamed:@""] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//    naFirst.tabBarItem.selectedImage = [[UIImage imageNamed:@""] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    naHome.tabBarItem.image = [[UIImage imageNamed:@"3H-首页_首页-未点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    naHome.tabBarItem.selectedImage = [[UIImage imageNamed:@"3H-首页_首页-点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     HealthViewController *healthVc = [[HealthViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     healthVc.title = @"健康";
     BaseNavigationController *naHealth = [[BaseNavigationController alloc] initWithRootViewController:healthVc];
+    naHealth.tabBarItem.image = [[UIImage imageNamed:@"3H-首页_健康-未点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    naHealth.tabBarItem.selectedImage = [[UIImage imageNamed:@"3H-首页_健康-点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
     
     MessageViewController *messageVc = [[MessageViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     messageVc.title = @"消息";
     BaseNavigationController *naMessage = [[BaseNavigationController alloc] initWithRootViewController:messageVc];
+    naMessage.tabBarItem.image = [[UIImage imageNamed:@"3H-首页_消息-未点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    naMessage.tabBarItem.selectedImage = [[UIImage imageNamed:@"3H-首页_消息-点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     MineViewController *mineVc = [[MineViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     mineVc.title = @"我的";
     BaseNavigationController *naMine = [[BaseNavigationController alloc] initWithRootViewController:mineVc];
+    naMine.tabBarItem.image = [[UIImage imageNamed:@"3H-首页_我的-未点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    naMine.tabBarItem.selectedImage = [[UIImage imageNamed:@"3H-首页_我的-点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     
     

@@ -20,6 +20,8 @@
 #import "ConsultingDynamicViewController.h"
 //商城
 #import "ShopViewController.h"
+//健康日志
+#import "ScheduleViewController.h"
 
 @interface HomeViewController ()
 
@@ -60,9 +62,11 @@
                 manageVc.hidesBottomBarWhenPushed = YES;
                 [weakSelf.navigationController pushViewController:manageVc animated:YES];
             }else if (index == 1){
-                
+        
             }else if(index == 2){
-                
+                ScheduleViewController *scheduleVc = [[ScheduleViewController alloc] init];
+                scheduleVc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:scheduleVc animated:YES];
             }else{
                 AppointViewController *appointVc = [[AppointViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 appointVc.hidesBottomBarWhenPushed = YES;

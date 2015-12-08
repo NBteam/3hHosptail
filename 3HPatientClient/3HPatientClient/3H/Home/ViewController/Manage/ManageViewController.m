@@ -8,6 +8,16 @@
 
 #import "ManageViewController.h"
 #import "ManageTableViewCell.h"
+//简要病例
+#import "BriefCaseViewController.h"
+//主要诊断
+#import "MainDiagnosticViewController.h"
+//检查极其
+#import "CheckDataViewController.h"
+//用药指南
+#import "MedicationGuideViewController.h"
+//复查
+#import "ReviewGuideViewController.h"
 @interface ManageViewController ()
 
 @end
@@ -18,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"首页-健康管理_简要病史",@"title":@"简要病例"},@{@"img":@"首页-健康管理_主要诊断",@"title":@"主要诊断"},@{@"img":@"首页-健康管理_检查及检查数据",@"title":@"检查及检查数据"},@{@"img":@"首页-健康管理_用药指南",@"title":@"用药指南"},@{@"img":@"首页-健康管理_复查指南",@"title":@"复查指南"}]];
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"首页-健康管理_简要病史",@"title":@"简要病史"},@{@"img":@"首页-健康管理_主要诊断",@"title":@"主要诊断"},@{@"img":@"首页-健康管理_检查及检查数据",@"title":@"检查及检查数据"},@{@"img":@"首页-健康管理_用药指南",@"title":@"用药指南"},@{@"img":@"首页-健康管理_复查指南",@"title":@"复查指南"}]];
 
 }
 
@@ -58,6 +68,33 @@
     return  [[UIView alloc] init];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        
+        BriefCaseViewController *briefCaseVc = [[BriefCaseViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:briefCaseVc animated:YES];
+        
+    }else if (indexPath.section == 1){
+        
+        MainDiagnosticViewController *mainDiagnosticVc = [[MainDiagnosticViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:mainDiagnosticVc animated:YES];
+        
+    }else if (indexPath.section == 2){
+        
+        CheckDataViewController *checkDataVc = [[CheckDataViewController alloc] init];
+        [self.navigationController pushViewController:checkDataVc animated:YES];
+        
+    }else if (indexPath.section == 3){
+        
+        MedicationGuideViewController *medicationGuideVc = [[MedicationGuideViewController alloc] init];
+        [self.navigationController pushViewController:medicationGuideVc animated:YES];
+        
+    }else{
+        
+        ReviewGuideViewController *reviewGuideVc = [[ReviewGuideViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:reviewGuideVc animated:YES];
+    }
+}
 - (NSString *)title{
     return @"健康管理";
 }

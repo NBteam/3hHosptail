@@ -37,7 +37,7 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],NSFontAttributeName : [UIFont systemFontOfSize:17]}];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],NSFontAttributeName : [UIFont systemFontOfSize:18]}];
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHEX:0x333333]];
     
@@ -45,7 +45,7 @@
     [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithHEX:0x20c6c6]];
     
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                       [UIColor colorWithHEX:0x20c6c6], NSForegroundColorAttributeName, nil]
+                                                       AppDefaultColor, NSForegroundColorAttributeName, nil]
                                              forState:UIControlStateSelected];
     
 }

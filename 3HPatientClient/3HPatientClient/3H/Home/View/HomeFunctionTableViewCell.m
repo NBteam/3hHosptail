@@ -11,7 +11,9 @@
 @implementation HomeFunctionTableViewCell
 
 - (void)customView{
+    NSArray *arrImg = @[@"th健康管理",@"th我要咨询",@"th健康日程",@"th我要预约"];
     NSArray *arrName = @[@"健康管理",@"我要咨询",@"健康日程",@"我要预约"];
+
     CGFloat f;
     CGFloat w = DeviceSize.width/4;
     if (DeviceSize.width >375) {
@@ -19,21 +21,30 @@
     }else{
         f = 86;
     }
+//    健康管理  #ff813c
+//    我要咨询  #ff9358
+//    健康日程  #ffae58
+//    我要预约  #ffc658
     for (int i = 0; i <arrName.count; i++) {
         UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
         view.frame = CGRectMake(w*i, 0, w, f);
         view.tag = 100 +i;
         [view addTarget:self action:@selector(btnAciton:) forControlEvents:UIControlEventTouchUpInside];
-        if (i == 0 ||i == 2) {
-            view.backgroundColor = [UIColor brownColor];
+        if (i == 0) {
+            view.backgroundColor = [UIColor colorWithHEX:0xff813c];
+        }else if (i == 1){
+            view.backgroundColor = [UIColor colorWithHEX:0xff9358];
+        }else if (i == 2){
+            view.backgroundColor = [UIColor colorWithHEX:0xffae58];
         }else{
-            view.backgroundColor = [UIColor orangeColor];
+            view.backgroundColor = [UIColor colorWithHEX:0xffc658];
         }
         
         [self.contentView addSubview:view];
         
         UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake((w -50)/2, (f -70)/2, 50, 50)];
-        img.backgroundColor = [UIColor whiteColor];
+        //img.backgroundColor = [UIColor whiteColor];
+        img.image = [UIImage imageNamed:arrImg[i]];
         
         [view addSubview:img];
         
