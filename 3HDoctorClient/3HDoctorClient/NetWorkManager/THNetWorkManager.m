@@ -341,8 +341,8 @@ static THNetWorkManager *thNetWorkManager = nil;
  * 获取医院列表
  *
  */
-- (void)getHospitalLisCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"getHospitalList"};
+- (void)getHospitalLisPid:(NSString *)pid andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getHospitalList",@"pid":pid};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 /**

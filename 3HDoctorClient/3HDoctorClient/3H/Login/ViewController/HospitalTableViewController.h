@@ -9,5 +9,6 @@
 #import "BaseTableViewController.h"
 
 @interface HospitalTableViewController : BaseTableViewController
-@property (nonatomic,copy) void (^hospitalBlock)(NSString *string);
+@property (nonatomic, copy) void (^hospitalBlock)(NSString *string,NSString*str);
+@property (nonatomic, copy) NSString * ids;
 @end

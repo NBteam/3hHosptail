@@ -529,6 +529,7 @@
 		A98AC3C61C17FC930024177C /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A98AC3C31C17FC930024177C /* NSTimer+Addition.m */; };
 		A98AC3C71C17FC930024177C /* RecommendScrollViewLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = A98AC3C51C17FC930024177C /* RecommendScrollViewLoop.m */; };
 		A98AC3CA1C17FF850024177C /* MedicalInformationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A98AC3C91C17FF850024177C /* MedicalInformationModel.m */; };
+		A98AC3CF1C182A870024177C /* HospitalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A98AC3CE1C182A870024177C /* HospitalModel.m */; };
 		A9B5EA8E1C16E74400D4046B /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA8D1C16E74400D4046B /* SearchViewController.m */; };
 		A9B5EA931C16E75C00D4046B /* GuideSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA901C16E75C00D4046B /* GuideSearchView.m */; };
 		A9B5EA941C16E75C00D4046B /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA921C16E75C00D4046B /* SearchCell.m */; };
@@ -1314,6 +1315,8 @@
 		A98AC3C51C17FC930024177C /* RecommendScrollViewLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendScrollViewLoop.m; sourceTree = "<group>"; };
 		A98AC3C81C17FF850024177C /* MedicalInformationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicalInformationModel.h; sourceTree = "<group>"; };
 		A98AC3C91C17FF850024177C /* MedicalInformationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicalInformationModel.m; sourceTree = "<group>"; };
+		A98AC3CD1C182A870024177C /* HospitalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HospitalModel.h; sourceTree = "<group>"; };
+		A98AC3CE1C182A870024177C /* HospitalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HospitalModel.m; sourceTree = "<group>"; };
 		A9B5EA8C1C16E74400D4046B /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		A9B5EA8D1C16E74400D4046B /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		A9B5EA8F1C16E75C00D4046B /* GuideSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideSearchView.h; sourceTree = "<group>"; };
@@ -2247,6 +2250,8 @@
 				99DA437A1C0C44F200573D4C /* CityListModel.m */,
 				A93F23141C13120000AA7756 /* DepartmentModel.h */,
 				A93F23151C13120000AA7756 /* DepartmentModel.m */,
+				A98AC3CD1C182A870024177C /* HospitalModel.h */,
+				A98AC3CE1C182A870024177C /* HospitalModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3688,6 +3693,7 @@
 				99D142181C0D7E87002DA3AD /* BookSuccessHeadTableViewCell.m in Sources */,
 				991A30EB1C11CA6200E0313F /* PersonalTableViewCell.m in Sources */,
 				99DA400C1C0BE59A00573D4C /* FMDatabaseQueue.m in Sources */,
+				A98AC3CF1C182A870024177C /* HospitalModel.m in Sources */,
 				99DA401D1C0BE59A00573D4C /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
 				99D6EECA1C0EF13400CB1829 /* LaboratoryTestsAddPhotoTableViewCell.m in Sources */,
 				991A31181C11E40100E0313F /* AppointTopView.m in Sources */,

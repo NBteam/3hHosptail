@@ -7,6 +7,7 @@
 //
 
 #import "HospitalTableViewController.h"
+#import "HospitalModel.h"
 
 @interface HospitalTableViewController ()
 
@@ -37,8 +38,8 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.font = [UIFont systemFontOfSize:15];
     cell.textLabel.textColor = [UIColor colorWithHEX:0x333333];
-//    DepartmentModel * model = self.dataArray[indexPath.row];
-//    cell.textLabel.text = model.name;
+    HospitalModel * model = self.dataArray[indexPath.row];
+    cell.textLabel.text = model.name;
     return cell;
     
 }
@@ -49,10 +50,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    DepartmentModel * model = self.dataArray[indexPath.row];
-//    if (self.choiceBlock) {
-//        self.choiceBlock(model.id,model.name,model.pid);
-//    }
+    HospitalModel * model = self.dataArray[indexPath.row];
+    if (self.hospitalBlock) {
+        self.hospitalBlock(model.name,model.id);
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (NSString *)title{
@@ -61,13 +62,13 @@
 - (void)getPositionInfo{
     WeakSelf(HospitalTableViewController);
     
-    [[THNetWorkManager shareNetWork]getHospitalLisCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getHospitalLisPid:self.ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         [weakSelf.dataArray removeAllObjects];
         if (response.responseCode == 1) {
             for (NSDictionary * dict in response.dataDic[@"list"]) {
-//                DepartmentModel * model = [response thParseDataFromDic:dict andModel:[DepartmentModel class]];
-//                [weakSelf.dataArray addObject:model];
+                HospitalModel * model = [response thParseDataFromDic:dict andModel:[HospitalModel class]];
+                [weakSelf.dataArray addObject:model];
             }
             [weakSelf.tableView reloadData];
         } else {

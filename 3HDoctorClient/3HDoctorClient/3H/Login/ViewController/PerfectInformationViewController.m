@@ -25,6 +25,8 @@
 @property (nonatomic, strong) UILabel *labPrompt;
 //提交
 @property (nonatomic, strong) UIButton *btnSubmit;
+@property (nonatomic, copy) NSString * idS;
+@property (nonatomic, copy) NSString * parent_id;
 @end
 
 @implementation PerfectInformationViewController
@@ -119,6 +121,9 @@
         
         CityListFirstLevelViewController *cityListFirstLevelVc= [[CityListFirstLevelViewController alloc] init];
         [cityListFirstLevelVc setCityListBlock:^(NSString *name, NSString *ids, NSString *parent_id) {
+            NSLog(@"%@-->%@-->%@",name,ids,parent_id);
+            weakSelf.idS = ids;
+            weakSelf.parent_id = parent_id;
             [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:name];
             [weakSelf.tableView reloadData];
         }];
@@ -133,18 +138,27 @@
         }];
         [self.navigationController pushViewController:pvc animated:YES];
     }else if (indexPath.row == 3){//医院名称
-        
-        HospitalTableViewController*hospitalInputVc = [[HospitalTableViewController alloc] init];
-        
-        [hospitalInputVc setHospitalBlock:^(NSString *str) {
-            [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:str];
-            [weakSelf.tableView reloadData];
-        }];
-        
-        [self.navigationController pushViewController:hospitalInputVc animated:YES];
-        
+        if (self.idS==nil||[self.idS isEqualToString:@""]) {
+            [self showHudAuto:@"请先选择地区" andDuration:@"2"];
+        }else{
+            HospitalTableViewController*hospitalInputVc = [[HospitalTableViewController alloc] init];
+            hospitalInputVc.ids = self.idS;
+            [hospitalInputVc setHospitalBlock:^(NSString *name,NSString * id) {
+                [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:name];
+                [weakSelf.tableView reloadData];
+            }];
+            
+            [self.navigationController pushViewController:hospitalInputVc animated:YES];
+        }
     }else if (indexPath.row == 4){//科室名称
+        NSString * idStr = @"";
+        if (self.parent_id==nil||[self.parent_id isEqualToString:@""]) {
+            idStr = @"0";
+        }else{
+            idStr = self.parent_id;
+        }
         DepartmentViewController * DepartmentVc = [[DepartmentViewController alloc]init];
+        DepartmentVc.id = idStr;
         [DepartmentVc setChoiceBlock:^(NSString *id, NSString *name, NSString *pid) {
             [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:name];
             [weakSelf.tableView reloadData];

@@ -154,8 +154,8 @@
             
         }else if (indexPath.row == 2){//
             HospitalTableViewController*hospitalInputVc = [[HospitalTableViewController alloc] init];
-            
-            [hospitalInputVc setHospitalBlock:^(NSString *str) {
+//            qwe
+            [hospitalInputVc setHospitalBlock:^(NSString *str,NSString * id) {
                 [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"科室",@"detail":str}];
                 [weakSelf.tableView reloadData];
             }];

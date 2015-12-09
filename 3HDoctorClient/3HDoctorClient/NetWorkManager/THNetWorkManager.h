@@ -78,7 +78,7 @@ typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSen
  * 获取医院列表
  *
  */
-- (void)getHospitalLisCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+- (void)getHospitalLisPid:(NSString *)pid andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 /**
  * 我的钱包
  *

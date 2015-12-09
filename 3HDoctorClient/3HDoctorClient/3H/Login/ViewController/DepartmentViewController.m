@@ -62,7 +62,7 @@
 - (void)getPositionInfo{
     WeakSelf(DepartmentViewController);
     
-    [[THNetWorkManager shareNetWork] getHospitalDeptLisPid:@"0"andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork] getHospitalDeptLisPid:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         [weakSelf.dataArray removeAllObjects];
         if (response.responseCode == 1) {

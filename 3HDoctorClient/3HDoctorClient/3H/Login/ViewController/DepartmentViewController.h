@@ -10,4 +10,5 @@
 
 @interface DepartmentViewController : BaseTableViewController
 @property (nonatomic, copy) void (^choiceBlock)(NSString *id,NSString*name,NSString*pid);
+@property (nonatomic, copy) NSString * id;
 @end
