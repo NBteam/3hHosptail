@@ -9,10 +9,11 @@
 #import "LoginViewController.h"
 #import "LoginInputView.h"
 #import "RegisterViewController.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 //背景
-@property (nonatomic, strong) UIImageView * imgBack;
+@property (nonatomic, strong) UIImageView * imgLogo;
 @property (nonatomic, strong) LoginInputView * textUserName;
 @property (nonatomic, strong) LoginInputView * textUserPwd;
 //记住我
@@ -42,8 +43,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = YES;
-    [self.view addSubview:self.imgBack];
+    
+    self.view.backgroundColor = [UIColor colorWithHEX:0xff9358];
+    [self.view addSubview:self.imgLogo];
     [self.view addSubview:self.textUserName];
     [self.view addSubview:self.textUserPwd];
     [self.view addSubview:self.btnRemember];
@@ -59,14 +61,13 @@
     // Do any additional setup after loading the view.
 }
 #pragma mark -- UI
-- (UIImageView *)imgBack{
-    if (!_imgBack) {
-        _imgBack = [[UIImageView alloc]initWithFrame:CGRectMake(0, -20, DeviceSize.width, DeviceSize.height)];
-        _imgBack.image = [UIImage imageNamed:@""];
-        _imgBack.userInteractionEnabled = YES;
-        _imgBack.backgroundColor = [UIColor orangeColor];
+
+- (UIImageView *)imgLogo{
+    if (!_imgLogo) {
+        _imgLogo = [[UIImageView alloc] initWithFrame:CGRectMake((DeviceSize.width -172)/2, 80, 172, 132)];
+        _imgLogo.image = [UIImage imageNamed:@"3H-注册_3H (2)"];
     }
-    return _imgBack;
+    return _imgLogo;
 }
 - (LoginInputView *)textUserName{
     if (!_textUserName) {
@@ -116,7 +117,7 @@
     if (!_btnLogin) {
         _btnLogin = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnLogin.frame = CGRectMake(15, self.btnRemember.bottom+10, DeviceSize.width-30, 96/2);
-        _btnLogin.backgroundColor = [UIColor redColor];
+        _btnLogin.backgroundColor = AppDefaultColor;
         _btnLogin.layer.cornerRadius = 3;
         _btnLogin.layer.masksToBounds = YES;
         [_btnLogin setTitle:@"登录" forState:UIControlStateNormal];
@@ -196,7 +197,7 @@
 
 }
 - (void)btnLoginClick:(UIButton *)button{
- 
+    [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
 }
 - (void)btn1Click:(UIButton *)button{
     
@@ -213,6 +214,11 @@
 }
 - (void)btnForgetClick:(UIButton *)button{
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

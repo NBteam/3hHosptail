@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>5657A4B6-9552-4729-8687-B8F3D2D0AD18</string>
+	<string>4A96C459-BEE3-441C-AFDD-5819A71EF7B1</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>3HPatientClient</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F67E7C64B816C483EE606486424394ADFF6E39A5</key>
 		<string>https://github.com/NBteam/3hHosptail.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>3HDoctorClient/3HDoctorClient.xcodeproj/project.xcworkspace</string>
+	<string>3HPatientClient/3HPatientClient.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F67E7C64B816C483EE606486424394ADFF6E39A5</key>

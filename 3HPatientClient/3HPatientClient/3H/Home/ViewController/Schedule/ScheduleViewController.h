@@ -6,8 +6,8 @@
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseTableViewController.h"
 
-@interface ScheduleViewController : BaseViewController
+@interface ScheduleViewController : BaseTableViewController
 
 @end

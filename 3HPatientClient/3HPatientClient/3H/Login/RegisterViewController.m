@@ -53,7 +53,7 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor orangeColor];
+    self.view.backgroundColor = [UIColor colorWithHEX:0xff9358];;
     [self.viewBlue addSubview:self.imgLogo];
     [self.viewBlue addSubview:self.imgWhite];
     self.viewBlue.height = self.imgWhite.bottom;
@@ -81,8 +81,8 @@
 
 - (UIImageView *)imgLogo{
     if (!_imgLogo) {
-        _imgLogo = [[UIImageView alloc] initWithFrame:CGRectMake((DeviceSize.width - 376/2)/2, 80, 376/2, 293/2)];
-        _imgLogo.image = [UIImage imageNamed:@"thLOGO"];
+        _imgLogo = [[UIImageView alloc] initWithFrame:CGRectMake((DeviceSize.width -172)/2, 80, 172, 132)];
+        _imgLogo.image = [UIImage imageNamed:@"3H-注册_3H (2)"];
     }
     return _imgLogo;
 }
@@ -193,7 +193,7 @@
         _btnRegister = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnRegister.frame = CGRectMake(15, self.btnAgreement.bottom +10, DeviceSize.width-30, 45);
         [_btnRegister setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
-        _btnRegister.backgroundColor = [UIColor redColor];
+        _btnRegister.backgroundColor = AppDefaultColor;
         _btnRegister.titleLabel.font = [UIFont systemFontOfSize:17];
         [_btnRegister setTitle:@"立即注册" forState:UIControlStateNormal];
         _btnRegister.layer.masksToBounds = YES;
@@ -210,7 +210,7 @@
         _btnLogin = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnLogin.frame = CGRectMake(15, self.btnRegister.bottom+10, DeviceSize.width-30, 20);
         
-        NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:@"已有账号？马上注册"];
+        NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:@"已有账号？马上登陆"];
         [title addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0,title.length)];
         NSRange titleRange = {title.length-4,4};
         [title addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:titleRange];
@@ -224,7 +224,7 @@
     
 }
 - (void)btnLoginClick:(UIButton *)button{
-
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

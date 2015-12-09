@@ -38,8 +38,14 @@
 @property (nonatomic, strong) UIButton *btnDown;
 //日期背景view
 @property (nonatomic, strong) UIView *viewBack;
+//横线
+@property (nonatomic, strong) UILabel *labLine;
 
 
-
+@property (nonatomic,assign) CGFloat viewHeight;
 @property (nonatomic,copy) void (^CalendarBlock)(NSString * year ,NSString * month ,NSString * day);
+
+//通知tableview改变y坐标
+
+@property (nonatomic, copy) void(^calendarFloatBlock)(CGFloat height);
 @end

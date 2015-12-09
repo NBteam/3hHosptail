@@ -217,6 +217,20 @@
 		991A330E1C12FFDA00E0313F /* SetUpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 991A330B1C12FFDA00E0313F /* SetUpTableViewCell.m */; };
 		991A33151C12FFE400E0313F /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 991A33111C12FFE400E0313F /* PersonalViewController.m */; };
 		991A33161C12FFE400E0313F /* SetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 991A33141C12FFE400E0313F /* SetUpViewController.m */; };
+		9929BC9D1C180E9000F747CB /* ConsultingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929BC9C1C180E9000F747CB /* ConsultingViewController.m */; };
+		9929BCA01C18107200F747CB /* ConsultingHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929BC9F1C18107200F747CB /* ConsultingHeadTableViewCell.m */; };
+		9929BCA31C18108A00F747CB /* ConsultingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929BCA21C18108A00F747CB /* ConsultingTableViewCell.m */; };
+		9929BCA61C1810C200F747CB /* ConsultingHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929BCA51C1810C200F747CB /* ConsultingHeadView.m */; };
+		9929BCA91C18160300F747CB /* ConsultingToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929BCA81C18160300F747CB /* ConsultingToolView.m */; };
+		9929BCAC1C181AF300F747CB /* ConsultingDoctorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929BCAB1C181AF300F747CB /* ConsultingDoctorListViewController.m */; };
+		9929BCAF1C181B0900F747CB /* ConsultingDoctorListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929BCAE1C181B0900F747CB /* ConsultingDoctorListTableViewCell.m */; };
+		9929BCB21C181DF700F747CB /* ConsultingIsPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929BCB11C181DF700F747CB /* ConsultingIsPhoneViewController.m */; };
+		9929BCB51C181E0D00F747CB /* ConsultingIsOnlineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929BCB41C181E0D00F747CB /* ConsultingIsOnlineViewController.m */; };
+		9929BCB81C18255800F747CB /* ConsultingIsPhoneTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929BCB71C18255800F747CB /* ConsultingIsPhoneTitleTableViewCell.m */; };
+		9929BCBB1C18256A00F747CB /* ConsultingIsPhoneTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929BCBA1C18256A00F747CB /* ConsultingIsPhoneTimeTableViewCell.m */; };
+		9929BCBE1C18257800F747CB /* ConsultingIsPhoneDescTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929BCBD1C18257800F747CB /* ConsultingIsPhoneDescTableViewCell.m */; };
+		9929BCC11C1829B400F747CB /* 首页-我要预约-预约挂号-2_右@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9929BCBF1C1829B400F747CB /* 首页-我要预约-预约挂号-2_右@2x.png */; };
+		9929BCC21C1829B400F747CB /* 首页-我要预约-预约挂号-2_左@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9929BCC01C1829B400F747CB /* 首页-我要预约-预约挂号-2_左@2x.png */; };
 		993669601C132A8E00B3E1C7 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9936695F1C132A8E00B3E1C7 /* ShopViewController.m */; };
 		993669661C132C6800B3E1C7 /* ConsultingDynamicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669631C132C6800B3E1C7 /* ConsultingDynamicViewController.m */; };
 		993669671C132C6800B3E1C7 /* DynamicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669651C132C6800B3E1C7 /* DynamicDetailViewController.m */; };
@@ -258,6 +272,13 @@
 		99D33AA21C17BD0B0067E57C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33A9B1C17BD0B0067E57C /* LoginViewController.m */; };
 		99D33AA31C17BD0B0067E57C /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33A9E1C17BD0B0067E57C /* RegisterViewController.m */; };
 		99D33AA41C17BD0B0067E57C /* LoginInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33AA11C17BD0B0067E57C /* LoginInputView.m */; };
+		99D33AA71C17F8830067E57C /* CheckDataTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33AA61C17F8830067E57C /* CheckDataTopView.m */; };
+		99D33AAA1C17FBF40067E57C /* CheckDataAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33AA91C17FBF40067E57C /* CheckDataAViewController.m */; };
+		99D33AAD1C17FC040067E57C /* CheckDataBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33AAC1C17FC040067E57C /* CheckDataBViewController.m */; };
+		99D33AB01C17FDBF0067E57C /* CheckDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33AAF1C17FDBF0067E57C /* CheckDataTableViewCell.m */; };
+		99D33AB31C1800450067E57C /* CheckDataDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33AB21C1800450067E57C /* CheckDataDetailViewController.m */; };
+		99D33AC21C1805790067E57C /* CheckDataDetailHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33AC11C1805790067E57C /* CheckDataDetailHeadTableViewCell.m */; };
+		99D33AC51C18058A0067E57C /* CheckDataDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33AC41C18058A0067E57C /* CheckDataDetailTableViewCell.m */; };
 		99D544041C155F060081D1D3 /* th健康日程@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99D544001C155F060081D1D3 /* th健康日程@2x.png */; };
 		99D544051C155F060081D1D3 /* th健康管理@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99D544011C155F060081D1D3 /* th健康管理@2x.png */; };
 		99D544061C155F060081D1D3 /* th我要咨询@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99D544021C155F060081D1D3 /* th我要咨询@2x.png */; };
@@ -642,6 +663,32 @@
 		991A33111C12FFE400E0313F /* PersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewController.m; sourceTree = "<group>"; };
 		991A33131C12FFE400E0313F /* SetUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUpViewController.h; sourceTree = "<group>"; };
 		991A33141C12FFE400E0313F /* SetUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUpViewController.m; sourceTree = "<group>"; };
+		9929BC9B1C180E9000F747CB /* ConsultingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingViewController.h; sourceTree = "<group>"; };
+		9929BC9C1C180E9000F747CB /* ConsultingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingViewController.m; sourceTree = "<group>"; };
+		9929BC9E1C18107200F747CB /* ConsultingHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingHeadTableViewCell.h; sourceTree = "<group>"; };
+		9929BC9F1C18107200F747CB /* ConsultingHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingHeadTableViewCell.m; sourceTree = "<group>"; };
+		9929BCA11C18108A00F747CB /* ConsultingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingTableViewCell.h; sourceTree = "<group>"; };
+		9929BCA21C18108A00F747CB /* ConsultingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingTableViewCell.m; sourceTree = "<group>"; };
+		9929BCA41C1810C200F747CB /* ConsultingHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingHeadView.h; sourceTree = "<group>"; };
+		9929BCA51C1810C200F747CB /* ConsultingHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingHeadView.m; sourceTree = "<group>"; };
+		9929BCA71C18160300F747CB /* ConsultingToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingToolView.h; sourceTree = "<group>"; };
+		9929BCA81C18160300F747CB /* ConsultingToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingToolView.m; sourceTree = "<group>"; };
+		9929BCAA1C181AF300F747CB /* ConsultingDoctorListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingDoctorListViewController.h; sourceTree = "<group>"; };
+		9929BCAB1C181AF300F747CB /* ConsultingDoctorListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingDoctorListViewController.m; sourceTree = "<group>"; };
+		9929BCAD1C181B0900F747CB /* ConsultingDoctorListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingDoctorListTableViewCell.h; sourceTree = "<group>"; };
+		9929BCAE1C181B0900F747CB /* ConsultingDoctorListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingDoctorListTableViewCell.m; sourceTree = "<group>"; };
+		9929BCB01C181DF700F747CB /* ConsultingIsPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingIsPhoneViewController.h; sourceTree = "<group>"; };
+		9929BCB11C181DF700F747CB /* ConsultingIsPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingIsPhoneViewController.m; sourceTree = "<group>"; };
+		9929BCB31C181E0D00F747CB /* ConsultingIsOnlineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingIsOnlineViewController.h; sourceTree = "<group>"; };
+		9929BCB41C181E0D00F747CB /* ConsultingIsOnlineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingIsOnlineViewController.m; sourceTree = "<group>"; };
+		9929BCB61C18255800F747CB /* ConsultingIsPhoneTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingIsPhoneTitleTableViewCell.h; sourceTree = "<group>"; };
+		9929BCB71C18255800F747CB /* ConsultingIsPhoneTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingIsPhoneTitleTableViewCell.m; sourceTree = "<group>"; };
+		9929BCB91C18256A00F747CB /* ConsultingIsPhoneTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingIsPhoneTimeTableViewCell.h; sourceTree = "<group>"; };
+		9929BCBA1C18256A00F747CB /* ConsultingIsPhoneTimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingIsPhoneTimeTableViewCell.m; sourceTree = "<group>"; };
+		9929BCBC1C18257800F747CB /* ConsultingIsPhoneDescTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingIsPhoneDescTableViewCell.h; sourceTree = "<group>"; };
+		9929BCBD1C18257800F747CB /* ConsultingIsPhoneDescTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingIsPhoneDescTableViewCell.m; sourceTree = "<group>"; };
+		9929BCBF1C1829B400F747CB /* 首页-我要预约-预约挂号-2_右@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-我要预约-预约挂号-2_右@2x.png"; sourceTree = "<group>"; };
+		9929BCC01C1829B400F747CB /* 首页-我要预约-预约挂号-2_左@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-我要预约-预约挂号-2_左@2x.png"; sourceTree = "<group>"; };
 		9936695E1C132A8E00B3E1C7 /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
 		9936695F1C132A8E00B3E1C7 /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
 		993669621C132C6800B3E1C7 /* ConsultingDynamicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingDynamicViewController.h; sourceTree = "<group>"; };
@@ -724,6 +771,20 @@
 		99D33A9E1C17BD0B0067E57C /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		99D33AA01C17BD0B0067E57C /* LoginInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInputView.h; sourceTree = "<group>"; };
 		99D33AA11C17BD0B0067E57C /* LoginInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInputView.m; sourceTree = "<group>"; };
+		99D33AA51C17F8830067E57C /* CheckDataTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataTopView.h; sourceTree = "<group>"; };
+		99D33AA61C17F8830067E57C /* CheckDataTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataTopView.m; sourceTree = "<group>"; };
+		99D33AA81C17FBF40067E57C /* CheckDataAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataAViewController.h; sourceTree = "<group>"; };
+		99D33AA91C17FBF40067E57C /* CheckDataAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataAViewController.m; sourceTree = "<group>"; };
+		99D33AAB1C17FC040067E57C /* CheckDataBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataBViewController.h; sourceTree = "<group>"; };
+		99D33AAC1C17FC040067E57C /* CheckDataBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataBViewController.m; sourceTree = "<group>"; };
+		99D33AAE1C17FDBF0067E57C /* CheckDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataTableViewCell.h; sourceTree = "<group>"; };
+		99D33AAF1C17FDBF0067E57C /* CheckDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataTableViewCell.m; sourceTree = "<group>"; };
+		99D33AB11C1800450067E57C /* CheckDataDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataDetailViewController.h; sourceTree = "<group>"; };
+		99D33AB21C1800450067E57C /* CheckDataDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataDetailViewController.m; sourceTree = "<group>"; };
+		99D33AC01C1805790067E57C /* CheckDataDetailHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataDetailHeadTableViewCell.h; sourceTree = "<group>"; };
+		99D33AC11C1805790067E57C /* CheckDataDetailHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataDetailHeadTableViewCell.m; sourceTree = "<group>"; };
+		99D33AC31C18058A0067E57C /* CheckDataDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDataDetailTableViewCell.h; sourceTree = "<group>"; };
+		99D33AC41C18058A0067E57C /* CheckDataDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDataDetailTableViewCell.m; sourceTree = "<group>"; };
 		99D544001C155F060081D1D3 /* th健康日程@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "th健康日程@2x.png"; sourceTree = "<group>"; };
 		99D544011C155F060081D1D3 /* th健康管理@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "th健康管理@2x.png"; sourceTree = "<group>"; };
 		99D544021C155F060081D1D3 /* th我要咨询@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "th我要咨询@2x.png"; sourceTree = "<group>"; };
@@ -1302,6 +1363,8 @@
 		991A31F31C12E2DC00E0313F /* 我要咨询 */ = {
 			isa = PBXGroup;
 			children = (
+				9929BCBF1C1829B400F747CB /* 首页-我要预约-预约挂号-2_右@2x.png */,
+				9929BCC01C1829B400F747CB /* 首页-我要预约-预约挂号-2_左@2x.png */,
 				991A31F41C12E2DC00E0313F /* 3H-首页_我要咨询 (2)@2x.png */,
 				991A31F51C12E2DC00E0313F /* 3H-首页_我要咨询@2x.png */,
 				991A31F61C12E2DC00E0313F /* 首页-我要咨询-医生列表_搜索图标@2x.png */,
@@ -1361,6 +1424,14 @@
 		991A32E91C12E58D00E0313F /* Consulting */ = {
 			isa = PBXGroup;
 			children = (
+				9929BC9B1C180E9000F747CB /* ConsultingViewController.h */,
+				9929BC9C1C180E9000F747CB /* ConsultingViewController.m */,
+				9929BCB01C181DF700F747CB /* ConsultingIsPhoneViewController.h */,
+				9929BCB11C181DF700F747CB /* ConsultingIsPhoneViewController.m */,
+				9929BCB31C181E0D00F747CB /* ConsultingIsOnlineViewController.h */,
+				9929BCB41C181E0D00F747CB /* ConsultingIsOnlineViewController.m */,
+				9929BCAA1C181AF300F747CB /* ConsultingDoctorListViewController.h */,
+				9929BCAB1C181AF300F747CB /* ConsultingDoctorListViewController.m */,
 			);
 			path = Consulting;
 			sourceTree = "<group>";
@@ -1533,6 +1604,12 @@
 			children = (
 				99D544101C15625D0081D1D3 /* CheckDataViewController.h */,
 				99D544111C15625D0081D1D3 /* CheckDataViewController.m */,
+				99D33AA81C17FBF40067E57C /* CheckDataAViewController.h */,
+				99D33AA91C17FBF40067E57C /* CheckDataAViewController.m */,
+				99D33AAB1C17FC040067E57C /* CheckDataBViewController.h */,
+				99D33AAC1C17FC040067E57C /* CheckDataBViewController.m */,
+				99D33AB11C1800450067E57C /* CheckDataDetailViewController.h */,
+				99D33AB21C1800450067E57C /* CheckDataDetailViewController.m */,
 			);
 			path = CheckData;
 			sourceTree = "<group>";
@@ -1785,6 +1862,30 @@
 				99D544371C1574A40081D1D3 /* ReviewGuideTableViewCell.m */,
 				99D591371C169F2600F60369 /* CalendarView.h */,
 				99D591381C169F2600F60369 /* CalendarView.m */,
+				99D33AA51C17F8830067E57C /* CheckDataTopView.h */,
+				99D33AA61C17F8830067E57C /* CheckDataTopView.m */,
+				99D33AAE1C17FDBF0067E57C /* CheckDataTableViewCell.h */,
+				99D33AAF1C17FDBF0067E57C /* CheckDataTableViewCell.m */,
+				99D33AC01C1805790067E57C /* CheckDataDetailHeadTableViewCell.h */,
+				99D33AC11C1805790067E57C /* CheckDataDetailHeadTableViewCell.m */,
+				99D33AC31C18058A0067E57C /* CheckDataDetailTableViewCell.h */,
+				99D33AC41C18058A0067E57C /* CheckDataDetailTableViewCell.m */,
+				9929BC9E1C18107200F747CB /* ConsultingHeadTableViewCell.h */,
+				9929BC9F1C18107200F747CB /* ConsultingHeadTableViewCell.m */,
+				9929BCA11C18108A00F747CB /* ConsultingTableViewCell.h */,
+				9929BCA21C18108A00F747CB /* ConsultingTableViewCell.m */,
+				9929BCA41C1810C200F747CB /* ConsultingHeadView.h */,
+				9929BCA51C1810C200F747CB /* ConsultingHeadView.m */,
+				9929BCA71C18160300F747CB /* ConsultingToolView.h */,
+				9929BCA81C18160300F747CB /* ConsultingToolView.m */,
+				9929BCAD1C181B0900F747CB /* ConsultingDoctorListTableViewCell.h */,
+				9929BCAE1C181B0900F747CB /* ConsultingDoctorListTableViewCell.m */,
+				9929BCB61C18255800F747CB /* ConsultingIsPhoneTitleTableViewCell.h */,
+				9929BCB71C18255800F747CB /* ConsultingIsPhoneTitleTableViewCell.m */,
+				9929BCB91C18256A00F747CB /* ConsultingIsPhoneTimeTableViewCell.h */,
+				9929BCBA1C18256A00F747CB /* ConsultingIsPhoneTimeTableViewCell.m */,
+				9929BCBC1C18257800F747CB /* ConsultingIsPhoneDescTableViewCell.h */,
+				9929BCBD1C18257800F747CB /* ConsultingIsPhoneDescTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2355,6 +2456,7 @@
 				TargetAttributes = {
 					99DA3EAD1C0BE4CF00573D4C = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = N2UUE52R4J;
 					};
 					99DA3EC61C0BE4CF00573D4C = {
 						CreatedOnToolsVersion = 6.4;
@@ -2410,6 +2512,7 @@
 				991A325B1C12E2DC00E0313F /* 3H-注册_验证码@2x.png in Resources */,
 				991A32C51C12E2DC00E0313F /* 首页-我要咨询-在线咨询-2_拍照@2x.png in Resources */,
 				991A32811C12E2DC00E0313F /* 3H-首页_监测仪3@2x.png in Resources */,
+				9929BCC11C1829B400F747CB /* 首页-我要预约-预约挂号-2_右@2x.png in Resources */,
 				99DA3EC21C0BE4CF00573D4C /* LaunchScreen.xib in Resources */,
 				991A32191C12E2DC00E0313F /* 3H-健康_健康日程@2x.png in Resources */,
 				991A32A81C12E2DC00E0313F /* 首页-健康资讯_图2@2x.png in Resources */,
@@ -2545,6 +2648,7 @@
 				991A32341C12E2DC00E0313F /* 我的-我的钱包_订单记录-点击状态@2x.png in Resources */,
 				991A32221C12E2DC00E0313F /* 首页-健康管理_复查指南@2x.png in Resources */,
 				991A32741C12E2DC00E0313F /* 3H-消息_订单提醒@2x.png in Resources */,
+				9929BCC21C1829B400F747CB /* 首页-我要预约-预约挂号-2_左@2x.png in Resources */,
 				991A32D01C12E2DC00E0313F /* 首页-我要咨询-电话咨询_外框@2x.png in Resources */,
 				991A328B1C12E2DC00E0313F /* 首页-健康商城-商品详情_头像2@2x.png in Resources */,
 				991A32491C12E2DC00E0313F /* 我的-设置_意见反馈-点击状态@2x.png in Resources */,
@@ -2611,6 +2715,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9929BCA31C18108A00F747CB /* ConsultingTableViewCell.m in Sources */,
 				99DA41A21C0BEB0500573D4C /* NSObject+BaseFrame.m in Sources */,
 				991A312D1C11E9C800E0313F /* HomeTitleTableViewCell.m in Sources */,
 				99D33AA41C17BD0B0067E57C /* LoginInputView.m in Sources */,
@@ -2619,6 +2724,7 @@
 				99DA41CB1C0BEB0500573D4C /* MJRefreshAutoGifFooter.m in Sources */,
 				993669E11C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.m in Sources */,
 				99DA41E31C0BEB0500573D4C /* SDWebImageManager.m in Sources */,
+				99D33AAA1C17FBF40067E57C /* CheckDataAViewController.m in Sources */,
 				99DA41C91C0BEB0500573D4C /* MJRefreshFooter.m in Sources */,
 				99D544951C1592C40081D1D3 /* NSMutableArray+convenience.m in Sources */,
 				993669731C132C7600B3E1C7 /* DynamicDetailToolView.m in Sources */,
@@ -2650,6 +2756,7 @@
 				99DA41AD1C0BEB0500573D4C /* UIView+Tag.m in Sources */,
 				993669761C132D5F00B3E1C7 /* ShopTableViewCell.m in Sources */,
 				99DA41AA1C0BEB0500573D4C /* UIDevice+Extension.m in Sources */,
+				9929BCB81C18255800F747CB /* ConsultingIsPhoneTitleTableViewCell.m in Sources */,
 				99D5441B1C1562920081D1D3 /* ReviewGuideViewController.m in Sources */,
 				99DA41CF1C0BEB0500573D4C /* MJRefreshBackNormalFooter.m in Sources */,
 				993669A41C13FF6C00B3E1C7 /* IncomeRecordTableViewCell.m in Sources */,
@@ -2664,8 +2771,10 @@
 				99DA419B1C0BEB0500573D4C /* AFURLConnectionOperation.m in Sources */,
 				99D544151C1562780081D1D3 /* MainDiagnosticViewController.m in Sources */,
 				991A330D1C12FFDA00E0313F /* PersonalTableViewCell.m in Sources */,
+				9929BCAC1C181AF300F747CB /* ConsultingDoctorListViewController.m in Sources */,
 				99DA41BC1C0BEB0500573D4C /* MTLReflection.m in Sources */,
 				99DA41A31C0BEB0500573D4C /* NSString+Extension.m in Sources */,
+				9929BCBB1C18256A00F747CB /* ConsultingIsPhoneTimeTableViewCell.m in Sources */,
 				99DA41B41C0BEB0500573D4C /* GetImageColor.m in Sources */,
 				99DA41931C0BEB0500573D4C /* BaseTableViewCell.m in Sources */,
 				99DA41EF1C0BEB0500573D4C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -2681,18 +2790,21 @@
 				99DA419C1C0BEB0500573D4C /* AFURLRequestSerialization.m in Sources */,
 				99DA41E81C0BEB0500573D4C /* UIImage+WebP.m in Sources */,
 				99DA3EBA1C0BE4CF00573D4C /* ViewController.m in Sources */,
+				9929BCBE1C18257800F747CB /* ConsultingIsPhoneDescTableViewCell.m in Sources */,
 				99DA41AF1C0BEB0500573D4C /* FMDatabase.m in Sources */,
 				99DA41F21C0BEB0500573D4C /* TQRichTextImageRun.m in Sources */,
 				991A330E1C12FFDA00E0313F /* SetUpTableViewCell.m in Sources */,
 				99DA41E51C0BEB0500573D4C /* UIButton+WebCache.m in Sources */,
 				99D544941C1592C40081D1D3 /* NSDate+convenience.m in Sources */,
 				993669661C132C6800B3E1C7 /* ConsultingDynamicViewController.m in Sources */,
+				9929BCA91C18160300F747CB /* ConsultingToolView.m in Sources */,
 				99DA41B81C0BEB0500573D4C /* MTLJSONAdapter.m in Sources */,
 				9936699F1C13FE5400B3E1C7 /* IncomeRecordViewController.m in Sources */,
 				993669CB1C1404D000B3E1C7 /* MyCollectionTableViewCell.m in Sources */,
 				99DA41F11C0BEB0500573D4C /* TQRichTextEmojiRun.m in Sources */,
 				991A32F71C12E61500E0313F /* AppointTableViewCell.m in Sources */,
 				993669A01C13FE5400B3E1C7 /* WalletViewController.m in Sources */,
+				9929BCA01C18107200F747CB /* ConsultingHeadTableViewCell.m in Sources */,
 				99DA41981C0BEB0500573D4C /* AFHTTPSessionManager.m in Sources */,
 				991A33151C12FFE400E0313F /* PersonalViewController.m in Sources */,
 				991A312A1C11E9B600E0313F /* HomeFunctionTableViewCell.m in Sources */,
@@ -2706,10 +2818,12 @@
 				99DA41CC1C0BEB0500573D4C /* MJRefreshAutoNormalFooter.m in Sources */,
 				99DA419F1C0BEB0500573D4C /* NSArray+SafeAccess.m in Sources */,
 				99DA3EB71C0BE4CF00573D4C /* AppDelegate.m in Sources */,
+				99D33AB31C1800450067E57C /* CheckDataDetailViewController.m in Sources */,
 				99DA41B61C0BEB0500573D4C /* EXTRuntimeExtensions.m in Sources */,
 				99DA41BB1C0BEB0500573D4C /* MTLModel.m in Sources */,
 				991A32F11C12E5E900E0313F /* AppointViewController.m in Sources */,
 				99D544351C156C3A0081D1D3 /* MedicationGuideTableViewCell.m in Sources */,
+				99D33AC51C18058A0067E57C /* CheckDataDetailTableViewCell.m in Sources */,
 				99D544981C1592C40081D1D3 /* VRGCalendarView.m in Sources */,
 				99DA41A81C0BEB0500573D4C /* UIButton+Extension.m in Sources */,
 				99DA419A1C0BEB0500573D4C /* AFSecurityPolicy.m in Sources */,
@@ -2719,6 +2833,7 @@
 				991A32F41C12E60400E0313F /* ManageTableViewCell.m in Sources */,
 				991A31391C12DE8200E0313F /* HomeSlidingTableViewCell.m in Sources */,
 				99DA41DB1C0BEB0500573D4C /* NSString+MD5.m in Sources */,
+				9929BCB21C181DF700F747CB /* ConsultingIsPhoneViewController.m in Sources */,
 				99DA41F01C0BEB0500573D4C /* TQRichTextBaseRun.m in Sources */,
 				99DA41AB1C0BEB0500573D4C /* UIScreen+Extension.m in Sources */,
 				99DA41EB1C0BEB0500573D4C /* UIView+WebCacheOperation.m in Sources */,
@@ -2730,6 +2845,7 @@
 				99DA41DC1C0BEB0500573D4C /* MKAnnotationView+WebCache.m in Sources */,
 				9936698E1C13343F00B3E1C7 /* ShopDetailToolView.m in Sources */,
 				993669791C132DCB00B3E1C7 /* ShopCustomView.m in Sources */,
+				99D33AAD1C17FC040067E57C /* CheckDataBViewController.m in Sources */,
 				993669DE1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.m in Sources */,
 				993669851C13339200B3E1C7 /* ShopDetailDescTableViewCell.m in Sources */,
 				99DA41991C0BEB0500573D4C /* AFNetworkReachabilityManager.m in Sources */,
@@ -2741,6 +2857,7 @@
 				99DA41A71C0BEB0500573D4C /* UIButton+EXT.m in Sources */,
 				993669BA1C14046F00B3E1C7 /* MyArchivesViewController.m in Sources */,
 				99DA41C31C0BEB0500573D4C /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
+				99D33AB01C17FDBF0067E57C /* CheckDataTableViewCell.m in Sources */,
 				993669721C132C7600B3E1C7 /* DynamicDetailTableViewCell.m in Sources */,
 				99DA41C61C0BEB0500573D4C /* MJRefreshAutoFooter.m in Sources */,
 				99DA419E1C0BEB0500573D4C /* AFURLSessionManager.m in Sources */,
@@ -2748,11 +2865,14 @@
 				993669C91C1404D000B3E1C7 /* MyAppointmentTableViewCell.m in Sources */,
 				993669D51C1438CD00B3E1C7 /* MyArchivesConcurrentTableViewCell.m in Sources */,
 				99DA41A91C0BEB0500573D4C /* UIColor+ColorExtension.m in Sources */,
+				9929BCB51C181E0D00F747CB /* ConsultingIsOnlineViewController.m in Sources */,
 				99DA41DF1C0BEB0500573D4C /* SDWebImageCompat.m in Sources */,
 				99DA41CD1C0BEB0500573D4C /* MJRefreshAutoStateFooter.m in Sources */,
+				99D33AC21C1805790067E57C /* CheckDataDetailHeadTableViewCell.m in Sources */,
 				99D5440F1C15624D0081D1D3 /* BriefCaseViewController.m in Sources */,
 				99DA418C1C0BEB0500573D4C /* HealthViewController.m in Sources */,
 				99DA41E21C0BEB0500573D4C /* SDWebImageDownloaderOperation.m in Sources */,
+				9929BCAF1C181B0900F747CB /* ConsultingDoctorListTableViewCell.m in Sources */,
 				99DA41D21C0BEB0500573D4C /* MJRefreshNormalHeader.m in Sources */,
 				99DA41F51C0BEB0500573D4C /* UIBarButtonItemExtension.m in Sources */,
 				99DA41EA1C0BEB0500573D4C /* UIImageView+WebCache.m in Sources */,
@@ -2766,6 +2886,7 @@
 				991A330C1C12FFDA00E0313F /* PersonalHeadTableViewCell.m in Sources */,
 				993669DB1C144F2000B3E1C7 /* ShopDetailBuyViewController.m in Sources */,
 				99DA418D1C0BEB0500573D4C /* HomeViewController.m in Sources */,
+				99D33AA71C17F8830067E57C /* CheckDataTopView.m in Sources */,
 				99DA41A01C0BEB0500573D4C /* NSDate+Extension.m in Sources */,
 				993669701C132C7600B3E1C7 /* ConsultingDynamicHeadView.m in Sources */,
 				99DA41C21C0BEB0500573D4C /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
@@ -2774,6 +2895,7 @@
 				99D544381C1574A40081D1D3 /* ReviewGuideTableViewCell.m in Sources */,
 				99D544181C1562860081D1D3 /* MedicationGuideViewController.m in Sources */,
 				99DA41C01C0BEB0500573D4C /* NSError+MTLModelException.m in Sources */,
+				9929BCA61C1810C200F747CB /* ConsultingHeadView.m in Sources */,
 				993669CC1C1404D000B3E1C7 /* MyOrdersTableViewCell.m in Sources */,
 				9936697C1C13331400B3E1C7 /* ShopDetailViewController.m in Sources */,
 				99DA41941C0BEB0500573D4C /* BaseTableViewController.m in Sources */,
@@ -2785,6 +2907,7 @@
 				99DA419D1C0BEB0500573D4C /* AFURLResponseSerialization.m in Sources */,
 				99DA41CA1C0BEB0500573D4C /* MJRefreshHeader.m in Sources */,
 				99DA41A61C0BEB0500573D4C /* SGSaveFile.m in Sources */,
+				9929BC9D1C180E9000F747CB /* ConsultingViewController.m in Sources */,
 				99DA41AE1C0BEB0500573D4C /* UIViewController+Extension.m in Sources */,
 				991A31271C11E94500E0313F /* HomeHeadTableViewCell.m in Sources */,
 				99DA3EB41C0BE4CF00573D4C /* main.m in Sources */,
@@ -2920,12 +3043,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/3HPatientClient/PrefixHeader.pch";
 				INFOPLIST_FILE = 3HPatientClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e99218db-b71a-4d90-b207-2c9ddba42f47";
 			};
 			name = Debug;
 		};
@@ -2934,12 +3059,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/3HPatientClient/PrefixHeader.pch";
 				INFOPLIST_FILE = 3HPatientClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e99218db-b71a-4d90-b207-2c9ddba42f47";
 			};
 			name = Release;
 		};

@@ -40,6 +40,7 @@
     [self addSubview:self.btnDown];
     [self customLables];
     [self addSubview:self.viewBack];
+    [self addSubview:self.labLine];
 }
 
 - (void)getNowInteger:(NSDate *)data{
@@ -124,7 +125,7 @@
 - (UIButton *)btnUp{
     if (!_btnUp) {
         _btnUp = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btnUp.backgroundColor = AppDefaultColor;
+        [_btnUp setImage:[UIImage imageNamed:@"首页-我要预约-预约挂号-2_左"] forState:UIControlStateNormal];
         _btnUp.frame = CGRectMake(10, 15, DeviceSize.width/4 -20, 25);
         [_btnUp addTarget:self action:@selector(btnUpAction) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -163,7 +164,7 @@
 - (UIButton *)btnDown{
     if (!_btnDown) {
         _btnDown = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btnDown.backgroundColor = AppDefaultColor;
+        [_btnDown setImage:[UIImage imageNamed:@"首页-我要预约-预约挂号-2_右"] forState:UIControlStateNormal];
         _btnDown.frame = CGRectMake(DeviceSize.width -DeviceSize.width/4 +10 ,15, DeviceSize.width/4 -20, 25);
         [_btnDown addTarget:self action:@selector(btnDownAction) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -232,6 +233,14 @@
         //_viewBack.backgroundColor = [UIColor grayColor];
     }
     return _viewBack;
+}
+
+- (UILabel *)labLine{
+    if (!_labLine) {
+        _labLine = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.width, 0.5)];
+        _labLine.backgroundColor = [UIColor colorWithHEX:0xcccccc];
+    }
+    return _labLine;
 }
 
 -(void)calendarSetDate:(NSDate *)date
@@ -320,6 +329,12 @@
         
         [self.viewBack addSubview:btn];
         self.viewBack.height = btn.bottom +5;
+        
+        self.height = self.viewBack.bottom;
+        self.labLine.top = self.height -0.5;
+        if (self.calendarFloatBlock) {
+            self.calendarFloatBlock(self.height);
+        }
     }
 }
 
@@ -332,7 +347,7 @@
             [button setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
         }else{
             if (btn.tag == button.tag) {
-                button.backgroundColor = [UIColor grayColor];
+                button.backgroundColor = [UIColor colorWithHEX:0xe7e7e7];
                 [button setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
             }else{
                 button.backgroundColor = [UIColor colorWithHEX:0xffffff];

@@ -20,8 +20,16 @@
 #import "ConsultingDynamicViewController.h"
 //商城
 #import "ShopViewController.h"
-//健康日志
+//健康日程
 #import "ScheduleViewController.h"
+//资讯详情
+#import "DynamicDetailViewController.h"
+//商品详情
+#import "ShopDetailViewController.h"
+//我要咨询
+#import "ConsultingViewController.h"
+//我要咨询医生列表
+#import "ConsultingDoctorListViewController.h"
 
 @interface HomeViewController ()
 
@@ -62,11 +70,19 @@
                 manageVc.hidesBottomBarWhenPushed = YES;
                 [weakSelf.navigationController pushViewController:manageVc animated:YES];
             }else if (index == 1){
-        
+//                ConsultingViewController *consultingVc= [[ConsultingViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+//                consultingVc.hidesBottomBarWhenPushed = YES;
+//                [weakSelf.navigationController pushViewController:consultingVc animated:YES];
+                
+                ConsultingDoctorListViewController *consultingVc= [[ConsultingDoctorListViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+                consultingVc.hidesBottomBarWhenPushed = YES;
+                [weakSelf.navigationController pushViewController:consultingVc animated:YES];
+                
+                
             }else if(index == 2){
-                ScheduleViewController *scheduleVc = [[ScheduleViewController alloc] init];
+                ScheduleViewController *scheduleVc = [[ScheduleViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 scheduleVc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:scheduleVc animated:YES];
+                [weakSelf.navigationController pushViewController:scheduleVc animated:YES];
             }else{
                 AppointViewController *appointVc = [[AppointViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 appointVc.hidesBottomBarWhenPushed = YES;
@@ -110,6 +126,11 @@
             if (cell == nil) {
                 cell = [[HomeSlidingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
+            [cell setSlidingBlock:^(NSInteger index) {
+                ShopDetailViewController *shopDetailVc = [[ShopDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+                shopDetailVc.hidesBottomBarWhenPushed = YES;
+                [weakSelf.navigationController pushViewController:shopDetailVc animated:YES];
+            }];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             [cell confingWithModel:@"健康商城"];
             return cell;
@@ -174,6 +195,11 @@
             ConsultingDynamicViewController *cnsultingDynamicVc = [[ConsultingDynamicViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
             cnsultingDynamicVc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:cnsultingDynamicVc animated:YES];
+        }else{
+            
+            DynamicDetailViewController *dynamicDetailVc = [[DynamicDetailViewController alloc] init];
+            dynamicDetailVc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:dynamicDetailVc animated:YES];
         }
     }
     if (indexPath.section == 3) {

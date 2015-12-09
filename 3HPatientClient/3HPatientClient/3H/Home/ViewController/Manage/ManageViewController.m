@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"首页-健康管理_简要病史",@"title":@"简要病史"},@{@"img":@"首页-健康管理_主要诊断",@"title":@"主要诊断"},@{@"img":@"首页-健康管理_检查及检查数据",@"title":@"检查及检查数据"},@{@"img":@"首页-健康管理_用药指南",@"title":@"用药指南"},@{@"img":@"首页-健康管理_复查指南",@"title":@"复查指南"}]];
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"首页-健康管理_简要病史",@"title":@"简要病史"},@{@"img":@"首页-健康管理_主要诊断",@"title":@"主要诊断"},@{@"img":@"首页-健康管理_检查及检查数据",@"title":@"化验及检查数据"},@{@"img":@"首页-健康管理_用药指南",@"title":@"用药指南"},@{@"img":@"首页-健康管理_复查指南",@"title":@"复查指南"}]];
 
 }
 

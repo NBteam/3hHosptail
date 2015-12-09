@@ -8,6 +8,16 @@
 
 #import "HealthViewController.h"
 #import "HealthTableViewCell.h"
+//健康管理
+#import "ManageViewController.h"
+//我要预约
+#import "AppointViewController.h"
+//健康日程
+#import "ScheduleViewController.h"
+//我要咨询
+#import "ConsultingViewController.h"
+//我要咨询医生列表
+#import "ConsultingDoctorListViewController.h"
 @interface HealthViewController ()
 
 @end
@@ -55,6 +65,29 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return  [[UIView alloc] init];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        ManageViewController *manageVc = [[ManageViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        manageVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:manageVc animated:YES];
+    }else if (indexPath.section == 1){
+//        ConsultingViewController *consultingVc= [[ConsultingViewController alloc] init];
+//        consultingVc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:consultingVc animated:YES];
+        ConsultingDoctorListViewController *consultingVc= [[ConsultingDoctorListViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        consultingVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:consultingVc animated:YES];
+    }else if(indexPath.section == 2){
+        ScheduleViewController *scheduleVc = [[ScheduleViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        scheduleVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:scheduleVc animated:YES];
+    }else{
+        AppointViewController *appointVc = [[AppointViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        appointVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:appointVc animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

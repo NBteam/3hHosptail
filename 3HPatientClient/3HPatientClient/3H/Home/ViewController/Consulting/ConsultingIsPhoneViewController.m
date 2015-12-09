@@ -1,23 +1,24 @@
 //
-//  MainDiagnosticViewController.m
+//  ConsultingIsPhoneViewController.m
 //  3HPatientClient
 //
-//  Created by 范英强 on 15/12/7.
-//  Copyright © 2015年 fyq. All rights reserved.
+//  Created by 范英强 on 15/12/9.
+//  Copyright (c) 2015年 fyq. All rights reserved.
 //
 
-#import "MainDiagnosticViewController.h"
+#import "ConsultingIsPhoneViewController.h"
 
-@interface MainDiagnosticViewController ()
+@interface ConsultingIsPhoneViewController ()
 
 @end
 
-@implementation MainDiagnosticViewController
+@implementation ConsultingIsPhoneViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    
 }
 
 - (void)backAction{
@@ -25,8 +26,9 @@
 }
 
 - (NSString *)title{
-    return @"主要诊断";
+    return @"电话咨询";
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
