@@ -7,10 +7,12 @@
 //
 
 #import "ScheduleViewController.h"
+#import "CalendarView.h"
 #import "VRGCalendarView.h"
 #import "NSDate+convenience.h"
 @interface ScheduleViewController ()<VRGCalendarViewDelegate>
 
+@property (nonatomic, strong) CalendarView *calendarView;
 @end
 
 @implementation ScheduleViewController
@@ -18,12 +20,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    VRGCalendarView *calendar = [[VRGCalendarView alloc] init];
-    calendar.delegate=self;
-    [self.view addSubview:calendar];
+//    VRGCalendarView *calendar = [[VRGCalendarView alloc] init];
+//    calendar.delegate=self;
+//    [self.view addSubview:calendar];
+    [self.view addSubview:self.calendarView];
     
     
     
+}
+
+- (CalendarView *)calendarView{
+    if (!_calendarView) {
+        _calendarView = [[CalendarView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 400)];
+        [_calendarView setCalendarBlock:^(NSString *year, NSString *month, NSString *day) {
+            NSLog(@"%@%@%@",year,month,day);
+        }];
+        
+    }
+    return _calendarView;
 }
 
 -(void)calendarView:(VRGCalendarView *)calendarView switchedToMonth:(int)month targetHeight:(float)targetHeight animated:(BOOL)animated {
@@ -35,6 +49,7 @@
 
 -(void)calendarView:(VRGCalendarView *)calendarView dateSelected:(NSDate *)date {
     NSLog(@"Selected date = %@",date);
+    
 }
 
 

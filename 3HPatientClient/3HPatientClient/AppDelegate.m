@@ -10,6 +10,7 @@
 
 #import "BaseTabBarController.h"
 #import "BaseNavigationController.h"
+#import "LoginViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -30,6 +31,36 @@
 
 - (void)setWindowRootViewControllerIsTabBar{
     self.window.rootViewController = [[BaseTabBarController alloc] init];
+}
+
+- (void)setWindowRootViewControllerIsLogin{
+    self.window.rootViewController = [[BaseNavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
+}
+
+/**
+ *  切换根视图
+ *
+ *  @param rootViewController 新根视图
+ */
+- (void)restoreRootViewController:(UIViewController *)rootViewController{
+    typedef void (^Animation)(void);
+    UIWindow* window = self.window;
+    rootViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    Animation animation = ^{ BOOL oldState = [UIView areAnimationsEnabled];
+        [UIView setAnimationsEnabled:NO];
+        window.rootViewController = rootViewController;
+        [UIView setAnimationsEnabled:oldState];
+    };
+    [UIView transitionWithView:window duration:0.5f options:UIViewAnimationOptionTransitionCrossDissolve animations:animation completion:nil];
+}
+
+- (UIWindow *)window
+{
+    if (!_window) {
+        _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _window.backgroundColor = [UIColor whiteColor];
+    }
+    return _window;
 }
 
 - (void)setAppStyle

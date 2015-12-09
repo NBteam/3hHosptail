@@ -255,6 +255,9 @@
 		993669DE1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669DD1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.m */; };
 		993669E11C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669E01C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.m */; };
 		993669E41C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669E31C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.m */; };
+		99D33AA21C17BD0B0067E57C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33A9B1C17BD0B0067E57C /* LoginViewController.m */; };
+		99D33AA31C17BD0B0067E57C /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33A9E1C17BD0B0067E57C /* RegisterViewController.m */; };
+		99D33AA41C17BD0B0067E57C /* LoginInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D33AA11C17BD0B0067E57C /* LoginInputView.m */; };
 		99D544041C155F060081D1D3 /* th健康日程@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99D544001C155F060081D1D3 /* th健康日程@2x.png */; };
 		99D544051C155F060081D1D3 /* th健康管理@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99D544011C155F060081D1D3 /* th健康管理@2x.png */; };
 		99D544061C155F060081D1D3 /* th我要咨询@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99D544021C155F060081D1D3 /* th我要咨询@2x.png */; };
@@ -282,6 +285,7 @@
 		99D544971C1592C40081D1D3 /* UIView+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D544911C1592C40081D1D3 /* UIView+convenience.m */; };
 		99D544981C1592C40081D1D3 /* VRGCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D544931C1592C40081D1D3 /* VRGCalendarView.m */; };
 		99D5449B1C1593AA0081D1D3 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D5449A1C1593AA0081D1D3 /* ScheduleViewController.m */; };
+		99D591391C169F2600F60369 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D591381C169F2600F60369 /* CalendarView.m */; };
 		99DA3EB41C0BE4CF00573D4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA3EB31C0BE4CF00573D4C /* main.m */; };
 		99DA3EB71C0BE4CF00573D4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA3EB61C0BE4CF00573D4C /* AppDelegate.m */; };
 		99DA3EBA1C0BE4CF00573D4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA3EB91C0BE4CF00573D4C /* ViewController.m */; };
@@ -714,6 +718,12 @@
 		993669E01C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailBuyDescTableViewCell.m; sourceTree = "<group>"; };
 		993669E21C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailBuyPayTableViewCell.h; sourceTree = "<group>"; };
 		993669E31C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailBuyPayTableViewCell.m; sourceTree = "<group>"; };
+		99D33A9A1C17BD0B0067E57C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		99D33A9B1C17BD0B0067E57C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		99D33A9D1C17BD0B0067E57C /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		99D33A9E1C17BD0B0067E57C /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		99D33AA01C17BD0B0067E57C /* LoginInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInputView.h; sourceTree = "<group>"; };
+		99D33AA11C17BD0B0067E57C /* LoginInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInputView.m; sourceTree = "<group>"; };
 		99D544001C155F060081D1D3 /* th健康日程@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "th健康日程@2x.png"; sourceTree = "<group>"; };
 		99D544011C155F060081D1D3 /* th健康管理@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "th健康管理@2x.png"; sourceTree = "<group>"; };
 		99D544021C155F060081D1D3 /* th我要咨询@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "th我要咨询@2x.png"; sourceTree = "<group>"; };
@@ -756,6 +766,8 @@
 		99D544931C1592C40081D1D3 /* VRGCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRGCalendarView.m; sourceTree = "<group>"; };
 		99D544991C1593AA0081D1D3 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		99D5449A1C1593AA0081D1D3 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		99D591371C169F2600F60369 /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
+		99D591381C169F2600F60369 /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
 		99DA3EAE1C0BE4CF00573D4C /* 3HPatientClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 3HPatientClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DA3EB21C0BE4CF00573D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99DA3EB31C0BE4CF00573D4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1467,6 +1479,35 @@
 			path = MyOrders;
 			sourceTree = "<group>";
 		};
+		99D33A991C17BD0B0067E57C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				99D33A9A1C17BD0B0067E57C /* LoginViewController.h */,
+				99D33A9B1C17BD0B0067E57C /* LoginViewController.m */,
+				99D33A9C1C17BD0B0067E57C /* Model */,
+				99D33A9D1C17BD0B0067E57C /* RegisterViewController.h */,
+				99D33A9E1C17BD0B0067E57C /* RegisterViewController.m */,
+				99D33A9F1C17BD0B0067E57C /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		99D33A9C1C17BD0B0067E57C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		99D33A9F1C17BD0B0067E57C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				99D33AA01C17BD0B0067E57C /* LoginInputView.h */,
+				99D33AA11C17BD0B0067E57C /* LoginInputView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		99D543FF1C155F060081D1D3 /* fuction */ = {
 			isa = PBXGroup;
 			children = (
@@ -1623,6 +1664,7 @@
 		99DA408B1C0BEB0500573D4C /* 3H */ = {
 			isa = PBXGroup;
 			children = (
+				99D33A991C17BD0B0067E57C /* Login */,
 				99DA408C1C0BEB0500573D4C /* Health */,
 				99DA40921C0BEB0500573D4C /* Home */,
 				99DA40981C0BEB0500573D4C /* Message */,
@@ -1741,6 +1783,8 @@
 				99D544341C156C3A0081D1D3 /* MedicationGuideTableViewCell.m */,
 				99D544361C1574A40081D1D3 /* ReviewGuideTableViewCell.h */,
 				99D544371C1574A40081D1D3 /* ReviewGuideTableViewCell.m */,
+				99D591371C169F2600F60369 /* CalendarView.h */,
+				99D591381C169F2600F60369 /* CalendarView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2569,6 +2613,7 @@
 			files = (
 				99DA41A21C0BEB0500573D4C /* NSObject+BaseFrame.m in Sources */,
 				991A312D1C11E9C800E0313F /* HomeTitleTableViewCell.m in Sources */,
+				99D33AA41C17BD0B0067E57C /* LoginInputView.m in Sources */,
 				99DA41EE1C0BEB0500573D4C /* TPKeyboardAvoidingTableView.m in Sources */,
 				99DA41D31C0BEB0500573D4C /* MJRefreshStateHeader.m in Sources */,
 				99DA41CB1C0BEB0500573D4C /* MJRefreshAutoGifFooter.m in Sources */,
@@ -2597,6 +2642,7 @@
 				99DA41D01C0BEB0500573D4C /* MJRefreshBackStateFooter.m in Sources */,
 				99DA41C51C0BEB0500573D4C /* MBProgressHUD.m in Sources */,
 				9936698B1C13340D00B3E1C7 /* ShopDetailCommentsTableViewCell.m in Sources */,
+				99D33AA21C17BD0B0067E57C /* LoginViewController.m in Sources */,
 				991A33051C12F5D500E0313F /* MineHeadView.m in Sources */,
 				993669E41C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.m in Sources */,
 				99DA41BE1C0BEB0500573D4C /* NSArray+MTLManipulationAdditions.m in Sources */,
@@ -2731,6 +2777,7 @@
 				993669CC1C1404D000B3E1C7 /* MyOrdersTableViewCell.m in Sources */,
 				9936697C1C13331400B3E1C7 /* ShopDetailViewController.m in Sources */,
 				99DA41941C0BEB0500573D4C /* BaseTableViewController.m in Sources */,
+				99D33AA31C17BD0B0067E57C /* RegisterViewController.m in Sources */,
 				99DA41F41C0BEB0500573D4C /* TQRichTextView.m in Sources */,
 				99DA41E41C0BEB0500573D4C /* SDWebImagePrefetcher.m in Sources */,
 				99DA41E11C0BEB0500573D4C /* SDWebImageDownloader.m in Sources */,
@@ -2741,6 +2788,7 @@
 				99DA41AE1C0BEB0500573D4C /* UIViewController+Extension.m in Sources */,
 				991A31271C11E94500E0313F /* HomeHeadTableViewCell.m in Sources */,
 				99DA3EB41C0BE4CF00573D4C /* main.m in Sources */,
+				99D591391C169F2600F60369 /* CalendarView.m in Sources */,
 				991A32EE1C12E5C100E0313F /* ManageViewController.m in Sources */,
 				993669961C13FE4C00B3E1C7 /* WalletTableViewCell.m in Sources */,
 				99DA41B01C0BEB0500573D4C /* FMDatabaseAdditions.m in Sources */,
