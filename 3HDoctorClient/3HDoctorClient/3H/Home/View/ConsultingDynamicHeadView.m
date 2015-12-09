@@ -75,13 +75,9 @@
     self.labTitle.text = @"千山晚报电子版-鞍山新闻平台";
     self.labTime.text = @"时间";
     CGSize size = [self.labTime.text sizeWithFont:[UIFont systemFontOfSize:12] maxSize:CGSizeMake(0, 12)];
-    
     self.labTime.left = DeviceSize.width -size.width -10;
     self.labTime.width = size.width;
-    
     self.imgLogo.left = self.labTime.left -5 -10;
-    
-    
 }
 
 /*

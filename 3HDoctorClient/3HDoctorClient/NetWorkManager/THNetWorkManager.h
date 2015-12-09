@@ -186,4 +186,9 @@ typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSen
  * @param mid   患者ID
  */
 - (void)getPatientDiagnosisListMid:(NSString *)mid andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+/**
+ * 获取医疗资讯轮播
+ */
+- (void)getDoctorTopsCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
 @end

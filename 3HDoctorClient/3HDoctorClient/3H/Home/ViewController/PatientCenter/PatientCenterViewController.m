@@ -13,7 +13,7 @@
 #import "PatientDetailViewController.h"
 #import "PatientListModel.h"
 #import "SearchViewController.h"
-
+#import "AddPatientsViewController.h"
 @interface PatientCenterViewController ()
 @property (nonatomic, assign) NSInteger number;
 //患者添加请求
@@ -46,7 +46,8 @@
 }
 
 - (void)addAction{
-    
+    AddPatientsViewController * addVc = [[AddPatientsViewController alloc]init];
+    [self.navigationController pushViewController:addVc animated:YES];
 }
 
 - (UIButton *)btnPatientAddNum{

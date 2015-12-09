@@ -31,14 +31,16 @@
         _viewBack = [[UIView alloc]initWithFrame:CGRectMake(30/2, 12/2, [UIScreen mainScreen].bounds.size.width-30, 66/2)];
         _viewBack.layer.masksToBounds = YES;
         _viewBack.layer.cornerRadius = 4.0f;
-        _viewBack.backgroundColor = [UIColor colorWithHEX:0x4d4d4d];
+        _viewBack.layer.borderColor = AppDefaultColor.CGColor;
+        _viewBack.layer.borderWidth = 0.5;
+        _viewBack.backgroundColor = [UIColor whiteColor];
     }
     return _viewBack;
 }
 - (UIImageView *)ImageLeft{
     if (!_ImageLeft) {
         _ImageLeft = [[UIImageView alloc]initWithFrame:CGRectMake(9, _viewBack.frame.size.height/2-14/2, 14, 14)];
-        _ImageLeft.image = [UIImage imageNamed:@"search"];
+        _ImageLeft.image = [UIImage imageNamed:@"首页-患者中心-搜索2_搜索"];
     }
     return _ImageLeft;
 }

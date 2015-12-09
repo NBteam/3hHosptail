@@ -1,41 +1,33 @@
 //
-//  LaboratoryTestsViewController.m
+//  AddPatientsViewController.m
 //  3HDoctorClient
 //
-//  Created by 范英强 on 15/12/2.
-//  Copyright (c) 2015年 fyq. All rights reserved.
+//  Created by kanzhun on 15/12/9.
+//  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "LaboratoryTestsViewController.h"
+#import "AddPatientsViewController.h"
 #import "LaboratoryTestsTopView.h"
-//化验
-#import "LaboratoryViewController.h"
-//检查
-#import "CheckViewController.h"
+#import "PhoneViewController.h"
+#import "CodeViewController.h"
 
-@interface LaboratoryTestsViewController ()<UIScrollViewDelegate>
-
+@interface AddPatientsViewController ()
 @property (nonatomic, strong) LaboratoryTestsTopView *topView;
-
 @property (nonatomic, strong) UIScrollView *scrollView;
-
-@property (nonatomic, strong) LaboratoryViewController *laboratoryVc;
-
-@property (nonatomic, strong) CheckViewController *checkVc;
-
+@property (nonatomic, strong) PhoneViewController * PhoneVc;
+@property (nonatomic, strong) CodeViewController * CodeVc;
 @end
 
-@implementation LaboratoryTestsViewController
+@implementation AddPatientsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     [self.view addSubview:self.topView];
     [self.view addSubview:self.scrollView];
     [self customAddChildVc];
+    // Do any additional setup after loading the view.
 }
-
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -43,9 +35,9 @@
 #pragma mark - UI
 
 - (LaboratoryTestsTopView *)topView{
-    WeakSelf(LaboratoryTestsViewController);
+    WeakSelf(AddPatientsViewController);
     if (!_topView) {
-        _topView = [[LaboratoryTestsTopView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 44)array:@[@"化验",@"检查"]];
+        _topView = [[LaboratoryTestsTopView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 44) array:@[@"手机号码",@"扫一扫"]];
         _topView.backgroundColor = [UIColor colorWithHEX:0xffffff];
         __weak LaboratoryTestsTopView *weakTopView = _topView;
         
@@ -73,38 +65,38 @@
     return _scrollView;
 }
 
-- (LaboratoryViewController *)laboratoryVc{
-    if (!_laboratoryVc) {
-        _laboratoryVc = [[LaboratoryViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+- (PhoneViewController *)PhoneVc{
+    if (!_PhoneVc) {
+        _PhoneVc = [[PhoneViewController alloc] init];
     }
-    return _laboratoryVc;
+    return _PhoneVc;
 }
 
-- (CheckViewController *)checkVc{
-    if (!_checkVc) {
-        _checkVc = [[CheckViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+- (CodeViewController *)CodeVc{
+    if (!_CodeVc) {
+        _CodeVc = [[CodeViewController alloc] init];
     }
-    return _checkVc;
+    return _CodeVc;
 }
 
 - (void)customAddChildVc{
-    [self addChildViewController:self.laboratoryVc];
-    [self addChildViewController:self.checkVc];
+    [self addChildViewController:self.PhoneVc];
+    [self addChildViewController:self.CodeVc];
     
     
-    [self.laboratoryVc willMoveToParentViewController:self];
-    self.laboratoryVc.view.height = self.scrollView.contentSize.height;
-    self.laboratoryVc.view.left = DeviceSize.width *0;
-    self.laboratoryVc.view.height = DeviceSize.height -self.frameTopHeight -self.topView.height;
-    [self.scrollView addSubview:self.laboratoryVc.view];
-    [self.laboratoryVc didMoveToParentViewController:self];
+    [self.PhoneVc willMoveToParentViewController:self];
+    self.PhoneVc.view.height = self.scrollView.contentSize.height;
+    self.PhoneVc.view.left = DeviceSize.width *0;
+    self.PhoneVc.view.height = DeviceSize.height -self.frameTopHeight -self.topView.height;
+    [self.scrollView addSubview:self.PhoneVc.view];
+    [self.PhoneVc didMoveToParentViewController:self];
     
-    [self.checkVc willMoveToParentViewController:self];
-    self.checkVc.view.height = self.scrollView.contentSize.height;
-    self.checkVc.view.left = DeviceSize.width *1;
-    self.checkVc.view.height = DeviceSize.height -self.frameTopHeight -self.topView.height;
-    [self.scrollView addSubview:self.checkVc.view];
-    [self.checkVc didMoveToParentViewController:self];
+    [self.CodeVc willMoveToParentViewController:self];
+    self.CodeVc.view.height = self.scrollView.contentSize.height;
+    self.CodeVc.view.left = DeviceSize.width *1;
+    self.CodeVc.view.height = DeviceSize.height -self.frameTopHeight -self.topView.height;
+    [self.scrollView addSubview:self.CodeVc.view];
+    [self.CodeVc didMoveToParentViewController:self];
     
 }
 
@@ -123,9 +115,8 @@
 }
 
 - (NSString *)title{
-    return @"化验及检查";
+    return @"添加患者";
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

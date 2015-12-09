@@ -335,88 +335,141 @@
     return _btnWeekPm7;
 }
 - (void)btnLeftClick{
-    NSDate* date = [[NSDate alloc] init];
-    self.clickIndex++;
-    NSLog(@"%@",self.labTime.text);
-    
-    
-
-//    date = [date dateByAddingTimeInterval:-0*3600*24];
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
     NSDate *lastDay = [NSDate dateWithTimeInterval:-24*60*60 sinceDate: [formatter dateFromString:self.labTime.text]];//前一天
     
+    
+    
+    
+    
+    
+    
+    
+    
     self.labTime.text = [formatter stringFromDate:lastDay];
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *now;
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit |
     NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    now=[NSDate date];
-    NSString * str = @"";
-    comps = [calendar components:unitFlags fromDate:date];
-    if ([comps weekday]==1) {//周日
-        self.labWeek7.text = [NSString stringWithFormat:@"周日\n%@日",[self createTime:[comps weekday] type:0]];
-        self.labWeek6.text = [NSString stringWithFormat:@"周六\n%@日",[self createTime:[comps weekday] type:1]];
-        self.labWeek5.text = [NSString stringWithFormat:@"周五\n%@日",[self createTime:[comps weekday] type:2]];
-        self.labWeek4.text = [NSString stringWithFormat:@"周四\n%@日",[self createTime:[comps weekday] type:3]];
-        self.labWeek3.text = [NSString stringWithFormat:@"周三\n%@日",[self createTime:[comps weekday] type:4]];
-        self.labWeek2.text = [NSString stringWithFormat:@"周二\n%@日",[self createTime:[comps weekday] type:5]];
-        self.labWeek1.text = [NSString stringWithFormat:@"周一\n%@日",[self createTime:[comps weekday] type:6]];
-        
-    }else if ([comps weekday]==2){
-        self.labWeek7.text = [NSString stringWithFormat:@"周日\n%@日",[self createTime:[comps weekday] type:-6]];
-        self.labWeek6.text = [NSString stringWithFormat:@"周六\n%@日",[self createTime:[comps weekday] type:-5]];
-        self.labWeek5.text = [NSString stringWithFormat:@"周五\n%@日",[self createTime:[comps weekday] type:-4]];
-        self.labWeek4.text = [NSString stringWithFormat:@"周四\n%@日",[self createTime:[comps weekday] type:-3]];
-        self.labWeek3.text = [NSString stringWithFormat:@"周三\n%@日",[self createTime:[comps weekday] type:-2]];
-        self.labWeek2.text = [NSString stringWithFormat:@"周二\n%@日",[self createTime:[comps weekday] type:-1]];
-        self.labWeek1.text = [NSString stringWithFormat:@"周一\n%@日",[self createTime:[comps weekday] type:0]];
-    }else if ([comps weekday]==3){
-        self.labWeek7.text = [NSString stringWithFormat:@"周日\n%@日",[self createTime:[comps weekday] type:-5]];
-        self.labWeek6.text = [NSString stringWithFormat:@"周六\n%@日",[self createTime:[comps weekday] type:-4]];
-        self.labWeek5.text = [NSString stringWithFormat:@"周五\n%@日",[self createTime:[comps weekday] type:-3]];
-        self.labWeek4.text = [NSString stringWithFormat:@"周四\n%@日",[self createTime:[comps weekday] type:-2]];
-        self.labWeek3.text = [NSString stringWithFormat:@"周三\n%@日",[self createTime:[comps weekday] type:-1]];
-        self.labWeek2.text = [NSString stringWithFormat:@"周二\n%@日",[self createTime:[comps weekday] type:0]];
-        self.labWeek1.text = [NSString stringWithFormat:@"周一\n%@日",[self createTime:[comps weekday] type:1]];
-    }
+    comps = [calendar components:unitFlags fromDate:lastDay];
+    [self DisplayType:[comps weekday]];
 
     
 }
 - (void)btnRightClick{
-    NSDate* date = [[NSDate alloc] init];
-    self.clickIndex--;
-    NSLog(@"%ld",(long)self.clickIndex);
-    
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
     NSDate *lastDay = [NSDate dateWithTimeInterval:24*60*60 sinceDate: [formatter dateFromString:self.labTime.text]];//后一天
-    
     self.labTime.text = [formatter stringFromDate:lastDay];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit |
+    NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    comps = [calendar components:unitFlags fromDate:lastDay];
+    [self DisplayType:[comps weekday]];
 }
 - (void)getTime{
     NSString* time;
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
     time = [formatter stringFromDate:[NSDate date]];
+    
     self.labTime.text = time;
 
 }
-- (NSString *)createTime:(NSInteger)index type:(NSInteger)type{
-    NSDate* date = [[NSDate alloc] init];
-    date = [date dateByAddingTimeInterval:-type*3600*24];
+- (NSString *)createTimeType:(NSInteger)type{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateFormatter* formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
-    self.labTime.text = [formatter stringFromDate:date];
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDate *now;
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit |
     NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     now=[NSDate date];
-//    NSString * str = @"";
+    NSDate *date = [NSDate dateWithTimeInterval:type*24*60*60 sinceDate: [formatter dateFromString:self.labTime.text]];
     comps = [calendar components:unitFlags fromDate:date];
     return [NSString stringWithFormat:@"%ld",[comps day]];
+}
+- (NSDate *)getCustomDateWithHour:(NSInteger)hour
+{
+    //获取当前时间
+    NSDate *currentDate = [NSDate date];
+    NSCalendar *currentCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *currentComps = [[NSDateComponents alloc] init];
+    
+    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    
+    currentComps = [currentCalendar components:unitFlags fromDate:currentDate];
+    
+    //设置当天的某个点
+    NSDateComponents *resultComps = [[NSDateComponents alloc] init];
+    [resultComps setYear:[currentComps year]];
+    [resultComps setMonth:[currentComps month]];
+    [resultComps setDay:[currentComps day]];
+    [resultComps setHour:hour];
+    
+    NSCalendar *resultCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    return [resultCalendar dateFromComponents:resultComps];
+}
+- (void)DisplayType:(NSInteger)type{
+    if (type==1) {//周日
+        self.labWeek7.text = [NSString stringWithFormat:@"周日\n%@日",[self createTimeType:0]];
+        self.labWeek6.text = [NSString stringWithFormat:@"周六\n%@日",[self createTimeType:-1]];
+        self.labWeek5.text = [NSString stringWithFormat:@"周五\n%@日",[self createTimeType:-2]];
+        self.labWeek4.text = [NSString stringWithFormat:@"周四\n%@日",[self createTimeType:-3]];
+        self.labWeek3.text = [NSString stringWithFormat:@"周三\n%@日",[self createTimeType:-4]];
+        self.labWeek2.text = [NSString stringWithFormat:@"周二\n%@日",[self createTimeType:-5]];
+        self.labWeek1.text = [NSString stringWithFormat:@"周一\n%@日",[self createTimeType:-6]];
+        
+    }else if (type==2){
+        self.labWeek7.text = [NSString stringWithFormat:@"周日\n%@日",[self createTimeType:6]];
+        self.labWeek6.text = [NSString stringWithFormat:@"周六\n%@日",[self createTimeType:5]];
+        self.labWeek5.text = [NSString stringWithFormat:@"周五\n%@日",[self createTimeType:4]];
+        self.labWeek4.text = [NSString stringWithFormat:@"周四\n%@日",[self createTimeType:3]];
+        self.labWeek3.text = [NSString stringWithFormat:@"周三\n%@日",[self createTimeType:2]];
+        self.labWeek2.text = [NSString stringWithFormat:@"周二\n%@日",[self createTimeType:1]];
+        self.labWeek1.text = [NSString stringWithFormat:@"周一\n%@日",[self createTimeType:0]];
+    }else if (type==3){
+        self.labWeek7.text = [NSString stringWithFormat:@"周日\n%@日",[self createTimeType:5]];
+        self.labWeek6.text = [NSString stringWithFormat:@"周六\n%@日",[self createTimeType:4]];
+        self.labWeek5.text = [NSString stringWithFormat:@"周五\n%@日",[self createTimeType:3]];
+        self.labWeek4.text = [NSString stringWithFormat:@"周四\n%@日",[self createTimeType:2]];
+        self.labWeek3.text = [NSString stringWithFormat:@"周三\n%@日",[self createTimeType:1]];
+        self.labWeek2.text = [NSString stringWithFormat:@"周二\n%@日",[self createTimeType:0]];
+        self.labWeek1.text = [NSString stringWithFormat:@"周一\n%@日",[self createTimeType:-1]];
+    }else if (type==4){
+        self.labWeek7.text = [NSString stringWithFormat:@"周日\n%@日",[self createTimeType:4]];
+        self.labWeek6.text = [NSString stringWithFormat:@"周六\n%@日",[self createTimeType:3]];
+        self.labWeek5.text = [NSString stringWithFormat:@"周五\n%@日",[self createTimeType:2]];
+        self.labWeek4.text = [NSString stringWithFormat:@"周四\n%@日",[self createTimeType:1]];
+        self.labWeek3.text = [NSString stringWithFormat:@"周三\n%@日",[self createTimeType:0]];
+        self.labWeek2.text = [NSString stringWithFormat:@"周二\n%@日",[self createTimeType:-1]];
+        self.labWeek1.text = [NSString stringWithFormat:@"周一\n%@日",[self createTimeType:-2]];
+    }else if (type==5){
+        self.labWeek7.text = [NSString stringWithFormat:@"周日\n%@日",[self createTimeType:3]];
+        self.labWeek6.text = [NSString stringWithFormat:@"周六\n%@日",[self createTimeType:2]];
+        self.labWeek5.text = [NSString stringWithFormat:@"周五\n%@日",[self createTimeType:1]];
+        self.labWeek4.text = [NSString stringWithFormat:@"周四\n%@日",[self createTimeType:0]];
+        self.labWeek3.text = [NSString stringWithFormat:@"周三\n%@日",[self createTimeType:-1]];
+        self.labWeek2.text = [NSString stringWithFormat:@"周二\n%@日",[self createTimeType:-2]];
+        self.labWeek1.text = [NSString stringWithFormat:@"周一\n%@日",[self createTimeType:-3]];
+    }else if (type==6){
+        self.labWeek7.text = [NSString stringWithFormat:@"周日\n%@日",[self createTimeType:2]];
+        self.labWeek6.text = [NSString stringWithFormat:@"周六\n%@日",[self createTimeType:1]];
+        self.labWeek5.text = [NSString stringWithFormat:@"周五\n%@日",[self createTimeType:0]];
+        self.labWeek4.text = [NSString stringWithFormat:@"周四\n%@日",[self createTimeType:-1]];
+        self.labWeek3.text = [NSString stringWithFormat:@"周三\n%@日",[self createTimeType:-2]];
+        self.labWeek2.text = [NSString stringWithFormat:@"周二\n%@日",[self createTimeType:-3]];
+        self.labWeek1.text = [NSString stringWithFormat:@"周一\n%@日",[self createTimeType:-4]];
+    }else if (type==7){
+        self.labWeek7.text = [NSString stringWithFormat:@"周日\n%@日",[self createTimeType:1]];
+        self.labWeek6.text = [NSString stringWithFormat:@"周六\n%@日",[self createTimeType:0]];
+        self.labWeek5.text = [NSString stringWithFormat:@"周五\n%@日",[self createTimeType:-1]];
+        self.labWeek4.text = [NSString stringWithFormat:@"周四\n%@日",[self createTimeType:-2]];
+        self.labWeek3.text = [NSString stringWithFormat:@"周三\n%@日",[self createTimeType:-3]];
+        self.labWeek2.text = [NSString stringWithFormat:@"周二\n%@日",[self createTimeType:-4]];
+        self.labWeek1.text = [NSString stringWithFormat:@"周一\n%@日",[self createTimeType:-5]];
+    }
 }
 @end

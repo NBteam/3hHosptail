@@ -522,6 +522,13 @@
 		A94B160E1C15CA8100034029 /* DiagnosisListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A94B160D1C15CA8100034029 /* DiagnosisListViewController.m */; };
 		A94B16111C15CD5900034029 /* DiagnosisListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A94B16101C15CD5900034029 /* DiagnosisListModel.m */; };
 		A94B42EB1C1335C200B6D6AE /* DynamicToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = A94B42EA1C1335C200B6D6AE /* DynamicToolView.m */; };
+		A98AC3B71C17D7B90024177C /* AddPatientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98AC3B61C17D7B90024177C /* AddPatientsViewController.m */; };
+		A98AC3BA1C17D8640024177C /* PhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98AC3B91C17D8640024177C /* PhoneViewController.m */; };
+		A98AC3BD1C17D8830024177C /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98AC3BC1C17D8830024177C /* CodeViewController.m */; };
+		A98AC3C01C17F6120024177C /* AddPatientsPhoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = A98AC3BF1C17F6120024177C /* AddPatientsPhoneView.m */; };
+		A98AC3C61C17FC930024177C /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A98AC3C31C17FC930024177C /* NSTimer+Addition.m */; };
+		A98AC3C71C17FC930024177C /* RecommendScrollViewLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = A98AC3C51C17FC930024177C /* RecommendScrollViewLoop.m */; };
+		A98AC3CA1C17FF850024177C /* MedicalInformationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A98AC3C91C17FF850024177C /* MedicalInformationModel.m */; };
 		A9B5EA8E1C16E74400D4046B /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA8D1C16E74400D4046B /* SearchViewController.m */; };
 		A9B5EA931C16E75C00D4046B /* GuideSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA901C16E75C00D4046B /* GuideSearchView.m */; };
 		A9B5EA941C16E75C00D4046B /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA921C16E75C00D4046B /* SearchCell.m */; };
@@ -1293,6 +1300,20 @@
 		A94B16101C15CD5900034029 /* DiagnosisListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagnosisListModel.m; sourceTree = "<group>"; };
 		A94B42E91C1335C200B6D6AE /* DynamicToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicToolView.h; sourceTree = "<group>"; };
 		A94B42EA1C1335C200B6D6AE /* DynamicToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicToolView.m; sourceTree = "<group>"; };
+		A98AC3B51C17D7B90024177C /* AddPatientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPatientsViewController.h; sourceTree = "<group>"; };
+		A98AC3B61C17D7B90024177C /* AddPatientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPatientsViewController.m; sourceTree = "<group>"; };
+		A98AC3B81C17D8640024177C /* PhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneViewController.h; sourceTree = "<group>"; };
+		A98AC3B91C17D8640024177C /* PhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneViewController.m; sourceTree = "<group>"; };
+		A98AC3BB1C17D8830024177C /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
+		A98AC3BC1C17D8830024177C /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
+		A98AC3BE1C17F6120024177C /* AddPatientsPhoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPatientsPhoneView.h; sourceTree = "<group>"; };
+		A98AC3BF1C17F6120024177C /* AddPatientsPhoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPatientsPhoneView.m; sourceTree = "<group>"; };
+		A98AC3C21C17FC930024177C /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
+		A98AC3C31C17FC930024177C /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
+		A98AC3C41C17FC930024177C /* RecommendScrollViewLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendScrollViewLoop.h; sourceTree = "<group>"; };
+		A98AC3C51C17FC930024177C /* RecommendScrollViewLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendScrollViewLoop.m; sourceTree = "<group>"; };
+		A98AC3C81C17FF850024177C /* MedicalInformationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicalInformationModel.h; sourceTree = "<group>"; };
+		A98AC3C91C17FF850024177C /* MedicalInformationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicalInformationModel.m; sourceTree = "<group>"; };
 		A9B5EA8C1C16E74400D4046B /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		A9B5EA8D1C16E74400D4046B /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		A9B5EA8F1C16E75C00D4046B /* GuideSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideSearchView.h; sourceTree = "<group>"; };
@@ -1440,6 +1461,7 @@
 		99D141EB1C0D5F27002DA3AD /* PatientCenter */ = {
 			isa = PBXGroup;
 			children = (
+				A98AC3B41C17D7550024177C /* AddPatients */,
 				A9B5EA8B1C16E74400D4046B /* Search */,
 				99D6EE871C0EC4AB00CB1829 /* Diagnosis */,
 				99D6EE881C0EC4AB00CB1829 /* LaboratoryTests */,
@@ -2070,6 +2092,9 @@
 				A9B5EA901C16E75C00D4046B /* GuideSearchView.m */,
 				A9B5EA911C16E75C00D4046B /* SearchCell.h */,
 				A9B5EA921C16E75C00D4046B /* SearchCell.m */,
+				A98AC3BE1C17F6120024177C /* AddPatientsPhoneView.h */,
+				A98AC3BF1C17F6120024177C /* AddPatientsPhoneView.m */,
+				A98AC3C11C17FC930024177C /* scrollviewloop */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3041,6 +3066,8 @@
 				A94B160A1C15B7A100034029 /* TestModel.m */,
 				A94B160F1C15CD5900034029 /* DiagnosisListModel.h */,
 				A94B16101C15CD5900034029 /* DiagnosisListModel.m */,
+				A98AC3C81C17FF850024177C /* MedicalInformationModel.h */,
+				A98AC3C91C17FF850024177C /* MedicalInformationModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3052,6 +3079,30 @@
 				A94B15FB1C144C6000034029 /* PatientAssayListModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A98AC3B41C17D7550024177C /* AddPatients */ = {
+			isa = PBXGroup;
+			children = (
+				A98AC3B51C17D7B90024177C /* AddPatientsViewController.h */,
+				A98AC3B61C17D7B90024177C /* AddPatientsViewController.m */,
+				A98AC3B81C17D8640024177C /* PhoneViewController.h */,
+				A98AC3B91C17D8640024177C /* PhoneViewController.m */,
+				A98AC3BB1C17D8830024177C /* CodeViewController.h */,
+				A98AC3BC1C17D8830024177C /* CodeViewController.m */,
+			);
+			path = AddPatients;
+			sourceTree = "<group>";
+		};
+		A98AC3C11C17FC930024177C /* scrollviewloop */ = {
+			isa = PBXGroup;
+			children = (
+				A98AC3C21C17FC930024177C /* NSTimer+Addition.h */,
+				A98AC3C31C17FC930024177C /* NSTimer+Addition.m */,
+				A98AC3C41C17FC930024177C /* RecommendScrollViewLoop.h */,
+				A98AC3C51C17FC930024177C /* RecommendScrollViewLoop.m */,
+			);
+			path = scrollviewloop;
 			sourceTree = "<group>";
 		};
 		A9B5EA8B1C16E74400D4046B /* Search */ = {
@@ -3488,6 +3539,7 @@
 				99D141F61C0D5F27002DA3AD /* PatientAddRequestViewController.m in Sources */,
 				99DA3FFF1C0BE59A00573D4C /* NSURLRequest+Extension.m in Sources */,
 				A94B160E1C15CA8100034029 /* DiagnosisListViewController.m in Sources */,
+				A98AC3C71C17FC930024177C /* RecommendScrollViewLoop.m in Sources */,
 				A94B15FC1C144C6000034029 /* PatientAssayListModel.m in Sources */,
 				A9B5EA8E1C16E74400D4046B /* SearchViewController.m in Sources */,
 				A94B16111C15CD5900034029 /* DiagnosisListModel.m in Sources */,
@@ -3499,6 +3551,7 @@
 				99D141F51C0D5F27002DA3AD /* HomeViewController.m in Sources */,
 				99DA43651C0C2D0C00573D4C /* NameInputViewController.m in Sources */,
 				A93F23191C13153000AA7756 /* HospitalTableViewController.m in Sources */,
+				A98AC3B71C17D7B90024177C /* AddPatientsViewController.m in Sources */,
 				99DA40021C0BE59A00573D4C /* UIButton+Extension.m in Sources */,
 				99D6EE9A1C0ECE5100CB1829 /* ReviewAddChooseTableViewCell.m in Sources */,
 				99DA40421C0BE59A00573D4C /* SDWebImageDownloaderOperation.m in Sources */,
@@ -3534,6 +3587,7 @@
 				A93F23161C13120000AA7756 /* DepartmentModel.m in Sources */,
 				99DA40441C0BE59A00573D4C /* SDWebImagePrefetcher.m in Sources */,
 				99D6EEBB1C0EEAD600CB1829 /* CheckViewController.m in Sources */,
+				A98AC3CA1C17FF850024177C /* MedicalInformationModel.m in Sources */,
 				99DA435C1C0BF7E500573D4C /* THNetWorkManager.m in Sources */,
 				99DA3FF31C0BE59A00573D4C /* AFNetworkReachabilityManager.m in Sources */,
 				99DA40001C0BE59A00573D4C /* SGSaveFile.m in Sources */,
@@ -3592,6 +3646,7 @@
 				99D142061C0D6970002DA3AD /* PhoneDetailViewController.m in Sources */,
 				99DA3FFC1C0BE59A00573D4C /* NSObject+BaseFrame.m in Sources */,
 				99DA40311C0BE59A00573D4C /* UIScrollView+MJRefresh.m in Sources */,
+				A98AC3BA1C17D8640024177C /* PhoneViewController.m in Sources */,
 				99D6EEA91C0EDEC200CB1829 /* MedicationAddViewController.m in Sources */,
 				99D142481C0DA19C002DA3AD /* ConsultingCompleteDetailViewController.m in Sources */,
 				99DA40471C0BE59A00573D4C /* UIImage+MultiFormat.m in Sources */,
@@ -3627,6 +3682,7 @@
 				99DA40551C0BE59A00573D4C /* UIBarButtonItemExtension.m in Sources */,
 				99DA45FB1C0C860600573D4C /* MineHeadTableViewCell.m in Sources */,
 				99DA40291C0BE59A00573D4C /* MJRefreshBackNormalFooter.m in Sources */,
+				A98AC3C01C17F6120024177C /* AddPatientsPhoneView.m in Sources */,
 				99DA3FFD1C0BE59A00573D4C /* NSString+Extension.m in Sources */,
 				99DA40541C0BE59A00573D4C /* TQRichTextView.m in Sources */,
 				99D142181C0D7E87002DA3AD /* BookSuccessHeadTableViewCell.m in Sources */,
@@ -3674,6 +3730,8 @@
 				99D141F31C0D5F27002DA3AD /* DynamicDetailViewController.m in Sources */,
 				99D142001C0D60C3002DA3AD /* BookManagementTableViewCell.m in Sources */,
 				99DA404D1C0BE59A00573D4C /* TPKeyboardAvoidingScrollView.m in Sources */,
+				A98AC3C61C17FC930024177C /* NSTimer+Addition.m in Sources */,
+				A98AC3BD1C17D8830024177C /* CodeViewController.m in Sources */,
 				99D1421E1C0D8274002DA3AD /* BookRefuseReasonViewController.m in Sources */,
 				99DA40451C0BE59A00573D4C /* UIButton+WebCache.m in Sources */,
 				99DA404A1C0BE59A00573D4C /* UIImageView+WebCache.m in Sources */,

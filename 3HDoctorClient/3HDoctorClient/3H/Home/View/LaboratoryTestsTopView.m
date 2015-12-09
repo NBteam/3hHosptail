@@ -10,17 +10,18 @@
 
 @interface LaboratoryTestsTopView()<UIActionSheetDelegate>
 
-@property (nonatomic, strong) NSArray *titleArray;
+
 
 @end
 
 @implementation LaboratoryTestsTopView
 
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame array:(NSArray *)array
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.titleArray = array;
         [self customView];
     }
     return self;
@@ -48,12 +49,12 @@
     return _labColorLine;
 }
 
-- (NSArray *)titleArray{
-    if (!_titleArray) {
-        _titleArray = @[@"化验",@"检查"];
-    }
-    return _titleArray;
-}
+//- (NSArray *)titleArray{
+//    if (!_titleArray) {
+//        _titleArray = @[@"化验",@"检查"];
+//    }
+//    return _titleArray;
+//}
 
 - (void)customButtons{
     for (int i = 0; i < self.titleArray.count; i++) {

@@ -506,4 +506,11 @@ static THNetWorkManager *thNetWorkManager = nil;
     NSDictionary *paramDic = @{@"a":@"getPatientDiagnosisList",Token:GetToken,@"mid":mid};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+/**
+ * 获取医疗资讯轮播
+ */
+- (void)getDoctorTopsCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getDoctorTops"};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end
