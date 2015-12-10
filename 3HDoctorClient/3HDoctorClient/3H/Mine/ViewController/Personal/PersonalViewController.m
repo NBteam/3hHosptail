@@ -15,18 +15,22 @@
 #import "HospitalTableViewController.h"
 #import "DepartmentViewController.h"
 #import "SexViewController.h"
+#import "CityListFirstLevelViewController.h"
 
 @interface PersonalViewController ()
 @property (nonatomic, copy) NSString * sexStr;
+@property (nonatomic, copy) NSString * idS;
+@property (nonatomic, copy) NSString * parent_id;
+
 @end
 
 @implementation PersonalViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getNetWorkInfo];
+//    [self getNetWorkInfo];
     // Do any additional setup after loading the view.
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"姓名",@"detail":@"未填写"},@{@"title":@"性别",@"detail":@"未填写"},@{@"title":@"医院",@"detail":@"未填写"},@{@"title":@"科室",@"detail":@"未填写"},@{@"title":@"职称",@"detail":@"未填写"},@{@"title":@"个人签名",@"detail":@"未填写"}]];
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"姓名",@"detail":@"未填写"},@{@"title":@"性别",@"detail":@"未填写"},@{@"title":@"城市",@"detail":@"未填写"},@{@"title":@"医院",@"detail":@"未填写"},@{@"title":@"科室",@"detail":@"未填写"},@{@"title":@"职称",@"detail":@"未填写"},@{@"title":@"个人签名",@"detail":@"未填写"}]];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"保存"];
 }
@@ -152,31 +156,41 @@
             
             [self.navigationController pushViewController:cityListFirstLevelVc animated:YES];
             
-        }else if (indexPath.row == 2){//
+        }else if (indexPath.row == 2){//城市
+            CityListFirstLevelViewController * CityListFirstLevelVc = [[CityListFirstLevelViewController alloc]init];
+            [CityListFirstLevelVc setCityListBlock:^(NSString *name, NSString *ids, NSString *parent_id) {
+                NSLog(@"%@-->%@-->%@",name,ids,parent_id);
+                weakSelf.idS = ids;
+                weakSelf.parent_id = parent_id;
+                [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:name];
+                [weakSelf.tableView reloadData];
+            }];
+            [self.navigationController pushViewController:CityListFirstLevelVc animated:YES];
+        }else if (indexPath.row == 3){//
             HospitalTableViewController*hospitalInputVc = [[HospitalTableViewController alloc] init];
 //            qwe
             [hospitalInputVc setHospitalBlock:^(NSString *str,NSString * id) {
-                [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"科室",@"detail":str}];
+                [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"医院",@"detail":str}];
                 [weakSelf.tableView reloadData];
             }];
             
             [self.navigationController pushViewController:hospitalInputVc animated:YES];
             
-        }else if (indexPath.row == 3){//
+        }else if (indexPath.row == 4){//
             DepartmentViewController * DepartmentVc = [[DepartmentViewController alloc]init];
             [DepartmentVc setChoiceBlock:^(NSString *id, NSString *name, NSString *pid) {
                 [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"科室",@"detail":name}];
                 [weakSelf.tableView reloadData];
             }];
             [self.navigationController pushViewController:DepartmentVc animated:YES];
-        }else if (indexPath.row == 4){//
+        }else if (indexPath.row == 5){//
             PositionViewController * pvc = [[PositionViewController alloc]init];
             [pvc setChoiceBlock:^(NSString *positionStr) {
                 [weakSelf.dataArray replaceObjectAtIndex:4 withObject:@{@"title":@"职称",@"detail":positionStr}];
                 [weakSelf.tableView reloadData];
             }];
             [self.navigationController pushViewController:pvc animated:YES];
-        }else if (indexPath.row == 5){//
+        }else if (indexPath.row == 6){//
             
         }
     }
@@ -200,14 +214,17 @@
                 sex = @"女";
             }
             [weakSelf.dataArray replaceObjectAtIndex:1 withObject:@{@"title":@"性别",@"detail":sex}];
-            if (![response.dataDic[@"hospital"] isEqualToString:@""]) {
+            if (![response.dataDic[@"hospital"] isEqualToString:@""]) {//地区待修改
                 [weakSelf.dataArray replaceObjectAtIndex:2 withObject:@{@"title":@"医院",@"detail":response.dataDic[@"hospital"]}];
             }
+            if (![response.dataDic[@"hospital"] isEqualToString:@""]) {
+                [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"医院",@"detail":response.dataDic[@"hospital"]}];
+            }
             if (![response.dataDic[@"department"] isEqualToString:@""]) {
-                [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"科室",@"detail":response.dataDic[@"department"]}];
+                [weakSelf.dataArray replaceObjectAtIndex:4 withObject:@{@"title":@"科室",@"detail":response.dataDic[@"department"]}];
             }
             if (![response.dataDic[@"job_title"] isEqualToString:@""]) {
-                [weakSelf.dataArray replaceObjectAtIndex:4 withObject:@{@"title":@"职称",@"detail":response.dataDic[@"job_title"]}];
+                [weakSelf.dataArray replaceObjectAtIndex:5 withObject:@{@"title":@"职称",@"detail":response.dataDic[@"job_title"]}];
             }
             [weakSelf.tableView reloadData];
         }else{

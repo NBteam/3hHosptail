@@ -139,7 +139,7 @@
         [self.navigationController pushViewController:pvc animated:YES];
     }else if (indexPath.row == 3){//医院名称
         if (self.idS==nil||[self.idS isEqualToString:@""]) {
-            [self showHudAuto:@"请先选择地区" andDuration:@"2"];
+            [self showHudAuto:@"请先选择城市" andDuration:@"2"];
         }else{
             HospitalTableViewController*hospitalInputVc = [[HospitalTableViewController alloc] init];
             hospitalInputVc.ids = self.idS;

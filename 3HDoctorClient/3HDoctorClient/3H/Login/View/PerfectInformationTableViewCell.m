@@ -13,7 +13,7 @@
 - (void)customView{
     [self.contentView addSubview:self.backView];
     [self.contentView addSubview:self.labTitle];
-    [self.contentView addSubview:self.imgArrow];
+    [self.backView addSubview:self.imgArrow];
 }
 
 - (UIView *)backView{
@@ -38,7 +38,7 @@
 }
 - (UIImageView *)imgArrow{
     if (!_imgArrow) {
-        _imgArrow = [[UIImageView alloc] initWithFrame:CGRectMake(DeviceSize.width - 19/2 - 20, (60 - 34/2)/2, 19/2, 34/2)];
+        _imgArrow = [[UIImageView alloc] initWithFrame:CGRectMake(self.backView.width - 19/2 - 10, (self.backView.height - 34/2)/2, 19/2, 34/2)];
         _imgArrow.image = [UIImage imageNamed:@"3H-首页_键"];
         
     }

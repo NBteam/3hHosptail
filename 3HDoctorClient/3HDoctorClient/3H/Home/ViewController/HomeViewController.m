@@ -149,10 +149,10 @@
         if (response.responseCode == 1) {
             
         }else{
-            [weakSelf showHudAuto:response.message andDuration:@"1"];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
         ;
     } ];
 }
