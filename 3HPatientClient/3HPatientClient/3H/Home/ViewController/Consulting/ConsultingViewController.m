@@ -56,7 +56,7 @@
                 ConsultingIsOnlineViewController *consultingIsOnlineVc = [[ConsultingIsOnlineViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 [weakSelf.navigationController pushViewController:consultingIsOnlineVc animated:YES];
             }else{
-                ConsultingIsPhoneViewController *consultingIsPhoneVc = [[ConsultingIsPhoneViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+                ConsultingIsPhoneViewController *consultingIsPhoneVc = [[ConsultingIsPhoneViewController alloc] init];
                 [weakSelf.navigationController pushViewController:consultingIsPhoneVc animated:YES];
             }
         }];

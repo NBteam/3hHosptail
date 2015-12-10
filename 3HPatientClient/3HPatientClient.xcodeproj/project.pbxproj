@@ -421,6 +421,7 @@
 		99DA41F41C0BEB0500573D4C /* TQRichTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA41881C0BEB0500573D4C /* TQRichTextView.m */; };
 		99DA41F51C0BEB0500573D4C /* UIBarButtonItemExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA418B1C0BEB0500573D4C /* UIBarButtonItemExtension.m */; };
 		99DA41F71C0BEB9E00573D4C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DA41F61C0BEB9E00573D4C /* libsqlite3.0.dylib */; };
+		99DBE3371C1922E700965290 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DBE3361C1922E700965290 /* CustomTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1061,6 +1062,8 @@
 		99DA418A1C0BEB0500573D4C /* UIBarButtonItemExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBarButtonItemExtension.h; sourceTree = "<group>"; };
 		99DA418B1C0BEB0500573D4C /* UIBarButtonItemExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBarButtonItemExtension.m; sourceTree = "<group>"; };
 		99DA41F61C0BEB9E00573D4C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		99DBE3351C1922E700965290 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
+		99DBE3361C1922E700965290 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2044,6 +2047,7 @@
 		99DA40B21C0BEB0500573D4C /* PublicFramework */ = {
 			isa = PBXGroup;
 			children = (
+				99DBE3341C1922E700965290 /* CustomTextView */,
 				99D544891C1592C40081D1D3 /* VRGCalendarView */,
 				99DA40B31C0BEB0500573D4C /* AFNetworking */,
 				99DA40C71C0BEB0500573D4C /* ExtensionSDK */,
@@ -2405,6 +2409,15 @@
 				99DA418B1C0BEB0500573D4C /* UIBarButtonItemExtension.m */,
 			);
 			path = UIBarButtonItemExtension;
+			sourceTree = "<group>";
+		};
+		99DBE3341C1922E700965290 /* CustomTextView */ = {
+			isa = PBXGroup;
+			children = (
+				99DBE3351C1922E700965290 /* CustomTextView.h */,
+				99DBE3361C1922E700965290 /* CustomTextView.m */,
+			);
+			path = CustomTextView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2896,6 +2909,7 @@
 				99D544181C1562860081D1D3 /* MedicationGuideViewController.m in Sources */,
 				99DA41C01C0BEB0500573D4C /* NSError+MTLModelException.m in Sources */,
 				9929BCA61C1810C200F747CB /* ConsultingHeadView.m in Sources */,
+				99DBE3371C1922E700965290 /* CustomTextView.m in Sources */,
 				993669CC1C1404D000B3E1C7 /* MyOrdersTableViewCell.m in Sources */,
 				9936697C1C13331400B3E1C7 /* ShopDetailViewController.m in Sources */,
 				99DA41941C0BEB0500573D4C /* BaseTableViewController.m in Sources */,

@@ -7,7 +7,15 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "CustomTextView.h"
 @interface ConsultingIsPhoneDescTableViewCell : BaseTableViewCell
+
+@property (nonatomic, strong) UIImageView *imgLogo;
+
+@property (nonatomic, strong) UILabel *labTitle;
+
+@property (nonatomic, strong) UILabel *labLine;
+
+@property (nonatomic, strong) CustomTextView *textView;
 
 @end

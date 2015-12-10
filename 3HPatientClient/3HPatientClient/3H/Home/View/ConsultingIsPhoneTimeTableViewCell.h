@@ -14,7 +14,9 @@
 
 @property (nonatomic, strong) UILabel *labTitle;
 
-@property (nonatomic, strong) UILabel *labLine;
+@property (nonatomic, strong) UILabel *labTime;
+
+@property (nonatomic, strong) UIView *viewBack;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
