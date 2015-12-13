@@ -35,7 +35,7 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSInteger )model{
+- (void)confingWithModel:(NSInteger )model Title:(NSString *)title{
     NSString *str;
     if (model == 0) {
         str = @"是否有过敏史:";
@@ -45,7 +45,7 @@
     self.labTitle.text = str;
     CGSize size = [str sizeWithFont:[UIFont systemFontOfSize:15] maxSize:CGSizeMake(0, 15)];
     self.labTitle.width = size.width;
-    self.labDetail.text = @"str";
+    self.labDetail.text = title;
     self.labDetail.left = self.labTitle.right +5;
     self.labDetail.width = DeviceSize.width/2;
     

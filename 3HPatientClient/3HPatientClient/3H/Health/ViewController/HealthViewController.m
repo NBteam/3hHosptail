@@ -73,16 +73,19 @@
         manageVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:manageVc animated:YES];
     }else if (indexPath.section == 1){
-//        ConsultingViewController *consultingVc= [[ConsultingViewController alloc] init];
-//        consultingVc.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:consultingVc animated:YES];
-        ConsultingDoctorListViewController *consultingVc= [[ConsultingDoctorListViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-        consultingVc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:consultingVc animated:YES];
-    }else if(indexPath.section == 2){
         ScheduleViewController *scheduleVc = [[ScheduleViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         scheduleVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:scheduleVc animated:YES];
+//        ConsultingViewController *consultingVc= [[ConsultingViewController alloc] init];
+//        consultingVc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:consultingVc animated:YES];
+        
+    }else if(indexPath.section == 2){
+        
+        ConsultingDoctorListViewController *consultingVc= [[ConsultingDoctorListViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        consultingVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:consultingVc animated:YES];
+        
     }else{
         AppointViewController *appointVc = [[AppointViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         appointVc.hidesBottomBarWhenPushed = YES;

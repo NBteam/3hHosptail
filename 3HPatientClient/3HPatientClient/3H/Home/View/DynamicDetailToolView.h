@@ -10,7 +10,9 @@
 
 @interface DynamicDetailToolView : UIView
 
-//@property (nonatomic, strong) UILabel *labLine1;
-//
-//@property (nonatomic, strong) UIImageView *img
+@property (nonatomic, strong) UILabel *labLine;
+
+@property (nonatomic, strong) UILabel *labLine1;
+
+@property (nonatomic,copy) void(^toolBlock)(NSInteger index);
 @end

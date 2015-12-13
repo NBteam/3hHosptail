@@ -17,5 +17,5 @@
 @property (nonatomic, strong) UILabel *labDetail;
 
 //赋值
-- (CGFloat)confingWithModel:(NSInteger )model;
+- (CGFloat)confingWithModel:(NSString * )model;
 @end

@@ -21,11 +21,39 @@
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
 
-    
+    [self getBriefCaseData];
 }
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)getBriefCaseData{
+    [self.dataArray removeAllObjects];
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(BriefCaseViewController);
+    [[THNetWorkManager shareNetWork] getMySickHistoryCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+//            for (NSDictionary * dict in response.dataDic[@"list"]) {
+//                InformationModel * model = [response thParseDataFromDic:dict andModel:[InformationModel class]];
+//                [weakSelf.dataArray addObject:model];
+//            }
+            
+            [self.dataArray addObject:response.dataDic[@"guomin"]];
+            [self.dataArray addObject:response.dataDic[@"blood_type"]];
+            [self.dataArray addObject:response.dataDic[@"desc"]];
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+        
 }
 
 #pragma mark -UI
@@ -39,7 +67,7 @@
             cell = [[BriefCaseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.cellHeight = [cell confingWithModel:indexPath.section];
+        self.cellHeight = [cell confingWithModel:self.dataArray[indexPath.section]];
         return cell;
     }else{
         static NSString *identifier = @"BriefCaseHeadTableViewCell";
@@ -48,7 +76,7 @@
             cell = [[BriefCaseHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:indexPath.section];
+        [cell confingWithModel:indexPath.section Title:self.dataArray[indexPath.section]];
         return cell;
     }
 }
@@ -66,7 +94,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

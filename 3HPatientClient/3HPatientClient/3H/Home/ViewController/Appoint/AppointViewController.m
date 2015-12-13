@@ -8,6 +8,12 @@
 
 #import "AppointViewController.h"
 #import "AppointTableViewCell.h"
+//预约挂号
+#import "AppointDoctorsListViewController.h"
+//预约住院
+#import "AppointHosptailViewController.h"
+//预约专家
+#import "AppointExpertViewController.h"
 @interface AppointViewController ()
 
 @end
@@ -56,6 +62,19 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return  [[UIView alloc] init];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        AppointDoctorsListViewController *appointDoctorsListVc = [[AppointDoctorsListViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:appointDoctorsListVc animated:YES];
+    }else if (indexPath.section == 1){
+        AppointHosptailViewController *appointHosptailVc = [[AppointHosptailViewController alloc] init];
+        [self.navigationController pushViewController:appointHosptailVc animated:YES];
+    }else{
+        AppointExpertViewController *appointExpertVc = [[AppointExpertViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:appointExpertVc animated:YES];
+    }
 }
 
 - (NSString *)title{

@@ -28,11 +28,12 @@
 #import "UIView+Tag.h"
 #import "MKAnnotationView+WebCache.h"
 #import "MJRefresh.h"
+#import "MJRefresh.h"
 #import "NSString+Size.h"
 #import "SGSaveFile.h"
 
-
-//#import "KYNetWorkManager.h"
+#import "THNetWorkManager.h"
+#define thServerHost @"http://123.57.231.12:85/api.php"
 
 #define WaitPrompt @"请稍后..."
 #define InternetFailerPrompt @"网络有波动，请重新尝试~"
@@ -45,6 +46,19 @@
 #define WeakSelf(VC) __weak VC *weakSelf = self
 //是否登录过
 #define isLogin @"isLogin"
+
+//  app version
+#define APPVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+//  设备id
+#define DeviceId [[[UIDevice currentDevice] identifierForVendor] UUIDString]
+//  弱引用宏
+#define WeakSelf(VC) __weak VC *weakSelf = self
+//  UUID获取
+#define UUID [[[UIDevice currentDevice] identifierForVendor] UUIDString]
+#define DeviceModel [[UIDevice currentDevice] model]
+//  存储token的名字
+#define Token   @"token"
+#define GetToken  [SGSaveFile getIdFromObjectWithKey:Token]
 //app主打颜色
 #define AppDefaultColor [UIColor colorWithHEX:0xff813c]
 

@@ -8,9 +8,12 @@
 
 #import "DynamicDetailViewController.h"
 #import "DynamicDetailTableViewCell.h"
+#import "DynamicDetailToolView.h"
 @interface DynamicDetailViewController ()
 //cell高度
 @property (nonatomic, assign) CGFloat cellHeight;
+
+@property (nonatomic ,strong) DynamicDetailToolView *toolView;
 @end
 
 @implementation DynamicDetailViewController
@@ -19,12 +22,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.tableView.height = self.tableView.height - 45;
+    [self.view addSubview:self.toolView];
     self.view.backgroundColor = [UIColor colorWithHEX:0xffffff];
     
 }
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (DynamicDetailToolView *)toolView{
+    WeakSelf(DynamicDetailViewController);
+    if (!_toolView) {
+        _toolView = [[DynamicDetailToolView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, DeviceSize.width, 45)];
+        [_toolView setToolBlock:^(NSInteger index) {
+            
+        }];
+    }
+    return _toolView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

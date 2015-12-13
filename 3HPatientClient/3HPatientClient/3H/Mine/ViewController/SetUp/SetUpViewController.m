@@ -9,6 +9,12 @@
 #import "SetUpViewController.h"
 #import "SetUpTableViewCell.h"
 #import "AppDelegate.h"
+//意见反馈
+#import "FeedbackViewController.h"
+//评价
+#import "EvaluationViewController.h"
+//关于
+#import "AboutViewController.h"
 @interface SetUpViewController ()
 //注销
 @property (nonatomic, strong) UIButton *btnCancel;
@@ -47,12 +53,12 @@
 }
 
 - (void)btnCancelAction{
-  //  [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsLogin];
+    [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsLogin];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"WalletHeadTableViewCell";
+    static NSString *identifier = @"SetUpTableViewCell";
     SetUpTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
         cell = [[SetUpTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -63,7 +69,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -80,6 +86,27 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return  [[UIView alloc] init];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {//清理缓存
+        
+    }else if (indexPath.row == 1){//意见
+        
+        FeedbackViewController *feedbackVc = [[FeedbackViewController alloc] init];
+        [self.navigationController pushViewController:feedbackVc animated:YES];
+        
+    }else if (indexPath.row == 2){//评价
+        
+        EvaluationViewController *evaluationVc = [[EvaluationViewController alloc] init];
+        [self.navigationController pushViewController:evaluationVc animated:YES];
+        
+    }else{//关于
+        
+        AboutViewController *aboutVc = [[AboutViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:aboutVc animated:YES];
+        
+    }
 }
 
 - (NSString *)title{

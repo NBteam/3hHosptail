@@ -74,6 +74,8 @@
         _textUserName = [[LoginInputView alloc]initWithFrame:CGRectMake(0, 480/2, DeviceSize.width, 96/2) title:@"" placeholder:@"请输入手机号"];
         _textUserName.textField.delegate = self;
         _textUserName.textField.keyboardType=UIKeyboardTypePhonePad;
+        _textUserName.textField.textColor = AppDefaultColor;
+        _textUserName.textField.text = @"18911412662";
     }
     return _textUserName;
 }
@@ -82,6 +84,8 @@
         _textUserPwd = [[LoginInputView alloc]initWithFrame:CGRectMake(0, self.textUserName.bottom+15, DeviceSize.width, 96/2) title:@"" placeholder:@"请输入密码"];
         _textUserPwd.textField.delegate = self;
         _textUserPwd.textField.keyboardType=UIKeyboardTypePhonePad;
+        _textUserPwd.textField.textColor = AppDefaultColor;
+        _textUserPwd.textField.text = @"123456";
     }
     return _textUserPwd;
 }
@@ -89,11 +93,12 @@
     if (!_btnRemember) {
         _btnRemember = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnRemember.frame = CGRectMake(15, self.textUserPwd.bottom+10, 100, 20);
-        [_btnRemember setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        [_btnRemember setImage:[UIImage imageNamed:@"3H-注册_选框"] forState:UIControlStateNormal];
+        [_btnRemember setImage:[UIImage imageNamed:@"3H-注册_全选"] forState:UIControlStateSelected];
         _btnRemember.titleLabel.font = [UIFont systemFontOfSize:13];
-        [_btnRemember setTitle:@"记住我" forState:UIControlStateNormal];
+        [_btnRemember setTitle:@" 记住我" forState:UIControlStateNormal];
         [_btnRemember addTarget:self action:@selector(btnRememberClick:) forControlEvents:UIControlEventTouchUpInside];
-        _btnForget.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        _btnRemember.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     }
     return _btnRemember;
 }
@@ -194,10 +199,40 @@
     return _btn3;
 }
 - (void)btnRememberClick:(UIButton *)button{
-
+    if (button.selected) {
+        button.selected = NO;
+    }else{
+        button.selected = YES;
+    }
 }
 - (void)btnLoginClick:(UIButton *)button{
-    [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+    
+    if ([self.textUserName.textField.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入手机号" andDuration:@"2"];
+    }else if ([self.textUserPwd.textField.text isEqualToString:@""]){
+        [self showHudAuto:@"请输入密码" andDuration:@"2"];
+    }else{
+        
+        [self showHudAuto:WaitPrompt];
+        WeakSelf(LoginViewController);
+        [[THNetWorkManager shareNetWork] patientLoginMobile:self.textUserName.textField.text Password:self.textUserPwd.textField.text CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+            [weakSelf removeMBProgressHudInManaual];
+            NSLog(@"查看%@",response.dataDic);
+            if (response.responseCode == 1) {
+                [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
+                if ([response.dataDic[@"is_fill"] doubleValue] == 0) {//未填写
+                    
+                }else{
+                    [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+                }
+            }else{
+                [weakSelf showHudAuto:response.message andDuration:@"1"];
+            }
+        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+        } ];
+    }
+
 }
 - (void)btn1Click:(UIButton *)button{
     

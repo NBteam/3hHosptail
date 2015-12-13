@@ -46,8 +46,8 @@
 }
 
 //赋值
-- (CGFloat)confingWithModel:(NSInteger )model{
-    self.labDetail.text = @"是否有过敏史是否有过敏史是否有过敏史是否有过敏史是否有过敏史是否有过敏史是否有过敏史是否有过敏史是否有过敏史是否有过敏史是否有过敏史是否有过敏史是否有过敏史";
+- (CGFloat)confingWithModel:(NSString * )model{
+    self.labDetail.text = model;
     [self.labDetail sizeToFit];
     return self.labDetail.bottom +10;
     
