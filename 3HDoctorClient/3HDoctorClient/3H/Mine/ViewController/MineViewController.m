@@ -25,13 +25,16 @@
 @end
 
 @implementation MineViewController
-
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"reloadHomeInfo" object:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dict = [NSDictionary dictionary];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"个人中心";
     [self getNetWorkInfo];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getNetWorkInfo) name:@"reloadHomeInfo" object:nil];
     self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"3H-我的_我的钱包-未点击",@"title":@"我的钱包"},@{@"img":@"3H-我的_预约设置-未点击",@"title":@"预约设置"},@{@"img":@"3H-我的_邀请同行-未点击",@"title":@"邀请同行"},@{@"img":@"3H-我的_设置-未点击",@"title":@"设置"}]];
 }
 
@@ -123,6 +126,7 @@
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             weakSelf.dict = response.dataDic;
+            [weakSelf.tableView reloadData];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"1"];
         }

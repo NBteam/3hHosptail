@@ -24,6 +24,7 @@
 @property (nonatomic, copy) NSString * parent_id;
 @property (nonatomic, copy) NSString * area_ids;
 @property (nonatomic, copy) NSString * hospital_id;
+@property (nonatomic, strong) NSMutableDictionary * dict;
 @end
 
 @implementation PersonalViewController
@@ -31,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getNetWorkInfo];
+    self.dict = [NSMutableDictionary dictionary];
     // Do any additional setup after loading the view.
     self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"姓名",@"detail":@"未填写"},@{@"title":@"性别",@"detail":@"未填写"},@{@"title":@"城市",@"detail":@"未填写"},@{@"title":@"医院",@"detail":@"未填写"},@{@"title":@"科室",@"detail":@"未填写"},@{@"title":@"职称",@"detail":@"未填写"},@{@"title":@"个人签名",@"detail":@"未填写"}]];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
@@ -78,7 +80,7 @@
             cell = [[PersonalHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dataArray[indexPath.row]];
+        [cell confingWithModel:self.dict];
         return cell;
     }else{
         static NSString *identifier = @"PersonalTableViewCell";
@@ -224,7 +226,8 @@
             if (![response.dataDic[@"truename"] isEqualToString:@""]) {
                 [weakSelf.dataArray replaceObjectAtIndex:0 withObject:@{@"title":@"姓名",@"detail":response.dataDic[@"truename"]}];
             }
-            weakSelf.area_ids = response.dataDic[@"area_ids"];
+            weakSelf.area_ids = response.dataDic[@"area_ids"];\
+            weakSelf.dict = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
             NSString * sex = @"";
             weakSelf.sexStr = response.dataDic[@"sex"];
             if ([response.dataDic[@"sex"] isEqualToString:@"0"]) {
@@ -346,10 +349,11 @@
     if (filePath) {
         [[THNetWorkManager shareNetWork]getUploadFaceFile:imageData faceString:filePath andCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             [weakSelf removeMBProgressHudInManaual];
-            [weakSelf.dataArray removeAllObjects];
             NSDictionary *content = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
             if ([content[@"status"] doubleValue] == 1) {
-                [weakSelf showHudAuto:content[@"info"]];
+                [weakSelf.dict setObject:image forKey:@"pic"];
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"reloadHomeInfo" object:nil];
+                [weakSelf.tableView reloadData];
             }else{
                 [weakSelf showHudAuto:content[@"info"]];
             }

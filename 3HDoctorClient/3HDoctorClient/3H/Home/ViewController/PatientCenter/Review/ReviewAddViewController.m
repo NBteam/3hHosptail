@@ -34,8 +34,6 @@
     [self.viewBack addSubview:self.labLine];
     self.tableView.top = self.viewBack.bottom;
     self.tableView.height = self.tableView.height - 44 -65;
-    self.isOpenHeaderRefresh = YES;
-    self.isOpenFooterRefresh = YES;
     [self.view addSubview:self.btn];
     
 }

@@ -87,7 +87,7 @@
    // self.labTitle.text = @"";
     self.labName.text = dict[@"truename"];
     self.labDetail.text = [NSString stringWithFormat:@"%@  %@",dict[@"hospital"],dict[@"job_title"]];
-    [self.imgMyPicture sd_setImageWithURL:[NSURL URLWithString:dict[@"check_pic1"]] placeholderImage:[UIImage imageNamed:@""]];
+    [self.imgMyPicture sd_setImageWithURL:[NSURL URLWithString:dict[@"pic"]] placeholderImage:[UIImage imageNamed:@""]];
 }
 
 /*

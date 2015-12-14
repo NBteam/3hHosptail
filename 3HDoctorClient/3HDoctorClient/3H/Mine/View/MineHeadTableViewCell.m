@@ -77,7 +77,8 @@
 
 - (void)confingWithModel:(NSDictionary *)dic{
     self.labDoctorName.text = dic[@"truename"];
-    self.labDoctorInfo.text = [NSString stringWithFormat:@"%@  %@",dic[@"hospital"],dic[@"job_title"]] ;
+    self.labDoctorInfo.text = [NSString stringWithFormat:@"%@  %@",dic[@"hospital"],dic[@"job_title"]];
+    [self.imgDoctorPic sd_setImageWithURL:URL(dic[@"pic"]) placeholderImage:IMG(@"")];
 }
 
 /*
