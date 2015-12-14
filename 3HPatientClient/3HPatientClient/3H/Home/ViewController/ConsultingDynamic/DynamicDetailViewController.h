@@ -10,4 +10,5 @@
 
 @interface DynamicDetailViewController : BaseTableViewController
 
+@property (nonatomic, strong) NSString *ids;
 @end

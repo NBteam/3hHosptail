@@ -9,6 +9,7 @@
 #import "DynamicDetailViewController.h"
 #import "DynamicDetailTableViewCell.h"
 #import "DynamicDetailToolView.h"
+#import "DynamicDetailModel.h"
 @interface DynamicDetailViewController ()
 //cell高度
 @property (nonatomic, assign) CGFloat cellHeight;
@@ -25,7 +26,32 @@
     self.tableView.height = self.tableView.height - 45;
     [self.view addSubview:self.toolView];
     self.view.backgroundColor = [UIColor colorWithHEX:0xffffff];
+    [self getDynamicDetailData];
     
+}
+
+- (void)getDynamicDetailData{
+    [self.dataArray removeAllObjects];
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(DynamicDetailViewController);
+    [[THNetWorkManager shareNetWork] getArtInfoIds:self.ids CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            DynamicDetailModel * model = [response thParseDataFromDic:response.dataDic andModel:[DynamicDetailModel class]];
+            [weakSelf.dataArray addObject:model];
+            
+            [weakSelf.toolView confingWithModel:weakSelf.dataArray[0]];
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+        
 }
 
 - (void)backAction{
@@ -51,12 +77,12 @@
         cell = [[DynamicDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.cellHeight = [cell confingWithModel:nil];
+    self.cellHeight = [cell confingWithModel:self.dataArray[indexPath.row]];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

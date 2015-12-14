@@ -30,9 +30,12 @@
 #import "ConsultingViewController.h"
 //我要咨询医生列表
 #import "ConsultingDoctorListViewController.h"
+#import "HomeGoodsModel.h"
+#import "HomeNewsModel.h"
 
 @interface HomeViewController ()
 
+@property (nonatomic, strong) NSMutableArray *newsArray;
 @end
 
 @implementation HomeViewController
@@ -41,7 +44,45 @@
     [super viewDidLoad];
     self.navigationItem.title = @"3H健康管理";
     // Do any additional setup after loading the view.
-    //sssss
+    //
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者-添加按钮"];
+    [self getHomeData];
+}
+
+- (NSMutableArray *)newsArray{
+    if (!_newsArray) {
+        _newsArray = [[NSMutableArray alloc] init];
+    }
+    return _newsArray;
+}
+
+- (void)getHomeData{
+    [self.dataArray removeAllObjects];
+    [self.newsArray removeAllObjects];
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(HomeViewController);
+    [[THNetWorkManager shareNetWork] getHomeInfoCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            for (NSDictionary * dict in response.dataDic[@"goods"]) {
+                HomeGoodsModel * model = [response thParseDataFromDic:dict andModel:[HomeGoodsModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            
+            for (NSDictionary * dict in response.dataDic[@"news"]) {
+                HomeNewsModel * model = [response thParseDataFromDic:dict andModel:[HomeNewsModel class]];
+                [weakSelf.newsArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,7 +148,7 @@
                 cell = [[HomeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            [cell confingWithModel:@"健康资讯"];
+            [cell confingWithModel:self.newsArray[indexPath.row -1]];
             return cell;
         }
     }else{
@@ -132,7 +173,7 @@
                 [weakSelf.navigationController pushViewController:shopDetailVc animated:YES];
             }];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            [cell confingWithModel:@"健康商城"];
+            [cell confingWithModel:self.dataArray];
             return cell;
         }
     }
@@ -140,6 +181,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
     if (section == 0) {
         return 1;
     }else if(section == 1){
@@ -178,7 +220,11 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    if (self.dataArray.count !=0&&self.newsArray.count !=0) {
+        return 4;
+    }else{
+        return 0;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -196,8 +242,9 @@
             cnsultingDynamicVc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:cnsultingDynamicVc animated:YES];
         }else{
-            
+            HomeNewsModel *model = self.newsArray[indexPath.row -1];
             DynamicDetailViewController *dynamicDetailVc = [[DynamicDetailViewController alloc] init];
+            dynamicDetailVc.ids = model.id;
             dynamicDetailVc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:dynamicDetailVc animated:YES];
         }

@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "DynamicDetailModel.h"
 @interface DynamicDetailTableViewCell : BaseTableViewCell
 //标题
 @property (nonatomic, strong) UILabel *labTitle;
@@ -20,6 +20,6 @@
 //内容
 @property (nonatomic, strong) UILabel *labDetail;
 //赋值
-- (CGFloat )confingWithModel:(NSDictionary *)dic;
+- (CGFloat )confingWithModel:(DynamicDetailModel *)dic;
 
 @end

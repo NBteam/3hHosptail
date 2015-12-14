@@ -28,7 +28,6 @@
 - (UIImageView *)imgBack{
     if (!_imgBack) {
         _imgBack = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 150)];
-        _imgBack.backgroundColor = [UIColor grayColor];
     }
     return _imgBack;
 }
@@ -71,9 +70,10 @@
 
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic{
-    self.labTitle.text = @"千山晚报电子版-鞍山新闻平台";
-    self.labTime.text = @"时间";
+- (void)confingWithModel:(ConsultingDynamicListModel *)dic{
+    self.labTitle.text = dic.title;
+    self.labTime.text = dic.addtime;
+    [self.imgBack sd_setImageWithURL:SD_IMG(dic.thumb)];
     CGSize size = [self.labTime.text sizeWithFont:[UIFont systemFontOfSize:12] maxSize:CGSizeMake(0, 12)];
     
     self.labTime.left = DeviceSize.width -size.width -10;

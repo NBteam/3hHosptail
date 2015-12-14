@@ -57,9 +57,10 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSString *)model{
-    self.labTitle.text = @"新药彦华新药彦华";
-    self.labDetail.text = @"新药彦华新药彦华新药彦华新药彦华新药彦华新药彦华新药彦华新药彦华";
+- (void)confingWithModel:(HomeNewsModel *)model{
+    [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:model.thumb]];
+    self.labTitle.text = model.title;
+    self.labDetail.text = model.desc;
 }
 
 /*

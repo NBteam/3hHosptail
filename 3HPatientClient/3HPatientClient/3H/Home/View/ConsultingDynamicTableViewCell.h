@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "ConsultingDynamicListModel.h"
 @interface ConsultingDynamicTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *imgLogo;
@@ -21,6 +21,6 @@
 @property (nonatomic, strong) UIImageView *imgTime;
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(ConsultingDynamicListModel *)dic;
 
 @end

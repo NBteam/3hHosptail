@@ -11,6 +11,12 @@
 #import "BaseTabBarController.h"
 #import "BaseNavigationController.h"
 #import "LoginViewController.h"
+//友盟
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialSinaSSOHandler.h"
+#import "UMSocialQQHandler.h"
+
 @interface AppDelegate ()
 
 @end
@@ -21,11 +27,37 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [self setUM];
     [self.window makeKeyAndVisible];
     [self setAppStyle];
     [self setWindowRootViewControllerIsLogin];
     
     return YES;
+}
+
+- (void)setUM{
+    
+    [UMSocialData setAppKey:@"566e3e94e0f55ac832003f56"];
+    
+    [UMSocialWechatHandler setWXAppId:@"wx0863c23f9e3f8d86" appSecret:@"a26911a258571173a188ff6a78cabb4e" url:nil];
+    
+    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:@"2661693258"
+                                         RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    
+    //    //设置分享到QQ空间的应用Id，和分享url 链接
+    [UMSocialQQHandler setQQWithAppId:@"1105007970" appKey:@"fGnXA1STNeUt3Se5" url:@"http://www.umeng.com/social"];
+    //    //设置支持没有客户端情况下使用SSO授权
+    [UMSocialQQHandler setSupportWebView:YES];
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [UMSocialSnsService handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [UMSocialSnsService handleOpenURL:url];
 }
 
 

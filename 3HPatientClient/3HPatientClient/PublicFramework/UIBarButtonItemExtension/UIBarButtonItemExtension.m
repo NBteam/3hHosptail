@@ -66,7 +66,7 @@
 + (UIBarButtonItem *)rightButtonItem:(SEL) selector andTarget:(id) target andImageName:(NSString *)imageName
 {
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightButton setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [rightButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [rightButton addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
     rightButton.frame = CGRectMake(0, 0, 30, 30);
     

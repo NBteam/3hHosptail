@@ -45,7 +45,7 @@
 //  弱引用宏
 #define WeakSelf(VC) __weak VC *weakSelf = self
 //是否登录过
-#define isLogin @"isLogin"
+//#define isLogin @"isLogin"
 
 //  app version
 #define APPVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
@@ -61,5 +61,7 @@
 #define GetToken  [SGSaveFile getIdFromObjectWithKey:Token]
 //app主打颜色
 #define AppDefaultColor [UIColor colorWithHEX:0xff813c]
+
+#define SD_IMG(url) [NSURL URLWithString:url]
 
 #endif

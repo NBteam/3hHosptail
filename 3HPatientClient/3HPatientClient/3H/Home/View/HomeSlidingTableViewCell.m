@@ -7,7 +7,7 @@
 //
 
 #import "HomeSlidingTableViewCell.h"
-
+#import "HomeGoodsModel.h"
 @implementation HomeSlidingTableViewCell
 
 - (void)customView{
@@ -27,10 +27,10 @@
     return _scrollView;
 }
 
-- (void)confingWithModel:(NSString *)model{
-    for (int i = 0; i<10; i++) {
+- (void)confingWithModel:(NSMutableArray *)model{
+    for (int i = 0; i<model.count; i++) {
         HomeSlidingCustomView *customView = [[HomeSlidingCustomView alloc] initWithFrame:CGRectMake(10 +150*i, 10, 140, 195)];
-        [customView confingWithModel:@""];
+        [customView confingWithModel:model[i]];
         // 单击的 Recognizer
         UITapGestureRecognizer* singleRecognizer;
         singleRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleViewSingleTap:)];
@@ -40,15 +40,17 @@
         singleRecognizer.numberOfTouchesRequired = 1;
         //给view添加一个手势监测；
         [customView addGestureRecognizer:singleRecognizer];
-        customView.tag = 500 +i;
+        HomeGoodsModel *models = model[i];
+        customView.tag = 500 +[models.id
+                                intValue];
         [self.scrollView addSubview:customView];
     }
-    self.scrollView.contentSize = CGSizeMake(150 *10 +10, 0);
+    self.scrollView.contentSize = CGSizeMake(150 *model.count +10, 0);
 }
 
 - (void)titleViewSingleTap:(UITapGestureRecognizer *)recognizer{
     if (self.slidingBlock) {
-        self.slidingBlock(recognizer.view.tag);
+        self.slidingBlock(recognizer.view.tag -500);
     }
 }
 /*

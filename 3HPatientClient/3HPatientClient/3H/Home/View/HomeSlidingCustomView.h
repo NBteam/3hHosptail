@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeGoodsModel.h"
 
 @interface HomeSlidingCustomView : UIView
 
@@ -23,6 +24,6 @@
 @property (nonatomic, strong) UILabel *labLine;
 
 //赋值
-- (void)confingWithModel:(NSString *)model;
+- (void)confingWithModel:(HomeGoodsModel *)model;
 
 @end

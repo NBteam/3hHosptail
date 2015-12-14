@@ -15,6 +15,6 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 //点击时间回调
 @property (nonatomic,copy) void(^slidingBlock)(NSInteger index);
-- (void)confingWithModel:(NSString *)model;
+- (void)confingWithModel:(NSMutableArray *)model;
 
 @end

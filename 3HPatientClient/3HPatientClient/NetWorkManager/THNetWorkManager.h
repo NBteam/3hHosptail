@@ -45,6 +45,24 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark 获取我的病史
 - (void)getMySickHistoryCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                                         andFailure:(FailureBlock) failure;
+#pragma mark 获取首页信息
+- (void)getHomeInfoCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                                   andFailure:(FailureBlock) failure;
+
+#pragma mark 获取文章列表
+- (void)getArtListPage:(NSInteger)page
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                andFailure:(FailureBlock) failure;
+
+#pragma mark 获取健康资讯轮播
+- (void)getHealthTopsCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                                   andFailure:(FailureBlock) failure;
+
+#pragma mark 获取健康资讯轮播获取文章详情【20151101更新】
+- (void)getArtInfoIds:(NSString *)ids CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                                     andFailure:(FailureBlock) failure;
+
+
 
 
 

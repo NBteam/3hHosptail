@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "HomeNewsModel.h"
 @interface HomeTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *imgLogo;
@@ -19,5 +19,5 @@
 @property (nonatomic, strong) UIImageView *imgArrow;
 
 //赋值
-- (void)confingWithModel:(NSString *)model;
+- (void)confingWithModel:(HomeNewsModel *)model;
 @end

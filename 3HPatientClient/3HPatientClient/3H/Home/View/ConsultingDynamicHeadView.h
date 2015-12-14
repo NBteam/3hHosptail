@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ConsultingDynamicListModel.h"
 @interface ConsultingDynamicHeadView : UIView
 
 @property (nonatomic, strong) UIImageView *imgBack;
@@ -21,6 +21,6 @@
 @property (nonatomic, strong) UILabel *labTime;
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(ConsultingDynamicListModel *)dic;
 
 @end

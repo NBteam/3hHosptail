@@ -68,13 +68,14 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic{
-    self.labTitle.text = @"千山晚报电子版-鞍山新闻平台";
-    self.labDetail.text = @"千山晚报电子版-鞍山新闻平台千山晚报电子版-鞍山新闻平台千山晚报电子版-鞍山新闻平台千山晚报电子版-鞍山新闻平台千山晚报电子版-鞍山新闻平台";
+- (void)confingWithModel:(ConsultingDynamicListModel *)dic{
+    [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:dic.thumb]];
+    self.labTitle.text = dic.title;
+    self.labDetail.text = dic.desc;
     [self.labDetail sizeToFit];
     self.labDetail.top = self.labTitle.bottom +10;
     
-    self.labTime.text = @"2分钟前";
+    self.labTime.text = dic.addtime;
     CGSize size = [self.labTime.text sizeWithFont:[UIFont systemFontOfSize:12] maxSize:CGSizeMake(0, 12)];
     
     self.labTime.left = DeviceSize.width -size.width -10;
