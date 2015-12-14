@@ -60,6 +60,9 @@
 #define GetToken  [SGSaveFile getIdFromObjectWithKey:Token]
 //app主打颜色
 #define AppDefaultColor [UIColor colorWithHEX:0x008aff]
-
+//URL
+#define URL(STRING)  [NSURL URLWithString:STRING]
+//IMG
+#define IMG(IMGSTR)  [UIImage imageNamed:IMGSTR]
 
 #endif

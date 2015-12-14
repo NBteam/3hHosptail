@@ -513,4 +513,45 @@ static THNetWorkManager *thNetWorkManager = nil;
     NSDictionary *paramDic = @{@"a":@"getDoctorTops"};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+/**
+ * 我的预约挂号列表
+ * @param page   分页
+ */
+- (void)getMyOrderguahaoListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMyOrderguahaoList",Token:GetToken,@"page":@(page)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 我的预约挂号详情
+ * @param id   id
+ */
+- (void)getMyOrderguahaoInfoId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMyOrderguahaoInfo",Token:GetToken,@"id":id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 我的挂号预约——处理请求
+ * @param id   id
+ * @param opt  1同意，-1拒绝
+ */
+- (void)processMyOrderguahaoId:(NSString *)id opt:(NSInteger)opt andCompletionBlockWithSuccess:(CompletionBlockWithSuccess)success andFailure:(FailureBlock)failure{
+    NSDictionary *paramDic = @{@"a":@"processMyOrderguahao",Token:GetToken,@"id":id,@"opt":@(opt)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+/**
+ * 上传用户头像
+ */
+- (void)getUploadFaceFile:(NSData *)file faceString:(NSString *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress{
+    NSString *urlPath = [thServerHost stringByAppendingString:@""];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary *parameter=@{@"a":@"uploadface",Token:GetToken};
+    [manager POST:urlPath parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:file name:@"头像.png" fileName:faceString mimeType:@"image/png"];
+    } success:success failure:failure ];
+}
+
+
+
 @end

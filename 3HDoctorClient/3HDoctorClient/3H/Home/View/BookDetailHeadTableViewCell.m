@@ -57,8 +57,9 @@
 }
 
 - (void)confingWithModel:(NSDictionary *)dic{
-    self.labPatientName.text = @"刘晓光";
-    self.labPatientInfo.text = @"30岁 男";
+    self.labPatientName.text = dic[@"truename"];
+    self.labPatientInfo.text = [NSString stringWithFormat:@"%@岁 %@",dic[@"birth_y"],dic[@"sex"]] ;
+    [self.imgPatientPic sd_setImageWithURL:URL(dic[@"pic"]) placeholderImage:IMG(@"")];
 }
 
 

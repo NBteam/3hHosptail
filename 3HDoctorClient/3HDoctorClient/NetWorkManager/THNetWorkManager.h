@@ -19,6 +19,9 @@ typedef void (^CompletionBlockWithSuccess) (NSURLSessionDataTask *urlSessionData
 
 typedef void (^FailureBlock) (NSURLSessionDataTask *urlSessionDataTask, NSError *error);
 
+typedef void (^uploadfaceBlockWithSuccess) (AFHTTPRequestOperation *operation, id responseObject);
+
+typedef void (^uploadfaceFailureBlock) (AFHTTPRequestOperation *operation, NSError *error);
 /**
  *	网络上传进度
  *	@param bytesWritten              写入的字节
@@ -190,5 +193,24 @@ typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSen
  * 获取医疗资讯轮播
  */
 - (void)getDoctorTopsCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
-
+/**
+ * 我的预约挂号列表
+ * @param page   分页
+ */
+- (void)getMyOrderguahaoListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+/**
+ * 我的预约挂号详情
+ * @param id   id
+ */
+- (void)getMyOrderguahaoInfoId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+/**
+ * 我的挂号预约——处理请求
+ * @param id   id
+ * @param opt  1同意，-1拒绝
+ */
+- (void)processMyOrderguahaoId:(NSString *)id opt:(NSInteger)opt andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+/**
+ * 上传用户头像
+ */
+- (void)getUploadFaceFile:(NSData *)file faceString:(NSString *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress;
 @end

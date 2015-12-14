@@ -56,11 +56,12 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic{
-    self.labTitle.attributedText = [self getName:@"张文涛" AndAge:@"  26岁" AndSex:@"  男"];
+- (void)confingWithModel:(ReservationListModel *)dic{
+    self.labTitle.attributedText = [self getName:dic.truename AndAge:[NSString stringWithFormat:@"  %@岁",dic.birth_y] AndSex:[NSString stringWithFormat:@"  %@",dic.sex]];
     //  self.labDetail.attributedText
-    self.labTime.text = @"预约时间:2015年12月12月";
-    self.labState.text = @"已拒绝";
+    self.labTime.text = [NSString stringWithFormat:@"预约时间:%@",dic.addtime];
+    [self.imgPatient sd_setImageWithURL:[NSURL URLWithString:dic.pic] placeholderImage:[UIImage imageNamed:@""]];
+    self.labState.text = [NSString stringWithFormat:@"%@",dic.status_n];
 }
 
 - (NSMutableAttributedString *)getName:(NSString *)name AndAge:(NSString *)age AndSex:(NSString *)sex{

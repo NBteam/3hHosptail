@@ -22,19 +22,22 @@
 @property (nonatomic, assign) CGFloat cellHeigth;
 
 @property (nonatomic, strong) BookDetailToolView *toolView;
-
+@property (nonatomic, strong) NSMutableDictionary * dict;
+@property (nonatomic, assign) NSInteger stutas;
 @end
 
 @implementation RegisteredDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dict = [NSMutableDictionary dictionary];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.tableView.height = self.tableView.height - 65;
     [self.view addSubview:self.toolView];
     //显示同意和拒绝按钮
     [self.toolView changeViewHide:BookDetailToolViewTypeIsUp andTitle:@""];
+    [self getNetWork];
 }
 
 - (void)backAction{
@@ -50,7 +53,7 @@
         _toolView.backgroundColor = self.view.backgroundColor;
         //同意
         [_toolView setAgreedBlock:^{
-            
+            weakSelf.stutas = 1;
             UIAlertView * uploadView = [[UIAlertView alloc]initWithTitle:@"" message:@"确定要同意患者李可的挂号预约吗?" delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
             [uploadView show];
             
@@ -58,11 +61,8 @@
 
         //拒绝
         [_toolView setRefusedBlock:^{
-            BookRefuseReasonViewController *bookRefuseReasonVc = [[BookRefuseReasonViewController alloc] init];
-            [bookRefuseReasonVc setBookRefuseReasonBlock:^{
-                [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已拒绝"];
-            }];
-            [weakSelf.navigationController pushViewController:bookRefuseReasonVc animated:YES];
+            weakSelf.stutas = -1;
+            [weakSelf getNetWorkSta:weakSelf.stutas];
         }];
         
     }
@@ -73,12 +73,9 @@
     if (buttonIndex==0) {
         
     }else{
-        WeakSelf(RegisteredDetailViewController);
-        BookSuccessViewController *bookSuccessVc = [[BookSuccessViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-        [bookSuccessVc setBookSuccessBlock:^{
-            [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已同意"];
-        }];
-        [self.navigationController pushViewController:bookSuccessVc animated:YES];
+        
+        [self getNetWorkSta:self.stutas];
+        
     }
 }
 
@@ -91,7 +88,7 @@
             cell = [[BookDetailHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:nil];
+        [cell confingWithModel:self.dict];
         return cell;
     }else if (indexPath.section == 1){
         static NSString *identifier = @"idertifier";
@@ -100,7 +97,7 @@
             cell = [[BookDetailTimeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:nil];
+        [cell confingWithModel:self.dict];
         return cell;
     }else{
         static NSString *identifier = @"idertifier";
@@ -109,7 +106,7 @@
             cell = [[BookDetailDescribeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.cellHeigth = [cell confingWithModel:nil];
+        self.cellHeigth = [cell confingWithModel:self.dict];
         return cell;
     }
 }
@@ -139,11 +136,51 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return [[UIView alloc] init];
 }
-
+- (void)getNetWork{
+    WeakSelf(RegisteredDetailViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    [[THNetWorkManager shareNetWork]getMyOrderguahaoInfoId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            weakSelf.dict = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"1"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudWaitingView:InternetFailerPrompt];
+    }];
+}
 - (NSString *)title{
     return @"预约详情";
 }
-
+- (void)getNetWorkSta:(NSInteger)sta{
+    WeakSelf(RegisteredDetailViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    [[THNetWorkManager shareNetWork]processMyOrderguahaoId:@"" opt:sta andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            if (sta==1) {
+                BookSuccessViewController *bookSuccessVc = [[BookSuccessViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+                [bookSuccessVc setBookSuccessBlock:^{
+                    [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已同意"];
+                }];
+                [self.navigationController pushViewController:bookSuccessVc animated:YES];
+            }else{
+                BookRefuseReasonViewController *bookRefuseReasonVc = [[BookRefuseReasonViewController alloc] init];
+                [bookRefuseReasonVc setBookRefuseReasonBlock:^{
+                    
+                    [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已拒绝"];
+                }];
+                [weakSelf.navigationController pushViewController:bookRefuseReasonVc animated:YES];
+            }
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"1"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudWaitingView:InternetFailerPrompt];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

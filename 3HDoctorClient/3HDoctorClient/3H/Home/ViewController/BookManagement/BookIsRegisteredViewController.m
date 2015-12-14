@@ -9,6 +9,8 @@
 #import "BookIsRegisteredViewController.h"
 #import "BookManagementTableViewCell.h"
 #import "RegisteredDetailViewController.h"
+#import "ReservationListModel.h"
+
 @interface BookIsRegisteredViewController ()
 
 @end
@@ -18,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self getNetWork];
     self.tableView.height = self.tableView.height -44;
 }
 
@@ -29,6 +32,7 @@
         cell = [[BookManagementTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    ReservationListModel * model = self.dataArray[indexPath.section];
     [cell confingWithModel:nil];
     return cell;
 }
@@ -42,7 +46,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 16;
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -54,10 +58,29 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    ReservationListModel * model = self.dataArray[indexPath.section];
     RegisteredDetailViewController *registeredDetailVc = [[RegisteredDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+//    registeredDetailVc.id = model.id;
+    registeredDetailVc.id = @"1";
     [self.navigationController pushViewController:registeredDetailVc animated:YES];
 }
-
+- (void)getNetWork{
+    WeakSelf(BookIsRegisteredViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    [[THNetWorkManager shareNetWork]getMyOrderguahaoListPage:5 andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                ReservationListModel * model = [response thParseDataFromDic:dict andModel:[ReservationListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"1"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudWaitingView:InternetFailerPrompt];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

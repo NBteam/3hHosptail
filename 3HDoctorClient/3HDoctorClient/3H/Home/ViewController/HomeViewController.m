@@ -31,7 +31,9 @@
 @end
 
 @implementation HomeViewController
-
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"reloadHomeInfo" object:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -43,8 +45,9 @@
     self.tableView.top = 0;
     self.tableView.height = DeviceSize.height -49;
 //    self.tableView.tableHeaderView = self.headView;
-    [self.headView confingWithModel:@""];
+    [self.headView confingWithModel:nil];
     [self.view addSubview:self.labTitle];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getHomeInfo) name:@"reloadHomeInfo" object:nil];
     [self getHomeInfo];
 }
 
@@ -144,10 +147,10 @@
 - (void)getHomeInfo{
     [self showHudAuto:WaitPrompt];
     WeakSelf(HomeViewController);
-    [[THNetWorkManager shareNetWork]getHomeCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getUserInfoCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            
+            [weakSelf.headView confingWithModel:response.dataDic];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

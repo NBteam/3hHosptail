@@ -23,6 +23,6 @@
 @property (nonatomic, strong) UILabel *labDetail;
 
 //赋值
-- (void)confingWithModel:(NSString *)string;
+- (void)confingWithModel:(NSDictionary *)dict;
 
 @end

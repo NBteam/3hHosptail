@@ -534,6 +534,7 @@
 		A9B5EA931C16E75C00D4046B /* GuideSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA901C16E75C00D4046B /* GuideSearchView.m */; };
 		A9B5EA941C16E75C00D4046B /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA921C16E75C00D4046B /* SearchCell.m */; };
 		A9B5EA971C16E77E00D4046B /* OutpatientReservationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */; };
+		D24F418C1C1D7235004F8699 /* ReservationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D24F418B1C1D7235004F8699 /* ReservationListModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1325,6 +1326,8 @@
 		A9B5EA921C16E75C00D4046B /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		A9B5EA951C16E77E00D4046B /* OutpatientReservationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutpatientReservationView.h; sourceTree = "<group>"; };
 		A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutpatientReservationView.m; sourceTree = "<group>"; };
+		D24F418A1C1D7235004F8699 /* ReservationListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReservationListModel.h; sourceTree = "<group>"; };
+		D24F418B1C1D7235004F8699 /* ReservationListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReservationListModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3073,6 +3076,8 @@
 				A94B16101C15CD5900034029 /* DiagnosisListModel.m */,
 				A98AC3C81C17FF850024177C /* MedicalInformationModel.h */,
 				A98AC3C91C17FF850024177C /* MedicalInformationModel.m */,
+				D24F418A1C1D7235004F8699 /* ReservationListModel.h */,
+				D24F418B1C1D7235004F8699 /* ReservationListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3673,6 +3678,7 @@
 				99DA40171C0BE59A00573D4C /* MTLValueTransformer.m in Sources */,
 				99D6EEB51C0EEA6100CB1829 /* LaboratoryViewController.m in Sources */,
 				99DA40461C0BE59A00573D4C /* UIImage+GIF.m in Sources */,
+				D24F418C1C1D7235004F8699 /* ReservationListModel.m in Sources */,
 				99D6EEA61C0EDCD700CB1829 /* MedicationTableViewCell.m in Sources */,
 				99DA40511C0BE59A00573D4C /* TQRichTextEmojiRun.m in Sources */,
 				99D6EED61C0EFC4900CB1829 /* DiagnosisEditorTableViewCell.m in Sources */,

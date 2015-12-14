@@ -17,11 +17,13 @@
 #import "SexViewController.h"
 #import "CityListFirstLevelViewController.h"
 
-@interface PersonalViewController ()
+@interface PersonalViewController ()<UIActionSheetDelegate>
+@property (nonatomic, strong) UIActionSheet *actionSheet;
 @property (nonatomic, copy) NSString * sexStr;
 @property (nonatomic, copy) NSString * idS;
 @property (nonatomic, copy) NSString * parent_id;
 @property (nonatomic, copy) NSString * area_ids;
+@property (nonatomic, copy) NSString * hospital_id;
 @end
 
 @implementation PersonalViewController
@@ -50,10 +52,11 @@
     else{
         [self showHudAuto:WaitPrompt];
         WeakSelf(PersonalViewController);
-        [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.dataArray[0][@"detail"] sex:self.sexStr hospital:self.dataArray[2][@"detail"] department:self.dataArray[3][@"detail"] job_title:self.dataArray[4][@"detail"] sign_word:self.dataArray[5][@"detail"] work_week:@"" area_ids:weakSelf.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.dataArray[0][@"detail"] sex:self.sexStr hospital:self.dataArray[3][@"detail"] department:self.dataArray[4][@"detail"] job_title:self.dataArray[5][@"detail"] sign_word:self.dataArray[6][@"detail"] work_week:@"" area_ids:weakSelf.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
-               
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"reloadHomeInfo" object:nil];
+                [weakSelf.tableView reloadData];
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"1"];
             }
@@ -123,7 +126,9 @@
     return @"个人资料";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (indexPath.section == 0) {
+        [self.actionSheet showInView: self.view];
+    }
     if (indexPath.section !=0) {
         WeakSelf(PersonalViewController);
         if (indexPath.row == 0) {//您的姓名
@@ -177,22 +182,31 @@
                 HospitalTableViewController*hospitalInputVc = [[HospitalTableViewController alloc] init];
                 hospitalInputVc.ids = self.idS;
                 [hospitalInputVc setHospitalBlock:^(NSString *str,NSString * id) {
+                    weakSelf.hospital_id = id;
                     [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"医院",@"detail":str}];
                     [weakSelf.tableView reloadData];
                 }];
                 [self.navigationController pushViewController:hospitalInputVc animated:YES];
             }
         }else if (indexPath.row == 4){//
+            NSString * idStr = @"";
+            if (self.parent_id==nil||[self.parent_id isEqualToString:@""]) {
+                idStr = @"0";
+            }else{
+                idStr = self.parent_id;
+            }
             DepartmentViewController * DepartmentVc = [[DepartmentViewController alloc]init];
+            DepartmentVc.id = idStr;
             [DepartmentVc setChoiceBlock:^(NSString *id, NSString *name, NSString *pid) {
-                [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"科室",@"detail":name}];
+                
+                [weakSelf.dataArray replaceObjectAtIndex:4 withObject:@{@"title":@"科室",@"detail":name}];
                 [weakSelf.tableView reloadData];
             }];
             [self.navigationController pushViewController:DepartmentVc animated:YES];
         }else if (indexPath.row == 5){//
             PositionViewController * pvc = [[PositionViewController alloc]init];
             [pvc setChoiceBlock:^(NSString *positionStr) {
-                [weakSelf.dataArray replaceObjectAtIndex:4 withObject:@{@"title":@"职称",@"detail":positionStr}];
+                [weakSelf.dataArray replaceObjectAtIndex:5 withObject:@{@"title":@"职称",@"detail":positionStr}];
                 [weakSelf.tableView reloadData];
             }];
             [self.navigationController pushViewController:pvc animated:YES];
@@ -210,6 +224,7 @@
             if (![response.dataDic[@"truename"] isEqualToString:@""]) {
                 [weakSelf.dataArray replaceObjectAtIndex:0 withObject:@{@"title":@"姓名",@"detail":response.dataDic[@"truename"]}];
             }
+            weakSelf.area_ids = response.dataDic[@"area_ids"];
             NSString * sex = @"";
             weakSelf.sexStr = response.dataDic[@"sex"];
             if ([response.dataDic[@"sex"] isEqualToString:@"0"]) {
@@ -241,6 +256,111 @@
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
     }];
 }
+- (UIActionSheet *)actionSheet{
+    if (!_actionSheet) {
+        _actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"从相册中选择", nil];
+    }
+    return _actionSheet;
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self updateMypicture:buttonIndex];
+        //        NSLog(@"%ld",buttonIndex);
+    }else if (buttonIndex == 1){
+        [self updateMypicture:buttonIndex];
+        NSLog(@"%ld",buttonIndex);
+    }
+}
+- (void)updateMypicture:(NSInteger)index{
+    if (index == 0) {//拍照
+        UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+        if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+        {
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            //设置拍照后的图片可被编辑
+            picker.allowsEditing = YES;
+            picker.sourceType = sourceType;
+            [self presentViewController:picker animated:YES completion:nil];
+        }else
+        {
+            NSLog(@"模拟其中无法打开照相机,请在真机中使用");
+            
+        }
+    }else if (index == 1){//从相册
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.delegate = self;
+        //设置选择后的图片可被编辑
+        picker.allowsEditing = YES;
+        [self presentViewController:picker animated:YES completion:nil];
+    }else{
+        
+        
+        
+        
+    }
+}
+//选择某张照片之后
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    WeakSelf(PersonalViewController);
+    
+    //关闭相册界面
+    [picker dismissViewControllerAnimated:YES
+                               completion:^{
+                                   NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+                                  
+                                   //当选择的类型是图片
+                                   if ([type isEqualToString:@"public.image"])
+                                   {
+                                       //先把图片转成NSData
+                                       UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+                                       //                                       LaboratoryTestsAddPhotoTableViewCell * cell = [weakSelf.tableView cellForRowAtIndexPath:weakSelf.indexPaths];
+                                       //
+                                       //                                       [cell confingWithModel:image] ;
+                                       NSData *data = UIImageJPEGRepresentation(image, 0.25);
+                                       NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+                                       
+                                       //文件管理器
+                                       NSFileManager *fileManager = [NSFileManager defaultManager];
+                                       
+                                       //把刚刚图片转换的data对象拷贝至沙盒中 并保存为image.png
+                                       [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
+                                       [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:@"/image.png"] contents:data attributes:nil];
+//                                       [weakSelf.tableView reloadData];
+                                       [weakSelf uploadImageWithImage:image];
+                                   }
+                                   
+                               }];
+}
+- (void)uploadImageWithImage:(UIImage *)image{
+    WeakSelf(PersonalViewController);
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.25);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *filePath = [[NSString alloc]initWithFormat:@"%@%@",DocumentsPath,@"/image.png"];
+    NSLog(@"%@",filePath);
+    if (filePath) {
+        [[THNetWorkManager shareNetWork]getUploadFaceFile:imageData faceString:filePath andCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [weakSelf removeMBProgressHudInManaual];
+            [weakSelf.dataArray removeAllObjects];
+            NSDictionary *content = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            if ([content[@"status"] doubleValue] == 1) {
+                [weakSelf showHudAuto:content[@"info"]];
+            }else{
+                [weakSelf showHudAuto:content[@"info"]];
+            }
+        } andFailure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        } andProgress:^(long long bytesSent, long long totalBytesSent, long long totalBytesExpectedToSend) {
+            
+        }];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
