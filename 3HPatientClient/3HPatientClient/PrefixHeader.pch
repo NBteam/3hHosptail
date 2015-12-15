@@ -31,6 +31,7 @@
 #import "MJRefresh.h"
 #import "NSString+Size.h"
 #import "SGSaveFile.h"
+#import "THUser.h"
 
 #import "THNetWorkManager.h"
 #define thServerHost @"http://123.57.231.12:85/api.php"
@@ -63,5 +64,8 @@
 #define AppDefaultColor [UIColor colorWithHEX:0xff813c]
 
 #define SD_IMG(url) [NSURL URLWithString:url]
+//  document路径
+#define DocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+#define UserPath [DocumentPath stringByAppendingPathComponent:@"3HPatientClient/THUser"]
 
 #endif

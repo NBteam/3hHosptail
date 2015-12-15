@@ -237,7 +237,7 @@
                 if ([response.dataDic[@"is_fill"] doubleValue] == 0) {//未填写
                     
                 }else{
-                    [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+                    [weakSelf getUserInfoToken:response.dataDic[@"token"]];
                 }
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"1"];
@@ -248,6 +248,33 @@
     }
 
 }
+
+- (void)getUserInfoToken:(NSString *)token{
+    WeakSelf(LoginViewController);
+    
+    [[THNetWorkManager shareNetWork] getUserinfoToken:token CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+
+        if (response.responseCode == 1) {
+            
+            THUser *user = [MTLJSONAdapter modelOfClass:[THUser class] fromJSONDictionary:response.dataDic error:nil];
+            NSLog(@"真的爱你%@",user.account);
+            
+            if (user) {
+                //  写入本地
+                [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:user];
+            }
+            
+            [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"1"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+    } ];
+}
+
 - (void)btn1Click:(UIButton *)button{
     WeakSelf(LoginViewController);
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];

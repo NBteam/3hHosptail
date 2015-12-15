@@ -19,6 +19,9 @@ typedef void (^CompletionBlockWithSuccess) (NSURLSessionDataTask *urlSessionData
 
 typedef void (^FailureBlock) (NSURLSessionDataTask *urlSessionDataTask, NSError *error);
 
+typedef void (^uploadfaceBlockWithSuccess) (AFHTTPRequestOperation *operation, id responseObject);
+
+typedef void (^uploadfaceFailureBlock) (AFHTTPRequestOperation *operation, NSError *error);
 /**
  *	网络上传进度
  *	@param bytesWritten              写入的字节
@@ -26,7 +29,6 @@ typedef void (^FailureBlock) (NSURLSessionDataTask *urlSessionDataTask, NSError 
  *	@param totalBytesExpectedToWrite 要写入的总字节
  */
 typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSent, long long totalBytesExpectedToSend);
-
 /// 网络请求类
 @interface THNetWorkManager : NSObject
 
@@ -66,6 +68,13 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 - (void)addDoctorIds:(NSString *)ids CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
            andFailure:(FailureBlock) failure;
 
+#pragma mark获取用户资料接口【20151112更新】
+- (void)getUserinfoToken:(NSString *)token CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+          andFailure:(FailureBlock) failure;
+
+
+#pragma mark上传用户头像
+- (void)getUploadFaceFile:(NSData *)file faceString:(NSString *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress;
 
 
 

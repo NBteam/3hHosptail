@@ -50,8 +50,8 @@
 
 
 
-- (void)confingWithModel:(NSDictionary *)dic{
-    
+- (void)confingWithModel:(NSString *)dic{
+    [self.imgDoctorPic sd_setImageWithURL:SD_IMG(dic)];
 }
 
 /*

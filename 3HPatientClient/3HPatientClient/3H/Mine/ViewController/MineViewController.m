@@ -23,6 +23,8 @@
 #import "MyOrdersViewController.h"
 //我的收藏
 #import "MyCollectionViewController.h"
+//收货地址
+#import "MyAddressViewController.h"
 
 @interface MineViewController ()
 @property (nonatomic, strong) MineHeadView *headView;
@@ -36,11 +38,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshBaseInfoOperation) name:@"refreshBaseInfoNatification" object:nil];
     [self.view insertSubview:self.viewBack belowSubview:self.tableView];
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"3H-我的_我的健康档案-非点击状态",@"title":@"我的健康档案"},@{@"img":@"3H-我的_我的预约-非点击状态",@"title":@"我的预约"},@{@"img":@"3H-我的_我的积分-非点击状态",@"title":@"我的积分"},@{@"img":@"3H-我的_我的钱包-非点击状态",@"title":@"我的钱包"},@{@"img":@"3H-我的_我的订单-非点击状态",@"title":@"我的订单"},@{@"img":@"3H-我的_我的收藏-非点击状态",@"title":@"我的收藏"},@{@"img":@"3H-我的_设置-非点击状态",@"title":@"设置"}]];
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"3H-我的_我的健康档案-非点击状态",@"title":@"我的健康档案"},@{@"img":@"3H-我的_我的预约-非点击状态",@"title":@"我的预约"},@{@"img":@"3H-我的_我的积分-非点击状态",@"title":@"我的积分"},@{@"img":@"3H-我的_我的钱包-非点击状态",@"title":@"我的钱包"},@{@"img":@"3H-我的_我的订单-非点击状态",@"title":@"我的订单"},@{@"img":@"3H-我的_我的收藏-非点击状态",@"title":@"我的收藏"},@{@"img":@"3H-我的_我的收藏-非点击状态",@"title":@"收货地址"},@{@"img":@"3H-我的_设置-非点击状态",@"title":@"设置"}]];
     //self.tableView.tableHeaderView = self.headView;
 }
 
+- (void)refreshBaseInfoOperation{
+    self.user = [self refreshUserData];
+    [self.headView confingWithName:self.user.nickname Sex:self.user.sex Pic:self.user.pic];
+    NSLog(@"刷新%@",self.user.pic);
+}
 #pragma mark - UI
 
 - (UIView *)viewBack{
@@ -53,7 +62,7 @@
 - (MineHeadView *)headView{
     if (!_headView) {
         _headView = [[MineHeadView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 120)];
-        [_headView confingWithModel:-1];
+        [_headView confingWithName:self.user.nickname Sex:self.user.sex Pic:self.user.pic];
     }
     return _headView;
 }
@@ -66,7 +75,7 @@
         cell = [[MineTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:self.dataArray[indexPath.row]];
+    [cell confingWithModel:self.dataArray[indexPath.row]Points:self.user.points];
     return cell;
     
     
@@ -146,6 +155,10 @@
         myCollectionVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:myCollectionVc animated:YES];
         
+    }else if(indexPath.row == 6){
+        MyAddressViewController *myAddressVc = [[MyAddressViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        myAddressVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:myAddressVc animated:YES];
     }else{
         SetUpViewController *setUpVc = [[SetUpViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         setUpVc.hidesBottomBarWhenPushed = YES;

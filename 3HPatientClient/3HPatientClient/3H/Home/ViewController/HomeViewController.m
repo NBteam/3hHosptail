@@ -47,8 +47,9 @@
     self.navigationItem.title = @"3H健康管理";
     // Do any additional setup after loading the view.
     //
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者-添加按钮"];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页+"];
     [self getHomeData];
+    NSLog(@"MINGZI %@",self.user.account);
 }
 
 - (void)addAction{

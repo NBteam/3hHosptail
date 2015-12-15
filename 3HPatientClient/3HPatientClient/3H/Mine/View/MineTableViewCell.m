@@ -54,13 +54,13 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic{
+- (void)confingWithModel:(NSDictionary *)dic Points:(NSString *)points{
     self.labTitle.text = dic[@"title"];
     self.imgLogo.image = [UIImage imageNamed:dic[@"img"]];
     if ([dic[@"title"] isEqualToString:@"我的积分"]) {
         self.imgArrow.hidden = YES;
         self.labDetail.hidden = NO;
-        self.labDetail.text = @"126";
+        self.labDetail.text = points;
     }else{
         self.imgArrow.hidden = NO;
         self.labDetail.hidden = YES;

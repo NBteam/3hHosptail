@@ -9,5 +9,9 @@
 #import "BaseTableViewController.h"
 
 @interface CheckDataDetailViewController : BaseTableViewController
+// 0 == 化验  1 == 检查
+@property (nonatomic, assign)NSInteger index;
+
+@property (nonatomic, strong) NSString *titles;
 
 @end

@@ -12,5 +12,5 @@
 @property (nonatomic, strong) UILabel *labTitle;
 
 //赋值
-- (void)confingWithModel:(NSInteger )dic;
+- (CGFloat)confingWithModel:(NSInteger )dic;
 @end

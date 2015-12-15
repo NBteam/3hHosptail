@@ -20,6 +20,6 @@
 
 //赋值
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(NSDictionary *)dic Points:(NSString *)points;
 
 @end

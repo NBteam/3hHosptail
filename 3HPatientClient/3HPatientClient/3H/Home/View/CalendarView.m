@@ -328,6 +328,12 @@
         btn.layer.cornerRadius = 3;
         
         [self.viewBack addSubview:btn];
+        
+        UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake((25 -3)/2, 25 -3 -2, 3, 3)];
+        lab.backgroundColor = AppDefaultColor;
+        lab.layer.masksToBounds = YES;
+        lab.layer.cornerRadius = 1.5;
+        [btn addSubview:lab];
         self.viewBack.height = btn.bottom +5;
         
         self.height = self.viewBack.bottom;

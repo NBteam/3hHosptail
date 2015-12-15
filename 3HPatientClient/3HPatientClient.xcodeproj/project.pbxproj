@@ -495,6 +495,17 @@
 		C08244431C1F15BC00783FD5 /* MyAppointPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244421C1F15BC00783FD5 /* MyAppointPhoneViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C08244461C1F15DF00783FD5 /* MyAppointmentTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244451C1F15DF00783FD5 /* MyAppointmentTopView.m */; settings = {ASSET_TAGS = (); }; };
 		C08244491C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244481C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		C082444D1C1FA97C00783FD5 /* THUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C082444C1C1FA97C00783FD5 /* THUser.m */; settings = {ASSET_TAGS = (); }; };
+		C08244621C1FCDD200783FD5 /* MyAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244611C1FCDD200783FD5 /* MyAddressViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C08244651C1FCE8500783FD5 /* MyAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244641C1FCE8500783FD5 /* MyAddressTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		C082446F1C1FD3BE00783FD5 /* 我的-我的订单－确认收货－选中@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C08244671C1FD3BE00783FD5 /* 我的-我的订单－确认收货－选中@2x.png */; settings = {ASSET_TAGS = (); }; };
+		C08244701C1FD3BE00783FD5 /* 未选@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C08244681C1FD3BE00783FD5 /* 未选@2x.png */; settings = {ASSET_TAGS = (); }; };
+		C08244711C1FD3BE00783FD5 /* 笔.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C08244691C1FD3BE00783FD5 /* 笔.jpg */; settings = {ASSET_TAGS = (); }; };
+		C08244721C1FD3BE00783FD5 /* 选中@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C082446A1C1FD3BE00783FD5 /* 选中@2x.png */; settings = {ASSET_TAGS = (); }; };
+		C08244731C1FD3BE00783FD5 /* 首页+@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C082446B1C1FD3BE00783FD5 /* 首页+@2x.png */; settings = {ASSET_TAGS = (); }; };
+		C08244741C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C082446C1C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png */; settings = {ASSET_TAGS = (); }; };
+		C08244751C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－未选中@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C082446D1C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－未选中@2x.png */; settings = {ASSET_TAGS = (); }; };
+		C08244761C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－选中@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C082446E1C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－选中@2x.png */; settings = {ASSET_TAGS = (); }; };
 		C0956A411C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -1282,6 +1293,20 @@
 		C08244451C1F15DF00783FD5 /* MyAppointmentTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentTopView.m; sourceTree = "<group>"; };
 		C08244471C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointHospitalTableViewCell.h; sourceTree = "<group>"; };
 		C08244481C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointHospitalTableViewCell.m; sourceTree = "<group>"; };
+		C082444B1C1FA97C00783FD5 /* THUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THUser.h; sourceTree = "<group>"; };
+		C082444C1C1FA97C00783FD5 /* THUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THUser.m; sourceTree = "<group>"; };
+		C08244601C1FCDD200783FD5 /* MyAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAddressViewController.h; sourceTree = "<group>"; };
+		C08244611C1FCDD200783FD5 /* MyAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAddressViewController.m; sourceTree = "<group>"; };
+		C08244631C1FCE8500783FD5 /* MyAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAddressTableViewCell.h; sourceTree = "<group>"; };
+		C08244641C1FCE8500783FD5 /* MyAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAddressTableViewCell.m; sourceTree = "<group>"; };
+		C08244671C1FD3BE00783FD5 /* 我的-我的订单－确认收货－选中@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的-我的订单－确认收货－选中@2x.png"; sourceTree = "<group>"; };
+		C08244681C1FD3BE00783FD5 /* 未选@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未选@2x.png"; sourceTree = "<group>"; };
+		C08244691C1FD3BE00783FD5 /* 笔.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "笔.jpg"; sourceTree = "<group>"; };
+		C082446A1C1FD3BE00783FD5 /* 选中@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选中@2x.png"; sourceTree = "<group>"; };
+		C082446B1C1FD3BE00783FD5 /* 首页+@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页+@2x.png"; sourceTree = "<group>"; };
+		C082446C1C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-健康商城-商品详情-立即购买-收货地址2@2x.png"; sourceTree = "<group>"; };
+		C082446D1C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－未选中@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-我要预约-预约挂号-2－未选中@2x.png"; sourceTree = "<group>"; };
+		C082446E1C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－选中@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-我要预约-预约挂号-2－选中@2x.png"; sourceTree = "<group>"; };
 		C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-患者-添加按钮@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1332,6 +1357,7 @@
 		991A313A1C12E2DB00E0313F /* 3H患者端切图 */ = {
 			isa = PBXGroup;
 			children = (
+				C08244661C1FD3BE00783FD5 /* 购物车 */,
 				991A313B1C12E2DB00E0313F /* 健康 */,
 				991A314F1C12E2DB00E0313F /* 我的 */,
 				991A317C1C12E2DB00E0313F /* 注册 */,
@@ -1822,21 +1848,14 @@
 		99D33A991C17BD0B0067E57C /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				C082444A1C1FA97100783FD5 /* Model */,
 				99D33A9A1C17BD0B0067E57C /* LoginViewController.h */,
 				99D33A9B1C17BD0B0067E57C /* LoginViewController.m */,
-				99D33A9C1C17BD0B0067E57C /* Model */,
 				99D33A9D1C17BD0B0067E57C /* RegisterViewController.h */,
 				99D33A9E1C17BD0B0067E57C /* RegisterViewController.m */,
 				99D33A9F1C17BD0B0067E57C /* View */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		99D33A9C1C17BD0B0067E57C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		99D33A9F1C17BD0B0067E57C /* View */ = {
@@ -2294,6 +2313,8 @@
 				C08244451C1F15DF00783FD5 /* MyAppointmentTopView.m */,
 				C08244471C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.h */,
 				C08244481C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.m */,
+				C08244631C1FCE8500783FD5 /* MyAddressTableViewCell.h */,
+				C08244641C1FCE8500783FD5 /* MyAddressTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2301,6 +2322,7 @@
 		99DA40A11C0BEB0500573D4C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C082445F1C1FCDB300783FD5 /* MyAddress */,
 				993669A51C1403F000B3E1C7 /* MyAppointment */,
 				993669A61C1403F000B3E1C7 /* MyArchives */,
 				993669A71C1403F000B3E1C7 /* MyCollection */,
@@ -2970,6 +2992,39 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C082444A1C1FA97100783FD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C082444B1C1FA97C00783FD5 /* THUser.h */,
+				C082444C1C1FA97C00783FD5 /* THUser.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C082445F1C1FCDB300783FD5 /* MyAddress */ = {
+			isa = PBXGroup;
+			children = (
+				C08244601C1FCDD200783FD5 /* MyAddressViewController.h */,
+				C08244611C1FCDD200783FD5 /* MyAddressViewController.m */,
+			);
+			path = MyAddress;
+			sourceTree = "<group>";
+		};
+		C08244661C1FD3BE00783FD5 /* 购物车 */ = {
+			isa = PBXGroup;
+			children = (
+				C08244671C1FD3BE00783FD5 /* 我的-我的订单－确认收货－选中@2x.png */,
+				C08244681C1FD3BE00783FD5 /* 未选@2x.png */,
+				C08244691C1FD3BE00783FD5 /* 笔.jpg */,
+				C082446A1C1FD3BE00783FD5 /* 选中@2x.png */,
+				C082446B1C1FD3BE00783FD5 /* 首页+@2x.png */,
+				C082446C1C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png */,
+				C082446D1C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－未选中@2x.png */,
+				C082446E1C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－选中@2x.png */,
+			);
+			path = "购物车";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3078,6 +3133,7 @@
 				C05A978B1C1E773A0078433B /* ios-social-sdk-shake.html in Resources */,
 				991A325B1C12E2DC00E0313F /* 3H-注册_验证码@2x.png in Resources */,
 				991A32C51C12E2DC00E0313F /* 首页-我要咨询-在线咨询-2_拍照@2x.png in Resources */,
+				C082446F1C1FD3BE00783FD5 /* 我的-我的订单－确认收货－选中@2x.png in Resources */,
 				991A32811C12E2DC00E0313F /* 3H-首页_监测仪3@2x.png in Resources */,
 				9929BCC11C1829B400F747CB /* 首页-我要预约-预约挂号-2_右@2x.png in Resources */,
 				99DA3EC21C0BE4CF00573D4C /* LaunchScreen.xib in Resources */,
@@ -3101,6 +3157,7 @@
 				991A324D1C12E2DC00E0313F /* 我的-设置_更多点击状态@2x.png in Resources */,
 				991A32941C12E2DC00E0313F /* 首页-健康商城_监测仪2@2x.png in Resources */,
 				991A32431C12E2DC00E0313F /* 我的-我要预约-预约挂号-预约挂号_头像1@2x.png in Resources */,
+				C08244761C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－选中@2x.png in Resources */,
 				991A32871C12E2DC00E0313F /* 首页-健康商城-商品详情_Banner@2x.png in Resources */,
 				991A326A1C12E2DC00E0313F /* 3H-我的_李小光-男-背景@2x.png in Resources */,
 				991A32AD1C12E2DC00E0313F /* 首页-健康资讯_返回@2x.png in Resources */,
@@ -3160,6 +3217,7 @@
 				991A32E71C12E39400E0313F /* arrowImg@2x.png in Resources */,
 				99DA41D41C0BEB0500573D4C /* MJRefresh.bundle in Resources */,
 				991A325E1C12E2DC00E0313F /* 3H-我的_我的健康档案-点击状态@2x.png in Resources */,
+				C08244741C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png in Resources */,
 				991A32701C12E2DC00E0313F /* 3H-消息-预约提醒-全选_删除@2x.png in Resources */,
 				991A32441C12E2DC00E0313F /* 我的-我要预约-预约挂号-预约挂号_头像2@2x.png in Resources */,
 				99D5442C1C1563320081D1D3 /* 3H-首页_首页-点击@2x.png in Resources */,
@@ -3170,11 +3228,13 @@
 				991A32A11C12E2DC00E0313F /* 首页-健康资讯-新闻资讯-评论2_输入框@2x.png in Resources */,
 				991A32CA1C12E2DC00E0313F /* 首页-我要咨询-在线咨询_对话框2@2x.png in Resources */,
 				991A32C71C12E2DC00E0313F /* 首页-我要咨询-在线咨询-医生列表-搜索_搜索框@2x.png in Resources */,
+				C08244731C1FD3BE00783FD5 /* 首页+@2x.png in Resources */,
 				C0956A411C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png in Resources */,
 				991A32801C12E2DC00E0313F /* 3H-首页_监测仪1@2x.png in Resources */,
 				991A328E1C12E2DC00E0313F /* 首页-健康商城-商品详情_数量-@2x.png in Resources */,
 				991A321D1C12E2DC00E0313F /* 首页-健康日程_用药提醒@2x.png in Resources */,
 				991A32541C12E2DC00E0313F /* 3H-注册_3H (2)@2x.png in Resources */,
+				C08244721C1FD3BE00783FD5 /* 选中@2x.png in Resources */,
 				991A32C41C12E2DC00E0313F /* 首页-我要咨询-医生列表_搜索图标@2x.png in Resources */,
 				991A321F1C12E2DC00E0313F /* 首页-健康管理-主要诊断-主要诊断搜索_搜索@2x.png in Resources */,
 				991A32591C12E2DC00E0313F /* 3H-注册_请输入手机号@2x.png in Resources */,
@@ -3219,6 +3279,7 @@
 				991A32E31C12E2DC00E0313F /* 首页-我要预约_预约专家电话咨询@2x.png in Resources */,
 				C05A976D1C1E773A0078433B /* UMShareEditViewControlleriPad.xib in Resources */,
 				991A32A61C12E2DC00E0313F /* 首页-健康资讯_Banner@2x.png in Resources */,
+				C08244711C1FD3BE00783FD5 /* 笔.jpg in Resources */,
 				991A324E1C12E2DC00E0313F /* 我的-设置_清除缓存-点击状态@2x.png in Resources */,
 				991A32D81C12E2DC00E0313F /* 首页-我要预约-预约住院_预约留言@2x.png in Resources */,
 				991A32341C12E2DC00E0313F /* 我的-我的钱包_订单记录-点击状态@2x.png in Resources */,
@@ -3227,7 +3288,9 @@
 				9929BCC21C1829B400F747CB /* 首页-我要预约-预约挂号-2_左@2x.png in Resources */,
 				991A32D01C12E2DC00E0313F /* 首页-我要咨询-电话咨询_外框@2x.png in Resources */,
 				991A328B1C12E2DC00E0313F /* 首页-健康商城-商品详情_头像2@2x.png in Resources */,
+				C08244701C1FD3BE00783FD5 /* 未选@2x.png in Resources */,
 				991A32491C12E2DC00E0313F /* 我的-设置_意见反馈-点击状态@2x.png in Resources */,
+				C08244751C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－未选中@2x.png in Resources */,
 				991A32501C12E2DC00E0313F /* 我的-设置_版本更新-点击状态@2x.png in Resources */,
 				991A32D31C12E2DC00E0313F /* 首页-我要咨询_在线咨询@2x.png in Resources */,
 				991A328C1C12E2DC00E0313F /* 首页-健康商城-商品详情_收藏@2x.png in Resources */,
@@ -3376,6 +3439,7 @@
 				99DA3EBA1C0BE4CF00573D4C /* ViewController.m in Sources */,
 				9929BCBE1C18257800F747CB /* ConsultingIsPhoneDescTableViewCell.m in Sources */,
 				99DA41AF1C0BEB0500573D4C /* FMDatabase.m in Sources */,
+				C08244651C1FCE8500783FD5 /* MyAddressTableViewCell.m in Sources */,
 				99DA41F21C0BEB0500573D4C /* TQRichTextImageRun.m in Sources */,
 				C05A96CD1C1D85CB0078433B /* AppointDoctorsTableViewCell.m in Sources */,
 				991A330E1C12FFDA00E0313F /* SetUpTableViewCell.m in Sources */,
@@ -3500,11 +3564,13 @@
 				993669CA1C1404D000B3E1C7 /* MyArchivesTableViewCell.m in Sources */,
 				99DA41D71C0BEB0500573D4C /* UIScrollView+MJRefresh.m in Sources */,
 				C05A96DF1C1D99E10078433B /* MainDiagnosticDetailTableViewCell.m in Sources */,
+				C082444D1C1FA97C00783FD5 /* THUser.m in Sources */,
 				99D544381C1574A40081D1D3 /* ReviewGuideTableViewCell.m in Sources */,
 				99D544181C1562860081D1D3 /* MedicationGuideViewController.m in Sources */,
 				99DA41C01C0BEB0500573D4C /* NSError+MTLModelException.m in Sources */,
 				C043F6C11C1D7E4B00EC1B43 /* THHttpResponse.m in Sources */,
 				9929BCA61C1810C200F747CB /* ConsultingHeadView.m in Sources */,
+				C08244621C1FCDD200783FD5 /* MyAddressViewController.m in Sources */,
 				99DBE3371C1922E700965290 /* CustomTextView.m in Sources */,
 				993669CC1C1404D000B3E1C7 /* MyOrdersTableViewCell.m in Sources */,
 				C05A96C11C1D836C0078433B /* AppointExpertViewController.m in Sources */,

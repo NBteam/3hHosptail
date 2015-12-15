@@ -15,6 +15,6 @@
 @property (nonatomic, strong) UIImageView *imgArrow;
 
 
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(NSString *)dic;
 
 @end

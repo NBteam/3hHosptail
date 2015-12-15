@@ -55,6 +55,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CheckDataDetailViewController *checkDataDetailVc = [[CheckDataDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    checkDataDetailVc.index = 0;
+    checkDataDetailVc.titles = @"尿常规";
     [self.navigationController pushViewController:checkDataDetailVc animated:YES];
 }
 

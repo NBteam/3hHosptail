@@ -16,7 +16,7 @@
     if (self) {
         self.backgroundColor = AppDefaultColor;
         [self addSubview:self.imgPatientPic];
-        [self.imgPatientPic addSubview:self.labPatientSex];
+        [self addSubview:self.labPatientSex];
         [self addSubview:self.labPatientName];
     }
     return self;
@@ -25,17 +25,17 @@
 - (UIImageView *)imgPatientPic{
     if (!_imgPatientPic) {
         _imgPatientPic = [[UIImageView alloc] initWithFrame:CGRectMake((DeviceSize.width -65)/2, 15, 65, 65)];
-        _imgPatientPic.backgroundColor = [UIColor grayColor];
+        _imgPatientPic.backgroundColor = [UIColor whiteColor];
         _imgPatientPic.layer.masksToBounds = YES;
         _imgPatientPic.layer.cornerRadius = 65/2;
-        _imgPatientPic.clipsToBounds = NO;
+//        _imgPatientPic.clipsToBounds = NO;
     }
     return _imgPatientPic;
 }
 
 - (UILabel *)labPatientSex{
     if (!_labPatientSex) {
-        _labPatientSex = [[UILabel alloc] initWithFrame:CGRectMake(self.imgPatientPic.width - 20, self.imgPatientPic.height -20, 20, 20)];
+        _labPatientSex = [[UILabel alloc] initWithFrame:CGRectMake(self.imgPatientPic.right - 20, self.imgPatientPic.bottom -20, 20, 20)];
         _labPatientSex.textColor = AppDefaultColor;
         _labPatientSex.font = [UIFont systemFontOfSize:13];
         _labPatientSex.layer.borderColor = AppDefaultColor.CGColor;
@@ -59,9 +59,19 @@
 }
 //赋值
 
-- (void)confingWithModel:(NSInteger )model{
-    self.labPatientSex.text = @"男";
-    self.labPatientName.text = @"李晓光";
+- (void)confingWithName:(NSString * )name Sex:(NSString *)sex Pic:(NSString *)pic{
+    
+    self.labPatientName.text = name;
+    //0保密，1男，2女
+    if ([sex isEqualToString:@"0"]) {
+        self.labPatientSex.text = @"密";
+        
+    }else if ([sex isEqualToString:@"1"]){
+        self.labPatientSex.text = @"男";
+    }else{
+        self.labPatientSex.text = @"女";
+    }
+    [self.imgPatientPic sd_setImageWithURL:SD_IMG(pic)];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

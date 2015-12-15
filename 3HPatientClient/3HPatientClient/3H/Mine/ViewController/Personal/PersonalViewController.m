@@ -11,7 +11,9 @@
 #import "PersonalTableViewCell.h"
 #import "PersonalInputViewController.h"
 #import "SexViewController.h"
-@interface PersonalViewController ()
+@interface PersonalViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+
+@property (nonatomic, strong) UIActionSheet *actionSheet;
 
 @end
 
@@ -20,12 +22,141 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"用户名",@"detail":@"未填写"},@{@"title":@"姓名",@"detail":@"未填写"},@{@"title":@"性别",@"detail":@"未填写"},@{@"title":@"出生日期",@"detail":@"未填写"},@{@"title":@"通讯地址",@"detail":@"未填写"},@{@"title":@"电话",@"detail":@"未填写"},@{@"title":@"身份证号",@"detail":@"未填写"}]];
+    
+    NSString *sex;
+    
+    if ([self.user.sex isEqualToString:@"0"]) {
+        sex = @"保密";
+    }else if ([self.user.sex isEqualToString:@"1"]){
+        sex = @"男";
+    }else{
+        sex = @"女";
+    }
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"用户名",@"detail":self.user.nickname},@{@"title":@"姓名",@"detail":self.user.truename},@{@"title":@"性别",@"detail":sex},@{@"title":@"出生日期",@"detail":self.user.birth},@{@"title":@"通讯地址",@"detail":@"未填写"},@{@"title":@"电话",@"detail":self.user.mobile},@{@"title":@"身份证号",@"detail":self.user.card_id}]];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
 }
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (UIActionSheet *)actionSheet{
+    if (!_actionSheet) {
+        _actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"从相册中选择", nil];
+    }
+    return _actionSheet;
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self updateMypicture:buttonIndex];
+        //        NSLog(@"%ld",buttonIndex);
+    }else if (buttonIndex == 1){
+        [self updateMypicture:buttonIndex];
+        NSLog(@"%ld",buttonIndex);
+    }
+}
+- (void)updateMypicture:(NSInteger)index{
+    if (index == 0) {//拍照
+        UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+        if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+        {
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            //设置拍照后的图片可被编辑
+            picker.allowsEditing = YES;
+            picker.sourceType = sourceType;
+            [self presentViewController:picker animated:YES completion:nil];
+        }else
+        {
+            NSLog(@"模拟其中无法打开照相机,请在真机中使用");
+            
+        }
+    }else if (index == 1){//从相册
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.delegate = self;
+        //设置选择后的图片可被编辑
+        picker.allowsEditing = YES;
+        [self presentViewController:picker animated:YES completion:nil];
+    }else{
+        
+        
+        
+        
+    }
+}
+//选择某张照片之后
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    WeakSelf(PersonalViewController);
+    
+    //关闭相册界面
+    [picker dismissViewControllerAnimated:YES
+                               completion:^{
+                                   NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+                                   
+                                   //当选择的类型是图片
+                                   if ([type isEqualToString:@"public.image"])
+                                   {
+                                       //先把图片转成NSData
+                                       UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+                                       //                                       LaboratoryTestsAddPhotoTableViewCell * cell = [weakSelf.tableView cellForRowAtIndexPath:weakSelf.indexPaths];
+                                       //
+                                       //                                       [cell confingWithModel:image] ;
+                                       NSData *data = UIImageJPEGRepresentation(image, 0.25);
+                                       NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+                                       
+                                       //文件管理器
+                                       NSFileManager *fileManager = [NSFileManager defaultManager];
+                                       
+                                       //把刚刚图片转换的data对象拷贝至沙盒中 并保存为image.png
+                                       [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
+                                       [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:@"/image.png"] contents:data attributes:nil];
+                                       //                                       [weakSelf.tableView reloadData];
+                                       [weakSelf uploadImageWithImage:image];
+                                   }
+                                   
+                               }];
+}
+
+- (void)uploadImageWithImage:(UIImage *)image{
+    WeakSelf(PersonalViewController);
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.25);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *filePath = [[NSString alloc]initWithFormat:@"%@%@",DocumentsPath,@"/image.png"];
+    NSLog(@"%@",filePath);
+    if (filePath) {
+        [[THNetWorkManager shareNetWork]getUploadFaceFile:imageData faceString:filePath andCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [weakSelf removeMBProgressHudInManaual];
+            NSDictionary *content = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            if ([content[@"status"] doubleValue] == 1) {
+                NSLog(@"00000000%@",content);
+//                [weakSelf.dict setObject:image forKey:@"pic"];
+                weakSelf.user.pic = content[@"data"][@"savename"];
+                
+                //  写入文件
+                [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:weakSelf.user];
+                //  下次在那重新获取保存数据
+                
+                weakSelf.user = nil;
+                
+                
+                [weakSelf.tableView reloadData];
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshBaseInfoNatification" object:nil];
+                NSLog(@"%@",self.user.pic);
+            }else{
+                [weakSelf showHudAuto:content[@"info"]];
+            }
+        } andFailure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        } andProgress:^(long long bytesSent, long long totalBytesSent, long long totalBytesExpectedToSend) {
+            
+        }];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -37,7 +168,7 @@
             cell = [[PersonalHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dataArray[indexPath.row]];
+        [cell confingWithModel:self.user.pic];
         return cell;
     }else{
         static NSString *identifier = @"PersonalTableViewCell";
@@ -84,6 +215,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     WeakSelf(PersonalViewController);
     if (indexPath.section == 0) {
+        [self.actionSheet showInView: self.view];
         
     }else{
         

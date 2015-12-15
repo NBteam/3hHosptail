@@ -11,6 +11,7 @@
 #import "CheckDataDetailTableViewCell.h"
 @interface CheckDataDetailViewController ()
 
+@property (nonatomic, assign) CGFloat cellHeight;
 @end
 
 @implementation CheckDataDetailViewController
@@ -34,7 +35,7 @@
             cell = [[CheckDataDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:indexPath.section];
+        self.cellHeight = [cell confingWithModel:indexPath.section];
         return cell;
     }else{
         static NSString *identifier = @"CheckDataDetailHeadTableViewCell";
@@ -54,7 +55,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 3) {
-        return 100;
+        return self.cellHeight;
     }else{
         return 45;
     }
@@ -81,6 +82,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSString *)title{
+    return self.titles;
+}
 /*
 #pragma mark - Navigation
 

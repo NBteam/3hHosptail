@@ -17,5 +17,5 @@
 @property (nonatomic, strong) UILabel *labPatientName;
 //赋值
 
-- (void)confingWithModel:(NSInteger )model;
+- (void)confingWithName:(NSString * )name Sex:(NSString *)sex Pic:(NSString *)pic;
 @end
