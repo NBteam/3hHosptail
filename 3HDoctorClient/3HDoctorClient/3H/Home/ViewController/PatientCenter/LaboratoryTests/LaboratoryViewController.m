@@ -83,7 +83,7 @@
     return 10.0f;
 }
 - (void)getNetWork{
-    [self showHudAuto:WaitPrompt];
+    [self showHudWaitingView:WaitPrompt];
     WeakSelf(LaboratoryViewController);
     [[THNetWorkManager shareNetWork]getPatientAssayListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
@@ -97,7 +97,7 @@
             }
             
         }else{
-            [weakSelf showHudAuto:response.message andDuration:@"1"];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
         //  结束头部刷新
         [weakSelf.tableView.header endRefreshing];
@@ -106,7 +106,7 @@
         //  重新加载数据
         [weakSelf.tableView reloadData];
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
     }];
 }
 #pragma mark -- 重新父类方法进行刷新

@@ -80,7 +80,7 @@
     return 10.0f;
 }
 - (void)getNetWork{
-    [self showHudAuto:WaitPrompt];
+    [self showHudWaitingView:WaitPrompt];
     WeakSelf(CheckViewController);
     [[THNetWorkManager shareNetWork]getPatientCheckListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];

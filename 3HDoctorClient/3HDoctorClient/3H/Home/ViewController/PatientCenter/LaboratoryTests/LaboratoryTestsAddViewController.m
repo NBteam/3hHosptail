@@ -255,7 +255,7 @@
 }
 - (void)getNetWork{
     if (self.index == 1) {//化验
-        [self showHudAuto:WaitPrompt];
+        [self showHudWaitingView:WaitPrompt];
         WeakSelf(LaboratoryTestsAddViewController);
         [[THNetWorkManager shareNetWork]getPatientAssayMid:@"" id:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
@@ -272,7 +272,7 @@
             [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
         }];
     }else{
-        [self showHudAuto:WaitPrompt];
+        [self showHudWaitingView:WaitPrompt];
         WeakSelf(LaboratoryTestsAddViewController);
         [[THNetWorkManager shareNetWork]getPatientCheckMid:@"" id:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];

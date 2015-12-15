@@ -120,7 +120,7 @@
     }
 }
 - (void)getNetWorkInfo{
-    [self showHudAuto:WaitPrompt];
+    [self showHudWaitingView:WaitPrompt];
     WeakSelf(MineViewController);
     [[THNetWorkManager shareNetWork]getUserInfoCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];

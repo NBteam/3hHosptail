@@ -97,7 +97,7 @@
     return @"用药提醒";
 }
 - (void)getNetWork{
-    [self showHudAuto:WaitPrompt];
+    [self showHudWaitingView:WaitPrompt];
     WeakSelf(MedicationViewController);
     [[THNetWorkManager shareNetWork]getPatientDrugListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];

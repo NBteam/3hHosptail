@@ -197,7 +197,7 @@
     }else if ([self.txtPassWord.text isEqualToString:@""]){
         [self showHudAuto:@"请输入密码" andDuration:@"2"];
     }else{
-        [self showHudAuto:WaitPrompt];
+        [self showHudWaitingView:WaitPrompt];
         WeakSelf(LoginViewController);
         [[THNetWorkManager shareNetWork]getLoginMobile:self.txtUserName.text password:self.txtPassWord.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
@@ -210,10 +210,10 @@
                      [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
                 }
             }else{
-                [weakSelf showHudAuto:response.message andDuration:@"1"];
+                [weakSelf showHudAuto:response.message andDuration:@"2"];
             }
         } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
         } ];
     }
     

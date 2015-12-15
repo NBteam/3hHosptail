@@ -73,7 +73,7 @@
     return @"患者添加请求";
 }
 - (void)getNetWork{
-    [self showHudAuto:WaitPrompt];
+    [self showHudWaitingView:WaitPrompt];
     WeakSelf(PatientAddRequestViewController);
     [[THNetWorkManager shareNetWork]getmyPatientReqsPage:self.number andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
@@ -112,7 +112,7 @@
     [self getNetWork];
 }
 - (void)getMyPatientReqProcessNetWorkprocess:(NSInteger)process Req_id:(NSString *)Req_id{
-    [self showHudAuto:WaitPrompt];
+    [self showHudWaitingView:WaitPrompt];
     WeakSelf(PatientAddRequestViewController);
     [[THNetWorkManager shareNetWork]getMyPatientReqProcessReq_id:Req_id process:process andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];

@@ -97,7 +97,7 @@
     return @"复查提醒";
 }
 - (void)getNetWork{
-    [self showHudAuto:WaitPrompt];
+    [self showHudWaitingView:WaitPrompt];
     WeakSelf(ReviewViewController);
     [[THNetWorkManager shareNetWork]getPatientRecheckListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
