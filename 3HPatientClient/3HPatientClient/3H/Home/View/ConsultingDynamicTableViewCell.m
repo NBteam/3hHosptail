@@ -52,7 +52,7 @@
 - (UIImageView *)imgTime{
     if (!_imgTime) {
         _imgTime = [[UIImageView alloc] initWithFrame:CGRectMake(0, 100 - 20 +1, 10, 10)];
-        _imgTime.image = [UIImage imageNamed:@"首页-资讯动态_时间"];
+        _imgTime.image = [UIImage imageNamed:@"首页-健康资讯_时间"];
         
     }
     return _imgTime;

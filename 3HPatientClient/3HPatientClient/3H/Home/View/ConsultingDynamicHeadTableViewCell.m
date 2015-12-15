@@ -48,7 +48,7 @@
 - (UIImageView *)imgLogo{
     if (!_imgLogo) {
         _imgLogo = [[UIImageView alloc] initWithFrame:CGRectMake(0, 11, 10, 10)];
-        _imgLogo.image = [UIImage imageNamed:@"首页-资讯动态_时间"];
+        _imgLogo.image = [UIImage imageNamed:@"首页-健康资讯_时间"];
         
     }
     return _imgLogo;
