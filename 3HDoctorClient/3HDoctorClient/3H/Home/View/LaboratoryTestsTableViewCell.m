@@ -51,7 +51,7 @@
 - (void)confingWithModel:(PatientAssayListModel *)model{
     [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:model.pic] placeholderImage:[UIImage imageNamed:@""]];
     self.labTitle.text = model.name;
-    self.labDetail.text = model.hospital;
+    self.labDetail.text = [NSString stringWithFormat:@"%@  %@",model.hospital,model.addtime];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

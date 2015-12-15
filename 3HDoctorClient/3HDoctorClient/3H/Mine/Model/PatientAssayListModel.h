@@ -16,4 +16,5 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *hospital;
 @property (nonatomic, copy) NSString *pic;
+@property (nonatomic, copy) NSString *addtime;
 @end

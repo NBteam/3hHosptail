@@ -377,8 +377,8 @@ static THNetWorkManager *thNetWorkManager = nil;
  * @param page        分页
  * @param pos         分页位置
  */
-- (void)getArtListPage:(NSInteger)page pos:(NSInteger)pos andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"getArtList",@"page":@(page),@"pos":@(pos)};
+- (void)getArtListPage:(NSInteger)page pos:(NSString *)pos andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getArtList",@"page":@(page),@"pos":pos};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 /**
@@ -571,6 +571,35 @@ static THNetWorkManager *thNetWorkManager = nil;
         
     } success:success failure:failure ];
     
+}
+
+#pragma mark 添加患者检查
+- (void)addPatientCheckMid:(NSString *)mid Name:(NSString *)name Hospital:(NSString *)hospital File:(NSMutableArray *)files faceString:(NSMutableArray *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress{
+    NSString *urlPath = [thServerHost stringByAppendingString:@""];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary *parameter=@{@"a":@"addPatientCheck",Token:GetToken,@"mid":mid,@"name":name,@"hospital":hospital};
+    
+    [manager POST:urlPath parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        
+        for (int i = 0; i<files.count; i++) {
+            NSString *str = [NSString stringWithFormat:@"img%i",i];
+            [formData appendPartWithFileData:faceString[i] name:str fileName:files[i] mimeType:@"image/png"];
+        }
+        
+    } success:success failure:failure ];
+}
+
+#pragma mark 获取患者化验和检查详情【20151213更新】
+- (void)getPatientCheckIds:(NSString *)ids Index:(NSInteger)index  CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic;
+    if (index == 0) {//化验
+        paramDic = @{@"a":@"getPatientAssay",Token:GetToken,@"id":ids};
+    }else{//检查
+        paramDic = @{@"a":@"getPatientCheck",Token:GetToken,@"id":ids};
+    }
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 
 

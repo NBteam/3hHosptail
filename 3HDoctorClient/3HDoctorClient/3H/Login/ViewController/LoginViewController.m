@@ -203,6 +203,8 @@
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
                 [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:@"token"];
+                
+                NSLog(@"token:%@",response.dataDic[@"token"]);
                 if ([response.dataDic[@"is_fill"] doubleValue] == 0) {//未填写
                     PerfectInformationViewController *perfectInformationVc = [[PerfectInformationViewController alloc] init];
                     [self.navigationController pushViewController:perfectInformationVc animated:YES];

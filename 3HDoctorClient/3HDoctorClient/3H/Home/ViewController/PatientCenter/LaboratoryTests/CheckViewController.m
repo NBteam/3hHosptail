@@ -10,6 +10,7 @@
 #import "PatientCenterNotCustomView.h"
 #import "LaboratoryTestsTableViewCell.h"
 #import "LaboratoryTestsAddViewController.h"
+#import "CheckDataDetailViewController.h"
 @interface CheckViewController ()
 
 @property (nonatomic, strong) PatientCenterNotCustomView *customView;
@@ -25,7 +26,7 @@
     // Do any additional setup after loading the view.
     self.isOpenHeaderRefresh = YES;
     self.isOpenFooterRefresh = YES;
-     [self.view addSubview:self.customView];
+    // [self.view addSubview:self.customView];
     [self getNetWork];
 }
 #pragma mark - UI
@@ -38,6 +39,7 @@
         [_customView setBtnBlock:^{
             LaboratoryTestsAddViewController *laboratoryTestsAddVc= [[LaboratoryTestsAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
             laboratoryTestsAddVc.index = 2;
+            laboratoryTestsAddVc.mid = weakSelf.mid;
             [weakSelf.navigationController pushViewController:laboratoryTestsAddVc animated:YES];
         }];
     }
@@ -52,7 +54,7 @@
         cell = [[LaboratoryTestsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:nil];
+    [cell confingWithModel:self.dataArray[indexPath.section]];
     return cell;
 }
 
@@ -79,18 +81,23 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10.0f;
 }
+
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(CheckViewController);
-    [[THNetWorkManager shareNetWork]getPatientCheckListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getPatientCheckListPage:self.pageNO mid:self.mid andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
-        if (weakSelf.number == 0) {
+        if (weakSelf.pageNO == 1) {
             [weakSelf.dataArray removeAllObjects];
         }
         if (response.responseCode == 1) {
             for (NSDictionary * dict in response.dataDic[@"list"]) {
                 PatientAssayListModel * model = [response thParseDataFromDic:dict andModel:[PatientAssayListModel class]];
                 [weakSelf.dataArray addObject:model];
+            }
+            
+            if (weakSelf.dataArray.count == 0) {
+                [weakSelf.view addSubview:self.customView];
             }
             
         }else{
@@ -113,13 +120,22 @@
 #pragma mark -- 重新父类方法进行刷新
 - (void)headerRequestWithData
 {
-    self.number = 0;
+    
     [self getNetWork];
 }
 - (void)footerRequestWithData
 {
-    self.number += 5;
+    
     [self getNetWork];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    PatientAssayListModel *model = self.dataArray[indexPath.section];
+    CheckDataDetailViewController *checkDataDetailVc = [[CheckDataDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    checkDataDetailVc.index = 1;
+    checkDataDetailVc.titles = model.name;
+    checkDataDetailVc.ids = model.id;
+    [self.navigationController pushViewController:checkDataDetailVc animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -127,13 +143,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

@@ -105,7 +105,7 @@ typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSen
  * @param page        分页
  * @param pos         分页位置
  */
-- (void)getArtListPage:(NSInteger)page pos:(NSInteger)pos andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+- (void)getArtListPage:(NSInteger)page pos:(NSString *)pos andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 /**
  * 获取文章详情
  * @param id        id
@@ -216,5 +216,12 @@ typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSen
 
 #pragma mark 添加患者化验
 - (void)addPatientAssayMid:(NSString *)mid Name:(NSString *)name Hospital:(NSString *)hospital File:(NSMutableArray *)files faceString:(NSMutableArray *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress;
+
+#pragma mark 添加患者检查
+- (void)addPatientCheckMid:(NSString *)mid Name:(NSString *)name Hospital:(NSString *)hospital File:(NSMutableArray *)files faceString:(NSMutableArray *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress;
+
+
+#pragma mark 获取患者化验和检查详情【20151213更新】
+- (void)getPatientCheckIds:(NSString *)ids Index:(NSInteger)index  CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
 @end

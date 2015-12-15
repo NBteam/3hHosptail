@@ -122,7 +122,7 @@
             cell = [[ConsultingDynamicHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dataArray[indexPath.row]];
+        [cell confingWithModel:self.dataArray[indexPath.section]];
         return cell;
     }else{
         static NSString *identifier = @"idertifier";
@@ -131,7 +131,7 @@
             cell = [[ConsultingDynamicTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dataArray[indexPath.row]];
+        [cell confingWithModel:self.dataArray[indexPath.section]];
         return cell;
     }
 }
