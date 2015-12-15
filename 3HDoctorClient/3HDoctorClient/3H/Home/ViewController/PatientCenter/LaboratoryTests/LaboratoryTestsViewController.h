@@ -10,4 +10,6 @@
 
 @interface LaboratoryTestsViewController : BaseViewController
 
+@property (nonatomic, copy) NSString * mid;
+
 @end

@@ -116,6 +116,7 @@
     [[THNetWorkManager shareNetWork]getPatientSickHistoryMid:self.mid andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         [weakSelf.dataArray removeAllObjects];
+        NSLog(@"查看sss%@",response.dataDic);
         if (response.responseCode == 1) {
             weakSelf.dictInfo = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
             [weakSelf.tableView reloadData];

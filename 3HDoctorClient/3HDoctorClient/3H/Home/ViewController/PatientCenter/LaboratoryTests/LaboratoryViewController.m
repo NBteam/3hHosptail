@@ -40,6 +40,7 @@
         [_customView setBtnBlock:^{
             LaboratoryTestsAddViewController *laboratoryTestsAddVc= [[LaboratoryTestsAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
             laboratoryTestsAddVc.index = 1;
+            laboratoryTestsAddVc.mid = weakSelf.mid;
             [weakSelf.navigationController pushViewController:laboratoryTestsAddVc animated:YES];
         }];
     }
@@ -85,12 +86,13 @@
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(LaboratoryViewController);
-    [[THNetWorkManager shareNetWork]getPatientAssayListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getPatientAssayListPage:self.pageNO mid:self.mid andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (weakSelf.number == 0) {
             [weakSelf.dataArray removeAllObjects];
         }
         if (response.responseCode == 1) {
+            NSLog(@"啥%@",response.dataDic);
             for (NSDictionary * dict in response.dataDic[@"list"]) {
                 PatientAssayListModel * model = [response thParseDataFromDic:dict andModel:[PatientAssayListModel class]];
                 [weakSelf.dataArray addObject:model];

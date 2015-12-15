@@ -12,4 +12,7 @@
 
 //判断是化验还是检查 1 =化验 2 =检查
 @property (nonatomic,assign) NSInteger index;
+@property (nonatomic, copy) NSString * mid;
+
+
 @end

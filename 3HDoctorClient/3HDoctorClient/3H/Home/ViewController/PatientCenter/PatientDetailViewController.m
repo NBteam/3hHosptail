@@ -105,6 +105,7 @@
         }else if(indexPath.row == 2){//化验
             
             LaboratoryTestsViewController *laboratoryTestsVc = [[LaboratoryTestsViewController alloc] init];
+            laboratoryTestsVc.mid = self.model.id;
             [self.navigationController pushViewController:laboratoryTestsVc animated:YES];
             
         }else if(indexPath.row == 3){//用药

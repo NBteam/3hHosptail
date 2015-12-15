@@ -369,7 +369,7 @@ static THNetWorkManager *thNetWorkManager = nil;
  * @param desc        病情描述
  */
 - (void)editPatientSickHistoryMid:(NSString *)mid guomin:(NSString *)guomin blood_type:(NSString *)blood_type desc:(NSString *)desc andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"getPatientSickHistory",@"mid":mid,@"guomin":guomin,@"blood_type":blood_type,@"desc":desc,@"token":GetToken};
+    NSDictionary *paramDic = @{@"a":@"editPatientSickHistory",@"mid":mid,@"guomin":guomin,@"blood_type":blood_type,@"desc":desc,@"token":GetToken};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 /**
@@ -549,9 +549,29 @@ static THNetWorkManager *thNetWorkManager = nil;
     NSDictionary *parameter=@{@"a":@"uploadface",Token:GetToken};
     [manager POST:urlPath parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:file name:@"头像.png" fileName:faceString mimeType:@"image/png"];
+        
     } success:success failure:failure ];
 }
 
+#pragma mark 添加患者化验
+- (void)addPatientAssayMid:(NSString *)mid Name:(NSString *)name Hospital:(NSString *)hospital File:(NSMutableArray *)files faceString:(NSMutableArray *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress{
+    
+    NSString *urlPath = [thServerHost stringByAppendingString:@""];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary *parameter=@{@"a":@"addPatientAssay",Token:GetToken,@"mid":mid,@"name":name,@"hospital":hospital};
+    
+    [manager POST:urlPath parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        
+        for (int i = 0; i<files.count; i++) {
+            NSString *str = [NSString stringWithFormat:@"img%i",i];
+            [formData appendPartWithFileData:faceString[i] name:str fileName:files[i] mimeType:@"image/png"];
+        }
+        
+    } success:success failure:failure ];
+    
+}
 
 
 @end

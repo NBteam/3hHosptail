@@ -76,6 +76,7 @@
 - (LaboratoryViewController *)laboratoryVc{
     if (!_laboratoryVc) {
         _laboratoryVc = [[LaboratoryViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        _laboratoryVc.mid = self.mid;
     }
     return _laboratoryVc;
 }
@@ -83,6 +84,7 @@
 - (CheckViewController *)checkVc{
     if (!_checkVc) {
         _checkVc = [[CheckViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        _checkVc.mid = self.mid;
     }
     return _checkVc;
 }

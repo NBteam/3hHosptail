@@ -534,6 +534,12 @@
 		A9B5EA931C16E75C00D4046B /* GuideSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA901C16E75C00D4046B /* GuideSearchView.m */; };
 		A9B5EA941C16E75C00D4046B /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA921C16E75C00D4046B /* SearchCell.m */; };
 		A9B5EA971C16E77E00D4046B /* OutpatientReservationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */; };
+		C08244891C20173700783FD5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244841C20173700783FD5 /* AboutViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C082448A1C20173700783FD5 /* EvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244861C20173700783FD5 /* EvaluationViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C082448B1C20173700783FD5 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244881C20173700783FD5 /* FeedbackViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C08244901C20175800783FD5 /* EvaluationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C082448D1C20175800783FD5 /* EvaluationTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		C08244911C20175800783FD5 /* FeedbackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C082448F1C20175800783FD5 /* FeedbackTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		C08244931C20190A00783FD5 /* 首页-我要预约-预约住院_预约留言@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C08244921C20190A00783FD5 /* 首页-我要预约-预约住院_预约留言@2x.png */; settings = {ASSET_TAGS = (); }; };
 		D24F418C1C1D7235004F8699 /* ReservationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D24F418B1C1D7235004F8699 /* ReservationListModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -1326,6 +1332,17 @@
 		A9B5EA921C16E75C00D4046B /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		A9B5EA951C16E77E00D4046B /* OutpatientReservationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutpatientReservationView.h; sourceTree = "<group>"; };
 		A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutpatientReservationView.m; sourceTree = "<group>"; };
+		C08244831C20173700783FD5 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		C08244841C20173700783FD5 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		C08244851C20173700783FD5 /* EvaluationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationViewController.h; sourceTree = "<group>"; };
+		C08244861C20173700783FD5 /* EvaluationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluationViewController.m; sourceTree = "<group>"; };
+		C08244871C20173700783FD5 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		C08244881C20173700783FD5 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		C082448C1C20175800783FD5 /* EvaluationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationTableViewCell.h; sourceTree = "<group>"; };
+		C082448D1C20175800783FD5 /* EvaluationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluationTableViewCell.m; sourceTree = "<group>"; };
+		C082448E1C20175800783FD5 /* FeedbackTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackTableViewCell.h; sourceTree = "<group>"; };
+		C082448F1C20175800783FD5 /* FeedbackTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackTableViewCell.m; sourceTree = "<group>"; };
+		C08244921C20190A00783FD5 /* 首页-我要预约-预约住院_预约留言@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-我要预约-预约住院_预约留言@2x.png"; sourceTree = "<group>"; };
 		D24F418A1C1D7235004F8699 /* ReservationListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReservationListModel.h; sourceTree = "<group>"; };
 		D24F418B1C1D7235004F8699 /* ReservationListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReservationListModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1385,6 +1402,12 @@
 		991A30DE1C11C99800E0313F /* SetUp */ = {
 			isa = PBXGroup;
 			children = (
+				C08244831C20173700783FD5 /* AboutViewController.h */,
+				C08244841C20173700783FD5 /* AboutViewController.m */,
+				C08244851C20173700783FD5 /* EvaluationViewController.h */,
+				C08244861C20173700783FD5 /* EvaluationViewController.m */,
+				C08244871C20173700783FD5 /* FeedbackViewController.h */,
+				C08244881C20173700783FD5 /* FeedbackViewController.m */,
 				991A31071C11D9DE00E0313F /* SetUpViewController.h */,
 				991A31081C11D9DE00E0313F /* SetUpViewController.m */,
 			);
@@ -2189,6 +2212,10 @@
 				991A31051C11D9B100E0313F /* SetUpTableViewCell.m */,
 				991A31161C11E40100E0313F /* AppointTopView.h */,
 				991A31171C11E40100E0313F /* AppointTopView.m */,
+				C082448C1C20175800783FD5 /* EvaluationTableViewCell.h */,
+				C082448D1C20175800783FD5 /* EvaluationTableViewCell.m */,
+				C082448E1C20175800783FD5 /* FeedbackTableViewCell.h */,
+				C082448F1C20175800783FD5 /* FeedbackTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2440,6 +2467,7 @@
 		99DA438A1C0C4FED00573D4C /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				C08244921C20190A00783FD5 /* 首页-我要预约-预约住院_预约留言@2x.png */,
 				99DA438B1C0C4FED00573D4C /* 3H-我的_头像@2x.png */,
 				99DA438C1C0C4FED00573D4C /* 3H-我的_已认证@2x.png */,
 				99DA438D1C0C4FED00573D4C /* 3H-我的_我的钱包-未点击@2x.png */,
@@ -3280,6 +3308,7 @@
 				99DA45C81C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-同意-打电话2_拨打-点击@2x.png in Resources */,
 				99DA45811C0C4FED00573D4C /* 首页-患者中心-患者详情-复查提醒-添加复查_右键-白色@2x.png in Resources */,
 				99DA44FF1C0C4FED00573D4C /* 我的-预约设置-电话预约_左@2x.png in Resources */,
+				C08244931C20190A00783FD5 /* 首页-我要预约-预约住院_预约留言@2x.png in Resources */,
 				99DA45BA1C0C4FED00573D4C /* 首页-预约管理-电话预约_挂号预约-非点击@2x.png in Resources */,
 				99DA45531C0C4FED00573D4C /* 首页-患者中心-患者添加请求_同意-点击@2x.png in Resources */,
 				99DA44CD1C0C4FED00573D4C /* 3H-我的_我的钱包-未点击@2x.png in Resources */,
@@ -3559,9 +3588,11 @@
 				99D6EECD1C0EF83A00CB1829 /* DiagnosisViewController.m in Sources */,
 				99D6EEDD1C0EFF0A00CB1829 /* CustomTextView.m in Sources */,
 				99D141F51C0D5F27002DA3AD /* HomeViewController.m in Sources */,
+				C08244891C20173700783FD5 /* AboutViewController.m in Sources */,
 				99DA43651C0C2D0C00573D4C /* NameInputViewController.m in Sources */,
 				A93F23191C13153000AA7756 /* HospitalTableViewController.m in Sources */,
 				A98AC3B71C17D7B90024177C /* AddPatientsViewController.m in Sources */,
+				C082448A1C20173700783FD5 /* EvaluationViewController.m in Sources */,
 				99DA40021C0BE59A00573D4C /* UIButton+Extension.m in Sources */,
 				99D6EE9A1C0ECE5100CB1829 /* ReviewAddChooseTableViewCell.m in Sources */,
 				99DA40421C0BE59A00573D4C /* SDWebImageDownloaderOperation.m in Sources */,
@@ -3707,9 +3738,11 @@
 				99D142421C0DA139002DA3AD /* ConsultingDetailDescribeTableViewCell.m in Sources */,
 				A94B15F81C14439100034029 /* PatientAddRequestModel.m in Sources */,
 				99DA40531C0BE59A00573D4C /* TQRichTextURLRun.m in Sources */,
+				C08244901C20175800783FD5 /* EvaluationTableViewCell.m in Sources */,
 				A94B42EB1C1335C200B6D6AE /* DynamicToolView.m in Sources */,
 				A94B15EB1C1437A200034029 /* SexViewController.m in Sources */,
 				99DA40271C0BE59A00573D4C /* MJRefreshAutoStateFooter.m in Sources */,
+				C08244911C20175800783FD5 /* FeedbackTableViewCell.m in Sources */,
 				99DA3EE91C0BE50300573D4C /* AppDelegate.m in Sources */,
 				99DA3FF91C0BE59A00573D4C /* NSArray+SafeAccess.m in Sources */,
 				99D142331C0D974F002DA3AD /* ConsultingServicesTableViewCell.m in Sources */,
@@ -3732,6 +3765,7 @@
 				A94B15F11C14430900034029 /* InfomationDetailModel.m in Sources */,
 				99D6EED91C0EFEAD00CB1829 /* DiagnosisEditorViewController.m in Sources */,
 				99D6EEE31C0EFF9000CB1829 /* DiagnosisDetailEditorTableViewCell.m in Sources */,
+				C082448B1C20173700783FD5 /* FeedbackViewController.m in Sources */,
 				99DA40191C0BE59A00573D4C /* NSDictionary+MTLManipulationAdditions.m in Sources */,
 				99D6EEC41C0EF0DC00CB1829 /* LaboratoryTestsAddViewController.m in Sources */,
 				99D6EE971C0ECD7D00CB1829 /* ReviewAddTitleTableViewCell.m in Sources */,

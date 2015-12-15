@@ -45,7 +45,7 @@
             //                [weakSelf.dataArray addObject:model];
             //            }
             
-
+            
             
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];

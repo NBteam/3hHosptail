@@ -13,13 +13,19 @@
 #import "TestModel.h"
 #import "TimeView.h"
 
-@interface LaboratoryTestsAddViewController ()<UIActionSheetDelegate>
+@interface LaboratoryTestsAddViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (nonatomic, strong) UIActionSheet *actionSheet;
 @property (nonatomic, assign) CGFloat cellHeight;
 @property (nonatomic, strong) NSIndexPath * indexPaths;
 @property (nonatomic, strong) NSIndexPath * indexPath3;
 @property (nonatomic, strong) TimeView * viewTime;
 @property (nonatomic, strong) UIView * viewGray;
+//保存图片
+@property (nonatomic, strong) NSMutableArray *imgsArray;
+//file
+@property (nonatomic, strong) NSMutableArray *filesArray;
+//data
+@property (nonatomic, strong) NSMutableArray *datasArray;
 @end
 
 @implementation LaboratoryTestsAddViewController
@@ -27,13 +33,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(finishAction) andTarget:self andButtonTitle:@"完成"];
+    self.imgsArray = [[NSMutableArray alloc] init];
+    self.filesArray = [[NSMutableArray alloc] init];
+    self.datasArray = [[NSMutableArray alloc] init];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"完成"];
     self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"名称:",@"detail":@"未选择"},@{@"title":@"医院:",@"detail":@"未选择"},@{@"title":@"时间:",@"detail":@"未选择"}]];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    
+
     [self.view addSubview:self.viewGray];
     [self.view addSubview:self.viewTime];
-    [self getNetWork];
+   // [self getNetWork];
 }
 
 - (void)backAction{
@@ -98,6 +107,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    WeakSelf(LaboratoryTestsAddViewController);
     if (indexPath.section ==3 ) {
         static NSString *identifier = @"idertifier";
         LaboratoryTestsAddPhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -106,7 +116,12 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         self.indexPath3 = indexPath;
-        self.cellHeight = [cell confingWithModel:nil];
+        self.cellHeight = [cell confingWithModel:self.imgsArray];
+        
+        [cell setBtnTakingBlock:^{
+            [self.actionSheet showInView: self.view];
+        }];
+        
         return cell;
     }else{
         static NSString *identifier = @"idertifier";
@@ -229,23 +244,76 @@
     [picker dismissViewControllerAnimated:YES
                                completion:^{
                                    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+                                   
                                    //当选择的类型是图片
                                    if ([type isEqualToString:@"public.image"])
                                    {
                                        //先把图片转成NSData
                                        UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
-//                                       LaboratoryTestsAddPhotoTableViewCell * cell = [weakSelf.tableView cellForRowAtIndexPath:weakSelf.indexPaths];
-//                                       
-//                                       [cell confingWithModel:image] ;
-                                       [weakSelf.tableView reloadData];
+                                       //                                       LaboratoryTestsAddPhotoTableViewCell * cell = [weakSelf.tableView cellForRowAtIndexPath:weakSelf.indexPaths];
+                                       //
+                                       //                                       [cell confingWithModel:image] ;
+                                       NSData *data = UIImageJPEGRepresentation(image, 0.25);
+                                       NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+                                       
+                                       //文件管理器
+                                       NSFileManager *fileManager = [NSFileManager defaultManager];
+                                       
+                                       //把刚刚图片转换的data对象拷贝至沙盒中 并保存为image.png
+                                       [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
+                                       [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:@"/image.png"] contents:data attributes:nil];
+                                       //                                       [weakSelf.tableView reloadData];
                                        [weakSelf uploadImageWithImage:image];
                                    }
                                    
                                }];
 }
+
 - (void)uploadImageWithImage:(UIImage *)image{
+    
+    [self.imgsArray addObject:image];
+    
+
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.25);
+    [self.datasArray addObject:imageData];
+    NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *filePath = [[NSString alloc]initWithFormat:@"%@%@",DocumentsPath,[NSString stringWithFormat:@"/image%li.png",self.imgsArray.count]];
+    [self.filesArray addObject:filePath];
+    NSLog(@"%@",filePath);
+    [self.tableView reloadData];
+}
+
+- (void)rightAction{
+
+    if ([self.dataArray[0][@"detail"] isEqualToString:@"未选择"]||[self.dataArray[1][@"detail"] isEqualToString:@"未选择"]||self.imgsArray.count == 0) {
+        [self showHudAuto:@"请补全信息" andDuration:@"2"];
+        
+    }else{
+        [self showHudAuto:@"上传中..."];
+        WeakSelf(LaboratoryTestsAddViewController);
+        [[THNetWorkManager shareNetWork] addPatientAssayMid:self.mid Name:self.dataArray[0][@"detail"] Hospital:self.dataArray[1][@"detail"] File:self.filesArray faceString:self.datasArray andCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [weakSelf removeMBProgressHudInManaual];
+            
+            NSDictionary *content = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+            if ([content[@"status"] doubleValue] == 1) {
+                NSLog(@"试试事实上%@",content);
+            }else{
+                [weakSelf showHudAuto:content[@"info"] andDuration:@"2"];
+            }
+        } andFailure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        } andProgress:^(long long bytesSent, long long totalBytesSent, long long totalBytesExpectedToSend) {
+            NSLog(@"看看%lld----%lld----%lld----",bytesSent,totalBytesSent,totalBytesExpectedToSend);
+        }];
+    }
+    
+    
+    
+    
+
 
 }
+
 - (NSString *)title{
     if (self.index == 1) {
         return @"化验";

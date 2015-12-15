@@ -16,8 +16,10 @@
 //报告单
 @property (nonatomic, strong) UIImageView *img;
 
+@property (nonatomic, copy) void(^btnTakingBlock)();
+
 //赋值
-- (CGFloat)confingWithModel:(UIImage *)image;
+- (CGFloat)confingWithModel:(NSMutableArray *)array;
 
 
 @end

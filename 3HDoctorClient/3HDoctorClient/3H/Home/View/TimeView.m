@@ -29,7 +29,7 @@
     if (!_btnLeft) {
         _btnLeft = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnLeft.frame = CGRectMake(10, 0,40, 44);
-        [_btnLeft setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_btnLeft setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
         [_btnLeft setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
         [_btnLeft setTitle:@"取消" forState:UIControlStateNormal];
         [_btnLeft addTarget:self action:@selector(btnLeftClick) forControlEvents:UIControlEventTouchUpInside];
@@ -41,7 +41,7 @@
     if (!_btnRight) {
         _btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnRight.frame = CGRectMake(DeviceSize.width-10-40, 0, 40, 44);
-        [_btnRight setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [_btnRight setTitleColor:AppDefaultColor forState:UIControlStateNormal];
         [_btnRight setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
         _btnRight.titleLabel.font = [UIFont systemFontOfSize:13];
         [_btnRight setTitle:@"确定" forState:UIControlStateNormal];
@@ -52,7 +52,7 @@
 - (UILabel *)labLine{
     if (!_labLine) {
         _labLine = [[UILabel alloc]initWithFrame:CGRectMake(0, 44, DeviceSize.width, 1)];
-        _labLine.backgroundColor = [UIColor grayColor];
+        _labLine.backgroundColor = AppDefaultColor;
     }
     return _labLine;
 }
@@ -60,7 +60,8 @@
     if (!_labTitle) {
         _labTitle = [[UILabel alloc]initWithFrame:CGRectMake(DeviceSize.width/2-50, 0, 100, 44)];
         _labTitle.textAlignment = NSTextAlignmentCenter;
-        _labTitle.font = [UIFont systemFontOfSize:15];
+        _labTitle.font = [UIFont systemFontOfSize:16];
+        _labTitle.textColor = [UIColor colorWithHEX:0x333333];
     }
     return _labTitle;
 }

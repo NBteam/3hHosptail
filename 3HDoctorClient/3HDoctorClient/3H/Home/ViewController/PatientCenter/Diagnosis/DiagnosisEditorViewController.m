@@ -50,6 +50,7 @@
     }else if([cell.txtView.text isEqualToString:@""]){
         [self showHudAuto:@"请填写病情描述" andDuration:@"2"];
     }else{
+        NSLog(@"我的田野%@",cell.txtView.text);
         [self getDetailInfo:cell.txtView.text];
     }
     
@@ -112,6 +113,7 @@
     [weakSelf showHudWaitingView:WaitPrompt];;
     [[THNetWorkManager shareNetWork] editPatientSickHistoryMid:self.mid guomin:self.guomin blood_type:self.blood_type desc:desc andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
+        NSLog(@"成功%@",response.dataDic);
         [weakSelf.dataArray removeAllObjects];
         if (response.responseCode == 1) {
             if (weakSelf.reloadBlock) {

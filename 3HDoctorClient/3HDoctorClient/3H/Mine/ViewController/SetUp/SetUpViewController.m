@@ -9,6 +9,12 @@
 #import "SetUpViewController.h"
 #import "SetUpTableViewCell.h"
 #import "AppDelegate.h"
+//意见反馈
+#import "FeedbackViewController.h"
+//评价
+#import "EvaluationViewController.h"
+//关于
+#import "AboutViewController.h"
 @interface SetUpViewController ()
 //注销
 @property (nonatomic, strong) UIButton *btnCancel;
@@ -50,6 +56,46 @@
     [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsLogin];
 }
 
+-(float)folderSizeAtPath:(NSString *)path{
+    NSFileManager *fileManager=[NSFileManager defaultManager];
+    float folderSize;
+    if ([fileManager fileExistsAtPath:path]) {
+        NSArray *childerFiles=[fileManager subpathsAtPath:path];
+        for (NSString *fileName in childerFiles) {
+            NSString *absolutePath=[path stringByAppendingPathComponent:fileName];
+            folderSize +=[self fileSizeAtPath:absolutePath];
+        }
+        //SDWebImage框架自身计算缓存的实现
+        folderSize+=[[SDImageCache sharedImageCache] getSize]/1024.0/1024.0;
+        return folderSize;
+    }
+    return 0;
+}
+
+-(float)fileSizeAtPath:(NSString *)path{
+    NSFileManager *fileManager=[NSFileManager defaultManager];
+    if([fileManager fileExistsAtPath:path]){
+        long long size=[fileManager attributesOfItemAtPath:path error:nil].fileSize;
+        return size/1024.0/1024.0;
+    }
+    return 0;
+}
+
+-(void)clearCache:(NSString *)path{
+    NSFileManager *fileManager=[NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:path]) {
+        NSArray *childerFiles=[fileManager subpathsAtPath:path];
+        for (NSString *fileName in childerFiles) {
+            //如有需要，加入条件，过滤掉不想删除的文件
+            NSString *absolutePath=[path stringByAppendingPathComponent:fileName];
+            [fileManager removeItemAtPath:absolutePath error:nil];
+        }
+    }
+    [[SDImageCache sharedImageCache] cleanDisk];
+    [self showHudAuto:@"缓存清理完成" andDuration:@"1.5"];
+    [self.tableView reloadData];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"WalletHeadTableViewCell";
@@ -58,12 +104,14 @@
         cell = [[SetUpTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:indexPath.row];
+    NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    [cell confingWithModel:indexPath.row Cache:[NSString stringWithFormat:@"%.2fM",[self folderSizeAtPath:cachPath]]];
+    NSLog(@"ZHONG%@",[NSString stringWithFormat:@"%.2fM",[self fileSizeAtPath:cachPath]]);
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -81,6 +129,31 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return  [[UIView alloc] init];
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {//清理缓存
+        
+        NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        [self clearCache:cachPath];
+        
+    }else if (indexPath.row == 1){//意见
+        
+        FeedbackViewController *feedbackVc = [[FeedbackViewController alloc] init];
+        [self.navigationController pushViewController:feedbackVc animated:YES];
+        
+    }else if (indexPath.row == 2){//评价
+        
+        EvaluationViewController *evaluationVc = [[EvaluationViewController alloc] init];
+        [self.navigationController pushViewController:evaluationVc animated:YES];
+        
+    }else{//关于
+        
+        AboutViewController *aboutVc = [[AboutViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:aboutVc animated:YES];
+        
+    }
+}
+
 
 - (NSString *)title{
     return @"设置";

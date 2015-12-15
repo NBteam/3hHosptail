@@ -82,6 +82,7 @@
         NSLog(@"%ld",buttonIndex);
     }
 }
+
 - (void)updateMypicture:(NSInteger)index{
     if (index == 0) {//拍照
         UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;

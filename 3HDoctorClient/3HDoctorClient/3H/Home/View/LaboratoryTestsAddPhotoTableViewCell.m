@@ -13,7 +13,7 @@
 - (void)customView{
     [self.contentView addSubview:self.labTitle];
     [self.contentView addSubview:self.btnTakingPictures];
-    [self.contentView addSubview:self.img];
+    //[self.contentView addSubview:self.img];
 }
 
 - (UILabel *)labTitle{
@@ -37,7 +37,9 @@
 }
 
 - (void)btnTakingPicturesAction{
-    
+    if (self.btnTakingBlock) {
+        self.btnTakingBlock();
+    }
 }
 
 
@@ -53,15 +55,25 @@
 }
 
 //赋值
-- (CGFloat)confingWithModel:(UIImage *)image{
-    if (image) {
-        self.img.image = image;
-        self.img.hidden = NO;
-        return self.img.bottom +10;
-    }else{
-//        self.img.hidden = YES;
-        return self.btnTakingPictures.bottom;
+- (CGFloat)confingWithModel:(NSMutableArray *)array{
+    CGFloat f = (DeviceSize.width - 60)/3;
+    CGFloat ff = 0.0;
+    for (int i = 0; i<array.count; i++) {
+        UIButton *btn =[UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(15 +(15 +f)*(i%3), self.labTitle.bottom +(f/4*3 +15)*(i/3), f, f/4*3);
+        [btn setImage:array[i] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+        ff = btn.bottom +15;
+        [self.contentView addSubview:btn];
     }
+    if (array.count == 0) {
+        return self.labTitle.bottom;
+    }else{
+        return ff;
+    }
+}
+
+- (void)btnAction:(UIButton *)button{
     
 }
 

@@ -20,5 +20,5 @@
 
 //赋值
 //赋值
-- (void)confingWithModel:(NSInteger )index;
+- (void)confingWithModel:(NSInteger )index Cache:(NSString *)cache;
 @end

@@ -33,9 +33,9 @@
 - (CGFloat)customImgs{
     CGFloat f = (DeviceSize.width - 60)/3;
     CGFloat ff = 0.0;
-    for (int i = 0; i<9; i++) {
+    for (int i = 0; i<2; i++) {
         UIButton *btn =[UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(15 +(15 +f)*(i/3), self.labTitle.bottom +(f/4*3 +15)*(i%3), f, f/4*3);
+        btn.frame = CGRectMake(15 +(15 +f)*(i%3), self.labTitle.bottom +(f/4*3 +15)*(i/3), f, f/4*3);
         btn.backgroundColor = [UIColor grayColor];
         [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
         ff = btn.bottom +15;

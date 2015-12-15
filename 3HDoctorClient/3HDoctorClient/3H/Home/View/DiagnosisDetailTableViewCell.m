@@ -48,9 +48,9 @@
 
 //赋值
 - (CGFloat)confingWithModel:(NSDictionary *)model{
-    self.labDetail.text = model[@"desc"];
+    self.labDetail.text = [NSString stringWithFormat:@"%@",model[@"desc"]];
     [self.labDetail sizeToFit];
-    self.labDetail.top = self.labLine.bottom +10;
+
     return self.labDetail.bottom +10;
 }
 
