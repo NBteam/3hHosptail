@@ -124,7 +124,7 @@
         
     }else if (indexPath.row ==1){
         
-        MyAppointmentViewController *myAppointmentVc = [[MyAppointmentViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        MyAppointmentViewController *myAppointmentVc = [[MyAppointmentViewController alloc] init];
         myAppointmentVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:myAppointmentVc animated:YES];
         

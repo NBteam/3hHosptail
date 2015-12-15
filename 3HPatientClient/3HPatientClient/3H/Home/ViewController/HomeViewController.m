@@ -32,6 +32,8 @@
 #import "ConsultingDoctorListViewController.h"
 #import "HomeGoodsModel.h"
 #import "HomeNewsModel.h"
+//添加医生
+#import "AddDoctorViewController.h"
 
 @interface HomeViewController ()
 
@@ -47,6 +49,12 @@
     //
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者-添加按钮"];
     [self getHomeData];
+}
+
+- (void)addAction{
+    AddDoctorViewController *addDoctorVc = [[AddDoctorViewController alloc] init];
+    addDoctorVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:addDoctorVc animated:YES];
 }
 
 - (NSMutableArray *)newsArray{

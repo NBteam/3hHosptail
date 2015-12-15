@@ -489,6 +489,12 @@
 		C05A97AB1C1EBDC70078433B /* ConsultingDynamicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A97AA1C1EBDC70078433B /* ConsultingDynamicListModel.m */; settings = {ASSET_TAGS = (); }; };
 		C05A97AE1C1EC9DF0078433B /* DynamicDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A97AD1C1EC9DF0078433B /* DynamicDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		C05A97B41C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A97B31C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		C082443A1C1F0D0100783FD5 /* AddDoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244391C1F0D0100783FD5 /* AddDoctorViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C082443D1C1F156C00783FD5 /* MyAppointRegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C082443C1C1F156C00783FD5 /* MyAppointRegisteredViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C08244401C1F159000783FD5 /* MyAppointHospitalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C082443F1C1F159000783FD5 /* MyAppointHospitalViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C08244431C1F15BC00783FD5 /* MyAppointPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244421C1F15BC00783FD5 /* MyAppointPhoneViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C08244461C1F15DF00783FD5 /* MyAppointmentTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244451C1F15DF00783FD5 /* MyAppointmentTopView.m */; settings = {ASSET_TAGS = (); }; };
+		C08244491C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244481C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		C0956A411C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -1264,6 +1270,18 @@
 		C05A97AD1C1EC9DF0078433B /* DynamicDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicDetailModel.m; sourceTree = "<group>"; };
 		C05A97B21C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingDynamicHeadTableViewCell.h; sourceTree = "<group>"; };
 		C05A97B31C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingDynamicHeadTableViewCell.m; sourceTree = "<group>"; };
+		C08244381C1F0D0100783FD5 /* AddDoctorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDoctorViewController.h; sourceTree = "<group>"; };
+		C08244391C1F0D0100783FD5 /* AddDoctorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDoctorViewController.m; sourceTree = "<group>"; };
+		C082443B1C1F156C00783FD5 /* MyAppointRegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointRegisteredViewController.h; sourceTree = "<group>"; };
+		C082443C1C1F156C00783FD5 /* MyAppointRegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointRegisteredViewController.m; sourceTree = "<group>"; };
+		C082443E1C1F159000783FD5 /* MyAppointHospitalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointHospitalViewController.h; sourceTree = "<group>"; };
+		C082443F1C1F159000783FD5 /* MyAppointHospitalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointHospitalViewController.m; sourceTree = "<group>"; };
+		C08244411C1F15BC00783FD5 /* MyAppointPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointPhoneViewController.h; sourceTree = "<group>"; };
+		C08244421C1F15BC00783FD5 /* MyAppointPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointPhoneViewController.m; sourceTree = "<group>"; };
+		C08244441C1F15DF00783FD5 /* MyAppointmentTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentTopView.h; sourceTree = "<group>"; };
+		C08244451C1F15DF00783FD5 /* MyAppointmentTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentTopView.m; sourceTree = "<group>"; };
+		C08244471C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointHospitalTableViewCell.h; sourceTree = "<group>"; };
+		C08244481C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointHospitalTableViewCell.m; sourceTree = "<group>"; };
 		C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-患者-添加按钮@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1764,6 +1782,12 @@
 			children = (
 				993669B51C14045F00B3E1C7 /* MyAppointmentViewController.h */,
 				993669B61C14045F00B3E1C7 /* MyAppointmentViewController.m */,
+				C082443B1C1F156C00783FD5 /* MyAppointRegisteredViewController.h */,
+				C082443C1C1F156C00783FD5 /* MyAppointRegisteredViewController.m */,
+				C082443E1C1F159000783FD5 /* MyAppointHospitalViewController.h */,
+				C082443F1C1F159000783FD5 /* MyAppointHospitalViewController.m */,
+				C08244411C1F15BC00783FD5 /* MyAppointPhoneViewController.h */,
+				C08244421C1F15BC00783FD5 /* MyAppointPhoneViewController.m */,
 			);
 			path = MyAppointment;
 			sourceTree = "<group>";
@@ -2169,6 +2193,8 @@
 				991A32EB1C12E58D00E0313F /* Schedule */,
 				99DA40961C0BEB0500573D4C /* HomeViewController.h */,
 				99DA40971C0BEB0500573D4C /* HomeViewController.m */,
+				C08244381C1F0D0100783FD5 /* AddDoctorViewController.h */,
+				C08244391C1F0D0100783FD5 /* AddDoctorViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2264,6 +2290,10 @@
 				C05A96ED1C1D9F220078433B /* FeedbackTableViewCell.m */,
 				C05A96EF1C1D9F880078433B /* EvaluationTableViewCell.h */,
 				C05A96F01C1D9F880078433B /* EvaluationTableViewCell.m */,
+				C08244441C1F15DF00783FD5 /* MyAppointmentTopView.h */,
+				C08244451C1F15DF00783FD5 /* MyAppointmentTopView.m */,
+				C08244471C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.h */,
+				C08244481C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3351,6 +3381,7 @@
 				991A330E1C12FFDA00E0313F /* SetUpTableViewCell.m in Sources */,
 				99DA41E51C0BEB0500573D4C /* UIButton+WebCache.m in Sources */,
 				99D544941C1592C40081D1D3 /* NSDate+convenience.m in Sources */,
+				C082443A1C1F0D0100783FD5 /* AddDoctorViewController.m in Sources */,
 				993669661C132C6800B3E1C7 /* ConsultingDynamicViewController.m in Sources */,
 				9929BCA91C18160300F747CB /* ConsultingToolView.m in Sources */,
 				C05A97A81C1EAF000078433B /* HomeNewsModel.m in Sources */,
@@ -3365,7 +3396,9 @@
 				991A33151C12FFE400E0313F /* PersonalViewController.m in Sources */,
 				991A312A1C11E9B600E0313F /* HomeFunctionTableViewCell.m in Sources */,
 				99DA41E61C0BEB0500573D4C /* UIImage+GIF.m in Sources */,
+				C082443D1C1F156C00783FD5 /* MyAppointRegisteredViewController.m in Sources */,
 				99DA41B21C0BEB0500573D4C /* FMDatabaseQueue.m in Sources */,
+				C08244461C1F15DF00783FD5 /* MyAppointmentTopView.m in Sources */,
 				99DA41C11C0BEB0500573D4C /* NSObject+MTLComparisonAdditions.m in Sources */,
 				99DA41BD1C0BEB0500573D4C /* MTLValueTransformer.m in Sources */,
 				99DA41961C0BEB0500573D4C /* AFHTTPRequestOperation.m in Sources */,
@@ -3375,6 +3408,7 @@
 				C05A97B41C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m in Sources */,
 				99DA419F1C0BEB0500573D4C /* NSArray+SafeAccess.m in Sources */,
 				99DA3EB71C0BE4CF00573D4C /* AppDelegate.m in Sources */,
+				C08244431C1F15BC00783FD5 /* MyAppointPhoneViewController.m in Sources */,
 				99D33AB31C1800450067E57C /* CheckDataDetailViewController.m in Sources */,
 				99DA41B61C0BEB0500573D4C /* EXTRuntimeExtensions.m in Sources */,
 				C05A96F11C1D9F880078433B /* EvaluationTableViewCell.m in Sources */,
@@ -3383,6 +3417,7 @@
 				99D544351C156C3A0081D1D3 /* MedicationGuideTableViewCell.m in Sources */,
 				99D33AC51C18058A0067E57C /* CheckDataDetailTableViewCell.m in Sources */,
 				99D544981C1592C40081D1D3 /* VRGCalendarView.m in Sources */,
+				C08244491C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.m in Sources */,
 				C05A96EB1C1D9E150078433B /* EvaluationViewController.m in Sources */,
 				99DA41A81C0BEB0500573D4C /* UIButton+Extension.m in Sources */,
 				99DA419A1C0BEB0500573D4C /* AFSecurityPolicy.m in Sources */,
@@ -3460,6 +3495,7 @@
 				99D33AA71C17F8830067E57C /* CheckDataTopView.m in Sources */,
 				99DA41A01C0BEB0500573D4C /* NSDate+Extension.m in Sources */,
 				993669701C132C7600B3E1C7 /* ConsultingDynamicHeadView.m in Sources */,
+				C08244401C1F159000783FD5 /* MyAppointHospitalViewController.m in Sources */,
 				99DA41C21C0BEB0500573D4C /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
 				993669CA1C1404D000B3E1C7 /* MyArchivesTableViewCell.m in Sources */,
 				99DA41D71C0BEB0500573D4C /* UIScrollView+MJRefresh.m in Sources */,

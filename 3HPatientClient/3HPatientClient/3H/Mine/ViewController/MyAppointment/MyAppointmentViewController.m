@@ -8,7 +8,25 @@
 
 #import "MyAppointmentViewController.h"
 #import "MyAppointmentTableViewCell.h"
-@interface MyAppointmentViewController ()
+#import "MyAppointmentTopView.h"
+//挂号
+#import "MyAppointRegisteredViewController.h"
+//住院预约
+#import "MyAppointHospitalViewController.h"
+//电话
+#import "MyAppointPhoneViewController.h"
+
+@interface MyAppointmentViewController ()<UIScrollViewDelegate>
+
+@property (nonatomic, strong) MyAppointmentTopView *topView;
+
+@property (nonatomic, strong) UIScrollView *scrollView;
+
+@property (nonatomic, strong) MyAppointRegisteredViewController *myAppointRegisteredVc;
+
+@property (nonatomic, strong) MyAppointHospitalViewController *myAppointHospitalVc;
+
+@property (nonatomic, strong) MyAppointPhoneViewController *myAppointPhoneVc;
 
 @end
 
@@ -18,7 +36,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    self.tableView.separatorColor = [UIColor clearColor];
+    
+    [self.view addSubview:self.topView];
+    [self.view addSubview:self.scrollView];
+    [self customAddChildVc];
     
 }
 
@@ -26,40 +47,106 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark -UI
+#pragma mark - UI
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *identifier = @"MyAppointmentTableViewCell";
-    MyAppointmentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        cell = [[MyAppointmentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+- (MyAppointmentTopView *)topView{
+    WeakSelf(MyAppointmentViewController);
+    if (!_topView) {
+        _topView = [[MyAppointmentTopView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 44)];
+        _topView.backgroundColor = [UIColor colorWithHEX:0xffffff];
+        __weak MyAppointmentTopView *weakTopView = _topView;
+        
+        [weakTopView setBtnClickBlock:^(NSInteger index) {
+            [weakTopView topButtonMenuSelectForIndex:index];
+            
+            [weakSelf.scrollView setContentOffset:CGPointMake(DeviceSize.width *index, 0) animated:YES];
+        }];
+        //  默认选中第一个
+        [weakTopView topButtonMenuSelectForIndex:0];
     }
-    cell.backgroundColor = self.view.backgroundColor;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:indexPath.row];
-    return cell;
+    return _topView;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+- (UIScrollView *)scrollView{
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.topView.bottom, DeviceSize.width, DeviceSize.height - self.frameTopHeight - self.topView.height)];
+        _scrollView.delegate = self;
+        _scrollView.contentSize = CGSizeMake(DeviceSize.width * 3, DeviceSize.height - self.frameTopHeight -self.topView.height);
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.pagingEnabled = YES;
+        _scrollView.bounces = NO;
+    }
+    return _scrollView;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 155;
+- (MyAppointRegisteredViewController *)myAppointRegisteredVc{
+    if (!_myAppointRegisteredVc) {
+        _myAppointRegisteredVc = [[MyAppointRegisteredViewController alloc] init];
+    }
+    return _myAppointRegisteredVc;
 }
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    return 1;
-//}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10.0f;
+- (MyAppointHospitalViewController *)myAppointHospitalVc{
+    if (!_myAppointHospitalVc) {
+        _myAppointHospitalVc = [[MyAppointHospitalViewController alloc] init];
+    }
+    return _myAppointHospitalVc;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    return  [[UIView alloc] init];
+- (MyAppointPhoneViewController *)myAppointPhoneVc{
+    if (!_myAppointPhoneVc) {
+        _myAppointPhoneVc = [[MyAppointPhoneViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    }
+    return _myAppointPhoneVc;
 }
+
+- (void)customAddChildVc{
+    
+    [self addChildViewController:self.myAppointRegisteredVc];
+    [self addChildViewController:self.myAppointHospitalVc];
+    [self addChildViewController:self.myAppointPhoneVc];
+    
+    
+    [self.myAppointRegisteredVc willMoveToParentViewController:self];
+    self.myAppointRegisteredVc.view.height = self.scrollView.contentSize.height;
+    self.myAppointRegisteredVc.view.left = DeviceSize.width *0;
+    self.myAppointRegisteredVc.view.height = DeviceSize.height -self.frameTopHeight -self.topView.height;
+    [self.scrollView addSubview:self.myAppointRegisteredVc.view];
+    [self.myAppointRegisteredVc didMoveToParentViewController:self];
+    
+    [self.myAppointHospitalVc willMoveToParentViewController:self];
+    self.myAppointHospitalVc.view.height = self.scrollView.contentSize.height;
+    self.myAppointHospitalVc.view.left = DeviceSize.width *1;
+    self.myAppointHospitalVc.view.height = DeviceSize.height -self.frameTopHeight -self.topView.height;
+    [self.scrollView addSubview:self.myAppointHospitalVc.view];
+    [self.myAppointHospitalVc didMoveToParentViewController:self];
+    
+    [self.myAppointPhoneVc willMoveToParentViewController:self];
+    self.myAppointPhoneVc.view.height = self.scrollView.contentSize.height;
+    self.myAppointPhoneVc.view.left = DeviceSize.width *2;
+    self.myAppointPhoneVc.view.height = DeviceSize.height -self.frameTopHeight -self.topView.height;
+    [self.scrollView addSubview:self.myAppointPhoneVc.view];
+    [self.myAppointPhoneVc didMoveToParentViewController:self];
+    
+}
+
+
+#pragma mark scollview手滑动停止
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+    NSInteger pageIndex = scrollView.contentOffset.x / DeviceSize.width;
+    [self.topView topButtonMenuSelectForIndex:pageIndex];
+    
+}
+#pragma mark scrollview改变contentOffset停止
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView;{
+    
+    NSInteger pageIndex = scrollView.contentOffset.x / DeviceSize.width;
+    [self.topView topButtonMenuSelectForIndex:pageIndex];
+}
+
+
 
 - (NSString *)title{
     return @"我的预约";

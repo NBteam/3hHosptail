@@ -315,7 +315,13 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
            andFailure:(FailureBlock) failure{
     NSDictionary *paramDic = @{@"a":@"getArtInfo",@"id":ids,@"token":GetToken};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
-    
+}
+
+#pragma mark 39	添加医生【20151118添加】
+- (void)addDoctorIds:(NSString *)ids CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+          andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"addDoctor",@"doctor_id":ids,@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 
 @end

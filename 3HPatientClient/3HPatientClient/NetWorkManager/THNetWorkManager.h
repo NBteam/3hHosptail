@@ -62,6 +62,12 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 - (void)getArtInfoIds:(NSString *)ids CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                                      andFailure:(FailureBlock) failure;
 
+#pragma mark 39	添加医生【20151118添加】
+- (void)addDoctorIds:(NSString *)ids CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+           andFailure:(FailureBlock) failure;
+
+
+
 
 
 
