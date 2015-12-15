@@ -40,21 +40,21 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     WeakSelf(PatientAddRequestViewController);
     [cell setBtnAgreedBlock:^{
-//        PatientAddRequestModel * model = self.dataArray[indexPath.row];
-        [weakSelf getMyPatientReqProcessNetWorkprocess:1 Req_id:@"1"];
+        PatientAddRequestModel * model = self.dataArray[indexPath.row];
+        [weakSelf getMyPatientReqProcessNetWorkprocess:1 Req_id:model.req_id];
     }];
     [cell setBtnRefusedBlock:^{
-//        PatientAddRequestModel * model = self.dataArray[indexPath.row];
-        [weakSelf getMyPatientReqProcessNetWorkprocess:-1 Req_id:@"1"];
+        PatientAddRequestModel * model = self.dataArray[indexPath.row];
+        [weakSelf getMyPatientReqProcessNetWorkprocess:-1 Req_id:model.req_id];
     }];
-//    PatientAddRequestModel * model = self.dataArray[indexPath.row];
-    [cell confingWithModel:nil];
+    PatientAddRequestModel * model = self.dataArray[indexPath.row];
+    [cell confingWithModel:model];
     return cell;
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

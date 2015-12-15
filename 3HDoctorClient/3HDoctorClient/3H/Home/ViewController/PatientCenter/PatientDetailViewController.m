@@ -46,7 +46,7 @@
             cell = [[PatientDetailHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dataArray[indexPath.row]];
+        [cell confingWithModel:self.model];
         return cell;
     }else{
         static NSString *identifier = @"idertifier";
@@ -94,10 +94,12 @@
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {//诊断
             DiagnosisListViewController * DiagnosisListVc = [[DiagnosisListViewController alloc]init];
+//            DiagnosisListVc.mid = self.model.id;
             [self.navigationController pushViewController:DiagnosisListVc animated:YES];
             
         }else if(indexPath.row == 1){//病史
             DiagnosisViewController *diagnosisVc = [[DiagnosisViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+            diagnosisVc.mid = self.model.id;
             [self.navigationController pushViewController:diagnosisVc animated:YES];
             
         }else if(indexPath.row == 2){//化验

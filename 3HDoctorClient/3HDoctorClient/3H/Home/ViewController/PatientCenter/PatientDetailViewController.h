@@ -7,7 +7,8 @@
 //
 
 #import "BaseTableViewController.h"
+#import "PatientListModel.h"
 
 @interface PatientDetailViewController : BaseTableViewController
-
+@property (nonatomic, strong) PatientListModel * model;
 @end

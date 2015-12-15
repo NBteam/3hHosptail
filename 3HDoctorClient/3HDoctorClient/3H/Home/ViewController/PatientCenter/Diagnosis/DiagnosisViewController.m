@@ -38,6 +38,7 @@
 
 - (void)rightAction{
     DiagnosisEditorViewController *diagnosisEditorVc = [[DiagnosisEditorViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    diagnosisEditorVc.mid = self.mid;
     WeakSelf(DiagnosisViewController);
     [diagnosisEditorVc setReloadBlock:^{
         [weakSelf getPatientSickHistory];
@@ -112,7 +113,7 @@
 - (void)getPatientSickHistory{
     WeakSelf(DiagnosisViewController);
     [weakSelf showHudWaitingView:WaitPrompt];;
-    [[THNetWorkManager shareNetWork]getPatientSickHistoryMid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getPatientSickHistoryMid:self.mid andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         [weakSelf.dataArray removeAllObjects];
         if (response.responseCode == 1) {

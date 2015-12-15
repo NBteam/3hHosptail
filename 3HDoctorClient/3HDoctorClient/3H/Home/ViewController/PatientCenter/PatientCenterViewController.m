@@ -76,14 +76,14 @@
         cell = [[PatientCenterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    PatientListModel * model = self.dataArray[indexPath.row];
-    [cell confingWithModel:nil];
+    PatientListModel * model = self.dataArray[indexPath.row];
+    [cell confingWithModel:model];
     return cell;
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 6;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -99,7 +99,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    PatientListModel * model = self.dataArray[indexPath.row];
     PatientDetailViewController *patientDetailVc= [[PatientDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    patientDetailVc.model = model;
     [self.navigationController pushViewController:patientDetailVc animated:YES];
     
 }

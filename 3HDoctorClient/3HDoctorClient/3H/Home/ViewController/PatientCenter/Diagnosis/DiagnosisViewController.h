@@ -9,5 +9,5 @@
 #import "BaseTableViewController.h"
 
 @interface DiagnosisViewController : BaseTableViewController
-
+@property (nonatomic, copy) NSString * mid;
 @end

@@ -206,7 +206,7 @@ typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSen
 /**
  * 我的挂号预约——处理请求
  * @param id   id
- * @param opt  1同意，-1拒绝 werwerwe
+ * @param opt  1同意，-1拒绝 
  */
 - (void)processMyOrderguahaoId:(NSString *)id opt:(NSInteger)opt andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 /**

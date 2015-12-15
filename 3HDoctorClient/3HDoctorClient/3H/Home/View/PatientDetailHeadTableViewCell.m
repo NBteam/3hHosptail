@@ -47,9 +47,12 @@
 }
 
 
-- (void)confingWithModel:(NSDictionary *)dic{
-    self.labPatientName.text = @"刘晓光";
-    self.labPatientInfo.text = @"北京360医院  主治医师";
+- (void)confingWithModel:(PatientListModel *)model{
+    self.labPatientName.text = model.truename;
+    self.labPatientInfo.text = [NSString stringWithFormat:@"%@  %@",model.age,model.sex];
+    [self.imgPatientPic sd_setImageWithURL:URL(model.pic) placeholderImage:IMG(@"")];
+    
+    ;
 }
 
 /*

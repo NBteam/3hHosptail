@@ -20,4 +20,5 @@
 @property (nonatomic, copy) NSString * age;
 @property (nonatomic, copy) NSString * pic;
 @property (nonatomic, copy) NSString * sick_desc;
+@property (nonatomic, copy) NSString * req_id;
 @end

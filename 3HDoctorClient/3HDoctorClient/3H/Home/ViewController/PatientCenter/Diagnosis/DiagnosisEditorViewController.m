@@ -110,7 +110,7 @@
 - (void)getDetailInfo:(NSString *)desc{
     WeakSelf(DiagnosisEditorViewController);
     [weakSelf showHudWaitingView:WaitPrompt];;
-    [[THNetWorkManager shareNetWork] editPatientSickHistoryMid:@"1" guomin:self.guomin blood_type:self.blood_type desc:desc andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork] editPatientSickHistoryMid:self.mid guomin:self.guomin blood_type:self.blood_type desc:desc andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         [weakSelf.dataArray removeAllObjects];
         if (response.responseCode == 1) {

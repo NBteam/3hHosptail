@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "PatientListModel.h"
 
 @interface PatientDetailHeadTableViewCell : BaseTableViewCell
 
@@ -17,6 +18,6 @@
 @property (nonatomic, strong) UILabel *labPatientInfo;
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(PatientListModel *)model;
 
 @end

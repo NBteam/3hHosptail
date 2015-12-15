@@ -57,7 +57,7 @@
 
 //赋值
 - (void)confingWithModel:(PatientListModel *)dic{
-    self.labTitle.attributedText = [self getName:dic.truename AndAge:[NSString stringWithFormat:@"  %@岁",dic.age] AndSex:[NSString stringWithFormat:@"  %@",dic.sex]];
+    self.labTitle.attributedText = [self getName:dic.truename AndAge:[NSString stringWithFormat:@"  %@",dic.age] AndSex:[NSString stringWithFormat:@"  %@",dic.sex]];
   //  self.labDetail.attributedText
     self.labDetail.text = dic.sick_desc;
 }

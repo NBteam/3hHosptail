@@ -9,5 +9,6 @@
 #import "BaseTableViewController.h"
 
 @interface DiagnosisEditorViewController : BaseTableViewController
+@property (nonatomic, copy) NSString * mid;
 @property (nonatomic, copy) void(^reloadBlock)(void);
 @end
