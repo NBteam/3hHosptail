@@ -72,6 +72,13 @@
         }else{
             _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"您的身份证号" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
         }
+        
+        if (self.string.length) {
+            _txtNameInput.text = self.string;
+        }else{
+            
+        }
+        
         _txtNameInput.backgroundColor = [UIColor whiteColor];
         
     }

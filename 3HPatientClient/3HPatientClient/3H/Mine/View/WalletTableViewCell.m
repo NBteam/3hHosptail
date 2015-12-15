@@ -48,7 +48,7 @@
         self.labTitle.text = @"充值";
         self.imgLogo.image = [UIImage imageNamed:@"我的-我的钱包_充值-未点击状态"];
     }else{
-        self.labTitle.text = @"订单记录";
+        self.labTitle.text = @"消费记录";
         self.imgLogo.image = [UIImage imageNamed:@"我的-我的钱包_订单记录-未点击状态"];
     }
     

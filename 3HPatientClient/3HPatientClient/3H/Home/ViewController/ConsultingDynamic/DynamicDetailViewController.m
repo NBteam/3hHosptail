@@ -10,6 +10,7 @@
 #import "DynamicDetailTableViewCell.h"
 #import "DynamicDetailToolView.h"
 #import "DynamicDetailModel.h"
+#import "DynamicCommentsViewController.h"
 @interface DynamicDetailViewController ()
 //cell高度
 @property (nonatomic, assign) CGFloat cellHeight;
@@ -37,7 +38,6 @@
     [[THNetWorkManager shareNetWork] getArtInfoIds:self.ids CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            NSLog(@"查看%@",response.dataDic);
             DynamicDetailModel * model = [response thParseDataFromDic:response.dataDic andModel:[DynamicDetailModel class]];
             [weakSelf.dataArray addObject:model];
             
@@ -59,11 +59,18 @@
 }
 
 - (DynamicDetailToolView *)toolView{
+    //0 == 评论  1 == 点赞
     WeakSelf(DynamicDetailViewController);
     if (!_toolView) {
         _toolView = [[DynamicDetailToolView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, DeviceSize.width, 45)];
         [_toolView setToolBlock:^(NSInteger index) {
-            
+            if (index == 0) {
+                DynamicCommentsViewController *dynamicCommentsVc = [[DynamicCommentsViewController alloc] init];
+                [weakSelf.navigationController pushViewController:dynamicCommentsVc animated:YES];
+                
+            }else{
+                
+            }
         }];
     }
     return _toolView;

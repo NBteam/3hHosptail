@@ -56,7 +56,7 @@
 }
 
 - (NSString *)title{
-    return @"性别";
+    return @"完善资料";
 }
 
 - (void)didReceiveMemoryWarning {

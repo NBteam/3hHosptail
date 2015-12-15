@@ -25,7 +25,18 @@
 
 //赋值
 - (void)confingWithModel:(NSInteger )index{
-    self.labTitle.text = @"2015年7月,你的总收入是55555";
+    self.labTitle.attributedText = [self getLabelTitle:@"2015年10月15日" Name:@"  您的挂号预约消费" Price:@"100元"];
+}
+
+- (NSMutableAttributedString *)getLabelTitle:(NSString *)title Name:(NSString *)name Price:(NSString *)price{
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@%@",title,name,price]];
+    
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHEX:0x999999] range:NSMakeRange(0,title.length)];
+    
+    [str addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHEX:0x333333] range:NSMakeRange(title.length,name.length)];
+    
+    [str addAttribute:NSForegroundColorAttributeName value:AppDefaultColor range:NSMakeRange(title.length +name.length,price.length)];
+    return str;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

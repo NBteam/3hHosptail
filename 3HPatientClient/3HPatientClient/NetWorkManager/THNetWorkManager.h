@@ -73,8 +73,22 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
           andFailure:(FailureBlock) failure;
 
 
+
 #pragma mark上传用户头像
 - (void)getUploadFaceFile:(NSData *)file faceString:(NSString *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress;
+
+
+#pragma mark 修改用户资料接口
+- (void)updateUserInfoNickname:(NSString *)nickname
+                      Truename:(NSString *)truename
+                           Sex:(NSString *)sex
+                         Birth:(NSString *)birth
+                       Address:(NSString *)address
+                           Tel:(NSString *)tel
+                       Card_id:(NSString *)card_id
+    CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                    andFailure:(FailureBlock) failure;
+
 
 
 

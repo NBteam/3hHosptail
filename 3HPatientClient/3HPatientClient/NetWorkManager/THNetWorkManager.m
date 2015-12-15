@@ -341,4 +341,19 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
         [formData appendPartWithFileData:file name:@"头像.png" fileName:faceString mimeType:@"image/png"];
     } success:success failure:failure ];
 }
+
+#pragma mark 修改用户资料接口
+- (void)updateUserInfoNickname:(NSString *)nickname
+                      Truename:(NSString *)truename
+                           Sex:(NSString *)sex
+                         Birth:(NSString *)birth
+                       Address:(NSString *)address
+                           Tel:(NSString *)tel
+                       Card_id:(NSString *)card_id
+    CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                    andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"updateuserinfo",@"token":GetToken,@"nickname":nickname,@"truename":truename,@"sex":sex,@"birth":birth,@"address":address,@"tel":tel,@"card_id":card_id};
+
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

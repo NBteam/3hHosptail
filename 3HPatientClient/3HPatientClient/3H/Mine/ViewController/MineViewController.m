@@ -48,7 +48,6 @@
 - (void)refreshBaseInfoOperation{
     self.user = [self refreshUserData];
     [self.headView confingWithName:self.user.nickname Sex:self.user.sex Pic:self.user.pic];
-    NSLog(@"刷新%@",self.user.pic);
 }
 #pragma mark - UI
 

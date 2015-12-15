@@ -54,7 +54,7 @@
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightButton setTitle:title forState:UIControlStateNormal];
     rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
-    [rightButton setTitleColor:[UIColor cyanColor] forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
     [rightButton addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
     rightButton.frame = CGRectMake(0, 0, 30, 16);
     

@@ -79,7 +79,7 @@
 }
 
 - (void)topButtonMenuSelectForIndex:(NSInteger)index{
-    NSLog(@"查看%li",index);
+
     for (UIButton * btn in self.subviews) {
         if ([btn isKindOfClass:[UIButton class]]) {
             if (btn.tag == 100 +index) {

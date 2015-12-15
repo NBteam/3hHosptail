@@ -49,7 +49,7 @@
     //
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页+"];
     [self getHomeData];
-    NSLog(@"MINGZI %@",self.user.account);
+    NSLog(@"MINGZI %@",self.user.sex);
 }
 
 - (void)addAction{
@@ -73,7 +73,6 @@
     [[THNetWorkManager shareNetWork] getHomeInfoCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            NSLog(@"查看%@",response.dataDic);
             for (NSDictionary * dict in response.dataDic[@"goods"]) {
                 HomeGoodsModel * model = [response thParseDataFromDic:dict andModel:[HomeGoodsModel class]];
                 [weakSelf.dataArray addObject:model];

@@ -11,6 +11,7 @@
 #import "PersonalTableViewCell.h"
 #import "PersonalInputViewController.h"
 #import "SexViewController.h"
+#import "BirthdayViewController.h"
 @interface PersonalViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UIActionSheet *actionSheet;
@@ -22,22 +23,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    NSString *sex;
-    
-    if ([self.user.sex isEqualToString:@"0"]) {
-        sex = @"保密";
-    }else if ([self.user.sex isEqualToString:@"1"]){
-        sex = @"男";
-    }else{
-        sex = @"女";
-    }
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"用户名",@"detail":self.user.nickname},@{@"title":@"姓名",@"detail":self.user.truename},@{@"title":@"性别",@"detail":sex},@{@"title":@"出生日期",@"detail":self.user.birth},@{@"title":@"通讯地址",@"detail":@"未填写"},@{@"title":@"电话",@"detail":self.user.mobile},@{@"title":@"身份证号",@"detail":self.user.card_id}]];
+    NSLog(@"性别%@",self.user.sex);
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"用户名",@"detail":self.user.nickname},@{@"title":@"姓名",@"detail":self.user.truename},@{@"title":@"性别",@"detail":self.user.sex},@{@"title":@"出生日期",@"detail":self.user.birth},@{@"title":@"通讯地址",@"detail":self.user.address},@{@"title":@"电话",@"detail":self.user.mobile},@{@"title":@"身份证号",@"detail":self.user.card_id}]];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"保存"];
 }
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)rightAction{
+    WeakSelf(PersonalViewController);
+    [self showHudAuto:@"保存中..."];
+    [[THNetWorkManager shareNetWork] updateUserInfoNickname:self.user.nickname Truename:self.user.truename Sex:self.user.sex Birth:self.user.birth Address:self.user.address Tel:self.user.tel Card_id:self.user.card_id CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            //            for (NSDictionary * dict in response.dataDic[@"list"]) {
+            //                InformationModel * model = [response thParseDataFromDic:dict andModel:[InformationModel class]];
+            //                [weakSelf.dataArray addObject:model];
+            //            }
+            
+            [weakSelf showHudAuto:@"保存成功" andDuration:@"2"];
+            
+            //  写入文件
+            [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:weakSelf.user];
+            //  下次在那重新获取保存数据
+            
+            weakSelf.user = nil;
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"refreshBaseInfoNatification" object:nil];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+        
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+        
 }
 
 - (UIActionSheet *)actionSheet{
@@ -221,36 +246,86 @@
         
         if (indexPath.row == 2) {
             SexViewController *sexVc = [[SexViewController alloc] init];
+            [sexVc setSexBlock:^(NSString *sex) {
+                weakSelf.user.sex = sex;
+                [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:@{@"title":self.dataArray[indexPath.row][@"title"],@"detail":sex}];
+                [weakSelf.tableView reloadData];
+            }];
             [self.navigationController pushViewController:sexVc animated:YES];
+        }else if(indexPath.row == 3){
+            //出生日期
+            
+            BirthdayViewController *birthdayVc = [[BirthdayViewController alloc] init];
+            birthdayVc.dateString = self.user.birth;
+            [birthdayVc setBirthdayBlock:^(NSString *name) {
+                weakSelf.user.birth = name;
+                [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:@{@"title":self.dataArray[indexPath.row][@"title"],@"detail":name}];
+                [weakSelf.tableView reloadData];
+            }];
+            
+            [self.navigationController pushViewController:birthdayVc animated:YES];
+            
         }else{
             PersonalInputViewController *personalInputVc = [[PersonalInputViewController alloc] init];
             
             if (indexPath.row == 0) {//用户名
                 
                 personalInputVc.index = 0;
+                personalInputVc.string = self.user.nickname;
+                [personalInputVc setNameBlock:^(NSString *name) {
+                    weakSelf.user.nickname = name;
+                    [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:@{@"title":self.dataArray[indexPath.row][@"title"],@"detail":name}];
+                    [weakSelf.tableView reloadData];
+                }];
+                
             }else if(indexPath.row == 1){//姓名
                 personalInputVc.index = 1;
+                personalInputVc.string = self.user.truename;
+                
+                [personalInputVc setNameBlock:^(NSString *name) {
+                    weakSelf.user.truename = name;
+                    [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:@{@"title":self.dataArray[indexPath.row][@"title"],@"detail":name}];
+                    [weakSelf.tableView reloadData];
+                }];
                 
             }else if(indexPath.row == 2){//性别
                 
                 
                 
-            }else if(indexPath.row == 3){//出生日期
+            }else if(indexPath.row == 3){
                 
             }else if(indexPath.row == 4){//通讯地址
                 personalInputVc.index = 2;
+                personalInputVc.string = self.user.address;
+                
+                [personalInputVc setNameBlock:^(NSString *name) {
+                    weakSelf.user.address = name;
+                    [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:@{@"title":self.dataArray[indexPath.row][@"title"],@"detail":name}];
+                    [weakSelf.tableView reloadData];
+                }];
                 
             }else if(indexPath.row == 5){//电话
                 personalInputVc.index = 3;
+                personalInputVc.string = self.user.tel;
+                
+                [personalInputVc setNameBlock:^(NSString *name) {
+                    weakSelf.user.tel = name;
+                    [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:@{@"title":self.dataArray[indexPath.row][@"title"],@"detail":name}];
+                    [weakSelf.tableView reloadData];
+                }];
                 
             }else{//身份证
                 personalInputVc.index = 4;
+                personalInputVc.string = self.user.card_id;
+                
+                [personalInputVc setNameBlock:^(NSString *name) {
+                    weakSelf.user.card_id = name;
+                    [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:@{@"title":self.dataArray[indexPath.row][@"title"],@"detail":name}];
+                    [weakSelf.tableView reloadData];
+                }];
             }
             
-            [personalInputVc setNameBlock:^(NSString *name) {
-                [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:@{@"title":self.dataArray[indexPath.row][@"title"],@"detail":name}];
-                [weakSelf.tableView reloadData];
-            }];
+            
             [self.navigationController pushViewController:personalInputVc animated:YES];
         }
         

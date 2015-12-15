@@ -258,7 +258,7 @@
         if (response.responseCode == 1) {
             
             THUser *user = [MTLJSONAdapter modelOfClass:[THUser class] fromJSONDictionary:response.dataDic error:nil];
-            NSLog(@"真的爱你%@",user.account);
+            
             
             if (user) {
                 //  写入本地
@@ -266,6 +266,7 @@
             }
             
             [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+            NSLog(@"真的爱你%@",self.user.sex);
             
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"1"];

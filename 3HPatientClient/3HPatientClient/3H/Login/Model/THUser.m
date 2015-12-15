@@ -30,7 +30,7 @@
     [aCoder encodeObject:self.nickname forKey:@"nickname"];
     [aCoder encodeObject:self.pic forKey:@"pic"];
     [aCoder encodeObject:self.points forKey:@"points"];
-    [aCoder encodeObject:self.md5_id forKey:@"sex"];
+    [aCoder encodeObject:self.sex forKey:@"sex"];
     [aCoder encodeObject:self.mobile forKey:@"tel"];
     [aCoder encodeObject:self.truename forKey:@"truename"];
 

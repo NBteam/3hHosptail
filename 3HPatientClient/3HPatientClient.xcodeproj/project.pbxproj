@@ -506,6 +506,10 @@
 		C08244741C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C082446C1C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png */; settings = {ASSET_TAGS = (); }; };
 		C08244751C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－未选中@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C082446D1C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－未选中@2x.png */; settings = {ASSET_TAGS = (); }; };
 		C08244761C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－选中@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C082446E1C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－选中@2x.png */; settings = {ASSET_TAGS = (); }; };
+		C08244791C1FE5EC00783FD5 /* DynamicCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244781C1FE5EC00783FD5 /* DynamicCommentsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C082447C1C1FE62400783FD5 /* DynamicCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C082447B1C1FE62400783FD5 /* DynamicCommentsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		C082447F1C1FE96A00783FD5 /* CommentsCustomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C082447E1C1FE96A00783FD5 /* CommentsCustomKeyboard.m */; settings = {ASSET_TAGS = (); }; };
+		C08244821C20040000783FD5 /* BirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244811C20040000783FD5 /* BirthdayViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C0956A411C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -1307,6 +1311,14 @@
 		C082446C1C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-健康商城-商品详情-立即购买-收货地址2@2x.png"; sourceTree = "<group>"; };
 		C082446D1C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－未选中@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-我要预约-预约挂号-2－未选中@2x.png"; sourceTree = "<group>"; };
 		C082446E1C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－选中@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-我要预约-预约挂号-2－选中@2x.png"; sourceTree = "<group>"; };
+		C08244771C1FE5EC00783FD5 /* DynamicCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicCommentsViewController.h; sourceTree = "<group>"; };
+		C08244781C1FE5EC00783FD5 /* DynamicCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicCommentsViewController.m; sourceTree = "<group>"; };
+		C082447A1C1FE62400783FD5 /* DynamicCommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicCommentsTableViewCell.h; sourceTree = "<group>"; };
+		C082447B1C1FE62400783FD5 /* DynamicCommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicCommentsTableViewCell.m; sourceTree = "<group>"; };
+		C082447D1C1FE96A00783FD5 /* CommentsCustomKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsCustomKeyboard.h; sourceTree = "<group>"; };
+		C082447E1C1FE96A00783FD5 /* CommentsCustomKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsCustomKeyboard.m; sourceTree = "<group>"; };
+		C08244801C20040000783FD5 /* BirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdayViewController.h; sourceTree = "<group>"; };
+		C08244811C20040000783FD5 /* BirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdayViewController.m; sourceTree = "<group>"; };
 		C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-患者-添加按钮@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1747,6 +1759,8 @@
 				C05A96F31C1DB5570078433B /* PersonalInputViewController.m */,
 				C05A96F51C1DB5780078433B /* SexViewController.h */,
 				C05A96F61C1DB5780078433B /* SexViewController.m */,
+				C08244801C20040000783FD5 /* BirthdayViewController.h */,
+				C08244811C20040000783FD5 /* BirthdayViewController.m */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -1786,6 +1800,10 @@
 				993669631C132C6800B3E1C7 /* ConsultingDynamicViewController.m */,
 				993669641C132C6800B3E1C7 /* DynamicDetailViewController.h */,
 				993669651C132C6800B3E1C7 /* DynamicDetailViewController.m */,
+				C08244771C1FE5EC00783FD5 /* DynamicCommentsViewController.h */,
+				C08244781C1FE5EC00783FD5 /* DynamicCommentsViewController.m */,
+				C082447D1C1FE96A00783FD5 /* CommentsCustomKeyboard.h */,
+				C082447E1C1FE96A00783FD5 /* CommentsCustomKeyboard.m */,
 			);
 			path = ConsultingDynamic;
 			sourceTree = "<group>";
@@ -2197,6 +2215,8 @@
 				C05A96DB1C1D96730078433B /* MainDiagnosticTableViewCell.m */,
 				C05A96DD1C1D99E10078433B /* MainDiagnosticDetailTableViewCell.h */,
 				C05A96DE1C1D99E10078433B /* MainDiagnosticDetailTableViewCell.m */,
+				C082447A1C1FE62400783FD5 /* DynamicCommentsTableViewCell.h */,
+				C082447B1C1FE62400783FD5 /* DynamicCommentsTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3495,6 +3515,7 @@
 				99DA41F01C0BEB0500573D4C /* TQRichTextBaseRun.m in Sources */,
 				99DA41AB1C0BEB0500573D4C /* UIScreen+Extension.m in Sources */,
 				99DA41EB1C0BEB0500573D4C /* UIView+WebCacheOperation.m in Sources */,
+				C082447F1C1FE96A00783FD5 /* CommentsCustomKeyboard.m in Sources */,
 				C05A96E81C1D9DF70078433B /* AboutViewController.m in Sources */,
 				99DA41E71C0BEB0500573D4C /* UIImage+MultiFormat.m in Sources */,
 				9936697F1C13335D00B3E1C7 /* ShopDetailNameTableViewCell.m in Sources */,
@@ -3513,6 +3534,7 @@
 				99DA41BF1C0BEB0500573D4C /* NSDictionary+MTLManipulationAdditions.m in Sources */,
 				99DA41DE1C0BEB0500573D4C /* SDImageCache.m in Sources */,
 				99DA41B51C0BEB0500573D4C /* JSONKit.m in Sources */,
+				C08244821C20040000783FD5 /* BirthdayViewController.m in Sources */,
 				991A33021C12F5BF00E0313F /* MineTableViewCell.m in Sources */,
 				C05A96CA1C1D85B60078433B /* AppointDoctorsHeadView.m in Sources */,
 				991A31361C12D9B300E0313F /* HomeSlidingCustomView.m in Sources */,
@@ -3542,12 +3564,14 @@
 				99DA41F51C0BEB0500573D4C /* UIBarButtonItemExtension.m in Sources */,
 				C05A97AE1C1EC9DF0078433B /* DynamicDetailModel.m in Sources */,
 				C05A97A51C1EAEA00078433B /* HomeGoodsModel.m in Sources */,
+				C082447C1C1FE62400783FD5 /* DynamicCommentsTableViewCell.m in Sources */,
 				99DA41EA1C0BEB0500573D4C /* UIImageView+WebCache.m in Sources */,
 				C05A97AB1C1EBDC70078433B /* ConsultingDynamicListModel.m in Sources */,
 				993669D81C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.m in Sources */,
 				C05A96D01C1D8DFC0078433B /* AppointHosptailTableViewCell.m in Sources */,
 				99DA41B11C0BEB0500573D4C /* FMDatabasePool.m in Sources */,
 				99DA41DA1C0BEB0500573D4C /* NSObject+DHF.m in Sources */,
+				C08244791C1FE5EC00783FD5 /* DynamicCommentsViewController.m in Sources */,
 				99DA41D81C0BEB0500573D4C /* UIView+MJExtension.m in Sources */,
 				99DA41951C0BEB0500573D4C /* BaseViewController.m in Sources */,
 				99DA41A51C0BEB0500573D4C /* NSURLRequest+Extension.m in Sources */,
