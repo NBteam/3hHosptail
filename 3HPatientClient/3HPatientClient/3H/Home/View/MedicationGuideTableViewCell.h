@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "MessageListModel.h"
 
 @interface MedicationGuideTableViewCell : BaseTableViewCell
 
@@ -16,7 +17,7 @@
 
 
 //赋值
-- (void)confingWithModel:(NSInteger )model;
+- (void)confingWithModel:(MessageListModel * )model;
 
 
 @end

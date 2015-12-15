@@ -12,6 +12,7 @@
 // 0 == 化验  1 == 检查
 @property (nonatomic, assign)NSInteger index;
 
-@property (nonatomic, strong) NSString *titles;
+@property (nonatomic, copy) NSString *titles;
 
+@property (nonatomic, copy) NSString *id;
 @end

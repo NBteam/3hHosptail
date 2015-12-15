@@ -9,6 +9,8 @@
 #import "CheckDataAViewController.h"
 #import "CheckDataTableViewCell.h"
 #import "CheckDataDetailViewController.h"
+#import "CheckListModel.h"
+
 @interface CheckDataAViewController ()
 
 @end
@@ -19,6 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView.height = self.tableView.height - 44;
+    [self getNetWork];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -29,6 +32,7 @@
         cell = [[CheckDataTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    CheckListModel * model = self.dataArray[indexPath.section];
     [cell confingWithModel:nil];
     return cell;
 }
@@ -58,6 +62,25 @@
     checkDataDetailVc.index = 0;
     checkDataDetailVc.titles = @"尿常规";
     [self.navigationController pushViewController:checkDataDetailVc animated:YES];
+}
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(CheckDataAViewController);
+    [[THNetWorkManager shareNetWork]getMyAssayListPage:5 andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                CheckListModel * model = [response thParseDataFromDic:dict andModel:[CheckListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

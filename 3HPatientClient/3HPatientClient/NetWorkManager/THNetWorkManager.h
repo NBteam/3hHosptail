@@ -89,11 +89,18 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                     andFailure:(FailureBlock) failure;
 
+#pragma mark 获取我的化验列表
+- (void)getMyAssayListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                andFailure:(FailureBlock) failure;
 
+#pragma mark 获取我的检查列表
+- (void)getMyCheckListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                andFailure:(FailureBlock) failure;
 
+#pragma mark 获取我的化验详情【20151213更新】
+- (void)getMyAssayId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                andFailure:(FailureBlock) failure;
 
-
-
-
-
+#pragma mark 获取我的用药提醒列表【20151130添加】
+- (void)getMyDrugListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 @end

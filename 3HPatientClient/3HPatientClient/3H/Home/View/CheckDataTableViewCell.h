@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "CheckListModel.h"
 
 @interface CheckDataTableViewCell : BaseTableViewCell
 
@@ -20,6 +21,6 @@
 
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(CheckListModel *)dic;
 
 @end

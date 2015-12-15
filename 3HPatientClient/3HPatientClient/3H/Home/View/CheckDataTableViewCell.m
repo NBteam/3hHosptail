@@ -20,7 +20,7 @@
 - (UIImageView *)imgLogo{
     if (!_imgLogo) {
         _imgLogo = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 100, 80)];
-        _imgLogo.backgroundColor = [UIColor whiteColor];
+//        _imgLogo.backgroundColor = [UIColor whiteColor];
         _imgLogo.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
         _imgLogo.layer.borderWidth = 0.5;
         
@@ -57,13 +57,15 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic{
-    self.labTitle.text = @"血常规";
-    self.labDetail.text = @"北京306医院";
+- (void)confingWithModel:(CheckListModel *)dic{
+    self.labTitle.text = dic.name;
+    self.labDetail.text = dic.hospital
+    ;
     [self.labDetail sizeToFit];
     self.labDetail.top = self.labTitle.bottom +10;
     
-    self.labTime.text = @"2015-09-09";
+    [self.imgLogo sd_setImageWithURL:SD_IMG(dic.pic)];
+    self.labTime.text = dic.addtime;
     CGSize size = [self.labTime.text sizeWithFont:[UIFont systemFontOfSize:12] maxSize:CGSizeMake(0, 12)];
     
     self.labTime.left = DeviceSize.width -size.width -10;

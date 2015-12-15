@@ -7,6 +7,7 @@
 //
 
 #import "CheckDataDetailTableViewCell.h"
+#import "UIButton+WebCache.h"
 
 @implementation CheckDataDetailTableViewCell
 - (void)customView{
@@ -24,21 +25,22 @@
 }
 
 //赋值
-- (CGFloat)confingWithModel:(NSInteger )dic{
+- (CGFloat)confingWithModel:(NSInteger )dic model:(CheckDetailModel *)model{
     self.labTitle.text = @"报告单";
     
-    return [self customImgs];
+    return [self customImgs:model.pics];
 }
 
-- (CGFloat)customImgs{
+- (CGFloat)customImgs:(NSArray *)array{
     CGFloat f = (DeviceSize.width - 60)/3;
     CGFloat ff = 0.0;
-    for (int i = 0; i<2; i++) {
+    for (int i = 0; i<array.count; i++) {
         UIButton *btn =[UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(15 +(15 +f)*(i%3), self.labTitle.bottom +(f/4*3 +15)*(i/3), f, f/4*3);
         btn.backgroundColor = [UIColor grayColor];
         [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
         ff = btn.bottom +15;
+        [btn sd_setImageWithURL:SD_IMG(array[i]) forState:UIControlStateNormal];
         [self.contentView addSubview:btn];
     }
     return ff;

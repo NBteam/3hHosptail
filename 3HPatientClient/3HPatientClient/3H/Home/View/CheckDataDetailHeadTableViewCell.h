@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "CheckDetailModel.h"
 
 @interface CheckDataDetailHeadTableViewCell : BaseTableViewCell
 
@@ -14,5 +15,5 @@
 @property (nonatomic, strong) UILabel *labDetail;
 
 //赋值
-- (void)confingWithModel:(NSInteger )dic;
+- (void)confingWithModel:(NSInteger )dic model:(CheckDetailModel *)model;
 @end

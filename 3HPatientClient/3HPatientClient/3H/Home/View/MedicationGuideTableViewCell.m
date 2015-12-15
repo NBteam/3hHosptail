@@ -57,20 +57,20 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSInteger )model{
-    self.labTitle.text = @"阿莫西林片";
+- (void)confingWithModel:(MessageListModel * )model{
+    self.labTitle.text = model.name;
     UILabel *lab1 = (UILabel *)[self.viewBack viewWithTag:1000];
-    lab1.text = @"一次(100mg)";
+    lab1.text = model.use_level;
     UILabel *lab2 = (UILabel *)[self.viewBack viewWithTag:1001];
-    lab2.text = @"一天三次(8:00、12:00、18:00";
+    lab2.text = model.use_num;
     UILabel *lab3 = (UILabel *)[self.viewBack viewWithTag:1002];
-    lab3.text = @"餐后";
+    lab3.text = model.use_time;
     UILabel *lab4 = (UILabel *)[self.viewBack viewWithTag:1003];
-    lab4.text = @"口服";
+    lab4.text = model.use_method;
     UILabel *lab5 = (UILabel *)[self.viewBack viewWithTag:1004];
-    lab5.text = @"2015-09-09";
+    lab5.text = model.start_time;
     UILabel *lab6 = (UILabel *)[self.viewBack viewWithTag:1005];
-    lab6.text = @"2015-09-09";
+    lab6.text = model.end_time;
     
 }
 

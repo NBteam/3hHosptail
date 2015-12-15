@@ -34,16 +34,16 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSInteger )dic{
+- (void)confingWithModel:(NSInteger )dic model:(CheckDetailModel *)model{
     if (dic == 0) {
         self.labTitle.text = @"名称:";
-        self.labDetail.text = @"血常规";
+        self.labDetail.text = model.name;
     }else if(dic ==1){
         self.labTitle.text = @"医院:";
-        self.labDetail.text = @"北京306医院";
+        self.labDetail.text = model.hospital;
     }else{
         self.labTitle.text = @"时间:";
-        self.labDetail.text = @"2019-09-09";
+        self.labDetail.text = model.addtime;
     }
 }
 @end

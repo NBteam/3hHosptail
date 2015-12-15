@@ -511,6 +511,9 @@
 		C082447F1C1FE96A00783FD5 /* CommentsCustomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C082447E1C1FE96A00783FD5 /* CommentsCustomKeyboard.m */; settings = {ASSET_TAGS = (); }; };
 		C08244821C20040000783FD5 /* BirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244811C20040000783FD5 /* BirthdayViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C0956A411C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D2CE7BB91C20557900BB169F /* CheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BB81C20557900BB169F /* CheckListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2CE7BBC1C205D9500BB169F /* CheckDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBB1C205D9500BB169F /* CheckDetailModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2CE7BBF1C20669100BB169F /* MessageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBE1C20669100BB169F /* MessageListModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1320,6 +1323,12 @@
 		C08244801C20040000783FD5 /* BirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdayViewController.h; sourceTree = "<group>"; };
 		C08244811C20040000783FD5 /* BirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdayViewController.m; sourceTree = "<group>"; };
 		C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-患者-添加按钮@2x.png"; sourceTree = "<group>"; };
+		D2CE7BB71C20557900BB169F /* CheckListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckListModel.h; sourceTree = "<group>"; };
+		D2CE7BB81C20557900BB169F /* CheckListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckListModel.m; sourceTree = "<group>"; };
+		D2CE7BBA1C205D9500BB169F /* CheckDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailModel.h; sourceTree = "<group>"; };
+		D2CE7BBB1C205D9500BB169F /* CheckDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailModel.m; sourceTree = "<group>"; };
+		D2CE7BBD1C20669100BB169F /* MessageListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListModel.h; sourceTree = "<group>"; };
+		D2CE7BBE1C20669100BB169F /* MessageListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3008,6 +3017,12 @@
 				C05A97AA1C1EBDC70078433B /* ConsultingDynamicListModel.m */,
 				C05A97AC1C1EC9DF0078433B /* DynamicDetailModel.h */,
 				C05A97AD1C1EC9DF0078433B /* DynamicDetailModel.m */,
+				D2CE7BB71C20557900BB169F /* CheckListModel.h */,
+				D2CE7BB81C20557900BB169F /* CheckListModel.m */,
+				D2CE7BBA1C205D9500BB169F /* CheckDetailModel.h */,
+				D2CE7BBB1C205D9500BB169F /* CheckDetailModel.m */,
+				D2CE7BBD1C20669100BB169F /* MessageListModel.h */,
+				D2CE7BBE1C20669100BB169F /* MessageListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3528,6 +3543,7 @@
 				99D33AAD1C17FC040067E57C /* CheckDataBViewController.m in Sources */,
 				C05A96F41C1DB5570078433B /* PersonalInputViewController.m in Sources */,
 				993669DE1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.m in Sources */,
+				D2CE7BBF1C20669100BB169F /* MessageListModel.m in Sources */,
 				993669851C13339200B3E1C7 /* ShopDetailDescTableViewCell.m in Sources */,
 				C05A96F71C1DB5780078433B /* SexViewController.m in Sources */,
 				99DA41991C0BEB0500573D4C /* AFNetworkReachabilityManager.m in Sources */,
@@ -3544,6 +3560,7 @@
 				99D33AB01C17FDBF0067E57C /* CheckDataTableViewCell.m in Sources */,
 				993669721C132C7600B3E1C7 /* DynamicDetailTableViewCell.m in Sources */,
 				99DA41C61C0BEB0500573D4C /* MJRefreshAutoFooter.m in Sources */,
+				D2CE7BBC1C205D9500BB169F /* CheckDetailModel.m in Sources */,
 				99DA419E1C0BEB0500573D4C /* AFURLSessionManager.m in Sources */,
 				993669BD1C14047E00B3E1C7 /* MyCollectionViewController.m in Sources */,
 				C05A96DC1C1D96730078433B /* MainDiagnosticTableViewCell.m in Sources */,
@@ -3600,6 +3617,7 @@
 				C05A96C11C1D836C0078433B /* AppointExpertViewController.m in Sources */,
 				9936697C1C13331400B3E1C7 /* ShopDetailViewController.m in Sources */,
 				99DA41941C0BEB0500573D4C /* BaseTableViewController.m in Sources */,
+				D2CE7BB91C20557900BB169F /* CheckListModel.m in Sources */,
 				C05A96BE1C1D83570078433B /* AppointHosptailViewController.m in Sources */,
 				99D33AA31C17BD0B0067E57C /* RegisterViewController.m in Sources */,
 				99DA41F41C0BEB0500573D4C /* TQRichTextView.m in Sources */,

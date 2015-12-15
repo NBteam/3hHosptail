@@ -9,9 +9,12 @@
 #import "CheckDataDetailViewController.h"
 #import "CheckDataDetailHeadTableViewCell.h"
 #import "CheckDataDetailTableViewCell.h"
+#import "CheckDetailModel.h"
+
 @interface CheckDataDetailViewController ()
 
-@property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, assign)  CGFloat cellHeight;
+@property (nonatomic, strong) CheckDetailModel * model;
 @end
 
 @implementation CheckDataDetailViewController
@@ -19,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self getNetWork];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
 }
 
@@ -35,7 +39,7 @@
             cell = [[CheckDataDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.cellHeight = [cell confingWithModel:indexPath.section];
+        self.cellHeight = [cell confingWithModel:indexPath.section model:self.model];
         return cell;
     }else{
         static NSString *identifier = @"CheckDataDetailHeadTableViewCell";
@@ -44,7 +48,7 @@
             cell = [[CheckDataDetailHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:indexPath.section];
+        [cell confingWithModel:indexPath.section model:self.model];
         return cell;
     }
 }
@@ -75,6 +79,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+}
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(CheckDataDetailViewController);
+    [[THNetWorkManager shareNetWork]getMyAssayId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+
+            CheckDetailModel * model = [response thParseDataFromDic:response.dataDic andModel:[CheckDetailModel class]];
+            weakSelf.model = model;
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

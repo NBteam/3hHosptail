@@ -103,6 +103,10 @@
         //  重新加载数据
         [weakSelf.tableView reloadData];
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
     }];
 }
