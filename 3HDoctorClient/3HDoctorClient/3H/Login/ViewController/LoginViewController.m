@@ -206,10 +206,9 @@
                 
                 NSLog(@"token:%@",response.dataDic[@"token"]);
                 if ([response.dataDic[@"is_fill"] doubleValue] == 0) {//未填写
-                    PerfectInformationViewController *perfectInformationVc = [[PerfectInformationViewController alloc] init];
-                    [self.navigationController pushViewController:perfectInformationVc animated:YES];
+                    [weakSelf getUserInfoData:0];
                 }else{
-                     [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+                    [weakSelf getUserInfoData:1];
                 }
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"2"];
@@ -219,6 +218,39 @@
         } ];
     }
     
+}
+//1 == 到主页  0== 完善信息
+- (void)getUserInfoData:(NSInteger)index{
+    WeakSelf(LoginViewController);
+    [[THNetWorkManager shareNetWork]getUserInfoCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            
+            
+            NSLog(@"看一看%@",response.dataDic);
+            THUser *user = [MTLJSONAdapter modelOfClass:[THUser class] fromJSONDictionary:response.dataDic error:nil];
+            
+            
+            if (user) {
+                //  写入本地
+                [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:user];
+            }
+            
+            if (index == 0) {
+                
+                PerfectInformationViewController *perfectInformationVc = [[PerfectInformationViewController alloc] init];
+                [weakSelf.navigationController pushViewController:perfectInformationVc animated:YES];
+            }else{
+                  [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+                NSLog(@"真的爱你%@",self.user.sex);
+            }
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"1"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+    } ];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

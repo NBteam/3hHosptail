@@ -42,11 +42,11 @@
 }
 
 - (void)setWindowRootViewControllerIsTabBar{
-    self.window.rootViewController = [[BaseTabBarController alloc] init];
+    [self restoreRootViewController:[[BaseTabBarController alloc] init]];
 }
 
 - (void)setWindowRootViewControllerIsLogin{
-    self.window.rootViewController = [[BaseNavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
+    [self restoreRootViewController:[[BaseNavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]]];
 }
 
 /**

@@ -12,6 +12,7 @@
 #import "LaboratoryViewController.h"
 //检查
 #import "CheckViewController.h"
+#import "LaboratoryTestsAddViewController.h"
 
 @interface LaboratoryTestsViewController ()<UIScrollViewDelegate>
 
@@ -31,9 +32,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"];
     [self.view addSubview:self.topView];
     [self.view addSubview:self.scrollView];
+    self.VcIndex = 0;
     [self customAddChildVc];
+}
+
+- (void)addAction{
+    if (self.VcIndex == 0) {
+        [self.laboratoryVc addPushVc];
+    }else{
+        [self.checkVc addPushVc];
+    }
 }
 
 - (void)backAction{
@@ -114,6 +125,8 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     
     NSInteger pageIndex = scrollView.contentOffset.x / DeviceSize.width;
+    
+    self.VcIndex = pageIndex;
     [self.topView topButtonMenuSelectForIndex:pageIndex];
     
 }
@@ -121,6 +134,7 @@
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView;{
     
     NSInteger pageIndex = scrollView.contentOffset.x / DeviceSize.width;
+    self.VcIndex = pageIndex;
     [self.topView topButtonMenuSelectForIndex:pageIndex];
 }
 

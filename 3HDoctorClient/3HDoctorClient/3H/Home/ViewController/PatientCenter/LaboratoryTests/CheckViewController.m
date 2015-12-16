@@ -14,19 +14,19 @@
 @interface CheckViewController ()
 
 @property (nonatomic, strong) PatientCenterNotCustomView *customView;
-@property (nonatomic, assign) NSInteger number;
+
 @end
 
 @implementation CheckViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.number = 0;
     self.tableView.height = self.tableView.height - 44;
     // Do any additional setup after loading the view.
     self.isOpenHeaderRefresh = YES;
     self.isOpenFooterRefresh = YES;
-    // [self.view addSubview:self.customView];
+    [self.view addSubview:self.customView];
+    self.customView.hidden = YES;
     [self getNetWork];
 }
 #pragma mark - UI
@@ -46,6 +46,13 @@
     return _customView;
 }
 
+- (void)addPushVc{
+    LaboratoryTestsAddViewController *laboratoryTestsAddVc= [[LaboratoryTestsAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    laboratoryTestsAddVc.index = 2;
+    laboratoryTestsAddVc.mid = self.mid;
+    [self.navigationController pushViewController:laboratoryTestsAddVc animated:YES];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"idertifier";
@@ -63,11 +70,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    if (self.dataArray.count==0) {
-        self.customView.hidden = NO;
-    }else{
-        self.customView.hidden = YES;
-    }
+
     return self.dataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -97,7 +100,7 @@
             }
             
             if (weakSelf.dataArray.count == 0) {
-                [weakSelf.view addSubview:self.customView];
+                weakSelf.customView.hidden = NO;
             }
             
         }else{

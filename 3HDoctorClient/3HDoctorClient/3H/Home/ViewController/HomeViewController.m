@@ -36,6 +36,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"我的名字%@",self.user.truename);
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithHEX:0xffffff];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -45,10 +47,15 @@
     self.tableView.top = 0;
     self.tableView.height = DeviceSize.height -49;
 //    self.tableView.tableHeaderView = self.headView;
-    [self.headView confingWithModel:nil];
+    [self.headView confingWithModelOfName:self.user.truename Hosptail:self.user.hospital Job:self.user.job_title Pic:self.user.pic];
     [self.view addSubview:self.labTitle];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getHomeInfo) name:@"reloadHomeInfo" object:nil];
-    [self getHomeInfo];
+
+}
+
+- (void)getHomeInfo{
+    self.user = [self refreshUserData];
+    [self.headView confingWithModelOfName:self.user.truename Hosptail:self.user.hospital Job:self.user.job_title Pic:self.user.pic];
 }
 
 #pragma mark -UI
@@ -144,21 +151,7 @@
 }
 #pragma mark -
 #pragma mark net
-- (void)getHomeInfo{
-    [self showHudWaitingView:WaitPrompt];
-    WeakSelf(HomeViewController);
-    [[THNetWorkManager shareNetWork]getUserInfoCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
-        [weakSelf removeMBProgressHudInManaual];
-        if (response.responseCode == 1) {
-            [weakSelf.headView confingWithModel:response.dataDic];
-        }else{
-            [weakSelf showHudAuto:response.message andDuration:@"2"];
-        }
-    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
-        ;
-    } ];
-}
+
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -168,6 +161,11 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat f = scrollView.contentOffset.y;
+    self.changeView.height = DeviceSize.width -f;
 }
 
 

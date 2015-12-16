@@ -21,7 +21,6 @@
 - (UIImageView *)imgLogo{
     if (!_imgLogo) {
         _imgLogo = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 75, 55)];
-        _imgLogo.backgroundColor = [UIColor grayColor];
         
     }
     return _imgLogo;
@@ -49,7 +48,7 @@
 
 //赋值
 - (void)confingWithModel:(PatientAssayListModel *)model{
-    [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:model.pic] placeholderImage:[UIImage imageNamed:@""]];
+    [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:model.pics[0]] placeholderImage:[UIImage imageNamed:@""]];
     self.labTitle.text = model.name;
     self.labDetail.text = [NSString stringWithFormat:@"%@  %@",model.hospital,model.addtime];
 }

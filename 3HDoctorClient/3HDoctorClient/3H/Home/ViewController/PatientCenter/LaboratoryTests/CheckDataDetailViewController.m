@@ -29,6 +29,7 @@
     [self.dataArray removeAllObjects];
     [self showHudAuto:WaitPrompt];
     WeakSelf(CheckDataDetailViewController);
+    NSLog(@"第一个%@---%li",self.ids,self.index);
     [[THNetWorkManager shareNetWork] getPatientCheckIds:self.ids Index:self.index CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {

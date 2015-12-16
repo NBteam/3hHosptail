@@ -14,6 +14,6 @@
 @property (nonatomic, strong) UIImageView *imgDoctorPic;
 
 
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(NSString *)dic;
 
 @end

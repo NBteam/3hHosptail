@@ -38,7 +38,10 @@
     self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"3H-我的_我的钱包-未点击",@"title":@"我的钱包"},@{@"img":@"3H-我的_预约设置-未点击",@"title":@"预约设置"},@{@"img":@"3H-我的_邀请同行-未点击",@"title":@"邀请同行"},@{@"img":@"3H-我的_设置-未点击",@"title":@"设置"}]];
 }
 
-
+- (void)getNetWorkInfo{
+    self.user = [self refreshUserData];
+    [self.tableView reloadData];
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
@@ -47,8 +50,9 @@
         if (cell == nil) {
             cell = [[MineHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
+        //Checked 认证状态
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dict];
+        [cell confingWithModelOfName:self.user.truename Hosptail:self.user.hospital Job:self.user.job_title Pic:self.user.pic Checked:@""];
         return cell;
     }else{
         static NSString *identifier = @"idertifier";
@@ -119,21 +123,7 @@
         }
     }
 }
-- (void)getNetWorkInfo{
-    [self showHudWaitingView:WaitPrompt];
-    WeakSelf(MineViewController);
-    [[THNetWorkManager shareNetWork]getUserInfoCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
-        [weakSelf removeMBProgressHudInManaual];
-        if (response.responseCode == 1) {
-            weakSelf.dict = response.dataDic;
-            [weakSelf.tableView reloadData];
-        }else{
-            [weakSelf showHudAuto:response.message andDuration:@"1"];
-        }
-    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
-    }];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

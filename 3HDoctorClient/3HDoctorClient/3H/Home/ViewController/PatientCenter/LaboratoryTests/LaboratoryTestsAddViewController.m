@@ -37,11 +37,11 @@
     self.filesArray = [[NSMutableArray alloc] init];
     self.datasArray = [[NSMutableArray alloc] init];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"完成"];
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"名称:",@"detail":@"未选择"},@{@"title":@"医院:",@"detail":@"未选择"}]];
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"名称:",@"detail":@"未选择"},@{@"title":@"医院:",@"detail":@"未选择"},@{@"title":@"时间:",@"detail":@"未选择"}]];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
 
-//    [self.view addSubview:self.viewGray];
-//    [self.view addSubview:self.viewTime];
+    [self.view addSubview:self.viewGray];
+    [self.view addSubview:self.viewTime];
    // [self getNetWork];
 }
 
@@ -109,7 +109,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WeakSelf(LaboratoryTestsAddViewController);
-    if (indexPath.section ==2 ) {
+    if (indexPath.section ==3 ) {
         static NSString *identifier = @"LaboratoryTestsAddPhotoTableViewCell";
         LaboratoryTestsAddPhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
@@ -146,7 +146,7 @@
     return self.dataArray.count +1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 2) {
+    if (indexPath.section == 3) {
         return self.cellHeight;
     }else{
         return 45;
@@ -288,7 +288,7 @@
         }else{
             [self showHudAuto:@"上传中..."];
             WeakSelf(LaboratoryTestsAddViewController);
-            [[THNetWorkManager shareNetWork] addPatientCheckMid:self.mid Name:self.dataArray[0][@"detail"] Hospital:self.dataArray[1][@"detail"] File:self.filesArray faceString:self.datasArray andCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [[THNetWorkManager shareNetWork] addPatientAssayMid:self.mid Name:self.dataArray[0][@"detail"] Hospital:self.dataArray[1][@"detail"] File:self.filesArray faceString:self.datasArray andCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 [weakSelf removeMBProgressHudInManaual];
                 
                 NSDictionary *content = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];

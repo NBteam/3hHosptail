@@ -30,7 +30,7 @@
 
 - (UILabel *)labTitle{
     if (!_labTitle) {
-        _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(24, 10, DeviceSize.width/2, 45)];
+        _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(24, 10, self.backView.width -30, 45)];
         _labTitle.textColor = [UIColor colorWithHEX:0x888888];
         _labTitle.font = [UIFont systemFontOfSize:15];
     }

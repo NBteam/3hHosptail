@@ -31,6 +31,21 @@
     
 }
 
+- (THUser *)user
+{
+    if (!_user) {
+        //  测试是否能得到本地存储文件转成对象
+        _user = [THUser ReadLocalUserDataForPath:[UserPath stringByAppendingPathComponent:@"User"]];
+    }
+    return _user;
+}
+
+- (THUser *)refreshUserData
+{
+    _user = [THUser ReadLocalUserDataForPath:[UserPath stringByAppendingPathComponent:@"User"]];
+    return _user;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

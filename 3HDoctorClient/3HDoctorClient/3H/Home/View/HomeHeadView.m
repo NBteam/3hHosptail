@@ -83,11 +83,11 @@
     return _labDetail;
 }
 
-- (void)confingWithModel:(NSDictionary *)dict{
+- (void)confingWithModelOfName:(NSString *)name Hosptail:(NSString *)hosptail Job:(NSString *)job Pic:(NSString *)pic{
    // self.labTitle.text = @"";
-    self.labName.text = dict[@"truename"];
-    self.labDetail.text = [NSString stringWithFormat:@"%@  %@",dict[@"hospital"],dict[@"job_title"]];
-    [self.imgMyPicture sd_setImageWithURL:[NSURL URLWithString:dict[@"pic"]] placeholderImage:[UIImage imageNamed:@""]];
+    self.labName.text = name;
+    self.labDetail.text = [NSString stringWithFormat:@"%@  %@",hosptail,job];
+    [self.imgMyPicture sd_setImageWithURL:[NSURL URLWithString:pic] placeholderImage:[UIImage imageNamed:@""]];
 }
 
 /*

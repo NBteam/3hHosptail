@@ -32,6 +32,7 @@
 #import "SGSaveFile.h"
 
 #import "THNetWorkManager.h"
+#import "THUser.h"
 #define thServerHost @"http://123.57.231.12:85/dapi.php"
 
 #define WaitPrompt @"请稍后..."
@@ -64,5 +65,10 @@
 #define URL(STRING)  [NSURL URLWithString:STRING]
 //IMG
 #define IMG(IMGSTR)  [UIImage imageNamed:IMGSTR]
+
+//  document路径
+#define DocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+#define UserPath [DocumentPath stringByAppendingPathComponent:@"3HDoctorClient/THUser"]
+
 
 #endif

@@ -17,4 +17,8 @@
 /// 距离屏幕顶部的高度
 @property(nonatomic,readonly) CGFloat frameTopHeight;
 
+/// 获取登陆后的实例参数
+@property (nonatomic, strong) THUser *user;
+
+- (THUser *)refreshUserData;
 @end

@@ -1,29 +1,33 @@
 //
-//  OutpatientAppointViewController.m
+//  PerfectInformationTimeViewController.m
 //  3HDoctorClient
 //
-//  Created by 范英强 on 15/12/4.
+//  Created by 范英强 on 15/12/16.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "OutpatientAppointViewController.h"
-#import "OutpatientReservationView.h"
+#import "PerfectInformationTimeViewController.h"
 #import "OutpatientAppointTableViewCell.h"
-@interface OutpatientAppointViewController ()
-@property (nonatomic, strong) OutpatientReservationView * reservationView;
+
+
+@interface PerfectInformationTimeViewController ()
 @property (nonatomic, assign) CGFloat cellHeight;
 @end
 
-@implementation OutpatientAppointViewController
+@implementation PerfectInformationTimeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view addSubview:self.reservationView];
     // Do any additional setup after loading the view.
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+}
+
+- (void)backAction{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WeakSelf(OutpatientAppointViewController);
+    WeakSelf(PerfectInformationTimeViewController);
     static NSString *identifier = @"idertifier";
     OutpatientAppointTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
@@ -35,6 +39,11 @@
     //拿到数据；
     [cell setOutpatientAppontBlcok:^(NSArray *arr) {
         
+        
+        if (weakSelf.PerfectInformationTimeBlock) {
+            weakSelf.PerfectInformationTimeBlock([arr componentsJoinedByString:@","]);
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
     }];
     return cell;
 }
@@ -57,6 +66,10 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return  [[UIView alloc] init];
+}
+
+- (NSString *)title{
+    return @"门诊时间";
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,5 +10,8 @@
 
 @interface NameInputViewController : BaseViewController
 
+// 0= 名字   1 == 签名
+@property (nonatomic, assign) NSInteger index;
+
 @property (nonatomic,copy) void (^nameBlock)(NSString *string);
 @end

@@ -11,24 +11,27 @@
 #import "LaboratoryTestsTableViewCell.h"
 #import "LaboratoryTestsAddViewController.h"
 #import "PatientAssayListModel.h"
+#import "CheckDataDetailViewController.h"
 
 
 @interface LaboratoryViewController ()
 @property (nonatomic, strong) PatientCenterNotCustomView *customView;
-@property (nonatomic, assign) NSInteger number;
+
 @end
 
 @implementation LaboratoryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.number = 0;
+
     self.tableView.height = self.tableView.height - 44;
     // Do any additional setup after loading the view.
     self.isOpenFooterRefresh = YES;
     self.isOpenHeaderRefresh = YES;
     [self getNetWork];
     [self.view addSubview:self.customView];
+    self.customView.hidden = YES;
+
 }
 #pragma mark - UI
 
@@ -45,6 +48,13 @@
         }];
     }
     return _customView;
+}
+
+- (void)addPushVc{
+    LaboratoryTestsAddViewController *laboratoryTestsAddVc= [[LaboratoryTestsAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    laboratoryTestsAddVc.index = 1;
+    laboratoryTestsAddVc.mid = self.mid;
+    [self.navigationController pushViewController:laboratoryTestsAddVc animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,11 +75,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    if (self.dataArray.count==0) {
-        self.customView.hidden = NO;
-    }else{
-        self.customView.hidden = YES;
-    }
+ 
     return self.dataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -88,7 +94,7 @@
     WeakSelf(LaboratoryViewController);
     [[THNetWorkManager shareNetWork]getPatientAssayListPage:self.pageNO mid:self.mid andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
-        if (weakSelf.number == 0) {
+        if (weakSelf.pageNO == 1) {
             [weakSelf.dataArray removeAllObjects];
         }
         if (response.responseCode == 1) {
@@ -106,21 +112,38 @@
         //  结束尾部刷新
         [weakSelf.tableView.footer endRefreshing];
         //  重新加载数据
+        
+        if (weakSelf.dataArray.count == 0) {
+            weakSelf.customView.hidden = NO;
+        }
         [weakSelf.tableView reloadData];
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
     }];
 }
 #pragma mark -- 重新父类方法进行刷新
 - (void)headerRequestWithData
 {
-    self.number = 0;
+
     [self getNetWork];
 }
 - (void)footerRequestWithData
 {
-    self.number += 5;
+
     [self getNetWork];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    PatientAssayListModel *model = self.dataArray[indexPath.section];
+    CheckDataDetailViewController *checkDataDetailVc = [[CheckDataDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    checkDataDetailVc.index = 0;
+    checkDataDetailVc.titles = model.name;
+    checkDataDetailVc.ids = model.id;
+    [self.navigationController pushViewController:checkDataDetailVc animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

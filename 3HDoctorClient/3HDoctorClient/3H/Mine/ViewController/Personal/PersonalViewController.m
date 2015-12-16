@@ -24,17 +24,17 @@
 @property (nonatomic, copy) NSString * parent_id;
 @property (nonatomic, copy) NSString * area_ids;
 @property (nonatomic, copy) NSString * hospital_id;
-@property (nonatomic, strong) NSMutableDictionary * dict;
+
 @end
 
 @implementation PersonalViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getNetWorkInfo];
-    self.dict = [NSMutableDictionary dictionary];
+   // [self getNetWorkInfo];
+
     // Do any additional setup after loading the view.
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"姓名",@"detail":@"未填写"},@{@"title":@"性别",@"detail":@"未填写"},@{@"title":@"城市",@"detail":@"未填写"},@{@"title":@"医院",@"detail":@"未填写"},@{@"title":@"科室",@"detail":@"未填写"},@{@"title":@"职称",@"detail":@"未填写"},@{@"title":@"个人签名",@"detail":@"未填写"}]];
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"姓名",@"detail":self.user.truename},@{@"title":@"性别",@"detail":self.user.sex},@{@"title":@"城市",@"detail":self.user.area_names},@{@"title":@"医院",@"detail":self.user.hospital},@{@"title":@"科室",@"detail":self.user.department},@{@"title":@"职称",@"detail":self.user.job_title},@{@"title":@"个人签名",@"detail":self.user.sign_word}]];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"保存"];
 }
@@ -54,11 +54,19 @@
     else{
         [self showHudAuto:WaitPrompt];
         WeakSelf(PersonalViewController);
-        [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.dataArray[0][@"detail"] sex:self.sexStr hospital:self.dataArray[3][@"detail"] department:self.dataArray[4][@"detail"] job_title:self.dataArray[5][@"detail"] sign_word:self.dataArray[6][@"detail"] work_week:@"" area_ids:weakSelf.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.dataArray[0][@"detail"] sex:self.user.sex hospital:self.dataArray[3][@"detail"] department:self.dataArray[4][@"detail"] job_title:self.dataArray[5][@"detail"] sign_word:self.dataArray[6][@"detail"] work_week:self.user.work_week area_ids:self.user.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
+                
+                [weakSelf showHudAuto:@"保存成功" andDuration:@"2"];
+                
+                //  写入文件
+                [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:weakSelf.user];
+                //  下次在那重新获取保存数据
+                
+                weakSelf.user = nil;
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"reloadHomeInfo" object:nil];
-                [weakSelf.tableView reloadData];
+                
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"1"];
             }
@@ -80,7 +88,7 @@
             cell = [[PersonalHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dict];
+        [cell confingWithModel:self.user.pic];
         return cell;
     }else{
         static NSString *identifier = @"PersonalTableViewCell";
@@ -136,11 +144,12 @@
         if (indexPath.row == 0) {//您的姓名
             
             NameInputViewController *nameInputVc = [[NameInputViewController alloc] init];
+            nameInputVc.index = 0;
             
             [nameInputVc setNameBlock:^(NSString *str) {
                 
                 [weakSelf.dataArray replaceObjectAtIndex:0 withObject:@{@"title":@"姓名",@"detail":str}];
-                
+                weakSelf.user.truename = str;
                 [weakSelf.tableView reloadData];
             }];
             
@@ -158,7 +167,8 @@
                 }else if ([name isEqualToString:@"2"]) {
                     sex = @"女";
                 }
-                self.sexStr = name;
+                weakSelf.sexStr = name;
+                weakSelf.user.sex = name;
                 [weakSelf.dataArray replaceObjectAtIndex:1 withObject:@{@"title":@"性别",@"detail":sex}];
                 [weakSelf.tableView reloadData];
             }];
@@ -172,6 +182,7 @@
                 weakSelf.area_ids = [@[ids,parent_id]componentsJoinedByString:@","];
                 weakSelf.idS = ids;
                 weakSelf.parent_id = parent_id;
+                weakSelf.user.area_names = name;
                 [weakSelf.dataArray replaceObjectAtIndex:2 withObject:@{@"title":@"城市",@"detail":name}];
                 [weakSelf.tableView reloadData];
             }];
@@ -186,6 +197,7 @@
                 [hospitalInputVc setHospitalBlock:^(NSString *str,NSString * id) {
                     weakSelf.hospital_id = id;
                     [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"医院",@"detail":str}];
+                    weakSelf.user.hospital = str;
                     [weakSelf.tableView reloadData];
                 }];
                 [self.navigationController pushViewController:hospitalInputVc animated:YES];
@@ -202,6 +214,7 @@
             [DepartmentVc setChoiceBlock:^(NSString *id, NSString *name, NSString *pid) {
                 
                 [weakSelf.dataArray replaceObjectAtIndex:4 withObject:@{@"title":@"科室",@"detail":name}];
+                weakSelf.user.department = name;
                 [weakSelf.tableView reloadData];
             }];
             [self.navigationController pushViewController:DepartmentVc animated:YES];
@@ -209,56 +222,26 @@
             PositionViewController * pvc = [[PositionViewController alloc]init];
             [pvc setChoiceBlock:^(NSString *positionStr) {
                 [weakSelf.dataArray replaceObjectAtIndex:5 withObject:@{@"title":@"职称",@"detail":positionStr}];
+                weakSelf.user.job_title = positionStr;
                 [weakSelf.tableView reloadData];
             }];
             [self.navigationController pushViewController:pvc animated:YES];
         }else if (indexPath.row == 6){//
+            NameInputViewController *nameInputVc = [[NameInputViewController alloc] init];
+            nameInputVc.index = 1;
             
+            [nameInputVc setNameBlock:^(NSString *str) {
+                
+                [weakSelf.dataArray replaceObjectAtIndex:6 withObject:@{@"title":@"个人签名",@"detail":str}];
+                weakSelf.user.sign_word = str;
+                [weakSelf.tableView reloadData];
+            }];
+            
+            [self.navigationController  pushViewController:nameInputVc animated:YES];
         }
     }
 }
-- (void)getNetWorkInfo{
-    [self showHudAuto:WaitPrompt];
-    WeakSelf(PersonalViewController);
-    [[THNetWorkManager shareNetWork]getUserInfoCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
-        [weakSelf removeMBProgressHudInManaual];
-        if (response.responseCode == 1) {
-            if (![response.dataDic[@"truename"] isEqualToString:@""]) {
-                [weakSelf.dataArray replaceObjectAtIndex:0 withObject:@{@"title":@"姓名",@"detail":response.dataDic[@"truename"]}];
-            }
-            weakSelf.area_ids = response.dataDic[@"area_ids"];\
-            weakSelf.dict = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
-            NSString * sex = @"";
-            weakSelf.sexStr = response.dataDic[@"sex"];
-            if ([response.dataDic[@"sex"] isEqualToString:@"0"]) {
-                sex = @"保密";
-            }else if ([response.dataDic[@"sex"] isEqualToString:@"1"]) {
-                sex = @"男";
-            }else if ([response.dataDic[@"sex"] isEqualToString:@"2"]) {
-                sex = @"女";
-            }
-            [weakSelf.dataArray replaceObjectAtIndex:1 withObject:@{@"title":@"性别",@"detail":sex}];
-            if (![response.dataDic[@"area_names"] isEqualToString:@""]) {//地区待修改
-                [weakSelf.dataArray replaceObjectAtIndex:2 withObject:@{@"title":@"地区",@"detail":response.dataDic[@"area_names"]}];
-            }
-            if (![response.dataDic[@"hospital"] isEqualToString:@""]) {
-                [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"医院",@"detail":response.dataDic[@"hospital"]}];
-            }
-            if (![response.dataDic[@"department"] isEqualToString:@""]) {
-                [weakSelf.dataArray replaceObjectAtIndex:4 withObject:@{@"title":@"科室",@"detail":response.dataDic[@"department"]}];
-            }
-            if (![response.dataDic[@"job_title"] isEqualToString:@""]) {
-                [weakSelf.dataArray replaceObjectAtIndex:5 withObject:@{@"title":@"职称",@"detail":response.dataDic[@"job_title"]}];
-            }
-            weakSelf.idS = [[response.dataDic[@"area_ids"] componentsSeparatedByString:@","]firstObject];
-            [weakSelf.tableView reloadData];
-        }else{
-            [weakSelf showHudAuto:response.message andDuration:@"1"];
-        }
-    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
-    }];
-}
+
 - (UIActionSheet *)actionSheet{
     if (!_actionSheet) {
         _actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"从相册中选择", nil];
@@ -352,7 +335,14 @@
             [weakSelf removeMBProgressHudInManaual];
             NSDictionary *content = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
             if ([content[@"status"] doubleValue] == 1) {
-                [weakSelf.dict setObject:image forKey:@"pic"];
+
+                 weakSelf.user.pic = content[@"data"][@"savename"];
+                
+                //  写入文件
+                [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:weakSelf.user];
+                //  下次在那重新获取保存数据
+                
+                weakSelf.user = nil;
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"reloadHomeInfo" object:nil];
                 [weakSelf.tableView reloadData];
             }else{

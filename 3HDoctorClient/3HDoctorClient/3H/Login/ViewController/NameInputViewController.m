@@ -57,7 +57,11 @@
         //是否纠错
         _txtNameInput.autocorrectionType = UITextAutocorrectionTypeNo;
         _txtNameInput.font = [UIFont systemFontOfSize:15];
-        _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"您的名字" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
+        if (self.index == 0) {
+            _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"您的名字" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
+        }else{
+            _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"您的个人签名" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
+        }
         _txtNameInput.backgroundColor = [UIColor whiteColor];
         
     }

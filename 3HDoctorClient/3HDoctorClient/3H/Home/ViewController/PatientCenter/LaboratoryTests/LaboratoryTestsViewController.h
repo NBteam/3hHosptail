@@ -11,5 +11,7 @@
 @interface LaboratoryTestsViewController : BaseViewController
 
 @property (nonatomic, copy) NSString * mid;
+//VcIndex == 0 化验  1  检查
+@property (nonatomic, assign) NSInteger VcIndex;
 
 @end

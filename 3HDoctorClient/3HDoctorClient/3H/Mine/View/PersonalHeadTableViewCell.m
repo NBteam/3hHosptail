@@ -41,12 +41,8 @@
 
 
 
-- (void)confingWithModel:(NSDictionary *)dic{
-    if ([dic[@"pic"] isKindOfClass:[UIImage class]]) {
-        self.imgDoctorPic.image = dic[@"pic"];
-    }else{
-        [self.imgDoctorPic sd_setImageWithURL:URL(dic[@"pic"]) placeholderImage:IMG(@"")];
-    }
+- (void)confingWithModel:(NSString *)dic{
+    [self.imgDoctorPic sd_setImageWithURL:URL(dic) placeholderImage:IMG(@"")];
 }
 
 /*

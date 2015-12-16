@@ -74,11 +74,11 @@
     }
     return _imgArrow;
 }
-
-- (void)confingWithModel:(NSDictionary *)dic{
-    self.labDoctorName.text = dic[@"truename"];
-    self.labDoctorInfo.text = [NSString stringWithFormat:@"%@  %@",dic[@"hospital"],dic[@"job_title"]];
-    [self.imgDoctorPic sd_setImageWithURL:URL(dic[@"pic"]) placeholderImage:IMG(@"")];
+//is_checked			认证状态，0未认证，1请求认证，2认证通过，3认证不通过
+- (void)confingWithModelOfName:(NSString *)name Hosptail:(NSString *)hosptail Job:(NSString *)job Pic:(NSString *)pic Checked:(NSString *)checked{
+    self.labDoctorName.text = name;
+    self.labDoctorInfo.text = [NSString stringWithFormat:@"%@  %@",hosptail,job];
+    [self.imgDoctorPic sd_setImageWithURL:URL(pic) placeholderImage:IMG(@"")];
 }
 
 /*

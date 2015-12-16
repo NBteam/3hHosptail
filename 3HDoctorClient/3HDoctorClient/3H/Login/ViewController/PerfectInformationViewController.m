@@ -19,6 +19,8 @@
 #import "PositionViewController.h"
 //科室
 #import "DepartmentViewController.h"
+//门诊时间
+#import "PerfectInformationTimeViewController.h"
 
 @interface PerfectInformationViewController ()
 //友情提示
@@ -78,7 +80,31 @@
 }
 
 - (void)btnSubmitAction{
-    [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+    ;
+    
+    
+    [self showHudAuto:@"保存中..."];
+    WeakSelf(PerfectInformationViewController);
+    [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.user.truename sex:self.user.sex hospital:self.user.hospital department:self.user.department job_title:self.user.job_title sign_word:self.user.sign_word work_week:self.user.work_week area_ids:self.user.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            //  写入文件
+            [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:weakSelf.user];
+            //  下次在那重新获取保存数据
+            
+            weakSelf.user = nil;
+            
+            [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+            
+            
+            
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"1"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+    }];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -112,6 +138,7 @@
         
         [nameInputVc setNameBlock:^(NSString *str) {
             [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:str];
+            weakSelf.user.truename = str;
             [weakSelf.tableView reloadData];
         }];
         
@@ -125,6 +152,8 @@
             weakSelf.idS = ids;
             weakSelf.parent_id = parent_id;
             [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:name];
+            weakSelf.user.area_ids = [NSString stringWithFormat:@"%@,%@",parent_id,ids];
+            weakSelf.user.area_names = name;
             [weakSelf.tableView reloadData];
         }];
         
@@ -134,6 +163,7 @@
         PositionViewController * pvc = [[PositionViewController alloc]init];
         [pvc setChoiceBlock:^(NSString *positionStr) {
             [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:positionStr];
+            weakSelf.user.job_title = positionStr;
             [weakSelf.tableView reloadData];
         }];
         [self.navigationController pushViewController:pvc animated:YES];
@@ -145,6 +175,7 @@
             hospitalInputVc.ids = self.idS;
             [hospitalInputVc setHospitalBlock:^(NSString *name,NSString * id) {
                 [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:name];
+                weakSelf.user.hospital = name;
                 [weakSelf.tableView reloadData];
             }];
             
@@ -161,11 +192,19 @@
         DepartmentVc.id = idStr;
         [DepartmentVc setChoiceBlock:^(NSString *id, NSString *name, NSString *pid) {
             [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:name];
+            weakSelf.user.department = name;
             [weakSelf.tableView reloadData];
         }];
         [self.navigationController pushViewController:DepartmentVc animated:YES];
     }else if (indexPath.row == 5){//门诊时间
+        PerfectInformationTimeViewController *perfectInformationTimeVc = [[PerfectInformationTimeViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         
+        [perfectInformationTimeVc setPerfectInformationTimeBlock:^(NSString *name) {
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:name];
+            weakSelf.user.work_week = name;
+            [weakSelf.tableView reloadData];
+        }];
+        [self.navigationController pushViewController:perfectInformationTimeVc animated:YES];
     }
     
 }
@@ -175,6 +214,7 @@
 - (NSString *)title{
     return @"完善资料";
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

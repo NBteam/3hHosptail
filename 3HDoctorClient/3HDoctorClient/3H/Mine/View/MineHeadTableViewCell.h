@@ -20,5 +20,5 @@
 
 @property (nonatomic, strong) UIImageView *imgArrow;
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModelOfName:(NSString *)name Hosptail:(NSString *)hosptail Job:(NSString *)job Pic:(NSString *)pic Checked:(NSString *)checked;
 @end

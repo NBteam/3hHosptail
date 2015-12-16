@@ -7,9 +7,11 @@
 //
 
 #import "PhoneAppointViewController.h"
+#import "PhoneAppointTableViewCell.h"
 
 @interface PhoneAppointViewController ()
 
+@property (nonatomic, assign) CGFloat cellHeight;
 @end
 
 @implementation PhoneAppointViewController
@@ -17,6 +19,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    WeakSelf(PhoneAppointViewController);
+    static NSString *identifier = @"idertifier";
+    PhoneAppointTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil) {
+        cell = [[PhoneAppointTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    [cell setPhoneAppointBlock:^{
+        [weakSelf.tableView reloadData];
+    }];
+    self.cellHeight = [cell confingWithModel:1];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return self.cellHeight;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 10.0f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return  [[UIView alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {

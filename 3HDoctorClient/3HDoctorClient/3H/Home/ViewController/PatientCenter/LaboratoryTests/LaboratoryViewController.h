@@ -11,4 +11,6 @@
 @interface LaboratoryViewController : BaseTableViewController
 
 @property (nonatomic, copy) NSString * mid;
+
+- (void)addPushVc;
 @end

@@ -74,14 +74,14 @@
 
 - (OutpatientAppointViewController *)outpatientAppointVc{
     if (!_outpatientAppointVc) {
-        _outpatientAppointVc = [[OutpatientAppointViewController alloc] init];
+        _outpatientAppointVc = [[OutpatientAppointViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     }
     return _outpatientAppointVc;
 }
 
 - (PhoneAppointViewController *)phoneAppointVc{
     if (!_phoneAppointVc) {
-        _phoneAppointVc = [[PhoneAppointViewController alloc] init];
+        _phoneAppointVc = [[PhoneAppointViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     }
     return _phoneAppointVc;
 }
