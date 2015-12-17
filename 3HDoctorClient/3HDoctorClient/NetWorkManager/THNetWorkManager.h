@@ -215,10 +215,10 @@ typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSen
 - (void)getUploadFaceFile:(NSData *)file faceString:(NSString *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress;
 
 #pragma mark 添加患者化验
-- (void)addPatientAssayMid:(NSString *)mid Name:(NSString *)name Hospital:(NSString *)hospital File:(NSMutableArray *)files faceString:(NSMutableArray *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress;
+- (void)addPatientAssayMid:(NSString *)mid Name:(NSString *)name Hospital:(NSString *)hospital Time:(NSString *)time File:(NSMutableArray *)files faceString:(NSMutableArray *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress;
 
 #pragma mark 添加患者检查
-- (void)addPatientCheckMid:(NSString *)mid Name:(NSString *)name Hospital:(NSString *)hospital File:(NSMutableArray *)files faceString:(NSMutableArray *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress;
+- (void)addPatientCheckMid:(NSString *)mid Name:(NSString *)name Hospital:(NSString *)hospital Time:(NSString *)time File:(NSMutableArray *)files faceString:(NSMutableArray *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress;
 
 
 #pragma mark 获取患者化验和检查详情【20151213更新】

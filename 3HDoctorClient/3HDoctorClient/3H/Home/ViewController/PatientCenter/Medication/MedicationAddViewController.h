@@ -11,4 +11,5 @@
 @interface MedicationAddViewController : BaseTableViewController
 
 @property (nonatomic, copy) NSString *mid;
+@property (nonatomic, copy) void(^reloadBlock)(void);
 @end

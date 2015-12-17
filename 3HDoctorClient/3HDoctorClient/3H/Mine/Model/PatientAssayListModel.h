@@ -15,6 +15,6 @@
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *hospital;
-@property (nonatomic, strong) NSArray *pics;
+@property (nonatomic, copy) NSString *pic;
 @property (nonatomic, copy) NSString *addtime;
 @end

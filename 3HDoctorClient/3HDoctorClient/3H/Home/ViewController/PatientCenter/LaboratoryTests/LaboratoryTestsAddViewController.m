@@ -163,7 +163,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 2) {
-        
+        [self showViewAnimate];
     }else{
         WeakSelf(LaboratoryTestsAddViewController);
         HospitalInputViewController * HospitalInputVc = [[HospitalInputViewController alloc]init];
@@ -282,18 +282,22 @@
 - (void)rightAction{
 
     if (self.index ==1) {
-        if ([self.dataArray[0][@"detail"] isEqualToString:@"未选择"]||[self.dataArray[1][@"detail"] isEqualToString:@"未选择"]||self.imgsArray.count == 0) {
+        if ([self.dataArray[0][@"detail"] isEqualToString:@"未选择"]||[self.dataArray[1][@"detail"] isEqualToString:@"未选择"]||[self.dataArray[2][@"detail"] isEqualToString:@"未选择"]||self.imgsArray.count == 0) {
             [self showHudAuto:@"请补全信息" andDuration:@"2"];
             
         }else{
             [self showHudAuto:@"上传中..."];
             WeakSelf(LaboratoryTestsAddViewController);
-            [[THNetWorkManager shareNetWork] addPatientAssayMid:self.mid Name:self.dataArray[0][@"detail"] Hospital:self.dataArray[1][@"detail"] File:self.filesArray faceString:self.datasArray andCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [[THNetWorkManager shareNetWork] addPatientAssayMid:self.mid Name:self.dataArray[0][@"detail"] Hospital:self.dataArray[1][@"detail"] Time:self.dataArray[2][@"detail"] File:self.filesArray faceString:self.datasArray andCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 [weakSelf removeMBProgressHudInManaual];
                 
                 NSDictionary *content = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
                 if ([content[@"status"] doubleValue] == 1) {
                     [self showHudAuto:@"上传成功" andDuration:@"2"];
+                    if (weakSelf.reloadBlock) {
+                        weakSelf.reloadBlock();
+                        [weakSelf.navigationController popViewControllerAnimated:YES];
+                    }
                 }else{
                     [weakSelf showHudAuto:content[@"info"] andDuration:@"2"];
                 }
@@ -310,12 +314,18 @@
         }else{
             [self showHudAuto:@"上传中..."];
             WeakSelf(LaboratoryTestsAddViewController);
-            [[THNetWorkManager shareNetWork] addPatientCheckMid:self.mid Name:self.dataArray[0][@"detail"] Hospital:self.dataArray[1][@"detail"] File:self.filesArray faceString:self.datasArray andCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [[THNetWorkManager shareNetWork] addPatientCheckMid:self.mid Name:self.dataArray[0][@"detail"] Hospital:self.dataArray[1][@"detail"] Time:self.dataArray[2][@"detail"] File:self.filesArray faceString:self.datasArray andCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 [weakSelf removeMBProgressHudInManaual];
                 
                 NSDictionary *content = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
                 if ([content[@"status"] doubleValue] == 1) {
-                    [self showHudAuto:@"上传成功" andDuration:@"2"];
+                    [weakSelf showHudAuto:@"上传成功" andDuration:@"2"];
+                    if (weakSelf.reloadBlock) {
+                        weakSelf.reloadBlock();
+                        [weakSelf.navigationController popViewControllerAnimated:YES];
+                    }
+                    
+                    
                 }else{
                     [weakSelf showHudAuto:content[@"info"] andDuration:@"2"];
                 }

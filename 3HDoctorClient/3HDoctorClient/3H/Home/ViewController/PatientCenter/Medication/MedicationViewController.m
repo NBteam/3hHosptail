@@ -39,8 +39,12 @@
 }
 
 - (void)addAction{
+    WeakSelf(MedicationViewController);
     MedicationAddViewController *medicationAddVc = [[MedicationAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     medicationAddVc.mid = self.mid;
+    [medicationAddVc setReloadBlock:^{
+        [weakSelf getNetWork];
+    }];
     [self.navigationController pushViewController:medicationAddVc animated:YES];
 }
 
@@ -54,6 +58,9 @@
         [_customView setBtnBlock:^{
             MedicationAddViewController *medicationAddVc = [[MedicationAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
             medicationAddVc.mid = weakSelf.mid;
+            [medicationAddVc setReloadBlock:^{
+                [weakSelf getNetWork];
+            }];
             [weakSelf.navigationController pushViewController:medicationAddVc animated:YES];
         }];
     }

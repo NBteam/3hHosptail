@@ -98,6 +98,11 @@
                 NSLog(@"查看%@",response.dataDic);
                 [weakSelf showHudAuto:@"保存成功" andDuration:@"2"];
                 
+                if (weakSelf.reloadBlock) {
+                    weakSelf.reloadBlock();
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                }
+                
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"2"];
             }

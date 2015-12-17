@@ -44,6 +44,10 @@
             LaboratoryTestsAddViewController *laboratoryTestsAddVc= [[LaboratoryTestsAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
             laboratoryTestsAddVc.index = 1;
             laboratoryTestsAddVc.mid = weakSelf.mid;
+            [laboratoryTestsAddVc setReloadBlock:^{
+                
+                [weakSelf getNetWork];
+            }];
             [weakSelf.navigationController pushViewController:laboratoryTestsAddVc animated:YES];
         }];
     }
@@ -51,9 +55,14 @@
 }
 
 - (void)addPushVc{
+    WeakSelf(LaboratoryViewController);
     LaboratoryTestsAddViewController *laboratoryTestsAddVc= [[LaboratoryTestsAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     laboratoryTestsAddVc.index = 1;
     laboratoryTestsAddVc.mid = self.mid;
+    [laboratoryTestsAddVc setReloadBlock:^{
+
+        [weakSelf getNetWork];
+    }];
     [self.navigationController pushViewController:laboratoryTestsAddVc animated:YES];
 }
 

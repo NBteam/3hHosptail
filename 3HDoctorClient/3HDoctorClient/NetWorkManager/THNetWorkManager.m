@@ -554,13 +554,13 @@ static THNetWorkManager *thNetWorkManager = nil;
 }
 
 #pragma mark 添加患者化验
-- (void)addPatientAssayMid:(NSString *)mid Name:(NSString *)name Hospital:(NSString *)hospital File:(NSMutableArray *)files faceString:(NSMutableArray *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress{
+- (void)addPatientAssayMid:(NSString *)mid Name:(NSString *)name Hospital:(NSString *)hospital Time:(NSString *)time File:(NSMutableArray *)files faceString:(NSMutableArray *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress{
     
     NSString *urlPath = [thServerHost stringByAppendingString:@""];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSDictionary *parameter=@{@"a":@"addPatientAssay",Token:GetToken,@"mid":mid,@"name":name,@"hospital":hospital};
+    NSDictionary *parameter=@{@"a":@"addPatientAssay",Token:GetToken,@"mid":mid,@"name":name,@"hospital":hospital,@"addtime":time};
     
     [manager POST:urlPath parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
@@ -574,12 +574,12 @@ static THNetWorkManager *thNetWorkManager = nil;
 }
 
 #pragma mark 添加患者检查
-- (void)addPatientCheckMid:(NSString *)mid Name:(NSString *)name Hospital:(NSString *)hospital File:(NSMutableArray *)files faceString:(NSMutableArray *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress{
+- (void)addPatientCheckMid:(NSString *)mid Name:(NSString *)name Hospital:(NSString *)hospital Time:(NSString *)time File:(NSMutableArray *)files faceString:(NSMutableArray *)faceString andCompletionBlockWithSuccess:(uploadfaceBlockWithSuccess)success andFailure:(uploadfaceFailureBlock)failure andProgress:(uploadProgressBlock)progress{
     NSString *urlPath = [thServerHost stringByAppendingString:@""];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/html", nil];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSDictionary *parameter=@{@"a":@"addPatientCheck",Token:GetToken,@"mid":mid,@"name":name,@"hospital":hospital};
+    NSDictionary *parameter=@{@"a":@"addPatientCheck",Token:GetToken,@"mid":mid,@"name":name,@"hospital":hospital,@"addtime":time};
     
     [manager POST:urlPath parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
