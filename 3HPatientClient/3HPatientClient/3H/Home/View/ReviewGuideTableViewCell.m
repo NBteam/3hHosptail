@@ -46,12 +46,12 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSInteger )model{
-    self.labTitle.text = @"复查项目名称";
+- (void)confingWithModel:(MyRecheckListModel*)model{
+    self.labTitle.text = model.prj_name;
     UILabel *lab1 = (UILabel *)[self.contentView viewWithTag:2000];
-    lab1.text = @"2015-09-02 上午";
+    lab1.text = [NSString stringWithFormat:@"%@ %@",model.check_date,model.check_time];
     UILabel *lab2 = (UILabel *)[self.contentView viewWithTag:2001];
-    lab2.text = @"北三医院";
+    lab2.text = model.hospital;
 
     
 }

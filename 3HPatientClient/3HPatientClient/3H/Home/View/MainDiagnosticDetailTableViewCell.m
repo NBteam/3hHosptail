@@ -45,9 +45,9 @@
 }
 
 //赋值
-- (CGFloat)confingWithModel:(NSInteger )dic{
-    self.labTitle.text = @"急性气管炎";
-    self.labDetail.text = @"急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎急性气管炎";
+- (CGFloat)confingWithModel:(MyDiagnosisDetailModel * )dic{
+    self.labTitle.text = dic.diag_name;
+    self.labDetail.text = dic.desc;
     [self.labDetail sizeToFit];
     return self.labDetail.bottom +10;
 }

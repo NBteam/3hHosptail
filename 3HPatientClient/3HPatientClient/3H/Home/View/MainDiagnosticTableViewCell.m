@@ -36,8 +36,8 @@
 
 
 //赋值
-- (void)confingWithModel:(NSInteger )dic{
-    self.labTitle.text = @"多米分综合征";
+- (void)confingWithModel:(MyDiagnosisListModel * )dic{
+    self.labTitle.text = dic.diag_name;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

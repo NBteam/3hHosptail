@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "MyDiagnosisListModel.h"
 
 @interface MainDiagnosticTableViewCell : BaseTableViewCell
 
@@ -14,6 +15,6 @@
 
 @property (nonatomic, strong) UIImageView *imgArrow;
 //赋值
-- (void)confingWithModel:(NSInteger )dic;
+- (void)confingWithModel:(MyDiagnosisListModel * )dic;
 
 @end

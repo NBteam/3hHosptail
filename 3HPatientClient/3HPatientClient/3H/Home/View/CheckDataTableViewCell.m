@@ -63,8 +63,12 @@
     ;
     [self.labDetail sizeToFit];
     self.labDetail.top = self.labTitle.bottom +10;
+    if (!dic.pic) {
+        [self.imgLogo sd_setImageWithURL:SD_IMG(dic.pics[0])];
+    }else{
+        [self.imgLogo sd_setImageWithURL:SD_IMG(dic.pic)];
+    }
     
-    [self.imgLogo sd_setImageWithURL:SD_IMG(dic.pic)];
     self.labTime.text = dic.addtime;
     CGSize size = [self.labTime.text sizeWithFont:[UIFont systemFontOfSize:12] maxSize:CGSizeMake(0, 12)];
     

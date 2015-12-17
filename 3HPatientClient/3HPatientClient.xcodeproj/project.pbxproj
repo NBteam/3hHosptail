@@ -514,6 +514,9 @@
 		D2CE7BB91C20557900BB169F /* CheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BB81C20557900BB169F /* CheckListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CE7BBC1C205D9500BB169F /* CheckDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBB1C205D9500BB169F /* CheckDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CE7BBF1C20669100BB169F /* MessageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBE1C20669100BB169F /* MessageListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2CF7C2B1C22DF38008F2900 /* MyDiagnosisListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2A1C22DF38008F2900 /* MyDiagnosisListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2CF7C2E1C22E251008F2900 /* MyDiagnosisDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2CF7C311C22E6C3008F2900 /* MyRecheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1329,6 +1332,12 @@
 		D2CE7BBB1C205D9500BB169F /* CheckDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailModel.m; sourceTree = "<group>"; };
 		D2CE7BBD1C20669100BB169F /* MessageListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListModel.h; sourceTree = "<group>"; };
 		D2CE7BBE1C20669100BB169F /* MessageListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListModel.m; sourceTree = "<group>"; };
+		D2CF7C291C22DF38008F2900 /* MyDiagnosisListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDiagnosisListModel.h; sourceTree = "<group>"; };
+		D2CF7C2A1C22DF38008F2900 /* MyDiagnosisListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDiagnosisListModel.m; sourceTree = "<group>"; };
+		D2CF7C2C1C22E251008F2900 /* MyDiagnosisDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDiagnosisDetailModel.h; sourceTree = "<group>"; };
+		D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDiagnosisDetailModel.m; sourceTree = "<group>"; };
+		D2CF7C2F1C22E6C3008F2900 /* MyRecheckListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyRecheckListModel.h; path = 3HPatientClient/3H/Home/Model/MyRecheckListModel.h; sourceTree = SOURCE_ROOT; };
+		D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyRecheckListModel.m; path = 3HPatientClient/3H/Home/Model/MyRecheckListModel.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2260,6 +2269,8 @@
 		99DA40991C0BEB0500573D4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2CF7C2F1C22E6C3008F2900 /* MyRecheckListModel.h */,
+				D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3023,6 +3034,10 @@
 				D2CE7BBB1C205D9500BB169F /* CheckDetailModel.m */,
 				D2CE7BBD1C20669100BB169F /* MessageListModel.h */,
 				D2CE7BBE1C20669100BB169F /* MessageListModel.m */,
+				D2CF7C291C22DF38008F2900 /* MyDiagnosisListModel.h */,
+				D2CF7C2A1C22DF38008F2900 /* MyDiagnosisListModel.m */,
+				D2CF7C2C1C22E251008F2900 /* MyDiagnosisDetailModel.h */,
+				D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3473,6 +3488,7 @@
 				99DA41E81C0BEB0500573D4C /* UIImage+WebP.m in Sources */,
 				99DA3EBA1C0BE4CF00573D4C /* ViewController.m in Sources */,
 				9929BCBE1C18257800F747CB /* ConsultingIsPhoneDescTableViewCell.m in Sources */,
+				D2CF7C2E1C22E251008F2900 /* MyDiagnosisDetailModel.m in Sources */,
 				99DA41AF1C0BEB0500573D4C /* FMDatabase.m in Sources */,
 				C08244651C1FCE8500783FD5 /* MyAddressTableViewCell.m in Sources */,
 				99DA41F21C0BEB0500573D4C /* TQRichTextImageRun.m in Sources */,
@@ -3518,6 +3534,7 @@
 				99D544981C1592C40081D1D3 /* VRGCalendarView.m in Sources */,
 				C08244491C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.m in Sources */,
 				C05A96EB1C1D9E150078433B /* EvaluationViewController.m in Sources */,
+				D2CF7C311C22E6C3008F2900 /* MyRecheckListModel.m in Sources */,
 				99DA41A81C0BEB0500573D4C /* UIButton+Extension.m in Sources */,
 				99DA419A1C0BEB0500573D4C /* AFSecurityPolicy.m in Sources */,
 				99D544321C15680E0081D1D3 /* BriefCaseHeadTableViewCell.m in Sources */,
@@ -3613,6 +3630,7 @@
 				9929BCA61C1810C200F747CB /* ConsultingHeadView.m in Sources */,
 				C08244621C1FCDD200783FD5 /* MyAddressViewController.m in Sources */,
 				99DBE3371C1922E700965290 /* CustomTextView.m in Sources */,
+				D2CF7C2B1C22DF38008F2900 /* MyDiagnosisListModel.m in Sources */,
 				993669CC1C1404D000B3E1C7 /* MyOrdersTableViewCell.m in Sources */,
 				C05A96C11C1D836C0078433B /* AppointExpertViewController.m in Sources */,
 				9936697C1C13331400B3E1C7 /* ShopDetailViewController.m in Sources */,

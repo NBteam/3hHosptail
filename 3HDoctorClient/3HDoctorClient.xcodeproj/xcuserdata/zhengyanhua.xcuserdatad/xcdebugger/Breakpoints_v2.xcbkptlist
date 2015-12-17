@@ -139,6 +139,38 @@
             endingLineNumber = "114"
             landmarkName = "-getDetailInfo:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DiagnosisEditorViewController getDetailInfo:]"
+                  moduleName = "3HDoctorClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhengyanhua/Desktop/New3H/3HDoctorClient/3HDoctorClient/3H/Home/ViewController/PatientCenter/Diagnosis/DiagnosisEditorViewController.m"
+                  timestampString = "472047117.891323"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "207">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__47-[DiagnosisEditorViewController getDetailInfo:]_block_invoke"
+                  moduleName = "3HDoctorClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhengyanhua/Desktop/New3H/3HDoctorClient/3HDoctorClient/3H/Home/ViewController/PatientCenter/Diagnosis/DiagnosisEditorViewController.m"
+                  timestampString = "472047117.891462"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "70">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

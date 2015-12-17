@@ -10,6 +10,8 @@
 #import "MainDiagnosticTableViewCell.h"
 //详情
 #import "MainDiagnosticDetailViewController.h"
+//数据Model
+#import "MyDiagnosisListModel.h"
 @interface MainDiagnosticViewController ()
 
 @end
@@ -20,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    [self getNetWork];
 }
 
 - (void)backAction{
@@ -36,12 +39,13 @@
         cell = [[MainDiagnosticTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:1];
+    MyDiagnosisListModel * model = self.dataArray[indexPath.row];
+    [cell confingWithModel:model];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -49,10 +53,31 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    MyDiagnosisListModel * model = self.dataArray[indexPath.row];
     MainDiagnosticDetailViewController *mainDiagnosticDetailVc = [[MainDiagnosticDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    mainDiagnosticDetailVc.idx = model.idx;
     [self.navigationController pushViewController:mainDiagnosticDetailVc animated:YES];
 }
-
+- (void)getNetWork{
+    [self.dataArray removeAllObjects];
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(MainDiagnosticViewController);
+    [[THNetWorkManager shareNetWork]getMyDiagnosisListCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                MyDiagnosisListModel * model = [response thParseDataFromDic:dict andModel:[MyDiagnosisListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (NSString *)title{
     return @"主要诊断";
 }

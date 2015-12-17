@@ -8,6 +8,8 @@
 
 #import "ReviewGuideViewController.h"
 #import "ReviewGuideTableViewCell.h"
+#import "MyRecheckListModel.h"
+
 @interface ReviewGuideViewController ()
 
 @end
@@ -18,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-
+    [self getNetWork];
     
     
 }
@@ -37,7 +39,8 @@
         cell = [[ReviewGuideTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:1];
+    MyRecheckListModel * model = self.dataArray[indexPath.section];
+    [cell confingWithModel:model];
     return cell;
 }
 
@@ -50,7 +53,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 10;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -60,7 +63,29 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return  [[UIView alloc] init];
 }
-
+- (void)getNetWork{
+    
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(ReviewGuideViewController);
+    [[THNetWorkManager shareNetWork]getMyRecheckListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            if (weakSelf.pageNO==1) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                MyRecheckListModel * model = [response thParseDataFromDic:dict andModel:[MyRecheckListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (NSString *)title{
     return @"复查指南";
 }

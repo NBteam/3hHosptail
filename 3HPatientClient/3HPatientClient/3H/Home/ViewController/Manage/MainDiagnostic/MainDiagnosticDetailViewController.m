@@ -8,6 +8,7 @@
 
 #import "MainDiagnosticDetailViewController.h"
 #import "MainDiagnosticDetailTableViewCell.h"
+#import "MyDiagnosisDetailModel.h"
 
 @interface MainDiagnosticDetailViewController ()
 
@@ -19,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self getNetWork];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
 }
 
@@ -36,12 +38,13 @@
         cell = [[MainDiagnosticDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.cellHeight = [cell confingWithModel:1];
+    MyDiagnosisDetailModel * model = self.dataArray[indexPath.row];
+    self.cellHeight = [cell confingWithModel:model];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -62,7 +65,24 @@
 - (NSString *)title{
     return @"主要诊断";
 }
-
+- (void)getNetWork{
+    [self.dataArray removeAllObjects];
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(MainDiagnosticDetailViewController);
+    [[THNetWorkManager shareNetWork]getMyDiagnosisIdx:self.idx andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            MyDiagnosisDetailModel * model = [response thParseDataFromDic:response.dataDic andModel:[MyDiagnosisDetailModel class]];
+            [weakSelf.dataArray addObject:model];
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

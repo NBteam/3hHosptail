@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "MyRecheckListModel.h"
 
 @interface ReviewGuideTableViewCell : BaseTableViewCell
 
@@ -15,7 +16,7 @@
 
 
 //赋值
-- (void)confingWithModel:(NSInteger )model;
+- (void)confingWithModel:(MyRecheckListModel*)model;
 
 
 
