@@ -9,5 +9,8 @@
 #import "BaseViewController.h"
 
 @interface MedicationAddInputViewController : BaseViewController
+// 0= 名称   1 == 计量
+@property (nonatomic, assign) NSInteger index;
 
+@property (nonatomic,copy) void (^nameBlock)(NSString *string);
 @end

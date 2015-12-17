@@ -11,6 +11,10 @@
 #import "MedicationAddTableViewCell.h"
 #import "TimeView.h"
 #import "WayDrugViewController.h"
+//用药和剂量
+#import "MedicationAddInputViewController.h"
+//用药次数
+#import "MedicationAddNumViewController.h"
 
 @interface MedicationAddViewController ()
 @property (nonatomic, strong) UIButton *btn;
@@ -18,6 +22,23 @@
 @property (nonatomic, strong) UIView *viewGray;
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) NSIndexPath * indexPaths;
+//药物名称
+@property (nonatomic, copy) NSString *ywName;
+//剂量
+@property (nonatomic, copy) NSString *jlName;
+//次数
+@property (nonatomic, copy) NSString *csName;
+//用药时间
+@property (nonatomic, copy) NSString *yyTime;
+//用药途径
+@property (nonatomic, copy) NSString *yyType;
+//开始时间
+@property (nonatomic, copy) NSString *ksTime;
+//结束时间
+@property (nonatomic, copy) NSString *jsTime;
+
+
+
 @end
 
 @implementation MedicationAddViewController
@@ -25,13 +46,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"药物名称",@"detail":@"未选择"},
-  @{@"title":@"剂量",@"detail":@"未选择"},
-  @{@"title":@"次数",@"detail":@"未选择"},
-  @{@"title":@"用药时间",@"detail":@"未选择"},
-  @{@"title":@"用药途径",@"detail":@"未选择"},
-  @{@"title":@"开始时间",@"detail":@"未选择"},
-  @{@"title":@"结束时间",@"detail":@"未选择"}]];
+    NSLog(@"真的爱你%@",self.mid );
+    //默认值
+    self.ywName = @"";
+    self.jlName = @"一次(100mg)";
+    self.csName = @"一天三次(8:00、12:00、18:00)";
+    self.yyTime = @"餐后";
+    self.yyType = @"口服";
+    
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    
+    
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    
+    
+    
+    NSDate *date = [NSDate date];
+    
+    
+    NSDate *tomorrow = [NSDate dateWithTimeInterval:60 * 60 * 24 *15 sinceDate:date];
+    
+    
+    self.ksTime = [formatter stringFromDate:date];
+    self.jsTime = [formatter stringFromDate:tomorrow];
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"药物名称",@"detail":self.ywName},
+  @{@"title":@"剂量",@"detail":self.jlName},
+  @{@"title":@"次数",@"detail":self.csName},
+  @{@"title":@"用药时间",@"detail":self.yyTime},
+  @{@"title":@"用药途径",@"detail":self.yyType},
+  @{@"title":@"开始时间",@"detail":self.ksTime},
+  @{@"title":@"结束时间",@"detail":self.jsTime}]];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.tableView.height = self.tableView.height -65;
     [self.view addSubview:self.btn];
@@ -40,6 +86,28 @@
 //    [self.viewTime addSubview:self.datePicker];
 }
 
+- (void)medicationAddData{
+    if (self.ywName.length == 0) {
+        [self showHudAuto:@"请输入药物名称" andDuration:@"2"];
+    }else{
+        [self showHudAuto:@"保存中..."];
+        WeakSelf(MedicationAddViewController);
+        [[THNetWorkManager shareNetWork] addPatientDrugMid:self.mid Name:self.ywName Use_level:self.jlName Use_num:self.csName Use_time:self.yyTime Use_method:self.yyType Start_time:self.ksTime End_time:self.jsTime CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+            [weakSelf removeMBProgressHudInManaual];
+            if (response.responseCode == 1) {
+                NSLog(@"查看%@",response.dataDic);
+                [weakSelf showHudAuto:@"保存成功" andDuration:@"2"];
+                
+            }else{
+                [weakSelf showHudAuto:response.message andDuration:@"2"];
+            }
+        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+            ;
+        } ];
+    }
+        
+}
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -63,7 +131,7 @@
 }
 
 - (void)btnAction{
-    
+    [self medicationAddData];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,14 +166,70 @@
     return 10.0f;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    WeakSelf(MedicationAddViewController);
+    if (indexPath.section == 0) {
+        MedicationAddInputViewController *medicationAddInputVc= [[MedicationAddInputViewController alloc] init];
+        medicationAddInputVc.index = 0;
+        [medicationAddInputVc setNameBlock:^(NSString *name) {
+            weakSelf.ywName = name;
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.section withObject:@{@"title":@"药物名称",@"detail":self.ywName}];
+            [weakSelf.tableView reloadData];
+        }];
+        [self.navigationController pushViewController:medicationAddInputVc animated:YES];
+    }
+    
+    if (indexPath.section == 1) {
+        MedicationAddInputViewController *medicationAddInputVc= [[MedicationAddInputViewController alloc] init];
+        medicationAddInputVc.index = 1;
+        [medicationAddInputVc setNameBlock:^(NSString *name) {
+            weakSelf.jlName = name;
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.section withObject:@{@"title":@"剂量",@"detail":self.jlName}];
+            [weakSelf.tableView reloadData];
+        }];
+        [self.navigationController pushViewController:medicationAddInputVc animated:YES];
+    }
+    
+    if (indexPath.section == 2) {
+        MedicationAddNumViewController *medicationAddNumVc = [[MedicationAddNumViewController alloc] init];
+        [medicationAddNumVc setMedicationAddNumBlock:^(NSString *name) {
+            self.csName = name;
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.section withObject:@{@"title":@"次数",@"detail":self.csName}];
+            [weakSelf.tableView reloadData];
+        }];
+        [self.navigationController pushViewController:medicationAddNumVc animated:YES];
+    }
+    
+    if (indexPath.section == 3) {
+        WayDrugViewController * WayDrugVc = [[WayDrugViewController alloc]init];
+        WayDrugVc.index = 0;
+        [WayDrugVc setWayDrugBlock:^(NSString *name) {
+            weakSelf.yyTime = name;
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.section withObject:@{@"title":@"用药时间",@"detail":self.yyTime}];
+            [weakSelf.tableView reloadData];
+            
+        }];
+        [self.navigationController pushViewController:WayDrugVc animated:YES];
+    }
+    
+    
+    if (indexPath.section == 4) {
+        WayDrugViewController * WayDrugVc = [[WayDrugViewController alloc]init];
+        WayDrugVc.index = 1;
+        [WayDrugVc setWayDrugBlock:^(NSString *name) {
+            weakSelf.yyType = name;
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.section withObject:@{@"title":@"用药途径",@"detail":self.yyType}];
+            [weakSelf.tableView reloadData];
+            
+        }];
+        [self.navigationController pushViewController:WayDrugVc animated:YES];
+    }
+    
+    
     if (indexPath.section == 5||indexPath.section == 6) {
         self.indexPaths = indexPath;
         [self showViewAnimate];
     }
-    if (indexPath.section == 4) {
-        WayDrugViewController * WayDrugVc = [[WayDrugViewController alloc]init];
-        [self.navigationController pushViewController:WayDrugVc animated:YES];
-    }
+   
 }
 - (NSString *)title{
     return @"添加用药";

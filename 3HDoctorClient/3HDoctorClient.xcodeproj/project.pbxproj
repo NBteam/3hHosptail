@@ -534,6 +534,8 @@
 		A9B5EA931C16E75C00D4046B /* GuideSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA901C16E75C00D4046B /* GuideSearchView.m */; };
 		A9B5EA941C16E75C00D4046B /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA921C16E75C00D4046B /* SearchCell.m */; };
 		A9B5EA971C16E77E00D4046B /* OutpatientReservationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */; };
+		C027A73C1C22DE6500F6FA0C /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027A73B1C22DE6500F6FA0C /* MedicationAddInputViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C027A73F1C22F33900F6FA0C /* MedicationAddNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027A73E1C22F33900F6FA0C /* MedicationAddNumViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C08244891C20173700783FD5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244841C20173700783FD5 /* AboutViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C082448A1C20173700783FD5 /* EvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244861C20173700783FD5 /* EvaluationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C082448B1C20173700783FD5 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244881C20173700783FD5 /* FeedbackViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -1344,6 +1346,10 @@
 		A9B5EA921C16E75C00D4046B /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		A9B5EA951C16E77E00D4046B /* OutpatientReservationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutpatientReservationView.h; sourceTree = "<group>"; };
 		A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutpatientReservationView.m; sourceTree = "<group>"; };
+		C027A73A1C22DE6500F6FA0C /* MedicationAddInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddInputViewController.h; sourceTree = "<group>"; };
+		C027A73B1C22DE6500F6FA0C /* MedicationAddInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationAddInputViewController.m; sourceTree = "<group>"; };
+		C027A73D1C22F33900F6FA0C /* MedicationAddNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddNumViewController.h; sourceTree = "<group>"; };
+		C027A73E1C22F33900F6FA0C /* MedicationAddNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationAddNumViewController.m; sourceTree = "<group>"; };
 		C08244831C20173700783FD5 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		C08244841C20173700783FD5 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		C08244851C20173700783FD5 /* EvaluationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationViewController.h; sourceTree = "<group>"; };
@@ -1587,6 +1593,10 @@
 				99D6EEA81C0EDEC200CB1829 /* MedicationAddViewController.m */,
 				A94B16061C15A4D500034029 /* WayDrugViewController.h */,
 				A94B16071C15A4D500034029 /* WayDrugViewController.m */,
+				C027A73A1C22DE6500F6FA0C /* MedicationAddInputViewController.h */,
+				C027A73B1C22DE6500F6FA0C /* MedicationAddInputViewController.m */,
+				C027A73D1C22F33900F6FA0C /* MedicationAddNumViewController.h */,
+				C027A73E1C22F33900F6FA0C /* MedicationAddNumViewController.m */,
 			);
 			path = Medication;
 			sourceTree = "<group>";
@@ -3729,6 +3739,7 @@
 				99DA400F1C0BE59A00573D4C /* JSONKit.m in Sources */,
 				A94B16081C15A4D500034029 /* WayDrugViewController.m in Sources */,
 				99DA407D1C0BE85600573D4C /* BaseViewController.m in Sources */,
+				C027A73C1C22DE6500F6FA0C /* MedicationAddInputViewController.m in Sources */,
 				99DA402D1C0BE59A00573D4C /* MJRefreshStateHeader.m in Sources */,
 				991A31091C11D9DE00E0313F /* SetUpViewController.m in Sources */,
 				99DA43681C0C2D3100573D4C /* HospitalInputViewController.m in Sources */,
@@ -3825,6 +3836,7 @@
 				99DA401C1C0BE59A00573D4C /* NSValueTransformer+MTLInversionAdditions.m in Sources */,
 				A94B15F51C14434E00034029 /* PatientListModel.m in Sources */,
 				99DA400D1C0BE59A00573D4C /* FMResultSet.m in Sources */,
+				C027A73F1C22F33900F6FA0C /* MedicationAddNumViewController.m in Sources */,
 				991A30F41C11CF0E00E0313F /* WalletTableViewCell.m in Sources */,
 				99D141FA1C0D5FA5002DA3AD /* BookIsRegisteredViewController.m in Sources */,
 				C08244A51C20682E00783FD5 /* ConsultingDynamicHeadTableViewCell.m in Sources */,

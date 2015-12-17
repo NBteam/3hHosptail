@@ -10,4 +10,5 @@
 
 @interface MedicationAddNumViewController : BaseViewController
 
+@property (nonatomic, copy)void (^medicationAddNumBlock)(NSString *name);
 @end

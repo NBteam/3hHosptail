@@ -22,7 +22,11 @@
 //    [self.headView addSubview:self.labTitle];
 //    self.tableView.tableHeaderView = self.headView;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    self.dataArray = [NSMutableArray arrayWithObjects:@"口服",@"口含",@"肌肉注射",@"皮下注射",@"静滴",@"其他", nil];
+    if (self.index == 0) {
+        self.dataArray = [NSMutableArray arrayWithObjects:@"餐前",@"餐后", nil];
+    }else{
+        self.dataArray = [NSMutableArray arrayWithObjects:@"口服",@"口含",@"肌肉注射",@"皮下注射",@"静滴",@"其他", nil];
+    }
 
     // Do any additional setup after loading the view.
 }
@@ -74,14 +78,19 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //    DepartmentModel * model = self.dataArray[indexPath.row];
-    //    if (self.choiceBlock) {
-    //        self.choiceBlock(model.id,model.name,model.pid);
-    //    }
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    if (self.WayDrugBlock) {
+        self.WayDrugBlock(self.dataArray[indexPath.row]);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 - (NSString *)title{
-    return @"用药途径";
+    if (self.index) {
+        return @"用药时间";
+    }else {
+        return @"用药途径";
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

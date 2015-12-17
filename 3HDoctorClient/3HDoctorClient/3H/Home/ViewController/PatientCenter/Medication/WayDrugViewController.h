@@ -10,4 +10,8 @@
 
 @interface WayDrugViewController : BaseTableViewController
 
+//0 == 用药时间  1 == 用药途径
+@property (nonatomic, assign) NSInteger index;
+
+@property (nonatomic, copy) void (^WayDrugBlock)(NSString *name);
 @end

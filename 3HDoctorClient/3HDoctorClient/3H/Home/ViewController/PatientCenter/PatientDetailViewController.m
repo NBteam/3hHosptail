@@ -111,6 +111,8 @@
         }else if(indexPath.row == 3){//用药
             
             MedicationViewController *medicationVc= [[MedicationViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+ 
+            medicationVc.mid = self.model.id;
             [self.navigationController pushViewController:medicationVc animated:YES];
         }else{//复查
             ReviewViewController *reviewVc = [[ReviewViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];

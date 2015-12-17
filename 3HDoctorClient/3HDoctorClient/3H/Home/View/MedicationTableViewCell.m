@@ -35,9 +35,9 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSString *)model{
-    self.labTitle.text = @"阿莫西林";
-    self.labDetail.text = @"一次100mg 一天三次 坚持用药一周";
+- (void)confingWithModel:(MedicationModel *)model{
+    self.labTitle.text = model.name;
+    self.labDetail.text = [NSString stringWithFormat:@"%@ %@",model.use_level,model.use_num];
 }
 
 /*

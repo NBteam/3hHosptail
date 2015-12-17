@@ -602,5 +602,22 @@ static THNetWorkManager *thNetWorkManager = nil;
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 
+#pragma mark 添加患者用药提醒【20151130更新】
+
+- (void)addPatientDrugMid:(NSString *)mid
+                     Name:(NSString *)name
+                Use_level:(NSString *)use_level
+                  Use_num:(NSString *)use_num
+                 Use_time:(NSString *)use_time
+               Use_method:(NSString *)use_method
+               Start_time:(NSString *)start_time
+                 End_time:(NSString *)end_time
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+               andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"addPatientDrug",Token:GetToken,@"mid":mid,@"name":name,@"use_level":use_level,@"use_num":use_num,@"use_time":use_time,@"use_method":use_method,@"start_time":start_time,@"end_time":end_time};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+
 
 @end

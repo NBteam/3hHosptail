@@ -75,13 +75,15 @@
         _datePicker.locale = locale;
         //当前时间创建NSDate
         NSDate *localDate = [NSDate date];
-        self.datePicker.maximumDate = localDate;
+      //  self.datePicker.maximumDate = localDate;
         [_datePicker addTarget:self action:@selector(dateChange:) forControlEvents:UIControlEventValueChanged];
         NSDateFormatter *formatter = [[NSDateFormatter  alloc] init];
         
         //        if (self.dateString.length == 0) {
         //            [formatter setDateFormat:@"yyyy年MM月dd日"];
         _datePicker.date = localDate;
+      //  NSDate* maxDate = [NSDate date]
+                      //     _datePicker.maximumDate =  maxDate;
         //            self.labTime.text = [formatter stringFromDate:localDate];
         //        }else{
         //            [formatter setDateFormat:@"yyyy年MM月dd日"];

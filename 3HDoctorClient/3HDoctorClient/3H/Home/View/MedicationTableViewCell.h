@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "MedicationModel.h"
 @interface MedicationTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UILabel *labTitle;
@@ -15,6 +15,6 @@
 @property (nonatomic, strong) UILabel *labDetail;
 
 //赋值
-- (void)confingWithModel:(NSString *)model;
+- (void)confingWithModel:(MedicationModel *)model;
 
 @end

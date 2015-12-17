@@ -30,6 +30,8 @@
     self.isOpenHeaderRefresh = YES;
     [self getNetWork];
     [self.view addSubview:self.customView];
+    self.customView.hidden = YES;
+    NSLog(@"真的爱你%@",self.mid );
 }
 
 - (void)backAction{
@@ -38,6 +40,7 @@
 
 - (void)addAction{
     MedicationAddViewController *medicationAddVc = [[MedicationAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    medicationAddVc.mid = self.mid;
     [self.navigationController pushViewController:medicationAddVc animated:YES];
 }
 
@@ -50,6 +53,7 @@
         _customView.backgroundColor = self.view.backgroundColor;
         [_customView setBtnBlock:^{
             MedicationAddViewController *medicationAddVc = [[MedicationAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+            medicationAddVc.mid = weakSelf.mid;
             [weakSelf.navigationController pushViewController:medicationAddVc animated:YES];
         }];
     }
@@ -65,7 +69,7 @@
         cell = [[MedicationTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:@""];
+    [cell confingWithModel:self.dataArray[indexPath.section]];
     return cell;
 }
 
@@ -74,11 +78,6 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    if (self.dataArray.count==0) {
-        self.customView.hidden = NO;
-    }else{
-        self.customView.hidden = YES;
-    }
     return self.dataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -99,9 +98,9 @@
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(MedicationViewController);
-    [[THNetWorkManager shareNetWork]getPatientDrugListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getPatientDrugListPage:self.pageNO mid:self.mid andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
-        if (weakSelf.number == 0) {
+        if (weakSelf.pageNO == 1) {
             [weakSelf.dataArray removeAllObjects];
         }
         if (response.responseCode == 1) {
@@ -118,20 +117,27 @@
         //  结束尾部刷新
         [weakSelf.tableView.footer endRefreshing];
         //  重新加载数据
+        if (weakSelf.dataArray.count == 0) {
+            weakSelf.customView.hidden = NO;
+        }
         [weakSelf.tableView reloadData];
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
     }];
 }
 #pragma mark -- 重新父类方法进行刷新
 - (void)headerRequestWithData
 {
-    self.number = 0;
+
     [self getNetWork];
 }
 - (void)footerRequestWithData
 {
-    self.number += 5;
+
     [self getNetWork];
 }
 - (void)didReceiveMemoryWarning {

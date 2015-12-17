@@ -51,8 +51,9 @@
 
     self.labTitle.text = model[@"title"];
     self.labDetail.text = model[@"detail"];
-    if ([self.labDetail.text isEqualToString:@"未选择"]) {
+    if ([self.labDetail.text isEqualToString:@""]) {
         self.labDetail.textColor = [UIColor colorWithHEX:0x999999];
+        self.labDetail.text = @"请输入药物名称";
     }else{
         self.labDetail.textColor = [UIColor colorWithHEX:0x333333];
     }

@@ -94,6 +94,7 @@
 - (NSString *)title{
     return @"完善资料";
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
