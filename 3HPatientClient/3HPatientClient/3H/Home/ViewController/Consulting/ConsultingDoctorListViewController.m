@@ -9,8 +9,11 @@
 #import "ConsultingDoctorListViewController.h"
 #import "ConsultingDoctorListTableViewCell.h"
 #import "ConsultingViewController.h"
-@interface ConsultingDoctorListViewController ()
+#import "ConsultingDoctorListNewCell.h"
+#import "DoctorListModel.h"
 
+@interface ConsultingDoctorListViewController ()
+@property (nonatomic, assign) CGFloat cellHeight;
 @end
 
 @implementation ConsultingDoctorListViewController
@@ -19,6 +22,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+    self.isOpenFooterRefresh = YES ;
+    self.isOpenHeaderRefresh = YES;
+    [self getNetWork];
 }
 
 - (void)backAction{
@@ -30,45 +37,91 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"ConsultingTableViewCell";
-    ConsultingDoctorListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    ConsultingDoctorListNewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
-        cell = [[ConsultingDoctorListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[ConsultingDoctorListNewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:1];
+//    DoctorListModel * model = self.dataArray[indexPath.row];
+    self.cellHeight = [cell confingWithModel:nil];
     return cell;
     
     
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+//    return self.dataArray.count;
+    return 6;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return self.cellHeight;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 10;
+    return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    return 10;
+//}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return [[UIView alloc] init];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    DoctorListModel * model = self.dataArray[indexPath.row];
+    
     ConsultingViewController *consultingVc = [[ConsultingViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+//    consultingVc.id = model.id;
     [self.navigationController pushViewController:consultingVc animated:YES];
 }
 - (NSString *)title{
     return @"医生列表";
 }
 
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(ConsultingDoctorListViewController);
+    [[THNetWorkManager shareNetWork]getDoctorListPage:self.pageNO kw:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            if (weakSelf.pageNO == 1) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            for (NSDictionary * dic in response.dataDic[@"list"]) {
+                DoctorListModel * model = [response thParseDataFromDic:dic andModel:[DoctorListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+            //  结束头部刷新
+            [weakSelf.tableView.header endRefreshing];
+            //  结束尾部刷新
+            [weakSelf.tableView.footer endRefreshing];
+        }else{
+            //  结束头部刷新
+            [weakSelf.tableView.header endRefreshing];
+            //  结束尾部刷新
+            [weakSelf.tableView.footer endRefreshing];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    [self getNetWork];
+}
+- (void)footerRequestWithData
+{
+    [self getNetWork];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "MyAppointmentRegisteredModel.h"
 
 @interface MyAppointmentTableViewCell : BaseTableViewCell
 
@@ -35,6 +36,6 @@
 @property (nonatomic, strong) UILabel *labAppraise;
 
 //赋值
-- (void)confingWithModel:(NSInteger )index;
+- (void)confingWithModel:(MyAppointmentRegisteredModel *)model;
 
 @end

@@ -14,10 +14,12 @@
 #import "ConsultingIsOnlineViewController.h"
 //电话咨询
 #import "ConsultingIsPhoneViewController.h"
+#import "DoctorInfoModel.h"
+
 @interface ConsultingViewController ()
 @property (nonatomic, strong) ConsultingHeadView *headView;
 @property (nonatomic, strong) ConsultingToolView *toolView;
-
+@property (nonatomic, strong) DoctorInfoModel * model;
 @property (nonatomic, assign) CGFloat cellHeight;
 @end
 
@@ -30,6 +32,7 @@
     self.tableView.tableHeaderView = self.headView;
     self.tableView.height = self.tableView.height -45;
     [self.view addSubview:self.toolView];
+    [self getNetWork];
     
 }
 
@@ -42,7 +45,7 @@
 - (ConsultingHeadView *)headView{
     if (!_headView) {
         _headView = [[ConsultingHeadView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 278/2)];
-        [_headView confingWithModel:-1];
+        [_headView confingWithModel:nil];
     }
     return _headView;
 }
@@ -72,7 +75,7 @@
         cell = [[ConsultingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.cellHeight = [cell confingWithModel:1];
+    self.cellHeight = [cell confingWithModel:self.model];
     return cell;
     
     
@@ -93,7 +96,22 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10;
 }
-
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(ConsultingViewController);
+    [[THNetWorkManager shareNetWork]getDoctorInfoId:@"11"andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            DoctorInfoModel * model = [response thParseDataFromDic:response.dataDic andModel:[DoctorInfoModel class]];
+            weakSelf.model = model;
+            [weakSelf.headView confingWithModel:model];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 //    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 278/2)];
 //    view.backgroundColor = self.view.backgroundColor;

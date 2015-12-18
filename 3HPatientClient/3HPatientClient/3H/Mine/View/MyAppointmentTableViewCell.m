@@ -135,16 +135,28 @@
     }
     return _imgAppraise;
 }
-
+//	id						订单ID
+//	order_sn					订单编号
+//	total						订单金额
+//	pay_status				支付状态，0未支付，1已经支付
+//	status_n					订单状态描述
+//	addtime					订单提交日期
+//	order_date_n				预约时间段
+//
+//	truename				医生名称
+//	job_title					医生职称
+//	hospital					医生医院
+//	department				医生科室
+//	pic						医生头像
 //赋值
-- (void)confingWithModel:(NSInteger )index{
-    self.labTitle.text = @"李小光 主治医生";
-    self.labDetail.text = @"北医三院 内科 胃肠科";
-    self.labTime.text = @"2015-09-08 16:00";
+- (void)confingWithModel:(MyAppointmentRegisteredModel *)model{
+    self.labTitle.text = [NSString stringWithFormat:@"%@ %@",model.truename,model.job_title];
+    self.labDetail.text = [NSString stringWithFormat:@"%@ %@",model.hospital,model.department];
+    self.labTime.text = model.order_date_n;
     
-    self.labPrice.text = @"实付:600元";
+    self.labPrice.text = [NSString stringWithFormat:@"实付:%@元",model.total] ;
     self.labAppraise.text = @"已评价";
-    if (index == 0) {
+    if ([model.status_n isEqualToString:@"0"]) {
         self.labState.text = @"等待医生确认";
         self.imgBack.hidden = NO;
         self.labLine.hidden = YES;

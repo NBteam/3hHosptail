@@ -54,8 +54,8 @@
 }
 
 //赋值
-- (CGFloat)confingWithModel:(NSInteger )dic{
-    self.labDetail.text = @"赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值";
+- (CGFloat)confingWithModel:(DoctorInfoModel *)dic{
+    self.labDetail.text = dic.desc;
     [self.labDetail sizeToFit];
     return self.labDetail.bottom +10;
 }

@@ -37,7 +37,8 @@
 @property (nonatomic, strong) UIButton *btnAgreement;
 //注册按钮
 @property (nonatomic, strong) UIButton *btnRegister;
-
+//邀请码
+@property (nonatomic, strong) LoginInputView *textInvitation;
 
 
 @end
@@ -63,9 +64,11 @@
     [self.viewCode addSubview:self.txtCode];
     [self.view addSubview:self.btnGetCode];
     [self.view addSubview:self.txtPassWord];
+    [self.view addSubview:self.textInvitation];
     [self.view addSubview:self.btnAgreement];
     [self.view addSubview:self.btnRegister];
     [self.view addSubview:self.btnLogin];
+    
 //
 }
 
@@ -145,7 +148,11 @@
 }
 
 - (void)btnGetCodeAction{
-    
+    if ([self.textUserName.textField.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入手机号" andDuration:@"2"];
+    }else{
+        [self getMobilecode];
+    }
 }
 - (LoginInputView *)txtPassWord{
     if (!_txtPassWord) {
@@ -159,16 +166,27 @@
     }
     return _txtPassWord;
 }
+- (LoginInputView *)textInvitation{
+    if (!_textInvitation) {
+        _textInvitation = [[LoginInputView alloc]initWithFrame:CGRectMake(self.txtPassWord.left, self.txtPassWord.bottom+10, self.txtPassWord.width, self.txtPassWord.height) title:@"" placeholder:@"请输入邀请码"];
+        _txtPassWord.textField.autocorrectionType = UITextAutocorrectionTypeNo;
+        _txtPassWord.textField.font = [UIFont systemFontOfSize:15];
+    }
+    return _textInvitation;
 
+}
 
 
 - (UIButton *)btnAgreement{
     if (!_btnAgreement) {
         _btnAgreement = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btnAgreement.frame = CGRectMake(15, self.txtPassWord.bottom +5, 0, 20);
+        _btnAgreement.frame = CGRectMake(15, self.textInvitation.bottom +10, 0, 20);
         _btnAgreement.backgroundColor = [UIColor clearColor];
         [_btnAgreement setTitleColor:[UIColor colorWithHEX:0x888888] forState:UIControlStateNormal];
         _btnAgreement.titleLabel.font = [UIFont systemFontOfSize:12];
+        
+        [_btnAgreement setImage:[UIImage imageNamed:@"3H-注册_选框"] forState:UIControlStateNormal];
+        [_btnAgreement setImage:[UIImage imageNamed:@"3H-注册_全选"] forState:UIControlStateSelected];
         [_btnAgreement setTitle:@"本人已阅读并同意《北京中瑞康服务条款》" forState:UIControlStateNormal];
         [_btnAgreement sizeToFit];
         [_btnAgreement addTarget:self action:@selector(btnAgreementAction) forControlEvents:UIControlEventTouchUpInside];
@@ -178,6 +196,11 @@
 }
 
 - (void)btnAgreementAction{
+    if (self.btnAgreement.selected) {
+        self.btnAgreement.selected = NO;
+    }else{
+        self.btnAgreement.selected = YES;
+    }
 //    AppAgreementViewController *appAgreementVc = [[AppAgreementViewController  alloc] init];
 //    [self.navigationController pushViewController:appAgreementVc animated:YES];
 }
@@ -210,7 +233,7 @@
         _btnLogin = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnLogin.frame = CGRectMake(15, self.btnRegister.bottom+10, DeviceSize.width-30, 20);
         
-        NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:@"已有账号？马上登陆"];
+        NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:@"已有账号？马上登录"];
         [title addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0,title.length)];
         NSRange titleRange = {title.length-4,4};
         [title addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:titleRange];
@@ -221,7 +244,51 @@
     return _btnLogin;
 }
 - (void)btnRegisterAction{
-    
+    if ([self.textUserName.textField.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入手机号" andDuration:@"2"];
+    }else if ([self.txtCode.text isEqualToString:@""]){
+        [self showHudAuto:@"请输入验证码" andDuration:@"2"];
+    }else if ([self.txtPassWord.textField.text isEqualToString:@""]){
+        [self showHudAuto:@"请输入密码" andDuration:@"2"];
+    }else if ([self.textInvitation.textField.text isEqualToString:@""]){
+        [self showHudAuto:@"请输入邀请码" andDuration:@"2"];
+    }else if (!self.btnAgreement.selected){
+        [self showHudAuto:@"请同意协议" andDuration:@"2"];
+    }
+    else{
+        [self getNetWork];
+    }
+}
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(RegisterViewController);
+    [[THNetWorkManager shareNetWork]getRegMobile:self.textUserName.textField.text Password:self.txtPassWord.textField.text Sms_code:self.txtCode.text Fromcode:self.textInvitation.textField.text CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        NSLog(@"查看%@",response.dataDic);
+        if (response.responseCode == 1) {
+            [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+- (void)getMobilecode{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(RegisterViewController);
+    [[THNetWorkManager shareNetWork]getMobilecode:self.textUserName.textField.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        NSLog(@"查看%@",response.dataDic);
+        if (response.responseCode == 1) {
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
 }
 - (void)btnLoginClick:(UIButton *)button{
     [self.navigationController popViewControllerAnimated:YES];

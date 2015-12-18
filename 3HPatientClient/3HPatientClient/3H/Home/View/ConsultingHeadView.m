@@ -60,9 +60,10 @@
 }
 //赋值
 
-- (void)confingWithModel:(NSInteger )model{
-    self.labDoctorName.text = @"李医生";
-    self.labDoctorInfo.text = @"北医三院 内科";
+- (void)confingWithModel:(DoctorInfoModel *)model{
+    
+    self.labDoctorName.text = model.truename;
+    self.labDoctorInfo.text = [NSString stringWithFormat:@"%@ %@",model.hospital,model.job_title];
 }
 
 /*

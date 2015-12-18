@@ -19,6 +19,9 @@
     // Do any additional setup after loading the view.
     self.tableView.separatorColor = [UIColor clearColor];
     self.tableView.height = self.tableView.height - 44;
+    self.isOpenHeaderRefresh = YES;
+    self.isOpenFooterRefresh = YES;
+    [self getNetWork];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -30,12 +33,13 @@
     }
     cell.backgroundColor = self.view.backgroundColor;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:indexPath.row];
+    MyAppointmentRegisteredModel *model = self.dataArray[indexPath.row];
+    [cell confingWithModel:model];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -53,7 +57,48 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return  [[UIView alloc] init];
 }
-
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(MyAppointPhoneViewController);
+    [[THNetWorkManager shareNetWork]getMyOrderTelListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            if (weakSelf.pageNO == 1) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            for (NSDictionary * dic in response.dataDic[@"list"]) {
+                MyAppointmentRegisteredModel * model = [response thParseDataFromDic:dic andModel:[MyAppointmentRegisteredModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+            //  结束头部刷新
+            [weakSelf.tableView.header endRefreshing];
+            //  结束尾部刷新
+            [weakSelf.tableView.footer endRefreshing];
+        }else{
+            //  结束头部刷新
+            [weakSelf.tableView.header endRefreshing];
+            //  结束尾部刷新
+            [weakSelf.tableView.footer endRefreshing];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    [self getNetWork];
+}
+- (void)footerRequestWithData
+{
+    [self getNetWork];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

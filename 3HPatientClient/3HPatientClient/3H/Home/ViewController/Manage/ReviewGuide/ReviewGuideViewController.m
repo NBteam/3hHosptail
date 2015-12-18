@@ -64,7 +64,6 @@
     return  [[UIView alloc] init];
 }
 - (void)getNetWork{
-    
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(ReviewGuideViewController);
     [[THNetWorkManager shareNetWork]getMyRecheckListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {

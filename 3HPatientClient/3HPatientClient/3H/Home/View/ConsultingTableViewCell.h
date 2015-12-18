@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "DoctorInfoModel.h"
 
 @interface ConsultingTableViewCell : BaseTableViewCell
 
@@ -19,5 +20,5 @@
 @property (nonatomic, strong) UILabel *labDetail;
 
 //赋值
-- (CGFloat)confingWithModel:(NSInteger )dic;
+- (CGFloat)confingWithModel:(DoctorInfoModel *)dic;
 @end

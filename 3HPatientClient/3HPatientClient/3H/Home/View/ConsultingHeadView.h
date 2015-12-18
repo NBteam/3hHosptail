@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DoctorInfoModel.h"
 
 @interface ConsultingHeadView : UIView
 
@@ -19,5 +20,5 @@
 @property (nonatomic, strong) UILabel *labDoctorInfo;
 //赋值
 
-- (void)confingWithModel:(NSInteger )model;
+- (void)confingWithModel:(DoctorInfoModel *)model;
 @end

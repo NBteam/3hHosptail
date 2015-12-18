@@ -227,7 +227,7 @@
         [self showHudAuto:@"请输入密码" andDuration:@"2"];
     }else{
         
-        [self showHudAuto:WaitPrompt];
+        [self showHudWaitingView:WaitPrompt];
         WeakSelf(LoginViewController);
         [[THNetWorkManager shareNetWork] patientLoginMobile:self.textUserName.textField.text Password:self.textUserPwd.textField.text CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
@@ -269,10 +269,10 @@
             NSLog(@"真的爱你%@",self.user.sex);
             
         }else{
-            [weakSelf showHudAuto:response.message andDuration:@"1"];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
     } ];
 }
 

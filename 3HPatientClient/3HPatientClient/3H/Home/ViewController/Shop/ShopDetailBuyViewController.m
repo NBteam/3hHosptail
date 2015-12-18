@@ -10,6 +10,8 @@
 #import "ShopDetailBuyHeadTableViewCell.h"
 #import "ShopDetailBuyDescTableViewCell.h"
 #import "ShopDetailBuyPayTableViewCell.h"
+#import "AddAddressViewController.h"
+
 @interface ShopDetailBuyViewController ()
 
 @property (nonatomic, strong) UIButton *btnPay;
@@ -114,7 +116,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    AddAddressViewController * AddAddressVc = [[AddAddressViewController alloc]init];
+    [self.navigationController pushViewController:AddAddressVc animated:YES];
 }
 
 - (NSString *)title{

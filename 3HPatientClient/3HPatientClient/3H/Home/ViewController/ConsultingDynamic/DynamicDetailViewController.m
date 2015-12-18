@@ -69,7 +69,7 @@
                 [weakSelf.navigationController pushViewController:dynamicCommentsVc animated:YES];
                 
             }else{
-                
+                [weakSelf getNetWork];
             }
         }];
     }
@@ -95,7 +95,21 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return self.cellHeight;
 }
-
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(DynamicDetailViewController);
+    [[THNetWorkManager shareNetWork]voteArtId:self.ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        NSLog(@"查看%@",response.dataDic);
+        if (response.responseCode == 1) {
+            weakSelf.toolView.labTitle2.text = [NSString stringWithFormat:@"点赞(%@)",response.dataDic[@"good_num"]];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (NSString *)title{
     return @"医疗资讯";
 }

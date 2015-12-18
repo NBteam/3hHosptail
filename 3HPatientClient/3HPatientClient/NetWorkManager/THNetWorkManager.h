@@ -44,6 +44,18 @@ typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSen
 CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                 andFailure:(FailureBlock) failure;
 
+#pragma mark 获取验证码
+- (void)getMobilecode:(NSString *)mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                andFailure:(FailureBlock) failure;
+
+#pragma mark 注册
+- (void)getRegMobile:(NSString *)mobile
+            Password:(NSString *)password
+            Sms_code:(NSString *)sms_code
+            Fromcode:(NSString *)fromcode
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+          andFailure:(FailureBlock) failure;
+
 #pragma mark 获取我的病史
 - (void)getMySickHistoryCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                                         andFailure:(FailureBlock) failure;
@@ -112,4 +124,21 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 #pragma mark 获取我的复查提醒列表【20151130添加】
 - (void)getMyRecheckListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 文章点赞接口【20151030添加】
+- (void)voteArtId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 获取医生详情【20151109更新】
+- (void)getDoctorInfoId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 获取医生列表【20151106添加】
+- (void)getDoctorListPage:(NSInteger)page kw:(NSString *)kw andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 我的预约挂号列表【20151212添加】
+- (void)getMyOrderguahaoListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 电话预约——我的预约列表【20151216更新】
+- (void)getMyOrderTelListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+
 @end
