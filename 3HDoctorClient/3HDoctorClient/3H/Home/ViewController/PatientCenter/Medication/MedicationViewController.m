@@ -133,7 +133,7 @@
         [weakSelf.tableView.header endRefreshing];
         //  结束尾部刷新
         [weakSelf.tableView.footer endRefreshing];
-        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
     }];
 }
 #pragma mark -- 重新父类方法进行刷新

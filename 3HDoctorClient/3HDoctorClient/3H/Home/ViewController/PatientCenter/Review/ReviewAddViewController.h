@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 fyq. All rights reserved.
 //
 
-#import "BaseTableViewController.h"
+#import "BaseViewController.h"
 
-@interface ReviewAddViewController : BaseTableViewController
+@interface ReviewAddViewController : BaseViewController
 
 @end

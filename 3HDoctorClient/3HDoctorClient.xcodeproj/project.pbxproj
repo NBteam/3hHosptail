@@ -536,6 +536,10 @@
 		A9B5EA971C16E77E00D4046B /* OutpatientReservationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */; };
 		C027A73C1C22DE6500F6FA0C /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027A73B1C22DE6500F6FA0C /* MedicationAddInputViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C027A73F1C22F33900F6FA0C /* MedicationAddNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027A73E1C22F33900F6FA0C /* MedicationAddNumViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C051E5D81C245324005A3D2E /* PhoneAppointTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C051E5D71C245324005A3D2E /* PhoneAppointTDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C051E5DB1C24533E005A3D2E /* PhoneAppointSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C051E5DA1C24533E005A3D2E /* PhoneAppointSetViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C051E5DE1C24561A005A3D2E /* PhoneAppointSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C051E5DD1C24561A005A3D2E /* PhoneAppointSetTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		C051E5E11C2459CF005A3D2E /* ReviewAddHosptailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C051E5E01C2459CF005A3D2E /* ReviewAddHosptailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C08244891C20173700783FD5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244841C20173700783FD5 /* AboutViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C082448A1C20173700783FD5 /* EvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244861C20173700783FD5 /* EvaluationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C082448B1C20173700783FD5 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244881C20173700783FD5 /* FeedbackViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -1350,6 +1354,14 @@
 		C027A73B1C22DE6500F6FA0C /* MedicationAddInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationAddInputViewController.m; sourceTree = "<group>"; };
 		C027A73D1C22F33900F6FA0C /* MedicationAddNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddNumViewController.h; sourceTree = "<group>"; };
 		C027A73E1C22F33900F6FA0C /* MedicationAddNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationAddNumViewController.m; sourceTree = "<group>"; };
+		C051E5D61C245324005A3D2E /* PhoneAppointTDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAppointTDetailViewController.h; sourceTree = "<group>"; };
+		C051E5D71C245324005A3D2E /* PhoneAppointTDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointTDetailViewController.m; sourceTree = "<group>"; };
+		C051E5D91C24533E005A3D2E /* PhoneAppointSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAppointSetViewController.h; sourceTree = "<group>"; };
+		C051E5DA1C24533E005A3D2E /* PhoneAppointSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointSetViewController.m; sourceTree = "<group>"; };
+		C051E5DC1C24561A005A3D2E /* PhoneAppointSetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAppointSetTableViewCell.h; sourceTree = "<group>"; };
+		C051E5DD1C24561A005A3D2E /* PhoneAppointSetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointSetTableViewCell.m; sourceTree = "<group>"; };
+		C051E5DF1C2459CF005A3D2E /* ReviewAddHosptailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewAddHosptailViewController.h; sourceTree = "<group>"; };
+		C051E5E01C2459CF005A3D2E /* ReviewAddHosptailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewAddHosptailViewController.m; sourceTree = "<group>"; };
 		C08244831C20173700783FD5 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		C08244841C20173700783FD5 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		C08244851C20173700783FD5 /* EvaluationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationViewController.h; sourceTree = "<group>"; };
@@ -1415,6 +1427,10 @@
 				991A31111C11E3D400E0313F /* OutpatientAppointViewController.m */,
 				991A31131C11E3EB00E0313F /* PhoneAppointViewController.h */,
 				991A31141C11E3EB00E0313F /* PhoneAppointViewController.m */,
+				C051E5D61C245324005A3D2E /* PhoneAppointTDetailViewController.h */,
+				C051E5D71C245324005A3D2E /* PhoneAppointTDetailViewController.m */,
+				C051E5D91C24533E005A3D2E /* PhoneAppointSetViewController.h */,
+				C051E5DA1C24533E005A3D2E /* PhoneAppointSetViewController.m */,
 			);
 			path = Appoint;
 			sourceTree = "<group>";
@@ -1608,6 +1624,8 @@
 				99D6EE8D1C0EC58100CB1829 /* ReviewViewController.m */,
 				99D6EE921C0ECC5900CB1829 /* ReviewAddViewController.h */,
 				99D6EE931C0ECC5900CB1829 /* ReviewAddViewController.m */,
+				C051E5DF1C2459CF005A3D2E /* ReviewAddHosptailViewController.h */,
+				C051E5E01C2459CF005A3D2E /* ReviewAddHosptailViewController.m */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -2274,6 +2292,8 @@
 				C08244AA1C2113B900783FD5 /* PhoneAppointCalendarView.m */,
 				C08244B01C2130C300783FD5 /* OutpatientAppointTableViewCell.h */,
 				C08244B11C2130C300783FD5 /* OutpatientAppointTableViewCell.m */,
+				C051E5DC1C24561A005A3D2E /* PhoneAppointSetTableViewCell.h */,
+				C051E5DD1C24561A005A3D2E /* PhoneAppointSetTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3615,6 +3635,7 @@
 				99DA3FF01C0BE59A00573D4C /* AFHTTPRequestOperation.m in Sources */,
 				99DA403F1C0BE59A00573D4C /* SDWebImageCompat.m in Sources */,
 				C08244A81C2112AA00783FD5 /* PhoneAppointTableViewCell.m in Sources */,
+				C051E5D81C245324005A3D2E /* PhoneAppointTDetailViewController.m in Sources */,
 				A9B5EA931C16E75C00D4046B /* GuideSearchView.m in Sources */,
 				99D6EEA31C0EDC0300CB1829 /* MedicationViewController.m in Sources */,
 				99D142271C0D9323002DA3AD /* AssistantDoctorTableViewCell.m in Sources */,
@@ -3653,6 +3674,7 @@
 				A9B5EA8E1C16E74400D4046B /* SearchViewController.m in Sources */,
 				A94B16111C15CD5900034029 /* DiagnosisListModel.m in Sources */,
 				99D1421B1C0D7EA1002DA3AD /* BookSuccessDetailTableViewCell.m in Sources */,
+				C051E5DB1C24533E005A3D2E /* PhoneAppointSetViewController.m in Sources */,
 				991A30FD1C11D65900E0313F /* IncomeRecordViewController.m in Sources */,
 				991A30F11C11CEFE00E0313F /* WalletTotalTableViewCell.m in Sources */,
 				99D6EECD1C0EF83A00CB1829 /* DiagnosisViewController.m in Sources */,
@@ -3683,6 +3705,7 @@
 				991A310C1C11DFB900E0313F /* InvitationViewController.m in Sources */,
 				99DA400E1C0BE59A00573D4C /* GetImageColor.m in Sources */,
 				99DA43551C0BF40400573D4C /* RegisterViewController.m in Sources */,
+				C051E5DE1C24561A005A3D2E /* PhoneAppointSetTableViewCell.m in Sources */,
 				99DA40411C0BE59A00573D4C /* SDWebImageDownloader.m in Sources */,
 				99DA40201C0BE59A00573D4C /* MJRefreshAutoFooter.m in Sources */,
 				99DA403C1C0BE59A00573D4C /* MKAnnotationView+WebCache.m in Sources */,
@@ -3697,6 +3720,7 @@
 				99D6EE8E1C0EC58100CB1829 /* ReviewViewController.m in Sources */,
 				A93F23161C13120000AA7756 /* DepartmentModel.m in Sources */,
 				99DA40441C0BE59A00573D4C /* SDWebImagePrefetcher.m in Sources */,
+				C051E5E11C2459CF005A3D2E /* ReviewAddHosptailViewController.m in Sources */,
 				99D6EEBB1C0EEAD600CB1829 /* CheckViewController.m in Sources */,
 				A98AC3CA1C17FF850024177C /* MedicalInformationModel.m in Sources */,
 				99DA435C1C0BF7E500573D4C /* THNetWorkManager.m in Sources */,

@@ -1,14 +1,14 @@
 //
-//  ReviewAddTitleTableViewCell.m
+//  PhoneAppointSetTableViewCell.m
 //  3HDoctorClient
 //
-//  Created by 范英强 on 15/12/2.
-//  Copyright (c) 2015年 fyq. All rights reserved.
+//  Created by 范英强 on 15/12/18.
+//  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "ReviewAddTitleTableViewCell.h"
+#import "PhoneAppointSetTableViewCell.h"
 
-@implementation ReviewAddTitleTableViewCell
+@implementation PhoneAppointSetTableViewCell
 
 - (void)customView{
     [self.contentView addSubview:self.labTitle];
@@ -18,19 +18,18 @@
 
 - (UILabel *)labTitle{
     if (!_labTitle) {
-        _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, DeviceSize.width/2, 45)];
+        _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 45)];
         _labTitle.textColor = [UIColor colorWithHEX:0x333333];
         _labTitle.font = [UIFont systemFontOfSize:15];
-        _labTitle.text =@"复查医院";
     }
     return _labTitle;
 }
 
 - (UILabel *)labDetail{
     if (!_labDetail) {
-        _labDetail = [[UILabel alloc] initWithFrame:CGRectMake(DeviceSize.width/2, 0, DeviceSize.width/2 - self.imgArrow.width -20, 45)];
-        _labDetail.textColor = [UIColor colorWithHEX:0x999999];
-        _labDetail.font = [UIFont systemFontOfSize:15];
+        _labDetail = [[UILabel alloc] initWithFrame:CGRectMake(self.imgArrow.left -10 -100, 0, 100, 45)];
+
+        _labDetail.font = [UIFont systemFontOfSize:13];
         _labDetail.textAlignment = NSTextAlignmentRight;
     }
     return _labDetail;
@@ -45,9 +44,15 @@
     return _imgArrow;
 }
 
-//赋值
-- (void)confingWithModel:(NSString *)model{
-    self.labDetail.text = model;
+- (void)confingWithModel:(NSDictionary *)dict{
+    self.labTitle.text = dict[@"title"];
+    self.labDetail.text = dict[@"detail"];
+    
+    if ([self.labDetail.text isEqualToString:@"未选择"]) {
+        self.labDetail.textColor = [UIColor colorWithHEX:0x999999];
+    }else{
+        self.labDetail.textColor = [UIColor colorWithHEX:0x333333];
+    }
 }
 /*
 // Only override drawRect: if you perform custom drawing.

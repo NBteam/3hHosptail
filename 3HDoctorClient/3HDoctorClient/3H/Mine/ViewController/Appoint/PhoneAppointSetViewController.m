@@ -1,71 +1,47 @@
 //
-//  Phone AppointViewController.m
+//  PhoneAppointSetViewController.m
 //  3HDoctorClient
 //
-//  Created by 范英强 on 15/12/4.
+//  Created by 范英强 on 15/12/18.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "PhoneAppointViewController.h"
-#import "PhoneAppointTableViewCell.h"
-//预约获取
 #import "PhoneAppointSetViewController.h"
-
-@interface PhoneAppointViewController ()
-
-@property (nonatomic, assign) CGFloat cellHeight;
-
-@property (nonatomic, strong) UIButton *btn;
+#import "PhoneAppointSetTableViewCell.h"
+@interface PhoneAppointSetViewController ()
 
 @end
 
-@implementation PhoneAppointViewController
+@implementation PhoneAppointSetViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view addSubview:self.btn];
+    
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"开始时间",@"detail":@"未选择"},@{@"title":@"结束时间",@"detail":@"未选择"},@{@"title":@"时长",@"detail":@"未选择"},@{@"title":@"收费",@"detail":@"未选择"}]];
 }
-
-- (UIButton *)btn{
-    if (!_btn) {
-        _btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btn.frame = CGRectMake(110, 110, 220, 50);
-        _btn.backgroundColor = [UIColor grayColor];
-        [_btn addTarget:self action:@selector(btnss) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _btn;
-}
-
-- (void)btnss{
-    PhoneAppointSetViewController *phoneAppointSetVc = [[PhoneAppointSetViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-    [self.navigationController pushViewController:phoneAppointSetVc animated:YES];
-}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WeakSelf(PhoneAppointViewController);
+    WeakSelf(PhoneAppointSetViewController);
     static NSString *identifier = @"idertifier";
-    PhoneAppointTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    PhoneAppointSetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
-        cell = [[PhoneAppointTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[PhoneAppointSetTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    [cell setPhoneAppointBlock:^{
-        [weakSelf.tableView reloadData];
-    }];
-    self.cellHeight = [cell confingWithModel:1];
+
+    [cell confingWithModel:self.dataArray[indexPath.row]];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 0;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.cellHeight;
+    return 45;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -80,6 +56,10 @@
     return  [[UIView alloc] init];
 }
 
+
+- (NSString *)title{
+    return @"预约设置";
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -618,6 +618,27 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 
+#pragma mark 电话预约——编辑某天设置【20151105添加】
+
+- (void)addTimeItemsdate:(NSString *)date
+              start_time:(NSString *)start_time
+                end_time:(NSString *)end_time
+                 minutes:(NSString *)minutes
+                   price:(CGFloat)price
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+              andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"addTimeItems",Token:GetToken,@"start_time":start_time,@"end_time":end_time,@"minutes":minutes,@"price":@(price)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+    
+}
+
+#pragma mark 电话预约¬——获取某天设置【20151105添加】
+- (void)getOrderTelSetdate:(NSString *)date
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getOrderTelSet",Token:GetToken,@"date":date};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 
 
 @end

@@ -1,60 +1,31 @@
 //
-//  WayDrugViewController.m
+//  ReviewAddHosptailViewController.m
 //  3HDoctorClient
 //
-//  Created by kanzhun on 15/12/7.
+//  Created by 范英强 on 15/12/18.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "WayDrugViewController.h"
+#import "ReviewAddHosptailViewController.h"
 
-@interface WayDrugViewController ()
-@property (nonatomic, strong) UIView * headView;
-@property (nonatomic, strong) UILabel * labTitle;
-@property (nonatomic, strong) UILabel * labLine;
+@interface ReviewAddHosptailViewController ()
+
 @end
 
-@implementation WayDrugViewController
+@implementation ReviewAddHosptailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self.headView addSubview:self.labLine];
-//    [self.headView addSubview:self.labTitle];
-//    self.tableView.tableHeaderView = self.headView;
+    // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    if (self.index == 0) {
-        self.dataArray = [NSMutableArray arrayWithObjects:@"餐前",@"餐后", nil];
-    }else{
-        self.dataArray = [NSMutableArray arrayWithObjects:@"口服",@"口含",@"肌肉注射",@"皮下注射",@"静滴",@"其他", nil];
-    }
-
+    self.dataArray = [NSMutableArray arrayWithObjects:@"我院",@"当地医院", nil];
+    
     // Do any additional setup after loading the view.
 }
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (UIView *)headView{
-    if (!_headView) {
-        _headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, 50)];
-    }
-    return _headView;
-}
-- (UILabel *)labLine{
-    if (!_labLine) {
-        _labLine = [[UILabel alloc]initWithFrame:CGRectMake(0, self.headView.bottom-10, DeviceSize.width, 10)];
-        _labLine.backgroundColor = [UIColor grayColor];
-    }
-    return _labLine;
-}
-- (UILabel *)labTitle{
-    if (!_labTitle) {
-        _labTitle = [[UILabel alloc]initWithFrame:CGRectMake(15,0, DeviceSize.width-30, 40)];
-//        _labTitle.textColor = [UIColor grayColor];
-        _labTitle.text = @"请选择用药途径:";
-        _labTitle.font = [UIFont systemFontOfSize:15];
-    }
-    return _labTitle;
-}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"idertifier";
@@ -79,18 +50,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (self.WayDrugBlock) {
-        self.WayDrugBlock(self.dataArray[indexPath.row]);
+    if (self.ReviewAddHosptailBlock) {
+        self.ReviewAddHosptailBlock(self.dataArray[indexPath.row]);
         [self.navigationController popViewControllerAnimated:YES];
     }
     
 }
 - (NSString *)title{
-    if (self.index) {
-        return @"用药时间";
-    }else {
-        return @"用药途径";
-    }
+    return @"复查医院";
 }
 
 - (void)didReceiveMemoryWarning {

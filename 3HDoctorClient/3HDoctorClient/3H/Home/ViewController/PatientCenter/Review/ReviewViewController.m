@@ -36,7 +36,7 @@
 }
 
 - (void)addAction{
-    ReviewAddViewController *reviewAddVc = [[ReviewAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    ReviewAddViewController *reviewAddVc = [[ReviewAddViewController alloc] init];
     [self.navigationController pushViewController:reviewAddVc animated:YES];
 }
 
@@ -48,7 +48,7 @@
         _customView = [[PatientCenterNotCustomView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height -self.frameTopHeight) LabText:@"您还没有添加任何复查提醒,请添加!" BtnText:@"添加复查"];
         _customView.backgroundColor = self.view.backgroundColor;
         [_customView setBtnBlock:^{
-            ReviewAddViewController *reviewAddVc = [[ReviewAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+            ReviewAddViewController *reviewAddVc = [[ReviewAddViewController alloc] init];
             [weakSelf.navigationController pushViewController:reviewAddVc animated:YES];
         }];
     }
