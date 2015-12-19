@@ -33,6 +33,7 @@
     [self.view addSubview:self.codeView];
     [self.view addSubview:self.btnDefault];
     [self.view addSubview:self.labLine];
+//    [self getHomeData];
     // Do any additional setup after loading the view.
 }
 - (AddressView *)nameView{
@@ -99,6 +100,21 @@
         btn.selected = YES;
     }
 }
+//- (void)getHomeData{
+//    [self showHudWaitingView:WaitPrompt];
+//    WeakSelf(AddAddressViewController);
+//    [[THNetWorkManager shareNetWork]getAddAddressName:@"" mobile:@"" area_ids:@"" address:@"" zipcode:@"" is_default:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+//        [weakSelf removeMBProgressHudInManaual];
+//        if (response.responseCode == 1) {
+//            
+//        }else{
+//            [weakSelf showHudAuto:response.message andDuration:@"2"];
+//        }
+//    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+//        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+//    }];
+//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
