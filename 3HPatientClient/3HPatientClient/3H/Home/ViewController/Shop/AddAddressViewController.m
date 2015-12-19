@@ -88,8 +88,8 @@
 }
 - (UILabel *)labLine{
     if (!_labLine) {
-        _labLine = [[UILabel alloc]initWithFrame:CGRectMake(0, self.btnDefault.bottom, DeviceSize.width, 1)];
-        _labLine.backgroundColor = [UIColor colorWithRed:221/255.0f green:221/255.0f blue:221/255.0f alpha:0.5];
+        _labLine = [[UILabel alloc]initWithFrame:CGRectMake(0, self.btnDefault.bottom, DeviceSize.width, 0.5)];
+        _labLine.backgroundColor = [UIColor colorWithHEX:0xcccccc];
     }
     return _labLine;
 }

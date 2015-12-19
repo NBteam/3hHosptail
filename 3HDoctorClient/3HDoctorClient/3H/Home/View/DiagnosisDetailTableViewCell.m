@@ -2,14 +2,13 @@
 //  DiagnosisDetailTableViewCell.m
 //  3HDoctorClient
 //
-//  Created by 范英强 on 15/12/2.
-//  Copyright (c) 2015年 fyq. All rights reserved.
+//  Created by 范英强 on 15/12/19.
+//  Copyright © 2015年 fyq. All rights reserved.
 //
 
 #import "DiagnosisDetailTableViewCell.h"
 
 @implementation DiagnosisDetailTableViewCell
-
 - (void)customView{
     [self.contentView addSubview:self.labTitle];
     [self.contentView addSubview:self.labLine];
@@ -21,7 +20,7 @@
         _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, DeviceSize.width/2, 35)];
         _labTitle.textColor = [UIColor colorWithHEX:0x333333];
         _labTitle.font = [UIFont systemFontOfSize:15];
-        _labTitle.text = @"病情描述:";
+        _labTitle.text = @"诊断详情:";
     }
     return _labTitle;
 }
@@ -47,13 +46,12 @@
 
 
 //赋值
-- (CGFloat)confingWithModel:(NSDictionary *)model{
-    self.labDetail.text = [NSString stringWithFormat:@"%@",model[@"desc"]];
+- (CGFloat)confingWithModel:(NSString *)model{
+    self.labDetail.text = [NSString stringWithFormat:@"%@",model];
     [self.labDetail sizeToFit];
-
+    
     return self.labDetail.bottom +10;
 }
-
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

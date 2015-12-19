@@ -9,5 +9,5 @@
 #import "BaseTableViewController.h"
 
 @interface ReviewViewController : BaseTableViewController
-
+@property (nonatomic, copy) NSString * mid;
 @end

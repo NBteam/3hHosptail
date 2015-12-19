@@ -423,8 +423,8 @@ static THNetWorkManager *thNetWorkManager = nil;
  * @param	work_week			门诊时间，格式如：周一上午,周一下午,周三下午,周五上午
  * @param   area_ids				城市id，格式：1,2  (省份ID,城市ID)
  */
-- (void)getUpdateUserInfoTruename:(NSString *)truename sex:(NSString *)sex hospital:(NSString *)hospital department:(NSString *)department job_title:(NSString *)job_title sign_word:(NSString *)sign_word	work_week:(NSString *)work_week area_ids:(NSString *)area_ids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"updateuserinfo",Token:GetToken,@"truename":truename,@"sex":sex,@"hospital":hospital,@"department":department,@"job_title":job_title,@"work_week":work_week,@"area_ids":area_ids,@"sign_word":sign_word};
+- (void)getUpdateUserInfoTruename:(NSString *)truename sex:(NSString *)sex hospital:(NSString *)hospital department:(NSString *)department job_title:(NSString *)job_title sign_word:(NSString *)sign_word	work_week:(NSString *)work_week work_price:(NSString *)work_price area_ids:(NSString *)area_ids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"updateuserinfo",Token:GetToken,@"truename":truename,@"sex":sex,@"hospital":hospital,@"department":department,@"job_title":job_title,@"work_week":work_week,@"work_price":work_price,@"area_ids":area_ids,@"sign_word":sign_word};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 /**
@@ -618,6 +618,82 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 
+#pragma mark 电话预约——编辑某天设置【20151105添加】
 
+- (void)addTimeItemsdate:(NSString *)date
+              start_time:(NSString *)start_time
+                end_time:(NSString *)end_time
+                 minutes:(NSString *)minutes
+                   price:(CGFloat)price
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+              andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"addTimeItems",Token:GetToken,@"date":date,@"start_time":start_time,@"end_time":end_time,@"minutes":minutes,@"price":@(price)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+    
+}
+
+#pragma mark 电话预约¬——获取某天设置【20151105添加】
+- (void)getOrderTelSetdate:(NSString *)date
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getOrderTelSet",Token:GetToken,@"date":date};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 添加患者复查提醒【20151129添加】
+- (void)addPatientRechecktmid:(NSString *)mid
+                   check_date:(NSString *)check_date
+                   check_time:(NSString *)check_time
+                     hospital:(NSString *)hospital
+                     prj_name:(NSString *)prj_name
+   CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                   andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"addPatientRecheck",Token:GetToken,@"mid":mid,@"check_date":check_date,@"check_time":check_time,@"hospital":hospital,@"prj_name":prj_name};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 患者诊断——详情
+- (void)getPatientDiagnosismid:(NSString *)mid
+                           idx:(NSString *)idx
+    CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                    andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getPatientDiagnosis",Token:GetToken,@"mid":mid,@"idx":idx};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 疾病列表
+- (void)getSickListshort:(NSString *)shorts
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+              andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getSickList",@"short":shorts};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 疾病详情
+- (void)getSickInfoId:(NSString *)ids
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+           andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getSickInfo",@"id":ids};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 编辑患者诊断【20151127添加】
+- (void)editPatientDiagnosismid:(NSString *)mid
+                            idx:(NSString *)idx
+                        sick_id:(NSString *)sick_id
+                      diag_name:(NSString *)diag_name
+                           desc:(NSString *)desc
+     CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                     andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"editPatientDiagnosis",Token:GetToken,@"mid":mid,@"idx":idx,@"sick_id":sick_id,@"diag_name":diag_name,@"desc":desc};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 电话预约¬——获取某月日历【20151217更新】
+- (void)getOrderTelMonthListdate_m:(NSString *)date_m
+
+        CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                        andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getOrderTelMonthList",Token:GetToken,@"date_m":date_m};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 
 @end

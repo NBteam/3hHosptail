@@ -85,7 +85,7 @@
     
     [self showHudAuto:@"保存中..."];
     WeakSelf(PerfectInformationViewController);
-    [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.user.truename sex:self.user.sex hospital:self.user.hospital department:self.user.department job_title:self.user.job_title sign_word:self.user.sign_word work_week:self.user.work_week area_ids:self.user.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.user.truename sex:self.user.sex hospital:self.user.hospital department:self.user.department job_title:self.user.job_title sign_word:self.user.sign_word work_week:self.user.work_week work_price:self.user.work_price area_ids:self.user.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             //  写入文件
@@ -100,10 +100,10 @@
             
             
         }else{
-            [weakSelf showHudAuto:response.message andDuration:@"1"];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
     }];
 }
 
@@ -199,9 +199,10 @@
     }else if (indexPath.row == 5){//门诊时间
         PerfectInformationTimeViewController *perfectInformationTimeVc = [[PerfectInformationTimeViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         
-        [perfectInformationTimeVc setPerfectInformationTimeBlock:^(NSString *name) {
-            [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:name];
+        [perfectInformationTimeVc setPerfectInformationTimeBlock:^(NSString *name,NSString *price) {
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:[NSString stringWithFormat:@"%@(收费:%@)",name,price]];
             weakSelf.user.work_week = name;
+            weakSelf.user.work_price = price;
             [weakSelf.tableView reloadData];
         }];
         [self.navigationController pushViewController:perfectInformationTimeVc animated:YES];

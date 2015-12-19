@@ -50,12 +50,33 @@
 //赋值
 - (void)confingWithModel:(NSDictionary *)dic{
     self.labTitle.text = dic[@"title"];
-    self.labDetail.text = dic[@"detail"];
-    if ([self.labDetail.text isEqualToString:@"未填写"]) {
+    
+    
+    
+    
+    
+    if ([dic[@"detail"] isEqualToString:@""]) {
+        self.labDetail.text = @"未填写";
         self.labDetail.textColor = [UIColor colorWithHEX:0x999999];
-        
     }else{
+        
+        
+        if ([dic[@"title"] isEqualToString:@"性别"]) {
+            NSString *sex;
+            if ([dic[@"detail"] isEqualToString:@"0"]) {
+                sex = @"保密";
+            }else if ([dic[@"detail"] isEqualToString:@"1"]){
+                sex = @"男";
+            }else{
+                sex = @"女";
+            }
+            self.labDetail.text = sex;
+        }else{
+            self.labDetail.text = dic[@"detail"];
+        }
+        
         self.labDetail.textColor = [UIColor colorWithHEX:0x666666];
+        
     }
    
 }

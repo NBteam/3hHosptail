@@ -1,5 +1,5 @@
 //
-//  DiagnosisEditorViewController.h
+//  DiagnosisViewController.h
 //  3HDoctorClient
 //
 //  Created by 范英强 on 15/12/2.
@@ -8,7 +8,6 @@
 
 #import "BaseTableViewController.h"
 
-@interface DiagnosisEditorViewController : BaseTableViewController
+@interface MedicalHistoryViewController : BaseTableViewController
 @property (nonatomic, copy) NSString * mid;
-@property (nonatomic, copy) void(^reloadBlock)(void);
 @end

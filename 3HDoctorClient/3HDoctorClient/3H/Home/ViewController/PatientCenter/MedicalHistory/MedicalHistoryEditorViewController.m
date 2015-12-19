@@ -1,17 +1,17 @@
 //
-//  DiagnosisEditorViewController.m
+//  MedicalHistoryEditorViewController.m
 //  3HDoctorClient
 //
-//  Created by 范英强 on 15/12/2.
-//  Copyright (c) 2015年 fyq. All rights reserved.
+//  Created by 范英强 on 15/12/19.
+//  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "DiagnosisEditorViewController.h"
-#import "DiagnosisEditorTableViewCell.h"
-#import "DiagnosisDetailEditorTableViewCell.h"
+#import "MedicalHistoryEditorViewController.h"
+#import "MedicalHistoryEditorTableViewCell.h"
+#import "MedicalHistoryDetailEditorTableViewCell.h"
 #import "HospitalInputViewController.h"
 
-@interface DiagnosisEditorViewController ()
+@interface MedicalHistoryEditorViewController ()
 
 @property (nonatomic, assign) CGFloat cellHeight;
 @property (nonatomic, copy) NSString * blood_type;
@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSIndexPath * nIndexPath;
 @end
 
-@implementation DiagnosisEditorViewController
+@implementation MedicalHistoryEditorViewController
 
 - (void)loadView{
     [super loadView];
@@ -42,7 +42,7 @@
 }
 
 - (void)rightAction{
-    DiagnosisDetailEditorTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.nIndexPath];
+    MedicalHistoryDetailEditorTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.nIndexPath];
     if ([self.guomin isEqualToString:@""]) {
         [self showHudAuto:@"请填写过敏史" andDuration:@"2"];
     }else if([self.blood_type isEqualToString:@""]){
@@ -61,20 +61,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 2) {
-        static NSString *identifier = @"DiagnosisDetailTableViewCell";
-        DiagnosisDetailEditorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        static NSString *identifier = @"MedicalHistoryDetailEditorTableViewCell";
+        MedicalHistoryDetailEditorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
-            cell = [[DiagnosisDetailEditorTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell = [[MedicalHistoryDetailEditorTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         self.nIndexPath= indexPath;
         self.cellHeight = [cell confingWithModel:nil];
         return cell;
     }else{
-        static NSString *identifier = @"idertifier";
-        DiagnosisEditorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        static NSString *identifier = @"MedicalHistoryEditorTableViewCell";
+        MedicalHistoryEditorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
-            cell = [[DiagnosisEditorTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell = [[MedicalHistoryEditorTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell confingWithModel:self.dataArray[indexPath.section]];
@@ -109,7 +109,7 @@
     return @"病史";
 }
 - (void)getDetailInfo:(NSString *)desc{
-    WeakSelf(DiagnosisEditorViewController);
+    WeakSelf(MedicalHistoryEditorViewController);
     [weakSelf showHudWaitingView:WaitPrompt];;
     [[THNetWorkManager shareNetWork] editPatientSickHistoryMid:self.mid guomin:self.guomin blood_type:self.blood_type desc:desc andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
@@ -128,7 +128,7 @@
     }];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    WeakSelf(DiagnosisEditorViewController);
+    WeakSelf(MedicalHistoryEditorViewController);
     if (indexPath.section != 2) {
         HospitalInputViewController * HospitalInputVc = [[HospitalInputViewController alloc]init];
         if (indexPath.section == 0) {
@@ -136,7 +136,7 @@
         }else{
             HospitalInputVc.titleStr = @"血型";
         }
-        DiagnosisEditorTableViewCell *cell = (DiagnosisEditorTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+        MedicalHistoryEditorTableViewCell *cell = (MedicalHistoryEditorTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
         [HospitalInputVc setHospitalBlock:^(NSString *str) {
             if (indexPath.section == 1) {
                 weakSelf.blood_type = str;
@@ -149,6 +149,7 @@
     }
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

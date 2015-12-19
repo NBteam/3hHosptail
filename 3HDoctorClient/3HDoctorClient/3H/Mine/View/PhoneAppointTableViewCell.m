@@ -36,25 +36,20 @@
 }
 
 - (PhoneAppointCalendarView *)calendarView{
-    WeakSelf(PhoneAppointTableViewCell);
+
     if (!_calendarView) {
         _calendarView = [[PhoneAppointCalendarView alloc] initWithFrame:CGRectMake(10, self.labTitle.bottom, DeviceSize.width -20, 0)];
-        [_calendarView setCalendarBlock:^(NSString *year, NSString *month, NSString *day) {
-            NSLog(@"%@%@%@",year,month,day);
-        }];
+
         
-        [_calendarView setCalendarFloatBlock:^(CGFloat f) {
-            if (weakSelf.phoneAppointBlock) {
-                weakSelf.phoneAppointBlock();
-            }
-        }];
         
     }
     return _calendarView;
 }
 
 //赋值
-- (CGFloat)confingWithModel:(NSInteger )dic{
+- (CGFloat)confingWithModel:(NSMutableArray *)array{
+    CGFloat f = [self.calendarView reloadCalendarView:array];
+    self.calendarView.height =f;
     return self.calendarView.bottom +10;
 }
 /*

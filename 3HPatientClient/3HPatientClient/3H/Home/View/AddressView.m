@@ -23,8 +23,8 @@
 }
 - (UILabel *)labLine1{
     if (!_labLine1) {
-        _labLine1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, 1)];
-        _labLine1.backgroundColor = [UIColor colorWithHEX:0x666666];
+        _labLine1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, 0.5)];
+        _labLine1.backgroundColor = [UIColor colorWithHEX:0xcccccc];
     }
     return _labLine1;
 }
@@ -45,8 +45,8 @@
 }
 - (UILabel *)labLine2{
     if (!_labLine2) {
-        _labLine2 = [[UILabel alloc]initWithFrame:CGRectMake(0,self.labTitle.bottom , DeviceSize.width, 1)];
-        _labLine2.backgroundColor = [UIColor colorWithRed:221/255.0f green:221/255.0f blue:221/255.0f alpha:0.5];
+        _labLine2 = [[UILabel alloc]initWithFrame:CGRectMake(0,self.labTitle.bottom , DeviceSize.width, 0.5)];
+        _labLine2.backgroundColor = [UIColor colorWithHEX:0xcccccc];
 
     }
     return _labLine2;

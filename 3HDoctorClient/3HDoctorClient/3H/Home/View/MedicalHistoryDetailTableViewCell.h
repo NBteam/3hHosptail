@@ -1,5 +1,5 @@
 //
-//  DiagnosisDetailEditorTableViewCell.h
+//  DiagnosisDetailTableViewCell.h
 //  3HDoctorClient
 //
 //  Created by 范英强 on 15/12/2.
@@ -7,18 +7,17 @@
 //
 
 #import "BaseTableViewCell.h"
-#import "CustomTextView.h"
-@interface DiagnosisDetailEditorTableViewCell : BaseTableViewCell<UITextViewDelegate>
+
+@interface MedicalHistoryDetailTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UILabel *labTitle;
 
 @property (nonatomic, strong) UILabel *labLine;
 
-@property (nonatomic, strong) CustomTextView *txtView;
+@property (nonatomic, strong) UILabel *labDetail;
 
 
 
 //赋值
 - (CGFloat)confingWithModel:(NSDictionary *)model;
-
 @end

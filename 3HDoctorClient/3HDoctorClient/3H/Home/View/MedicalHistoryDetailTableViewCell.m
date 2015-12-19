@@ -1,19 +1,19 @@
 //
-//  DiagnosisDetailEditorTableViewCell.m
+//  DiagnosisDetailTableViewCell.m
 //  3HDoctorClient
 //
 //  Created by 范英强 on 15/12/2.
 //  Copyright (c) 2015年 fyq. All rights reserved.
 //
 
-#import "DiagnosisDetailEditorTableViewCell.h"
+#import "MedicalHistoryDetailTableViewCell.h"
 
-@implementation DiagnosisDetailEditorTableViewCell
+@implementation MedicalHistoryDetailTableViewCell
 
 - (void)customView{
     [self.contentView addSubview:self.labTitle];
     [self.contentView addSubview:self.labLine];
-    [self.contentView addSubview:self.txtView];
+    [self.contentView addSubview:self.labDetail];
 }
 
 - (UILabel *)labTitle{
@@ -34,20 +34,24 @@
     return _labLine;
 }
 
-- (CustomTextView *)txtView{
-    if (!_txtView) {
-        _txtView = [[CustomTextView alloc] initWithFrame:CGRectMake(10, self.labLine.bottom +10, DeviceSize.width -20, 200) placeholderFont:[UIFont systemFontOfSize:13] Color:[UIColor colorWithHEX:0x999999] Text:@"请输入患者的病例描述..."];
-        _txtView.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
-        _txtView.layer.borderWidth = 0.5;
+- (UILabel *)labDetail{
+    if (!_labDetail) {
+        _labDetail = [[UILabel alloc] initWithFrame:CGRectMake(10, self.labLine.bottom +10, DeviceSize.width -20, 0)];
+        _labDetail.textColor = [UIColor colorWithHEX:0x999999];
+        _labDetail.font = [UIFont systemFontOfSize:13];
+        _labDetail.numberOfLines = 0;
     }
-    return _txtView;
+    return _labDetail;
 }
 
 
 
 //赋值
 - (CGFloat)confingWithModel:(NSDictionary *)model{
-    return self.txtView.bottom +10;
+    self.labDetail.text = [NSString stringWithFormat:@"%@",model[@"desc"]];
+    [self.labDetail sizeToFit];
+
+    return self.labDetail.bottom +10;
 }
 
 /*

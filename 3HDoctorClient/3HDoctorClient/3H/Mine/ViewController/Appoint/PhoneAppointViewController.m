@@ -8,10 +8,18 @@
 
 #import "PhoneAppointViewController.h"
 #import "PhoneAppointTableViewCell.h"
+//预约获取
+#import "PhoneAppointSetViewController.h"
+//预约设置
+#import "PhoneAppointSetViewController.h"
+#import "PhoneAppointModel.h"
 
 @interface PhoneAppointViewController ()
 
 @property (nonatomic, assign) CGFloat cellHeight;
+
+@property (nonatomic, strong) UIButton *btn;
+
 @end
 
 @implementation PhoneAppointViewController
@@ -19,6 +27,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.view addSubview:self.btn];
+    
+    [self phoneAppointData:@""];
+}
+
+- (void)phoneAppointData:(NSString *)data{
+    [self.dataArray removeAllObjects];
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(PhoneAppointViewController);
+    [[THNetWorkManager shareNetWork] getOrderTelMonthListdate_m:data CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            [weakSelf.dataArray removeAllObjects];
+            NSLog(@"查看%@",response.dataDic);
+//            for (NSDictionary * dict in response.dataDic[@"list"]) {
+//                
+//            }
+            PhoneAppointModel * model = [response thParseDataFromDic:response.dataDic andModel:[PhoneAppointModel class]];
+            [weakSelf.dataArray addObject:model];
+            
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+        
+}
+
+- (UIButton *)btn{
+    if (!_btn) {
+        _btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btn.frame = CGRectMake(110, 110, 220, 50);
+        _btn.backgroundColor = [UIColor grayColor];
+        [_btn addTarget:self action:@selector(btnss) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btn;
+}
+
+- (void)btnss{
+    PhoneAppointSetViewController *phoneAppointSetVc = [[PhoneAppointSetViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:phoneAppointSetVc animated:YES];
 }
 
 
@@ -32,15 +85,23 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    [cell setPhoneAppointBlock:^{
-        [weakSelf.tableView reloadData];
+//    [cell setPhoneAppointBlock:^{
+//        [weakSelf.tableView reloadData];
+//    }];
+    self.cellHeight = [cell confingWithModel:self.dataArray];
+    
+    [cell.calendarView setCalendarBlock:^(NSString *month) {
+        [weakSelf phoneAppointData:month];
     }];
-    self.cellHeight = [cell confingWithModel:1];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    if (self.dataArray.count == 0) {
+        return 0;
+    }else{
+        return 1;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

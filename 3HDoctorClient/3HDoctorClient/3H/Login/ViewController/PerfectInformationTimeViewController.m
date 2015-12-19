@@ -37,12 +37,16 @@
     
     self.cellHeight = [cell confingWithModel:1];
     //拿到数据；
-    [cell setOutpatientAppontBlcok:^(NSArray *arr) {
-        
-        
-        if (weakSelf.PerfectInformationTimeBlock) {
-            weakSelf.PerfectInformationTimeBlock([arr componentsJoinedByString:@","]);
-            [weakSelf.navigationController popViewControllerAnimated:YES];
+    [cell setOutpatientAppontBlcok:^(NSArray *arr,NSString *price) {
+        if (arr.count == 0) {
+            [weakSelf showHudAuto:@"请选择您的门诊时间" andDuration:@"2"];
+        }else if (price.length ==0){
+            [weakSelf showHudAuto:@"请选择您的门诊价格" andDuration:@"2"];
+        }else{
+            if (weakSelf.PerfectInformationTimeBlock) {
+                weakSelf.PerfectInformationTimeBlock([arr componentsJoinedByString:@","],price);
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }
         }
     }];
     return cell;

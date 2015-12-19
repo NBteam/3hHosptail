@@ -12,6 +12,7 @@
 @interface OutpatientAppointViewController ()
 @property (nonatomic, strong) OutpatientReservationView * reservationView;
 @property (nonatomic, assign) CGFloat cellHeight;
+
 @end
 
 @implementation OutpatientAppointViewController
@@ -33,7 +34,7 @@
     
     self.cellHeight = [cell confingWithModel:1];
     //拿到数据；
-    [cell setOutpatientAppontBlcok:^(NSArray *arr) {
+    [cell setOutpatientAppontBlcok:^(NSArray *arr ,NSString *price) {
         
     }];
     return cell;

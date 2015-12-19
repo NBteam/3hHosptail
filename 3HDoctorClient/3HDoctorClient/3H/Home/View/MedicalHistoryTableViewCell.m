@@ -1,18 +1,17 @@
 //
-//  DiagnosisEditorTableViewCell.m
+//  DiagnosisTableViewCell.m
 //  3HDoctorClient
 //
 //  Created by 范英强 on 15/12/2.
 //  Copyright (c) 2015年 fyq. All rights reserved.
 //
 
-#import "DiagnosisEditorTableViewCell.h"
+#import "MedicalHistoryTableViewCell.h"
 
-@implementation DiagnosisEditorTableViewCell
+@implementation MedicalHistoryTableViewCell
 
 - (void)customView{
     [self.contentView addSubview:self.labTitle];
-    [self.contentView addSubview:self.imgArrow];
     [self.contentView addSubview:self.labDetail];
 }
 
@@ -27,7 +26,7 @@
 
 - (UILabel *)labDetail{
     if (!_labDetail) {
-        _labDetail = [[UILabel alloc] initWithFrame:CGRectMake(DeviceSize.width/2 -30, 0, DeviceSize.width/2 - self.imgArrow.width -20 +30, 45)];
+        _labDetail = [[UILabel alloc] initWithFrame:CGRectMake(DeviceSize.width/2 -30, 0, DeviceSize.width/2 +30 -10, 45)];
         _labDetail.textColor = [UIColor colorWithHEX:0x999999];
         _labDetail.font = [UIFont systemFontOfSize:13];
         _labDetail.textAlignment = NSTextAlignmentRight;
@@ -35,29 +34,24 @@
     return _labDetail;
 }
 
-- (UIImageView *)imgArrow{
-    if (!_imgArrow) {
-        _imgArrow = [[UIImageView alloc] initWithFrame:CGRectMake(DeviceSize.width - 19/2 - 10, (45 - 34/2)/2, 19/2, 34/2)];
-        _imgArrow.image = [UIImage imageNamed:@"3H-首页_键"];
-        
-    }
-    return _imgArrow;
-}
-
 //赋值
-- (void)confingWithModel:(NSDictionary *)model{
+- (void)confingWithModel:(NSDictionary *)model index:(NSUInteger)index{
     //    NSArray *arr = @[@"请输入药物名称",@"剂量",@"次数",@"用药时间",@"用药途径",@"开始时间",@"结束时间"];
     
+    if (index==0) {
+        self.labTitle.text = [NSString stringWithFormat:@"是否有过敏史:"];
+        self.labDetail.text = [NSString stringWithFormat:@"%@",model[@"guomin"]];
+    }else{
+        self.labTitle.text = [NSString stringWithFormat:@"血型:"];
+        self.labDetail.text = [NSString stringWithFormat:@"%@",model[@"blood_type"]];
+    }
     
-    self.labTitle.text = model[@"title"];
-    self.labDetail.text = model[@"detail"];
     if ([self.labDetail.text isEqualToString:@"未选择"]) {
         self.labDetail.textColor = [UIColor colorWithHEX:0x999999];
     }else{
         self.labDetail.textColor = [UIColor colorWithHEX:0x333333];
     }
 }
-
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -6,8 +6,10 @@
 //  Copyright (c) 2015年 fyq. All rights reserved.
 //
 
-#import "BaseTableViewController.h"
+#import "BaseViewController.h"
 
-@interface ReviewAddViewController : BaseTableViewController
+@interface ReviewAddViewController : BaseViewController
 
+@property (nonatomic, copy) NSString *mid;
+@property (nonatomic, copy) void(^reloadBlock)(void);
 @end

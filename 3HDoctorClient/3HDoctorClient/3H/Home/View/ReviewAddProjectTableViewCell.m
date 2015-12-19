@@ -64,10 +64,12 @@
 }
 
 - (void)btnUpAction{
+    self.txtField.userInteractionEnabled = NO;
+    self.txtField.text = @"";
     self.btnUp.selected = YES;
     self.btnDown.selected = NO;
     if (self.btnBlock) {
-        self.btnBlock(1, @"");
+        self.btnBlock(1, @"门诊随诊");
     }
 }
 
@@ -104,6 +106,7 @@
 }
 
 - (void)btnDownAction{
+    self.txtField.userInteractionEnabled = YES;
     self.btnUp.selected = NO;
     self.btnDown.selected = YES;
     if (self.btnBlock) {
@@ -148,10 +151,12 @@
         
         //是否纠错
         _txtField.autocorrectionType = UITextAutocorrectionTypeNo;
-        _txtField.keyboardType = UIKeyboardTypeNumberPad;
+    
+
         _txtField.font = [UIFont systemFontOfSize:13];
         _txtField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入复查的项目名称..." attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x999999]}];
         _txtField.textColor = [UIColor colorWithHEX:0x333333];
+        _txtField.userInteractionEnabled = NO;
     }
     return _txtField;
 }

@@ -182,13 +182,14 @@
         _btnAgreement = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnAgreement.frame = CGRectMake(15, self.textInvitation.bottom +10, 0, 20);
         _btnAgreement.backgroundColor = [UIColor clearColor];
-        [_btnAgreement setTitleColor:[UIColor colorWithHEX:0x888888] forState:UIControlStateNormal];
+        [_btnAgreement setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
         _btnAgreement.titleLabel.font = [UIFont systemFontOfSize:12];
         
         [_btnAgreement setImage:[UIImage imageNamed:@"3H-注册_选框"] forState:UIControlStateNormal];
         [_btnAgreement setImage:[UIImage imageNamed:@"3H-注册_全选"] forState:UIControlStateSelected];
         [_btnAgreement setTitle:@"本人已阅读并同意《北京中瑞康服务条款》" forState:UIControlStateNormal];
         [_btnAgreement sizeToFit];
+        _btnAgreement.width = _btnAgreement.width +10;
         [_btnAgreement addTarget:self action:@selector(btnAgreementAction) forControlEvents:UIControlEventTouchUpInside];
 
     }

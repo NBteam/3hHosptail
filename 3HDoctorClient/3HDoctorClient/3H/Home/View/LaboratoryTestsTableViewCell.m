@@ -48,7 +48,7 @@
 
 //赋值
 - (void)confingWithModel:(PatientAssayListModel *)model{
-    [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:model.pic] placeholderImage:[UIImage imageNamed:@""]];
+    [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:model.pics] placeholderImage:[UIImage imageNamed:@""]];
     self.labTitle.text = model.name;
     self.labDetail.text = [NSString stringWithFormat:@"%@  %@",model.hospital,model.addtime];
 }

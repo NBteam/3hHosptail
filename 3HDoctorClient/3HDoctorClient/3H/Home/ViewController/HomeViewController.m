@@ -119,7 +119,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {//患者中心
         
-        PatientCenterViewController *patientCenterVc = [[PatientCenterViewController alloc] init];
+        PatientCenterViewController *patientCenterVc = [[PatientCenterViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         patientCenterVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:patientCenterVc animated:YES];
         

@@ -136,7 +136,7 @@ typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSen
  * @param	work_week			门诊时间，格式如：周一上午,周一下午,周三下午,周五上午
  * @param   area_ids				城市id，格式：1,2  (省份ID,城市ID)
  */
-- (void)getUpdateUserInfoTruename:(NSString *)truename sex:(NSString *)sex hospital:(NSString *)hospital department:(NSString *)department job_title:(NSString *)job_title sign_word:(NSString *)sign_word	work_week:(NSString *)work_week area_ids:(NSString *)area_ids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+- (void)getUpdateUserInfoTruename:(NSString *)truename sex:(NSString *)sex hospital:(NSString *)hospital department:(NSString *)department job_title:(NSString *)job_title sign_word:(NSString *)sign_word	work_week:(NSString *)work_week work_price:(NSString *)work_price area_ids:(NSString *)area_ids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 /**
  * 我的患者请求列表
  * @param page  分页
@@ -236,6 +236,69 @@ typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSen
                  End_time:(NSString *)end_time
 CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                andFailure:(FailureBlock) failure;
+
+#pragma mark 电话预约——编辑某天设置【20151105添加】
+
+- (void)addTimeItemsdate:(NSString *)date
+              start_time:(NSString *)start_time
+                end_time:(NSString *)end_time
+                 minutes:(NSString *)minutes
+                   price:(CGFloat)price
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+               andFailure:(FailureBlock) failure;
+
+#pragma mark 电话预约¬——获取某天设置【20151105添加】
+- (void)getOrderTelSetdate:(NSString *)date
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                andFailure:(FailureBlock) failure;
+
+
+#pragma mark 添加患者复查提醒【20151129添加】
+- (void)addPatientRechecktmid:(NSString *)mid
+                   check_date:(NSString *)check_date
+                   check_time:(NSString *)check_time
+                     hospital:(NSString *)hospital
+                     prj_name:(NSString *)prj_name
+   CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                   andFailure:(FailureBlock) failure;
+
+#pragma mark 患者诊断——详情
+- (void)getPatientDiagnosismid:(NSString *)mid
+                   idx:(NSString *)idx
+   CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                   andFailure:(FailureBlock) failure;
+#pragma mark 疾病列表
+- (void)getSickListshort:(NSString *)shorts
+    CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                    andFailure:(FailureBlock) failure;
+
+#pragma mark 疾病详情
+- (void)getSickInfoId:(NSString *)ids
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+              andFailure:(FailureBlock) failure;
+
+#pragma mark 编辑患者诊断【20151127添加】
+- (void)editPatientDiagnosismid:(NSString *)mid
+                            idx:(NSString *)idx
+                        sick_id:(NSString *)sick_id
+                      diag_name:(NSString *)diag_name
+                           desc:(NSString *)desc
+     CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+           andFailure:(FailureBlock) failure;
+
+
+#pragma mark 电话预约¬——获取某月日历【20151217更新】
+- (void)getOrderTelMonthListdate_m:(NSString *)date_m
+
+     CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+                     andFailure:(FailureBlock) failure;
+
+
+
+
+
+
+
 
 
 

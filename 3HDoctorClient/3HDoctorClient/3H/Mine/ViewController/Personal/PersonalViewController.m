@@ -54,7 +54,7 @@
     else{
         [self showHudAuto:WaitPrompt];
         WeakSelf(PersonalViewController);
-        [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.dataArray[0][@"detail"] sex:self.user.sex hospital:self.dataArray[3][@"detail"] department:self.dataArray[4][@"detail"] job_title:self.dataArray[5][@"detail"] sign_word:self.dataArray[6][@"detail"] work_week:self.user.work_week area_ids:self.user.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.dataArray[0][@"detail"] sex:self.user.sex hospital:self.dataArray[3][@"detail"] department:self.dataArray[4][@"detail"] job_title:self.dataArray[5][@"detail"] sign_word:self.dataArray[6][@"detail"] work_week:self.user.work_week work_price:self.user.work_price area_ids:self.user.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
                 

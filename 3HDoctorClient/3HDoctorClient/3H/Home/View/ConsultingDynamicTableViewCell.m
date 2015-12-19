@@ -69,7 +69,7 @@
 
 //赋值
 - (void)confingWithModel:(InformationModel *)model{
-    self.labTitle.text = model.title;
+
     self.labDetail.text = model.desc;
     [self.labDetail sizeToFit];
     self.labDetail.top = self.labTitle.bottom +10;

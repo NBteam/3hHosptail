@@ -11,5 +11,5 @@
 @interface PerfectInformationTimeViewController : BaseTableViewController
 
 
-@property (nonatomic, copy) void(^PerfectInformationTimeBlock)(NSString *str);
+@property (nonatomic, copy) void(^PerfectInformationTimeBlock)(NSString *str,NSString *price);
 @end

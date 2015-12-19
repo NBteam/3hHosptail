@@ -26,8 +26,11 @@
     self.number = 0;
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-   // self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"];
     [self.view addSubview:self.customView];
+    self.customView.hidden = YES;
+    self.isOpenFooterRefresh = YES;
+    self.isOpenHeaderRefresh = YES;
     [self getNetWork];
 }
 
@@ -36,7 +39,12 @@
 }
 
 - (void)addAction{
-    ReviewAddViewController *reviewAddVc = [[ReviewAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    WeakSelf(ReviewViewController);
+    ReviewAddViewController *reviewAddVc = [[ReviewAddViewController alloc] init];
+    reviewAddVc.mid = self.mid;
+    [reviewAddVc setReloadBlock:^{
+        [weakSelf getNetWork];
+    }];
     [self.navigationController pushViewController:reviewAddVc animated:YES];
 }
 
@@ -48,7 +56,11 @@
         _customView = [[PatientCenterNotCustomView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height -self.frameTopHeight) LabText:@"您还没有添加任何复查提醒,请添加!" BtnText:@"添加复查"];
         _customView.backgroundColor = self.view.backgroundColor;
         [_customView setBtnBlock:^{
-            ReviewAddViewController *reviewAddVc = [[ReviewAddViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+            ReviewAddViewController *reviewAddVc = [[ReviewAddViewController alloc] init];
+            reviewAddVc.mid = weakSelf.mid;
+            [reviewAddVc setReloadBlock:^{
+                [weakSelf getNetWork];
+            }];
             [weakSelf.navigationController pushViewController:reviewAddVc animated:YES];
         }];
     }
@@ -74,11 +86,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    if (self.dataArray.count==0) {
-        self.customView.hidden = NO;
-    }else{
-        self.customView.hidden = YES;
-    }
+
     return self.dataArray.count;;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -99,39 +107,51 @@
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(ReviewViewController);
-    [[THNetWorkManager shareNetWork]getPatientRecheckListPage:5 mid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getPatientRecheckListPage:self.pageNO mid:self.mid andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
-        if (weakSelf.number == 0) {
+        if (weakSelf.pageNO == 1) {
             [weakSelf.dataArray removeAllObjects];
         }
+        NSLog(@"查看%@",response.dataDic);
         if (response.responseCode == 1) {
             for (NSDictionary * dict in response.dataDic[@"list"]) {
                 PatientRecheckModel * model = [response thParseDataFromDic:dict andModel:[PatientRecheckModel class]];
                 [weakSelf.dataArray addObject:model];
             }
             
+            //  重新加载数据
+            if (weakSelf.dataArray.count == 0) {
+                weakSelf.customView.hidden = NO;
+            }
+            [weakSelf.tableView reloadData];
+            
         }else{
-            [weakSelf showHudAuto:response.message andDuration:@"1"];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+            //  重新加载数据
+            
         }
         //  结束头部刷新
         [weakSelf.tableView.header endRefreshing];
         //  结束尾部刷新
         [weakSelf.tableView.footer endRefreshing];
-        //  重新加载数据
-        [weakSelf.tableView reloadData];
+        
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
     }];
 }
 #pragma mark -- 重新父类方法进行刷新
 - (void)headerRequestWithData
 {
-    self.number = 0;
+
     [self getNetWork];
 }
 - (void)footerRequestWithData
 {
-    self.number += 5;
+
     [self getNetWork];
 }
 - (void)didReceiveMemoryWarning {
