@@ -8,11 +8,13 @@
 
 #import "BaseTableViewCell.h"
 #import "ShopCustomView.h"
+#import "GoodsListModel.h"
 @interface ShopTableViewCell : BaseTableViewCell
 @property (nonatomic, strong) ShopCustomView *customView1;
 @property (nonatomic, strong) ShopCustomView *customView2;
-
+@property (nonatomic, copy) void (^customViewBlock)(NSInteger tag);
 //赋值
-- (void)confingWithModel:(NSString *)model;
+- (void)confingWithModel:(GoodsListModel *)model indexRow:(NSInteger)row;
+- (void)hiddenItem;
 
 @end

@@ -524,6 +524,12 @@
 		D2D26A921C24076200066770 /* DoctorInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A911C24076200066770 /* DoctorInfoModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2D26A951C240B5000066770 /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A941C240B5000066770 /* AddAddressViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D26A981C240C6400066770 /* AddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A971C240C6400066770 /* AddressView.m */; settings = {ASSET_TAGS = (); }; };
+		D2D2CAF51C2577800052F30B /* GoodsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CAF41C2577800052F30B /* GoodsListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2D2CAF81C2593AC0052F30B /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CAF71C2593AC0052F30B /* GoodsDetailModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2D2CAFB1C25A1EA0052F30B /* AddressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CAFA1C25A1EA0052F30B /* AddressListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2D2CAFE1C25A2740052F30B /* AddressListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CAFD1C25A2740052F30B /* AddressListCell.m */; settings = {ASSET_TAGS = (); }; };
+		D2D2CB011C25AAA80052F30B /* AddressListDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CB001C25AAA80052F30B /* AddressListDownCell.m */; settings = {ASSET_TAGS = (); }; };
+		D2D2CB041C25AED60052F30B /* AddressListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CB031C25AED60052F30B /* AddressListModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1355,10 +1361,20 @@
 		D2D26A8E1C23FE6900066770 /* DoctorListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorListModel.m; sourceTree = "<group>"; };
 		D2D26A901C24076200066770 /* DoctorInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorInfoModel.h; sourceTree = "<group>"; };
 		D2D26A911C24076200066770 /* DoctorInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorInfoModel.m; sourceTree = "<group>"; };
-		D2D26A931C240B5000066770 /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAddressViewController.h; sourceTree = "<group>"; };
-		D2D26A941C240B5000066770 /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAddressViewController.m; sourceTree = "<group>"; };
 		D2D26A961C240C6400066770 /* AddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressView.h; sourceTree = "<group>"; };
 		D2D26A971C240C6400066770 /* AddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressView.m; sourceTree = "<group>"; };
+		D2D2CAF31C2577800052F30B /* GoodsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListModel.h; sourceTree = "<group>"; };
+		D2D2CAF41C2577800052F30B /* GoodsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListModel.m; sourceTree = "<group>"; };
+		D2D2CAF61C2593AC0052F30B /* GoodsDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailModel.h; sourceTree = "<group>"; };
+		D2D2CAF71C2593AC0052F30B /* GoodsDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailModel.m; sourceTree = "<group>"; };
+		D2D2CAF91C25A1EA0052F30B /* AddressListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressListViewController.h; sourceTree = "<group>"; };
+		D2D2CAFA1C25A1EA0052F30B /* AddressListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressListViewController.m; sourceTree = "<group>"; };
+		D2D2CAFC1C25A2740052F30B /* AddressListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressListCell.h; sourceTree = "<group>"; };
+		D2D2CAFD1C25A2740052F30B /* AddressListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressListCell.m; sourceTree = "<group>"; };
+		D2D2CAFF1C25AAA80052F30B /* AddressListDownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressListDownCell.h; sourceTree = "<group>"; };
+		D2D2CB001C25AAA80052F30B /* AddressListDownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressListDownCell.m; sourceTree = "<group>"; };
+		D2D2CB021C25AED60052F30B /* AddressListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressListModel.h; sourceTree = "<group>"; };
+		D2D2CB031C25AED60052F30B /* AddressListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressListModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1828,8 +1844,8 @@
 				9936697B1C13331400B3E1C7 /* ShopDetailViewController.m */,
 				993669D91C144F2000B3E1C7 /* ShopDetailBuyViewController.h */,
 				993669DA1C144F2000B3E1C7 /* ShopDetailBuyViewController.m */,
-				D2D26A931C240B5000066770 /* AddAddressViewController.h */,
-				D2D26A941C240B5000066770 /* AddAddressViewController.m */,
+				D2D2CAF91C25A1EA0052F30B /* AddressListViewController.h */,
+				D2D2CAFA1C25A1EA0052F30B /* AddressListViewController.m */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -2264,6 +2280,10 @@
 				D2D26A8B1C23EDC600066770 /* ConsultingDoctorListNewCell.m */,
 				D2D26A961C240C6400066770 /* AddressView.h */,
 				D2D26A971C240C6400066770 /* AddressView.m */,
+				D2D2CAFC1C25A2740052F30B /* AddressListCell.h */,
+				D2D2CAFD1C25A2740052F30B /* AddressListCell.m */,
+				D2D2CAFF1C25AAA80052F30B /* AddressListDownCell.h */,
+				D2D2CB001C25AAA80052F30B /* AddressListDownCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3064,6 +3084,12 @@
 				D2D26A8E1C23FE6900066770 /* DoctorListModel.m */,
 				D2D26A901C24076200066770 /* DoctorInfoModel.h */,
 				D2D26A911C24076200066770 /* DoctorInfoModel.m */,
+				D2D2CAF31C2577800052F30B /* GoodsListModel.h */,
+				D2D2CAF41C2577800052F30B /* GoodsListModel.m */,
+				D2D2CAF61C2593AC0052F30B /* GoodsDetailModel.h */,
+				D2D2CAF71C2593AC0052F30B /* GoodsDetailModel.m */,
+				D2D2CB021C25AED60052F30B /* AddressListModel.h */,
+				D2D2CB031C25AED60052F30B /* AddressListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3476,6 +3502,7 @@
 				99DA41971C0BEB0500573D4C /* AFHTTPRequestOperationManager.m in Sources */,
 				993669951C13FE4C00B3E1C7 /* WalletHeadTableViewCell.m in Sources */,
 				99DA41D01C0BEB0500573D4C /* MJRefreshBackStateFooter.m in Sources */,
+				D2D2CB041C25AED60052F30B /* AddressListModel.m in Sources */,
 				99DA41C51C0BEB0500573D4C /* MBProgressHUD.m in Sources */,
 				9936698B1C13340D00B3E1C7 /* ShopDetailCommentsTableViewCell.m in Sources */,
 				99D33AA21C17BD0B0067E57C /* LoginViewController.m in Sources */,
@@ -3500,6 +3527,7 @@
 				99DA41B71C0BEB0500573D4C /* EXTScope.m in Sources */,
 				C05A96C71C1D84070078433B /* AppointDoctorsViewController.m in Sources */,
 				99D544961C1592C40081D1D3 /* UIColor+expanded.m in Sources */,
+				D2D2CAFE1C25A2740052F30B /* AddressListCell.m in Sources */,
 				99DA419B1C0BEB0500573D4C /* AFURLConnectionOperation.m in Sources */,
 				99D544151C1562780081D1D3 /* MainDiagnosticViewController.m in Sources */,
 				991A330D1C12FFDA00E0313F /* PersonalTableViewCell.m in Sources */,
@@ -3565,7 +3593,6 @@
 				C08244431C1F15BC00783FD5 /* MyAppointPhoneViewController.m in Sources */,
 				99D33AB31C1800450067E57C /* CheckDataDetailViewController.m in Sources */,
 				99DA41B61C0BEB0500573D4C /* EXTRuntimeExtensions.m in Sources */,
-				D2D26A951C240B5000066770 /* AddAddressViewController.m in Sources */,
 				C05A96F11C1D9F880078433B /* EvaluationTableViewCell.m in Sources */,
 				99DA41BB1C0BEB0500573D4C /* MTLModel.m in Sources */,
 				991A32F11C12E5E900E0313F /* AppointViewController.m in Sources */,
@@ -3628,6 +3655,8 @@
 				99DA41A91C0BEB0500573D4C /* UIColor+ColorExtension.m in Sources */,
 				9929BCB51C181E0D00F747CB /* ConsultingIsOnlineViewController.m in Sources */,
 				99DA41DF1C0BEB0500573D4C /* SDWebImageCompat.m in Sources */,
+				D2D2CAF51C2577800052F30B /* GoodsListModel.m in Sources */,
+				D2D2CB011C25AAA80052F30B /* AddressListDownCell.m in Sources */,
 				99DA41CD1C0BEB0500573D4C /* MJRefreshAutoStateFooter.m in Sources */,
 				99D33AC21C1805790067E57C /* CheckDataDetailHeadTableViewCell.m in Sources */,
 				99D5440F1C15624D0081D1D3 /* BriefCaseViewController.m in Sources */,
@@ -3637,6 +3666,7 @@
 				C05A96EE1C1D9F220078433B /* FeedbackTableViewCell.m in Sources */,
 				99DA41D21C0BEB0500573D4C /* MJRefreshNormalHeader.m in Sources */,
 				99DA41F51C0BEB0500573D4C /* UIBarButtonItemExtension.m in Sources */,
+				D2D2CAF81C2593AC0052F30B /* GoodsDetailModel.m in Sources */,
 				C05A97AE1C1EC9DF0078433B /* DynamicDetailModel.m in Sources */,
 				C05A97A51C1EAEA00078433B /* HomeGoodsModel.m in Sources */,
 				C082447C1C1FE62400783FD5 /* DynamicCommentsTableViewCell.m in Sources */,
@@ -3699,6 +3729,7 @@
 				99DA41B01C0BEB0500573D4C /* FMDatabaseAdditions.m in Sources */,
 				991A33161C12FFE400E0313F /* SetUpViewController.m in Sources */,
 				99DA41D51C0BEB0500573D4C /* MJRefreshConst.m in Sources */,
+				D2D2CAFB1C25A1EA0052F30B /* AddressListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

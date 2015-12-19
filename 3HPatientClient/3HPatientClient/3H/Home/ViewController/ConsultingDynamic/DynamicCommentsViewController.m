@@ -67,15 +67,31 @@
 - (void)btnAction{
     
     [[CommentsCustomKeyboard customKeyboard].mTalkBtn setTitle:@"提交评论" forState:UIControlStateNormal];
-
+    WeakSelf(DynamicCommentsViewController);
     [[CommentsCustomKeyboard customKeyboard].mTextView becomeFirstResponder];
     [CommentsCustomKeyboard customKeyboard].mTalkBtnBlock = ^(NSString * text){
+        [weakSelf getCmtArtInfo:text];
 //        [weakSelf getAddShortReviewNetWorkText:text];
     };
-
+}
+-(void)talkBtnClick:(UITextView *)textViewGet{
 
 }
-
+- (void)getCmtArtInfo:(NSString *)text{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(DynamicCommentsViewController);
+    [[THNetWorkManager shareNetWork]getCmtArtId:self.id content:text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        NSLog(@"查看%@",response.dataDic);
+        if (response.responseCode == 1) {
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (NSString *)title{
     return @"评论";
 }

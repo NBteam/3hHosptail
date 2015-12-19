@@ -11,6 +11,7 @@
 #import "ShopDetailBuyDescTableViewCell.h"
 #import "ShopDetailBuyPayTableViewCell.h"
 #import "AddAddressViewController.h"
+#import "AddressListViewController.h"
 
 @interface ShopDetailBuyViewController ()
 
@@ -116,6 +117,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    AddressListViewController *  AddressListVc = [[AddressListViewController alloc]init];
+    [self.navigationController pushViewController:AddressListVc animated:YES];
     AddAddressViewController * AddAddressVc = [[AddAddressViewController alloc]init];
     [self.navigationController pushViewController:AddAddressVc animated:YES];
 }

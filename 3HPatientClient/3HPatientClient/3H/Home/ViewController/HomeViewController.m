@@ -177,6 +177,7 @@
             }
             [cell setSlidingBlock:^(NSInteger index) {
                 ShopDetailViewController *shopDetailVc = [[ShopDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+                shopDetailVc.id = [NSString stringWithFormat:@"%ld",(long)index];
                 shopDetailVc.hidesBottomBarWhenPushed = YES;
                 [weakSelf.navigationController pushViewController:shopDetailVc animated:YES];
             }];

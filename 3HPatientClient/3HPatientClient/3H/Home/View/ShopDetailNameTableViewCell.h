@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "GoodsDetailModel.h"
 
 @interface ShopDetailNameTableViewCell : BaseTableViewCell
 
@@ -19,5 +20,5 @@
 @property (nonatomic,copy) void(^shopDetailBlock)(NSInteger index);
 
 //赋值
-- (CGFloat)confingWithModel:(NSString *)model;
+- (CGFloat)confingWithModel:(GoodsDetailModel *)model;
 @end

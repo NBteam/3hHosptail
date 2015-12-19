@@ -82,12 +82,12 @@
 //NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
 
 //赋值
-- (void)confingWithModel:(NSString *)model{
-    self.labTitle.text = @"检测仪";
-    self.labNowPrice.text = @"会员价:￥100元";
+- (void)confingWithModel:(GoodsListModel *)model{
+    self.labTitle.text = model.name;
+    self.labNowPrice.text = [NSString stringWithFormat:@"会员价:￥%@元",model.price];
     NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
-    
-    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:@"120元" attributes:attribtDic];
+    [self.imgLogo sd_setImageWithURL:SD_IMG(model.thumb)];
+    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@元",model.market_price] attributes:attribtDic];
     self.labOldPrice.attributedText = attribtStr;
 }
 

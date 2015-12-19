@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GoodsListModel.h"
 
 @interface ShopCustomView : UIView
 
@@ -23,5 +24,5 @@
 @property (nonatomic, strong) UILabel *labLine;
 
 //赋值
-- (void)confingWithModel:(NSString *)model;
+- (void)confingWithModel:(GoodsListModel *)model;
 @end

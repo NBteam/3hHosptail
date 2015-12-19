@@ -65,7 +65,9 @@
         _toolView = [[DynamicDetailToolView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, DeviceSize.width, 45)];
         [_toolView setToolBlock:^(NSInteger index) {
             if (index == 0) {
+                DynamicDetailModel * model = weakSelf.dataArray[0];
                 DynamicCommentsViewController *dynamicCommentsVc = [[DynamicCommentsViewController alloc] init];
+                dynamicCommentsVc.id = model.id;
                 [weakSelf.navigationController pushViewController:dynamicCommentsVc animated:YES];
                 
             }else{
@@ -110,6 +112,7 @@
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
     }];
 }
+
 - (NSString *)title{
     return @"医疗资讯";
 }

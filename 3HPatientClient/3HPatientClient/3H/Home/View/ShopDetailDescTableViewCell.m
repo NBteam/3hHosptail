@@ -26,8 +26,9 @@
 
 //赋值
 - (CGFloat)confingWithModel:(NSString *)model{
-    self.labTitle.text = @"赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋赋值赋值";
+    self.labTitle.text = model;
     [self.labTitle sizeToFit];
+    self.labTitle.width = DeviceSize.width -20;
     return self.labTitle.bottom +10;
 }
 /*

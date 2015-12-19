@@ -45,12 +45,12 @@
     return _labPrice;
 }
 //赋值
-- (CGFloat)confingWithModel:(NSString *)model{
-    self.labTitle.text = @"九康科技电子血压测量机";
-    self.labDetail.text = @"九康科技电子血压测量机科技电子血压测科技电子血压测科技电子血压测科技电子血压测科技电子血压测科技电子血压测科技电子血压测";
+- (CGFloat)confingWithModel:(GoodsDetailModel *)model{
+    self.labTitle.text = model.name;
+    self.labDetail.text = model.rec_title;
     [self.labDetail sizeToFit];
     self.labPrice.top = self.labDetail.bottom +10;
-    self.labPrice.text = @"3H价:299元";
+    self.labPrice.text = [NSString stringWithFormat:@"3H价:%@元",model.price];
     return self.labPrice.bottom +10;
 }
 /*

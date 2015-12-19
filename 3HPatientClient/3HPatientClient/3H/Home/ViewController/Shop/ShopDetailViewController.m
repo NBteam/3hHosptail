@@ -14,12 +14,15 @@
 #import "ShopDetailCommentsTableViewCell.h"
 #import "ShopDetailToolView.h"
 #import "ShopDetailBuyViewController.h"
+#import "GoodsDetailModel.h"
+
 @interface ShopDetailViewController ()
 
 @property (nonatomic, strong) UIImageView *imgHead;
 @property (nonatomic, strong) ShopDetailToolView *toolView;
 @property (nonatomic, assign) CGFloat cellHeightName;
 @property (nonatomic, assign) CGFloat cellHeightDesc;
+@property (nonatomic, strong) GoodsDetailModel *goodsDetailModel;
 @end
 
 @implementation ShopDetailViewController
@@ -31,7 +34,7 @@
     self.tableView.tableHeaderView = self.imgHead;
     self.tableView.height = self.tableView.height -65;
     [self.view addSubview:self.toolView];
-
+    [self getNetWork];
     
     
 }
@@ -79,7 +82,7 @@
             cell = [[ShopDetailNameTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.cellHeightName = [cell confingWithModel:nil];
+        self.cellHeightName = [cell confingWithModel:self.goodsDetailModel];
         return cell;
     }else if(indexPath.section == 1){
         static NSString *identifier = @"ShopDetailNameTableViewCell";
@@ -108,7 +111,7 @@
                 cell = [[ShopDetailDescTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            self.cellHeightDesc = [cell confingWithModel:@""];
+            self.cellHeightDesc = [cell confingWithModel:self.goodsDetailModel.content];
             
             return cell;
         }
@@ -186,8 +189,25 @@
 - (NSString *)title{
     return @"商品详情";
 }
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(ShopDetailViewController);
+    [[THNetWorkManager shareNetWork]getGoodsFlashId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
 
-
+            GoodsDetailModel * model = [response thParseDataFromDic:response.dataDic andModel:[GoodsDetailModel class]];
+            weakSelf.goodsDetailModel = model;
+            [weakSelf.imgHead sd_setImageWithURL:SD_IMG(model.thumb)];
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

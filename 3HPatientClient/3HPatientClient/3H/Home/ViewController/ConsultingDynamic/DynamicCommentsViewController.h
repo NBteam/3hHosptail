@@ -9,5 +9,5 @@
 #import "BaseTableViewController.h"
 
 @interface DynamicCommentsViewController : BaseTableViewController
-
+@property (nonatomic, copy) NSString * id;
 @end

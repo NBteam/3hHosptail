@@ -10,6 +10,8 @@
 #import "ShopTableViewCell.h"
 //商品详情
 #import "ShopDetailViewController.h"
+#import "GoodsListModel.h"
+
 @interface ShopViewController ()
 
 @property (nonatomic, strong) UIImageView *imgHead;
@@ -24,8 +26,9 @@
     self.tableView.tableHeaderView = self.imgHead;
     self.tableView.separatorColor = self.view.backgroundColor;
     self.tableView.backgroundColor = self.view.backgroundColor;
-    
-    
+    self.isOpenFooterRefresh = YES;
+    self.isOpenHeaderRefresh = YES;
+    [self getNetWork];
 }
 
 - (void)backAction{
@@ -52,7 +55,20 @@
     }
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:nil];
+    GoodsListModel * model = self.dataArray[2*indexPath.section];
+    [cell confingWithModel:model indexRow:(2*indexPath.section)];
+    if (self.dataArray.count==2*indexPath.section+1) {
+        [cell hiddenItem];
+    }else{
+        GoodsListModel * model = self.dataArray[2*indexPath.section+1];
+        [cell confingWithModel:model indexRow:(2*indexPath.section+1)];
+    }
+    cell.customViewBlock = ^(NSInteger tag){
+        GoodsListModel * model = self.dataArray[2 *indexPath.row +tag];
+        ShopDetailViewController *shopDetailVc= [[ShopDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        shopDetailVc.id = model.id;
+        [self.navigationController pushViewController:shopDetailVc animated:YES];
+    };
     return cell;
 }
 
@@ -61,7 +77,10 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 10;
+    if (self.dataArray.count%2) {
+        return self.dataArray.count/2+1;
+    }
+    return self.dataArray.count/2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -77,10 +96,50 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ShopDetailViewController *shopDetailVc= [[ShopDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-    [self.navigationController pushViewController:shopDetailVc animated:YES];
+    
 }
-
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(ShopViewController);
+    [[THNetWorkManager shareNetWork]getGoodsListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            if (weakSelf.pageNO == 1) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            for (NSDictionary * dic in response.dataDic[@"list"]) {
+                GoodsListModel * model = [response thParseDataFromDic:dic andModel:[GoodsListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+            //  结束头部刷新
+            [weakSelf.tableView.header endRefreshing];
+            //  结束尾部刷新
+            [weakSelf.tableView.footer endRefreshing];
+        }else{
+            //  结束头部刷新
+            [weakSelf.tableView.header endRefreshing];
+            //  结束尾部刷新
+            [weakSelf.tableView.footer endRefreshing];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    [self getNetWork];
+}
+- (void)footerRequestWithData
+{
+    [self getNetWork];
+}
 - (NSString *)title{
     return @"健康商城";
 }
