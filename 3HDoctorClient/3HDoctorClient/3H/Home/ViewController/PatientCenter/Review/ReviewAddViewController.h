@@ -10,4 +10,6 @@
 
 @interface ReviewAddViewController : BaseViewController
 
+@property (nonatomic, copy) NSString *mid;
+@property (nonatomic, copy) void(^reloadBlock)(void);
 @end

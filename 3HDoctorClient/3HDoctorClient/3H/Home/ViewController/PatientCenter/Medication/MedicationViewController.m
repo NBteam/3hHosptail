@@ -15,14 +15,14 @@
 
 @interface MedicationViewController ()
 @property (nonatomic, strong) PatientCenterNotCustomView *customView;
-@property (nonatomic, assign) NSInteger number;
+
 @end
 
 @implementation MedicationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.number = 0;
+
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
      self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"];

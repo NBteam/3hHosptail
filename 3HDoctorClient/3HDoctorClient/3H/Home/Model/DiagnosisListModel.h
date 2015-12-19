@@ -2,14 +2,17 @@
 //  DiagnosisListModel.h
 //  3HDoctorClient
 //
-//  Created by kanzhun on 15/12/7.
+//  Created by 范英强 on 15/12/19.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
 #import "BaseModel.h"
-//idx				序号（1-10）【整数】
-//diag_name		诊断名称
+
 @interface DiagnosisListModel : BaseModel
-@property (nonatomic, copy) NSString * idx;
-@property (nonatomic, copy) NSString * diag_name;
+//名称
+@property (nonatomic, copy) NSString *id;
+//记录ID
+@property (nonatomic, copy) NSString *name;
+//名称拼音缩写
+//@property (nonatomic, copy) NSString *//名称;
 @end

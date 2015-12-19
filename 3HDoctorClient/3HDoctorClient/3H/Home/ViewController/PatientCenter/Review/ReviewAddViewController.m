@@ -124,6 +124,13 @@
 
 - (void)btnAction{
     
+    [self reviewAddViewData];
+    
+
+}
+
+- (void)reviewAddViewData{
+    
     
     if ([self.fcXiangM isEqualToString:@"门诊随诊"]) {
         
@@ -133,19 +140,36 @@
         self.fcXiangM = cell.txtField.text;
     }
     
-    NSLog(@"---%@",self.fcTime);
-    NSLog(@"---%@",self.fcShiD);
-    NSLog(@"---%@",self.fcHosptail);
-    NSLog(@"---%@",self.fcXiangM);
-    
     if ([self.fcTime isEqualToString:@"复查日期"]) {
-         [self showHudAuto:@"请选择复查日期" andDuration:@"2"];
+        [self showHudAuto:@"请选择复查日期" andDuration:@"2"];
     }else if([self.fcHosptail isEqualToString:@"复查医院"]){
         [self showHudAuto:@"请选择复查医院" andDuration:@"2"];
     }else if(self.fcXiangM.length ==0){
         [self showHudAuto:@"请输入复查项目的名称" andDuration:@"2"];
+    }else{
+        [self showHudAuto:@"保存中..."];
+        WeakSelf(ReviewAddViewController);
+        
+        [[THNetWorkManager shareNetWork] addPatientRechecktmid:self.mid check_date:self.fcTime check_time:self.fcShiD hospital:self.fcHosptail prj_name:self.fcXiangM CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+            [weakSelf removeMBProgressHudInManaual];
+            if (response.responseCode == 1) {
+                NSLog(@"查看%@",response.dataDic);
+                if (weakSelf.reloadBlock) {
+                    weakSelf.reloadBlock();
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                }
+                
+            }else{
+                [weakSelf showHudAuto:response.message andDuration:@"2"];
+            }
+        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+            ;
+        } ];
     }
-
+    
+    
+        
 }
 
 - (TimeView *)viewTime{

@@ -30,6 +30,9 @@
 @property (nonatomic, copy) NSString *truename;
 @property (nonatomic, copy) NSString *work_week;
 
+@property (nonatomic, copy) NSString *work_price;
+
+
 //  读取本地文件加载实例
 + (THUser *)ReadLocalUserDataForPath:(NSString *)path;
 //  写入本地文件

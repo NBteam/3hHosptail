@@ -18,6 +18,17 @@
 
 @property (nonatomic, copy) void(^phoneAppointBlock)();
 
+//日期
+@property (nonatomic, strong) UILabel *labTime;
+//上个月
+@property (nonatomic, strong) UIButton *btnUp;
+//下个月
+@property (nonatomic, strong) UIButton *btnDown;
+//日期背景view
+@property (nonatomic, strong) UIView *viewBack;
+//横线
+@property (nonatomic, strong) UILabel *labLine;
+
 //赋值
-- (CGFloat)confingWithModel:(NSInteger )dic;
+- (CGFloat)confingWithModel:(NSMutableArray *)array;
 @end

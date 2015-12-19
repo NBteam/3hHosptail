@@ -16,6 +16,8 @@
     [self.contentView addSubview:self.viewBack];
     [self customWeekView];
     [self.contentView addSubview:self.btnSubmit];
+    [self.contentView addSubview:self.backViewss];
+    [self.backViewss addSubview:self.txtNameInput];
  
 }
 
@@ -47,7 +49,32 @@
     return _viewBack;
 }
 
-//
+#pragma mark -UI
+
+- (UIView *)backViewss{
+    if (!_backViewss) {
+        _backViewss = [[UIView alloc] initWithFrame:CGRectMake(10, 12, DeviceSize.width - 20, 45)];
+        _backViewss.backgroundColor = [UIColor whiteColor];
+        _backViewss.layer.masksToBounds = YES;
+        _backViewss.layer.cornerRadius = 5;
+        _backViewss.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
+        _backViewss.layer.borderWidth = 0.5;
+    }
+    return _backViewss;
+}
+- (UITextField *)txtNameInput{
+    if (!_txtNameInput) {
+        _txtNameInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, self.backViewss.width -20, 45)];
+        
+        //是否纠错
+        _txtNameInput.autocorrectionType = UITextAutocorrectionTypeNo;
+        _txtNameInput.font = [UIFont systemFontOfSize:15];
+        _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请设置收费金额" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
+        _txtNameInput.backgroundColor = [UIColor whiteColor];
+        
+    }
+    return _txtNameInput;
+}
 
 - (void)customWeekView{
     CGFloat f = (self.viewBack.width -0.5)/8 +0.5;
@@ -150,15 +177,15 @@
     }
     
     if (self.outpatientAppontBlcok) {
-        self.outpatientAppontBlcok([NSArray arrayWithArray:arr]);
+        self.outpatientAppontBlcok([NSArray arrayWithArray:arr],self.txtNameInput.text);
     }
     
 }
 
 //赋值
 - (CGFloat)confingWithModel:(NSInteger )dic{
-    
-    self.btnSubmit.frame = CGRectMake(10, self.viewBack.bottom +25, DeviceSize.width -20, 45);
+    self.backViewss.top = self.viewBack.bottom +10;
+    self.btnSubmit.frame = CGRectMake(10, self.backViewss.bottom +25, DeviceSize.width -20, 45);
     
     return self.btnSubmit.bottom +10;
 }

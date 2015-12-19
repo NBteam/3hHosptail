@@ -2,12 +2,13 @@
 //  DiagnosisListViewController.m
 //  3HDoctorClient
 //
-//  Created by kanzhun on 15/12/7.
+//  Created by 范英强 on 15/12/19.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
 #import "DiagnosisListViewController.h"
 #import "DiagnosisListModel.h"
+#import "DiagnosisListDetailViewController.h"
 
 @interface DiagnosisListViewController ()
 
@@ -19,11 +20,38 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    [self getNetWork];
+    [self getDiagosisListData];
 }
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void)getDiagosisListData{
+    
+    [self.dataArray removeAllObjects];
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(DiagnosisListViewController);
+    [[THNetWorkManager shareNetWork] getSickListshort:self.diagnosisString CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                DiagnosisListModel * model = [response thParseDataFromDic:dict andModel:[DiagnosisListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+    
 }
 
 
@@ -38,46 +66,36 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.font = [UIFont systemFontOfSize:15];
     cell.textLabel.textColor = [UIColor colorWithHEX:0x333333];
-//    DiagnosisListModel * model = self.dataArray[indexPath.row];
-//    cell.textLabel.text = model.diag_name;
+    DiagnosisListModel *model = self.dataArray[indexPath.row];
+    cell.textLabel.text = model.name;
     return cell;
     
 }
 
 - (NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1 ;
+    
+    return self.dataArray.count ;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //    DepartmentModel * model = self.dataArray[indexPath.row];
-    //    if (self.choiceBlock) {
-    //        self.choiceBlock(model.id,model.name,model.pid);
-    //    }
-    [self.navigationController popViewControllerAnimated:YES];
-}
-- (NSString *)title{
-    return @"医院";
+//    if (self.hospitalBlock) {
+//        self.hospitalBlock([NSString stringWithFormat:@"%ld",(long)indexPath.row]);
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+    DiagnosisListModel *model = self.dataArray[indexPath.row];
+    DiagnosisListDetailViewController *diagnosisListDetailVc = [[DiagnosisListDetailViewController alloc] init];
+    diagnosisListDetailVc.ids = model.id;
+    diagnosisListDetailVc.idx = self.idx;
+    diagnosisListDetailVc.mid = self.mid;
+    diagnosisListDetailVc.reloadBlock = self.reloadBlock;
+    [self.navigationController pushViewController:diagnosisListDetailVc animated:YES];
 }
 
-- (void)getNetWork{
-    WeakSelf(DiagnosisListViewController);
-    [[THNetWorkManager shareNetWork]getPatientDiagnosisListMid:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
-        [weakSelf removeMBProgressHudInManaual];
-        [weakSelf.dataArray removeAllObjects];
-        if (response.responseCode == 1) {
-            for (NSDictionary * dict in response.dataDic[@"list"]) {
-                DiagnosisListModel * model = [response thParseDataFromDic:dict andModel:[DiagnosisListModel class]];
-                [weakSelf.dataArray addObject:model];
-            }
-            [weakSelf.tableView reloadData];
-        } else {
-            [weakSelf showHudAuto:response.message];
-        }
-    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt];
-    }];
-    [weakSelf showHudWaitingView:WaitPrompt];
+- (NSString *)title{
+    return @"诊断名称";
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

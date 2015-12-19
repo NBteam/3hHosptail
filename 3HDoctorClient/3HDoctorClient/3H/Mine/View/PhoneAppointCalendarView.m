@@ -8,6 +8,7 @@
 
 #import "PhoneAppointCalendarView.h"
 
+
 @implementation PhoneAppointCalendarView
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -31,13 +32,9 @@
     //设置时区，不设置时区获取月的第一天和星期的第一天的时候可能会提前一天。
     [myCalendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:0]];
     //计算绘制日历需要的数据，我传入当前日期  输入月份或年不同的日期就能得到不同的日历。
-    
-    nowDate = [NSDate date];
-    changeDate = nowDate;
-   // self.backgroundColor = [UIColor colorWithHEX:0xe7e7e7];
+
     self.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
     self.layer.borderWidth = 0.5;
-    [self getNowInteger:changeDate];
     [self addSubview:self.btnUp];
     [self addSubview:self.labTitle];
     [self addSubview:self.btnDown];
@@ -45,85 +42,6 @@
     [self addSubview:self.viewBack];
     [self addSubview:self.labLine];
 }
-
-- (void)getNowInteger:(NSDate *)data{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:data];
-    yearInt = [dateComponent year];
-    monthInt = [dateComponent month];
-    dayInt = [dateComponent day];
-    
-    changeYear = yearInt;
-    changeMonth = monthInt;
-    changeDay = dayInt;
-    
-    if (changeMonth<10) {
-        if (changeMonth == 0) {
-            changeMonth = 12;
-            changeYear --;
-        }
-    }else{
-        if (changeMonth == 13) {
-            changeMonth = 1;
-            changeYear ++;
-            
-        }
-    }
-    
-    
-    [self reloadTitle:changeYear month:changeMonth day:changeDay index:0];
-    [self calendarSetDate:changeDate];
-    
-}
-
-- (void)reloadTitle:(NSInteger)year month:(NSInteger)month day:(NSInteger)day index:(NSInteger)index{
-    
-    NSString *yearString;
-    
-    NSString *monthString;
-    NSString *dayString;
-    
-    if (month<10) {
-        monthString = [NSString stringWithFormat:@"0%li",month];
-    }else{
-        monthString = [NSString stringWithFormat:@"%li",month];
-    }
-    
-    if (day<10) {
-        dayString = [NSString stringWithFormat:@"0%li",day];
-    }else{
-        dayString = [NSString stringWithFormat:@"%li",day];
-    }
-    
-    yearString = [NSString stringWithFormat:@"%li",year];
-    
-    if (changeYear == yearInt &&changeMonth == monthInt) {
-        self.labTitle.text = [NSString stringWithFormat:@"%@年%@月%@日",yearString,monthString,dayString];
-        NSLog(@"草泥马");
-        if (self.CalendarBlock) {
-            self.CalendarBlock(yearString,monthString,dayString);
-            NSLog(@"草泥马");
-        }
-    }else{
-        if (index == 0) {
-            self.labTitle.text = [NSString stringWithFormat:@"%@年%@月%@日",yearString,monthString,@"01"];
-            
-            if (self.CalendarBlock) {
-                self.CalendarBlock(yearString,monthString,@"01");
-            }
-        }else{
-            self.labTitle.text = [NSString stringWithFormat:@"%@年%@月%@日",yearString,monthString,dayString];
-            if (self.CalendarBlock) {
-                self.CalendarBlock(yearString,monthString,dayString);
-            }
-        }
-    }
-    
-    
-    
-}
-
 
 - (UIButton *)btnUp{
     if (!_btnUp) {
@@ -139,34 +57,8 @@
 }
 
 - (void)btnUpAction{
-    if (changeYear>yearInt ||(changeYear ==yearInt &&changeMonth >monthInt)) {
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-        NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:changeDate];
-        
-        
-        
-        [dateComponent setMonth:([dateComponent month] - 1)];
-        changeDate = [calendar dateFromComponents:dateComponent];
-        changeYear = [dateComponent year];
-        changeMonth = [dateComponent month];
-        changeDay = [dateComponent day];
-        
-        if (changeMonth<10) {
-            if (changeMonth == 0) {
-                changeMonth = 12;
-                changeYear --;
-            }
-        }else{
-            if (changeMonth == 13) {
-                changeMonth = 1;
-                changeYear ++;
-                
-            }
-        }
-        
-        [self reloadTitle:changeYear month:changeMonth day:changeDay index:0];
-        [self calendarSetDate:changeDate];
+    if (self.CalendarBlock) {
+        self.CalendarBlock(self.pre_date_m);
     }
 }
 
@@ -185,36 +77,9 @@
 }
 
 - (void)btnDownAction{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:changeDate];
-    
-    
-    
-    [dateComponent setMonth:([dateComponent month] + 1)];
-    
-    changeDate = [calendar dateFromComponents:dateComponent];
-    changeYear = [dateComponent year];
-    changeMonth = [dateComponent month];
-    changeDay = [dateComponent day];
-    
-    if (changeMonth<10) {
-        if (changeMonth == 0) {
-            changeMonth = 12;
-            changeYear --;
-        }
-    }else{
-        if (changeMonth == 13) {
-            changeMonth = 1;
-            changeYear ++;
-            
-        }
+    if (self.CalendarBlock) {
+        self.CalendarBlock(self.next_date_m);
     }
-    
-    [self reloadTitle:changeYear month:changeMonth day:changeDay index:0];
-    [self calendarSetDate:changeDate];
-    
-    
 }
 
 - (UILabel *)labTitle{
@@ -258,45 +123,19 @@
     return _labLine;
 }
 
--(void)calendarSetDate:(NSDate *)date
-{
-    // [self.viewBack removeFromSuperview];
+- (CGFloat)reloadCalendarView:(NSMutableArray *)array{
+    PhoneAppointModel *model = array[0];
     
-    for (UIButton *btn in self.viewBack.subviews) {
-        if ([btn isKindOfClass:[UIButton class]]) {
-            [btn removeFromSuperview];
-        }
-    }
-    /* 日历类里比较重要的三个方法
-     -(NSRange)rangeOfUnit:(NSCalendarUnit)smaller inUnit:(NSCalendarUnit)larger forDate:(NSDate *)date;
-     该方法计算date所在的larger单位  里有几个  smaller单位。
-     例如smaller为NSDayCalendarUnit，larger为NSMonthCalendarUnit则返回的nsrange的length为date所在的月里共有多少天。
-     
-     -(NSUInteger)ordinalityOfUnit:(NSCalendarUnit)smaller inUnit:(NSCalendarUnit)larger forDate:(NSDate *)date;
-     该方法计算date 所在的smaller单位 在 date所在的larger单位 里的位置，即第几位。
-     例如smaller为NSDayCalendarUnit，larger为NSMonthCalendarUnit则返回的 nsUInteger为date是date所在的月里的第几天。
-     
-     -(BOOL)rangeOfUnit:(NSCalendarUnit)unit startDate:(NSDate *)datep interval:(NSTimeInterval )tip forDate:(NSDate *)date;
-     若datep 和 tip 可计算，则方法返回YES，否则返回NO。当返回YES时，可从datep里得到date所在的 unit单位 的第一天。unit可以为 NSMonthCalendarUnit NSWeekCalendarUnit 等
-     
-     */
+    self.next_date_m = model.next_date_m;
+    self.pre_date_m = model.pre_date_m;
     
-    
-    //获取date所在的月的天数，即monthRange的length
-    monthRange = [myCalendar rangeOfUnit:NSDayCalendarUnit
-                                  inUnit:NSMonthCalendarUnit
-                                 forDate:date];
-    NSLog(@"monthRange:%li,%li",monthRange.location,monthRange.length);
-    //获取date在其所在的月份里的位置
-    
-    if (yearInt == changeYear &&monthInt == changeMonth) {
-        currentDayIndexOfMonth = [myCalendar ordinalityOfUnit:NSDayCalendarUnit
-                                                       inUnit:NSMonthCalendarUnit
-                                                      forDate:date] ;
-        NSLog(@"currentIndex:%i",currentDayIndexOfMonth);
-    }else{
-        currentDayIndexOfMonth = 0;
-    }
+    self.labTitle.text = [NSString stringWithFormat:@"%@-%@",model.y,model.m];
+    //获取时间
+    NSString *dateString= [NSString stringWithFormat:@"%@-%@-%@",model.y,model.m,@"01"];
+    NSDateFormatter* formater = [[NSDateFormatter alloc] init];
+    [formater setDateFormat:@"yyyy-MM-dd"];
+    //时间date
+    NSDate* date = [formater dateFromString:dateString];
     
     NSTimeInterval interval;
     NSDate *firstDayOfMonth;
@@ -311,40 +150,41 @@
                                                 inUnit:NSWeekCalendarUnit
                                                forDate:firstDayOfMonth];
     //画按钮
-    [self drawBtn];
-    
+    return [self drawBtn:model.list];
+
 }
 
--(void)drawBtn
+-(CGFloat)drawBtn:(NSArray *)array
 {
+    self.dataArrays = [NSMutableArray arrayWithArray:array];
+    for (UIButton *btn in self.viewBack.subviews) {
+        if ([btn isKindOfClass:[UIButton class]]) {
+            [btn removeFromSuperview];
+        }
+    }
+    //获取当前的时间
     CGFloat f = (self.width -0.5)/7 +0.5;
     //为了方便计算按钮的frame，我的i没从0开始
-    for (int i = firstDayIndexOfWeek - 1 ; i < monthRange.length + firstDayIndexOfWeek -1 ; i ++)
+    for (NSInteger i = firstDayIndexOfWeek - 1 ; i < array.count + firstDayIndexOfWeek -1 ; i ++)
     {
-        
-        
-
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
             btn.frame = CGRectMake(0 +(f -0.5)* (i%7), 0 + (f -0.5)*(i/7), f, f);
             btn.tag = i + 2 - firstDayIndexOfWeek;
+        
+            [btn setTitle:[NSString stringWithFormat:@"%ld",i + 2 - firstDayIndexOfWeek ] forState:UIControlStateNormal];
+        
+        //判断字体颜色
+        NSString *colorString = [NSString stringWithFormat:@"%@",array[i + 2 - firstDayIndexOfWeek-1][@"after_today"]];
+        NSLog(@"----%@",colorString);
+        if ([colorString isEqualToString:@"0"]) {
+            [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
+            btn.userInteractionEnabled = NO;
+        }else {
+            [btn setTitleColor:[UIColor colorWithHEX:0x333333] forState:UIControlStateNormal];
+            btn.userInteractionEnabled = YES;
+        }
             
-            
-            [btn setTitle:[NSString stringWithFormat:@"%i",i + 2 - firstDayIndexOfWeek ] forState:UIControlStateNormal];
-            
-            if (i + 2 - firstDayIndexOfWeek == currentDayIndexOfMonth) {
-                
-                [btn setTitleColor:AppDefaultColor forState:UIControlStateNormal];
-                UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 22.5, 22.5)];
-                img.image = [UIImage imageNamed:@"我的-预约设置-电话预约_选择"];
-                [btn addSubview:img];
-            }else if(i + 2 - firstDayIndexOfWeek < currentDayIndexOfMonth){
-                btn.backgroundColor = [UIColor colorWithHEX:0xffffff];
-                [btn setTitleColor:[UIColor colorWithHEX:0xe7e7e7] forState:UIControlStateNormal];
-            }else{
-                btn.backgroundColor = [UIColor colorWithHEX:0xffffff];
-                [btn setTitleColor:[UIColor colorWithHEX:0x333333] forState:UIControlStateNormal];
-            }
-            
+        
             btn.titleLabel.font = [UIFont systemFontOfSize:15];
             [btn addTarget:self
                     action:@selector(nslogBtnTag:)
@@ -352,28 +192,21 @@
             btn.layer.borderWidth = 0.5;
             btn.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
         
-        if (i + 2 - firstDayIndexOfWeek >= currentDayIndexOfMonth) {
-            btn.userInteractionEnabled = YES;
-        }else{
-            btn.userInteractionEnabled = NO;
-        }
-        
-        
-        
             [self.viewBack addSubview:btn];
         
             self.viewBack.height = btn.bottom;
             
             self.height = self.viewBack.bottom;
-            if (self.calendarFloatBlock) {
-                self.calendarFloatBlock(self.height);
-            }
+        
         }
+    return self.height;
 }
 
 -(void)nslogBtnTag:(UIButton *)btn{
-
-    [self reloadTitle:changeYear month:changeMonth day:btn.tag index:1];
+    NSString *str = self.dataArrays[btn.tag -1][@"date"];
+//i + 2 - firstDayIndexOfWeek
+    NSLog(@"生气的日子%@",str);
+    
 }
 
 /*

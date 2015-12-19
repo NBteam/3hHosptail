@@ -16,9 +16,9 @@
 //化验及检查
 #import "LaboratoryTestsViewController.h"
 //病史
-#import "DiagnosisViewController.h"
+#import "MedicalHistoryViewController.h"
 //诊断
-#import "DiagnosisListViewController.h"
+#import "DiagnosisViewController.h"
 @interface PatientDetailViewController ()
 
 @end
@@ -93,12 +93,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {//诊断
-            DiagnosisListViewController * DiagnosisListVc = [[DiagnosisListViewController alloc]init];
-//            DiagnosisListVc.mid = self.model.id;
+            DiagnosisViewController * DiagnosisListVc = [[DiagnosisViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
+            DiagnosisListVc.mid = self.model.id;
             [self.navigationController pushViewController:DiagnosisListVc animated:YES];
             
         }else if(indexPath.row == 1){//病史
-            DiagnosisViewController *diagnosisVc = [[DiagnosisViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+            MedicalHistoryViewController *diagnosisVc = [[MedicalHistoryViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
             diagnosisVc.mid = self.model.id;
             [self.navigationController pushViewController:diagnosisVc animated:YES];
             
@@ -116,6 +116,7 @@
             [self.navigationController pushViewController:medicationVc animated:YES];
         }else{//复查
             ReviewViewController *reviewVc = [[ReviewViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+            reviewVc.mid = self.model.id;
             [self.navigationController pushViewController:reviewVc animated:YES];
         }
     }

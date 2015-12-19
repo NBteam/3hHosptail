@@ -18,7 +18,14 @@
 
 @property (nonatomic, strong) UIButton *btnSubmit;
 
-@property (nonatomic, copy) void(^outpatientAppontBlcok)(NSArray *arr);
+//背景
+@property (nonatomic, strong) UIView *backViewss;
+//
+@property (nonatomic, strong) UITextField *txtNameInput;
+
+
+
+@property (nonatomic, copy) void(^outpatientAppontBlcok)(NSArray *arr,NSString *price);
 
 //赋值
 - (CGFloat)confingWithModel:(NSInteger )dic;

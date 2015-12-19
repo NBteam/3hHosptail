@@ -8,7 +8,7 @@
 
 #import "BaseTableViewCell.h"
 
-@interface DiagnosisEditorTableViewCell : BaseTableViewCell
+@interface MedicalHistoryEditorTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UILabel *labTitle;
 

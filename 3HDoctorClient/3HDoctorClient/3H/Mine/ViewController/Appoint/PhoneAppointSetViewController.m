@@ -17,8 +17,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"完成"];
     self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"开始时间",@"detail":@"未选择"},@{@"title":@"结束时间",@"detail":@"未选择"},@{@"title":@"时长",@"detail":@"未选择"},@{@"title":@"收费",@"detail":@"未选择"}]];
+}
+
+- (void)backAction{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)rightAction{
+    [self addTimeItems];
+    
+}
+
+- (void)addTimeItems{
+
+    [self showHudAuto:@"保存中..."];
+    WeakSelf(PhoneAppointSetViewController);
+    [[THNetWorkManager shareNetWork] addTimeItemsdate:@"2015-12-19" start_time:@"23:00" end_time:@"24:00" minutes:@"20" price:100.00 CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+        
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

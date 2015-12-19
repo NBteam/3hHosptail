@@ -15,7 +15,7 @@
 #import "SearchViewController.h"
 #import "AddPatientsViewController.h"
 @interface PatientCenterViewController ()
-@property (nonatomic, assign) NSInteger number;
+
 //患者添加请求
 @property (nonatomic, strong) UIButton *btnPatientAddNum;
 @end
@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.number = 0;
+ 
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.navigationItem.rightBarButtonItems = @[[UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"],[UIBarButtonItemExtension rightButtonItem:@selector(searchAction) andTarget:self andImageName:@"首页-患者中心_搜索"]];
@@ -108,9 +108,9 @@
 - (void)getNetWorkInfo{
     WeakSelf(PatientCenterViewController);
     [weakSelf showHudWaitingView:WaitPrompt];
-    [[THNetWorkManager shareNetWork]getMyPatientsPage:self.number andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getMyPatientsPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
-        if (weakSelf.number == 0) {
+        if (weakSelf.pageNO == 1) {
             [weakSelf.dataArray removeAllObjects];
         }
         if (response.responseCode == 1) {
@@ -135,12 +135,12 @@
 #pragma mark -- 重新父类方法进行刷新
 - (void)headerRequestWithData
 {
-    self.number = 0;
+
     [self getNetWorkInfo];
 }
 - (void)footerRequestWithData
 {
-    self.number += 5;
+
     [self getNetWorkInfo];
 }
 - (NSString *)title{

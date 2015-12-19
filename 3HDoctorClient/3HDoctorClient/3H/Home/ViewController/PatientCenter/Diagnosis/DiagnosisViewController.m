@@ -1,21 +1,21 @@
 //
-//  DiagnosisViewController.m
+//  DiagnosisListViewController.m
 //  3HDoctorClient
 //
-//  Created by 范英强 on 15/12/2.
-//  Copyright (c) 2015年 fyq. All rights reserved.
+//  Created by kanzhun on 15/12/7.
+//  Copyright © 2015年 fyq. All rights reserved.
 //
 
 #import "DiagnosisViewController.h"
-#import "PatientCenterNotCustomView.h"
+#import "DiagnosisModel.h"
 #import "DiagnosisTableViewCell.h"
-#import "DiagnosisDetailTableViewCell.h"
-//病史
-#import "DiagnosisEditorViewController.h"
+#import "DiagnosisAddViewController.h"
+#import "DiagnosisDetailViewController.h"
+#import "DiagnosisAddInputViewController.h"
+
 @interface DiagnosisViewController ()
-@property (nonatomic, strong) PatientCenterNotCustomView *customView;
-@property (nonatomic, assign) CGFloat cellHeight;
-@property (nonatomic, copy) NSMutableDictionary * dictInfo;
+
+@property (nonatomic, strong) NSMutableArray *newsArray;
 @end
 
 @implementation DiagnosisViewController
@@ -24,64 +24,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"编辑"];
-    self.dictInfo = [NSMutableDictionary dictionary];
-   // [self.view addSubview:self.customView];
+    self.tableView.separatorColor = [UIColor clearColor];
+    [self getNetWork];
     
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"是否有过敏史:",@"detail":@"未选择"},@{@"title":@"血型:",@"detail":@"未选择"}]];
-    [self getPatientSickHistory];
+    self.newsArray = [[NSMutableArray alloc] init];
 }
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)rightAction{
-    DiagnosisEditorViewController *diagnosisEditorVc = [[DiagnosisEditorViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-    diagnosisEditorVc.mid = self.mid;
-    WeakSelf(DiagnosisViewController);
-    [diagnosisEditorVc setReloadBlock:^{
-        [weakSelf getPatientSickHistory];
-    }];
-    [self.navigationController pushViewController:diagnosisEditorVc animated:YES];
-}
-
-#pragma mark - UI
-
-- (PatientCenterNotCustomView *)customView{
-    WeakSelf(DiagnosisViewController);
-    if (!_customView) {
-        _customView = [[PatientCenterNotCustomView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height -self.frameTopHeight) LabText:@"您还没有添加病史,请添加!" BtnText:@"添加病史"];
-        _customView.backgroundColor = self.view.backgroundColor;
-        [_customView setBtnBlock:^{
-          
-        }];
-    }
-    return _customView;
-}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 2) {
-        static NSString *identifier = @"DiagnosisDetailTableViewCell";
-        DiagnosisDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (cell == nil) {
-            cell = [[DiagnosisDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.cellHeight = [cell confingWithModel:self.dictInfo];
-        return cell;
-    }else{
-        static NSString *identifier = @"idertifier";
-        DiagnosisTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (cell == nil) {
-            cell = [[DiagnosisTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dictInfo index:indexPath.section];
-        return cell;
+    static NSString *identifier = @"idertifier";
+    DiagnosisTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil) {
+        cell = [[DiagnosisTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    DiagnosisModel * model = self.dataArray[indexPath.section];
+    [cell confingWithModel:model];
+    cell.backgroundColor = self.view.backgroundColor;
+    return cell;
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -89,14 +56,11 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    
+    return self.dataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 2) {
-        return self.cellHeight;
-    }else{
-        return 45;
-    }
+    return 45;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -107,18 +71,65 @@
     return 10.0f;
 }
 
-- (NSString *)title{
-    return @"病史";
-}
-- (void)getPatientSickHistory{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     WeakSelf(DiagnosisViewController);
-    [weakSelf showHudWaitingView:WaitPrompt];;
-    [[THNetWorkManager shareNetWork]getPatientSickHistoryMid:self.mid andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    DiagnosisModel *model = self.dataArray[indexPath.section];
+    
+    if ([model.diag_name isEqualToString:@"请输入诊断名称"]) {
+        DiagnosisAddInputViewController *diagnosisAddInputVc = [[DiagnosisAddInputViewController alloc] init];
+        diagnosisAddInputVc.mid = self.mid;
+        diagnosisAddInputVc.idx = model.idx;
+        [diagnosisAddInputVc setReloadBlock:^{
+            [weakSelf getNetWork];
+        }];
+        
+        [self.navigationController pushViewController:diagnosisAddInputVc animated:YES];
+    }else{
+        DiagnosisDetailViewController *detailVc = [[DiagnosisDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        detailVc.mid = self.mid;
+        detailVc.idx = model.idx;
+        [self.navigationController pushViewController:detailVc animated:YES];
+    }
+    
+}
+- (NSString *)title{
+    return @"诊断";
+}
+
+- (void)getNetWork{
+    
+    WeakSelf(DiagnosisViewController);
+    [[THNetWorkManager shareNetWork]getPatientDiagnosisListMid:self.mid andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
+        [weakSelf.newsArray removeAllObjects];
         [weakSelf.dataArray removeAllObjects];
-        NSLog(@"查看sss%@",response.dataDic);
+        
+        for (int i = 1; i<11; i++) {
+            DiagnosisModel * model = [[DiagnosisModel alloc] init];
+            model.idx = [NSString stringWithFormat:@"%i",i];
+            model.diag_name = @"请输入诊断名称";
+            
+            [weakSelf.dataArray addObject:model];
+        }
         if (response.responseCode == 1) {
-            weakSelf.dictInfo = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                DiagnosisModel * model = [response thParseDataFromDic:dict andModel:[DiagnosisModel class]];
+                [weakSelf.newsArray addObject:model];
+            }
+            
+            
+            for (int i =0; i<10; i++) {
+                
+                DiagnosisModel *model = weakSelf.dataArray[i];
+                for (DiagnosisModel *newModel in weakSelf.newsArray) {
+                    if ([[NSString stringWithFormat:@"%@",newModel.idx] isEqualToString:model.idx]) {
+                        [weakSelf.dataArray replaceObjectAtIndex:i withObject:newModel];
+                    }
+                }
+            }
+            
+            
+            
             [weakSelf.tableView reloadData];
         } else {
             [weakSelf showHudAuto:response.message];
@@ -126,7 +137,10 @@
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
         [weakSelf showHudAuto:InternetFailerPrompt];
     }];
+    [weakSelf showHudWaitingView:WaitPrompt];
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
