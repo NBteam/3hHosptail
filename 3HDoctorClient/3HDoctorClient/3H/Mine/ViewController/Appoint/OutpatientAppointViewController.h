@@ -6,8 +6,8 @@
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "BaseTableViewController.h"
+#import "BaseViewController.h"
 
-@interface OutpatientAppointViewController : BaseTableViewController
+@interface OutpatientAppointViewController : BaseViewController
 
 @end

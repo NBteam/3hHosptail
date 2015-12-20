@@ -6,9 +6,9 @@
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "BaseTableViewController.h"
+#import "BaseViewController.h"
 
-@interface PerfectInformationTimeViewController : BaseTableViewController
+@interface PerfectInformationTimeViewController : BaseViewController
 
 
 @property (nonatomic, copy) void(^PerfectInformationTimeBlock)(NSString *str,NSString *price);

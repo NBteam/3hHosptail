@@ -568,6 +568,9 @@
 		C08244B21C2130C300783FD5 /* OutpatientAppointTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244B11C2130C300783FD5 /* OutpatientAppointTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		C08244B51C21436E00783FD5 /* THUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244B41C21436E00783FD5 /* THUser.m */; settings = {ASSET_TAGS = (); }; };
 		C08244B81C214B2100783FD5 /* PerfectInformationTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244B71C214B2100783FD5 /* PerfectInformationTimeViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C0A0111D1C268E0F00A8E476 /* PhoneAppointSetPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A0111C1C268E0F00A8E476 /* PhoneAppointSetPriceViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C0A011201C2695EE00A8E476 /* PhoneAppointTDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A0111F1C2695EE00A8E476 /* PhoneAppointTDetailModel.m */; settings = {ASSET_TAGS = (); }; };
+		C0CA3E481C268BE500A47E8A /* PhoneAppointTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CA3E471C268BE500A47E8A /* PhoneAppointTimesViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D24F418C1C1D7235004F8699 /* ReservationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D24F418B1C1D7235004F8699 /* ReservationListModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -1425,6 +1428,12 @@
 		C08244B41C21436E00783FD5 /* THUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THUser.m; sourceTree = "<group>"; };
 		C08244B61C214B2100783FD5 /* PerfectInformationTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfectInformationTimeViewController.h; sourceTree = "<group>"; };
 		C08244B71C214B2100783FD5 /* PerfectInformationTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfectInformationTimeViewController.m; sourceTree = "<group>"; };
+		C0A0111B1C268E0F00A8E476 /* PhoneAppointSetPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAppointSetPriceViewController.h; sourceTree = "<group>"; };
+		C0A0111C1C268E0F00A8E476 /* PhoneAppointSetPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointSetPriceViewController.m; sourceTree = "<group>"; };
+		C0A0111E1C2695EE00A8E476 /* PhoneAppointTDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAppointTDetailModel.h; sourceTree = "<group>"; };
+		C0A0111F1C2695EE00A8E476 /* PhoneAppointTDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointTDetailModel.m; sourceTree = "<group>"; };
+		C0CA3E461C268BE500A47E8A /* PhoneAppointTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAppointTimesViewController.h; sourceTree = "<group>"; };
+		C0CA3E471C268BE500A47E8A /* PhoneAppointTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointTimesViewController.m; sourceTree = "<group>"; };
 		D24F418A1C1D7235004F8699 /* ReservationListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReservationListModel.h; sourceTree = "<group>"; };
 		D24F418B1C1D7235004F8699 /* ReservationListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReservationListModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1461,6 +1470,10 @@
 				C051E5D71C245324005A3D2E /* PhoneAppointTDetailViewController.m */,
 				C051E5D91C24533E005A3D2E /* PhoneAppointSetViewController.h */,
 				C051E5DA1C24533E005A3D2E /* PhoneAppointSetViewController.m */,
+				C0CA3E461C268BE500A47E8A /* PhoneAppointTimesViewController.h */,
+				C0CA3E471C268BE500A47E8A /* PhoneAppointTimesViewController.m */,
+				C0A0111B1C268E0F00A8E476 /* PhoneAppointSetPriceViewController.h */,
+				C0A0111C1C268E0F00A8E476 /* PhoneAppointSetPriceViewController.m */,
 			);
 			path = Appoint;
 			sourceTree = "<group>";
@@ -3251,6 +3264,8 @@
 				A94B15FB1C144C6000034029 /* PatientAssayListModel.m */,
 				C051E6061C259548005A3D2E /* PhoneAppointModel.h */,
 				C051E6071C259548005A3D2E /* PhoneAppointModel.m */,
+				C0A0111E1C2695EE00A8E476 /* PhoneAppointTDetailModel.h */,
+				C0A0111F1C2695EE00A8E476 /* PhoneAppointTDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3731,6 +3746,7 @@
 				991A30FD1C11D65900E0313F /* IncomeRecordViewController.m in Sources */,
 				991A30F11C11CEFE00E0313F /* WalletTotalTableViewCell.m in Sources */,
 				99D6EEDD1C0EFF0A00CB1829 /* CustomTextView.m in Sources */,
+				C0CA3E481C268BE500A47E8A /* PhoneAppointTimesViewController.m in Sources */,
 				99D141F51C0D5F27002DA3AD /* HomeViewController.m in Sources */,
 				C08244891C20173700783FD5 /* AboutViewController.m in Sources */,
 				99DA43651C0C2D0C00573D4C /* NameInputViewController.m in Sources */,
@@ -3830,6 +3846,7 @@
 				99DA40781C0BE85600573D4C /* BaseModel.m in Sources */,
 				99D142241C0D91ED002DA3AD /* DynamicDetailToolView.m in Sources */,
 				99DA45F81C0C82FC00573D4C /* MineTableViewCell.m in Sources */,
+				C0A011201C2695EE00A8E476 /* PhoneAppointTDetailModel.m in Sources */,
 				99DA40081C0BE59A00573D4C /* UIViewController+Extension.m in Sources */,
 				99D141F71C0D5F27002DA3AD /* PatientCenterViewController.m in Sources */,
 				99D141CD1C0D48CC002DA3AD /* ConsultingDynamicHeadView.m in Sources */,
@@ -3935,6 +3952,7 @@
 				99DA43751C0C44CF00573D4C /* CityListFirstLevelViewController.m in Sources */,
 				99D141F11C0D5F27002DA3AD /* BookManagementViewController.m in Sources */,
 				99DA40891C0BE8DC00573D4C /* MineViewController.m in Sources */,
+				C0A0111D1C268E0F00A8E476 /* PhoneAppointSetPriceViewController.m in Sources */,
 				99D142151C0D7E41002DA3AD /* BookSuccessViewController.m in Sources */,
 				99D141F31C0D5F27002DA3AD /* DynamicDetailViewController.m in Sources */,
 				99D142001C0D60C3002DA3AD /* BookManagementTableViewCell.m in Sources */,

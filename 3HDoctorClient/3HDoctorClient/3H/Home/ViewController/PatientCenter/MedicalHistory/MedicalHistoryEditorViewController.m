@@ -11,20 +11,19 @@
 #import "MedicalHistoryDetailEditorTableViewCell.h"
 #import "HospitalInputViewController.h"
 
-@interface MedicalHistoryEditorViewController ()
+@interface MedicalHistoryEditorViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic, strong) TPKeyboardAvoidingTableView *tableView;
 @property (nonatomic, assign) CGFloat cellHeight;
 @property (nonatomic, copy) NSString * blood_type;
 @property (nonatomic, copy) NSString * guomin;
 @property (nonatomic, strong) NSIndexPath * nIndexPath;
+
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @end
 
 @implementation MedicalHistoryEditorViewController
 
-- (void)loadView{
-    [super loadView];
-    self.view = [[TPKeyboardAvoidingScrollView alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height)];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,8 +32,19 @@
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"完成"];
     // [self.view addSubview:self.customView];
     
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"是否有过敏史:",@"detail":@"未选择"},@{@"title":@"血型:",@"detail":@"未选择"}]];
-    
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"是否有过敏史:",@"detail":self.gmString},@{@"title":@"血型:",@"detail":self.xxString}]];
+    [self.view addSubview:self.tableView];
+}
+
+- (TPKeyboardAvoidingTableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height -self.frameTopHeight -44) style:UITableViewStyleGrouped];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.tableFooterView = [[UIView alloc] init];
+        _tableView.backgroundColor = self.view.backgroundColor;
+    }
+    return _tableView;
 }
 
 - (void)backAction{
@@ -68,7 +78,7 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         self.nIndexPath= indexPath;
-        self.cellHeight = [cell confingWithModel:nil];
+        self.cellHeight = [cell confingWithModel:self.detailString];
         return cell;
     }else{
         static NSString *identifier = @"MedicalHistoryEditorTableViewCell";

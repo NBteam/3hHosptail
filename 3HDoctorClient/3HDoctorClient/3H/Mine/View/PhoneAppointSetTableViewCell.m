@@ -46,13 +46,25 @@
 
 - (void)confingWithModel:(NSDictionary *)dict{
     self.labTitle.text = dict[@"title"];
-    self.labDetail.text = dict[@"detail"];
     
-    if ([self.labDetail.text isEqualToString:@"未选择"]) {
+    
+    if ([dict[@"detail"] isEqualToString:@"未选择"]) {
         self.labDetail.textColor = [UIColor colorWithHEX:0x999999];
+         self.labDetail.text = @"未选择";
     }else{
         self.labDetail.textColor = [UIColor colorWithHEX:0x333333];
+        if ( [dict[@"title"] isEqualToString:@"时长"]) {
+            self.labDetail.text = [NSString stringWithFormat:@"%@分钟",dict[@"detail"]];
+        }else if([dict[@"title"] isEqualToString:@"收费"]){
+            self.labDetail.text = [NSString stringWithFormat:@"%.2f元",[dict[@"detail"] floatValue]];
+        }else{
+            self.labDetail.text = dict[@"detail"];
+        }
     }
+    
+    
+    
+    
 }
 /*
 // Only override drawRect: if you perform custom drawing.

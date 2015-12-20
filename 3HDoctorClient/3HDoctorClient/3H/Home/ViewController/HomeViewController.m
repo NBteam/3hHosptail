@@ -23,7 +23,6 @@
 
 @interface HomeViewController ()
 
-@property (nonatomic, strong) UILabel *labTitle;
 
 @property (nonatomic, strong) HomeHeadView *headView;
 
@@ -36,7 +35,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"];
+    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
     NSLog(@"我的名字%@",self.user.truename);
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithHEX:0xffffff];
@@ -48,9 +48,13 @@
     self.tableView.height = DeviceSize.height -49;
 //    self.tableView.tableHeaderView = self.headView;
     [self.headView confingWithModelOfName:self.user.truename Hosptail:self.user.hospital Job:self.user.job_title Pic:self.user.pic];
-    [self.view addSubview:self.labTitle];
+
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getHomeInfo) name:@"reloadHomeInfo" object:nil];
 
+}
+
+- (void)addAction{
+    
 }
 
 - (void)getHomeInfo{
@@ -68,21 +72,9 @@
     return _changeView;
 }
 
-- (UILabel *)labTitle{
-    if (!_labTitle) {
-        _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 15 +20, DeviceSize.width, 18)];
-        _labTitle.textColor = [UIColor colorWithHEX:0xffffff];
-        _labTitle.font = [UIFont systemFontOfSize:18];
-        _labTitle.textAlignment = NSTextAlignmentCenter;
-        _labTitle.text = @"3H健康管理";
-        
-    }
-    return _labTitle;
-}
-
 - (HomeHeadView *)headView{
     if (!_headView) {
-        _headView = [[HomeHeadView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 230)];
+        _headView = [[HomeHeadView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 230 -64)];
         
     }
     return _headView;
@@ -110,7 +102,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 230;
+    return 230 -64;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return self.headView;
@@ -153,19 +145,23 @@
 #pragma mark net
 
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
-}
+//- (void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//    self.navigationController.navigationBarHidden = YES;
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated{
+//    [super viewWillDisappear:animated];
+//    self.navigationController.navigationBarHidden = NO;
+//}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat f = scrollView.contentOffset.y;
     self.changeView.height = DeviceSize.width -f;
+}
+
+- (NSString *)title{
+    return @"3H健康管理";
 }
 
 

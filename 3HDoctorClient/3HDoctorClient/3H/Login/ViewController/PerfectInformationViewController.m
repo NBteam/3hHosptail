@@ -80,9 +80,7 @@
 }
 
 - (void)btnSubmitAction{
-    ;
-    
-    
+
     [self showHudAuto:@"保存中..."];
     WeakSelf(PerfectInformationViewController);
     [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.user.truename sex:self.user.sex hospital:self.user.hospital department:self.user.department job_title:self.user.job_title sign_word:self.user.sign_word work_week:self.user.work_week work_price:self.user.work_price area_ids:self.user.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
@@ -197,7 +195,7 @@
         }];
         [self.navigationController pushViewController:DepartmentVc animated:YES];
     }else if (indexPath.row == 5){//门诊时间
-        PerfectInformationTimeViewController *perfectInformationTimeVc = [[PerfectInformationTimeViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        PerfectInformationTimeViewController *perfectInformationTimeVc = [[PerfectInformationTimeViewController alloc] init];
         
         [perfectInformationTimeVc setPerfectInformationTimeBlock:^(NSString *name,NSString *price) {
             [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:[NSString stringWithFormat:@"%@(收费:%@)",name,price]];

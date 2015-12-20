@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface PhoneAppointTDetailViewController : BaseViewController
-
+@property (nonatomic, copy) NSString *dateString;
 @end

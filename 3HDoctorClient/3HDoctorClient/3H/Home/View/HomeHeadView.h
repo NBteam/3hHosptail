@@ -12,7 +12,6 @@
 
 @property (nonatomic, strong) UIView *viewWhite;
 
-@property (nonatomic, strong) UILabel *labTitle;
 //背景图
 @property (nonatomic, strong) UIImageView *imgBack;
 //头像

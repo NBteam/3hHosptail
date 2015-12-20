@@ -10,7 +10,7 @@
 #import "MJRefresh.h"
 @interface BaseTableViewController ()
 @property (nonatomic, assign)   UITableViewStyle tableViewStyle;
-@property (nonatomic, strong)   UITableView *tableView;
+@property (nonatomic, strong)   TPKeyboardAvoidingTableView *tableView;
 @end
 
 @implementation BaseTableViewController

@@ -34,11 +34,14 @@
 
 @property (nonatomic,copy) void (^CalendarBlock)(NSString * month );
 
+@property (nonatomic,copy) void (^CalendarBtnBlock)(NSString * date,NSString *tel_item_num);
+
+
 
 
 //天按钮点击事件
 
-@property (nonatomic,copy) void (^CalendarBtnBlock)(NSString * day);
+
 
 
 - (CGFloat)reloadCalendarView:(NSMutableArray *)array;

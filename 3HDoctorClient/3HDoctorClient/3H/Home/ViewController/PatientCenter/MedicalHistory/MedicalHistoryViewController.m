@@ -28,7 +28,7 @@
     self.dictInfo = [NSMutableDictionary dictionary];
    // [self.view addSubview:self.customView];
     
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"是否有过敏史:",@"detail":@"未选择"},@{@"title":@"血型:",@"detail":@"未选择"}]];
+    
     [self getPatientSickHistory];
 }
 
@@ -37,7 +37,10 @@
 }
 
 - (void)rightAction{
-    MedicalHistoryEditorViewController *diagnosisEditorVc = [[MedicalHistoryEditorViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    MedicalHistoryEditorViewController *diagnosisEditorVc = [[MedicalHistoryEditorViewController alloc] init];
+    diagnosisEditorVc.gmString = self.dataArray[0][@"detail"];
+    diagnosisEditorVc.xxString = self.dataArray[1][@"detail"];
+    diagnosisEditorVc.detailString = self.dataArray[2][@"detail"];
     diagnosisEditorVc.mid = self.mid;
     WeakSelf(MedicalHistoryViewController);
     [diagnosisEditorVc setReloadBlock:^{
@@ -119,6 +122,8 @@
         NSLog(@"查看sss%@",response.dataDic);
         if (response.responseCode == 1) {
             weakSelf.dictInfo = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
+            weakSelf.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"是否有过敏史:",@"detail":weakSelf.dictInfo[@"guomin"]},@{@"title":@"血型:",@"detail":weakSelf.dictInfo[@"blood_type"]},@{@"title":@"病情描述:",@"detail":weakSelf.dictInfo[@"desc"]}]];
+            
             [weakSelf.tableView reloadData];
         } else {
             [weakSelf showHudAuto:response.message];

@@ -8,8 +8,15 @@
 
 #import "PhoneAppointSetViewController.h"
 #import "PhoneAppointSetTableViewCell.h"
+#import "TimeView.h"
+#import "PhoneAppointTimesViewController.h"
+#import "PhoneAppointSetPriceViewController.h"
 @interface PhoneAppointSetViewController ()
 
+@property (nonatomic, copy) NSString *ksTime;
+@property (nonatomic, copy) NSString *jsTime;
+@property (nonatomic, copy) NSString *scTime;
+@property (nonatomic, assign) CGFloat priceFloat;
 @end
 
 @implementation PhoneAppointSetViewController
@@ -27,26 +34,41 @@
 }
 
 - (void)rightAction{
-    [self addTimeItems];
+    if ([self.dataArray[0][@"detail"] isEqualToString:@"未选择"]) {
+        [self showHudAuto:@"请选择开始时间" andDuration:@"2"];
+    }else if ([self.dataArray[1][@"detail"] isEqualToString:@"未选择"]){
+        [self showHudAuto:@"请选择结束时间" andDuration:@"2"];
+    }else if ([self.dataArray[2][@"detail"] isEqualToString:@"未选择"]){
+        [self showHudAuto:@"请选择时长" andDuration:@"2"];
+    }else if ([self.dataArray[3][@"detail"] isEqualToString:@"未选择"]){
+        [self showHudAuto:@"请选择收费金额" andDuration:@"2"];
+    }else{
+       [self addTimeItems:self.dataArray[0][@"detail"] jsTime:self.dataArray[1][@"detail"] scTime:self.dataArray[2][@"detail"] Price:[self.dataArray[3][@"detail"] floatValue]];
+    }
+    
+    
     
 }
 
-- (void)addTimeItems{
+- (void)addTimeItems:(NSString *)ksTime jsTime:(NSString *)jsTime scTime:(NSString *)scTime Price:(CGFloat)price{
 
     [self showHudAuto:@"保存中..."];
     WeakSelf(PhoneAppointSetViewController);
-    [[THNetWorkManager shareNetWork] addTimeItemsdate:@"2015-12-19" start_time:@"23:00" end_time:@"24:00" minutes:@"20" price:100.00 CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork] addTimeItemsdate:self.dateString start_time:ksTime end_time:jsTime minutes:scTime price:price CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             NSLog(@"查看%@",response.dataDic);
-
+            if (weakSelf.reloadBlock) {
+                weakSelf.reloadBlock();
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }
             
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
-        ;
+        
     } ];
         
 }
@@ -86,7 +108,45 @@
     return  [[UIView alloc] init];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    WeakSelf(PhoneAppointSetViewController);
+    if (indexPath.row == 0) {
+        PhoneAppointTimesViewController *phoneAppointSetTimeVc= [[PhoneAppointTimesViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        phoneAppointSetTimeVc.index = 0;
+        [phoneAppointSetTimeVc setTimeVcBlock:^(NSString *time) {
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:@{@"title":@"开始时间",@"detail":time}];
 
+            [weakSelf.tableView reloadData];
+        }];
+        [self.navigationController pushViewController:phoneAppointSetTimeVc animated:YES];
+    }else if(indexPath.row == 1){
+        PhoneAppointTimesViewController *phoneAppointSetTimeVc= [[PhoneAppointTimesViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        phoneAppointSetTimeVc.index = 0;
+        [phoneAppointSetTimeVc setTimeVcBlock:^(NSString *time) {
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:@{@"title":@"结束时间",@"detail":time}];
+
+            [weakSelf.tableView reloadData];
+        }];
+        [self.navigationController pushViewController:phoneAppointSetTimeVc animated:YES];
+    }else if(indexPath.row ==2){
+        PhoneAppointTimesViewController *phoneAppointSetTimeVc= [[PhoneAppointTimesViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        
+        phoneAppointSetTimeVc.index = 1;
+        [phoneAppointSetTimeVc setTimeVcBlock:^(NSString *time) {
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:@{@"title":@"时长",@"detail":time}];
+            [weakSelf.tableView reloadData];
+        }];
+        
+        [self.navigationController pushViewController:phoneAppointSetTimeVc animated:YES];
+    }else{
+        PhoneAppointSetPriceViewController *phoneAppointSetPriceVc = [[PhoneAppointSetPriceViewController alloc] init];
+        [phoneAppointSetPriceVc setNameBlock:^(NSString *name) {
+            [weakSelf.dataArray replaceObjectAtIndex:indexPath.row withObject:@{@"title":@"收费",@"detail":name}];
+            [weakSelf.tableView reloadData];
+        }];
+        [self.navigationController pushViewController:phoneAppointSetPriceVc animated:YES];
+    }
+}
 - (NSString *)title{
     return @"预约设置";
 }

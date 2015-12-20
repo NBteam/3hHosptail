@@ -37,7 +37,7 @@
 - (UILabel *)labDetail{
     if (!_labDetail) {
         _labDetail = [[UILabel alloc] initWithFrame:CGRectMake(10, self.labLine.bottom +10, DeviceSize.width -20, 0)];
-        _labDetail.textColor = [UIColor colorWithHEX:0x999999];
+        _labDetail.textColor = [UIColor colorWithHEX:0x333333];
         _labDetail.font = [UIFont systemFontOfSize:13];
         _labDetail.numberOfLines = 0;
     }

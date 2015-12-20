@@ -14,6 +14,7 @@
     [self.contentView addSubview:self.labTitle];
     [self.contentView addSubview:self.labLine];
     [self.contentView addSubview:self.txtView];
+    
 }
 
 - (UILabel *)labTitle{
@@ -46,7 +47,15 @@
 
 
 //赋值
-- (CGFloat)confingWithModel:(NSDictionary *)model{
+- (CGFloat)confingWithModel:(NSString *)model{
+    self.txtView.text = model;
+    if (model.length ==0) {
+        
+    }else{
+       self.txtView.placeholderLabel.text = @"";
+    }
+    
+    
     return self.txtView.bottom +10;
 }
 

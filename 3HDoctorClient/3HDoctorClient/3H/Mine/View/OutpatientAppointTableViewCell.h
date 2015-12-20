@@ -28,7 +28,7 @@
 @property (nonatomic, copy) void(^outpatientAppontBlcok)(NSArray *arr,NSString *price);
 
 //赋值
-- (CGFloat)confingWithModel:(NSInteger )dic;
+- (CGFloat)confingWithModelWeeks:(NSString *)week Price:(NSString *)price;
 
 
 

@@ -6,10 +6,14 @@
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "BaseTableViewController.h"
+#import "BaseViewController.h"
 
-@interface MedicalHistoryEditorViewController : BaseTableViewController
+@interface MedicalHistoryEditorViewController : BaseViewController
 @property (nonatomic, copy) NSString * mid;
 @property (nonatomic, copy) void(^reloadBlock)(void);
+
+@property (nonatomic, copy) NSString *gmString;
+@property (nonatomic, copy) NSString *xxString;
+@property (nonatomic, copy) NSString *detailString;
 
 @end

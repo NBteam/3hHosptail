@@ -10,8 +10,10 @@
 #import "OutpatientAppointTableViewCell.h"
 
 
-@interface PerfectInformationTimeViewController ()
+@interface PerfectInformationTimeViewController ()<UITableViewDelegate ,UITableViewDataSource>
 @property (nonatomic, assign) CGFloat cellHeight;
+
+@property (nonatomic, strong) TPKeyboardAvoidingTableView *tableView;
 @end
 
 @implementation PerfectInformationTimeViewController
@@ -20,10 +22,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    [self.view addSubview:self.tableView];
 }
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (TPKeyboardAvoidingTableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height -self.frameTopHeight -44) style:UITableViewStyleGrouped];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.tableFooterView = [[UIView alloc] init];
+        _tableView.backgroundColor = self.view.backgroundColor;
+    }
+    return _tableView;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -35,7 +49,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    self.cellHeight = [cell confingWithModel:1];
+    self.cellHeight = [cell confingWithModelWeeks:self.user.work_week Price:self.user.work_price];
     //拿到数据；
     [cell setOutpatientAppontBlcok:^(NSArray *arr,NSString *price) {
         if (arr.count == 0) {

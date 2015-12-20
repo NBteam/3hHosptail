@@ -74,7 +74,7 @@
 
 - (OutpatientAppointViewController *)outpatientAppointVc{
     if (!_outpatientAppointVc) {
-        _outpatientAppointVc = [[OutpatientAppointViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        _outpatientAppointVc = [[OutpatientAppointViewController alloc] init];
     }
     return _outpatientAppointVc;
 }

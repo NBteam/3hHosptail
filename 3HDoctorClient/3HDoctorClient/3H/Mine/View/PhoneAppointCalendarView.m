@@ -176,14 +176,14 @@
         //判断字体颜色
         NSString *colorString = [NSString stringWithFormat:@"%@",array[i + 2 - firstDayIndexOfWeek-1][@"after_today"]];
         NSLog(@"----%@",colorString);
-        if ([colorString isEqualToString:@"0"]) {
-            [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
-            btn.userInteractionEnabled = NO;
-        }else {
-            [btn setTitleColor:[UIColor colorWithHEX:0x333333] forState:UIControlStateNormal];
-            btn.userInteractionEnabled = YES;
-        }
-            
+//        if ([colorString isEqualToString:@"0"]) {
+//            [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
+//            btn.userInteractionEnabled = NO;
+//        }else {
+//            [btn setTitleColor:[UIColor colorWithHEX:0x333333] forState:UIControlStateNormal];
+//            btn.userInteractionEnabled = YES;
+//        }
+        
         
             btn.titleLabel.font = [UIFont systemFontOfSize:15];
             [btn addTarget:self
@@ -191,6 +191,17 @@
           forControlEvents:UIControlEventTouchUpInside];
             btn.layer.borderWidth = 0.5;
             btn.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
+        //是否已经有预约
+        NSString *appointString = [NSString stringWithFormat:@"%@",array[i + 2 - firstDayIndexOfWeek-1][@"tel_item_num"]];
+        
+        if ([appointString isEqualToString:@"0"]) {
+            [btn setTitleColor:[UIColor colorWithHEX:0x333333] forState:UIControlStateNormal];
+        }else{
+            UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 22.5, 22.5)];
+            img.image = [UIImage imageNamed:@"我的-预约设置-电话预约_选择"];
+            [btn addSubview:img];
+            [btn setTitleColor:AppDefaultColor forState:UIControlStateNormal];
+        }
         
             [self.viewBack addSubview:btn];
         
@@ -205,8 +216,12 @@
 -(void)nslogBtnTag:(UIButton *)btn{
     NSString *str = self.dataArrays[btn.tag -1][@"date"];
 //i + 2 - firstDayIndexOfWeek
-    NSLog(@"生气的日子%@",str);
     
+    NSString *tel_item_num = self.dataArrays[btn.tag -1][@"tel_item_num"];
+    NSLog(@"生气的日子%@----%@",str,tel_item_num);
+    if (self.CalendarBtnBlock) {
+        self.CalendarBtnBlock(str,[NSString stringWithFormat:@"%@",tel_item_num]);
+    }
 }
 
 /*

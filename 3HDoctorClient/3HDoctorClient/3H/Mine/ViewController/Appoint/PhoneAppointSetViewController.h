@@ -10,4 +10,9 @@
 
 @interface PhoneAppointSetViewController : BaseTableViewController
 
+@property (nonatomic, copy) NSString *dateString;
+@property (nonatomic, copy) void(^reloadBlock)(void);
+
+
+
 @end

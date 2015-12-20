@@ -17,7 +17,6 @@
         self.backgroundColor = [UIColor colorWithHEX:0xffffff];
         [self addSubview:self.viewWhite];
         [self addSubview:self.imgBack];
-        [self addSubview:self.labTitle];
         [self addSubview:self.imgMyPicture];
         [self addSubview:self.labName];
         [self addSubview:self.labDetail];
@@ -33,26 +32,15 @@
 }
 - (UIImageView *)imgBack{
     if (!_imgBack) {
-        _imgBack = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, DeviceSize.width, 200)];
+        _imgBack = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, DeviceSize.width, 200 -64)];
         _imgBack.image = [UIImage imageNamed:@"3H-首页_背景"];
     }
     return _imgBack;
 }
 
-- (UILabel *)labTitle{
-    if (!_labTitle) {
-        _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 15 +20, DeviceSize.width, 17)];
-        _labTitle.textColor = [UIColor colorWithHEX:0xffffff];
-        _labTitle.font = [UIFont systemFontOfSize:17];
-        _labTitle.textAlignment = NSTextAlignmentCenter;
-        
-    }
-    return _labTitle;
-}
-
 - (UIImageView *)imgMyPicture{
     if (!_imgMyPicture) {
-        _imgMyPicture = [[UIImageView alloc] initWithFrame:CGRectMake((DeviceSize.width -84)/2, self.labTitle.bottom +25, 84, 84)];
+        _imgMyPicture = [[UIImageView alloc] initWithFrame:CGRectMake((DeviceSize.width -84)/2, 10, 84, 84)];
         _imgMyPicture.backgroundColor = [UIColor grayColor];
         _imgMyPicture.layer.masksToBounds = YES;
         _imgMyPicture.layer.cornerRadius = 42;

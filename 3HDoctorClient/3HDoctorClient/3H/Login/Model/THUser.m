@@ -39,7 +39,7 @@
     [aCoder encodeObject:self.sign_word forKey:@"sign_word"];
     [aCoder encodeObject:self.truename forKey:@"truename"];
     [aCoder encodeObject:self.work_week forKey:@"work_week"];
-    [aCoder encodeObject:self.work_week forKey:@"work_price"];
+    [aCoder encodeObject:self.work_price forKey:@"work_price"];
  
 }
 
@@ -65,7 +65,7 @@
         self.sign_word = [aDecoder decodeObjectForKey:@"sign_word"];
         self.truename = [aDecoder decodeObjectForKey:@"truename"];
         self.work_week = [aDecoder decodeObjectForKey:@"work_week"];
-        self.work_week = [aDecoder decodeObjectForKey:@"work_price"];
+        self.work_price = [aDecoder decodeObjectForKey:@"work_price"];
 
  
         

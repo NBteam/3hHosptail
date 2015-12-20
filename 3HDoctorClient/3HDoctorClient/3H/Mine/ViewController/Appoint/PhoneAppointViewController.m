@@ -12,13 +12,16 @@
 #import "PhoneAppointSetViewController.h"
 //预约设置
 #import "PhoneAppointSetViewController.h"
+//预约详情
+#import "PhoneAppointTDetailViewController.h"
 #import "PhoneAppointModel.h"
 
 @interface PhoneAppointViewController ()
 
 @property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, copy) NSString *month;
 
-@property (nonatomic, strong) UIButton *btn;
+
 
 @end
 
@@ -27,9 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view addSubview:self.btn];
+    self.month = @"";
     
-    [self phoneAppointData:@""];
+    [self phoneAppointData:self.month];
 }
 
 - (void)phoneAppointData:(NSString *)data{
@@ -59,21 +62,6 @@
         
 }
 
-- (UIButton *)btn{
-    if (!_btn) {
-        _btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btn.frame = CGRectMake(110, 110, 220, 50);
-        _btn.backgroundColor = [UIColor grayColor];
-        [_btn addTarget:self action:@selector(btnss) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _btn;
-}
-
-- (void)btnss{
-    PhoneAppointSetViewController *phoneAppointSetVc = [[PhoneAppointSetViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-    [self.navigationController pushViewController:phoneAppointSetVc animated:YES];
-}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -91,7 +79,28 @@
     self.cellHeight = [cell confingWithModel:self.dataArray];
     
     [cell.calendarView setCalendarBlock:^(NSString *month) {
+        weakSelf.month = month;
         [weakSelf phoneAppointData:month];
+    }];
+    [cell.calendarView setCalendarBtnBlock:^(NSString *date, NSString *tel) {
+        
+        // == 0 设置 ===1  详情
+        if ([tel isEqualToString:@"0"]) {
+            PhoneAppointSetViewController *phoneAppointSetVc = [[PhoneAppointSetViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+            phoneAppointSetVc.dateString = date;
+            [phoneAppointSetVc setReloadBlock:^{
+
+                [weakSelf phoneAppointData:weakSelf.month];
+            }];
+            [weakSelf.navigationController pushViewController:phoneAppointSetVc animated:YES];
+        }else{
+            
+            PhoneAppointTDetailViewController *phoneAppointTDetailVc = [[PhoneAppointTDetailViewController alloc] init];
+            phoneAppointTDetailVc.dateString = date;
+            [weakSelf.navigationController pushViewController:phoneAppointTDetailVc animated:YES];
+            
+        }
+        
     }];
     return cell;
 }

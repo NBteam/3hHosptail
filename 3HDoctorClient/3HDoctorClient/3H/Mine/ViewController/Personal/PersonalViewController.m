@@ -145,6 +145,7 @@
             
             NameInputViewController *nameInputVc = [[NameInputViewController alloc] init];
             nameInputVc.index = 0;
+            nameInputVc.nameString = self.user.truename;
             
             [nameInputVc setNameBlock:^(NSString *str) {
                 
@@ -229,7 +230,7 @@
         }else if (indexPath.row == 6){//
             NameInputViewController *nameInputVc = [[NameInputViewController alloc] init];
             nameInputVc.index = 1;
-            
+            nameInputVc.nameString = self.user.sign_word;
             [nameInputVc setNameBlock:^(NSString *str) {
                 
                 [weakSelf.dataArray replaceObjectAtIndex:6 withObject:@{@"title":@"个人签名",@"detail":str}];

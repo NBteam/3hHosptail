@@ -1,14 +1,15 @@
 //
-//  NameInputViewController.m
+//  PhoneAppointSetPriceViewController.m
 //  3HDoctorClient
 //
-//  Created by 范英强 on 15/11/30.
-//  Copyright (c) 2015年 fyq. All rights reserved.
+//  Created by 范英强 on 15/12/20.
+//  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "NameInputViewController.h"
+#import "PhoneAppointSetPriceViewController.h"
 
-@interface NameInputViewController ()
+@interface PhoneAppointSetPriceViewController ()
+
 //背景
 @property (nonatomic, strong) UIView *backView;
 //
@@ -18,7 +19,7 @@
 
 @end
 
-@implementation NameInputViewController
+@implementation PhoneAppointSetPriceViewController
 
 - (void)loadView{
     [super loadView];
@@ -56,19 +57,10 @@
         
         //是否纠错
         _txtNameInput.autocorrectionType = UITextAutocorrectionTypeNo;
+        _txtNameInput.keyboardType = UIKeyboardTypeNumberPad;
         _txtNameInput.font = [UIFont systemFontOfSize:15];
-        if (self.index == 0) {
-            _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"您的名字" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
-        }else{
-            _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"您的个人签名" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
-        }
+        _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请设置收费金额(“元”不需要填写)" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
         _txtNameInput.backgroundColor = [UIColor whiteColor];
-        
-        if (self.nameString.length == 0) {
-            
-        }else{
-            _txtNameInput.text = self.nameString;
-        }
         
     }
     return _txtNameInput;
@@ -97,13 +89,14 @@
     }
 }
 
-- (NSString *)title{
-    return @"完善资料";
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSString *)title{
+    return @"收费设置";
 }
 
 /*

@@ -19,6 +19,6 @@
 
 
 //赋值
-- (CGFloat)confingWithModel:(NSDictionary *)model;
+- (CGFloat)confingWithModel:(NSString *)model;
 
 @end
