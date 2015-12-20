@@ -10,7 +10,7 @@
 #import "AddressListCell.h"
 #import "AddressListDownCell.h"
 #import "AddressListModel.h"
-#import "AddAddressViewController.m"
+#import "AddressAddViewController.h"
 
 @interface AddressListViewController ()
 @property (nonatomic, assign) CGFloat cellHeight;
@@ -59,7 +59,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 5) {
-        AddAddressViewController * AddAddressVc = [[AddAddressViewController alloc]init];
+        AddressAddViewController * AddAddressVc = [[AddressAddViewController alloc]init];
         [self.navigationController pushViewController:AddAddressVc animated:YES];
     }
 }

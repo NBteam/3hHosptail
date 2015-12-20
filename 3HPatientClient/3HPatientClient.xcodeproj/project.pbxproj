@@ -514,6 +514,7 @@
 		D2CE7BB91C20557900BB169F /* CheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BB81C20557900BB169F /* CheckListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CE7BBC1C205D9500BB169F /* CheckDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBB1C205D9500BB169F /* CheckDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CE7BBF1C20669100BB169F /* MessageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBE1C20669100BB169F /* MessageListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2CED1981C263AE8004FAB33 /* AddressAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CED1971C263AE8004FAB33 /* AddressAddViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2CF7C2B1C22DF38008F2900 /* MyDiagnosisListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2A1C22DF38008F2900 /* MyDiagnosisListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CF7C2E1C22E251008F2900 /* MyDiagnosisDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CF7C311C22E6C3008F2900 /* MyRecheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -522,7 +523,6 @@
 		D2D26A8C1C23EDC600066770 /* ConsultingDoctorListNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A8B1C23EDC600066770 /* ConsultingDoctorListNewCell.m */; settings = {ASSET_TAGS = (); }; };
 		D2D26A8F1C23FE6900066770 /* DoctorListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A8E1C23FE6900066770 /* DoctorListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2D26A921C24076200066770 /* DoctorInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A911C24076200066770 /* DoctorInfoModel.m */; settings = {ASSET_TAGS = (); }; };
-		D2D26A951C240B5000066770 /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A941C240B5000066770 /* AddAddressViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D26A981C240C6400066770 /* AddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A971C240C6400066770 /* AddressView.m */; settings = {ASSET_TAGS = (); }; };
 		D2D2CAF51C2577800052F30B /* GoodsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CAF41C2577800052F30B /* GoodsListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2D2CAF81C2593AC0052F30B /* GoodsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CAF71C2593AC0052F30B /* GoodsDetailModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -1345,6 +1345,8 @@
 		D2CE7BBB1C205D9500BB169F /* CheckDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailModel.m; sourceTree = "<group>"; };
 		D2CE7BBD1C20669100BB169F /* MessageListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListModel.h; sourceTree = "<group>"; };
 		D2CE7BBE1C20669100BB169F /* MessageListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListModel.m; sourceTree = "<group>"; };
+		D2CED1961C263AE8004FAB33 /* AddressAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressAddViewController.h; sourceTree = "<group>"; };
+		D2CED1971C263AE8004FAB33 /* AddressAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressAddViewController.m; sourceTree = "<group>"; };
 		D2CF7C291C22DF38008F2900 /* MyDiagnosisListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDiagnosisListModel.h; sourceTree = "<group>"; };
 		D2CF7C2A1C22DF38008F2900 /* MyDiagnosisListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDiagnosisListModel.m; sourceTree = "<group>"; };
 		D2CF7C2C1C22E251008F2900 /* MyDiagnosisDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDiagnosisDetailModel.h; sourceTree = "<group>"; };
@@ -1846,6 +1848,8 @@
 				993669DA1C144F2000B3E1C7 /* ShopDetailBuyViewController.m */,
 				D2D2CAF91C25A1EA0052F30B /* AddressListViewController.h */,
 				D2D2CAFA1C25A1EA0052F30B /* AddressListViewController.m */,
+				D2CED1961C263AE8004FAB33 /* AddressAddViewController.h */,
+				D2CED1971C263AE8004FAB33 /* AddressAddViewController.m */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -3710,6 +3714,7 @@
 				D2CE7BB91C20557900BB169F /* CheckListModel.m in Sources */,
 				C05A96BE1C1D83570078433B /* AppointHosptailViewController.m in Sources */,
 				99D33AA31C17BD0B0067E57C /* RegisterViewController.m in Sources */,
+				D2CED1981C263AE8004FAB33 /* AddressAddViewController.m in Sources */,
 				99DA41F41C0BEB0500573D4C /* TQRichTextView.m in Sources */,
 				99DA41E41C0BEB0500573D4C /* SDWebImagePrefetcher.m in Sources */,
 				99DA41E11C0BEB0500573D4C /* SDWebImageDownloader.m in Sources */,
