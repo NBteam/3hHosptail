@@ -456,7 +456,50 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 }
 #pragma mark 配送地址——添加【20151217更新】
 - (void)getAddAddressName:(NSString *)name mobile:(NSString *)mobile area_ids:(NSString *)area_ids address:(NSString *)address zipcode:(NSString *)zipcode is_default:(NSString *)is_default andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"addAddress",@"token":GetToken,@"mobile":mobile,@"area_ids":area_ids,@"address":address,@"zipcode":zipcode,@"is_default":is_default};
+    NSDictionary *paramDic = @{@"a":@"addAddress",@"token":GetToken,@"mobile":mobile,@"area_ids":area_ids,@"address":address,@"zipcode":zipcode,@"is_default":is_default,@"name":name};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 设置默认【20151208添加】
+- (void)setDefaultAddressId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"addAddress",@"token":GetToken,@"id":id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 获取城市列表
+- (void)getCityListCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getareaList"};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 获取二级城市列表
+- (void)getAreaListId:(NSString *)id suball:(NSInteger)suball andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getareaList",@"id":id,@"suball":@(suball)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 配送地址——删除【20151208添加】
+- (void)getRemoveAddressId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"removeAddress",@"token":GetToken,@"id":id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 【收费会员权限】电话预约——提交预约【20151216更新】
+- (void)getAddOrderTelOrder_tel_id:(NSString *)order_tel_id	desc  :(NSString *)desc andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"addOrderTel",@"token":GetToken,@"order_tel_id":order_tel_id,@"desc":desc};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 【收费会员权限】我的医生列表【20151118添加】
+- (void)getMyDoctorsPage:(NSInteger )page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"mydoctors",@"token":GetToken,@"page":@(page)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark #pragma mark 获取医生某天预约情况列表【20151112添加】
+- (void)getDoctorTelTimeitemsDoctor_id:(NSString *)doctor_id date:(NSString *)date andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getDoctorTelTimeitems",@"token":GetToken,@"doctor_id":doctor_id,@"date":date};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 获取文章评论列表【20151104更新】
+- (void)getArtCmtListId:(NSString *)id page:(NSInteger )page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getArtCmtList",@"id":id,@"page":@(page)};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 @end

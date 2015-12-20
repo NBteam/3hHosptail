@@ -9,12 +9,15 @@
 #import "DynamicDetailViewController.h"
 #import "DynamicDetailTableViewCell.h"
 #import "DynamicToolView.h"
+#import "DynamicCommentsViewController.h"
+#import "DynamicDetailModel.h"
 
 @interface DynamicDetailViewController ()
 //cell高度
 @property (nonatomic, assign) CGFloat cellHeight;
 @property (nonatomic, retain) NSMutableDictionary * dict;
 @property (nonatomic, retain) DynamicToolView * toolView;
+@property (nonatomic, retain) DynamicDetailModel * detailModel;
 @end
 
 @implementation DynamicDetailViewController
@@ -60,13 +63,15 @@
 - (void)getDetailInfo{
     WeakSelf(DynamicDetailViewController);
     [weakSelf showHudWaitingView:WaitPrompt];
-    [[THNetWorkManager shareNetWork]getArtInfoId:@"1" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getArtInfoId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         [weakSelf.dataArray removeAllObjects];
         if (response.responseCode == 1) {
             weakSelf.dict = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
-            [weakSelf.toolView.btnLeft setTitle:[NSString stringWithFormat:@"评论(%@)",response.dataDic[@"good_num"]] forState:UIControlStateNormal];
-            [weakSelf.toolView.btnRight setTitle:[NSString stringWithFormat:@"点赞(%@)",response.dataDic[@"comment_num"]] forState:UIControlStateNormal];
+            DynamicDetailModel * model = [response thParseDataFromDic:response.dataDic andModel:[DynamicDetailModel class]];
+            weakSelf.detailModel =  model;
+            [weakSelf.toolView.btnLeft setTitle:[NSString stringWithFormat:@"  评论(%@)",response.dataDic[@"comment_num"]] forState:UIControlStateNormal];
+            [weakSelf.toolView.btnRight setTitle:[NSString stringWithFormat:@"  点赞(%@)",response.dataDic[@"good_num"]] forState:UIControlStateNormal];
             [weakSelf.tableView reloadData];
         } else {
             [weakSelf showHudAuto:response.message];
@@ -82,22 +87,28 @@
         [_toolView setBtnRightBlock:^{
             [weakSelf getGoodNetWork];
         }];
+        [_toolView setBtnLeftBlock:^{
+            DynamicCommentsViewController * DynamicCommentsVc = [[DynamicCommentsViewController alloc]init];
+
+            DynamicCommentsVc.id = weakSelf.detailModel.id;
+            [weakSelf.navigationController pushViewController:DynamicCommentsVc animated:YES];
+        }];
     }
     return _toolView;
 }
 - (void)getGoodNetWork{
     WeakSelf(DynamicDetailViewController);
     [weakSelf showHudWaitingView:WaitPrompt];
-    [[THNetWorkManager shareNetWork]getArtInfoId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getVoteArtId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
-        [weakSelf.dataArray removeAllObjects];
         if (response.responseCode == 1) {
-            [weakSelf.toolView.btnRight setTitle:[NSString stringWithFormat:@"点赞(%@)",response.dataDic[@"good_num"]] forState:UIControlStateNormal];
+
+            [weakSelf.toolView.btnRight setTitle:[NSString stringWithFormat:@"  点赞(%@)",response.dataDic[@"good_num"]] forState:UIControlStateNormal];
         } else {
             [weakSelf showHudAuto:response.message];
         }
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
     }];
 }
 - (void)didReceiveMemoryWarning {

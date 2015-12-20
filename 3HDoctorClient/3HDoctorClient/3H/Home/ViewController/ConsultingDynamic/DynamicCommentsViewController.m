@@ -23,8 +23,6 @@
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     [[CommentsCustomKeyboard customKeyboard]textViewShowView:self customKeyboardDelegate:self];
-    self.isOpenFooterRefresh = YES;
-    self.isOpenHeaderRefresh = YES;
     [self getArtCmtListNetWork];
 }
 
@@ -128,15 +126,7 @@
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
     }];
 }
-#pragma mark -- 重新父类方法进行刷新
-- (void)headerRequestWithData
-{
-    [self getArtCmtListNetWork];
-}
-- (void)footerRequestWithData
-{
-    [self getArtCmtListNetWork];
-}
+
 - (NSString *)title{
     return @"评论";
 }

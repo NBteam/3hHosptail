@@ -24,7 +24,7 @@
 
 @property (nonatomic, strong) UIButton *btnRight;
 
-
+@property (nonatomic, strong) NSArray * dataArray;
 //赋值
-- (void)confingWithModel:(NSInteger )dic;
+- (void)confingWithModel:(NSMutableArray *)array;
 @end

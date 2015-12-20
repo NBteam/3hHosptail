@@ -8,6 +8,7 @@
 
 #import "BaseTableViewCell.h"
 #import "DoctorListModel.h"
+#import "AppointExpertListModel.h"
 
 @interface ConsultingDoctorListNewCell : BaseTableViewCell
 //背景view
@@ -23,4 +24,5 @@
 //详细内容
 @property (nonatomic, strong) UILabel * labDetail;
 - (CGFloat)confingWithModel:(DoctorListModel *)model;
+- (CGFloat)confingWithAppointExpertListModel:(AppointExpertListModel *)model;
 @end

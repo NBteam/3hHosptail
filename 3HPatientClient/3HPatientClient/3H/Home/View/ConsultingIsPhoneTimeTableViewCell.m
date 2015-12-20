@@ -7,6 +7,7 @@
 //
 
 #import "ConsultingIsPhoneTimeTableViewCell.h"
+#import "AppointTimeModel.h"
 
 @implementation ConsultingIsPhoneTimeTableViewCell
 
@@ -18,7 +19,7 @@
     [self.viewBack addSubview:self.btnRight];
     [self.viewBack addSubview:self.labTime];
     [self.viewBack addSubview:self.scrollView];
-    [self customScrollViews];
+    [self customScrollViewsArray:nil];
 }
 
 - (UIImageView *)imgLogo{
@@ -45,7 +46,6 @@
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.btnLeft.bottom -0.5, self.viewBack.width, 180)];
         _scrollView.delegate = self;
-        _scrollView.contentSize = CGSizeMake(self.viewBack.width * 3, 0);
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.pagingEnabled = YES;
@@ -80,7 +80,14 @@
 }
 
 - (void)btnLeftAction{
-     [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x -self.viewBack.width, 0) animated:YES];
+    NSInteger  index = (self.scrollView.contentOffset.x - self.viewBack.width)/(self.viewBack.width);
+    if (index >= 0) {
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x -self.viewBack.width, 0) animated:YES];
+        
+        AppointTimeModel * model = self.dataArray[index];
+        self.labTime.text = model.date;
+    }
+    
 }
 
 - (UIButton *)btnRight{
@@ -97,7 +104,14 @@
 }
 
 - (void)btnRightAction{
-    [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x +self.viewBack.width, 0) animated:YES];
+     NSInteger  index = (self.scrollView.contentOffset.x +self.viewBack.width)/(self.viewBack.width);
+    if (index < self.dataArray.count) {
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x +self.viewBack.width, 0) animated:YES];
+       
+        AppointTimeModel * model = self.dataArray[index];
+        self.labTime.text = model.date;
+    }
+    
 }
 
 - (UILabel *)labTime{
@@ -106,16 +120,19 @@
         _labTime.textColor = AppDefaultColor;
         _labTime.font = [UIFont systemFontOfSize:15];
         _labTime.textAlignment = NSTextAlignmentCenter;
-        _labTime.text = @"2016年09月09日";
+//        _labTime.text = @"2016年09月09日";
     }
     return _labTime;
 }
 
-- (void)customScrollViews{
-    NSArray *arr = @[@"10:00",@"11:00",@"12:00",@"13:00",@"14:00",@"15:00",@"16:00",@"17:00",@"18:00",@"19:00",@"20:00",@"21:00"];
-    
-    for (int j = 0; j <3; j++) {
-        for (int i = 0 ; i<arr.count; i++) {
+- (void)customScrollViewsArray:(NSMutableArray *)array{
+    if (array.count != 0) {
+        AppointTimeModel * model = array[0];
+        self.labTime.text = model.date;
+    }
+    for (int j = 0; j <array.count; j++) {
+        AppointTimeModel * model = array[j];
+        for (int i = 0 ; i<model.times.count; i++) {
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
             btn.frame = CGRectMake(j*self.viewBack.width +(i%3)*self.viewBack.width/3, (i/3)*45, self.viewBack.width/3, 45);
             btn.backgroundColor = [UIColor colorWithHEX:0xffffff];
@@ -123,22 +140,24 @@
             [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
             btn.layer.borderWidth = 0.25;
             btn.titleLabel.font = [UIFont systemFontOfSize:15];
-            
-            
-            if (i ==5) {
+
+            if ([model.times[i][@"start_time"]isEqualToString:@"0"]) {
                 btn.backgroundColor = AppDefaultColor;
                 btn.layer.borderColor = AppDefaultColor.CGColor;
-                [btn setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
+                [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
             }
-            [btn setTitle:arr[i] forState:UIControlStateNormal];
+            [btn setTitle:model.times[i][@"start_time"] forState:UIControlStateNormal];
             [self.scrollView addSubview:btn];
         }
     }
+    self.scrollView.contentSize = CGSizeMake(self.viewBack.width *array.count, self.scrollView.height);
 }
 
 //赋值
-- (void)confingWithModel:(NSInteger )dic{
-    
+- (void)confingWithModel:(NSMutableArray *)array{
+    [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    self.dataArray = [NSMutableArray arrayWithArray:array];
+    [self customScrollViewsArray:array];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -43,15 +43,16 @@
 - (void)btnModifyClick:(UIButton *)button{
 
 }
-- (CGFloat )configWithModel:(id)model{
-    self.labDetail.text = @"宇宙中国北京昌平区水电费水电费水电费水电费水电费水电费多少说的发送到发送到宇宙中国北京昌平区水电费水电费水电费水电费水电费水电费多少说的发送到发送到";
+- (CGFloat )configWithModel:(AddressListModel *)model{
+    self.labDetail.text = model.address;
     [self.labDetail sizeToFit];
     self.labDetail.top = 15;
     self.labDetail.left = 15;
     self.labDetail.width = DeviceSize.width - 30 - 50;
-    self.labName.text = @"某某某  138****1221";
+    self.labName.text = [NSString stringWithFormat:@"%@  %@",model.name,model.mobile];
     self.labName.top = self.labDetail.bottom + 10;
     self.btnModify.top = (self.labName.bottom + 10)/2 - 20;
     return self.labName.bottom + 15;
 }
+
 @end

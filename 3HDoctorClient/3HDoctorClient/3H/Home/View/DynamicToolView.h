@@ -14,4 +14,5 @@
 @property (nonatomic, retain) UILabel * labLine;
 @property (nonatomic, retain) UILabel * labLine1;
 @property (nonatomic, copy) void(^btnRightBlock)(void);
+@property (nonatomic, copy) void(^btnLeftBlock)(void);
 @end

@@ -119,8 +119,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     AddressListViewController *  AddressListVc = [[AddressListViewController alloc]init];
     [self.navigationController pushViewController:AddressListVc animated:YES];
-    AddressAddViewController * AddAddressVc = [[AddressAddViewController alloc]init];
-    [self.navigationController pushViewController:AddAddressVc animated:YES];
+//    AddressAddViewController * AddAddressVc = [[AddressAddViewController alloc]init];
+//    [self.navigationController pushViewController:AddAddressVc animated:YES];
 }
 
 - (NSString *)title{

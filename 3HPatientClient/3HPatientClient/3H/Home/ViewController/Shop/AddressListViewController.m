@@ -22,6 +22,7 @@
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.title = @"收货地址";
+    [self getNetWork];
 }
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
@@ -30,17 +31,18 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 6;
+    return self.dataArray.count+1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row != 5) {//self.dataArray.count-1
+    if (indexPath.row != self.dataArray.count) {//
         static NSString * cellId = @"AddressListCell";
         AddressListCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         if (cell == nil) {
             cell = [[AddressListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
-//        AddressListModel * model  = self.dataArray[indexPath.row    ];
-        self.cellHeight = [cell configWithModel:nil];
+        AddressListModel * model  = self.dataArray[indexPath.row];
+        self.cellHeight = [cell configWithModel:model];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
         static NSString * cellId = @"AddressListDownCell";
@@ -48,18 +50,24 @@
         if (cell == nil) {
             cell = [[AddressListDownCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 5) {
+    if (indexPath.row == self.dataArray.count ) {
         return 44;
     }
     return self.cellHeight;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 5) {
+    
+    if (indexPath.row == self.dataArray.count) {
+        WeakSelf(AddressListViewController);
         AddressAddViewController * AddAddressVc = [[AddressAddViewController alloc]init];
+        AddAddressVc.reloadInfo = ^{
+            [weakSelf getNetWork];
+        };
         [self.navigationController pushViewController:AddAddressVc animated:YES];
     }
 }
@@ -104,6 +112,39 @@
 - (void)footerRequestWithData
 {
     [self getNetWork];
+}
+#pragma mark 提交编辑操作时会调用这个方法(删除，添加)
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 删除操作
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // 1.删除数据
+        [self deleteCellIndexPath:indexPath];
+    }
+}
+- (void)deleteCellIndexPath:(NSIndexPath *)indexPath{
+    WeakSelf(AddressListViewController);
+    AddressListModel * model = self.dataArray[indexPath.row];
+    [[THNetWorkManager shareNetWork]getRemoveAddressId:model.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            
+            [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
+            [weakSelf.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [weakSelf.tableView reloadData];
+            
+        } else {
+            [weakSelf showHudAuto:response.message];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt];
+    }];
+    [weakSelf showHudWaitingView:WaitPrompt];
+}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.dataArray.count == indexPath.row) {
+        return NO;
+    }
+    return YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

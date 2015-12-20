@@ -293,8 +293,11 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
      CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                      andFailure:(FailureBlock) failure;
 
+#pragma mark 评论文章接口【20151104更新】
+- (void)getCmtArtId:(NSString *)id content:(NSString *)content andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
-
+#pragma mark 获取文章评论列表【20151104更新】
+- (void)getArtCmtListId:(NSString *)id page:(NSInteger )page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
 
 

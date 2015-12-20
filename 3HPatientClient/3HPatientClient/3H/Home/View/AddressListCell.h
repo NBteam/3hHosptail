@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "AddressListModel.h"
 @interface AddressListCell : BaseTableViewCell
 //详细地址
 @property (nonatomic, strong) UILabel * labDetail;
@@ -15,5 +15,5 @@
 @property (nonatomic, strong) UILabel * labName;
 // 修改按钮
 @property (nonatomic, strong) UIButton * btnModify;
-- (CGFloat )configWithModel:(id)model;
+- (CGFloat )configWithModel:(AddressListModel *)model;
 @end

@@ -57,14 +57,14 @@
 }
 
 //赋值
-- (CGFloat)confingWithModel:(CommentsListModel *)model{
+- (CGFloat)confingWithModel:(CommentsListModel * )model{
     self.labTitle.text = model.uname;
     if ([model.utype isEqualToString:[NSString stringWithFormat:@"0"]]) {
         self.labType.text = @"患者";
     }else{
         self.labType.text = @"医生";
     }
-    [self.imgLogo sd_setImageWithURL:SD_IMG(model.upic)];
+    [self.imgLogo sd_setImageWithURL:URL(model.upic)];
     self.labDetail.text = [NSString stringWithFormat:@"%@",model.content];
     [self.labDetail sizeToFit];
     self.labDetail.width = DeviceSize.width - 20;

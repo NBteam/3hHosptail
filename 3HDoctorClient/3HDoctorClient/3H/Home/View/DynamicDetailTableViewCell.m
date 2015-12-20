@@ -73,6 +73,7 @@
     self.labDetail.text = dic[@"content"];
     [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:dic[@"thumb"]] placeholderImage:[UIImage imageNamed:@""]];
     [self.labDetail sizeToFit];
+    self.labDetail.width = DeviceSize.width - 20;
     self.labDetail.top = self.imgLogo.bottom +10;
     return self.labDetail.bottom +44;
 }

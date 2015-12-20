@@ -20,5 +20,5 @@
 @property (nonatomic, strong) UILabel *labDetail;
 
 //赋值
-- (CGFloat)confingWithModel:(CommentsListModel *)dic;
+- (CGFloat)confingWithModel:(CommentsListModel * )dic;
 @end

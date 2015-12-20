@@ -572,6 +572,11 @@
 		C0A011201C2695EE00A8E476 /* PhoneAppointTDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A0111F1C2695EE00A8E476 /* PhoneAppointTDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		C0CA3E481C268BE500A47E8A /* PhoneAppointTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CA3E471C268BE500A47E8A /* PhoneAppointTimesViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D24F418C1C1D7235004F8699 /* ReservationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D24F418B1C1D7235004F8699 /* ReservationListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2D31DF01C26CD1100BBE60D /* CommentsCustomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DED1C26CD1100BBE60D /* CommentsCustomKeyboard.m */; settings = {ASSET_TAGS = (); }; };
+		D2D31DF11C26CD1100BBE60D /* DynamicCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DEF1C26CD1100BBE60D /* DynamicCommentsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2D31DF41C26CDD500BBE60D /* DynamicCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DF31C26CDD500BBE60D /* DynamicCommentsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		D2D31DF71C26D04500BBE60D /* DynamicDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DF61C26D04500BBE60D /* DynamicDetailModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2D31DFA1C26D4A200BBE60D /* CommentsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DF91C26D4A200BBE60D /* CommentsListModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1436,6 +1441,16 @@
 		C0CA3E471C268BE500A47E8A /* PhoneAppointTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointTimesViewController.m; sourceTree = "<group>"; };
 		D24F418A1C1D7235004F8699 /* ReservationListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReservationListModel.h; sourceTree = "<group>"; };
 		D24F418B1C1D7235004F8699 /* ReservationListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReservationListModel.m; sourceTree = "<group>"; };
+		D2D31DEC1C26CD1100BBE60D /* CommentsCustomKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsCustomKeyboard.h; sourceTree = "<group>"; };
+		D2D31DED1C26CD1100BBE60D /* CommentsCustomKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsCustomKeyboard.m; sourceTree = "<group>"; };
+		D2D31DEE1C26CD1100BBE60D /* DynamicCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicCommentsViewController.h; sourceTree = "<group>"; };
+		D2D31DEF1C26CD1100BBE60D /* DynamicCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicCommentsViewController.m; sourceTree = "<group>"; };
+		D2D31DF21C26CDD500BBE60D /* DynamicCommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicCommentsTableViewCell.h; sourceTree = "<group>"; };
+		D2D31DF31C26CDD500BBE60D /* DynamicCommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicCommentsTableViewCell.m; sourceTree = "<group>"; };
+		D2D31DF51C26D04500BBE60D /* DynamicDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicDetailModel.h; sourceTree = "<group>"; };
+		D2D31DF61C26D04500BBE60D /* DynamicDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicDetailModel.m; sourceTree = "<group>"; };
+		D2D31DF81C26D4A200BBE60D /* CommentsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsListModel.h; sourceTree = "<group>"; };
+		D2D31DF91C26D4A200BBE60D /* CommentsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsListModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1563,6 +1578,10 @@
 				99D141E31C0D5F27002DA3AD /* ConsultingDynamicViewController.m */,
 				99D141E41C0D5F27002DA3AD /* DynamicDetailViewController.h */,
 				99D141E51C0D5F27002DA3AD /* DynamicDetailViewController.m */,
+				D2D31DEC1C26CD1100BBE60D /* CommentsCustomKeyboard.h */,
+				D2D31DED1C26CD1100BBE60D /* CommentsCustomKeyboard.m */,
+				D2D31DEE1C26CD1100BBE60D /* DynamicCommentsViewController.h */,
+				D2D31DEF1C26CD1100BBE60D /* DynamicCommentsViewController.m */,
 			);
 			path = ConsultingDynamic;
 			sourceTree = "<group>";
@@ -2150,6 +2169,8 @@
 		99DA40601C0BE84D00573D4C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D2D31DF21C26CDD500BBE60D /* DynamicCommentsTableViewCell.h */,
+				D2D31DF31C26CDD500BBE60D /* DynamicCommentsTableViewCell.m */,
 				99DA45D51C0C5AF300573D4C /* HomeHeadView.h */,
 				99DA45D61C0C5AF300573D4C /* HomeHeadView.m */,
 				99DA45D81C0C5D8100573D4C /* HomeTableViewCell.h */,
@@ -3253,6 +3274,10 @@
 				C08244A11C205EF900783FD5 /* CheckDataDetailModel.m */,
 				C051E6001C256495005A3D2E /* DiagnosisListModel.h */,
 				C051E6011C256495005A3D2E /* DiagnosisListModel.m */,
+				D2D31DF51C26D04500BBE60D /* DynamicDetailModel.h */,
+				D2D31DF61C26D04500BBE60D /* DynamicDetailModel.m */,
+				D2D31DF81C26D4A200BBE60D /* CommentsListModel.h */,
+				D2D31DF91C26D4A200BBE60D /* CommentsListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3710,6 +3735,7 @@
 				99DA3EEC1C0BE50300573D4C /* ViewController.m in Sources */,
 				99D6EE941C0ECC5900CB1829 /* ReviewAddViewController.m in Sources */,
 				99D1422A1C0D957A002DA3AD /* ConsultingServicesTopView.m in Sources */,
+				D2D31DF01C26CD1100BBE60D /* CommentsCustomKeyboard.m in Sources */,
 				99DA45DA1C0C5D8100573D4C /* HomeTableViewCell.m in Sources */,
 				C051E5F01C255508005A3D2E /* DiagnosisDetailViewController.m in Sources */,
 				99D142511C0DA89E002DA3AD /* TransferredAssistantViewController.m in Sources */,
@@ -3718,6 +3744,7 @@
 				99D142121C0D75B3002DA3AD /* BookDetailToolView.m in Sources */,
 				99DA407C1C0BE85600573D4C /* BaseTableViewController.m in Sources */,
 				99DA40011C0BE59A00573D4C /* UIButton+EXT.m in Sources */,
+				D2D31DF71C26D04500BBE60D /* DynamicDetailModel.m in Sources */,
 				99D6EEBE1C0EEBBD00CB1829 /* LaboratoryTestsTopView.m in Sources */,
 				99DA40491C0BE59A00573D4C /* UIImageView+HighlightedWebCache.m in Sources */,
 				99DA3FFE1C0BE59A00573D4C /* NSString+Size.m in Sources */,
@@ -3751,6 +3778,7 @@
 				C08244891C20173700783FD5 /* AboutViewController.m in Sources */,
 				99DA43651C0C2D0C00573D4C /* NameInputViewController.m in Sources */,
 				A93F23191C13153000AA7756 /* HospitalTableViewController.m in Sources */,
+				D2D31DF41C26CDD500BBE60D /* DynamicCommentsTableViewCell.m in Sources */,
 				C051E5FC1C25608E005A3D2E /* DiagnosisAddInputViewController.m in Sources */,
 				A98AC3B71C17D7B90024177C /* AddPatientsViewController.m in Sources */,
 				C082448A1C20173700783FD5 /* EvaluationViewController.m in Sources */,
@@ -3826,6 +3854,7 @@
 				99DA3FF51C0BE59A00573D4C /* AFURLConnectionOperation.m in Sources */,
 				99DA40041C0BE59A00573D4C /* UIDevice+Extension.m in Sources */,
 				A94B16051C15892F00034029 /* TimeView.m in Sources */,
+				D2D31DF11C26CD1100BBE60D /* DynamicCommentsViewController.m in Sources */,
 				991A31061C11D9B100E0313F /* SetUpTableViewCell.m in Sources */,
 				C051E5EC1C255230005A3D2E /* MedicalHistoryEditorViewController.m in Sources */,
 				99D6EEB21C0EE9EF00CB1829 /* LaboratoryTestsViewController.m in Sources */,
@@ -3846,6 +3875,7 @@
 				99DA40781C0BE85600573D4C /* BaseModel.m in Sources */,
 				99D142241C0D91ED002DA3AD /* DynamicDetailToolView.m in Sources */,
 				99DA45F81C0C82FC00573D4C /* MineTableViewCell.m in Sources */,
+				D2D31DFA1C26D4A200BBE60D /* CommentsListModel.m in Sources */,
 				C0A011201C2695EE00A8E476 /* PhoneAppointTDetailModel.m in Sources */,
 				99DA40081C0BE59A00573D4C /* UIViewController+Extension.m in Sources */,
 				99D141F71C0D5F27002DA3AD /* PatientCenterViewController.m in Sources */,

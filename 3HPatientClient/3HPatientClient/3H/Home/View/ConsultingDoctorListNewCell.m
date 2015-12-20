@@ -41,7 +41,7 @@
         _imgHead.backgroundColor = [UIColor grayColor];
         _imgHead.layer.masksToBounds = YES;
         _imgHead.layer.cornerRadius = 65/2;
-        _imgHead.clipsToBounds = NO;
+        _imgHead.clipsToBounds = YES;
         _imgHead.layer.borderWidth = 1;
         _imgHead.layer.borderColor = [UIColor orangeColor].CGColor;//边框颜色,要为CGColor
     }
@@ -80,6 +80,16 @@
     
     [self.imgHead sd_setImageWithURL:SD_IMG(model.pic)];
     self.labDetail.text = @"问我师傅说的话就考试复试讲课方式缴费卡睡了好久发开房间爱看了罚款了发发火看见了罚款发放哈利法立法撒发生发发发发生发放";
+    self.labHospital.text = [NSString stringWithFormat:@"(%@ %@)",model.hospital,model.job_title];
+    self.labName.text = model.truename;
+    self.viewOrange.height = self.labHospital.bottom + 10;
+    self.labDetail.top = self.viewOrange.bottom + 5;
+    self.viewBack.height = self.labDetail.bottom + 5;
+    return self.viewBack.bottom;
+}
+- (CGFloat)confingWithAppointExpertListModel:(AppointExpertListModel *)model{
+    [self.imgHead sd_setImageWithURL:SD_IMG(model.pic)];
+    self.labDetail.text = model.desc;
     self.labHospital.text = [NSString stringWithFormat:@"(%@ %@)",model.hospital,model.job_title];
     self.labName.text = model.truename;
     self.viewOrange.height = self.labHospital.bottom + 10;

@@ -10,9 +10,12 @@
 #import "ConsultingIsPhoneTitleTableViewCell.h"
 #import "ConsultingIsPhoneTimeTableViewCell.h"
 #import "ConsultingIsPhoneDescTableViewCell.h"
+#import "AppointTimeModel.h"
+
 @interface ConsultingIsPhoneViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) TPKeyboardAvoidingTableView *tableView;
+@property (nonatomic, retain) NSMutableArray * dataArray;
 @end
 
 @implementation ConsultingIsPhoneViewController
@@ -20,10 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.dataArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"保存"];
     [self.view addSubview:self.tableView];
-    
+    [self getNetWork];
 }
 
 - (void)backAction{
@@ -59,7 +64,7 @@
             cell = [[ConsultingIsPhoneTimeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:1];
+        [cell confingWithModel:self.dataArray];
         return cell;
     }else{
         static NSString *identifier = @"ConsultingIsPhoneDescTableViewCell";
@@ -108,7 +113,44 @@
 - (NSString *)title{
     return @"电话咨询";
 }
-
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(ConsultingIsPhoneViewController);
+    [[THNetWorkManager shareNetWork]getDoctorTelTimeitemsDoctor_id:self.id date:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                AppointTimeModel * model = [response thParseDataFromDic:dict andModel:[AppointTimeModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+     
+}
+- (void)rightAction{
+    [self getNetWork111];
+}
+- (void)getNetWork111{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(ConsultingIsPhoneViewController);
+    [[THNetWorkManager shareNetWork]getAddOrderTelOrder_tel_id:@"71" desc:@"我怀孕了" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

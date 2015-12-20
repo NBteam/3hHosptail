@@ -8,7 +8,7 @@
 
 #import "AddressAddViewController.h"
 #import "AddressView.h"
-
+#import "CityListFirstLevelViewController.h"
 
 @interface AddressAddViewController ()
 @property (nonatomic, strong) AddressView * nameView;
@@ -18,6 +18,8 @@
 @property (nonatomic, strong) AddressView * codeView;
 @property (nonatomic, strong) UIButton * btnDefault;
 @property (nonatomic, strong) UILabel * labLine;
+@property (nonatomic, assign) NSInteger selectIndex;
+@property (nonatomic, copy) NSString * cityId;
 @end
 
 @implementation AddressAddViewController
@@ -25,7 +27,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"保存"];
     self.title = @"收货地址";
+    self.selectIndex = 0;
     [self.view addSubview:self.nameView];
     [self.view addSubview:self.phoneView];
     [self.view addSubview:self.addressView];
@@ -33,7 +37,11 @@
     [self.view addSubview:self.codeView];
     [self.view addSubview:self.btnDefault];
     [self.view addSubview:self.labLine];
+    
     // Do any additional setup after loading the view.
+}
+- (void)rightAction{
+    [self getHomeData];
 }
 - (AddressView *)nameView{
     if (!_nameView) {
@@ -50,6 +58,12 @@
 - (AddressView *)addressView{
     if (!_addressView) {
         _addressView = [[AddressView alloc]initWithFrame:CGRectMake(0, self.phoneView.bottom, DeviceSize.width, 44) title:@"选择地区" placeholder:@"地区信息"];
+        _addressView.textDetail.enabled = NO;
+        UITapGestureRecognizer * addressViewTap  = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addressViewGesture)];
+        [_addressView addGestureRecognizer:addressViewTap];
+        UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(DeviceSize.width -17/2 -10, (44 -15)/2, 17/2, 15)];
+        img.image = [UIImage imageNamed:@"arrowImg"];
+        [_addressView addSubview:img];
     }
     return _addressView;
 }
@@ -94,10 +108,54 @@
 }
 - (void)btnDefaultClick:(UIButton *)btn{
     if (btn.selected) {
+        self.selectIndex = 1;
         btn.selected = NO;
     }else{
+        self.selectIndex = 0;
         btn.selected = YES;
     }
+}
+- (void)addressViewGesture{
+    CityListFirstLevelViewController * CityListFirstLevelVc = [[CityListFirstLevelViewController alloc]init];
+    WeakSelf(AddressAddViewController);
+    [CityListFirstLevelVc  setCityListBlock:^(NSString *areaname,NSString *ids,NSString *parent_id) {
+        weakSelf.cityId = [NSString stringWithFormat:@"%@,%@",ids,parent_id];
+        weakSelf.addressView.textDetail.text = [NSString stringWithFormat:@"%@",areaname];
+    }];
+    [self.navigationController pushViewController:CityListFirstLevelVc animated:YES];
+}
+- (void)getHomeData{
+
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(AddressAddViewController);
+    [[THNetWorkManager shareNetWork]getAddAddressName:self.nameView.textDetail.text mobile:self.phoneView.textDetail.text area_ids:self.cityId address:self.addressDetailView.textDetail.text zipcode:self.codeView.textDetail.text is_default:[NSString stringWithFormat:@"%ld",self.selectIndex] andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            if (weakSelf.reloadInfo) {
+                weakSelf.reloadInfo();
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+- (void)setDefaultAddress{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(AddressAddViewController);
+    [[THNetWorkManager shareNetWork]setDefaultAddressId:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

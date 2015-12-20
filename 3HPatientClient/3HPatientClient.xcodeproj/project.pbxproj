@@ -515,6 +515,9 @@
 		D2CE7BBC1C205D9500BB169F /* CheckDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBB1C205D9500BB169F /* CheckDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CE7BBF1C20669100BB169F /* MessageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBE1C20669100BB169F /* MessageListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CED1981C263AE8004FAB33 /* AddressAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CED1971C263AE8004FAB33 /* AddressAddViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2CED19D1C26463D004FAB33 /* CityListFirstLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CED19A1C26463D004FAB33 /* CityListFirstLevelViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2CED19E1C26463D004FAB33 /* CityListSecondLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CED19C1C26463D004FAB33 /* CityListSecondLevelViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2CED1A11C2646C1004FAB33 /* CityListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CED1A01C2646C1004FAB33 /* CityListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CF7C2B1C22DF38008F2900 /* MyDiagnosisListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2A1C22DF38008F2900 /* MyDiagnosisListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CF7C2E1C22E251008F2900 /* MyDiagnosisDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CF7C311C22E6C3008F2900 /* MyRecheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -530,6 +533,11 @@
 		D2D2CAFE1C25A2740052F30B /* AddressListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CAFD1C25A2740052F30B /* AddressListCell.m */; settings = {ASSET_TAGS = (); }; };
 		D2D2CB011C25AAA80052F30B /* AddressListDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CB001C25AAA80052F30B /* AddressListDownCell.m */; settings = {ASSET_TAGS = (); }; };
 		D2D2CB041C25AED60052F30B /* AddressListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CB031C25AED60052F30B /* AddressListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2D31DE21C2696BB00BBE60D /* AppointExpertInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DE11C2696BB00BBE60D /* AppointExpertInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2D31DE51C2697B100BBE60D /* PhoneExperToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DE41C2697B100BBE60D /* PhoneExperToolView.m */; settings = {ASSET_TAGS = (); }; };
+		D2D31DE81C26A02900BBE60D /* AppointExpertListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DE71C26A02900BBE60D /* AppointExpertListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2D31DEB1C26AB7000BBE60D /* AppointTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DEA1C26AB7000BBE60D /* AppointTimeModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2D31DFD1C26D9E400BBE60D /* CommentsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DFC1C26D9E400BBE60D /* CommentsListModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1347,6 +1355,12 @@
 		D2CE7BBE1C20669100BB169F /* MessageListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListModel.m; sourceTree = "<group>"; };
 		D2CED1961C263AE8004FAB33 /* AddressAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressAddViewController.h; sourceTree = "<group>"; };
 		D2CED1971C263AE8004FAB33 /* AddressAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressAddViewController.m; sourceTree = "<group>"; };
+		D2CED1991C26463D004FAB33 /* CityListFirstLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListFirstLevelViewController.h; sourceTree = "<group>"; };
+		D2CED19A1C26463D004FAB33 /* CityListFirstLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListFirstLevelViewController.m; sourceTree = "<group>"; };
+		D2CED19B1C26463D004FAB33 /* CityListSecondLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListSecondLevelViewController.h; sourceTree = "<group>"; };
+		D2CED19C1C26463D004FAB33 /* CityListSecondLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListSecondLevelViewController.m; sourceTree = "<group>"; };
+		D2CED19F1C2646C1004FAB33 /* CityListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListModel.h; sourceTree = "<group>"; };
+		D2CED1A01C2646C1004FAB33 /* CityListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListModel.m; sourceTree = "<group>"; };
 		D2CF7C291C22DF38008F2900 /* MyDiagnosisListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDiagnosisListModel.h; sourceTree = "<group>"; };
 		D2CF7C2A1C22DF38008F2900 /* MyDiagnosisListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDiagnosisListModel.m; sourceTree = "<group>"; };
 		D2CF7C2C1C22E251008F2900 /* MyDiagnosisDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDiagnosisDetailModel.h; sourceTree = "<group>"; };
@@ -1377,6 +1391,16 @@
 		D2D2CB001C25AAA80052F30B /* AddressListDownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressListDownCell.m; sourceTree = "<group>"; };
 		D2D2CB021C25AED60052F30B /* AddressListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressListModel.h; sourceTree = "<group>"; };
 		D2D2CB031C25AED60052F30B /* AddressListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressListModel.m; sourceTree = "<group>"; };
+		D2D31DE01C2696BB00BBE60D /* AppointExpertInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointExpertInfoViewController.h; sourceTree = "<group>"; };
+		D2D31DE11C2696BB00BBE60D /* AppointExpertInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointExpertInfoViewController.m; sourceTree = "<group>"; };
+		D2D31DE31C2697B100BBE60D /* PhoneExperToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneExperToolView.h; sourceTree = "<group>"; };
+		D2D31DE41C2697B100BBE60D /* PhoneExperToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneExperToolView.m; sourceTree = "<group>"; };
+		D2D31DE61C26A02900BBE60D /* AppointExpertListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointExpertListModel.h; sourceTree = "<group>"; };
+		D2D31DE71C26A02900BBE60D /* AppointExpertListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointExpertListModel.m; sourceTree = "<group>"; };
+		D2D31DE91C26AB7000BBE60D /* AppointTimeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointTimeModel.h; sourceTree = "<group>"; };
+		D2D31DEA1C26AB7000BBE60D /* AppointTimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointTimeModel.m; sourceTree = "<group>"; };
+		D2D31DFB1C26D9E400BBE60D /* CommentsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsListModel.h; sourceTree = "<group>"; };
+		D2D31DFC1C26D9E400BBE60D /* CommentsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsListModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1850,6 +1874,10 @@
 				D2D2CAFA1C25A1EA0052F30B /* AddressListViewController.m */,
 				D2CED1961C263AE8004FAB33 /* AddressAddViewController.h */,
 				D2CED1971C263AE8004FAB33 /* AddressAddViewController.m */,
+				D2CED1991C26463D004FAB33 /* CityListFirstLevelViewController.h */,
+				D2CED19A1C26463D004FAB33 /* CityListFirstLevelViewController.m */,
+				D2CED19B1C26463D004FAB33 /* CityListSecondLevelViewController.h */,
+				D2CED19C1C26463D004FAB33 /* CityListSecondLevelViewController.m */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -2288,6 +2316,8 @@
 				D2D2CAFD1C25A2740052F30B /* AddressListCell.m */,
 				D2D2CAFF1C25AAA80052F30B /* AddressListDownCell.h */,
 				D2D2CB001C25AAA80052F30B /* AddressListDownCell.m */,
+				D2D31DE31C2697B100BBE60D /* PhoneExperToolView.h */,
+				D2D31DE41C2697B100BBE60D /* PhoneExperToolView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2855,6 +2885,8 @@
 			children = (
 				C05A96BF1C1D836C0078433B /* AppointExpertViewController.h */,
 				C05A96C01C1D836C0078433B /* AppointExpertViewController.m */,
+				D2D31DE01C2696BB00BBE60D /* AppointExpertInfoViewController.h */,
+				D2D31DE11C2696BB00BBE60D /* AppointExpertInfoViewController.m */,
 			);
 			path = AppointExpert;
 			sourceTree = "<group>";
@@ -3094,6 +3126,14 @@
 				D2D2CAF71C2593AC0052F30B /* GoodsDetailModel.m */,
 				D2D2CB021C25AED60052F30B /* AddressListModel.h */,
 				D2D2CB031C25AED60052F30B /* AddressListModel.m */,
+				D2CED19F1C2646C1004FAB33 /* CityListModel.h */,
+				D2CED1A01C2646C1004FAB33 /* CityListModel.m */,
+				D2D31DE61C26A02900BBE60D /* AppointExpertListModel.h */,
+				D2D31DE71C26A02900BBE60D /* AppointExpertListModel.m */,
+				D2D31DE91C26AB7000BBE60D /* AppointTimeModel.h */,
+				D2D31DEA1C26AB7000BBE60D /* AppointTimeModel.m */,
+				D2D31DFB1C26D9E400BBE60D /* CommentsListModel.h */,
+				D2D31DFC1C26D9E400BBE60D /* CommentsListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3499,6 +3539,7 @@
 				991A31301C11E9EC00E0313F /* HomeTableViewCell.m in Sources */,
 				99DA41921C0BEB0500573D4C /* BaseTabBarController.m in Sources */,
 				99DA41D61C0BEB0500573D4C /* UIScrollView+MJExtension.m in Sources */,
+				D2CED19E1C26463D004FAB33 /* CityListSecondLevelViewController.m in Sources */,
 				99D544971C1592C40081D1D3 /* UIView+convenience.m in Sources */,
 				99DA418E1C0BEB0500573D4C /* MessageViewController.m in Sources */,
 				C05A96E51C1D9DE20078433B /* FeedbackViewController.m in Sources */,
@@ -3558,6 +3599,7 @@
 				99DA41E81C0BEB0500573D4C /* UIImage+WebP.m in Sources */,
 				99DA3EBA1C0BE4CF00573D4C /* ViewController.m in Sources */,
 				9929BCBE1C18257800F747CB /* ConsultingIsPhoneDescTableViewCell.m in Sources */,
+				D2D31DE81C26A02900BBE60D /* AppointExpertListModel.m in Sources */,
 				D2CF7C2E1C22E251008F2900 /* MyDiagnosisDetailModel.m in Sources */,
 				99DA41AF1C0BEB0500573D4C /* FMDatabase.m in Sources */,
 				C08244651C1FCE8500783FD5 /* MyAddressTableViewCell.m in Sources */,
@@ -3571,6 +3613,7 @@
 				9929BCA91C18160300F747CB /* ConsultingToolView.m in Sources */,
 				C05A97A81C1EAF000078433B /* HomeNewsModel.m in Sources */,
 				99DA41B81C0BEB0500573D4C /* MTLJSONAdapter.m in Sources */,
+				D2CED1A11C2646C1004FAB33 /* CityListModel.m in Sources */,
 				9936699F1C13FE5400B3E1C7 /* IncomeRecordViewController.m in Sources */,
 				993669CB1C1404D000B3E1C7 /* MyCollectionTableViewCell.m in Sources */,
 				99DA41F11C0BEB0500573D4C /* TQRichTextEmojiRun.m in Sources */,
@@ -3605,6 +3648,7 @@
 				99D544981C1592C40081D1D3 /* VRGCalendarView.m in Sources */,
 				C08244491C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.m in Sources */,
 				C05A96EB1C1D9E150078433B /* EvaluationViewController.m in Sources */,
+				D2D31DEB1C26AB7000BBE60D /* AppointTimeModel.m in Sources */,
 				D2CF7C311C22E6C3008F2900 /* MyRecheckListModel.m in Sources */,
 				99DA41A81C0BEB0500573D4C /* UIButton+Extension.m in Sources */,
 				99DA419A1C0BEB0500573D4C /* AFSecurityPolicy.m in Sources */,
@@ -3621,6 +3665,7 @@
 				C082447F1C1FE96A00783FD5 /* CommentsCustomKeyboard.m in Sources */,
 				C05A96E81C1D9DF70078433B /* AboutViewController.m in Sources */,
 				99DA41E71C0BEB0500573D4C /* UIImage+MultiFormat.m in Sources */,
+				D2D31DE21C2696BB00BBE60D /* AppointExpertInfoViewController.m in Sources */,
 				9936697F1C13335D00B3E1C7 /* ShopDetailNameTableViewCell.m in Sources */,
 				99DA41911C0BEB0500573D4C /* BaseNavigationController.m in Sources */,
 				99DA41ED1C0BEB0500573D4C /* TPKeyboardAvoidingScrollView.m in Sources */,
@@ -3679,6 +3724,7 @@
 				C05A97AB1C1EBDC70078433B /* ConsultingDynamicListModel.m in Sources */,
 				993669D81C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.m in Sources */,
 				C05A96D01C1D8DFC0078433B /* AppointHosptailTableViewCell.m in Sources */,
+				D2D31DE51C2697B100BBE60D /* PhoneExperToolView.m in Sources */,
 				99DA41B11C0BEB0500573D4C /* FMDatabasePool.m in Sources */,
 				99DA41DA1C0BEB0500573D4C /* NSObject+DHF.m in Sources */,
 				C08244791C1FE5EC00783FD5 /* DynamicCommentsViewController.m in Sources */,
@@ -3717,6 +3763,8 @@
 				D2CED1981C263AE8004FAB33 /* AddressAddViewController.m in Sources */,
 				99DA41F41C0BEB0500573D4C /* TQRichTextView.m in Sources */,
 				99DA41E41C0BEB0500573D4C /* SDWebImagePrefetcher.m in Sources */,
+				D2CED19D1C26463D004FAB33 /* CityListFirstLevelViewController.m in Sources */,
+				D2D31DFD1C26D9E400BBE60D /* CommentsListModel.m in Sources */,
 				99DA41E11C0BEB0500573D4C /* SDWebImageDownloader.m in Sources */,
 				993669821C13336F00B3E1C7 /* ShopDetailNumTableViewCell.m in Sources */,
 				99DA419D1C0BEB0500573D4C /* AFURLResponseSerialization.m in Sources */,

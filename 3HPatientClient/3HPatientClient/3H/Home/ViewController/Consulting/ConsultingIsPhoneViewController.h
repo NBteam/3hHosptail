@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface ConsultingIsPhoneViewController : BaseViewController
-
+@property (nonatomic, copy) NSString * id;
 @end

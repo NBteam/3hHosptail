@@ -35,7 +35,7 @@
         _imgDoctorPic.backgroundColor = [UIColor grayColor];
         _imgDoctorPic.layer.masksToBounds = YES;
         _imgDoctorPic.layer.cornerRadius = 65/2;
-        _imgDoctorPic.clipsToBounds = NO;
+        _imgDoctorPic.clipsToBounds = YES;
     }
     return _imgDoctorPic;
 }
@@ -61,7 +61,7 @@
 //赋值
 
 - (void)confingWithModel:(DoctorInfoModel *)model{
-    
+    [self.imgDoctorPic sd_setImageWithURL:SD_IMG(model.pic)];
     self.labDoctorName.text = model.truename;
     self.labDoctorInfo.text = [NSString stringWithFormat:@"%@ %@",model.hospital,model.job_title];
 }

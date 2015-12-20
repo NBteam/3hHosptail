@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface AddressAddViewController : BaseViewController
-
+@property (nonatomic, copy) void (^reloadInfo)(void);
 @end
