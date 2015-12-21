@@ -16,6 +16,10 @@
 
 @property (nonatomic, strong) TPKeyboardAvoidingTableView *tableView;
 @property (nonatomic, retain) NSMutableArray * dataArray;
+@property (nonatomic, assign) CGFloat priceStr;
+@property (nonatomic, strong) ConsultingIsPhoneTitleTableViewCell *headView;
+@property (nonatomic, strong) NSDictionary * dicInfo;
+@property (nonatomic, strong) NSIndexPath * indexPaths;
 @end
 
 @implementation ConsultingIsPhoneViewController
@@ -26,6 +30,7 @@
     self.dataArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.tableView.tableHeaderView = self.headView;
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"保存"];
     [self.view addSubview:self.tableView];
     [self getNetWork];
@@ -45,25 +50,30 @@
     }
     return _tableView;
 }
-
+- (ConsultingIsPhoneTitleTableViewCell *)headView{
+    if (!_headView) {
+        _headView = [[ConsultingIsPhoneTitleTableViewCell alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, 55)];
+    }
+    return _headView;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section ==0) {
-        static NSString *identifier = @"ConsultingIsPhoneTitleTableViewCell";
-        ConsultingIsPhoneTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (cell == nil) {
-            cell = [[ConsultingIsPhoneTitleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:1];
-        return cell;
-    }else if (indexPath.section == 1){
+    if (indexPath.section == 0){
         static NSString *identifier = @"ConsultingIsPhoneTimeTableViewCell";
         ConsultingIsPhoneTimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
             cell = [[ConsultingIsPhoneTimeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
+        WeakSelf(ConsultingIsPhoneViewController);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell setBtnBlock:^(NSDictionary * dict) {
+            weakSelf.dicInfo = [NSDictionary dictionaryWithDictionary:dict];
+            weakSelf.priceStr = [dict[@"price"] doubleValue];
+            [weakSelf.headView confingWithModel:weakSelf.priceStr];
+        }];
+        [cell setIsEmptyBlock:^{
+            [weakSelf showHudAuto:@"此时间不能预约" andDuration:@"2"];
+        }];
         [cell confingWithModel:self.dataArray];
         return cell;
     }else{
@@ -73,23 +83,21 @@
             cell = [[ConsultingIsPhoneDescTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+        self.indexPaths = indexPath;
         return cell;
     }
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        return 45;
-    }else if (indexPath.section == 1){
+    if (indexPath.section == 0){
         return 180 +35 +50;
     }else{
         return 200;
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -133,16 +141,25 @@
      
 }
 - (void)rightAction{
-    [self getNetWork111];
+    ConsultingIsPhoneDescTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.indexPaths];
+    if (!self.dicInfo) {
+        [self showHudAuto:@"请选择预约时间" andDuration:@"2"];
+    }else if([cell.textView.text isEqualToString:@""]){
+        [self showHudAuto:@"请填写详细内容" andDuration:@"2"];
+    }else{
+        [self getConsultingNetWorkText:cell.textView.text];
+    }
 }
-- (void)getNetWork111{
+- (void)getConsultingNetWorkText:(NSString *)text{
+    NSLog(@"%@",self.dicInfo);
+    
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(ConsultingIsPhoneViewController);
-    [[THNetWorkManager shareNetWork]getAddOrderTelOrder_tel_id:@"71" desc:@"我怀孕了" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getAddOrderTelOrder_tel_id:self.dicInfo[@"id"] desc:text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             
-            
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

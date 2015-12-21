@@ -8,7 +8,7 @@
 
 #import "BaseTableViewCell.h"
 #import "CustomTextView.h"
-@interface ConsultingIsPhoneDescTableViewCell : BaseTableViewCell
+@interface ConsultingIsPhoneDescTableViewCell : BaseTableViewCell<UITextViewDelegate>
 
 @property (nonatomic, strong) UIImageView *imgLogo;
 
@@ -17,5 +17,7 @@
 @property (nonatomic, strong) UILabel *labLine;
 
 @property (nonatomic, strong) CustomTextView *textView;
+
+
 
 @end

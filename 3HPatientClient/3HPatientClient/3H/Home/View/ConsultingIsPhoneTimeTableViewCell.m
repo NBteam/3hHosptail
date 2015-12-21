@@ -18,6 +18,7 @@
     [self.viewBack addSubview:self.btnLeft];
     [self.viewBack addSubview:self.btnRight];
     [self.viewBack addSubview:self.labTime];
+    [self.viewBack addSubview:self.labLine];
     [self.viewBack addSubview:self.scrollView];
     [self customScrollViewsArray:nil];
 }
@@ -102,7 +103,13 @@
     }
     return _btnRight;
 }
-
+- (UILabel *)labLine{
+    if (!_labLine) {
+        _labLine = [[UILabel alloc]initWithFrame:CGRectMake(0, self.btnLeft.bottom-1, self.viewBack.width, 0.5)];
+        _labLine.backgroundColor = [UIColor colorWithHEX:0xcccccc];
+    }
+    return _labLine;
+}
 - (void)btnRightAction{
      NSInteger  index = (self.scrollView.contentOffset.x +self.viewBack.width)/(self.viewBack.width);
     if (index < self.dataArray.count) {
@@ -140,31 +147,51 @@
             [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
             btn.layer.borderWidth = 0.25;
             btn.titleLabel.font = [UIFont systemFontOfSize:15];
-
+            [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+            btn.tag = j * 1000 + i;
             if ([model.times[i][@"start_time"]isEqualToString:@"0"]) {
                 btn.backgroundColor = AppDefaultColor;
                 btn.layer.borderColor = AppDefaultColor.CGColor;
-                [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
+                [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             }
             [btn setTitle:model.times[i][@"start_time"] forState:UIControlStateNormal];
+//            [btn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
             [self.scrollView addSubview:btn];
         }
     }
     self.scrollView.contentSize = CGSizeMake(self.viewBack.width *array.count, self.scrollView.height);
 }
-
+- (void)btnClick:(UIButton *)button{
+    AppointTimeModel * model = self.dataArray[button.tag/1000];
+    if ([[NSString stringWithFormat:@"%@",model.times[button.tag%1000][@"is_empty"]] isEqualToString:@"1"]) {
+        
+        for (UIView * view in self.scrollView.subviews) {
+            if ([view isKindOfClass:[UIButton class]]) {
+                UIButton * btn = (UIButton *)view;
+                btn.backgroundColor = [UIColor whiteColor];
+                btn.selected = NO;
+                [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
+            }
+        }
+        button.backgroundColor = AppDefaultColor;
+        button.selected = YES;
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        if (self.btnBlock) {
+            self.btnBlock(model.times[button.tag%1000]);
+        }
+    }else{
+        if (self.isEmptyBlock) {
+            self.isEmptyBlock();
+        }
+    }
+    
+}
 //赋值
 - (void)confingWithModel:(NSMutableArray *)array{
     [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.dataArray = [NSMutableArray arrayWithArray:array];
     [self customScrollViewsArray:array];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+
 
 @end

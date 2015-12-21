@@ -22,9 +22,14 @@
 
 @property (nonatomic, strong) UIButton *btnLeft;
 
+@property (nonatomic, strong) UILabel *labLine;
+
 @property (nonatomic, strong) UIButton *btnRight;
 
 @property (nonatomic, strong) NSArray * dataArray;
 //赋值
 - (void)confingWithModel:(NSMutableArray *)array;
+
+@property (nonatomic, copy) void (^btnBlock)(NSDictionary *dict);
+@property (nonatomic, copy) void (^isEmptyBlock)(void);
 @end

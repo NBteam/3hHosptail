@@ -10,12 +10,38 @@
 
 @implementation ConsultingIsPhoneTitleTableViewCell
 
-- (void)customView{
-    [self.contentView addSubview:self.imgLogo];
-    [self.contentView addSubview:self.labTitle];
-    [self.contentView addSubview:self.labDetail];
+- (id)initWithFrame:(CGRect)frame{
+    if (self == [super initWithFrame:frame]) {
+        [self addSubview:self.viewBack];
+        [self.viewBack addSubview:self.imgLogo];
+        [self.viewBack addSubview:self.labTitle];
+        [self.viewBack addSubview:self.labDetail];
+        [self.viewBack addSubview:self.labLine];
+        [self.viewBack addSubview:self.labLine1];
+    }
+    return self;
 }
-
+- (UIView *)viewBack{
+    if (!_viewBack) {
+        _viewBack = [[UIView alloc]initWithFrame:CGRectMake(0, 10, DeviceSize.width, 45)];
+        _viewBack.backgroundColor = [UIColor whiteColor];
+    }
+    return  _viewBack;
+}
+- (UILabel *)labLine{
+    if (!_labLine) {
+        _labLine = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, 0.5)];
+        _labLine.backgroundColor = [UIColor colorWithHEX:0xcccccc];
+    }
+    return _labLine;
+}
+- (UILabel *)labLine1{
+    if (!_labLine1) {
+        _labLine1 = [[UILabel alloc]initWithFrame:CGRectMake(0, self.viewBack.bottom-10.5, DeviceSize.width, 0.5)];
+        _labLine1.backgroundColor = [UIColor colorWithHEX:0xcccccc];
+    }
+    return _labLine1;
+}
 - (UIImageView *)imgLogo{
     if (!_imgLogo) {
         _imgLogo = [[UIImageView alloc] initWithFrame:CGRectMake(10, (45 -21/2)/2, 32/2, 21/2)];
@@ -46,8 +72,8 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSInteger )dic{
-    self.labDetail.text = @"1800元";
+- (void)confingWithModel:(CGFloat )dic{
+    self.labDetail.text = [NSString stringWithFormat:@"%.2f元",dic];
 }
 /*
 // Only override drawRect: if you perform custom drawing.
