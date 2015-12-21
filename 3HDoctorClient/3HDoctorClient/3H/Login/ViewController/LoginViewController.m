@@ -14,6 +14,9 @@
 #import "PerfectInformationViewController.h"
 //忘记密码
 #import "ForgetPossWordViewController.h"
+#import "UMSocial.h"
+
+
 @interface LoginViewController ()
 //蓝色背景
 @property (nonatomic, strong) UIView *viewBlue;
@@ -36,6 +39,21 @@
 //立即登陆
 @property (nonatomic, strong) UIButton *btnLogin;
 
+//线
+@property (nonatomic, strong) UILabel *labLine;
+@property (nonatomic, strong) UILabel *labLoginName;
+
+//第三方
+//昵称
+@property (nonatomic, copy) NSString *nicknameString;
+//第三方用户统一ID
+@property (nonatomic, copy) NSString *openedString;
+//第三方类型（weixin、qq、weibo）
+@property (nonatomic, copy) NSString *open_typeString;
+//头像地址
+@property (nonatomic, copy) NSString *picString;
+//性别，0保密，1男，2女
+@property (nonatomic, copy) NSString *sexString;
 
 @end
 
@@ -62,6 +80,10 @@
     [self.view addSubview:self.labLinePassWord];
     [self.view addSubview:self.btnForgetPassWord];
     [self.view addSubview:self.btnLogin];
+    [self.view addSubview:self.labLine];
+    [self.view addSubview:self.labLoginName];
+    
+    [self customShareButtons];
 }
 
 #pragma mark -UI
@@ -219,6 +241,181 @@
     }
     
 }
+
+- (UILabel *)labLine{
+    if (!_labLine) {
+        _labLine = [[UILabel alloc] initWithFrame:CGRectMake(35, self.btnLogin.bottom +30, DeviceSize.width -70, 1)];
+        _labLine.backgroundColor = [UIColor colorWithHEX:0xcccccc];
+        _labLine.layer.masksToBounds = NO;
+    }
+    return _labLine;
+}
+
+- (UILabel *)labLoginName{
+    if (!_labLoginName) {
+        _labLoginName = [[UILabel alloc] init];
+        _labLoginName.backgroundColor = [UIColor colorWithHEX:0xffffff];
+        _labLoginName.text = @"使用以下账户直接登录";
+        _labLoginName.textAlignment = NSTextAlignmentCenter;
+        _labLoginName.textColor = [UIColor colorWithHEX:0x888888];
+        _labLoginName.font = [UIFont systemFontOfSize:13];
+        [_labLoginName sizeToFit];
+        
+    _labLoginName.frame = CGRectMake(self.labLine.left +(self.labLine.width -_labLoginName.width -30)/2, self.labLine.top -6, _labLoginName.width +30, 13);
+        
+    }
+    return _labLoginName;
+}
+
+- (void)customShareButtons{
+    NSArray *arr = @[@"3H医生端-登录_新浪微博",@"3H医生端-登录_QQ",@"3H医生端-登录_微信"];
+    CGFloat f = (DeviceSize.width -35*3 -90)/2;
+    for (int i = 0; i <arr.count; i++) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(f +(35 +45)*i, self.labLoginName.bottom +15, 35, 35);
+        [btn setImage:[UIImage imageNamed:arr[i]] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag = 1000 +i;
+        [self.view addSubview:btn];
+        
+    }
+}
+
+- (void)btnAction:(UIButton *)button{
+    if (button.tag == 1000) {//新浪微博
+        [self getWeiBo];
+    }else if(button.tag == 1001){//QQ登录
+        [self getQQ];
+    }else{//微信登录
+        [self getWechat];
+    }
+}
+
+
+- (void)getWeiBo{
+    WeakSelf(LoginViewController);
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
+            
+            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            
+            //昵称
+            weakSelf.nicknameString = snsAccount.userName;
+            //第三方用户统一ID
+            weakSelf.openedString = snsAccount.usid;
+            //第三方类型（weixin、qq、weibo）
+            weakSelf.open_typeString = @"weibo";
+            //头像地址
+            weakSelf.picString = snsAccount.iconURL;
+            //性别，0保密，1男，2女
+            weakSelf.sexString = @"0";
+            
+        }
+        
+    });
+    
+    //得到的数据在回调Block对象形参respone的data属性
+    //    [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToSina  completion:^(UMSocialResponseEntity *response){
+    //        NSLog(@"SnsInformation is %@",response.data);
+    //        //昵称
+    //        weakSelf.nicknameString = response.data[@"screen_name"];
+    //        //第三方用户统一ID
+    //        weakSelf.openedString = response.data[@"openid"];
+    //        //第三方类型（weixin、qq、weibo）
+    //        weakSelf.open_typeString = response.data[@"weibo"];
+    //        //头像地址
+    //        weakSelf.picString = response.data[@"profile_image_url"];
+    //        //性别，0保密，1男，2女
+    //        weakSelf.sexString = response.data[@"gender"];
+    //
+    //    }];
+}
+- (void)getQQ{
+    
+    WeakSelf(LoginViewController);
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        //          获取微博用户名、uid、token等
+        
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToQQ];
+            
+            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            //昵称
+            weakSelf.nicknameString = snsAccount.userName;
+            //第三方用户统一ID
+            weakSelf.openedString = snsAccount.usid;
+            //第三方类型（weixin、qq、weibo）
+            weakSelf.open_typeString = @"qq";
+            //头像地址
+            weakSelf.picString = snsAccount.iconURL;
+            //性别，0保密，1男，2女
+            weakSelf.sexString = @"0";
+            
+        }});
+    
+    //    //得到的数据在回调Block对象形参respone的data属性
+    //    [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToQQ  completion:^(UMSocialResponseEntity *response){
+    //        NSLog(@"SnsInformation is %@",response.data);
+    //
+    //
+    //    }];
+}
+- (void)getWechat{
+    
+    WeakSelf(LoginViewController);
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
+            
+            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            
+            //昵称
+            weakSelf.nicknameString = snsAccount.userName;
+            //第三方用户统一ID
+            weakSelf.openedString = snsAccount.usid;
+            //第三方类型（weixin、qq、weibo）
+            weakSelf.open_typeString = @"weixin";
+            //头像地址
+            weakSelf.picString = snsAccount.iconURL;
+            //性别，0保密，1男，2女
+            weakSelf.sexString = @"0";
+            
+        }
+        
+    });
+    
+    //    //得到的数据在回调Block对象形参respone的data属性
+    //    [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToWechatSession  completion:^(UMSocialResponseEntity *response){
+    //        NSLog(@"SnsInformation is %@",response.data);
+    //        //昵称
+    //        weakSelf.nicknameString = response.data[@"screen_name"];
+    //        //第三方用户统一ID
+    //        weakSelf.openedString = response.data[@"openid"];
+    //        //第三方类型（weixin、qq、weibo）
+    //        weakSelf.open_typeString = response.data[@"weixin"];
+    //        //头像地址
+    //        weakSelf.picString = response.data[@"profile_image_url"];
+    //        //性别，0保密，1男，2女
+    //        weakSelf.sexString = response.data[@"gender"];
+    //        
+    //    }];
+    
+}
+
+
 //1 == 到主页  0== 完善信息
 - (void)getUserInfoData:(NSInteger)index{
     WeakSelf(LoginViewController);

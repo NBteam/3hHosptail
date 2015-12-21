@@ -35,6 +35,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+    self.navigationItem.title = @"3H健康管理";
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"];
     self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
     NSLog(@"我的名字%@",self.user.truename);
@@ -160,9 +162,9 @@
     self.changeView.height = DeviceSize.width -f;
 }
 
-- (NSString *)title{
-    return @"3H健康管理";
-}
+//- (NSString *)title{
+//    return @"3H健康管理";
+//}
 
 
 - (void)didReceiveMemoryWarning {
