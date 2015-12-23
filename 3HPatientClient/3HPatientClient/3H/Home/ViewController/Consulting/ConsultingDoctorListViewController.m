@@ -11,6 +11,7 @@
 #import "ConsultingViewController.h"
 #import "ConsultingDoctorListNewCell.h"
 #import "DoctorListModel.h"
+#import "AppointExpertListModel.h"
 
 @interface ConsultingDoctorListViewController ()
 @property (nonatomic, assign) CGFloat cellHeight;
@@ -42,15 +43,15 @@
         cell = [[ConsultingDoctorListNewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    DoctorListModel * model = self.dataArray[indexPath.row];
-    self.cellHeight = [cell confingWithModel:nil];
+    AppointExpertListModel * model = self.dataArray[indexPath.row];
+    self.cellHeight = [cell confingWithAppointExpertListModel:model];
     return cell;
     
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return self.dataArray.count;
-    return 6;
+    return self.dataArray.count;
+//    return 6;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -83,14 +84,14 @@
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(ConsultingDoctorListViewController);
-    [[THNetWorkManager shareNetWork]getDoctorListPage:self.pageNO kw:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getMyDoctorsPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             if (weakSelf.pageNO == 1) {
                 [weakSelf.dataArray removeAllObjects];
             }
             for (NSDictionary * dic in response.dataDic[@"list"]) {
-                DoctorListModel * model = [response thParseDataFromDic:dic andModel:[DoctorListModel class]];
+                AppointExpertListModel * model = [response thParseDataFromDic:dic andModel:[AppointExpertListModel class]];
                 [weakSelf.dataArray addObject:model];
             }
             [weakSelf.tableView reloadData];

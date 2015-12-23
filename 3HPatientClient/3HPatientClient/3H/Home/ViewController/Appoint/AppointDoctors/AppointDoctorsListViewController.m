@@ -9,8 +9,10 @@
 #import "AppointDoctorsListViewController.h"
 #import "AppointDoctorsViewController.h"
 #import "AppointDoctorsListTableViewCell.h"
-@interface AppointDoctorsListViewController ()
+#import "ConsultingDoctorListNewCell.h"
 
+@interface AppointDoctorsListViewController ()
+@property (nonatomic, assign) CGFloat cellHeight;
 @end
 
 @implementation AppointDoctorsListViewController
@@ -19,6 +21,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.isOpenHeaderRefresh = YES;
+    self.isOpenFooterRefresh = YES;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self getNetWork];
 }
 
 - (void)backAction{
@@ -30,31 +36,28 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"AppointDoctorsListTableViewCell";
-    AppointDoctorsListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    ConsultingDoctorListNewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
-        cell = [[AppointDoctorsListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[ConsultingDoctorListNewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:1];
+    AppointExpertListModel * model = self.dataArray[indexPath.row];
+    self.cellHeight = [cell confingWithAppointExpertListModel:model];
     return cell;
     
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return self.cellHeight;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 10;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10;
+    return 1;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -64,6 +67,49 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     AppointDoctorsViewController *appointDoctorsVc = [[AppointDoctorsViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:appointDoctorsVc animated:YES];
+}
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(AppointDoctorsListViewController);
+    [[THNetWorkManager shareNetWork]getMyDoctorsPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            if (weakSelf.pageNO == 1) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            for (NSDictionary * dic in response.dataDic[@"list"]) {
+                AppointExpertListModel * model = [response thParseDataFromDic:dic andModel:[AppointExpertListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+            //  结束头部刷新
+            [weakSelf.tableView.header endRefreshing];
+            //  结束尾部刷新
+            [weakSelf.tableView.footer endRefreshing];
+        }else{
+            //  结束头部刷新
+            [weakSelf.tableView.header endRefreshing];
+            //  结束尾部刷新
+            [weakSelf.tableView.footer endRefreshing];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+    
+}
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    [self getNetWork];
+}
+- (void)footerRequestWithData
+{
+    [self getNetWork];
 }
 - (NSString *)title{
     return @"医生列表";
