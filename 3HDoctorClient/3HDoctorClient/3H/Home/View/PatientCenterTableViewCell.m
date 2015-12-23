@@ -20,7 +20,6 @@
 - (UIImageView *)imgPatient{
     if (!_imgPatient) {
         _imgPatient = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
-        _imgPatient.backgroundColor = [UIColor grayColor];
         _imgPatient.layer.masksToBounds = YES;
         _imgPatient.layer.cornerRadius = 25;
     }
@@ -60,6 +59,7 @@
     self.labTitle.attributedText = [self getName:dic.truename AndAge:[NSString stringWithFormat:@"  %@",dic.age] AndSex:[NSString stringWithFormat:@"  %@",dic.sex]];
   //  self.labDetail.attributedText
     self.labDetail.text = dic.sick_desc;
+    [self.imgPatient sd_setImageWithURL:[NSURL URLWithString:dic.pic]];
 }
 
 - (NSMutableAttributedString *)getName:(NSString *)name AndAge:(NSString *)age AndSex:(NSString *)sex{

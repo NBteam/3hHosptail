@@ -77,11 +77,11 @@
         btn .titleLabel.numberOfLines=2;
         
         
-        if (i == 0) {
+        if (model.member_n.length  != 0) {
             UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(btn.width -33, 0, 33, 33)];
             img.image = [UIImage imageNamed:@"我的-预约设置-电话预约-30_已约"];
             [btn addSubview:img];
-            [btn setTitle:[NSString stringWithFormat:@"%@\n%@",@"范英强",model.start_time] forState:UIControlStateNormal];
+            [btn setTitle:[NSString stringWithFormat:@"%@\n%@",model.member_n,model.start_time] forState:UIControlStateNormal];
             [btn setTitleColor:AppDefaultColor forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont systemFontOfSize:13];
         }else{

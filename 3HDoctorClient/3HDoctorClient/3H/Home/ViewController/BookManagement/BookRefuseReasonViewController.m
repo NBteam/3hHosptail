@@ -35,6 +35,27 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)getPhoneDetailDataOfOpt:(NSInteger )opt{
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(BookRefuseReasonViewController);
+    [[THNetWorkManager shareNetWork] processMyOrdertelId:self.ids opt:opt reason:self.txtView.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            if (weakSelf.reloadBlock) {
+                weakSelf.reloadBlock();
+                [weakSelf.navigationController popToViewController:weakSelf.navigationController.viewControllers[1] animated:YES];
+            }
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+    
+}
+
 #pragma mark - UI
 
 - (UIView *)viewBack{
@@ -77,9 +98,11 @@
 }
 
 - (void)btnSubmitAction{
-    if (self.bookRefuseReasonBlock) {
-        self.bookRefuseReasonBlock();
-        [self.navigationController popViewControllerAnimated:YES];
+    if (self.txtView.text.length ==0) {
+        [self showHudAuto:@"请填写拒绝理由" andDuration:@"2"];
+        ;
+    }else{
+        [self getPhoneDetailDataOfOpt:-1];
     }
 }
 

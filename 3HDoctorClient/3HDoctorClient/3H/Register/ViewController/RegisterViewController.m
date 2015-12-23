@@ -169,7 +169,7 @@
         _btnGetCode.backgroundColor = [UIColor orangeColor];
         _btnGetCode.titleLabel.font = [UIFont systemFontOfSize:13];
         [_btnGetCode setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_btnGetCode setTitle:@"获取邀请码" forState:UIControlStateNormal];
+        [_btnGetCode setTitle:@"获取验证码" forState:UIControlStateNormal];
         _btnGetCode.layer.masksToBounds = YES;
         _btnGetCode.layer.cornerRadius = 25/2;
         [_btnGetCode addTarget:self action:@selector(btnGetCodeAction) forControlEvents:UIControlEventTouchUpInside];

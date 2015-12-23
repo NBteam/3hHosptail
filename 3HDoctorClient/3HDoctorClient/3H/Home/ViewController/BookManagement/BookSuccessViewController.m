@@ -24,10 +24,12 @@
 }
 
 - (void)backAction{
-    if (self.bookSuccessBlock) {
-        self.bookSuccessBlock();
+    
+    if (self.reloadBlock) {
+        self.reloadBlock();
+        [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

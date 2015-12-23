@@ -11,4 +11,7 @@
 @interface PhoneDetailViewController : BaseTableViewController
 
 @property (nonatomic, copy) NSString *ids;
+
+@property (nonatomic, copy) void(^reloadBlock)(void);
+
 @end

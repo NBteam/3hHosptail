@@ -722,8 +722,13 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 }
 
 #pragma mark 电话预约——处理请求【20151216添加】1同意，-1拒绝
-- (void)processMyOrdertelId:(NSString *)ids opt:(NSInteger)opt andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"processMyOrdertel",@"token":GetToken,@"id":ids,@"opt":@(opt)};
+- (void)processMyOrdertelId:(NSString *)ids opt:(NSInteger)opt reason:(NSString *)reason andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic;
+    if (opt == 1) {
+        paramDic = @{@"a":@"processMyOrdertel",@"token":GetToken,@"id":ids,@"opt":@(opt)};
+    }else{
+        paramDic = @{@"a":@"processMyOrdertel",@"token":GetToken,@"id":ids,@"opt":@(opt),@"reason":reason};
+    }
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 

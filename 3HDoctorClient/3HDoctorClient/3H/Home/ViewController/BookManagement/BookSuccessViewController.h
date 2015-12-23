@@ -16,9 +16,7 @@
 @property (nonatomic, copy) NSString *timeStrig;
 
 @property (nonatomic, copy) NSString *nameString;
+@property (nonatomic, copy) void(^reloadBlock)(void);
 
 
-
-//预约成功后
-@property (nonatomic,copy) void(^bookSuccessBlock)();
 @end

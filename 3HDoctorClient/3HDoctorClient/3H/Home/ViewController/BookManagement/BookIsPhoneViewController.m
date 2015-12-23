@@ -49,9 +49,18 @@
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        //  重新加载数据
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
-        ;
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        //  重新加载数据
     } ];
        
     
@@ -90,10 +99,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    WeakSelf(BookIsPhoneViewController);
     BookIsPhoneModel *model = self.dataArray[indexPath.section];
     PhoneDetailViewController *phoneDetailVc = [[PhoneDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     phoneDetailVc.ids = model.id;
+    [phoneDetailVc setReloadBlock:^{
+        [weakSelf.tableView reloadData];
+    }];
     [self.navigationController pushViewController:phoneDetailVc animated:YES];
 }
 

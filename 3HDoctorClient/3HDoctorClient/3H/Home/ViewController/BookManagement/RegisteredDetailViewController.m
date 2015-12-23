@@ -161,16 +161,16 @@
         if (response.responseCode == 1) {
             if (sta==1) {
                 BookSuccessViewController *bookSuccessVc = [[BookSuccessViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-                [bookSuccessVc setBookSuccessBlock:^{
-                    [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已同意"];
-                }];
+//                [bookSuccessVc setBookSuccessBlock:^{
+//                    [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已同意"];
+//                }];
                 [self.navigationController pushViewController:bookSuccessVc animated:YES];
             }else{
                 BookRefuseReasonViewController *bookRefuseReasonVc = [[BookRefuseReasonViewController alloc] init];
-                [bookRefuseReasonVc setBookRefuseReasonBlock:^{
-                    
-                    [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已拒绝"];
-                }];
+//                [bookRefuseReasonVc setBookRefuseReasonBlock:^{
+//                    
+//                    [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已拒绝"];
+//                }];
                 [weakSelf.navigationController pushViewController:bookRefuseReasonVc animated:YES];
             }
             

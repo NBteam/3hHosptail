@@ -7,9 +7,12 @@
 //
 
 #import "BaseViewController.h"
-
+#import "PhoneDetailModel.h"
 @interface BookRefuseReasonViewController : BaseViewController
 
+@property (nonatomic, copy) NSString *ids;
+
+@property (nonatomic, strong) PhoneDetailModel *model;
 //拒绝提交完拒绝理由后回调
-@property (nonatomic,copy) void(^bookRefuseReasonBlock)();
+@property (nonatomic, copy) void(^reloadBlock)(void);
 @end
