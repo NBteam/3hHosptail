@@ -149,10 +149,10 @@
             btn.titleLabel.font = [UIFont systemFontOfSize:15];
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
             btn.tag = j * 1000 + i;
-            if ([model.times[i][@"start_time"]isEqualToString:@"0"]) {
-                btn.backgroundColor = AppDefaultColor;
+            if ([model.times[i][@"is_empty"] doubleValue] == 0) {
+                btn.backgroundColor = [UIColor colorWithHEX:0xe7e7e7];
                 btn.layer.borderColor = AppDefaultColor.CGColor;
-                [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
             }
             [btn setTitle:model.times[i][@"start_time"] forState:UIControlStateNormal];
 //            [btn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
@@ -171,6 +171,16 @@
                 btn.backgroundColor = [UIColor whiteColor];
                 btn.selected = NO;
                 [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
+            }
+        }
+        for (int i = 0; i < self.dataArray.count; i++) {
+            AppointTimeModel * model = self.dataArray[i];
+            for (int j = 0 ; j < model.times.count; j++) {
+                if ([[NSString stringWithFormat:@"%@",model.times[j][@"is_empty"]] isEqualToString:@"0"]) {
+                    UIButton * btnN = (UIButton *)[self.scrollView viewWithTag:i*1000+j];
+                    btnN.backgroundColor = [UIColor colorWithHEX:0xe7e7e7];
+                    [btnN setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
+                }
             }
         }
         button.backgroundColor = AppDefaultColor;
