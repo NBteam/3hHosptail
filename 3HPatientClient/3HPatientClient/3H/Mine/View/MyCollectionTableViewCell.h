@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) UIImageView *imgStar;
 
+@property (nonatomic, strong) UILabel * labPrice;
 //赋值
 - (void)confingWithModel:(NSDictionary *)dic;
 @end

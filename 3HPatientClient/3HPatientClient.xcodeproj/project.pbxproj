@@ -533,6 +533,9 @@
 		D2D2CAFE1C25A2740052F30B /* AddressListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CAFD1C25A2740052F30B /* AddressListCell.m */; settings = {ASSET_TAGS = (); }; };
 		D2D2CB011C25AAA80052F30B /* AddressListDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CB001C25AAA80052F30B /* AddressListDownCell.m */; settings = {ASSET_TAGS = (); }; };
 		D2D2CB041C25AED60052F30B /* AddressListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2CB031C25AED60052F30B /* AddressListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2D2F6161C297F7100A055FA /* ConsultingFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2F6151C297F7100A055FA /* ConsultingFinishViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2D2F6191C297FA100A055FA /* FinishHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2F6181C297FA100A055FA /* FinishHeadView.m */; settings = {ASSET_TAGS = (); }; };
+		D2D2F61C1C2988DE00A055FA /* FinishTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D2F61B1C2988DE00A055FA /* FinishTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		D2D31DE21C2696BB00BBE60D /* AppointExpertInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DE11C2696BB00BBE60D /* AppointExpertInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D31DE51C2697B100BBE60D /* PhoneExperToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DE41C2697B100BBE60D /* PhoneExperToolView.m */; settings = {ASSET_TAGS = (); }; };
 		D2D31DE81C26A02900BBE60D /* AppointExpertListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DE71C26A02900BBE60D /* AppointExpertListModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -1391,6 +1394,12 @@
 		D2D2CB001C25AAA80052F30B /* AddressListDownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressListDownCell.m; sourceTree = "<group>"; };
 		D2D2CB021C25AED60052F30B /* AddressListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressListModel.h; sourceTree = "<group>"; };
 		D2D2CB031C25AED60052F30B /* AddressListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressListModel.m; sourceTree = "<group>"; };
+		D2D2F6141C297F7100A055FA /* ConsultingFinishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingFinishViewController.h; sourceTree = "<group>"; };
+		D2D2F6151C297F7100A055FA /* ConsultingFinishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingFinishViewController.m; sourceTree = "<group>"; };
+		D2D2F6171C297FA100A055FA /* FinishHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishHeadView.h; sourceTree = "<group>"; };
+		D2D2F6181C297FA100A055FA /* FinishHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishHeadView.m; sourceTree = "<group>"; };
+		D2D2F61A1C2988DE00A055FA /* FinishTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishTableViewCell.h; sourceTree = "<group>"; };
+		D2D2F61B1C2988DE00A055FA /* FinishTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishTableViewCell.m; sourceTree = "<group>"; };
 		D2D31DE01C2696BB00BBE60D /* AppointExpertInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointExpertInfoViewController.h; sourceTree = "<group>"; };
 		D2D31DE11C2696BB00BBE60D /* AppointExpertInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointExpertInfoViewController.m; sourceTree = "<group>"; };
 		D2D31DE31C2697B100BBE60D /* PhoneExperToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneExperToolView.h; sourceTree = "<group>"; };
@@ -1804,6 +1813,8 @@
 				9929BCB41C181E0D00F747CB /* ConsultingIsOnlineViewController.m */,
 				9929BCAA1C181AF300F747CB /* ConsultingDoctorListViewController.h */,
 				9929BCAB1C181AF300F747CB /* ConsultingDoctorListViewController.m */,
+				D2D2F6141C297F7100A055FA /* ConsultingFinishViewController.h */,
+				D2D2F6151C297F7100A055FA /* ConsultingFinishViewController.m */,
 			);
 			path = Consulting;
 			sourceTree = "<group>";
@@ -2318,6 +2329,10 @@
 				D2D2CB001C25AAA80052F30B /* AddressListDownCell.m */,
 				D2D31DE31C2697B100BBE60D /* PhoneExperToolView.h */,
 				D2D31DE41C2697B100BBE60D /* PhoneExperToolView.m */,
+				D2D2F6171C297FA100A055FA /* FinishHeadView.h */,
+				D2D2F6181C297FA100A055FA /* FinishHeadView.m */,
+				D2D2F61A1C2988DE00A055FA /* FinishTableViewCell.h */,
+				D2D2F61B1C2988DE00A055FA /* FinishTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3583,6 +3598,7 @@
 				9929BCBB1C18256A00F747CB /* ConsultingIsPhoneTimeTableViewCell.m in Sources */,
 				99DA41B41C0BEB0500573D4C /* GetImageColor.m in Sources */,
 				99DA41931C0BEB0500573D4C /* BaseTableViewCell.m in Sources */,
+				D2D2F6191C297FA100A055FA /* FinishHeadView.m in Sources */,
 				99DA41EF1C0BEB0500573D4C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				99DA41F31C0BEB0500573D4C /* TQRichTextURLRun.m in Sources */,
 				99D5442F1C1567E50081D1D3 /* BriefCaseTableViewCell.m in Sources */,
@@ -3719,6 +3735,7 @@
 				C05A97AE1C1EC9DF0078433B /* DynamicDetailModel.m in Sources */,
 				C05A97A51C1EAEA00078433B /* HomeGoodsModel.m in Sources */,
 				C082447C1C1FE62400783FD5 /* DynamicCommentsTableViewCell.m in Sources */,
+				D2D2F61C1C2988DE00A055FA /* FinishTableViewCell.m in Sources */,
 				D2D26A8F1C23FE6900066770 /* DoctorListModel.m in Sources */,
 				99DA41EA1C0BEB0500573D4C /* UIImageView+WebCache.m in Sources */,
 				C05A97AB1C1EBDC70078433B /* ConsultingDynamicListModel.m in Sources */,
@@ -3770,6 +3787,7 @@
 				99DA419D1C0BEB0500573D4C /* AFURLResponseSerialization.m in Sources */,
 				99DA41CA1C0BEB0500573D4C /* MJRefreshHeader.m in Sources */,
 				99DA41A61C0BEB0500573D4C /* SGSaveFile.m in Sources */,
+				D2D2F6161C297F7100A055FA /* ConsultingFinishViewController.m in Sources */,
 				9929BC9D1C180E9000F747CB /* ConsultingViewController.m in Sources */,
 				99DA41AE1C0BEB0500573D4C /* UIViewController+Extension.m in Sources */,
 				991A31271C11E94500E0313F /* HomeHeadTableViewCell.m in Sources */,

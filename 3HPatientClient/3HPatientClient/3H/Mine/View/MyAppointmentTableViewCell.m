@@ -23,7 +23,7 @@
     [self.viewBack addSubview:self.imgLogo];
     [self.viewBack addSubview:self.labPrice];
     [self.viewBack addSubview:self.labAppraise];
-    [self.viewBack addSubview:self.imgAppraise];
+//    [self.viewBack addSubview:self.imgAppraise];
     
 }
 
@@ -121,20 +121,21 @@
 
 - (UILabel *)labAppraise{
     if (!_labAppraise) {
-        _labAppraise = [[UILabel alloc] initWithFrame:CGRectMake(self.viewBack.width -10 -40, self.labLine.bottom -0.5, 40, 40)];
+        _labAppraise = [[UILabel alloc] initWithFrame:CGRectMake(self.viewBack.width -10 -120, self.labLine.bottom -0.5, 120, 40)];
         _labAppraise.textColor = [UIColor colorWithHEX:0x999999];
         _labAppraise.font = [UIFont systemFontOfSize:13];
+        _labAppraise.textAlignment = NSTextAlignmentRight;
     }
     return _labAppraise;
 }
 
-- (UIImageView *)imgAppraise{
-    if (!_imgAppraise) {
-        _imgAppraise = [[UIImageView alloc] initWithFrame:CGRectMake(self.labAppraise.left -5 -37/2, self.labLine.bottom -0.5 +(40 -17)/2, 37/2, 34/2)];
-        _imgAppraise.image = [UIImage imageNamed:@"我的-我的预约_未评价"];
-    }
-    return _imgAppraise;
-}
+//- (UIImageView *)imgAppraise{
+//    if (!_imgAppraise) {
+//        _imgAppraise = [[UIImageView alloc] initWithFrame:CGRectMake(self.labAppraise.left -5 -37/2, self.labLine.bottom -0.5 +(40 -17)/2, 37/2, 34/2)];
+//        _imgAppraise.image = [UIImage imageNamed:@"我的-我的预约_未评价"];
+//    }
+//    return _imgAppraise;
+//}
 //	id						订单ID
 //	order_sn					订单编号
 //	total						订单金额
@@ -153,11 +154,12 @@
     self.labTitle.text = [NSString stringWithFormat:@"%@ %@",model.truename,model.job_title];
     self.labDetail.text = [NSString stringWithFormat:@"%@ %@",model.hospital,model.department];
     self.labTime.text = model.order_date_n;
-    
+    [self.imgDoctorPic sd_setImageWithURL:SD_IMG(model.pic)];
     self.labPrice.text = [NSString stringWithFormat:@"实付:%@元",model.total] ;
-    self.labAppraise.text = @"已评价";
+    self.labAppraise.text = model.order_date_n;
     if ([model.status_n isEqualToString:@"0"]) {
         self.labState.text = @"等待医生确认";
+        self.labState.textColor = [UIColor whiteColor];
         self.imgBack.hidden = NO;
         self.labLine.hidden = YES;
         self.labTitle.textColor = [UIColor colorWithHEX:0xffffff];
@@ -165,6 +167,7 @@
         self.labTime.textColor = [UIColor colorWithHEX:0xffffff];
     }else{
         self.labState.text = @"已确认";
+        self.labState.textColor = AppDefaultColor;
         self.imgBack.hidden = YES;
         self.labLine.hidden = NO;
         self.labTitle.textColor = [UIColor colorWithHEX:0x888888];

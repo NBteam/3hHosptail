@@ -33,10 +33,11 @@
         _btnTelephone = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnTelephone.frame = CGRectMake(10, 10, DeviceSize.width - 20, 40);
         _btnTelephone.titleLabel.font = [UIFont systemFontOfSize:15];
-        _btnTelephone.backgroundColor = [UIColor yellowColor];
+        _btnTelephone.backgroundColor = AppDefaultColor;
         _btnTelephone.layer.masksToBounds = YES;
         _btnTelephone.layer.cornerRadius = 6.f;
         [_btnTelephone setTitle:@"电话预约" forState:UIControlStateNormal];
+        [_btnTelephone setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_btnTelephone addTarget:self action:@selector(btnTelephoneClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnTelephone;

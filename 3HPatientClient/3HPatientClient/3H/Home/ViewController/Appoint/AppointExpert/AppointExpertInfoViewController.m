@@ -56,7 +56,6 @@
     if (!_toolView) {
         _toolView = [[PhoneExperToolView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, DeviceSize.width, 60)];
         [_toolView setBtnTelephoneBlock:^{
-           
             ConsultingIsPhoneViewController * ConsultingIsPhoneVc = [[ConsultingIsPhoneViewController alloc]init];
             ConsultingIsPhoneVc.id =  weakSelf.model.id;
             [weakSelf.navigationController pushViewController:ConsultingIsPhoneVc animated:YES];

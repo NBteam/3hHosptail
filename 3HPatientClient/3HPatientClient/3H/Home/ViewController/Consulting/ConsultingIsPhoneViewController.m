@@ -11,6 +11,7 @@
 #import "ConsultingIsPhoneTimeTableViewCell.h"
 #import "ConsultingIsPhoneDescTableViewCell.h"
 #import "AppointTimeModel.h"
+#import "ConsultingFinishViewController.h"
 
 @interface ConsultingIsPhoneViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -141,6 +142,7 @@
      
 }
 - (void)rightAction{
+
     ConsultingIsPhoneDescTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.indexPaths];
     if (!self.dicInfo) {
         [self showHudAuto:@"请选择预约时间" andDuration:@"2"];
@@ -158,8 +160,8 @@
     [[THNetWorkManager shareNetWork]getAddOrderTelOrder_tel_id:self.dicInfo[@"id"] desc:text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            
-            [weakSelf showHudAuto:response.message andDuration:@"2"];
+            ConsultingFinishViewController * cvc = [[ConsultingFinishViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
+            [weakSelf.navigationController pushViewController:cvc animated:YES];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
