@@ -13,6 +13,6 @@
 @property (nonatomic, strong) UILabel *labTitle;
 
 //赋值
-- (CGFloat )confingWithModel:(NSDictionary *)dic;
+- (CGFloat )confingWithModel:(NSString *)time Name:(NSString *)name;
 
 @end

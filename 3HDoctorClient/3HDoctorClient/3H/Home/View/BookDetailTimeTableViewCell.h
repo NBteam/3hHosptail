@@ -7,11 +7,11 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "BookIsPhoneModel.h"
 @interface BookDetailTimeTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UILabel *labTitle;
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(BookIsPhoneModel *)dic;
 
 @end

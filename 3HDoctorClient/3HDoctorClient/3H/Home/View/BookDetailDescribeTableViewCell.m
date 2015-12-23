@@ -26,10 +26,11 @@
 }
 
 //赋值
-- (CGFloat)confingWithModel:(NSDictionary *)dic{
-    self.labTitle.text = @"预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50预约时间:2015-10-11 12:50";
+- (CGFloat)confingWithModel:(PhoneDetailModel *)dic{
+    self.labTitle.text = dic.desc;
     [self.labTitle sizeToFit];
     self.labTitle.top = 10;
+    self.labTitle.width = DeviceSize.width -20;
     return self.labTitle.bottom +10;
 }
 

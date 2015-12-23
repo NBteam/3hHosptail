@@ -610,6 +610,8 @@
 		C0B6FD901C2845E9003902AB /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B6FD8F1C2845E9003902AB /* libstdc++.tbd */; };
 		C0B6FD921C2845F5003902AB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B6FD911C2845F5003902AB /* libz.tbd */; };
 		C0CA3E481C268BE500A47E8A /* PhoneAppointTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CA3E471C268BE500A47E8A /* PhoneAppointTimesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C0CAB52A1C299DD0008EDEE5 /* BookIsPhoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CAB5291C299DD0008EDEE5 /* BookIsPhoneModel.m */; settings = {ASSET_TAGS = (); }; };
+		C0CAB52D1C29A4DE008EDEE5 /* PhoneDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CAB52C1C29A4DE008EDEE5 /* PhoneDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		D24F418C1C1D7235004F8699 /* ReservationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D24F418B1C1D7235004F8699 /* ReservationListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2D31DF01C26CD1100BBE60D /* CommentsCustomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DED1C26CD1100BBE60D /* CommentsCustomKeyboard.m */; settings = {ASSET_TAGS = (); }; };
 		D2D31DF11C26CD1100BBE60D /* DynamicCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DEF1C26CD1100BBE60D /* DynamicCommentsViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -1554,6 +1556,10 @@
 		C0B6FD911C2845F5003902AB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C0CA3E461C268BE500A47E8A /* PhoneAppointTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAppointTimesViewController.h; sourceTree = "<group>"; };
 		C0CA3E471C268BE500A47E8A /* PhoneAppointTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointTimesViewController.m; sourceTree = "<group>"; };
+		C0CAB5281C299DD0008EDEE5 /* BookIsPhoneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookIsPhoneModel.h; sourceTree = "<group>"; };
+		C0CAB5291C299DD0008EDEE5 /* BookIsPhoneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookIsPhoneModel.m; sourceTree = "<group>"; };
+		C0CAB52B1C29A4DE008EDEE5 /* PhoneDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneDetailModel.h; sourceTree = "<group>"; };
+		C0CAB52C1C29A4DE008EDEE5 /* PhoneDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneDetailModel.m; sourceTree = "<group>"; };
 		D24F418A1C1D7235004F8699 /* ReservationListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReservationListModel.h; sourceTree = "<group>"; };
 		D24F418B1C1D7235004F8699 /* ReservationListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReservationListModel.m; sourceTree = "<group>"; };
 		D2D31DEC1C26CD1100BBE60D /* CommentsCustomKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsCustomKeyboard.h; sourceTree = "<group>"; };
@@ -3427,6 +3433,10 @@
 				D2D31DF61C26D04500BBE60D /* DynamicDetailModel.m */,
 				D2D31DF81C26D4A200BBE60D /* CommentsListModel.h */,
 				D2D31DF91C26D4A200BBE60D /* CommentsListModel.m */,
+				C0CAB5281C299DD0008EDEE5 /* BookIsPhoneModel.h */,
+				C0CAB5291C299DD0008EDEE5 /* BookIsPhoneModel.m */,
+				C0CAB52B1C29A4DE008EDEE5 /* PhoneDetailModel.h */,
+				C0CAB52C1C29A4DE008EDEE5 /* PhoneDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4260,6 +4270,7 @@
 				991A310F1C11E38C00E0313F /* AppointViewController.m in Sources */,
 				99DA40351C0BE59A00573D4C /* NSString+MD5.m in Sources */,
 				C051E5F31C255528005A3D2E /* DiagnosisDetailHeadTableViewCell.m in Sources */,
+				C0CAB52D1C29A4DE008EDEE5 /* PhoneDetailModel.m in Sources */,
 				99DA43621C0C23A600573D4C /* PerfectInformationTableViewCell.m in Sources */,
 				99D142301C0D962B002DA3AD /* ConsultingUnFinishedViewController.m in Sources */,
 				C082449E1C205BC400783FD5 /* CheckDataDetailHeadTableViewCell.m in Sources */,
@@ -4345,6 +4356,7 @@
 				99DA40531C0BE59A00573D4C /* TQRichTextURLRun.m in Sources */,
 				C08244901C20175800783FD5 /* EvaluationTableViewCell.m in Sources */,
 				C08244B21C2130C300783FD5 /* OutpatientAppointTableViewCell.m in Sources */,
+				C0CAB52A1C299DD0008EDEE5 /* BookIsPhoneModel.m in Sources */,
 				A94B42EB1C1335C200B6D6AE /* DynamicToolView.m in Sources */,
 				C08244A21C205EF900783FD5 /* CheckDataDetailModel.m in Sources */,
 				A94B15EB1C1437A200034029 /* SexViewController.m in Sources */,

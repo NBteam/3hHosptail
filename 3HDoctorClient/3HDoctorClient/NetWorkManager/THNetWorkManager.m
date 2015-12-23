@@ -706,4 +706,26 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"getArtCmtList",@"id":id,@"page":@(page)};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+
+#pragma mark 电话预约——预约列表
+- (void)getMyOrdertelListPage:(NSInteger )page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMyOrdertelList",@"token":GetToken,@"page":@(page)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+    
+}
+
+#pragma mark 电话预约——详情【20151216添加】
+
+- (void)getMyOrdertelInfoId:(NSString *)ids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMyOrdertelInfo",@"token":GetToken,@"id":ids};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 电话预约——处理请求【20151216添加】1同意，-1拒绝
+- (void)processMyOrdertelId:(NSString *)ids opt:(NSInteger)opt andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"processMyOrdertel",@"token":GetToken,@"id":ids,@"opt":@(opt)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+
 @end

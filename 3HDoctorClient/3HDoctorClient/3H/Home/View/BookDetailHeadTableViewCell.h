@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "PhoneDetailModel.h"
 @interface BookDetailHeadTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *imgPatientPic;
@@ -18,6 +18,6 @@
 
 @property (nonatomic, strong) UIImageView *imgArrow;
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(PhoneDetailModel *)dic;
 
 @end

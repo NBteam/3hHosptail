@@ -56,8 +56,8 @@
 }
 
 //赋值
-- (void)confingWithModel:(ReservationListModel *)dic{
-    self.labTitle.attributedText = [self getName:dic.truename AndAge:[NSString stringWithFormat:@"  %@",dic.birth_y] AndSex:[NSString stringWithFormat:@"  %@",dic.sex]];
+- (void)confingWithModel:(BookIsPhoneModel *)dic{
+    self.labTitle.attributedText = [self getName:dic.truename AndAge:[NSString stringWithFormat:@"  %@",dic.age] AndSex:[NSString stringWithFormat:@"  %@",dic.sex]];
     //  self.labDetail.attributedText
     self.labTime.text = [NSString stringWithFormat:@"预约时间:%@",dic.addtime];
     [self.imgPatient sd_setImageWithURL:[NSURL URLWithString:dic.pic] placeholderImage:[UIImage imageNamed:@""]];

@@ -300,6 +300,15 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 - (void)getArtCmtListId:(NSString *)id page:(NSInteger )page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
 
+#pragma mark 电话预约——预约列表
+- (void)getMyOrdertelListPage:(NSInteger )page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 电话预约——详情【20151216添加】
+- (void)getMyOrdertelInfoId:(NSString *)ids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 电话预约——处理请求【20151216添加】
+- (void)processMyOrdertelId:(NSString *)ids opt:(NSInteger)opt andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
 
 
 

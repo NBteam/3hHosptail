@@ -25,8 +25,8 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic{
-    self.labTitle.text = [NSString stringWithFormat:@"预约时间:%@",dic[@"	addtime"]] ;
+- (void)confingWithModel:(BookIsPhoneModel *)dic{
+    self.labTitle.text = [NSString stringWithFormat:@"预约时间:%@",dic.addtime] ;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

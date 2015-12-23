@@ -25,10 +25,11 @@
     return _labTitle;
 }
 //赋值
-- (CGFloat )confingWithModel:(NSDictionary *)dic{
-    self.labTitle.text = @"//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值//赋值";
+- (CGFloat )confingWithModel:(NSString *)time Name:(NSString *)name;{
+    self.labTitle.text = [NSString stringWithFormat:@"您成功接收了一次挂号预约!\n您接受的预约时间是:%@\n您接受的预约来自患者%@\n请您准时接诊!",time,name];
     [self.labTitle sizeToFit];
     self.labTitle.top = 10;
+    self.labTitle.width = DeviceSize.width -20;
     return self.labTitle.bottom +12;
 }
 

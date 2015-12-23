@@ -56,10 +56,11 @@
     return _imgArrow;
 }
 
-- (void)confingWithModel:(NSDictionary *)dic{
-    self.labPatientName.text = dic[@"truename"];
-    self.labPatientInfo.text = [NSString stringWithFormat:@"%@ %@",dic[@"birth_y"],dic[@"sex"]] ;
-    [self.imgPatientPic sd_setImageWithURL:URL(dic[@"pic"]) placeholderImage:IMG(@"")];
+- (void)confingWithModel:(PhoneDetailModel *)dic{
+    self.labPatientName.text = dic.truename;
+    self.labPatientInfo.text = [NSString stringWithFormat:@"%@ %@",dic.age,dic.sex] ;
+    [self.imgPatientPic sd_setImageWithURL:URL(dic.pic) placeholderImage:IMG(@"")];
+
 }
 
 

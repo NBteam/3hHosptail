@@ -9,6 +9,7 @@
 #import "BookIsPhoneViewController.h"
 #import "BookManagementTableViewCell.h"
 #import "PhoneDetailViewController.h"
+#import "BookIsPhoneModel.h"
 @interface BookIsPhoneViewController ()
 
 @end
@@ -19,6 +20,41 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView.height = self.tableView.height -44;
+    self.isOpenHeaderRefresh = YES;
+    self.isOpenFooterRefresh = YES;
+    [self getBookIsPhoneData];
+}
+
+- (void)getBookIsPhoneData{
+    
+    [self.dataArray removeAllObjects];
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(BookIsPhoneViewController);
+    [[THNetWorkManager shareNetWork] getMyOrdertelListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            if (weakSelf.pageNO == 1) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                BookIsPhoneModel * model = [response thParseDataFromDic:dict andModel:[BookIsPhoneModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            
+            
+
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+       
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -29,7 +65,7 @@
         cell = [[BookManagementTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:nil];
+    [cell confingWithModel:self.dataArray[indexPath.section]];
     return cell;
 }
 
@@ -37,12 +73,12 @@
     return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70.0f;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.dataArray.count;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 16;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -54,8 +90,23 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    BookIsPhoneModel *model = self.dataArray[indexPath.section];
     PhoneDetailViewController *phoneDetailVc = [[PhoneDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    phoneDetailVc.ids = model.id;
     [self.navigationController pushViewController:phoneDetailVc animated:YES];
+}
+
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    
+    [self getBookIsPhoneData];
+}
+- (void)footerRequestWithData
+{
+    
+    [self getBookIsPhoneData];
 }
 
 - (void)didReceiveMemoryWarning {

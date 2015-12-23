@@ -10,4 +10,5 @@
 
 @interface PhoneDetailViewController : BaseTableViewController
 
+@property (nonatomic, copy) NSString *ids;
 @end

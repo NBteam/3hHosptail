@@ -12,6 +12,13 @@
 //1 代表挂号预约
 //2 代表电话预约
 @property (nonatomic, assign)NSInteger index;
+
+@property (nonatomic, copy) NSString *timeStrig;
+
+@property (nonatomic, copy) NSString *nameString;
+
+
+
 //预约成功后
 @property (nonatomic,copy) void(^bookSuccessBlock)();
 @end

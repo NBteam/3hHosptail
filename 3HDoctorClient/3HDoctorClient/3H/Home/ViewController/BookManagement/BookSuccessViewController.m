@@ -48,7 +48,7 @@
             cell = [[BookSuccessDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.cellHeight = [cell confingWithModel:nil];
+        self.cellHeight = [cell confingWithModel:self.timeStrig Name:self.nameString];
         return cell;
     }
 }

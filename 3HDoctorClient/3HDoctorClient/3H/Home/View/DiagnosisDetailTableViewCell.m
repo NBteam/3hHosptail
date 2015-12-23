@@ -49,6 +49,7 @@
 - (CGFloat)confingWithModel:(NSString *)model{
     self.labDetail.text = [NSString stringWithFormat:@"%@",model];
     [self.labDetail sizeToFit];
+    self.labDetail.width = DeviceSize.width -20;
     
     return self.labDetail.bottom +10;
 }

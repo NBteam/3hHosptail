@@ -19,6 +19,7 @@
 #import "BookSuccessViewController.h"
 //预约拒绝理由
 #import "BookRefuseReasonViewController.h"
+#import "PhoneDetailModel.h"
 @interface PhoneDetailViewController ()
 
 //描述cell的高度
@@ -37,10 +38,61 @@
     [self.view addSubview:self.toolView];
     //显示同意和拒绝按钮
     [self.toolView changeViewHide:BookDetailToolViewTypeIsUp andTitle:@""];
+    [self getMyOrdertelInfo];
 }
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)getMyOrdertelInfo{
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(PhoneDetailViewController);
+    [weakSelf.dataArray removeAllObjects];
+    [[THNetWorkManager shareNetWork] getMyOrdertelInfoId:self.ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            PhoneDetailModel * model = [response thParseDataFromDic:response.dataDic andModel:[PhoneDetailModel class]];
+            [weakSelf.dataArray addObject:model];
+            
+
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+        
+}
+
+- (void)getPhoneDetailDataOfOpt:(NSInteger )opt{
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(PhoneDetailViewController);
+    [[THNetWorkManager shareNetWork] processMyOrdertelId:self.ids opt:opt andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            PhoneDetailModel *model = weakSelf.dataArray[0];
+            NSLog(@"查看%@",response.dataDic[@"status"]);
+            WeakSelf(PhoneDetailViewController);
+            BookSuccessViewController *bookSuccessVc = [[BookSuccessViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+            bookSuccessVc.timeStrig = model.order_date_n;
+            bookSuccessVc.nameString = model.truename;
+            [bookSuccessVc setBookSuccessBlock:^{
+                [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"打电话"];
+            }];
+            [self.navigationController pushViewController:bookSuccessVc animated:YES];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+        
 }
 
 #pragma mark -UI
@@ -83,12 +135,11 @@
         if (buttonIndex==0) {
             
         }else{
-            WeakSelf(PhoneDetailViewController);
-            BookSuccessViewController *bookSuccessVc = [[BookSuccessViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-            [bookSuccessVc setBookSuccessBlock:^{
-                [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"打电话"];
-            }];
-            [self.navigationController pushViewController:bookSuccessVc animated:YES];
+            
+            [self getPhoneDetailDataOfOpt:1];
+            
+            
+           
         }
     }else{
         if (buttonIndex==0) {
@@ -102,37 +153,37 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        static NSString *identifier = @"idertifier";
+        static NSString *identifier = @"BookDetailHeadTableViewCell";
         BookDetailHeadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
             cell = [[BookDetailHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:nil];
+        [cell confingWithModel:self.dataArray[0]];
         return cell;
     }else if (indexPath.section == 1){
-        static NSString *identifier = @"idertifier";
+        static NSString *identifier = @"BookDetailTimeTableViewCell";
         BookDetailTimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
             cell = [[BookDetailTimeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:nil];
+        [cell confingWithModel:self.dataArray[0]];
         return cell;
     }else{
-        static NSString *identifier = @"idertifier";
+        static NSString *identifier = @"BookDetailDescribeTableViewCell";
         BookDetailDescribeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
             cell = [[BookDetailDescribeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.cellHeigth = [cell confingWithModel:nil];
+        self.cellHeigth = [cell confingWithModel:self.dataArray[0]];
         return cell;
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
