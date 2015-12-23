@@ -25,9 +25,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)addAction{
-    
-}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

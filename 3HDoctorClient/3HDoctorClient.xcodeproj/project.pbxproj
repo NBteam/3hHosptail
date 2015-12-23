@@ -550,6 +550,8 @@
 		C051E6021C256495005A3D2E /* DiagnosisListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C051E6011C256495005A3D2E /* DiagnosisListModel.m */; settings = {ASSET_TAGS = (); }; };
 		C051E6051C2573EC005A3D2E /* DiagnosisListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C051E6041C2573EC005A3D2E /* DiagnosisListDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C051E6081C259548005A3D2E /* PhoneAppointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C051E6071C259548005A3D2E /* PhoneAppointModel.m */; settings = {ASSET_TAGS = (); }; };
+		C05C07F81C2AF60800C26B08 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05C07F71C2AF60800C26B08 /* ChangePasswordViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C05C07FB1C2AF82900C26B08 /* MedicationAddInputNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05C07FA1C2AF82900C26B08 /* MedicationAddInputNameViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C08244891C20173700783FD5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244841C20173700783FD5 /* AboutViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C082448A1C20173700783FD5 /* EvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244861C20173700783FD5 /* EvaluationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C082448B1C20173700783FD5 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244881C20173700783FD5 /* FeedbackViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -1441,6 +1443,10 @@
 		C051E6041C2573EC005A3D2E /* DiagnosisListDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagnosisListDetailViewController.m; sourceTree = "<group>"; };
 		C051E6061C259548005A3D2E /* PhoneAppointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAppointModel.h; sourceTree = "<group>"; };
 		C051E6071C259548005A3D2E /* PhoneAppointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointModel.m; sourceTree = "<group>"; };
+		C05C07F61C2AF60800C26B08 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		C05C07F71C2AF60800C26B08 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		C05C07F91C2AF82900C26B08 /* MedicationAddInputNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddInputNameViewController.h; sourceTree = "<group>"; };
+		C05C07FA1C2AF82900C26B08 /* MedicationAddInputNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationAddInputNameViewController.m; sourceTree = "<group>"; };
 		C08244831C20173700783FD5 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		C08244841C20173700783FD5 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		C08244851C20173700783FD5 /* EvaluationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationViewController.h; sourceTree = "<group>"; };
@@ -1670,6 +1676,8 @@
 				C08244881C20173700783FD5 /* FeedbackViewController.m */,
 				991A31071C11D9DE00E0313F /* SetUpViewController.h */,
 				991A31081C11D9DE00E0313F /* SetUpViewController.m */,
+				C05C07F61C2AF60800C26B08 /* ChangePasswordViewController.h */,
+				C05C07F71C2AF60800C26B08 /* ChangePasswordViewController.m */,
 			);
 			path = SetUp;
 			sourceTree = "<group>";
@@ -1831,6 +1839,8 @@
 				C027A73B1C22DE6500F6FA0C /* MedicationAddInputViewController.m */,
 				C027A73D1C22F33900F6FA0C /* MedicationAddNumViewController.h */,
 				C027A73E1C22F33900F6FA0C /* MedicationAddNumViewController.m */,
+				C05C07F91C2AF82900C26B08 /* MedicationAddInputNameViewController.h */,
+				C05C07FA1C2AF82900C26B08 /* MedicationAddInputNameViewController.m */,
 			);
 			path = Medication;
 			sourceTree = "<group>";
@@ -4237,6 +4247,7 @@
 				99DA40001C0BE59A00573D4C /* SGSaveFile.m in Sources */,
 				99DA40481C0BE59A00573D4C /* UIImage+WebP.m in Sources */,
 				C051E5E41C2545EB005A3D2E /* DiagnosisTableViewCell.m in Sources */,
+				C05C07F81C2AF60800C26B08 /* ChangePasswordViewController.m in Sources */,
 				99D1420C1C0D69E0002DA3AD /* BookDetailTimeTableViewCell.m in Sources */,
 				991A30EE1C11CECB00E0313F /* WalletHeadTableViewCell.m in Sources */,
 				99DA43511C0BF3E500573D4C /* LoginViewController.m in Sources */,
@@ -4385,6 +4396,7 @@
 				99DA40181C0BE59A00573D4C /* NSArray+MTLManipulationAdditions.m in Sources */,
 				99DA3EE61C0BE50300573D4C /* main.m in Sources */,
 				A94B15F11C14430900034029 /* InfomationDetailModel.m in Sources */,
+				C05C07FB1C2AF82900C26B08 /* MedicationAddInputNameViewController.m in Sources */,
 				99D6EEE31C0EFF9000CB1829 /* MedicalHistoryDetailEditorTableViewCell.m in Sources */,
 				C082448B1C20173700783FD5 /* FeedbackViewController.m in Sources */,
 				99DA40191C0BE59A00573D4C /* NSDictionary+MTLManipulationAdditions.m in Sources */,

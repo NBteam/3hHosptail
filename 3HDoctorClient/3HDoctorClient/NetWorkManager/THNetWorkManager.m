@@ -732,5 +732,12 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 
+#pragma mark 公共）提交意见反馈
+- (void)feedbackcontent:(NSString *)content andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"feedback",@"token":GetToken,@"content":content};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+
 
 @end

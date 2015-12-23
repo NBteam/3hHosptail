@@ -309,6 +309,10 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark 电话预约——处理请求【20151216添加】
 - (void)processMyOrdertelId:(NSString *)ids opt:(NSInteger)opt reason:(NSString *)reason andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 公共）提交意见反馈
+- (void)feedbackcontent:(NSString *)content andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+
 
 
 

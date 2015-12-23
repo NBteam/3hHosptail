@@ -16,6 +16,8 @@
 //用药次数
 #import "MedicationAddNumViewController.h"
 
+#import "MedicationAddInputNameViewController.h"
+
 @interface MedicationAddViewController ()
 @property (nonatomic, strong) UIButton *btn;
 @property (nonatomic, strong) TimeView *viewTime;
@@ -173,8 +175,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     WeakSelf(MedicationAddViewController);
     if (indexPath.section == 0) {
-        MedicationAddInputViewController *medicationAddInputVc= [[MedicationAddInputViewController alloc] init];
-        medicationAddInputVc.index = 0;
+        MedicationAddInputNameViewController *medicationAddInputVc= [[MedicationAddInputNameViewController alloc] init];
         [medicationAddInputVc setNameBlock:^(NSString *name) {
             weakSelf.ywName = name;
             [weakSelf.dataArray replaceObjectAtIndex:indexPath.section withObject:@{@"title":@"药物名称",@"detail":self.ywName}];

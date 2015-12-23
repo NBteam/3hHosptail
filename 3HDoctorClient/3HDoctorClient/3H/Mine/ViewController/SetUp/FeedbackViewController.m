@@ -27,6 +27,27 @@
     [self.view addSubview:self.btnSubmit];
 }
 
+- (void)feedBackData:(NSString *)title{
+
+    [self showHudAuto:@"保存中..."];
+    WeakSelf(FeedbackViewController);
+    [[THNetWorkManager shareNetWork] feedbackcontent:title andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+        
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+       
+}
+
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -49,7 +70,13 @@
 }
 
 - (void)btnSubmitAction{
-  
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    FeedbackTableViewCell *cell = (FeedbackTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell.txtView.text.length == 0) {
+        [self showHudAuto:@"请输入您的反馈意见" andDuration:@"2"];
+    }else{
+        [self feedBackData:cell.txtView.text];
+    }
 }
 
 - (TPKeyboardAvoidingTableView *)tableView{
