@@ -489,7 +489,18 @@
 		C05A97AB1C1EBDC70078433B /* ConsultingDynamicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A97AA1C1EBDC70078433B /* ConsultingDynamicListModel.m */; settings = {ASSET_TAGS = (); }; };
 		C05A97AE1C1EC9DF0078433B /* DynamicDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A97AD1C1EC9DF0078433B /* DynamicDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		C05A97B41C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A97B31C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		C082443A1C1F0D0100783FD5 /* AddDoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244391C1F0D0100783FD5 /* AddDoctorViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C0771B171C2EE4F000D9387B /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0771B111C2EE4F000D9387B /* libzbar.a */; settings = {ASSET_TAGS = (); }; };
+		C0771B181C2EE4F000D9387B /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = C0771B131C2EE4F000D9387B /* zbar-back.png */; settings = {ASSET_TAGS = (); }; };
+		C0771B191C2EE4F000D9387B /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = C0771B141C2EE4F000D9387B /* zbar-help.html */; settings = {ASSET_TAGS = (); }; };
+		C0771B1A1C2EE4F000D9387B /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = C0771B151C2EE4F000D9387B /* zbar-helpicons.png */; settings = {ASSET_TAGS = (); }; };
+		C0771B1B1C2EE4F000D9387B /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = C0771B161C2EE4F000D9387B /* zbar-samples.png */; settings = {ASSET_TAGS = (); }; };
+		C0771B1D1C2EE54C00D9387B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0771B1C1C2EE54C00D9387B /* AVFoundation.framework */; };
+		C0771B1F1C2EE55800D9387B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0771B1E1C2EE55800D9387B /* CoreMedia.framework */; };
+		C0771B211C2EE56200D9387B /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0771B201C2EE56200D9387B /* CoreVideo.framework */; };
+		C0771B231C2EE56F00D9387B /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C0771B221C2EE56F00D9387B /* libiconv.tbd */; };
+		C0771B271C2EE5DD00D9387B /* QrCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0771B261C2EE5DD00D9387B /* QrCodeViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C0771B2A1C2EE68000D9387B /* 扫码bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C0771B281C2EE68000D9387B /* 扫码bg.png */; settings = {ASSET_TAGS = (); }; };
+		C0771B2B1C2EE68000D9387B /* 扫码line.png in Resources */ = {isa = PBXBuildFile; fileRef = C0771B291C2EE68000D9387B /* 扫码line.png */; settings = {ASSET_TAGS = (); }; };
 		C082443D1C1F156C00783FD5 /* MyAppointRegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C082443C1C1F156C00783FD5 /* MyAppointRegisteredViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C08244401C1F159000783FD5 /* MyAppointHospitalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C082443F1C1F159000783FD5 /* MyAppointHospitalViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C08244431C1F15BC00783FD5 /* MyAppointPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244421C1F15BC00783FD5 /* MyAppointPhoneViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -1319,8 +1330,39 @@
 		C05A97AD1C1EC9DF0078433B /* DynamicDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicDetailModel.m; sourceTree = "<group>"; };
 		C05A97B21C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingDynamicHeadTableViewCell.h; sourceTree = "<group>"; };
 		C05A97B31C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingDynamicHeadTableViewCell.m; sourceTree = "<group>"; };
-		C08244381C1F0D0100783FD5 /* AddDoctorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDoctorViewController.h; sourceTree = "<group>"; };
-		C08244391C1F0D0100783FD5 /* AddDoctorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDoctorViewController.m; sourceTree = "<group>"; };
+		C0771AFD1C2EE4F000D9387B /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
+		C0771AFE1C2EE4F000D9387B /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
+		C0771AFF1C2EE4F000D9387B /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		C0771B001C2EE4F000D9387B /* ImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScanner.h; sourceTree = "<group>"; };
+		C0771B011C2EE4F000D9387B /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
+		C0771B021C2EE4F000D9387B /* Scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scanner.h; sourceTree = "<group>"; };
+		C0771B031C2EE4F000D9387B /* Symbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Symbol.h; sourceTree = "<group>"; };
+		C0771B041C2EE4F000D9387B /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
+		C0771B051C2EE4F000D9387B /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		C0771B061C2EE4F000D9387B /* zbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zbar.h; sourceTree = "<group>"; };
+		C0771B071C2EE4F000D9387B /* ZBarCameraSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarCameraSimulator.h; sourceTree = "<group>"; };
+		C0771B081C2EE4F000D9387B /* ZBarCaptureReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarCaptureReader.h; sourceTree = "<group>"; };
+		C0771B091C2EE4F000D9387B /* ZBarHelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarHelpController.h; sourceTree = "<group>"; };
+		C0771B0A1C2EE4F000D9387B /* ZBarImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarImage.h; sourceTree = "<group>"; };
+		C0771B0B1C2EE4F000D9387B /* ZBarImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarImageScanner.h; sourceTree = "<group>"; };
+		C0771B0C1C2EE4F000D9387B /* ZBarReaderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderController.h; sourceTree = "<group>"; };
+		C0771B0D1C2EE4F000D9387B /* ZBarReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderView.h; sourceTree = "<group>"; };
+		C0771B0E1C2EE4F000D9387B /* ZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
+		C0771B0F1C2EE4F000D9387B /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
+		C0771B101C2EE4F000D9387B /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
+		C0771B111C2EE4F000D9387B /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
+		C0771B131C2EE4F000D9387B /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
+		C0771B141C2EE4F000D9387B /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
+		C0771B151C2EE4F000D9387B /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
+		C0771B161C2EE4F000D9387B /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		C0771B1C1C2EE54C00D9387B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C0771B1E1C2EE55800D9387B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		C0771B201C2EE56200D9387B /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		C0771B221C2EE56F00D9387B /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		C0771B251C2EE5DD00D9387B /* QrCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QrCodeViewController.h; sourceTree = "<group>"; };
+		C0771B261C2EE5DD00D9387B /* QrCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QrCodeViewController.m; sourceTree = "<group>"; };
+		C0771B281C2EE68000D9387B /* 扫码bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "扫码bg.png"; sourceTree = "<group>"; };
+		C0771B291C2EE68000D9387B /* 扫码line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "扫码line.png"; sourceTree = "<group>"; };
 		C082443B1C1F156C00783FD5 /* MyAppointRegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointRegisteredViewController.h; sourceTree = "<group>"; };
 		C082443C1C1F156C00783FD5 /* MyAppointRegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointRegisteredViewController.m; sourceTree = "<group>"; };
 		C082443E1C1F159000783FD5 /* MyAppointHospitalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointHospitalViewController.h; sourceTree = "<group>"; };
@@ -1429,6 +1471,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0771B231C2EE56F00D9387B /* libiconv.tbd in Frameworks */,
+				C0771B211C2EE56200D9387B /* CoreVideo.framework in Frameworks */,
+				C0771B1F1C2EE55800D9387B /* CoreMedia.framework in Frameworks */,
+				C0771B1D1C2EE54C00D9387B /* AVFoundation.framework in Frameworks */,
 				C05A97A11C1E94490078433B /* ImageIO.framework in Frameworks */,
 				C05A979F1C1E80730078433B /* libz.tbd in Frameworks */,
 				C05A979D1C1E80630078433B /* libstdc++.tbd in Frameworks */,
@@ -1440,6 +1486,7 @@
 				C05A97811C1E773A0078433B /* libSocialQQ.a in Frameworks */,
 				C05A977D1C1E773A0078433B /* libSocialSina.a in Frameworks */,
 				C05A977E1C1E773A0078433B /* libSocialSinaSSO.a in Frameworks */,
+				C0771B171C2EE4F000D9387B /* libzbar.a in Frameworks */,
 				C05A97671C1E77390078433B /* libUMSocial_Sdk_4.4.a in Frameworks */,
 				C05A977F1C1E773A0078433B /* libWeiboSDK.a in Frameworks */,
 				C05A97821C1E773A0078433B /* TencentOpenAPI.framework in Frameworks */,
@@ -1648,6 +1695,8 @@
 		991A31A41C12E2DC00E0313F /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				C0771B281C2EE68000D9387B /* 扫码bg.png */,
+				C0771B291C2EE68000D9387B /* 扫码line.png */,
 				C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */,
 				99D5441C1C1563320081D1D3 /* 底部图标 */,
 				99D543FF1C155F060081D1D3 /* fuction */,
@@ -2100,6 +2149,10 @@
 		99DA3EA51C0BE4CF00573D4C = {
 			isa = PBXGroup;
 			children = (
+				C0771B221C2EE56F00D9387B /* libiconv.tbd */,
+				C0771B201C2EE56200D9387B /* CoreVideo.framework */,
+				C0771B1E1C2EE55800D9387B /* CoreMedia.framework */,
+				C0771B1C1C2EE54C00D9387B /* AVFoundation.framework */,
 				C05A96F81C1E77390078433B /* UM */,
 				C043F6B51C1D7E0900EC1B43 /* NetWorkManager */,
 				99DA408B1C0BEB0500573D4C /* 3H */,
@@ -2356,6 +2409,7 @@
 		99DA40951C0BEB0500573D4C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C0771B241C2EE5DD00D9387B /* AddDoctors */,
 				993669611C132C6800B3E1C7 /* ConsultingDynamic */,
 				9936695A1C132A5A00B3E1C7 /* Shop */,
 				991A32E81C12E58D00E0313F /* Appoint */,
@@ -2364,8 +2418,6 @@
 				991A32EB1C12E58D00E0313F /* Schedule */,
 				99DA40961C0BEB0500573D4C /* HomeViewController.h */,
 				99DA40971C0BEB0500573D4C /* HomeViewController.m */,
-				C08244381C1F0D0100783FD5 /* AddDoctorViewController.h */,
-				C08244391C1F0D0100783FD5 /* AddDoctorViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2515,6 +2567,7 @@
 		99DA40B21C0BEB0500573D4C /* PublicFramework */ = {
 			isa = PBXGroup;
 			children = (
+				C0771AFA1C2EE4F000D9387B /* ZBarSDK */,
 				99DBE3341C1922E700965290 /* CustomTextView */,
 				99D544891C1592C40081D1D3 /* VRGCalendarView */,
 				99DA40B31C0BEB0500573D4C /* AFNetworking */,
@@ -3173,6 +3226,71 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C0771AFA1C2EE4F000D9387B /* ZBarSDK */ = {
+			isa = PBXGroup;
+			children = (
+				C0771AFB1C2EE4F000D9387B /* Headers */,
+				C0771B111C2EE4F000D9387B /* libzbar.a */,
+				C0771B121C2EE4F000D9387B /* Resources */,
+			);
+			path = ZBarSDK;
+			sourceTree = "<group>";
+		};
+		C0771AFB1C2EE4F000D9387B /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				C0771AFC1C2EE4F000D9387B /* zbar */,
+				C0771B061C2EE4F000D9387B /* zbar.h */,
+				C0771B071C2EE4F000D9387B /* ZBarCameraSimulator.h */,
+				C0771B081C2EE4F000D9387B /* ZBarCaptureReader.h */,
+				C0771B091C2EE4F000D9387B /* ZBarHelpController.h */,
+				C0771B0A1C2EE4F000D9387B /* ZBarImage.h */,
+				C0771B0B1C2EE4F000D9387B /* ZBarImageScanner.h */,
+				C0771B0C1C2EE4F000D9387B /* ZBarReaderController.h */,
+				C0771B0D1C2EE4F000D9387B /* ZBarReaderView.h */,
+				C0771B0E1C2EE4F000D9387B /* ZBarReaderViewController.h */,
+				C0771B0F1C2EE4F000D9387B /* ZBarSDK.h */,
+				C0771B101C2EE4F000D9387B /* ZBarSymbol.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		C0771AFC1C2EE4F000D9387B /* zbar */ = {
+			isa = PBXGroup;
+			children = (
+				C0771AFD1C2EE4F000D9387B /* Decoder.h */,
+				C0771AFE1C2EE4F000D9387B /* Exception.h */,
+				C0771AFF1C2EE4F000D9387B /* Image.h */,
+				C0771B001C2EE4F000D9387B /* ImageScanner.h */,
+				C0771B011C2EE4F000D9387B /* Processor.h */,
+				C0771B021C2EE4F000D9387B /* Scanner.h */,
+				C0771B031C2EE4F000D9387B /* Symbol.h */,
+				C0771B041C2EE4F000D9387B /* Video.h */,
+				C0771B051C2EE4F000D9387B /* Window.h */,
+			);
+			path = zbar;
+			sourceTree = "<group>";
+		};
+		C0771B121C2EE4F000D9387B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C0771B131C2EE4F000D9387B /* zbar-back.png */,
+				C0771B141C2EE4F000D9387B /* zbar-help.html */,
+				C0771B151C2EE4F000D9387B /* zbar-helpicons.png */,
+				C0771B161C2EE4F000D9387B /* zbar-samples.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C0771B241C2EE5DD00D9387B /* AddDoctors */ = {
+			isa = PBXGroup;
+			children = (
+				C0771B251C2EE5DD00D9387B /* QrCodeViewController.h */,
+				C0771B261C2EE5DD00D9387B /* QrCodeViewController.m */,
+			);
+			path = AddDoctors;
+			sourceTree = "<group>";
+		};
 		C082444A1C1FA97100783FD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -3350,6 +3468,7 @@
 				C08244761C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－选中@2x.png in Resources */,
 				991A32871C12E2DC00E0313F /* 首页-健康商城-商品详情_Banner@2x.png in Resources */,
 				991A326A1C12E2DC00E0313F /* 3H-我的_李小光-男-背景@2x.png in Resources */,
+				C0771B1B1C2EE4F000D9387B /* zbar-samples.png in Resources */,
 				991A32AD1C12E2DC00E0313F /* 首页-健康资讯_返回@2x.png in Resources */,
 				99D544051C155F060081D1D3 /* th健康管理@2x.png in Resources */,
 				C05A97691C1E773A0078433B /* UMSCommentDetailController.xib in Resources */,
@@ -3363,8 +3482,10 @@
 				991A32E41C12E2DC00E0313F /* 首页-我要预约_预约住院@2x.png in Resources */,
 				991A322D1C12E2DC00E0313F /* 我的-我的订单_九康科技LOGO@2x.png in Resources */,
 				99D544281C1563320081D1D3 /* 3H-首页_我的-点击@2x.png in Resources */,
+				C0771B1A1C2EE4F000D9387B /* zbar-helpicons.png in Resources */,
 				991A32601C12E2DC00E0313F /* 3H-我的_我的收藏-点击状态@2x.png in Resources */,
 				99D544271C1563320081D1D3 /* 3H-首页_我的-未点击@2x.png in Resources */,
+				C0771B2A1C2EE68000D9387B /* 扫码bg.png in Resources */,
 				991A32511C12E2DC00E0313F /* 我的-设置_版本更新-非点击状态@2x.png in Resources */,
 				991A32861C12E2DC00E0313F /* 首页-健康商城-商品详情-立即购买_确认并支付@2x.png in Resources */,
 				991A32661C12E2DC00E0313F /* 3H-我的_我的钱包-点击状态@2x.png in Resources */,
@@ -3388,6 +3509,7 @@
 				991A32A51C12E2DC00E0313F /* 首页-健康资讯-新闻资讯-评论_铅笔@2x.png in Resources */,
 				991A326F1C12E2DC00E0313F /* 3H-我的_设置-非点击状态@2x.png in Resources */,
 				991A32531C12E2DC00E0313F /* 我的-设置_评价软件-非点击状态@2x.png in Resources */,
+				C0771B181C2EE4F000D9387B /* zbar-back.png in Resources */,
 				991A32281C12E2DC00E0313F /* 我的-个人资料_病人头像@2x.png in Resources */,
 				991A32211C12E2DC00E0313F /* 首页-健康管理_主要诊断@2x.png in Resources */,
 				991A328F1C12E2DC00E0313F /* 首页-健康商城-商品详情_立即购买@2x.png in Resources */,
@@ -3482,6 +3604,7 @@
 				991A32491C12E2DC00E0313F /* 我的-设置_意见反馈-点击状态@2x.png in Resources */,
 				C08244751C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－未选中@2x.png in Resources */,
 				991A32501C12E2DC00E0313F /* 我的-设置_版本更新-点击状态@2x.png in Resources */,
+				C0771B191C2EE4F000D9387B /* zbar-help.html in Resources */,
 				991A32D31C12E2DC00E0313F /* 首页-我要咨询_在线咨询@2x.png in Resources */,
 				991A328C1C12E2DC00E0313F /* 首页-健康商城-商品详情_收藏@2x.png in Resources */,
 				991A323C1C12E2DC00E0313F /* 我的-我的预约_未评价背景@2x.png in Resources */,
@@ -3522,6 +3645,7 @@
 				991A32611C12E2DC00E0313F /* 3H-我的_我的收藏-非点击状态@2x.png in Resources */,
 				991A32821C12E2DC00E0313F /* 首页-健康商城-商品详情-立即购买_图片@2x.png in Resources */,
 				99D5442A1C1563320081D1D3 /* 3H-首页_消息-点击@2x.png in Resources */,
+				C0771B2B1C2EE68000D9387B /* 扫码line.png in Resources */,
 				991A32361C12E2DC00E0313F /* 我的-我的预约_上@2x.png in Resources */,
 				991A32731C12E2DC00E0313F /* 3H-消息_系统消息@2x.png in Resources */,
 				991A32251C12E2DC00E0313F /* 首页-健康管理_简要病史@2x.png in Resources */,
@@ -3646,7 +3770,6 @@
 				991A330E1C12FFDA00E0313F /* SetUpTableViewCell.m in Sources */,
 				99DA41E51C0BEB0500573D4C /* UIButton+WebCache.m in Sources */,
 				99D544941C1592C40081D1D3 /* NSDate+convenience.m in Sources */,
-				C082443A1C1F0D0100783FD5 /* AddDoctorViewController.m in Sources */,
 				993669661C132C6800B3E1C7 /* ConsultingDynamicViewController.m in Sources */,
 				9929BCA91C18160300F747CB /* ConsultingToolView.m in Sources */,
 				C05A97A81C1EAF000078433B /* HomeNewsModel.m in Sources */,
@@ -3821,6 +3944,7 @@
 				C05A96C41C1D83B00078433B /* AppointDoctorsListTableViewCell.m in Sources */,
 				991A32EE1C12E5C100E0313F /* ManageViewController.m in Sources */,
 				993669961C13FE4C00B3E1C7 /* WalletTableViewCell.m in Sources */,
+				C0771B271C2EE5DD00D9387B /* QrCodeViewController.m in Sources */,
 				99DA41B01C0BEB0500573D4C /* FMDatabaseAdditions.m in Sources */,
 				991A33161C12FFE400E0313F /* SetUpViewController.m in Sources */,
 				99DA41D51C0BEB0500573D4C /* MJRefreshConst.m in Sources */,
@@ -3992,6 +4116,7 @@
 					"$(PROJECT_DIR)/3HPatientClient/UM/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(PROJECT_DIR)/3HPatientClient/UM/UMSocial_Sdk_Extra_Frameworks/Whatsapp",
 					"$(PROJECT_DIR)/3HPatientClient/UM/UMSocial_Sdk_Extra_Frameworks/YiXin",
+					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/ZBarSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
@@ -4037,6 +4162,7 @@
 					"$(PROJECT_DIR)/3HPatientClient/UM/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(PROJECT_DIR)/3HPatientClient/UM/UMSocial_Sdk_Extra_Frameworks/Whatsapp",
 					"$(PROJECT_DIR)/3HPatientClient/UM/UMSocial_Sdk_Extra_Frameworks/YiXin",
+					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/ZBarSDK",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;

@@ -33,7 +33,7 @@
 #import "HomeGoodsModel.h"
 #import "HomeNewsModel.h"
 //添加医生
-#import "AddDoctorViewController.h"
+#import "QrCodeViewController.h"
 
 @interface HomeViewController ()
 
@@ -53,7 +53,7 @@
 }
 
 - (void)addAction{
-    AddDoctorViewController *addDoctorVc = [[AddDoctorViewController alloc] init];
+    QrCodeViewController *addDoctorVc = [[QrCodeViewController alloc] init];
     addDoctorVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:addDoctorVc animated:YES];
 }
