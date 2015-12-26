@@ -502,4 +502,9 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"getArtCmtList",@"id":id,@"page":@(page)};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+#pragma mark 获取某个医生挂号预约时间表【20151217更新】
+- (void)getDoctorGuahaoDatesDoctor_id:(NSString *)doctor_id page_week:(NSInteger )page_week andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getDoctorGuahaoDates",@"doctor_id":doctor_id,@"token":GetToken,@"page_week":@(page_week)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

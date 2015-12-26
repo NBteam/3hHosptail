@@ -178,4 +178,7 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 #pragma mark 获取文章评论列表【20151104更新】
 - (void)getArtCmtListId:(NSString *)id page:(NSInteger )page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 获取某个医生挂号预约时间表【20151217更新】
+- (void)getDoctorGuahaoDatesDoctor_id:(NSString *)doctor_id page_week:(NSInteger )page_week andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 @end
