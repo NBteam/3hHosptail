@@ -53,7 +53,7 @@
 }
 
 //赋值
-- (CGFloat)confingWithModel:(NSInteger )dic{
+- (CGFloat)confingWithModel:(NSInteger )dic model:(DoctorInfoModel *)model{
     if (dic == 0) {
         self.imgLogo.image = [UIImage imageNamed:@"首页-我要预约-预约挂号_简介"];
         self.labTitle.text = @"简介";
@@ -61,7 +61,7 @@
         self.imgLogo.image = [UIImage imageNamed:@"首页-我要预约-预约挂号_擅长"];
         self.labTitle.text = @"擅长";
     }
-    self.labDetail.text = @"赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值";
+    self.labDetail.text = model.desc;
     [self.labDetail sizeToFit];
     return self.labDetail.bottom +10;
 }

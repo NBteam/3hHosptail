@@ -64,7 +64,7 @@
     [self.labDetail sizeToFit];
     self.labDetail.top = self.labTitle.bottom +10;
     if (!dic.pic) {
-        [self.imgLogo sd_setImageWithURL:SD_IMG(dic.pics[0])];
+        [self.imgLogo sd_setImageWithURL:SD_IMG(dic.pics)];
     }else{
         [self.imgLogo sd_setImageWithURL:SD_IMG(dic.pic)];
     }

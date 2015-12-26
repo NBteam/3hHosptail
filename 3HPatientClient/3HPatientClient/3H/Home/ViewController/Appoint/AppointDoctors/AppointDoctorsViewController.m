@@ -9,12 +9,14 @@
 #import "AppointDoctorsViewController.h"
 #import "AppointDoctorsHeadView.h"
 #import "AppointDoctorsTableViewCell.h"
+#import "DoctorInfoModel.h"
+
 @interface AppointDoctorsViewController ()
 @property (nonatomic, strong) AppointDoctorsHeadView *headView;
 
 @property (nonatomic, strong) UIButton *btnAppoint;
 
-
+@property (nonatomic, strong) DoctorInfoModel * model;
 
 
 @property (nonatomic, assign) CGFloat cellHeight;
@@ -28,7 +30,7 @@
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.tableView.tableHeaderView = self.headView;
     self.tableView.height = self.tableView.height -65;
-    
+    [self getNetWork];
     [self.view addSubview:self.btnAppoint];
 
     
@@ -43,7 +45,7 @@
 - (AppointDoctorsHeadView *)headView{
     if (!_headView) {
         _headView = [[AppointDoctorsHeadView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 278/2)];
-        [_headView confingWithModel:-1];
+        [_headView confingWithModel:nil];
     }
     return _headView;
 }
@@ -77,7 +79,7 @@
         cell = [[AppointDoctorsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.cellHeight = [cell confingWithModel:indexPath.section];
+    self.cellHeight = [cell confingWithModel:indexPath.section model:self.model];
     return cell;
     
     
@@ -121,7 +123,22 @@
 - (NSString *)title{
     return @"预约挂号";
 }
-
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(AppointDoctorsViewController);
+    [[THNetWorkManager shareNetWork]getDoctorInfoId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            DoctorInfoModel * model = [response thParseDataFromDic:response.dataDic andModel:[DoctorInfoModel class]];
+            weakSelf.model = model;
+            [weakSelf.headView confingWithModel:model];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

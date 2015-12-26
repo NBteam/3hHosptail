@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "DoctorInfoModel.h"
 @interface AppointDoctorsTableViewCell : BaseTableViewCell
 @property (nonatomic, strong) UIImageView *imgLogo;
 
@@ -18,5 +18,5 @@
 @property (nonatomic, strong) UILabel *labDetail;
 
 //赋值
-- (CGFloat)confingWithModel:(NSInteger )dic;
+- (CGFloat)confingWithModel:(NSInteger )dic model:(DoctorInfoModel *)model;
 @end

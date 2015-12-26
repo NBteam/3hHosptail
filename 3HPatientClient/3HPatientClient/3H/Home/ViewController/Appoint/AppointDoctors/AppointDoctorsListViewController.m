@@ -65,7 +65,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    AppointExpertListModel * model = self.dataArray[indexPath.row];
     AppointDoctorsViewController *appointDoctorsVc = [[AppointDoctorsViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    appointDoctorsVc.id = model.id;
     [self.navigationController pushViewController:appointDoctorsVc animated:YES];
 }
 - (void)getNetWork{

@@ -9,5 +9,5 @@
 #import "BaseTableViewController.h"
 
 @interface AppointDoctorsViewController : BaseTableViewController
-
+@property (nonatomic, copy) NSString * id;
 @end
