@@ -117,6 +117,7 @@
         _textUserName = [[LoginInputView alloc]initWithFrame:CGRectMake(0, self.viewBlue.bottom, DeviceSize.width, 90/2) title:@"" placeholder:@"请输入手机号"];
         _textUserName.textField.delegate = self;
         _textUserName.textField.keyboardType=UIKeyboardTypePhonePad;
+        _textUserName.textField.textColor = AppDefaultColor;
     }
     return _textUserName;
 }
@@ -137,7 +138,7 @@
         _txtCode.keyboardType = UIKeyboardTypeNumberPad;
         _txtCode.font = [UIFont systemFontOfSize:15];
         _txtCode.placeholder = @"验证码";
-//        _txtCode.textColor = AppDefaultColor;
+        _txtCode.textColor = AppDefaultColor;
     }
     return _txtCode;
 }
@@ -188,15 +189,16 @@
         _txtPassWord.textField.autocorrectionType = UITextAutocorrectionTypeNo;
         _txtPassWord.textField.font = [UIFont systemFontOfSize:15];
         _txtPassWord.textField.secureTextEntry = YES;
-//        _txtPassWord.textColor = AppDefaultColor;
+        _txtPassWord.textField.textColor = AppDefaultColor;
     }
     return _txtPassWord;
 }
 - (LoginInputView *)textInvitation{
     if (!_textInvitation) {
         _textInvitation = [[LoginInputView alloc]initWithFrame:CGRectMake(self.txtPassWord.left, self.txtPassWord.bottom+10, self.txtPassWord.width, self.txtPassWord.height) title:@"" placeholder:@"请输入邀请码"];
-        _txtPassWord.textField.autocorrectionType = UITextAutocorrectionTypeNo;
-        _txtPassWord.textField.font = [UIFont systemFontOfSize:15];
+        _textInvitation.textField.autocorrectionType = UITextAutocorrectionTypeNo;
+        _textInvitation.textField.font = [UIFont systemFontOfSize:15];
+        _textInvitation.textField.textColor = AppDefaultColor;
     }
     return _textInvitation;
 
