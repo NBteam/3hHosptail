@@ -11,4 +11,6 @@
 @interface DiagnosisDetailViewController : BaseTableViewController
 @property (nonatomic, copy) NSString * mid;
 @property (nonatomic, copy) NSString * idx;
+
+@property (nonatomic, copy) void (^reloadBlock)();
 @end

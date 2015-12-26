@@ -1,14 +1,14 @@
 //
-//  CodeViewController.m
+//  AddAssistantDoctorViewController.m
 //  3HDoctorClient
 //
-//  Created by kanzhun on 15/12/9.
+//  Created by 范英强 on 15/12/26.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
 
-#import "CodeViewController.h"
+#import "AddAssistantDoctorViewController.h"
 #import "QRCodeGenerator.h"
-@interface CodeViewController ()
+@interface AddAssistantDoctorViewController ()
 
 @property (nonatomic, strong) UIView *viewBack;
 
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation CodeViewController
+@implementation AddAssistantDoctorViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,6 +39,12 @@
     [self.imgBack addSubview:self.imgCode];
     [self.view addSubview:self.labTitle];
     
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+
+}
+
+- (void)backAction{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (UIView *)viewBack{
@@ -88,7 +94,7 @@
         _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, self.imgBack.bottom +15, DeviceSize.width, 13)];
         _labTitle.textColor = [UIColor colorWithHEX:0x888888];
         _labTitle.font = [UIFont systemFontOfSize:13];
-        _labTitle.text = @"让患者打开APP扫一扫,加我建立长期医患关系";
+        _labTitle.text = @"请助理医师用APP扫一扫,加我建立指导关系";
         _labTitle.textAlignment = NSTextAlignmentCenter;
     }
     return _labTitle;
@@ -113,11 +119,15 @@
     }
     return _imgCode;
 }
+
+- (NSString *)title{
+    return @"添加助理医师";
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 /*
 #pragma mark - Navigation

@@ -34,7 +34,8 @@
    // [self getNetWorkInfo];
 
     // Do any additional setup after loading the view.
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"姓名",@"detail":self.user.truename},@{@"title":@"性别",@"detail":self.user.sex},@{@"title":@"城市",@"detail":self.user.area_names},@{@"title":@"医院",@"detail":self.user.hospital},@{@"title":@"科室",@"detail":self.user.department},@{@"title":@"职称",@"detail":self.user.job_title},@{@"title":@"个人签名",@"detail":self.user.sign_word}]];
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"title":@"姓名",@"detail":self.user.truename},@{@"title":@"性别",@"detail":self.user.sex},@{@"title":@"城市",@"detail":self.user.area_names},@{@"title":@"医院",@"detail":self.user.hospital},@{@"title":@"科室",@"detail":self.user.department},@{@"title":@"职称",@"detail":self.user.job_title}]];
+    //,@{@"title":@"个人签名",@"detail":self.user.sign_word}
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"保存"];
 }

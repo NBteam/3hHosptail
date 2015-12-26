@@ -11,13 +11,19 @@
 
 @interface PhoneViewController ()
 @property (nonatomic, strong) AddPatientsPhoneView * phoneView;
+
+@property (nonatomic, strong) UIButton *btnCancel;
 @end
 
 @implementation PhoneViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.height = self.view.height - self.frameTopHeight -44;
     [self.view addSubview:self.phoneView];
+    [self.view addSubview:self.btnCancel];
+    
+    NSLog(@"----%f",self.view.height);
     // Do any additional setup after loading the view.
 }
 - (AddPatientsPhoneView *)phoneView{
@@ -25,6 +31,27 @@
         _phoneView = [[AddPatientsPhoneView alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, 150)];
     }
     return _phoneView;
+}
+
+#pragma mark -UI
+- (UIButton *)btnCancel{
+    if (!_btnCancel) {
+        _btnCancel = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btnCancel.frame = CGRectMake(10, self.view.height -65, DeviceSize.width -20, 45);
+        _btnCancel.layer.masksToBounds = YES;
+        _btnCancel.layer.cornerRadius = 5;
+        _btnCancel.backgroundColor = AppDefaultColor;
+        [_btnCancel setTitle:@"确定" forState:UIControlStateNormal];
+        _btnCancel.titleLabel.font = [UIFont systemFontOfSize:15];
+        [_btnCancel setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
+        [_btnCancel addTarget:self action:@selector(btnCancelAction) forControlEvents:UIControlEventTouchUpInside];
+        
+    }
+    return _btnCancel;
+}
+
+- (void)btnCancelAction{
+  
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

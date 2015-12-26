@@ -25,7 +25,7 @@
     
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-//    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"编辑"];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"删除"];
     self.dictInfo = [NSMutableDictionary dictionary];
 //    // [self.view addSubview:self.customView];
 //    
@@ -38,6 +38,42 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)rightAction{
+    UIAlertView * uploadView = [[UIAlertView alloc]initWithTitle:@"警告" message:@"您确定要删除?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认",nil];
+    [uploadView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0) {
+        
+    }else{
+        
+        [self delPatientDiagnosis];
+
+    }
+}
+
+
+- (void)delPatientDiagnosis{
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(DiagnosisDetailViewController);
+
+    [[THNetWorkManager shareNetWork] delPatientDiagnosismid:self.mid idx:self.idx andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        if (response.responseCode == 1) {
+            if (weakSelf.reloadBlock) {
+                self.reloadBlock();
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+        
+}
 #pragma mark - UI
 
 

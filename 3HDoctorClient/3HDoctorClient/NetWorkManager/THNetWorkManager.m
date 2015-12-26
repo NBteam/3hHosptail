@@ -738,6 +738,11 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 
+#pragma mark【鉴权】患者诊断——删除【20151213添加】
+- (void)delPatientDiagnosismid:(NSString *)mid idx:(NSString *)idx andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"delPatientDiagnosis",@"token":GetToken,@"mid":mid,@"idx":idx};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 
 
 @end

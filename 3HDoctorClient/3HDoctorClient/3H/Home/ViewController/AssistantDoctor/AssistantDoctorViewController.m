@@ -8,6 +8,7 @@
 
 #import "AssistantDoctorViewController.h"
 #import "AssistantDoctorTableViewCell.h"
+#import "AddAssistantDoctorViewController.h"
 @interface AssistantDoctorViewController ()
 
 @end
@@ -23,6 +24,11 @@
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)addAction{
+    AddAssistantDoctorViewController *addAssistantDoctorVc = [[AddAssistantDoctorViewController alloc] init];
+    [self.navigationController pushViewController:addAssistantDoctorVc animated:YES];
 }
 
 

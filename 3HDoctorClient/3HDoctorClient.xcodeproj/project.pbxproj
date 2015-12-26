@@ -600,6 +600,7 @@
 		C0AEAEFC1C2EC75C0009A3F5 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = C0AEAEF11C2EC75C0009A3F5 /* qrspec.c */; settings = {ASSET_TAGS = (); }; };
 		C0AEAEFD1C2EC75C0009A3F5 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = C0AEAEF31C2EC75C0009A3F5 /* rscode.c */; settings = {ASSET_TAGS = (); }; };
 		C0AEAEFE1C2EC75C0009A3F5 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = C0AEAEF51C2EC75C0009A3F5 /* split.c */; settings = {ASSET_TAGS = (); }; };
+		C0AEAF011C2ED3390009A3F5 /* AddAssistantDoctorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AEAF001C2ED3390009A3F5 /* AddAssistantDoctorViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C0B6FD641C283FB9003902AB /* UMSocialLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C0B6FD0C1C283FB9003902AB /* UMSocialLocalizable.strings */; settings = {ASSET_TAGS = (); }; };
 		C0B6FD651C283FB9003902AB /* libUMSocial_Sdk_4.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B6FD1A1C283FB9003902AB /* libUMSocial_Sdk_4.4.a */; settings = {ASSET_TAGS = (); }; };
 		C0B6FD661C283FB9003902AB /* libUMSocial_Sdk_Comment_4.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B6FD1B1C283FB9003902AB /* libUMSocial_Sdk_Comment_4.4.a */; settings = {ASSET_TAGS = (); }; };
@@ -1573,6 +1574,8 @@
 		C0AEAEF41C2EC75C0009A3F5 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
 		C0AEAEF51C2EC75C0009A3F5 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		C0AEAEF61C2EC75C0009A3F5 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		C0AEAEFF1C2ED3390009A3F5 /* AddAssistantDoctorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAssistantDoctorViewController.h; sourceTree = "<group>"; };
+		C0AEAF001C2ED3390009A3F5 /* AddAssistantDoctorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAssistantDoctorViewController.m; sourceTree = "<group>"; };
 		C0B6FD0D1C283FB9003902AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UMSocialLocalizable.strings; sourceTree = "<group>"; };
 		C0B6FD0F1C283FB9003902AB /* UMSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocial.h; sourceTree = "<group>"; };
 		C0B6FD101C283FB9003902AB /* UMSocialAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialAccountManager.h; sourceTree = "<group>"; };
@@ -1802,6 +1805,8 @@
 			children = (
 				99D141DC1C0D5F27002DA3AD /* AssistantDoctorViewController.h */,
 				99D141DD1C0D5F27002DA3AD /* AssistantDoctorViewController.m */,
+				C0AEAEFF1C2ED3390009A3F5 /* AddAssistantDoctorViewController.h */,
+				C0AEAF001C2ED3390009A3F5 /* AddAssistantDoctorViewController.m */,
 			);
 			path = AssistantDoctor;
 			sourceTree = "<group>";
@@ -4488,6 +4493,7 @@
 				C0AEAEFA1C2EC75C0009A3F5 /* qrencode.c in Sources */,
 				99DA437B1C0C44F200573D4C /* CityListModel.m in Sources */,
 				99D6EEC11C0EEE1100CB1829 /* LaboratoryTestsTableViewCell.m in Sources */,
+				C0AEAF011C2ED3390009A3F5 /* AddAssistantDoctorViewController.m in Sources */,
 				99DA403E1C0BE59A00573D4C /* SDImageCache.m in Sources */,
 				991A30E81C11CA4800E0313F /* PersonalHeadTableViewCell.m in Sources */,
 				99DA3FF51C0BE59A00573D4C /* AFURLConnectionOperation.m in Sources */,

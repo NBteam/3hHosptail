@@ -88,6 +88,10 @@
         DiagnosisDetailViewController *detailVc = [[DiagnosisDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         detailVc.mid = self.mid;
         detailVc.idx = model.idx;
+        
+        [detailVc setReloadBlock:^{
+            [weakSelf getNetWork];
+        }];
         [self.navigationController pushViewController:detailVc animated:YES];
     }
     
@@ -139,6 +143,18 @@
     }];
     [weakSelf showHudWaitingView:WaitPrompt];
 }
+
+//#pragma mark 提交编辑操作时会调用这个方法(删除，添加)
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    // 删除操作
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        // 1.删除数据
+//        //[self deleteCellIndexPath:indexPath];
+//        
+//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//    }
+//}
+
 
 
 - (void)didReceiveMemoryWarning {
