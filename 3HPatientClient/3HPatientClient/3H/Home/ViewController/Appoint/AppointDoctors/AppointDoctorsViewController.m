@@ -10,7 +10,7 @@
 #import "AppointDoctorsHeadView.h"
 #import "AppointDoctorsTableViewCell.h"
 #import "DoctorInfoModel.h"
-
+#import "AppointDoctorsInfoViewController.h"
 @interface AppointDoctorsViewController ()
 @property (nonatomic, strong) AppointDoctorsHeadView *headView;
 
@@ -68,7 +68,9 @@
 }
 
 - (void)btnAppointAction{
-    
+    AppointDoctorsInfoViewController *  AppointDoctorsInfoVc = [[AppointDoctorsInfoViewController alloc]init];
+    AppointDoctorsInfoVc.id = self.model.id;
+    [self.navigationController pushViewController:AppointDoctorsInfoVc animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

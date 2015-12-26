@@ -522,6 +522,9 @@
 		D2CF7C2E1C22E251008F2900 /* MyDiagnosisDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CF7C311C22E6C3008F2900 /* MyRecheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2D126F31C245D3A00131C25 /* NewMyArchivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D126F21C245D3A00131C25 /* NewMyArchivesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2D12CCB1C2E77F800E1196D /* OutpatientAppointTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D12CCA1C2E77F800E1196D /* OutpatientAppointTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		D2D12CCE1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D12CCD1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2D12CD11C2E837C00E1196D /* DoctorsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D12CD01C2E837C00E1196D /* DoctorsInfoModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2D26A891C23E40800066770 /* MyAppointmentRegisteredModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A881C23E40800066770 /* MyAppointmentRegisteredModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2D26A8C1C23EDC600066770 /* ConsultingDoctorListNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A8B1C23EDC600066770 /* ConsultingDoctorListNewCell.m */; settings = {ASSET_TAGS = (); }; };
 		D2D26A8F1C23FE6900066770 /* DoctorListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A8E1C23FE6900066770 /* DoctorListModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -1372,6 +1375,12 @@
 		D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyRecheckListModel.m; path = 3HPatientClient/3H/Home/Model/MyRecheckListModel.m; sourceTree = SOURCE_ROOT; };
 		D2D126F11C245D3A00131C25 /* NewMyArchivesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMyArchivesViewController.h; sourceTree = "<group>"; };
 		D2D126F21C245D3A00131C25 /* NewMyArchivesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMyArchivesViewController.m; sourceTree = "<group>"; };
+		D2D12CC91C2E77F800E1196D /* OutpatientAppointTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutpatientAppointTableViewCell.h; sourceTree = "<group>"; };
+		D2D12CCA1C2E77F800E1196D /* OutpatientAppointTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutpatientAppointTableViewCell.m; sourceTree = "<group>"; };
+		D2D12CCC1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointDoctorsInfoViewController.h; sourceTree = "<group>"; };
+		D2D12CCD1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointDoctorsInfoViewController.m; sourceTree = "<group>"; };
+		D2D12CCF1C2E837C00E1196D /* DoctorsInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorsInfoModel.h; sourceTree = "<group>"; };
+		D2D12CD01C2E837C00E1196D /* DoctorsInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorsInfoModel.m; sourceTree = "<group>"; };
 		D2D26A871C23E40800066770 /* MyAppointmentRegisteredModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentRegisteredModel.h; sourceTree = "<group>"; };
 		D2D26A881C23E40800066770 /* MyAppointmentRegisteredModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentRegisteredModel.m; sourceTree = "<group>"; };
 		D2D26A8A1C23EDC600066770 /* ConsultingDoctorListNewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingDoctorListNewCell.h; sourceTree = "<group>"; };
@@ -2333,6 +2342,8 @@
 				D2D2F6181C297FA100A055FA /* FinishHeadView.m */,
 				D2D2F61A1C2988DE00A055FA /* FinishTableViewCell.h */,
 				D2D2F61B1C2988DE00A055FA /* FinishTableViewCell.m */,
+				D2D12CC91C2E77F800E1196D /* OutpatientAppointTableViewCell.h */,
+				D2D12CCA1C2E77F800E1196D /* OutpatientAppointTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2891,6 +2902,8 @@
 				C05A96BA1C1D83360078433B /* AppointDoctorsListViewController.m */,
 				C05A96C51C1D84070078433B /* AppointDoctorsViewController.h */,
 				C05A96C61C1D84070078433B /* AppointDoctorsViewController.m */,
+				D2D12CCC1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.h */,
+				D2D12CCD1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.m */,
 			);
 			path = AppointDoctors;
 			sourceTree = "<group>";
@@ -3149,6 +3162,8 @@
 				D2D31DEA1C26AB7000BBE60D /* AppointTimeModel.m */,
 				D2D31DFB1C26D9E400BBE60D /* CommentsListModel.h */,
 				D2D31DFC1C26D9E400BBE60D /* CommentsListModel.m */,
+				D2D12CCF1C2E837C00E1196D /* DoctorsInfoModel.h */,
+				D2D12CD01C2E837C00E1196D /* DoctorsInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3580,6 +3595,7 @@
 				C05A96BB1C1D83360078433B /* AppointDoctorsListViewController.m in Sources */,
 				993669B71C14045F00B3E1C7 /* MyAppointmentViewController.m in Sources */,
 				99DA41A11C0BEB0500573D4C /* NSDictionary+SafeAccess.m in Sources */,
+				D2D12CCE1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.m in Sources */,
 				99DA41DD1C0BEB0500573D4C /* NSData+ImageContentType.m in Sources */,
 				99DA41CE1C0BEB0500573D4C /* MJRefreshBackGifFooter.m in Sources */,
 				991A32FC1C12ED7100E0313F /* HealthTableViewCell.m in Sources */,
@@ -3593,6 +3609,7 @@
 				991A330D1C12FFDA00E0313F /* PersonalTableViewCell.m in Sources */,
 				9929BCAC1C181AF300F747CB /* ConsultingDoctorListViewController.m in Sources */,
 				C05A96D91C1D934B0078433B /* AppointFinishViewController.m in Sources */,
+				D2D12CCB1C2E77F800E1196D /* OutpatientAppointTableViewCell.m in Sources */,
 				99DA41BC1C0BEB0500573D4C /* MTLReflection.m in Sources */,
 				99DA41A31C0BEB0500573D4C /* NSString+Extension.m in Sources */,
 				9929BCBB1C18256A00F747CB /* ConsultingIsPhoneTimeTableViewCell.m in Sources */,
@@ -3712,6 +3729,7 @@
 				D2CE7BBC1C205D9500BB169F /* CheckDetailModel.m in Sources */,
 				99DA419E1C0BEB0500573D4C /* AFURLSessionManager.m in Sources */,
 				993669BD1C14047E00B3E1C7 /* MyCollectionViewController.m in Sources */,
+				D2D12CD11C2E837C00E1196D /* DoctorsInfoModel.m in Sources */,
 				C05A96DC1C1D96730078433B /* MainDiagnosticTableViewCell.m in Sources */,
 				993669C91C1404D000B3E1C7 /* MyAppointmentTableViewCell.m in Sources */,
 				D2D26A891C23E40800066770 /* MyAppointmentRegisteredModel.m in Sources */,
