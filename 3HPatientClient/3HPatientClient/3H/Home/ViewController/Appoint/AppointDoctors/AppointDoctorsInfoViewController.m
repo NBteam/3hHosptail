@@ -24,6 +24,8 @@
 @property (nonatomic, strong) NSDictionary * dicInfo;
 @property (nonatomic, strong) NSIndexPath * indexPaths;
 @property (nonatomic, strong) NSArray *infoArray;
+@property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, copy) NSString *  work_price;
 @end
 
 @implementation AppointDoctorsInfoViewController
@@ -36,7 +38,6 @@
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.tableView.tableHeaderView = self.headView;
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"保存"];
     [self.view addSubview:self.tableView];
     [self getNetWork];
 }
@@ -70,14 +71,21 @@
             cell = [[OutpatientAppointTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModelWeeks:self.infoArray Price:@""];
+        self.cellHeight = [cell confingWithModelWeeks:self.infoArray Price:@"" clickArray:self.dataArray];
+        WeakSelf(AppointDoctorsInfoViewController);
+        [cell setOutpatientAppontBlcok:^(DoctorsInfoModel *model, NSString *string) {
+            [weakSelf orderGuahaoNetWorkModel:model string:string];
+        }];
+        [cell setAlertBlock:^{
+            [weakSelf showHudAuto:@"该时段不能预约" andDuration:@"2"];
+        }];
         return cell;
     }
     return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 180 +35 +50;
+    return self.cellHeight ;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -114,6 +122,7 @@
                 DoctorsInfoModel * model = [response thParseDataFromDic:dict andModel:[DoctorsInfoModel class]];
                 [weakSelf.dataArray addObject:model];
             }
+            [weakSelf.headView confingWithModel:[response.dataDic[@"work_price"] doubleValue]];
             weakSelf.infoArray = response.dataDic[@"work_weeks"];
             [weakSelf.tableView reloadData];
         }else{
@@ -124,22 +133,32 @@
     }];
 }
 - (void)rightAction{
+
     
-    ConsultingIsPhoneDescTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.indexPaths];
-    if (!self.dicInfo) {
+}
+
+- (void)orderGuahaoNetWorkModel:(DoctorsInfoModel *)model string:(NSString *)string{
+    if (!model.date) {
         [self showHudAuto:@"请选择预约时间" andDuration:@"2"];
-    }else if([cell.textView.text isEqualToString:@""]){
-        [self showHudAuto:@"请填写详细内容" andDuration:@"2"];
     }else{
-        [self getConsultingNetWorkText:cell.textView.text];
+        [self showHudWaitingView:WaitPrompt];
+        WeakSelf(AppointDoctorsInfoViewController);
+        [[THNetWorkManager shareNetWork]orderGuahaoDoctor_id:self.id date:model.date date_type:string andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+            [weakSelf removeMBProgressHudInManaual];
+            if (response.responseCode == 1) {
+                [weakSelf getOrderGuahaoAccountPayOrder_sn:response.dataDic[@"order_sn"]];
+            }else{
+                [weakSelf showHudAuto:response.message andDuration:@"2"];
+            }
+        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        }];
     }
 }
-- (void)getConsultingNetWorkText:(NSString *)text{
-    NSLog(@"%@",self.dicInfo);
-    
+- (void)getOrderGuahaoAccountPayOrder_sn:(NSString *)text{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(AppointDoctorsInfoViewController);
-    [[THNetWorkManager shareNetWork]getAddOrderTelOrder_tel_id:self.dicInfo[@"id"] desc:text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getOrderGuahaoAccountPayOrder_sn:text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             ConsultingFinishViewController * cvc = [[ConsultingFinishViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
@@ -148,11 +167,9 @@
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
     }];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

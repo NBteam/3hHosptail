@@ -14,6 +14,9 @@
 #import "LoginInputView.h"
 
 @interface RegisterViewController ()<UITextFieldDelegate>
+{
+    NSInteger  buttonIndex;
+}
 //蓝色背景
 @property (nonatomic, strong) UIView *viewBlue;
 //appLogo
@@ -40,11 +43,17 @@
 //邀请码
 @property (nonatomic, strong) LoginInputView *textInvitation;
 
-
+//定时器
+@property (nonatomic,retain) NSTimer * timer;
 @end
 
 @implementation RegisterViewController
-
+- (void)dealloc{
+    if ([self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
 - (void)loadView{
     [super loadView];
     self.view = [[TPKeyboardAvoidingScrollView alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height)];
@@ -52,6 +61,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    buttonIndex = 60;
     self.automaticallyAdjustsScrollViewInsets = NO;
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithHEX:0xff9358];;
@@ -146,12 +156,28 @@
     }
     return _btnGetCode;
 }
+- (void)creatTimer
+{
+    _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(appAction) userInfo:nil repeats:YES];
+}
+- (void)appAction
+{
+    [self.btnGetCode setTitle:[NSString stringWithFormat:@"%ld秒",(long)buttonIndex--] forState:UIControlStateNormal];
+    if (buttonIndex<=0) {
+        [_timer setFireDate:[NSDate distantFuture]];
+        [self.btnGetCode setTitle:[NSString stringWithFormat:@"重新获取"] forState:UIControlStateNormal];
+        buttonIndex=60;
+    }
+}
 
 - (void)btnGetCodeAction{
     if ([self.textUserName.textField.text isEqualToString:@""]) {
         [self showHudAuto:@"请输入手机号" andDuration:@"2"];
     }else{
-        [self getMobilecode];
+        if (buttonIndex==60) {
+            [self getMobilecode];
+        }
+        
     }
 }
 - (LoginInputView *)txtPassWord{
@@ -281,9 +307,12 @@
     WeakSelf(RegisterViewController);
     [[THNetWorkManager shareNetWork]getMobilecode:self.textUserName.textField.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
-        NSLog(@"查看%@",response.dataDic);
         if (response.responseCode == 1) {
-            
+            if (weakSelf.timer==nil) {
+                [weakSelf creatTimer];
+            }else{
+                [weakSelf.timer setFireDate:[NSDate distantPast]];
+            }
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

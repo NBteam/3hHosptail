@@ -27,6 +27,38 @@
             endingLineNumber = "131"
             landmarkName = "-getHomeData"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AddressAddViewController getHomeData]"
+                  moduleName = "3HPatientClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhengyanhua/Desktop/New3H/3HPatientClient/3HPatientClient/3H/Home/ViewController/Shop/AddressAddViewController.m"
+                  timestampString = "472834482.316063"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "87">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__39-[AddressAddViewController getHomeData]_block_invoke"
+                  moduleName = "3HPatientClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhengyanhua/Desktop/New3H/3HPatientClient/3HPatientClient/3H/Home/ViewController/Shop/AddressAddViewController.m"
+                  timestampString = "472834482.31628"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "70">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,6 +106,54 @@
             startingLineNumber = "85"
             endingLineNumber = "85"
             landmarkName = "-confingWithModel:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "3HPatientClient/3H/Login/LoginViewController.m"
+            timestampString = "472833403.587571"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "-btnLoginClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "3HPatientClient/3H/Home/ViewController/Appoint/AppointDoctors/AppointDoctorsInfoViewController.m"
+            timestampString = "472834482.276074"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "3HPatientClient/3H/Home/ViewController/Appoint/AppointDoctors/AppointDoctorsInfoViewController.m"
+            timestampString = "472834520.489596"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "-orderGuahaoNetWorkModel:string:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

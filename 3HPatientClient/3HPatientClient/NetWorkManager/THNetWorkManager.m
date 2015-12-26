@@ -507,4 +507,25 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"getDoctorGuahaoDates",@"doctor_id":doctor_id,@"token":GetToken,@"page_week":@(page_week)};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+#pragma mark 【收费会员权限】挂号预约——提交预约【20151212添加】
+- (void)orderGuahaoDoctor_id:(NSString *)doctor_id date:(NSString *)date date_type:(NSString *)date_type andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"orderGuahao",@"doctor_id":doctor_id,@"token":GetToken,@"date":date,@"date_type":date_type};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark （公共）找回密码-修改密码
+- (void)getPwdMobile:(NSString *)mobile sms_code:(NSString *)sms_code	password:(NSString *)password andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getPwd",@"mobile":mobile,@"sms_code":sms_code,@"password":password};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 挂号预约——余额支付【20151221更新】
+- (void)getOrderGuahaoAccountPayOrder_sn:(NSString *)order_sn andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"orderGuahao",@"order_sn":order_sn,@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 电话预约——余额支付【20151221更新】
+- (void)getOrderTelAccountPayOrder_sn:(NSString *)order_sn andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"orderTelAccountPay",@"order_sn":order_sn,@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

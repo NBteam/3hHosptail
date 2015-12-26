@@ -11,6 +11,7 @@
 #import "RegisterViewController.h"
 #import "AppDelegate.h"
 #import "UMSocial.h"
+#import "ForgetPossWordViewController.h"
 
 @interface LoginViewController ()<UITextFieldDelegate,UMSocialUIDelegate>
 //背景
@@ -234,11 +235,7 @@
             NSLog(@"查看%@",response.dataDic);
             if (response.responseCode == 1) {
                 [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
-                if ([response.dataDic[@"is_fill"] doubleValue] == 0) {//未填写
-                    
-                }else{
-                    [weakSelf getUserInfoToken:response.dataDic[@"token"]];
-                }
+                [weakSelf getUserInfoToken:response.dataDic[@"token"]];
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"1"];
             }
@@ -403,7 +400,8 @@
     [self.navigationController pushViewController:RegisterVc animated:YES];
 }
 - (void)btnForgetClick:(UIButton *)button{
-    
+    ForgetPossWordViewController * ForgetPossWordVc = [[ForgetPossWordViewController alloc]init];
+    [self.navigationController pushViewController:ForgetPossWordVc animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

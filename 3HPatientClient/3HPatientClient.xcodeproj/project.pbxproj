@@ -521,6 +521,7 @@
 		D2CF7C2B1C22DF38008F2900 /* MyDiagnosisListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2A1C22DF38008F2900 /* MyDiagnosisListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CF7C2E1C22E251008F2900 /* MyDiagnosisDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CF7C311C22E6C3008F2900 /* MyRecheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2D01A8B1C2ED16F00C30AAC /* ForgetPossWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D01A8A1C2ED16F00C30AAC /* ForgetPossWordViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D126F31C245D3A00131C25 /* NewMyArchivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D126F21C245D3A00131C25 /* NewMyArchivesViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D12CCB1C2E77F800E1196D /* OutpatientAppointTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D12CCA1C2E77F800E1196D /* OutpatientAppointTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		D2D12CCE1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D12CCD1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -1373,6 +1374,8 @@
 		D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDiagnosisDetailModel.m; sourceTree = "<group>"; };
 		D2CF7C2F1C22E6C3008F2900 /* MyRecheckListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyRecheckListModel.h; path = 3HPatientClient/3H/Home/Model/MyRecheckListModel.h; sourceTree = SOURCE_ROOT; };
 		D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyRecheckListModel.m; path = 3HPatientClient/3H/Home/Model/MyRecheckListModel.m; sourceTree = SOURCE_ROOT; };
+		D2D01A891C2ED16F00C30AAC /* ForgetPossWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPossWordViewController.h; sourceTree = "<group>"; };
+		D2D01A8A1C2ED16F00C30AAC /* ForgetPossWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPossWordViewController.m; sourceTree = "<group>"; };
 		D2D126F11C245D3A00131C25 /* NewMyArchivesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMyArchivesViewController.h; sourceTree = "<group>"; };
 		D2D126F21C245D3A00131C25 /* NewMyArchivesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMyArchivesViewController.m; sourceTree = "<group>"; };
 		D2D12CC91C2E77F800E1196D /* OutpatientAppointTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutpatientAppointTableViewCell.h; sourceTree = "<group>"; };
@@ -1982,6 +1985,8 @@
 				99D33A9B1C17BD0B0067E57C /* LoginViewController.m */,
 				99D33A9D1C17BD0B0067E57C /* RegisterViewController.h */,
 				99D33A9E1C17BD0B0067E57C /* RegisterViewController.m */,
+				D2D01A891C2ED16F00C30AAC /* ForgetPossWordViewController.h */,
+				D2D01A8A1C2ED16F00C30AAC /* ForgetPossWordViewController.m */,
 				99D33A9F1C17BD0B0067E57C /* View */,
 			);
 			path = Login;
@@ -3690,6 +3695,7 @@
 				993669D21C1438A000B3E1C7 /* MyArchivesConditionTableViewCell.m in Sources */,
 				991A32F41C12E60400E0313F /* ManageTableViewCell.m in Sources */,
 				991A31391C12DE8200E0313F /* HomeSlidingTableViewCell.m in Sources */,
+				D2D01A8B1C2ED16F00C30AAC /* ForgetPossWordViewController.m in Sources */,
 				99DA41DB1C0BEB0500573D4C /* NSString+MD5.m in Sources */,
 				9929BCB21C181DF700F747CB /* ConsultingIsPhoneViewController.m in Sources */,
 				99DA41F01C0BEB0500573D4C /* TQRichTextBaseRun.m in Sources */,

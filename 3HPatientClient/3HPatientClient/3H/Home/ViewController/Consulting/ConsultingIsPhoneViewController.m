@@ -160,13 +160,27 @@
     [[THNetWorkManager shareNetWork]getAddOrderTelOrder_tel_id:self.dicInfo[@"id"] desc:text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
+            [weakSelf getOrderTelAccountPayOrder_sn:response.dataDic[@"order_sn"]];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+- (void)getOrderTelAccountPayOrder_sn:(NSString *)text{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(ConsultingIsPhoneViewController);
+    [[THNetWorkManager shareNetWork]getOrderTelAccountPayOrder_sn:text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
             ConsultingFinishViewController * cvc = [[ConsultingFinishViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
             [weakSelf.navigationController pushViewController:cvc animated:YES];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
     }];
 }

@@ -181,4 +181,16 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 #pragma mark 获取某个医生挂号预约时间表【20151217更新】
 - (void)getDoctorGuahaoDatesDoctor_id:(NSString *)doctor_id page_week:(NSInteger )page_week andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 【收费会员权限】挂号预约——提交预约【20151212添加】
+- (void)orderGuahaoDoctor_id:(NSString *)doctor_id date:(NSString *)date date_type:(NSString *)date_type andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark （公共）找回密码-修改密码
+- (void)getPwdMobile:(NSString *)mobile sms_code:(NSString *)sms_code	password:(NSString *)password andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 挂号预约——余额支付【20151221更新】
+- (void)getOrderGuahaoAccountPayOrder_sn:(NSString *)order_sn andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 电话预约——余额支付【20151221更新】
+- (void)getOrderTelAccountPayOrder_sn:(NSString *)order_sn andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "DoctorsInfoModel.h"
 @interface OutpatientAppointTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *imgLogo;
@@ -23,12 +23,13 @@
 //
 @property (nonatomic, strong) UITextField *txtNameInput;
 
+@property (nonatomic, strong) UILabel *labDate;
+@property (nonatomic, strong) NSArray * infoArray;
 
-
-@property (nonatomic, copy) void(^outpatientAppontBlcok)(NSArray *arr,NSString *price);
-
+@property (nonatomic, copy) void(^outpatientAppontBlcok)(DoctorsInfoModel *model,NSString *string);
+@property (nonatomic, copy) void(^alertBlock)(void);
 //赋值
-- (CGFloat)confingWithModelWeeks:(NSArray *)week Price:(NSString *)price;
+- (CGFloat)confingWithModelWeeks:(NSArray *)week Price:(NSString *)price clickArray:(NSArray *)clickArray;
 
 
 
