@@ -101,7 +101,7 @@
     }
     
     if (indexPath.section == 3) {
-        WithdrawalViewController *withdrawalVc = [[WithdrawalViewController alloc] init];
+        WithdrawalViewController *withdrawalVc = [[WithdrawalViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:withdrawalVc animated:YES];
     }
 }

@@ -56,7 +56,7 @@
     rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [rightButton addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
-    rightButton.frame = CGRectMake(0, 0, 30, 16);
+    rightButton.frame = CGRectMake(0, 0, 45, 16);
     
     return [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 

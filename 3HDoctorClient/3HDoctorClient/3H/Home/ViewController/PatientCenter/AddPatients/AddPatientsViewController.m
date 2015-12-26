@@ -37,7 +37,7 @@
 - (LaboratoryTestsTopView *)topView{
     WeakSelf(AddPatientsViewController);
     if (!_topView) {
-        _topView = [[LaboratoryTestsTopView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 44) array:@[@"手机号码",@"扫一扫"]];
+        _topView = [[LaboratoryTestsTopView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 44) array:@[@"扫一扫",@"手机号",]];
         _topView.backgroundColor = [UIColor colorWithHEX:0xffffff];
         __weak LaboratoryTestsTopView *weakTopView = _topView;
         
@@ -86,14 +86,14 @@
     
     [self.PhoneVc willMoveToParentViewController:self];
     self.PhoneVc.view.height = self.scrollView.contentSize.height;
-    self.PhoneVc.view.left = DeviceSize.width *0;
+    self.PhoneVc.view.left = DeviceSize.width *1;
     self.PhoneVc.view.height = DeviceSize.height -self.frameTopHeight -self.topView.height;
     [self.scrollView addSubview:self.PhoneVc.view];
     [self.PhoneVc didMoveToParentViewController:self];
     
     [self.CodeVc willMoveToParentViewController:self];
     self.CodeVc.view.height = self.scrollView.contentSize.height;
-    self.CodeVc.view.left = DeviceSize.width *1;
+    self.CodeVc.view.left = DeviceSize.width *0;
     self.CodeVc.view.height = DeviceSize.height -self.frameTopHeight -self.topView.height;
     [self.scrollView addSubview:self.CodeVc.view];
     [self.CodeVc didMoveToParentViewController:self];

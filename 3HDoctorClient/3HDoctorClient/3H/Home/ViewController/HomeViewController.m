@@ -20,6 +20,8 @@
 #import "AssistantDoctorViewController.h"
 //咨询动态
 #import "ConsultingDynamicViewController.h"
+//二维码
+#import "QrCodeViewController.h"
 
 @interface HomeViewController ()
 
@@ -56,7 +58,9 @@
 }
 
 - (void)addAction{
-    
+    QrCodeViewController *qrCodeVc = [[QrCodeViewController alloc] init];
+    qrCodeVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:qrCodeVc animated:YES];
 }
 
 - (void)getHomeInfo{
