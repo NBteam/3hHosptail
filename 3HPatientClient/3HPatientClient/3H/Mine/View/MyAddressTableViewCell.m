@@ -44,10 +44,14 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSString *)model{
-    self.labTitle.text = @"北京市海淀区400号市海淀区400市海淀区400市海淀区400";
+- (CGFloat)confingWithModel:(AddressListModel *)model{
+    self.labTitle.text = model.address;
     [self.labTitle sizeToFit];
-    self.labDetail.text = @"中国人  18911412662";
+    self.labTitle.width = DeviceSize.width - 40;
+    self.labDetail.top = self.labTitle.bottom + 10;
+    self.imgLogo.top = (self.labDetail.bottom + 10 - 15)/2;
+    self.labDetail.text = [NSString stringWithFormat:@"%@  %@",model.name,model.mobile];
+    return self.labDetail.bottom + 10;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

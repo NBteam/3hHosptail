@@ -22,6 +22,8 @@
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.title = @"收货地址";
+    self.isOpenFooterRefresh = YES;
+    self.isOpenHeaderRefresh = YES;
     [self getNetWork];
 }
 - (void)backAction{

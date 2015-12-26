@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "AddressListModel.h"
 @interface MyAddressTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UILabel *labTitle;
@@ -17,5 +17,5 @@
 @property (nonatomic, strong) UIImageView *imgLogo;
 
 //赋值
-- (void)confingWithModel:(NSString *)model;
+- (CGFloat)confingWithModel:(AddressListModel *)model;
 @end
