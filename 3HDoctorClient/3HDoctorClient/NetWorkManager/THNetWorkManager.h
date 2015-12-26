@@ -315,7 +315,8 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark【鉴权】患者诊断——删除【20151213添加】
 - (void)delPatientDiagnosismid:(NSString *)mid idx:(NSString *)idx andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
-
+#pragma mark （公共）找回密码-修改密码
+- (void)getPwdMobile:(NSString *)mobile sms_code:(NSString *)sms_code	password:(NSString *)password andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
 
 

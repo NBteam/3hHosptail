@@ -12,6 +12,9 @@
 //神马是邀请码
 #import "WhatInvitationViewController.h"
 @interface RegisterViewController ()
+{
+    NSInteger  buttonIndex;
+}
 //蓝色背景
 @property (nonatomic, strong) UIView *viewBlue;
 //appLogo
@@ -44,12 +47,18 @@
 @property (nonatomic, strong) UIButton *btnWhatInvitation;
 //注册按钮
 @property (nonatomic, strong) UIButton *btnRegister;
-
+//定时器
+@property (nonatomic,retain) NSTimer * timer;
 
 @end
 
 @implementation RegisterViewController
-
+- (void)dealloc{
+    if ([self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
 - (void)loadView{
     [super loadView];
     self.view = [[TPKeyboardAvoidingScrollView alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height)];
@@ -57,6 +66,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    buttonIndex = 60;
     self.automaticallyAdjustsScrollViewInsets = NO;
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithHEX:0xffffff];
@@ -178,25 +188,42 @@
     }
     return _btnGetCode;
 }
-
+- (void)creatTimer
+{
+    _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(appAction) userInfo:nil repeats:YES];
+}
+- (void)appAction
+{
+    [self.btnGetCode setTitle:[NSString stringWithFormat:@"%ld秒",(long)buttonIndex--] forState:UIControlStateNormal];
+    if (buttonIndex<=0) {
+        [_timer setFireDate:[NSDate distantFuture]];
+        [self.btnGetCode setTitle:[NSString stringWithFormat:@"重新获取"] forState:UIControlStateNormal];
+        buttonIndex=60;
+    }
+}
 - (void)btnGetCodeAction{
     if ([self.txtUserName.text isEqualToString:@""]) {
         [self showHudAuto:@"请输入手机号" andDuration:@"1"];
     }else{
-        [self showHudWaitingView:@"正在努力操作"];
-        WeakSelf(RegisterViewController);
-        [[THNetWorkManager shareNetWork] getCodeMobile:self.txtUserName.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
-            [weakSelf removeMBProgressHudInManaual];
-            if (response.responseCode == 1) {
-                weakSelf.txtCode.text = @"936872";
-            }else{
-                [weakSelf showHudAuto:response.message andDuration:@"2"];
-            }
-        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-            [weakSelf showHudAuto:@"验证码获取失败，请重试" andDuration:@"1"];
-        }];
+        if (buttonIndex==60) {
+            [self showHudWaitingView:@"正在努力操作"];
+            WeakSelf(RegisterViewController);
+            [[THNetWorkManager shareNetWork] getCodeMobile:self.txtUserName.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+                [weakSelf removeMBProgressHudInManaual];
+                if (response.responseCode == 1) {
+                    if (weakSelf.timer==nil) {
+                        [weakSelf creatTimer];
+                    }else{
+                        [weakSelf.timer setFireDate:[NSDate distantPast]];
+                    }
+                }else{
+                    [weakSelf showHudAuto:response.message andDuration:@"2"];
+                }
+            } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+                [weakSelf showHudAuto:@"验证码获取失败，请重试" andDuration:@"1"];
+            }];
+        }
     }
-    
 }
 
 - (UILabel *)labLineCode{

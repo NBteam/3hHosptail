@@ -9,7 +9,9 @@
 #import "ForgetPossWordViewController.h"
 
 @interface ForgetPossWordViewController ()
-
+{
+    NSInteger  buttonIndex;
+}
 //用户名
 @property (nonatomic, strong) UITextField *txtUserName;
 //验证码
@@ -20,12 +22,18 @@
 @property (nonatomic, strong) UITextField *txtPassWord;
 
 @property (nonatomic, strong) UIButton *btnLogin;
-
+//定时器
+@property (nonatomic,retain) NSTimer * timer;
 @end
 
 @implementation ForgetPossWordViewController
 
-
+- (void)dealloc{
+    if ([self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
 - (void)loadView{
     [super loadView];
     self.view = [[TPKeyboardAvoidingScrollView alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height)];
@@ -33,6 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    buttonIndex = 60;
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     [self.view addSubview:self.txtUserName];
@@ -147,13 +156,71 @@
 }
 
 - (void)btnLoginAction{
-    
+    if ([self.txtUserName.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入手机号" andDuration:@"2"];
+    }else if ([self.txtCode.text isEqualToString:@""]){
+        [self showHudAuto:@"请输入验证码" andDuration:@"2"];
+    }else if ([self.txtPassWord.text isEqualToString:@""]){
+        [self showHudAuto:@"请输入密码" andDuration:@"2"];
+    }else{
+        [self getPwdNetWork];
+    }
 }
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+- (void)creatTimer
+{
+    _timer =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(appAction) userInfo:nil repeats:YES];
+}
+- (void)appAction
+{
+    [self.btnCode setTitle:[NSString stringWithFormat:@"%ld秒",(long)buttonIndex--] forState:UIControlStateNormal];
+    if (buttonIndex<=0) {
+        [_timer setFireDate:[NSDate distantFuture]];
+        [self.btnCode setTitle:[NSString stringWithFormat:@"重新获取"] forState:UIControlStateNormal];
+        buttonIndex=60;
+    }
+}
+- (void)btnGetCodeAction{
+    if ([self.txtUserName.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入手机号" andDuration:@"1"];
+    }else{
+        if (buttonIndex==60) {
+            [self showHudWaitingView:@"正在努力操作"];
+            WeakSelf(ForgetPossWordViewController);
+            [[THNetWorkManager shareNetWork] getCodeMobile:self.txtUserName.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+                [weakSelf removeMBProgressHudInManaual];
+                if (response.responseCode == 1) {
+                    if (weakSelf.timer==nil) {
+                        [weakSelf creatTimer];
+                    }else{
+                        [weakSelf.timer setFireDate:[NSDate distantPast]];
+                    }
+                }else{
+                    [weakSelf showHudAuto:response.message andDuration:@"2"];
+                }
+            } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+                [weakSelf showHudAuto:@"验证码获取失败，请重试" andDuration:@"1"];
+            }];
+        }
+    }
+}
+- (void)getPwdNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(ForgetPossWordViewController);
+    [[THNetWorkManager shareNetWork]getPwdMobile:self.txtUserName.text sms_code:self.txtCode.text password:self.txtPassWord.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (NSString *)title{
     return @"忘记密码";
 }
