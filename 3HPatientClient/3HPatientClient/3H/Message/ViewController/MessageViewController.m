@@ -27,7 +27,7 @@
         cell = [[MessageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:indexPath.section];
+    [cell confingWithModel:nil];
     return cell;
 }
 

@@ -13,8 +13,9 @@
 - (void)customView{
     [self.contentView addSubview:self.imgLogo];
     [self.contentView addSubview:self.labTitle];
-    [self.contentView addSubview:self.labDetail];
     [self.contentView addSubview:self.imgArrow];
+    [self.contentView addSubview:self.labDetail];
+    
 }
 
 - (UIImageView *)imgLogo{
@@ -37,7 +38,7 @@
 
 - (UILabel *)labDetail{
     if (!_labDetail) {
-        _labDetail = [[UILabel alloc] initWithFrame:CGRectMake(self.imgLogo.right +10, self.imgLogo.bottom -13, DeviceSize.width -self.labTitle.left -40, 13)];
+        _labDetail = [[UILabel alloc] initWithFrame:CGRectMake(self.imgLogo.right +10, self.imgLogo.bottom -13, self.imgArrow.left -self.imgLogo.right -20, 13)];
         _labDetail.font = [UIFont systemFontOfSize:13];
         _labDetail.textColor = [UIColor colorWithHEX:0x999999];
         
@@ -56,22 +57,41 @@
 
 //赋值
 
-- (void)confingWithModel:(NSInteger )model{
+- (void)confingWithModel:(ScheduleCalendarDayModel *)model{
     NSArray *arrImg = @[@"3H-消息_预约提醒",
                         @"3H-消息_用药提醒",
                         @"3H-消息_复查提醒",
                         @"3H-消息_订单提醒",
                         @"3H-消息_系统消息"];
     
-    NSArray *arrTitle = @[@"预约提醒",
-                          @"用药提醒",
-                          @"复查提醒",
-                          @"订单提醒",
-                          @"系统消息"];
+//    NSArray *arrTitle = @[@"预约提醒",
+//                          @"用药提醒",
+//                          @"复查提醒",
+//                          @"订单提醒",
+//                          @"系统消息"];
     
-    self.imgLogo.image = [UIImage imageNamed:arrImg[model]];
-    self.labTitle.text = arrTitle[model];
-    self.labDetail.text = @"患者添加请求患者添加请求患者添加请求";
+    if ([model.title isEqualToString:@"预约提醒"]) {
+        self.labTitle.text = model.title;
+        self.labDetail.text = model.info;
+        self.imgLogo.image = [UIImage imageNamed:arrImg[0]];
+    }else if([model.title isEqualToString:@"用药提醒"]){
+        self.labTitle.text = model.title;
+        self.labDetail.text = model.info;
+        self.imgLogo.image = [UIImage imageNamed:arrImg[1]];
+    }else if([model.title isEqualToString:@"复查提醒"]){
+        self.labTitle.text = model.title;
+        self.labDetail.text = model.info;
+        self.imgLogo.image = [UIImage imageNamed:arrImg[2]];
+    }else if([model.title isEqualToString:@"订单提醒"]){
+        self.labTitle.text = model.title;
+        self.labDetail.text = model.info;
+        self.imgLogo.image = [UIImage imageNamed:arrImg[3]];
+    }else{
+        self.labTitle.text = model.title;
+        self.labDetail.text = model.info;
+        self.imgLogo.image = [UIImage imageNamed:arrImg[4]];
+    }
+
 }
 
 /*

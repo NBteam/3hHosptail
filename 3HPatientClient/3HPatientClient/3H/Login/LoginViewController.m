@@ -281,40 +281,45 @@
         
         if (response.responseCode == UMSResponseCodeSuccess) {
             
-            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToSina];
             
-            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.openId);
             
-            //昵称
-            weakSelf.nicknameString = snsAccount.userName;
-            //第三方用户统一ID
-            weakSelf.openedString = snsAccount.usid;
-            //第三方类型（weixin、qq、weibo）
-            weakSelf.open_typeString = @"weibo";
-            //头像地址
-            weakSelf.picString = snsAccount.iconURL;
-            //性别，0保密，1男，2女
-            weakSelf.sexString = @"0";
-            
+//            //昵称
+//            weakSelf.nicknameString = snsAccount.userName;
+//            //第三方用户统一ID
+//            weakSelf.openedString = snsAccount.usid;
+//            //第三方类型（weixin、qq、weibo）
+//            weakSelf.open_typeString = @"weibo";
+//            //头像地址
+//            weakSelf.picString = snsAccount.iconURL;
+//            //性别，0保密，1男，2女
+//            weakSelf.sexString = @"0";
+
         }
         
     });
     
     //得到的数据在回调Block对象形参respone的data属性
-//    [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToSina  completion:^(UMSocialResponseEntity *response){
-//        NSLog(@"SnsInformation is %@",response.data);
-//        //昵称
-//        weakSelf.nicknameString = response.data[@"screen_name"];
-//        //第三方用户统一ID
-//        weakSelf.openedString = response.data[@"openid"];
-//        //第三方类型（weixin、qq、weibo）
-//        weakSelf.open_typeString = response.data[@"weibo"];
-//        //头像地址
-//        weakSelf.picString = response.data[@"profile_image_url"];
-//        //性别，0保密，1男，2女
-//        weakSelf.sexString = response.data[@"gender"];
-//        
-//    }];
+    [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToSina  completion:^(UMSocialResponseEntity *response){
+        NSLog(@"SnsInformation is %@",response.data);
+        //昵称
+        weakSelf.nicknameString = response.data[@"screen_name"];
+        //第三方用户统一ID
+        weakSelf.openedString = response.data[@"openid"];
+        //第三方类型（weixin、qq、weibo）
+        weakSelf.open_typeString = @"weibo";
+        //头像地址
+        weakSelf.picString = response.data[@"profile_image_url"];
+        //性别，0保密，1男，2女
+        weakSelf.sexString = [NSString stringWithFormat:@"%@",response.data[@"gender"]];
+        
+        weakSelf.openedString = response.data[@"uid"];;
+        [weakSelf openLoginFornickname];
+        
+        
+        
+    }];
 }
 - (void)btn2Click:(UIButton *)button{
     
@@ -330,25 +335,36 @@
             UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToQQ];
             
             NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
-            //昵称
-            weakSelf.nicknameString = snsAccount.userName;
+//            //昵称
+//            weakSelf.nicknameString = snsAccount.userName;
+//            //第三方用户统一ID
+//            weakSelf.openedString = snsAccount.usid;
+//            //第三方类型（weixin、qq、weibo）
+//            weakSelf.open_typeString = @"qq";
+//            //头像地址
+//            weakSelf.picString = snsAccount.iconURL;
+//            //性别，0保密，1男，2女
+//            weakSelf.sexString = @"0";
             //第三方用户统一ID
-            weakSelf.openedString = snsAccount.usid;
-            //第三方类型（weixin、qq、weibo）
-            weakSelf.open_typeString = @"qq";
-            //头像地址
-            weakSelf.picString = snsAccount.iconURL;
-            //性别，0保密，1男，2女
-            weakSelf.sexString = @"0";
             
+            [weakSelf openLoginFornickname];
         }});
     
-//    //得到的数据在回调Block对象形参respone的data属性
-//    [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToQQ  completion:^(UMSocialResponseEntity *response){
-//        NSLog(@"SnsInformation is %@",response.data);
-//        
-//        
-//    }];
+    //得到的数据在回调Block对象形参respone的data属性
+    [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToQQ  completion:^(UMSocialResponseEntity *response){
+        NSLog(@"SnsInformation is %@",response.data);
+        //昵称
+        weakSelf.nicknameString = response.data[@"screen_name"];
+        
+        //第三方类型（weixin、qq、weibo）
+        weakSelf.open_typeString = @"qq";
+        //头像地址
+        weakSelf.picString = response.data[@"profile_image_url"];
+        //性别，0保密，1男，2女
+        weakSelf.sexString = [NSString stringWithFormat:@"%@",response.data[@"gender"]];
+        
+        
+    }];
 }
 - (void)btn3Click:(UIButton *)button{
     
@@ -363,37 +379,54 @@
             
             NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
             
-            //昵称
-            weakSelf.nicknameString = snsAccount.userName;
-            //第三方用户统一ID
-            weakSelf.openedString = snsAccount.usid;
-            //第三方类型（weixin、qq、weibo）
-            weakSelf.open_typeString = @"weixin";
-            //头像地址
-            weakSelf.picString = snsAccount.iconURL;
-            //性别，0保密，1男，2女
-            weakSelf.sexString = @"0";
+//            //昵称
+//            weakSelf.nicknameString = snsAccount.userName;
+//            //第三方用户统一ID
+//            weakSelf.openedString = snsAccount.openId;
+//            //第三方类型（weixin、qq、weibo）
+//            weakSelf.open_typeString = @"weixin";
+//            //头像地址
+//            weakSelf.picString = snsAccount.iconURL;
+//            //性别，0保密，1男，2女
+//            weakSelf.sexString = @"0";
+            [weakSelf openLoginFornickname];
+            
+            
             
         }
         
     });
     
-//    //得到的数据在回调Block对象形参respone的data属性
-//    [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToWechatSession  completion:^(UMSocialResponseEntity *response){
-//        NSLog(@"SnsInformation is %@",response.data);
-//        //昵称
-//        weakSelf.nicknameString = response.data[@"screen_name"];
-//        //第三方用户统一ID
-//        weakSelf.openedString = response.data[@"openid"];
-//        //第三方类型（weixin、qq、weibo）
-//        weakSelf.open_typeString = response.data[@"weixin"];
-//        //头像地址
-//        weakSelf.picString = response.data[@"profile_image_url"];
-//        //性别，0保密，1男，2女
-//        weakSelf.sexString = response.data[@"gender"];
-//        
-//    }];
+    //得到的数据在回调Block对象形参respone的data属性
+    [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToWechatSession  completion:^(UMSocialResponseEntity *response){
+        NSLog(@"SnsInformation is %@",response.data);
+        //昵称
+        weakSelf.nicknameString = response.data[@"screen_name"];
+        //第三方用户统一ID
+        weakSelf.openedString = response.data[@"openid"];
+        //第三方类型（weixin、qq、weibo）
+        weakSelf.open_typeString = @"weixin";
+        //头像地址
+        weakSelf.picString = response.data[@"profile_image_url"];
+        //性别，0保密，1男，2女
+        weakSelf.sexString = [NSString stringWithFormat:@"%@",response.data[@"gender"]];
+        
+ 
+        
+    }];
     
+}
+
+- (void)openLoginFornickname{
+    WeakSelf(LoginViewController);
+    [[THNetWorkManager shareNetWork] openLoginFornickname:self.nicknameString opened:self.openedString open_type:self.open_typeString pic:self.picString sex:self.sexString andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        
+        [weakSelf getUserInfoToken:response.dataDic[@"token"]];
+        NSLog(@"查看%@",response.dataDic);
+        
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        
+    }];
 }
 - (void)btnRegisteredClick:(UIButton *)button{
     RegisterViewController * RegisterVc = [[RegisterViewController alloc]init];

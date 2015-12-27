@@ -560,7 +560,7 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 //	pic					头像地址
 //	sex					性别，0保密，1男，2女
 - (void)openLoginFornickname:(NSString *)nickname opened:(NSString *)opened open_type:(NSString *)open_type pic:(NSString *)pic sex:(NSString *)sex andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"openLogin",@"nickname":nickname,@"opened":opened,@"open_type":open_type,@"pic":pic,@"sex":sex};
+    NSDictionary *paramDic = @{@"a":@"openLogin",@"nickname":nickname,@"openid":opened,@"open_type":open_type,@"pic":pic,@"sex":sex};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 

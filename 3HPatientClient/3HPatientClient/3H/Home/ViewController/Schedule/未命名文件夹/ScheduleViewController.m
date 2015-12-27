@@ -10,12 +10,9 @@
 #import "CalendarView.h"
 #import "MessageTableViewCell.h"
 #import "ScheduleCalendarModel.h"
-#import "ScheduleCalendarDayModel.h"
 @interface ScheduleViewController ()
 
 @property (nonatomic, strong) CalendarView *calendarView;
-
-@property (nonatomic, strong) NSMutableArray *dayArray;
 @end
 
 @implementation ScheduleViewController
@@ -26,17 +23,7 @@
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     [self.view addSubview:self.calendarView];
     
-
-    [self getHeathMonthTipdate_m:@""];
-    //[self getHeathDayTipdate:@""];
-}
-
-- (NSMutableArray *)dayArray{
-    if (!_dayArray) {
-        _dayArray = [[NSMutableArray alloc] init];
-    }
-    
-    return _dayArray;
+    [self getHeathMonthTipdate_m:@"2016-01"];
 }
 
 - (void)getHeathMonthTipdate_m:(NSString *)date_m{
@@ -49,9 +36,6 @@
             ScheduleCalendarModel * model = [response thParseDataFromDic:response.dataDic andModel:[ScheduleCalendarModel class]];
             [weakSelf.dataArray addObject:model];
             weakSelf.calendarView.height = [weakSelf.calendarView reloadCalendarView:weakSelf.dataArray];
-            
-            weakSelf.tableView.top = weakSelf.calendarView.height;
-            weakSelf.tableView.height = DeviceSize.height -_calendarView.height -self.frameTopHeight;
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
@@ -59,31 +43,7 @@
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
         ;
     } ];
-    
-}
-
-- (void)getHeathDayTipdate:(NSString *)date{
-    [self.dayArray removeAllObjects];
-    [self showHudAuto:WaitPrompt];
-    WeakSelf(ScheduleViewController);
-    [[THNetWorkManager shareNetWork] getHeathDayTipdate:date andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
-        [weakSelf removeMBProgressHudInManaual];
-        if (response.responseCode == 1) {
-
-            for (NSDictionary * dict in response.dataDic[@"list"]) {
-                ScheduleCalendarDayModel * model = [response thParseDataFromDic:dict andModel:[ScheduleCalendarDayModel class]];
-                [weakSelf.dayArray addObject:model];
-            }
-            [weakSelf.tableView reloadData];
-            
-        }else{
-            [weakSelf showHudAuto:response.message andDuration:@"2"];
-        }
-    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
-        ;
-    } ];
-       
+        
 }
 
 - (void)backAction{
@@ -93,21 +53,9 @@
 - (CalendarView *)calendarView{
     WeakSelf(ScheduleViewController);
     if (!_calendarView) {
-        _calendarView = [[CalendarView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 0)];
+        _calendarView = [[CalendarView alloc] initWithFrame:CGRectMake(10, 0, DeviceSize.width -20, 0)];
         self.tableView.top = _calendarView.bottom;
         self.tableView.height = DeviceSize.height -_calendarView.height -self.frameTopHeight;
-        [_calendarView setCalendarBlock:^(NSString *year, NSString *month, NSString *day) {
-            [weakSelf getHeathDayTipdate:[NSString stringWithFormat:@"%@-%@-%@",year,month,day]];
-        }];
-        
-        [_calendarView setCalendarFloatBlock:^(CGFloat f) {
-            weakSelf.tableView.top = f;
-            weakSelf.tableView.height = DeviceSize.height -_calendarView.height -self.frameTopHeight;
-        }];
-        
-        [_calendarView setCalendarBtnBlock:^(NSString *string) {
-            [weakSelf getHeathMonthTipdate_m:string];
-        }];
         
     }
     return _calendarView;
@@ -121,7 +69,7 @@
         cell = [[MessageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:self.dayArray[indexPath.section]];
+    [cell confingWithModel:indexPath.section];
     return cell;
 }
 
@@ -134,7 +82,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.dayArray.count;
+    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

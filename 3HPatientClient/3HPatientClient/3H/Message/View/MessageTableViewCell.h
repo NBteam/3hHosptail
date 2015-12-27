@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "ScheduleCalendarDayModel.h"
 @interface MessageTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *imgLogo;
@@ -19,6 +19,6 @@
 @property (nonatomic, strong) UIImageView *imgArrow;
 //赋值
 
-- (void)confingWithModel:(NSInteger )model;
+- (void)confingWithModel:(ScheduleCalendarDayModel *)model;
 
 @end

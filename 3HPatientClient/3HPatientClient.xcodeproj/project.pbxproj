@@ -429,6 +429,7 @@
 		C05810D81C2FBB02009A2567 /* ShoppingCartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810D71C2FBB02009A2567 /* ShoppingCartTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		C05810DB1C2FC652009A2567 /* ShoppingCartToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810DA1C2FC652009A2567 /* ShoppingCartToolView.m */; settings = {ASSET_TAGS = (); }; };
 		C05810DE1C2FD3BF009A2567 /* MyCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810DD1C2FD3BF009A2567 /* MyCollectionModel.m */; settings = {ASSET_TAGS = (); }; };
+		C05810E51C3020F8009A2567 /* ScheduleCalendarDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810E41C3020F8009A2567 /* ScheduleCalendarDayModel.m */; settings = {ASSET_TAGS = (); }; };
 		C05A96BB1C1D83360078433B /* AppointDoctorsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A96BA1C1D83360078433B /* AppointDoctorsListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C05A96BE1C1D83570078433B /* AppointHosptailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A96BD1C1D83570078433B /* AppointHosptailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C05A96C11C1D836C0078433B /* AppointExpertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A96C01C1D836C0078433B /* AppointExpertViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -1217,6 +1218,8 @@
 		C05810DA1C2FC652009A2567 /* ShoppingCartToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartToolView.m; sourceTree = "<group>"; };
 		C05810DC1C2FD3BF009A2567 /* MyCollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionModel.h; sourceTree = "<group>"; };
 		C05810DD1C2FD3BF009A2567 /* MyCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionModel.m; sourceTree = "<group>"; };
+		C05810E31C3020F8009A2567 /* ScheduleCalendarDayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCalendarDayModel.h; sourceTree = "<group>"; };
+		C05810E41C3020F8009A2567 /* ScheduleCalendarDayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCalendarDayModel.m; sourceTree = "<group>"; };
 		C05A96B91C1D83360078433B /* AppointDoctorsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointDoctorsListViewController.h; sourceTree = "<group>"; };
 		C05A96BA1C1D83360078433B /* AppointDoctorsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointDoctorsListViewController.m; sourceTree = "<group>"; };
 		C05A96BC1C1D83570078433B /* AppointHosptailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointHosptailViewController.h; sourceTree = "<group>"; };
@@ -3245,6 +3248,8 @@
 				D2D12CD01C2E837C00E1196D /* DoctorsInfoModel.m */,
 				C05810D01C2FB52B009A2567 /* ScheduleCalendarModel.h */,
 				C05810D11C2FB52B009A2567 /* ScheduleCalendarModel.m */,
+				C05810E31C3020F8009A2567 /* ScheduleCalendarDayModel.h */,
+				C05810E41C3020F8009A2567 /* ScheduleCalendarDayModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3947,6 +3952,7 @@
 				C08244621C1FCDD200783FD5 /* MyAddressViewController.m in Sources */,
 				99DBE3371C1922E700965290 /* CustomTextView.m in Sources */,
 				D2CF7C2B1C22DF38008F2900 /* MyDiagnosisListModel.m in Sources */,
+				C05810E51C3020F8009A2567 /* ScheduleCalendarDayModel.m in Sources */,
 				993669CC1C1404D000B3E1C7 /* MyOrdersTableViewCell.m in Sources */,
 				C05A96C11C1D836C0078433B /* AppointExpertViewController.m in Sources */,
 				9936697C1C13331400B3E1C7 /* ShopDetailViewController.m in Sources */,
