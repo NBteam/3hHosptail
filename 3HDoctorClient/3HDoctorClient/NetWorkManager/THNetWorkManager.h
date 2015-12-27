@@ -344,4 +344,10 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 #pragma mark 【鉴权】提现申请【20151202添加】
 - (void)applyCashD_bank_id:(NSString *)d_bank_id cash:(NSString *)cash andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 患者医生咨询——未回复列表【20151218添加】
+- (void)getChatNotReplyListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess)success andFailure:(FailureBlock)failure;
+
+#pragma mark 患者医生咨询——已回复列表【20151218添加】
+- (void)getChatReplyListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess)success andFailure:(FailureBlock)failure;
 @end

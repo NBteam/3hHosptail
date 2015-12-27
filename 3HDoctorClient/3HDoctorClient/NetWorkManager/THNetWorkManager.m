@@ -793,4 +793,14 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"delteBankCard",@"token":GetToken,@"d_bank_id":d_bank_id,@"cash":cash};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+#pragma mark 患者医生咨询——未回复列表【20151218添加】
+- (void)getChatNotReplyListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess)success andFailure:(FailureBlock)failure{
+    NSDictionary *paramDic = @{@"a":@"getChatNotReplyList",@"token":GetToken,@"page":@(page)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 患者医生咨询——已回复列表【20151218添加】
+- (void)getChatReplyListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess)success andFailure:(FailureBlock)failure{
+    NSDictionary *paramDic = @{@"a":@"getChatReplyList",@"token":GetToken,@"page":@(page)};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

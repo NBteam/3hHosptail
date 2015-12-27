@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "ConsultingUnFinishedModel.h"
 @interface ConsultingServicesTableViewCell : BaseTableViewCell
 //患者头像
 @property (nonatomic, strong) UIImageView *imgPatient;
@@ -22,5 +22,5 @@
 //描述
 @property (nonatomic, strong) UILabel *labDescribe;
 //赋值
-- (void )confingWithModel:(NSDictionary *)dic;
+- (void )confingWithModel:(ConsultingUnFinishedModel *)dic;
 @end

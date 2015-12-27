@@ -9,6 +9,8 @@
 #import "ConsultingUnFinishedViewController.h"
 #import "ConsultingServicesTableViewCell.h"
 #import "ConsultingUnFinishedDetailViewController.h"
+#import "ConsultingUnFinishedModel.h"
+
 @interface ConsultingUnFinishedViewController ()
 
 @end
@@ -19,6 +21,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView.height = self.tableView.height -44;
+    self.isOpenFooterRefresh = YES;
+    self.isOpenHeaderRefresh = YES;
+    [self getNetWorkInfo];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -29,7 +34,8 @@
         cell = [[ConsultingServicesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:nil];
+    ConsultingUnFinishedModel * model = self.dataArray[indexPath.section];
+    [cell confingWithModel:model];
     return cell;
 }
 
@@ -42,7 +48,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 16;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -57,7 +63,44 @@
     ConsultingUnFinishedDetailViewController *consultingUnFinishedDetailVc = [[ConsultingUnFinishedDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:consultingUnFinishedDetailVc animated:YES];
 }
-
+- (void)getNetWorkInfo{
+    WeakSelf(ConsultingUnFinishedViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    [[THNetWorkManager shareNetWork]getChatNotReplyListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (weakSelf.pageNO == 1) {
+            [weakSelf.dataArray removeAllObjects];
+        }
+        if (response.responseCode == 1) {
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                ConsultingUnFinishedModel * model = [response thParseDataFromDic:dict andModel:[ConsultingUnFinishedModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+        } else {
+            [weakSelf showHudAuto:response.message];
+        }
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        //  重新加载数据
+        [weakSelf.tableView reloadData];
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    
+    [self getNetWorkInfo];
+}
+- (void)footerRequestWithData
+{
+    
+    [self getNetWorkInfo];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

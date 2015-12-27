@@ -61,7 +61,7 @@
         [_btnPatientAddNum setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
         _btnPatientAddNum.titleLabel.font = [UIFont systemFontOfSize:15];
         _btnPatientAddNum.backgroundColor = [UIColor colorWithHEX:0xff813c];
-        [_btnPatientAddNum setTitle:@"患者添加请求(1)" forState:UIControlStateNormal];
+        [_btnPatientAddNum setTitle:@"患者添加请求(0)" forState:UIControlStateNormal];
         [_btnPatientAddNum addTarget:self action:@selector(btnPatientAddNumAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnPatientAddNum;
@@ -117,7 +117,9 @@
         if (weakSelf.pageNO == 1) {
             [weakSelf.dataArray removeAllObjects];
         }
+        
         if (response.responseCode == 1) {
+            [weakSelf.btnPatientAddNum setTitle:[NSString stringWithFormat:@"患者添加请求(%@)",response.dataDic[@"req_for_add_num"]] forState:UIControlStateNormal];
             for (NSDictionary * dict in response.dataDic[@"list"]) {
                 PatientListModel * model = [response thParseDataFromDic:dict andModel:[PatientListModel class]];
                 [weakSelf.dataArray addObject:model];

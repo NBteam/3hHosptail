@@ -76,11 +76,11 @@
 }
 
 //赋值
-- (void )confingWithModel:(NSDictionary *)dic{
-    self.labPatientName.text = @"患者患者患者";
-    self.labPatientDetail.text = @"28岁 男";
-    self.labTime.text = @"12月12日";
-    self.labDescribe.text = @"患者患者患者患者患者患者患者患者患者患者患者患者患者患者患者患者患者患者患者患者患者患者患者患者";
+- (void )confingWithModel:(ConsultingUnFinishedModel *)dic{
+    self.labPatientName.text = dic.truename;
+    self.labPatientDetail.text = [NSString stringWithFormat:@"%@ %@",dic.age,dic.sex];
+    self.labTime.text = dic.addtime;
+    self.labDescribe.text = dic.chat_desc;
 }
 
 /*
