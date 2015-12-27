@@ -28,4 +28,5 @@
 @property (nonatomic, copy) NSString * price;
 @property (nonatomic, copy) NSString * rec_title;
 @property (nonatomic, copy) NSString * thumb;
+@property (nonatomic, strong) NSString *is_fav;
 @end

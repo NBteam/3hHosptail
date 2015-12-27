@@ -40,11 +40,16 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
+    if (self.index == 0) {
+        self.navigationController.navigationBarHidden = NO;
+    }
 }
+
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = YES;
+    if (self.index == 0) {
+        self.navigationController.navigationBarHidden = YES;
+    }
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -229,7 +234,11 @@
     }];
 }
 - (NSString *)title{
-    return @"忘记密码";
+    if (self.index == 0) {
+        return @"忘记密码";
+    }else{
+        return @"修改密码";
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

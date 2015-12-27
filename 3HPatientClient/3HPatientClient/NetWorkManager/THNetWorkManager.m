@@ -441,7 +441,7 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 }
 #pragma mark 获取商品详情【20151023更新】
 - (void)getGoodsFlashId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"getGoodsInfo",@"id":id};
+    NSDictionary *paramDic = @{@"a":@"getGoodsInfo",@"token":GetToken,@"id":id};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 #pragma mark 评论文章接口【20151104更新】
@@ -528,4 +528,41 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"orderTelAccountPay",@"order_sn":order_sn,@"token":GetToken};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+
+#pragma mark 鉴权】健康日程¬——获取某月状况【20151221添加】
+- (void)getHeathMonthTipdate_m:(NSString *)date_m andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getHeathMonthTip",@"date_m":date_m,@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 【鉴权】健康日程¬——获取某日提醒【20151221添加】
+- (void)getHeathDayTipdate:(NSString *)date andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getHeathDayTip",@"date":date,@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 【鉴权】收藏商品——提交收藏【20151223添加】
+- (void)favGoodsgoods_id:(NSString *)goods_id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"favGoods",@"goods_id":goods_id,@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 【鉴权】收藏商品——列表【20151223添加】
+- (void)getFavGoodsListPage:(NSInteger )page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getFavGoodsList",@"page":@(page),@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 【（公共）第三方登录接口【20151210更新】
+//	nickname			昵称
+//	opened				第三方用户统一ID
+//	open_type			第三方类型（weixin、qq、weibo）
+//	pic					头像地址
+//	sex					性别，0保密，1男，2女
+- (void)openLoginFornickname:(NSString *)nickname opened:(NSString *)opened open_type:(NSString *)open_type pic:(NSString *)pic sex:(NSString *)sex andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"openLogin",@"nickname":nickname,@"opened":opened,@"open_type":open_type,@"pic":pic,@"sex":sex};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+
 @end

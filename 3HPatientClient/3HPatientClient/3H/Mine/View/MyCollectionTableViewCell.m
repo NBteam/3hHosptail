@@ -70,10 +70,11 @@
 //}
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic{
+- (void)confingWithModel:(MyCollectionModel *)dic{
     self.imgLogo.backgroundColor = [UIColor whiteColor];
-    self.labTitle.text = @"九康科技电子血压测量仪技电子血压测量仪技电子血压测量仪";
-    self.labPrice.text = @"100元";
+    self.labTitle.text = dic.name;
+    self.labPrice.text = dic.price;
+    [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:dic.thumb]];
 }
 
 /*

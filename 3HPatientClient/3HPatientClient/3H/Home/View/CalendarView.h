@@ -7,28 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ScheduleCalendarModel.h"
 @interface CalendarView : UIView
 {
     NSCalendar *myCalendar;
-    NSRange monthRange;
-    int     currentDayIndexOfMonth;
-    int     firstDayIndexOfWeek;
-    //年
-    NSInteger yearInt;
-    //月
-    NSInteger monthInt;
-    //日
-    NSInteger dayInt;
+    NSInteger     firstDayIndexOfWeek;
     
-    //动态月
-    
-    NSInteger changeYear;
-    NSInteger changeMonth;
-    NSInteger changeDay;
-    NSDate *changeDate;
-    //现在的date
-    NSDate *nowDate;
 }
 //日期
 @property (nonatomic, strong) UILabel *labTitle;
@@ -40,12 +24,17 @@
 @property (nonatomic, strong) UIView *viewBack;
 //横线
 @property (nonatomic, strong) UILabel *labLine;
+//下个月
+@property (nonatomic, copy) NSString *next_date_m;
+//上个月
+@property (nonatomic, copy) NSString *pre_date_m;
 
+@property (nonatomic, strong) NSMutableArray *dataArrays;
 
-@property (nonatomic,assign) CGFloat viewHeight;
-@property (nonatomic,copy) void (^CalendarBlock)(NSString * year ,NSString * month ,NSString * day);
+@property (nonatomic,copy) void (^CalendarBlock)(NSString * month );
 
-//通知tableview改变y坐标
+@property (nonatomic,copy) void (^CalendarBtnBlock)(NSString * date,NSString *tel_item_num);
 
-@property (nonatomic, copy) void(^calendarFloatBlock)(CGFloat height);
+//天按钮点击事件
+- (CGFloat)reloadCalendarView:(NSMutableArray *)array;
 @end

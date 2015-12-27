@@ -8,6 +8,7 @@
 
 #import "MyCollectionViewController.h"
 #import "MyCollectionTableViewCell.h"
+#import "MyCollectionModel.h"
 @interface MyCollectionViewController ()
 
 @end
@@ -18,7 +19,57 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.isOpenFooterRefresh = YES;
+    self.isOpenHeaderRefresh = YES;
+    [self getFavGoodsList];
 }
+
+- (void)getFavGoodsList{
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(MyCollectionViewController);
+    [[THNetWorkManager shareNetWork] getFavGoodsListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            if (weakSelf.pageNO == 1) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                MyCollectionModel * model = [response thParseDataFromDic:dict andModel:[MyCollectionModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+          
+            
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+    } ];
+    
+}
+
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    [self getFavGoodsList];
+}
+- (void)footerRequestWithData
+{
+    [self getFavGoodsList];
+}
+
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
@@ -32,7 +83,7 @@
         cell = [[MyCollectionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:nil];
+    [cell confingWithModel:self.dataArray[indexPath.section]];
     return cell;
     
 }
@@ -46,7 +97,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 10;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

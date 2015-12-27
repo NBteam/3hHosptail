@@ -10,4 +10,6 @@
 
 @interface ForgetPossWordViewController : BaseViewController
 
+//0 == 忘记密码  1==修改密码
+@property (nonatomic, assign) NSInteger index;
 @end

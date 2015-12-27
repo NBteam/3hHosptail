@@ -401,6 +401,7 @@
 }
 - (void)btnForgetClick:(UIButton *)button{
     ForgetPossWordViewController * ForgetPossWordVc = [[ForgetPossWordViewController alloc]init];
+    ForgetPossWordVc.index = 0;
     [self.navigationController pushViewController:ForgetPossWordVc animated:YES];
 }
 

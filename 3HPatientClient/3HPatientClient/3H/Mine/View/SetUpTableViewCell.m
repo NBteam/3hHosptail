@@ -55,11 +55,11 @@
 
 //赋值
 - (void)confingWithModel:(NSInteger )index Cache:(NSString *)cache{
-    NSArray *arrTitle = @[@"清理缓存",@"意见反馈",@"评价软件",@"关于"];
-    NSArray *arrImg = @[@"我的-设置_清除缓存非点击状态",@"我的-设置_意见反馈-非点击状态",@"我的-设置_评价软件-非点击状态",@"我的-设置_关于-非点击状态"];
+    NSArray *arrTitle = @[@"清理缓存",@"意见反馈",@"评价软件",@"关于",@"修改密码"];
+    NSArray *arrImg = @[@"我的-设置_清除缓存非点击状态",@"我的-设置_意见反馈-非点击状态",@"我的-设置_评价软件-非点击状态",@"我的-设置_关于-非点击状态",@"我的-设置_版本更新-非点击状态"];
     self.labTitle.text = arrTitle[index];
     self.imgLogo.image = [UIImage imageNamed:arrImg[index]];
-    if (index == 0 ||index == 4) {
+    if (index == 0) {
         self.imgArrow.hidden = YES;
         self.labDetail.hidden = NO;
         self.labDetail.text = cache;

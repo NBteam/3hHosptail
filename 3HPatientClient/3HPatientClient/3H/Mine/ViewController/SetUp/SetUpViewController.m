@@ -15,6 +15,8 @@
 #import "EvaluationViewController.h"
 //关于
 #import "AboutViewController.h"
+//修改密码
+#import "ForgetPossWordViewController.h"
 @interface SetUpViewController ()
 //注销
 @property (nonatomic, strong) UIButton *btnCancel;
@@ -121,7 +123,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -156,11 +158,15 @@
         EvaluationViewController *evaluationVc = [[EvaluationViewController alloc] init];
         [self.navigationController pushViewController:evaluationVc animated:YES];
         
-    }else{//关于
+    }else if(indexPath.row == 3){//关于
         
         AboutViewController *aboutVc = [[AboutViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:aboutVc animated:YES];
         
+    }else{
+        ForgetPossWordViewController *forgetPossWordVc = [[ForgetPossWordViewController alloc] init];
+        forgetPossWordVc.index = 1;
+        [self.navigationController pushViewController:forgetPossWordVc animated:YES];
     }
 }
 

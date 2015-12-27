@@ -424,6 +424,11 @@
 		99DBE3371C1922E700965290 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DBE3361C1922E700965290 /* CustomTextView.m */; };
 		C043F6C11C1D7E4B00EC1B43 /* THHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C043F6C01C1D7E4B00EC1B43 /* THHttpResponse.m */; settings = {ASSET_TAGS = (); }; };
 		C043F6C41C1D7E8100EC1B43 /* THNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C043F6C31C1D7E8100EC1B43 /* THNetWorkManager.m */; settings = {ASSET_TAGS = (); }; };
+		C05810D21C2FB52B009A2567 /* ScheduleCalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810D11C2FB52B009A2567 /* ScheduleCalendarModel.m */; settings = {ASSET_TAGS = (); }; };
+		C05810D51C2FBAE9009A2567 /* ShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810D41C2FBAE9009A2567 /* ShoppingCartViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C05810D81C2FBB02009A2567 /* ShoppingCartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810D71C2FBB02009A2567 /* ShoppingCartTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		C05810DB1C2FC652009A2567 /* ShoppingCartToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810DA1C2FC652009A2567 /* ShoppingCartToolView.m */; settings = {ASSET_TAGS = (); }; };
+		C05810DE1C2FD3BF009A2567 /* MyCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810DD1C2FD3BF009A2567 /* MyCollectionModel.m */; settings = {ASSET_TAGS = (); }; };
 		C05A96BB1C1D83360078433B /* AppointDoctorsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A96BA1C1D83360078433B /* AppointDoctorsListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C05A96BE1C1D83570078433B /* AppointHosptailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A96BD1C1D83570078433B /* AppointHosptailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C05A96C11C1D836C0078433B /* AppointExpertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A96C01C1D836C0078433B /* AppointExpertViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -1202,6 +1207,16 @@
 		C043F6C01C1D7E4B00EC1B43 /* THHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THHttpResponse.m; sourceTree = "<group>"; };
 		C043F6C21C1D7E8100EC1B43 /* THNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNetWorkManager.h; sourceTree = "<group>"; };
 		C043F6C31C1D7E8100EC1B43 /* THNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THNetWorkManager.m; sourceTree = "<group>"; };
+		C05810D01C2FB52B009A2567 /* ScheduleCalendarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCalendarModel.h; sourceTree = "<group>"; };
+		C05810D11C2FB52B009A2567 /* ScheduleCalendarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCalendarModel.m; sourceTree = "<group>"; };
+		C05810D31C2FBAE9009A2567 /* ShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartViewController.h; sourceTree = "<group>"; };
+		C05810D41C2FBAE9009A2567 /* ShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartViewController.m; sourceTree = "<group>"; };
+		C05810D61C2FBB02009A2567 /* ShoppingCartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartTableViewCell.h; sourceTree = "<group>"; };
+		C05810D71C2FBB02009A2567 /* ShoppingCartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartTableViewCell.m; sourceTree = "<group>"; };
+		C05810D91C2FC652009A2567 /* ShoppingCartToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartToolView.h; sourceTree = "<group>"; };
+		C05810DA1C2FC652009A2567 /* ShoppingCartToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartToolView.m; sourceTree = "<group>"; };
+		C05810DC1C2FD3BF009A2567 /* MyCollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionModel.h; sourceTree = "<group>"; };
+		C05810DD1C2FD3BF009A2567 /* MyCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionModel.m; sourceTree = "<group>"; };
 		C05A96B91C1D83360078433B /* AppointDoctorsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointDoctorsListViewController.h; sourceTree = "<group>"; };
 		C05A96BA1C1D83360078433B /* AppointDoctorsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointDoctorsListViewController.m; sourceTree = "<group>"; };
 		C05A96BC1C1D83570078433B /* AppointHosptailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointHosptailViewController.h; sourceTree = "<group>"; };
@@ -1944,6 +1959,8 @@
 				993669DA1C144F2000B3E1C7 /* ShopDetailBuyViewController.m */,
 				D2D2CAF91C25A1EA0052F30B /* AddressListViewController.h */,
 				D2D2CAFA1C25A1EA0052F30B /* AddressListViewController.m */,
+				C05810D31C2FBAE9009A2567 /* ShoppingCartViewController.h */,
+				C05810D41C2FBAE9009A2567 /* ShoppingCartViewController.m */,
 				D2CED1961C263AE8004FAB33 /* AddressAddViewController.h */,
 				D2CED1971C263AE8004FAB33 /* AddressAddViewController.m */,
 				D2CED1991C26463D004FAB33 /* CityListFirstLevelViewController.h */,
@@ -2402,6 +2419,10 @@
 				D2D2F61B1C2988DE00A055FA /* FinishTableViewCell.m */,
 				D2D12CC91C2E77F800E1196D /* OutpatientAppointTableViewCell.h */,
 				D2D12CCA1C2E77F800E1196D /* OutpatientAppointTableViewCell.m */,
+				C05810D61C2FBB02009A2567 /* ShoppingCartTableViewCell.h */,
+				C05810D71C2FBB02009A2567 /* ShoppingCartTableViewCell.m */,
+				C05810D91C2FC652009A2567 /* ShoppingCartToolView.h */,
+				C05810DA1C2FC652009A2567 /* ShoppingCartToolView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3222,6 +3243,8 @@
 				D2D31DFC1C26D9E400BBE60D /* CommentsListModel.m */,
 				D2D12CCF1C2E837C00E1196D /* DoctorsInfoModel.h */,
 				D2D12CD01C2E837C00E1196D /* DoctorsInfoModel.m */,
+				C05810D01C2FB52B009A2567 /* ScheduleCalendarModel.h */,
+				C05810D11C2FB52B009A2567 /* ScheduleCalendarModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3329,6 +3352,8 @@
 			children = (
 				D2D26A871C23E40800066770 /* MyAppointmentRegisteredModel.h */,
 				D2D26A881C23E40800066770 /* MyAppointmentRegisteredModel.m */,
+				C05810DC1C2FD3BF009A2567 /* MyCollectionModel.h */,
+				C05810DD1C2FD3BF009A2567 /* MyCollectionModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3689,6 +3714,7 @@
 				D2D126F31C245D3A00131C25 /* NewMyArchivesViewController.m in Sources */,
 				993669601C132A8E00B3E1C7 /* ShopViewController.m in Sources */,
 				99DA41EC1C0BEB0500573D4C /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				C05810DB1C2FC652009A2567 /* ShoppingCartToolView.m in Sources */,
 				991A32FF1C12EFD700E0313F /* MessageTableViewCell.m in Sources */,
 				99DA41C71C0BEB0500573D4C /* MJRefreshBackFooter.m in Sources */,
 				993669711C132C7600B3E1C7 /* ConsultingDynamicTableViewCell.m in Sources */,
@@ -3715,9 +3741,11 @@
 				99DA41BE1C0BEB0500573D4C /* NSArray+MTLManipulationAdditions.m in Sources */,
 				99DA41A41C0BEB0500573D4C /* NSString+Size.m in Sources */,
 				99DA41AD1C0BEB0500573D4C /* UIView+Tag.m in Sources */,
+				C05810D21C2FB52B009A2567 /* ScheduleCalendarModel.m in Sources */,
 				993669761C132D5F00B3E1C7 /* ShopTableViewCell.m in Sources */,
 				99DA41AA1C0BEB0500573D4C /* UIDevice+Extension.m in Sources */,
 				9929BCB81C18255800F747CB /* ConsultingIsPhoneTitleTableViewCell.m in Sources */,
+				C05810D51C2FBAE9009A2567 /* ShoppingCartViewController.m in Sources */,
 				99D5441B1C1562920081D1D3 /* ReviewGuideViewController.m in Sources */,
 				99DA41CF1C0BEB0500573D4C /* MJRefreshBackNormalFooter.m in Sources */,
 				993669A41C13FF6C00B3E1C7 /* IncomeRecordTableViewCell.m in Sources */,
@@ -3786,6 +3814,7 @@
 				991A312A1C11E9B600E0313F /* HomeFunctionTableViewCell.m in Sources */,
 				D2D26A8C1C23EDC600066770 /* ConsultingDoctorListNewCell.m in Sources */,
 				99DA41E61C0BEB0500573D4C /* UIImage+GIF.m in Sources */,
+				C05810DE1C2FD3BF009A2567 /* MyCollectionModel.m in Sources */,
 				C082443D1C1F156C00783FD5 /* MyAppointRegisteredViewController.m in Sources */,
 				99DA41B21C0BEB0500573D4C /* FMDatabaseQueue.m in Sources */,
 				C08244461C1F15DF00783FD5 /* MyAppointmentTopView.m in Sources */,
@@ -3890,6 +3919,7 @@
 				C05A96D01C1D8DFC0078433B /* AppointHosptailTableViewCell.m in Sources */,
 				D2D31DE51C2697B100BBE60D /* PhoneExperToolView.m in Sources */,
 				99DA41B11C0BEB0500573D4C /* FMDatabasePool.m in Sources */,
+				C05810D81C2FBB02009A2567 /* ShoppingCartTableViewCell.m in Sources */,
 				99DA41DA1C0BEB0500573D4C /* NSObject+DHF.m in Sources */,
 				C08244791C1FE5EC00783FD5 /* DynamicCommentsViewController.m in Sources */,
 				99DA41D81C0BEB0500573D4C /* UIView+MJExtension.m in Sources */,

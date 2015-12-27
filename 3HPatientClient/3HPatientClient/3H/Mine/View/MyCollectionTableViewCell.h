@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "MyCollectionModel.h"
 @interface MyCollectionTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UIButton *btnCollection;
@@ -20,5 +20,5 @@
 
 @property (nonatomic, strong) UILabel * labPrice;
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(MyCollectionModel *)dic;
 @end

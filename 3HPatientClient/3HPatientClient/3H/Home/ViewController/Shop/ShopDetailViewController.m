@@ -15,6 +15,7 @@
 #import "ShopDetailToolView.h"
 #import "ShopDetailBuyViewController.h"
 #import "GoodsDetailModel.h"
+#import "ShoppingCartViewController.h"
 
 @interface ShopDetailViewController ()
 
@@ -53,20 +54,45 @@
     return _imgHead;
 }
 
+- (void)favGoodsgoods_id{
+
+    [self showHudAuto:@"收藏中..." andDuration:@"2"];
+    ;
+    WeakSelf(ShopDetailViewController);
+    
+    [[THNetWorkManager shareNetWork] favGoodsgoods_id:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+        
+    
+    
+}
+
+
+
 - (ShopDetailToolView *)toolView{
     WeakSelf(ShopDetailViewController);
     if (!_toolView) {
         _toolView = [[ShopDetailToolView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, DeviceSize.width, 65)];
         [_toolView setShopDetailToolBlock:^(NSInteger index) {
             if (index == 0) {
-                
+                [weakSelf favGoodsgoods_id];
             }else if(index == 1){
                 
             }else if(index == 2){
                 ShopDetailBuyViewController *shopDetailBuyVc = [[ShopDetailBuyViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 [weakSelf.navigationController pushViewController:shopDetailBuyVc animated:YES];
             }else{
-                
+                ShoppingCartViewController *shoppingCartVc = [[ShoppingCartViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+                [weakSelf.navigationController pushViewController:shoppingCartVc animated:YES];
             }
         }];
     }
@@ -195,10 +221,17 @@
     [[THNetWorkManager shareNetWork]getGoodsFlashId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-
+            NSLog(@"-----%@",response.dataDic);
             GoodsDetailModel * model = [response thParseDataFromDic:response.dataDic andModel:[GoodsDetailModel class]];
             weakSelf.goodsDetailModel = model;
             [weakSelf.imgHead sd_setImageWithURL:SD_IMG(model.thumb)];
+            
+            if ([model.is_fav integerValue] == 0) {
+                weakSelf.toolView.btnCollection.backgroundColor = [UIColor colorWithHEX:0xfffffff];
+            }else{
+                weakSelf.toolView.btnCollection.backgroundColor = AppDefaultColor;
+            }
+            
             [weakSelf.tableView reloadData];
             
         }else{
