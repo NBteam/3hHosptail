@@ -38,8 +38,8 @@
 
 
 //赋值
-- (void)confingWithModel{
-    self.labTitle.attributedText = [self getName:@"中国建设银行" AndAge:@"  (尾号1234)"];
+- (void)confingWithModel:(WithdrawaListModel *)model{
+    self.labTitle.attributedText = [self getName:model.bank_name AndAge:[NSString stringWithFormat:@"  (%@)",model.bank_info]];
 }
 
 - (NSMutableAttributedString *)getName:(NSString *)name AndAge:(NSString *)card{

@@ -23,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"删除"];
     [self.view addSubview:self.viewBack];
     [self.viewBack addSubview:self.labTitle];
     [self getOrderTelSetdate];
@@ -40,7 +41,9 @@
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+- (void)rightAction{
+    [self removeTimeItemsNetWork];
+}
 - (UIView *)viewBack{
     if (!_viewBack) {
         _viewBack = [[UIView alloc] initWithFrame:CGRectMake(10, 10, DeviceSize.width -20, 10)];
@@ -102,7 +105,7 @@
 
 - (void)getOrderTelSetdate{
     [self.dataArray removeAllObjects];
-    [self showHudAuto:WaitPrompt];
+    [self showHudWaitingView:WaitPrompt];
     WeakSelf(PhoneAppointTDetailViewController);
     [[THNetWorkManager shareNetWork] getOrderTelSetdate:self.dateString CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
@@ -123,7 +126,24 @@
     } ];
         
 }
-
+- (void)removeTimeItemsNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(PhoneAppointTDetailViewController);
+    [[THNetWorkManager shareNetWork]removeTimeItemsDate:self.dateString andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            if (weakSelf.reloadInfo) {
+                weakSelf.reloadInfo();
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (NSString *)title{
     return @"预约详情";
 }

@@ -644,6 +644,7 @@
 		C0CAB52A1C299DD0008EDEE5 /* BookIsPhoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CAB5291C299DD0008EDEE5 /* BookIsPhoneModel.m */; settings = {ASSET_TAGS = (); }; };
 		C0CAB52D1C29A4DE008EDEE5 /* PhoneDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CAB52C1C29A4DE008EDEE5 /* PhoneDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		D24F418C1C1D7235004F8699 /* ReservationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D24F418B1C1D7235004F8699 /* ReservationListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D28D0A321C2FD114002240BC /* WithdrawaListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D28D0A311C2FD114002240BC /* WithdrawaListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2D31DF01C26CD1100BBE60D /* CommentsCustomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DED1C26CD1100BBE60D /* CommentsCustomKeyboard.m */; settings = {ASSET_TAGS = (); }; };
 		D2D31DF11C26CD1100BBE60D /* DynamicCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DEF1C26CD1100BBE60D /* DynamicCommentsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D31DF41C26CDD500BBE60D /* DynamicCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DF31C26CDD500BBE60D /* DynamicCommentsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -1660,6 +1661,8 @@
 		C0CAB52C1C29A4DE008EDEE5 /* PhoneDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneDetailModel.m; sourceTree = "<group>"; };
 		D24F418A1C1D7235004F8699 /* ReservationListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReservationListModel.h; sourceTree = "<group>"; };
 		D24F418B1C1D7235004F8699 /* ReservationListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReservationListModel.m; sourceTree = "<group>"; };
+		D28D0A301C2FD114002240BC /* WithdrawaListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawaListModel.h; sourceTree = "<group>"; };
+		D28D0A311C2FD114002240BC /* WithdrawaListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawaListModel.m; sourceTree = "<group>"; };
 		D2D31DEC1C26CD1100BBE60D /* CommentsCustomKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsCustomKeyboard.h; sourceTree = "<group>"; };
 		D2D31DED1C26CD1100BBE60D /* CommentsCustomKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsCustomKeyboard.m; sourceTree = "<group>"; };
 		D2D31DEE1C26CD1100BBE60D /* DynamicCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicCommentsViewController.h; sourceTree = "<group>"; };
@@ -3582,6 +3585,8 @@
 				C051E6071C259548005A3D2E /* PhoneAppointModel.m */,
 				C0A0111E1C2695EE00A8E476 /* PhoneAppointTDetailModel.h */,
 				C0A0111F1C2695EE00A8E476 /* PhoneAppointTDetailModel.m */,
+				D28D0A301C2FD114002240BC /* WithdrawaListModel.h */,
+				D28D0A311C2FD114002240BC /* WithdrawaListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4379,6 +4384,7 @@
 				99DA45DA1C0C5D8100573D4C /* HomeTableViewCell.m in Sources */,
 				C051E5F01C255508005A3D2E /* DiagnosisDetailViewController.m in Sources */,
 				99D142511C0DA89E002DA3AD /* TransferredAssistantViewController.m in Sources */,
+				D28D0A321C2FD114002240BC /* WithdrawaListModel.m in Sources */,
 				99DA402B1C0BE59A00573D4C /* MJRefreshGifHeader.m in Sources */,
 				C0AEAEF91C2EC75C0009A3F5 /* QRCodeGenerator.m in Sources */,
 				99DA3FFB1C0BE59A00573D4C /* NSDictionary+SafeAccess.m in Sources */,

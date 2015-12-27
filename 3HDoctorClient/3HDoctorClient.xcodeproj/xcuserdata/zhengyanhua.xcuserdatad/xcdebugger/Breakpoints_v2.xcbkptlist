@@ -41,7 +41,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
             endingLineNumber = "126"
-            landmarkName = "-getNetWorkInfo"
+            landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -75,54 +75,38 @@
             endingLineNumber = "225"
             landmarkName = "-getNetWorkInfo"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "3HDoctorClient/3H/Mine/View/MineHeadTableViewCell.m"
-            timestampString = "471793124.137106"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "-confingWithModel:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "3HDoctorClient/3H/Home/ViewController/PatientCenter/PatientAddRequestViewController.m"
-            timestampString = "471798525.985046"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "-getNetWork"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "3HDoctorClient/3H/Home/ViewController/PatientCenter/PatientCenterViewController.m"
-            timestampString = "471800090.866442"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-getNetWorkInfo"
-            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PersonalViewController tableView:didSelectRowAtIndexPath:]"
+                  moduleName = "3HDoctorClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhengyanhua/Desktop/New3H/3HDoctorClient/3HDoctorClient/3H/Mine/ViewController/Personal/PersonalViewController.m"
+                  timestampString = "472900758.930508"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "225"
+                  endingLineNumber = "225"
+                  offsetFromSymbolStart = "4062">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__60-[PersonalViewController tableView:didSelectRowAtIndexPath:]_block_invoke267"
+                  moduleName = "3HDoctorClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhengyanhua/Desktop/New3H/3HDoctorClient/3HDoctorClient/3H/Mine/ViewController/Personal/PersonalViewController.m"
+                  timestampString = "472900758.930659"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "225"
+                  endingLineNumber = "225"
+                  offsetFromSymbolStart = "53">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -170,6 +154,22 @@
             startingLineNumber = "103"
             endingLineNumber = "103"
             landmarkName = "-getArtCmtListNetWork"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "3HDoctorClient/3H/Mine/ViewController/Wallet/AddCardsViewController.m"
+            timestampString = "472897318.784368"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-getNetWorkBank_id:bank_account:bank_username:bank_type:bank_bind_mobile:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

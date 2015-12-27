@@ -37,9 +37,7 @@
     }else if (textField4.text.length == 0){
         [self showHudAuto:arrDetail[3] andDuration:@"2"];
     }else{
-        AddCardsResultViewController *addCardsResultVc = [[AddCardsResultViewController alloc] init];
-        addCardsResultVc.index = 0;
-        [self.navigationController pushViewController:addCardsResultVc animated:YES];
+        [self getNetWorkBank_id:@"" bank_account:textField1.text bank_username:textField2.text bank_type:textField3.text bank_bind_mobile:textField4.text];
     }
     
 }
@@ -107,7 +105,22 @@
     }
     
 }
-
+- (void)getNetWorkBank_id:(NSString *)Bank_id bank_account:(NSString *)bank_account bank_username:(NSString *)bank_username bank_type:(NSString *)bank_type bank_bind_mobile:(NSString *)bank_bind_mobile{
+    WeakSelf(AddCardsViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    [[THNetWorkManager shareNetWork]addBankCardBank_id:Bank_id bank_account:bank_account bank_username:bank_username bank_type:bank_type bank_bind_mobile:bank_bind_mobile andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            AddCardsResultViewController *addCardsResultVc = [[AddCardsResultViewController alloc] init];
+            addCardsResultVc.index = 0;
+            [weakSelf.navigationController pushViewController:addCardsResultVc animated:YES];
+        } else {
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (NSString *)title{
     return @"绑定银行卡";
 }

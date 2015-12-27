@@ -48,9 +48,11 @@
 }
 
 - (void)rightAction{
-    AddCardsResultViewController *addCardsResultVc = [[AddCardsResultViewController alloc] init];
-    addCardsResultVc.index = 1;
-    [self.navigationController pushViewController:addCardsResultVc animated:YES];
+    if ([self.txtField.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入金额" andDuration:@"1"];
+    }else{
+        [self getNetWork];
+    }
 }
 
 - (void)backAction{
@@ -111,7 +113,22 @@
     }
     return _txtField;
 }
-
+- (void)getNetWork{
+    WeakSelf(WithdrawalDetailViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    [[THNetWorkManager shareNetWork]applyCashD_bank_id:self.id cash:self.txtField.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            AddCardsResultViewController *addCardsResultVc = [[AddCardsResultViewController alloc] init];
+            addCardsResultVc.index = 1;
+            [weakSelf.navigationController pushViewController:addCardsResultVc animated:YES];
+        } else {
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

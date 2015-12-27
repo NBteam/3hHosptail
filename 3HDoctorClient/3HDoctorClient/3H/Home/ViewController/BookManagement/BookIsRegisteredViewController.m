@@ -32,7 +32,7 @@
         cell = [[BookManagementTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    ReservationListModel * model = self.dataArray[indexPath.section];
+    ReservationListModel * model = self.dataArray[indexPath.section];
     [cell confingWithModel:nil];
     return cell;
 }
@@ -46,7 +46,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -67,7 +67,7 @@
 - (void)getNetWork{
     WeakSelf(BookIsRegisteredViewController);
     [weakSelf showHudWaitingView:WaitPrompt];
-    [[THNetWorkManager shareNetWork]getMyOrderguahaoListPage:5 andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getMyOrderguahaoListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             for (NSDictionary * dict in response.dataDic[@"list"]) {

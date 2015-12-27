@@ -10,4 +10,5 @@
 
 @interface PhoneAppointTDetailViewController : BaseViewController
 @property (nonatomic, copy) NSString *dateString;
+@property (nonatomic, copy) void (^reloadInfo)(void);
 @end

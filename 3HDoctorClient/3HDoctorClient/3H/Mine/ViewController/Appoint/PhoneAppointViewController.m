@@ -94,8 +94,11 @@
             }];
             [weakSelf.navigationController pushViewController:phoneAppointSetVc animated:YES];
         }else{
-            
+            WeakSelf(PhoneAppointViewController);
             PhoneAppointTDetailViewController *phoneAppointTDetailVc = [[PhoneAppointTDetailViewController alloc] init];
+            [phoneAppointTDetailVc setReloadInfo:^{
+                [weakSelf phoneAppointData:weakSelf.month];
+            }];
             phoneAppointTDetailVc.dateString = date;
             [weakSelf.navigationController pushViewController:phoneAppointTDetailVc animated:YES];
             

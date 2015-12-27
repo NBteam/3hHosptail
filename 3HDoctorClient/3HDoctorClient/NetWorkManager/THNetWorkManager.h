@@ -316,15 +316,32 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 - (void)delPatientDiagnosismid:(NSString *)mid idx:(NSString *)idx andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
 #pragma mark （公共）找回密码-修改密码
-- (void)getPwdMobile:(NSString *)mobile sms_code:(NSString *)sms_code	password:(NSString *)password andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+- (void)getPwdMobile:(NSString *)mobile sms_code:(NSString *)sms_code password:(NSString *)password andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 患者用药提醒——删除【20151213添加】
+- (void)delPatientDrugId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 患者复查提醒——删除【20151213添加】
+- (void)delPatientRecheckId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 患者化验——删除【20151213添加】
+- (void)delPatientAssayId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 患者检查——删除【20151213添加】
+- (void)delPatientCheckId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 电话预约——删除某天设置【20151105添加】
+- (void)removeTimeItemsDate:(NSString *)date andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 我的银行卡——列表【20151201添加】
+- (void)myBankCardListCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 我的银行卡——添加【20151201添加】
+- (void)addBankCardBank_id:(NSString *)bank_id bank_account:(NSString *)bank_account bank_username:(NSString *)bank_username bank_type:(NSString *)bank_type bank_bind_mobile:(NSString *)bank_bind_mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 我的银行卡——删除【20151201添加】
+- (void)delteBankCardId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
-
+#pragma mark 【鉴权】提现申请【20151202添加】
+- (void)applyCashD_bank_id:(NSString *)d_bank_id cash:(NSString *)cash andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 @end

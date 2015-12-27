@@ -10,6 +10,6 @@
 
 @interface WithdrawalDetailViewController : BaseViewController
 
-
-@property (nonatomic, assign) NSMutableAttributedString *string;
+@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSAttributedString *string;
 @end

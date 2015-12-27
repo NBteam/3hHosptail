@@ -114,7 +114,28 @@
 }
 
 - (void)btnCodeAction{
-    
+    if ([self.txtUserName.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入手机号" andDuration:@"1"];
+    }else{
+        if (buttonIndex==60) {
+            [self showHudWaitingView:@"正在努力操作"];
+            WeakSelf(ForgetPossWordViewController);
+            [[THNetWorkManager shareNetWork] getCodeMobile:self.txtUserName.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+                [weakSelf removeMBProgressHudInManaual];
+                if (response.responseCode == 1) {
+                    if (weakSelf.timer==nil) {
+                        [weakSelf creatTimer];
+                    }else{
+                        [weakSelf.timer setFireDate:[NSDate distantPast]];
+                    }
+                }else{
+                    [weakSelf showHudAuto:response.message andDuration:@"2"];
+                }
+            } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+                [weakSelf showHudAuto:@"验证码获取失败，请重试" andDuration:@"1"];
+            }];
+        }
+    }
 }
 
 - (UITextField *)txtPassWord{
@@ -181,30 +202,6 @@
         [_timer setFireDate:[NSDate distantFuture]];
         [self.btnCode setTitle:[NSString stringWithFormat:@"重新获取"] forState:UIControlStateNormal];
         buttonIndex=60;
-    }
-}
-- (void)btnGetCodeAction{
-    if ([self.txtUserName.text isEqualToString:@""]) {
-        [self showHudAuto:@"请输入手机号" andDuration:@"1"];
-    }else{
-        if (buttonIndex==60) {
-            [self showHudWaitingView:@"正在努力操作"];
-            WeakSelf(ForgetPossWordViewController);
-            [[THNetWorkManager shareNetWork] getCodeMobile:self.txtUserName.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
-                [weakSelf removeMBProgressHudInManaual];
-                if (response.responseCode == 1) {
-                    if (weakSelf.timer==nil) {
-                        [weakSelf creatTimer];
-                    }else{
-                        [weakSelf.timer setFireDate:[NSDate distantPast]];
-                    }
-                }else{
-                    [weakSelf showHudAuto:response.message andDuration:@"2"];
-                }
-            } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-                [weakSelf showHudAuto:@"验证码获取失败，请重试" andDuration:@"1"];
-            }];
-        }
     }
 }
 - (void)getPwdNetWork{

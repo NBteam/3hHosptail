@@ -12,6 +12,7 @@
 #import "AddCardsViewController.h"
 //提现
 #import "WithdrawalDetailViewController.h"
+#import "WithdrawaListModel.h"
 @interface WithdrawalViewController ()
 
 @property (nonatomic, strong) UIButton *btnAddCard;
@@ -24,7 +25,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    
+    self.isOpenFooterRefresh = YES;
+    self.isOpenHeaderRefresh = YES;
+    [self getNetWork];
     self.tableView.height = self.tableView.height - 65;
     [self.view addSubview:self.btnAddCard];
 }
@@ -79,7 +82,8 @@
         cell = [[WithdrawalTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel];
+    WithdrawaListModel * model = self.dataArray[indexPath.section];
+    [cell confingWithModel:model];
     return cell;
 }
 
@@ -92,7 +96,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -103,10 +107,77 @@
     WithdrawalTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     WithdrawalDetailViewController *withdrawalDetailVc = [[WithdrawalDetailViewController alloc] init];
-    
+    WithdrawaListModel * model = self.dataArray[indexPath.section];
     withdrawalDetailVc.string = cell.labTitle.attributedText;
+    withdrawalDetailVc.id = model.id;
     [self.navigationController pushViewController:withdrawalDetailVc animated:YES];
     
+}
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(WithdrawalViewController);
+    [[THNetWorkManager shareNetWork]myBankCardListCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (weakSelf.pageNO == 1) {
+            [weakSelf.dataArray removeAllObjects];
+        }
+        if (response.responseCode == 1) {
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                WithdrawaListModel * model = [response thParseDataFromDic:dict andModel:[WithdrawaListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"1"];
+        }
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        //  重新加载数据
+        [weakSelf.tableView reloadData];
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
+    }];
+}
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    [self getNetWork];
+}
+- (void)footerRequestWithData
+{
+    [self getNetWork];
+}
+#pragma mark 提交编辑操作时会调用这个方法(删除，添加)
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 删除操作
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // 1.删除数据
+        [self deleteCellIndexPath:indexPath];
+    }
+}
+- (void)deleteCellIndexPath:(NSIndexPath *)indexPath{
+    WeakSelf(WithdrawalViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    WithdrawaListModel * model = self.dataArray[indexPath.section];
+    [[THNetWorkManager shareNetWork]delteBankCardId:model.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            
+            [weakSelf.dataArray removeObjectAtIndex:indexPath.section];
+            [weakSelf.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+            [weakSelf.tableView reloadData];
+            
+        } else {
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

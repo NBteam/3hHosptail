@@ -144,8 +144,34 @@
 }
 - (void)footerRequestWithData
 {
-
     [self getNetWork];
+}
+#pragma mark 提交编辑操作时会调用这个方法(删除，添加)
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 删除操作
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // 1.删除数据
+        [self deleteCellIndexPath:indexPath];
+    }
+}
+- (void)deleteCellIndexPath:(NSIndexPath *)indexPath{
+    WeakSelf(MedicationViewController);
+    [weakSelf showHudWaitingView:WaitPrompt];
+    MedicationModel * model = self.dataArray[indexPath.section];
+    [[THNetWorkManager shareNetWork]delPatientDrugId:model.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            
+            [weakSelf.dataArray removeObjectAtIndex:indexPath.section];
+            [weakSelf.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+            [weakSelf.tableView reloadData];
+            
+        } else {
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

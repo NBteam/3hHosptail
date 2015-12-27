@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "WithdrawaListModel.h"
 @interface WithdrawalTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UILabel *labTitle;
@@ -16,6 +16,6 @@
 
 
 //赋值
-- (void)confingWithModel;
+- (void)confingWithModel:(WithdrawaListModel *)model;
 
 @end
