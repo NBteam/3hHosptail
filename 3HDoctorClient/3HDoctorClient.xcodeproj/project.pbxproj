@@ -646,6 +646,7 @@
 		D24F418C1C1D7235004F8699 /* ReservationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D24F418B1C1D7235004F8699 /* ReservationListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D28D0A321C2FD114002240BC /* WithdrawaListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D28D0A311C2FD114002240BC /* WithdrawaListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D28D0A351C2FEC83002240BC /* ConsultingUnFinishedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D28D0A341C2FEC83002240BC /* ConsultingUnFinishedModel.m */; settings = {ASSET_TAGS = (); }; };
+		D28D0A371C300FB2002240BC /* 绑定银行卡icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D28D0A361C300FB2002240BC /* 绑定银行卡icon.png */; settings = {ASSET_TAGS = (); }; };
 		D2D31DF01C26CD1100BBE60D /* CommentsCustomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DED1C26CD1100BBE60D /* CommentsCustomKeyboard.m */; settings = {ASSET_TAGS = (); }; };
 		D2D31DF11C26CD1100BBE60D /* DynamicCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DEF1C26CD1100BBE60D /* DynamicCommentsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D31DF41C26CDD500BBE60D /* DynamicCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DF31C26CDD500BBE60D /* DynamicCommentsTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -1666,6 +1667,7 @@
 		D28D0A311C2FD114002240BC /* WithdrawaListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawaListModel.m; sourceTree = "<group>"; };
 		D28D0A331C2FEC83002240BC /* ConsultingUnFinishedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingUnFinishedModel.h; sourceTree = "<group>"; };
 		D28D0A341C2FEC83002240BC /* ConsultingUnFinishedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingUnFinishedModel.m; sourceTree = "<group>"; };
+		D28D0A361C300FB2002240BC /* 绑定银行卡icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "绑定银行卡icon.png"; sourceTree = "<group>"; };
 		D2D31DEC1C26CD1100BBE60D /* CommentsCustomKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsCustomKeyboard.h; sourceTree = "<group>"; };
 		D2D31DED1C26CD1100BBE60D /* CommentsCustomKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsCustomKeyboard.m; sourceTree = "<group>"; };
 		D2D31DEE1C26CD1100BBE60D /* DynamicCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicCommentsViewController.h; sourceTree = "<group>"; };
@@ -2968,6 +2970,7 @@
 			isa = PBXGroup;
 			children = (
 				99DA43A51C0C4FED00573D4C /* 我的-设置_关于-未点击@2x.png */,
+				D28D0A361C300FB2002240BC /* 绑定银行卡icon.png */,
 				99DA43A61C0C4FED00573D4C /* 我的-设置_关于-点击@2x.png */,
 				99DA43A71C0C4FED00573D4C /* 我的-设置_右键-灰色@2x.png */,
 				99DA43A81C0C4FED00573D4C /* 我的-设置_左键-白色@2x.png */,
@@ -4338,6 +4341,7 @@
 				99DA44E21C0C4FED00573D4C /* 我的-设置_关于-未点击@2x.png in Resources */,
 				99DA456C1C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查_检查-未点击@2x.png in Resources */,
 				99DA45231C0C4FED00573D4C /* 首页-助理医生_右键-白色@2x.png in Resources */,
+				D28D0A371C300FB2002240BC /* 绑定银行卡icon.png in Resources */,
 				99DA452C1C0C4FED00573D4C /* 首页-咨询服务-未回复_1@2x.png in Resources */,
 				99DA457D1C0C4FED00573D4C /* 首页-患者中心-患者详情-复查提醒_右键-白色@2x.png in Resources */,
 				99DA459B1C0C4FED00573D4C /* 首页-患者中心-添加患者(扫一扫)_右键-白色@2x.png in Resources */,

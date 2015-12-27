@@ -12,14 +12,21 @@
 
 
 - (void)customView{
-    
+    [self.contentView addSubview:self.imgLogo];
     [self.contentView addSubview:self.imgArrow];
     [self.contentView addSubview:self.labTitle];
+    
 }
-
+- (UIImageView *)imgLogo{
+    if (!_imgLogo) {
+        _imgLogo = [[UIImageView alloc]initWithFrame:CGRectMake(10, (45-30)/2, 30, 30)];
+        
+    }
+    return _imgLogo;
+}
 - (UILabel *)labTitle{
     if (!_labTitle) {
-        _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.imgArrow.left -10, 45)];
+        _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.imgLogo.right + 10, 0, self.imgArrow.left -10, 45)];
         _labTitle.font = [UIFont systemFontOfSize:15];
         _labTitle.textColor = [UIColor colorWithHEX:0x333333];
         
@@ -39,6 +46,7 @@
 
 //赋值
 - (void)confingWithModel:(WithdrawaListModel *)model{
+    [self.imgLogo sd_setImageWithURL:URL(model.bank_pic)];
     self.labTitle.attributedText = [self getName:model.bank_name AndAge:[NSString stringWithFormat:@"  (%@)",model.bank_info]];
 }
 

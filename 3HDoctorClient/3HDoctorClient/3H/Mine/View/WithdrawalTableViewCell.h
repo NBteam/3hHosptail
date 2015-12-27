@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) UIImageView *imgArrow;
 
-
+@property (nonatomic, strong) UIImageView *imgLogo;
 //赋值
 - (void)confingWithModel:(WithdrawaListModel *)model;
 

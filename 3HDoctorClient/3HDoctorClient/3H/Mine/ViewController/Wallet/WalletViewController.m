@@ -80,7 +80,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -99,9 +99,14 @@
         IncomeRecordViewController *incomeRecordVc = [[IncomeRecordViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:incomeRecordVc animated:YES];
     }
-    
     if (indexPath.section == 3) {
         WithdrawalViewController *withdrawalVc = [[WithdrawalViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        withdrawalVc.index = 3;
+        [self.navigationController pushViewController:withdrawalVc animated:YES];
+    }
+    if (indexPath.section == 4) {
+        WithdrawalViewController *withdrawalVc = [[WithdrawalViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        withdrawalVc.index = 4;
         [self.navigationController pushViewController:withdrawalVc animated:YES];
     }
 }

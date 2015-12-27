@@ -84,7 +84,7 @@
                   moduleName = "3HDoctorClient"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengyanhua/Desktop/New3H/3HDoctorClient/3HDoctorClient/3H/Mine/ViewController/Personal/PersonalViewController.m"
-                  timestampString = "472903402.623672"
+                  timestampString = "472917645.083534"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "225"
@@ -99,7 +99,7 @@
                   moduleName = "3HDoctorClient"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhengyanhua/Desktop/New3H/3HDoctorClient/3HDoctorClient/3H/Mine/ViewController/Personal/PersonalViewController.m"
-                  timestampString = "472903402.623821"
+                  timestampString = "472917645.08374"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "225"
@@ -154,22 +154,6 @@
             startingLineNumber = "103"
             endingLineNumber = "103"
             landmarkName = "-getArtCmtListNetWork"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "3HDoctorClient/3H/Mine/ViewController/Wallet/AddCardsViewController.m"
-            timestampString = "472897318.784368"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "-getNetWorkBank_id:bank_account:bank_username:bank_type:bank_bind_mobile:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -350,4 +350,8 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 #pragma mark 患者医生咨询——已回复列表【20151218添加】
 - (void)getChatReplyListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess)success andFailure:(FailureBlock)failure;
+
+#pragma mark 【鉴权】我的银行卡——修改【20151201添加】
+- (void)addBankCardId:(NSString *)id bank_id:(NSString *)bank_id bank_account:(NSString *)bank_account bank_username:(NSString *)bank_username bank_type:(NSString *)bank_type bank_bind_mobile:(NSString *)bank_bind_mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess)success andFailure:(FailureBlock)failure;
+
 @end

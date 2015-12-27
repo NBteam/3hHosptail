@@ -27,17 +27,15 @@
     UITextField *textField3 = (UITextField *)[self.view viewWithTag:502];
     UITextField *textField4 = (UITextField *)[self.view viewWithTag:503];
     
-    NSArray *arrDetail = @[@"请输入完成银行卡号",@"请输入开户银行名称",@"请输入持卡人姓名",@"请输入银行卡预留手机号"];
+    NSArray *arrDetail = @[@"请输入持卡人姓名",@"卡类型",@"请输入完成银行卡号",@"请输入银行卡预留手机号"];
     if (textField1.text.length == 0) {
         [self showHudAuto:arrDetail[0] andDuration:@"2"];
-    }else if (textField2.text.length == 0){
-        [self showHudAuto:arrDetail[1] andDuration:@"2"];
     }else if (textField3.text.length == 0){
         [self showHudAuto:arrDetail[2] andDuration:@"2"];
     }else if (textField4.text.length == 0){
         [self showHudAuto:arrDetail[3] andDuration:@"2"];
     }else{
-        [self getNetWorkBank_id:@"" bank_account:textField1.text bank_username:textField2.text bank_type:textField3.text bank_bind_mobile:textField4.text];
+        [self getNetWorkBank_id:@"" bank_account:textField3.text bank_username:textField1.text bank_type:textField2.text bank_bind_mobile:textField4.text];
     }
     
 }
@@ -69,8 +67,8 @@
 }
 
 - (void)customView{
-    NSArray *arrTitle = @[@"卡号",@"开户行",@"姓名",@"手机号码"];
-    NSArray *arrDetail = @[@"请输入完成银行卡号",@"请输入开户银行名称",@"请输入持卡人姓名",@"请输入银行卡预留手机号"];
+    NSArray *arrTitle = @[@"持卡人",@"卡类型",@"银行卡号",@"手机号码"];
+    NSArray *arrDetail = @[@"请输入持卡人姓名",@"",@"请输入完成银行卡号",@"请输入银行卡预留手机号"];
     
     for (int i = 0; i<arrDetail.count; i++) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-1, self.labTitle.bottom +44.5*i, DeviceSize.width +2, 45)];
@@ -92,7 +90,15 @@
         if (i == 0 ||i ==3) {
             txtField.keyboardType = UIKeyboardTypeNumberPad;
         }
-
+        if (i == 1 ) {
+            UIImageView *imgRight = [[UIImageView alloc]initWithFrame:CGRectMake(view.width - 19/2 -15, (view.height - 34/2)/2, 19/2, 34/2)];
+            txtField.enabled = NO;
+            imgRight.image = [UIImage imageNamed:@"3H-首页_键"];
+            [view addSubview:imgRight];
+            UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapView:)];
+            [view addGestureRecognizer:tap];
+        }
+        
         txtField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:arrDetail[i] attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x999999]}];
         
         txtField.tag = 500 +i;
@@ -104,6 +110,9 @@
         
     }
     
+}
+- (void)tapView:(UITapGestureRecognizer *)tap{
+    NSLog(@"11111");
 }
 - (void)getNetWorkBank_id:(NSString *)Bank_id bank_account:(NSString *)bank_account bank_username:(NSString *)bank_username bank_type:(NSString *)bank_type bank_bind_mobile:(NSString *)bank_bind_mobile{
     WeakSelf(AddCardsViewController);

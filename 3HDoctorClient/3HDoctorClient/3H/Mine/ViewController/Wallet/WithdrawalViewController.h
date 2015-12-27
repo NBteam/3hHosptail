@@ -9,5 +9,5 @@
 #import "BaseTableViewController.h"
 
 @interface WithdrawalViewController : BaseTableViewController
-
+@property (nonatomic, assign) NSInteger index;
 @end

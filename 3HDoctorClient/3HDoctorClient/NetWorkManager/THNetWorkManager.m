@@ -803,4 +803,9 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"getChatReplyList",@"token":GetToken,@"page":@(page)};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+#pragma mark 【鉴权】我的银行卡——修改【20151201添加】
+- (void)addBankCardId:(NSString *)id bank_id:(NSString *)bank_id bank_account:(NSString *)bank_account bank_username:(NSString *)bank_username bank_type:(NSString *)bank_type bank_bind_mobile:(NSString *)bank_bind_mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess)success andFailure:(FailureBlock)failure{
+    NSDictionary *paramDic = @{@"a":@"addBankCard",@"token":GetToken,@"bank_id":bank_id,@"bank_username":bank_username,@"bank_type":bank_type,@"bank_bind_mobile":bank_bind_mobile,@"bank_account":bank_account,@"id":id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

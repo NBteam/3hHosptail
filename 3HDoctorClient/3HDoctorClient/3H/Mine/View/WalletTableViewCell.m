@@ -47,7 +47,11 @@
     if (index == 2) {
         self.labTitle.text = @"收入记录";
         self.imgLogo.image = [UIImage imageNamed:@"我的-个人中心-我的钱包_收入记录-未点击"];
-    }else{
+    }else if (index == 3){
+        self.labTitle.text = @"绑定银行卡";
+        self.imgLogo.image = [UIImage imageNamed:@"绑定银行卡icon"];
+    }
+    else{
         self.labTitle.text = @"提现";
         self.imgLogo.image = [UIImage imageNamed:@"我的-个人中心-我的钱包_提现-未点击"];
     }

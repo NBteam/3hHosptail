@@ -66,6 +66,9 @@
 }
 
 - (NSString *)title{
+    if (self.index == 3) {
+        return @"银行卡";
+    }
     return @"提现";
 }
 
@@ -104,14 +107,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    WithdrawalTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    WithdrawalDetailViewController *withdrawalDetailVc = [[WithdrawalDetailViewController alloc] init];
     WithdrawaListModel * model = self.dataArray[indexPath.section];
+    WithdrawalTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    WithdrawalDetailViewController *withdrawalDetailVc = [[WithdrawalDetailViewController alloc] init];
+    
     withdrawalDetailVc.string = cell.labTitle.attributedText;
     withdrawalDetailVc.id = model.id;
     [self.navigationController pushViewController:withdrawalDetailVc animated:YES];
-    
+    if (self.index != 3) {
+        
+    }
+//    else{
+//        AddCardsViewController *addCardsVc = [[AddCardsViewController alloc] init];
+//        addCardsVc.model = model;
+//        addCardsVc.index = 3;
+//        [self.navigationController pushViewController:addCardsVc animated:YES];
+//    }
 }
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
