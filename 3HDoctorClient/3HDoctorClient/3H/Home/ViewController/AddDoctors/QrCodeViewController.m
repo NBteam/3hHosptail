@@ -71,7 +71,7 @@
     //关闭闪光灯
     _readerView.torchMode = 0;
     //扫码bg
-    UIImage *hbImage = [UIImage imageNamed:@""];
+    UIImage *hbImage = [UIImage imageNamed:@"扫码边框"];
     _scanZomeBack = [[UIImageView alloc] initWithImage:hbImage];
     
     //添加一个背景图片

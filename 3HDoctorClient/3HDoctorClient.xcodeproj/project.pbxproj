@@ -550,6 +550,9 @@
 		C051E6021C256495005A3D2E /* DiagnosisListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C051E6011C256495005A3D2E /* DiagnosisListModel.m */; settings = {ASSET_TAGS = (); }; };
 		C051E6051C2573EC005A3D2E /* DiagnosisListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C051E6041C2573EC005A3D2E /* DiagnosisListDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C051E6081C259548005A3D2E /* PhoneAppointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C051E6071C259548005A3D2E /* PhoneAppointModel.m */; settings = {ASSET_TAGS = (); }; };
+		C0592D441C3177BA0071FCB5 /* 3H医生端-登录_勾选@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0592D411C3177BA0071FCB5 /* 3H医生端-登录_勾选@2x.png */; settings = {ASSET_TAGS = (); }; };
+		C0592D451C3177BA0071FCB5 /* 3H医生端-登录_未勾选@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0592D421C3177BA0071FCB5 /* 3H医生端-登录_未勾选@2x.png */; settings = {ASSET_TAGS = (); }; };
+		C0592D461C3177BA0071FCB5 /* 扫码边框.png in Resources */ = {isa = PBXBuildFile; fileRef = C0592D431C3177BA0071FCB5 /* 扫码边框.png */; settings = {ASSET_TAGS = (); }; };
 		C05C07F81C2AF60800C26B08 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05C07F71C2AF60800C26B08 /* ChangePasswordViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C05C07FB1C2AF82900C26B08 /* MedicationAddInputNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05C07FA1C2AF82900C26B08 /* MedicationAddInputNameViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C08244891C20173700783FD5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244841C20173700783FD5 /* AboutViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -1475,6 +1478,9 @@
 		C051E6041C2573EC005A3D2E /* DiagnosisListDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagnosisListDetailViewController.m; sourceTree = "<group>"; };
 		C051E6061C259548005A3D2E /* PhoneAppointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAppointModel.h; sourceTree = "<group>"; };
 		C051E6071C259548005A3D2E /* PhoneAppointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointModel.m; sourceTree = "<group>"; };
+		C0592D411C3177BA0071FCB5 /* 3H医生端-登录_勾选@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3H医生端-登录_勾选@2x.png"; sourceTree = "<group>"; };
+		C0592D421C3177BA0071FCB5 /* 3H医生端-登录_未勾选@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3H医生端-登录_未勾选@2x.png"; sourceTree = "<group>"; };
+		C0592D431C3177BA0071FCB5 /* 扫码边框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "扫码边框.png"; sourceTree = "<group>"; };
 		C05C07F61C2AF60800C26B08 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		C05C07F71C2AF60800C26B08 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		C05C07F91C2AF82900C26B08 /* MedicationAddInputNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddInputNameViewController.h; sourceTree = "<group>"; };
@@ -2897,6 +2903,9 @@
 		99DA43811C0C4FED00573D4C /* 3H医生端-登录 */ = {
 			isa = PBXGroup;
 			children = (
+				C0592D411C3177BA0071FCB5 /* 3H医生端-登录_勾选@2x.png */,
+				C0592D421C3177BA0071FCB5 /* 3H医生端-登录_未勾选@2x.png */,
+				C0592D431C3177BA0071FCB5 /* 扫码边框.png */,
 				99D141D41C0D537D002DA3AD /* thLOGO@2x.png */,
 				99D141D51C0D537D002DA3AD /* thLOGOdoctor@2x.png */,
 				99DA43821C0C4FED00573D4C /* 3H医生端-登录_QQ@2x.png */,
@@ -4046,6 +4055,7 @@
 				C0AEAED51C2EAEAE0009A3F5 /* zbar-samples.png in Resources */,
 				99DA454D1C0C4FED00573D4C /* 首页-患者中心_右键-白色@2x.png in Resources */,
 				C0AEAEAF1C2E94850009A3F5 /* 扫码line.png in Resources */,
+				C0592D441C3177BA0071FCB5 /* 3H医生端-登录_勾选@2x.png in Resources */,
 				C0AEAED41C2EAEAE0009A3F5 /* zbar-helpicons.png in Resources */,
 				99DA453C1C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-助理医师-咨询详情-助理已回复_回复-点击@2x.png in Resources */,
 				99DA45B41C0C4FED00573D4C /* 首页-预约管理-挂号预约_电话预约-非点击@2x.png in Resources */,
@@ -4064,6 +4074,7 @@
 				99DA45201C0C4FED00573D4C /* 首页-助理医生_4@2x.png in Resources */,
 				99DA455F1C0C4FED00573D4C /* 首页-患者中心-患者详情_右键-白色@2x.png in Resources */,
 				99DA45801C0C4FED00573D4C /* 首页-患者中心-患者详情-复查提醒-添加复查_发送提醒@2x.png in Resources */,
+				C0592D461C3177BA0071FCB5 /* 扫码边框.png in Resources */,
 				99DA45761C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查-添加检查-拍照_取消@2x.png in Resources */,
 				C0B6FD6A1C283FB9003902AB /* UMShareEditViewController.xib in Resources */,
 				99DA44D91C0C4FED00573D4C /* 我的-个人中心-我的钱包_总金额@2x.png in Resources */,
@@ -4329,6 +4340,7 @@
 				C0AEAED21C2EAEAE0009A3F5 /* zbar-back.png in Resources */,
 				99DA451E1C0C4FED00573D4C /* 首页-助理医生_2@2x.png in Resources */,
 				99DA45281C0C4FED00573D4C /* 首页-咨询服务-已回复-咨询详情-查看咨询-2_查看咨询@2x.png in Resources */,
+				C0592D451C3177BA0071FCB5 /* 3H医生端-登录_未勾选@2x.png in Resources */,
 				99DA44F01C0C4FED00573D4C /* 我的-邀请同行_微信@2x.png in Resources */,
 				99DA44EA1C0C4FED00573D4C /* 我的-设置_清理缓存-点击@2x.png in Resources */,
 				99DA44F91C0C4FED00573D4C /* 我的-预约设置_电话预约-未点击@2x.png in Resources */,

@@ -408,8 +408,8 @@ static THNetWorkManager *thNetWorkManager = nil;
 /**
  * 获取用户资料接口
  */
-- (void)getUserInfoCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"getuserinfo",Token:GetToken};
+- (void)getUserInfoToken:(NSString *)token CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getuserinfo",Token:token};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 /**
@@ -808,4 +808,16 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"addBankCard",@"token":GetToken,@"bank_id":bank_id,@"bank_username":bank_username,@"bank_type":bank_type,@"bank_bind_mobile":bank_bind_mobile,@"bank_account":bank_account,@"id":id};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+
+#pragma mark 【（公共）第三方登录接口【20151210更新】
+//	nickname			昵称
+//	opened				第三方用户统一ID
+//	open_type			第三方类型（weixin、qq、weibo）
+//	pic					头像地址
+//	sex					性别，0保密，1男，2女
+- (void)openLoginFornickname:(NSString *)nickname opened:(NSString *)opened open_type:(NSString *)open_type pic:(NSString *)pic sex:(NSString *)sex andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"openLogin",@"nickname":nickname,@"openid":opened,@"open_type":open_type,@"pic":pic,@"sex":sex};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
 @end

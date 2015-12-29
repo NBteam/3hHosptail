@@ -124,7 +124,7 @@ typedef void (^uploadProgressBlock)(long long bytesSent, long long totalBytesSen
 /**
  * 获取用户资料接口
  */
-- (void)getUserInfoCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+- (void)getUserInfoToken:(NSString *)token CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 /**
  * 获取用户资料接口
  * @param  真实姓名
@@ -353,5 +353,8 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 #pragma mark 【鉴权】我的银行卡——修改【20151201添加】
 - (void)addBankCardId:(NSString *)id bank_id:(NSString *)bank_id bank_account:(NSString *)bank_account bank_username:(NSString *)bank_username bank_type:(NSString *)bank_type bank_bind_mobile:(NSString *)bank_bind_mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess)success andFailure:(FailureBlock)failure;
+
+#pragma mark 【（公共）第三方登录接口【20151210更新】
+- (void)openLoginFornickname:(NSString *)nickname opened:(NSString *)opened open_type:(NSString *)open_type pic:(NSString *)pic sex:(NSString *)sex andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
 @end

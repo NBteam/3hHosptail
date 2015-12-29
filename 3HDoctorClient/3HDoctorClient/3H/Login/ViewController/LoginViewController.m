@@ -34,6 +34,9 @@
 @property (nonatomic, strong) UITextField *txtPassWord;
 //下划线
 @property (nonatomic, strong) UILabel *labLinePassWord;
+
+//记住我
+@property (nonatomic, strong) UIButton * btnRemember;
 //忘记密码
 @property (nonatomic, strong) UIButton *btnForgetPassWord;
 //立即登陆
@@ -78,6 +81,7 @@
     [self.view addSubview:self.labLineUserName];
     [self.view addSubview:self.txtPassWord];
     [self.view addSubview:self.labLinePassWord];
+    [self.view addSubview:self.btnRemember];
     [self.view addSubview:self.btnForgetPassWord];
     [self.view addSubview:self.btnLogin];
     [self.view addSubview:self.labLine];
@@ -178,6 +182,29 @@
     return _labLinePassWord;
 }
 
+- (UIButton *)btnRemember{
+    if (!_btnRemember) {
+        _btnRemember = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btnRemember.frame = CGRectMake(15, self.labLinePassWord.bottom +10, 100, 20);
+        [_btnRemember setImage:[UIImage imageNamed:@"3H医生端-登录_未勾选"] forState:UIControlStateNormal];
+        [_btnRemember setImage:[UIImage imageNamed:@"3H医生端-登录_勾选"] forState:UIControlStateSelected];
+        _btnRemember.titleLabel.font = [UIFont systemFontOfSize:13];
+        [_btnRemember setTitle:@" 记住我" forState:UIControlStateNormal];
+        [_btnRemember setTitleColor:[UIColor colorWithHEX:0x888888] forState:UIControlStateNormal];
+        [_btnRemember addTarget:self action:@selector(btnRememberClick:) forControlEvents:UIControlEventTouchUpInside];
+        _btnRemember.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    }
+    return _btnRemember;
+}
+
+- (void)btnRememberClick:(UIButton *)button{
+    if (button.selected) {
+        button.selected = NO;
+    }else{
+        button.selected = YES;
+    }
+}
+
 - (UIButton *)btnForgetPassWord{
     if (!_btnForgetPassWord) {
         _btnForgetPassWord = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -186,6 +213,7 @@
         _btnForgetPassWord.titleLabel.font = [UIFont systemFontOfSize:12];
         [_btnForgetPassWord setTitle:@"忘记密码?" forState:UIControlStateNormal];
         [_btnForgetPassWord sizeToFit];
+        _btnForgetPassWord.left = self.labLinePassWord.right - _btnForgetPassWord.width;
         [_btnForgetPassWord addTarget:self action:@selector(btnForgetPassWordAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnForgetPassWord;
@@ -228,9 +256,9 @@
                 
                 NSLog(@"token:%@",response.dataDic[@"token"]);
                 if ([response.dataDic[@"is_fill"] doubleValue] == 0) {//未填写
-                    [weakSelf getUserInfoData:0];
+                    [weakSelf getUserInfoData:0 Tokens:response.dataDic[@"token"]];
                 }else{
-                    [weakSelf getUserInfoData:1];
+                    [weakSelf getUserInfoData:1 Tokens:response.dataDic[@"token"]];
                 }
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"2"];
@@ -241,6 +269,7 @@
     }
     
 }
+
 
 - (UILabel *)labLine{
     if (!_labLine) {
@@ -283,16 +312,16 @@
 
 - (void)btnAction:(UIButton *)button{
     if (button.tag == 1000) {//新浪微博
-        [self getWeiBo];
+        [self btn1Click];
     }else if(button.tag == 1001){//QQ登录
-        [self getQQ];
+        [self btn2Click];
     }else{//微信登录
-        [self getWechat];
+        [self btn3Click];
     }
 }
 
 
-- (void)getWeiBo{
+- (void)btn1Click{
     WeakSelf(LoginViewController);
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
     
@@ -300,42 +329,36 @@
         
         if (response.responseCode == UMSResponseCodeSuccess) {
             
-            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToSina];
             
-            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.openId);
             
-            //昵称
-            weakSelf.nicknameString = snsAccount.userName;
-            //第三方用户统一ID
-            weakSelf.openedString = snsAccount.usid;
-            //第三方类型（weixin、qq、weibo）
-            weakSelf.open_typeString = @"weibo";
-            //头像地址
-            weakSelf.picString = snsAccount.iconURL;
-            //性别，0保密，1男，2女
-            weakSelf.sexString = @"0";
+            //得到的数据在回调Block对象形参respone的data属性
+            [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToSina  completion:^(UMSocialResponseEntity *response){
+                NSLog(@"SnsInformation is %@",response.data);
+                //昵称
+                weakSelf.nicknameString = response.data[@"screen_name"];
+                //第三方用户统一ID
+                weakSelf.openedString = response.data[@"openid"];
+                //第三方类型（weixin、qq、weibo）
+                weakSelf.open_typeString = @"weibo";
+                //头像地址
+                weakSelf.picString = response.data[@"profile_image_url"];
+                //性别，0保密，1男，2女
+                weakSelf.sexString = [NSString stringWithFormat:@"%@",response.data[@"gender"]];
+                
+                weakSelf.openedString = response.data[@"uid"];;
+                [weakSelf openLoginFornickname];
+                
+            }];
             
         }
         
     });
     
-    //得到的数据在回调Block对象形参respone的data属性
-    //    [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToSina  completion:^(UMSocialResponseEntity *response){
-    //        NSLog(@"SnsInformation is %@",response.data);
-    //        //昵称
-    //        weakSelf.nicknameString = response.data[@"screen_name"];
-    //        //第三方用户统一ID
-    //        weakSelf.openedString = response.data[@"openid"];
-    //        //第三方类型（weixin、qq、weibo）
-    //        weakSelf.open_typeString = response.data[@"weibo"];
-    //        //头像地址
-    //        weakSelf.picString = response.data[@"profile_image_url"];
-    //        //性别，0保密，1男，2女
-    //        weakSelf.sexString = response.data[@"gender"];
-    //
-    //    }];
+    
 }
-- (void)getQQ{
+- (void)btn2Click{
     
     WeakSelf(LoginViewController);
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
@@ -347,29 +370,29 @@
         if (response.responseCode == UMSResponseCodeSuccess) {
             
             UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToQQ];
+            //得到的数据在回调Block对象形参respone的data属性
+            [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToQQ  completion:^(UMSocialResponseEntity *response){
+                NSLog(@"SnsInformation is %@",response.data);
+                //昵称
+                weakSelf.nicknameString = response.data[@"screen_name"];
+                //第三方用户统一ID
+                weakSelf.openedString = response.data[@"openid"];
+                //第三方类型（weixin、qq、weibo）
+                weakSelf.open_typeString = @"qq";
+                //头像地址
+                weakSelf.picString = response.data[@"profile_image_url"];
+                //性别，0保密，1男，2女
+                weakSelf.sexString = [NSString stringWithFormat:@"%@",response.data[@"gender"]];
+                
+                [weakSelf openLoginFornickname];
+            }];
             
-            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
-            //昵称
-            weakSelf.nicknameString = snsAccount.userName;
-            //第三方用户统一ID
-            weakSelf.openedString = snsAccount.usid;
-            //第三方类型（weixin、qq、weibo）
-            weakSelf.open_typeString = @"qq";
-            //头像地址
-            weakSelf.picString = snsAccount.iconURL;
-            //性别，0保密，1男，2女
-            weakSelf.sexString = @"0";
             
         }});
     
-    //    //得到的数据在回调Block对象形参respone的data属性
-    //    [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToQQ  completion:^(UMSocialResponseEntity *response){
-    //        NSLog(@"SnsInformation is %@",response.data);
-    //
-    //
-    //    }];
+    
 }
-- (void)getWechat{
+- (void)btn3Click{
     
     WeakSelf(LoginViewController);
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
@@ -381,45 +404,53 @@
             UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
             
             NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+
+            //得到的数据在回调Block对象形参respone的data属性
+            [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToWechatSession  completion:^(UMSocialResponseEntity *response){
+                NSLog(@"SnsInformation is %@",response.data);
+                //昵称
+                weakSelf.nicknameString = response.data[@"screen_name"];
+                //第三方用户统一ID
+                weakSelf.openedString = response.data[@"openid"];
+                //第三方类型（weixin、qq、weibo）
+                weakSelf.open_typeString = @"weixin";
+                //头像地址
+                weakSelf.picString = response.data[@"profile_image_url"];
+                //性别，0保密，1男，2女
+                weakSelf.sexString = [NSString stringWithFormat:@"%@",response.data[@"gender"]];
+                [weakSelf openLoginFornickname];
+                
+            }];
             
-            //昵称
-            weakSelf.nicknameString = snsAccount.userName;
-            //第三方用户统一ID
-            weakSelf.openedString = snsAccount.usid;
-            //第三方类型（weixin、qq、weibo）
-            weakSelf.open_typeString = @"weixin";
-            //头像地址
-            weakSelf.picString = snsAccount.iconURL;
-            //性别，0保密，1男，2女
-            weakSelf.sexString = @"0";
+            
             
         }
         
     });
     
-    //    //得到的数据在回调Block对象形参respone的data属性
-    //    [[UMSocialDataService defaultDataService] requestSnsInformation:UMShareToWechatSession  completion:^(UMSocialResponseEntity *response){
-    //        NSLog(@"SnsInformation is %@",response.data);
-    //        //昵称
-    //        weakSelf.nicknameString = response.data[@"screen_name"];
-    //        //第三方用户统一ID
-    //        weakSelf.openedString = response.data[@"openid"];
-    //        //第三方类型（weixin、qq、weibo）
-    //        weakSelf.open_typeString = response.data[@"weixin"];
-    //        //头像地址
-    //        weakSelf.picString = response.data[@"profile_image_url"];
-    //        //性别，0保密，1男，2女
-    //        weakSelf.sexString = response.data[@"gender"];
-    //        
-    //    }];
     
+    
+}
+
+- (void)openLoginFornickname{
+    WeakSelf(LoginViewController);
+    [[THNetWorkManager shareNetWork] openLoginFornickname:self.nicknameString opened:self.openedString open_type:self.open_typeString pic:self.picString sex:self.sexString andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        if ([response.dataDic[@"is_fill"] integerValue] == 0) {
+            [weakSelf getUserInfoData:0 Tokens:response.dataDic[@"token"]];
+        }else{
+            [weakSelf getUserInfoData:1 Tokens:response.dataDic[@"token"]];
+        }
+        
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        
+    }];
 }
 
 
 //1 == 到主页  0== 完善信息
-- (void)getUserInfoData:(NSInteger)index{
+- (void)getUserInfoData:(NSInteger)index Tokens:(NSString *)tokens{
     WeakSelf(LoginViewController);
-    [[THNetWorkManager shareNetWork]getUserInfoCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getUserInfoToken:tokens CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             
