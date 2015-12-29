@@ -7,11 +7,12 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "IncomeRecordModel.h"
 
 @interface IncomeRecordTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UILabel *labTitle;
 
 //赋值
-- (void)confingWithModel:(NSInteger )index;
+- (void)confingWithModel:(IncomeRecordModel *)model;
 @end

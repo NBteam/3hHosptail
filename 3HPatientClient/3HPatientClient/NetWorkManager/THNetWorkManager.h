@@ -209,8 +209,40 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark 【（公共）第三方登录接口【20151210更新】
 - (void)openLoginFornickname:(NSString *)nickname opened:(NSString *)opened open_type:(NSString *)open_type pic:(NSString *)pic sex:(NSString *)sex andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 【鉴权】健康档案——获取【20151226添加】
+- (void)getHealthInfoCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 健康档案——更新【20151226添加】
+- (void)updateHealthInfoFirst_access_date:(NSString *)first_access_date
+                                 truename:(NSString *)truename
+                                      sex:(NSString *)sex
+                               birth_date:(NSString *)birth_date
+                               marry_info:(NSString *)marry_info
+                                born_info:(NSString *)born_info
+                               child_info:(NSString *)child_info
+                                    hight:(NSString *)hight
+                                   weight:(NSString *)weight
+                              blood_sugar:(NSString *)blood_sugar
+                           blood_pressure:(NSString *)blood_pressure
+                                      job:(NSString *)job
+                                   mobile:(NSString *)mobile
+                                    email:(NSString *)email
+                                   weixin:(NSString *)weixin
+                                       qq:(NSString *)qq
+                                  address:(NSString *)address
+                                 interest:(NSString *)interest
+                            huafen_guomin:(NSString *)huafen_guomin
+                               flower_fav:(NSString *)flower_fav
+                                    smoke:(NSString *)smoke
+                                     food:(NSString *)food
+                                   family:(NSString *)family
+                                 sick_his:(NSString *)sick_his
+                                waike_his:(NSString *)waike_his
+                               guomin_his:(NSString *)guomin_his
+                                 big_sick:(NSString *)big_sick
+                            latest_health:(NSString *)latest_health
+            andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
-
-
+#pragma mark 【鉴权】消费记录——列表【20151223添加】
+- (void)getMyRecheckInfoListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 @end

@@ -563,6 +563,47 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"openLogin",@"nickname":nickname,@"openid":opened,@"open_type":open_type,@"pic":pic,@"sex":sex};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
-
-
+#pragma mark 【鉴权】健康档案——获取【20151226添加】
+- (void)getHealthInfoCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getHealthInfo",@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 健康档案——获取【20151226添加】
+- (void)updateHealthInfoFirst_access_date:(NSString *)first_access_date
+                                 truename:(NSString *)truename
+                                      sex:(NSString *)sex
+                               birth_date:(NSString *)birth_date
+                               marry_info:(NSString *)marry_info
+                                born_info:(NSString *)born_info
+                               child_info:(NSString *)child_info
+                                    hight:(NSString *)hight
+                                   weight:(NSString *)weight
+                              blood_sugar:(NSString *)blood_sugar
+                           blood_pressure:(NSString *)blood_pressure
+                                      job:(NSString *)job
+                                   mobile:(NSString *)mobile
+                                    email:(NSString *)email
+                                   weixin:(NSString *)weixin
+                                       qq:(NSString *)qq
+                                  address:(NSString *)address
+                                 interest:(NSString *)interest
+                            huafen_guomin:(NSString *)huafen_guomin
+                               flower_fav:(NSString *)flower_fav
+                                    smoke:(NSString *)smoke
+                                     food:(NSString *)food
+                                   family:(NSString *)family
+                                 sick_his:(NSString *)sick_his
+                                waike_his:(NSString *)waike_his
+                               guomin_his:(NSString *)guomin_his
+                                 big_sick:(NSString *)big_sick
+                            latest_health:(NSString *)latest_health
+            andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"updateHealthInfo",@"token":GetToken,@"first_access_date":first_access_date,@"truename":truename,@"sex":sex,@"birth_date":birth_date,@"marry_info":marry_info,@"born_info":born_info,@"child_info":child_info,@"hight":hight,@"weight":weight,@"blood_sugar":blood_sugar,@"blood_pressure":blood_pressure,@"job":job,@"mobile":mobile,@"email":email,@"weixin":weixin,@"qq":qq,@"address":address,@"interest":interest,@"huafen_guomin":huafen_guomin,@"flower_fav":flower_fav,@"smoke":smoke,@"food":food,@"family":family,@"sick_his":sick_his,@"waike_his":waike_his,@"guomin_his":guomin_his,@"big_sick":big_sick,@"latest_health":latest_health};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 【鉴权】消费记录——列表【20151223添加】
+- (void)getMyRecheckInfoListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMyRecheckList",@"page":@(page),@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

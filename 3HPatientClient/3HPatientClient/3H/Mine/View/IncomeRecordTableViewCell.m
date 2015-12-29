@@ -24,8 +24,8 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSInteger )index{
-    self.labTitle.attributedText = [self getLabelTitle:@"2015年10月15日" Name:@"  您的挂号预约消费" Price:@"100元"];
+- (void)confingWithModel:(IncomeRecordModel *)model{
+    self.labTitle.attributedText = [self getLabelTitle:[NSString stringWithFormat:@"%@",model.addtime] Name:[NSString stringWithFormat:@"  %@",model.memo] Price:[NSString stringWithFormat:@"%@",model.total]];
 }
 
 - (NSMutableAttributedString *)getLabelTitle:(NSString *)title Name:(NSString *)name Price:(NSString *)price{
