@@ -24,7 +24,7 @@
 }
 
 - (void)backAction{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - UI

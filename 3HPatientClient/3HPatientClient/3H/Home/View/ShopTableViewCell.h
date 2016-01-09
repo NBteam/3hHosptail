@@ -16,5 +16,5 @@
 //赋值
 - (void)confingWithModel:(GoodsListModel *)model indexRow:(NSInteger)row;
 - (void)hiddenItem;
-
+- (void)noHiddenItem;
 @end

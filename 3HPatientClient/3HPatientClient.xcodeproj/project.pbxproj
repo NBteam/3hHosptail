@@ -517,7 +517,7 @@
 		C08244651C1FCE8500783FD5 /* MyAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244641C1FCE8500783FD5 /* MyAddressTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		C082446F1C1FD3BE00783FD5 /* 我的-我的订单－确认收货－选中@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C08244671C1FD3BE00783FD5 /* 我的-我的订单－确认收货－选中@2x.png */; settings = {ASSET_TAGS = (); }; };
 		C08244701C1FD3BE00783FD5 /* 未选@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C08244681C1FD3BE00783FD5 /* 未选@2x.png */; settings = {ASSET_TAGS = (); }; };
-		C08244711C1FD3BE00783FD5 /* 笔.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C08244691C1FD3BE00783FD5 /* 笔.jpg */; settings = {ASSET_TAGS = (); }; };
+		C08244711C1FD3BE00783FD5 /* 笔@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C08244691C1FD3BE00783FD5 /* 笔@2x.jpg */; settings = {ASSET_TAGS = (); }; };
 		C08244721C1FD3BE00783FD5 /* 选中@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C082446A1C1FD3BE00783FD5 /* 选中@2x.png */; settings = {ASSET_TAGS = (); }; };
 		C08244731C1FD3BE00783FD5 /* 首页+@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C082446B1C1FD3BE00783FD5 /* 首页+@2x.png */; settings = {ASSET_TAGS = (); }; };
 		C08244741C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C082446C1C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -528,6 +528,11 @@
 		C082447F1C1FE96A00783FD5 /* CommentsCustomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C082447E1C1FE96A00783FD5 /* CommentsCustomKeyboard.m */; settings = {ASSET_TAGS = (); }; };
 		C08244821C20040000783FD5 /* BirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244811C20040000783FD5 /* BirthdayViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C0956A411C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D2628B9F1C411E3D00DC711B /* CartListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2628B9E1C411E3D00DC711B /* CartListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D29664AA1C4109090017EB91 /* ADView.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A51C4109090017EB91 /* ADView.m */; settings = {ASSET_TAGS = (); }; };
+		D29664AB1C4109090017EB91 /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A71C4109090017EB91 /* CycleScrollView.m */; settings = {ASSET_TAGS = (); }; };
+		D29664AC1C4109090017EB91 /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A91C4109090017EB91 /* NSTimer+Addition.m */; settings = {ASSET_TAGS = (); }; };
+		D29664AF1C410C880017EB91 /* ShopPicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664AE1C410C880017EB91 /* ShopPicModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CE7BB91C20557900BB169F /* CheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BB81C20557900BB169F /* CheckListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CE7BBC1C205D9500BB169F /* CheckDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBB1C205D9500BB169F /* CheckDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CE7BBF1C20669100BB169F /* MessageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBE1C20669100BB169F /* MessageListModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -1404,7 +1409,7 @@
 		C08244641C1FCE8500783FD5 /* MyAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAddressTableViewCell.m; sourceTree = "<group>"; };
 		C08244671C1FD3BE00783FD5 /* 我的-我的订单－确认收货－选中@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的-我的订单－确认收货－选中@2x.png"; sourceTree = "<group>"; };
 		C08244681C1FD3BE00783FD5 /* 未选@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未选@2x.png"; sourceTree = "<group>"; };
-		C08244691C1FD3BE00783FD5 /* 笔.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "笔.jpg"; sourceTree = "<group>"; };
+		C08244691C1FD3BE00783FD5 /* 笔@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "笔@2x.jpg"; sourceTree = "<group>"; };
 		C082446A1C1FD3BE00783FD5 /* 选中@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选中@2x.png"; sourceTree = "<group>"; };
 		C082446B1C1FD3BE00783FD5 /* 首页+@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页+@2x.png"; sourceTree = "<group>"; };
 		C082446C1C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-健康商城-商品详情-立即购买-收货地址2@2x.png"; sourceTree = "<group>"; };
@@ -1419,6 +1424,16 @@
 		C08244801C20040000783FD5 /* BirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdayViewController.h; sourceTree = "<group>"; };
 		C08244811C20040000783FD5 /* BirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdayViewController.m; sourceTree = "<group>"; };
 		C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-患者-添加按钮@2x.png"; sourceTree = "<group>"; };
+		D2628B9D1C411E3D00DC711B /* CartListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartListModel.h; sourceTree = "<group>"; };
+		D2628B9E1C411E3D00DC711B /* CartListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartListModel.m; sourceTree = "<group>"; };
+		D29664A41C4109090017EB91 /* ADView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADView.h; sourceTree = "<group>"; };
+		D29664A51C4109090017EB91 /* ADView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADView.m; sourceTree = "<group>"; };
+		D29664A61C4109090017EB91 /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
+		D29664A71C4109090017EB91 /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
+		D29664A81C4109090017EB91 /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
+		D29664A91C4109090017EB91 /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
+		D29664AD1C410C880017EB91 /* ShopPicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopPicModel.h; sourceTree = "<group>"; };
+		D29664AE1C410C880017EB91 /* ShopPicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopPicModel.m; sourceTree = "<group>"; };
 		D2CE7BB71C20557900BB169F /* CheckListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckListModel.h; sourceTree = "<group>"; };
 		D2CE7BB81C20557900BB169F /* CheckListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckListModel.m; sourceTree = "<group>"; };
 		D2CE7BBA1C205D9500BB169F /* CheckDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailModel.h; sourceTree = "<group>"; };
@@ -2325,6 +2340,12 @@
 		99DA40941C0BEB0500573D4C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D29664A41C4109090017EB91 /* ADView.h */,
+				D29664A51C4109090017EB91 /* ADView.m */,
+				D29664A61C4109090017EB91 /* CycleScrollView.h */,
+				D29664A71C4109090017EB91 /* CycleScrollView.m */,
+				D29664A81C4109090017EB91 /* NSTimer+Addition.h */,
+				D29664A91C4109090017EB91 /* NSTimer+Addition.m */,
 				993669681C132C7600B3E1C7 /* ConsultingDynamicHeadView.h */,
 				993669691C132C7600B3E1C7 /* ConsultingDynamicHeadView.m */,
 				C05A97B21C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.h */,
@@ -3271,6 +3292,10 @@
 				C05810D11C2FB52B009A2567 /* ScheduleCalendarModel.m */,
 				C05810E31C3020F8009A2567 /* ScheduleCalendarDayModel.h */,
 				C05810E41C3020F8009A2567 /* ScheduleCalendarDayModel.m */,
+				D29664AD1C410C880017EB91 /* ShopPicModel.h */,
+				D29664AE1C410C880017EB91 /* ShopPicModel.m */,
+				D2628B9D1C411E3D00DC711B /* CartListModel.h */,
+				D2628B9E1C411E3D00DC711B /* CartListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3363,7 +3388,7 @@
 			children = (
 				C08244671C1FD3BE00783FD5 /* 我的-我的订单－确认收货－选中@2x.png */,
 				C08244681C1FD3BE00783FD5 /* 未选@2x.png */,
-				C08244691C1FD3BE00783FD5 /* 笔.jpg */,
+				C08244691C1FD3BE00783FD5 /* 笔@2x.jpg */,
 				C082446A1C1FD3BE00783FD5 /* 选中@2x.png */,
 				C082446B1C1FD3BE00783FD5 /* 首页+@2x.png */,
 				C082446C1C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png */,
@@ -3646,7 +3671,7 @@
 				991A32E31C12E2DC00E0313F /* 首页-我要预约_预约专家电话咨询@2x.png in Resources */,
 				C05A976D1C1E773A0078433B /* UMShareEditViewControlleriPad.xib in Resources */,
 				991A32A61C12E2DC00E0313F /* 首页-健康资讯_Banner@2x.png in Resources */,
-				C08244711C1FD3BE00783FD5 /* 笔.jpg in Resources */,
+				C08244711C1FD3BE00783FD5 /* 笔@2x.jpg in Resources */,
 				991A324E1C12E2DC00E0313F /* 我的-设置_清除缓存-点击状态@2x.png in Resources */,
 				991A32D81C12E2DC00E0313F /* 首页-我要预约-预约住院_预约留言@2x.png in Resources */,
 				991A32341C12E2DC00E0313F /* 我的-我的钱包_订单记录-点击状态@2x.png in Resources */,
@@ -3758,6 +3783,7 @@
 				99D544971C1592C40081D1D3 /* UIView+convenience.m in Sources */,
 				99DA418E1C0BEB0500573D4C /* MessageViewController.m in Sources */,
 				C05A96E51C1D9DE20078433B /* FeedbackViewController.m in Sources */,
+				D29664AF1C410C880017EB91 /* ShopPicModel.m in Sources */,
 				99DA41B91C0BEB0500573D4C /* MTLManagedObjectAdapter.m in Sources */,
 				99DA41971C0BEB0500573D4C /* AFHTTPRequestOperationManager.m in Sources */,
 				993669951C13FE4C00B3E1C7 /* WalletHeadTableViewCell.m in Sources */,
@@ -3795,6 +3821,7 @@
 				99D544151C1562780081D1D3 /* MainDiagnosticViewController.m in Sources */,
 				991A330D1C12FFDA00E0313F /* PersonalTableViewCell.m in Sources */,
 				9929BCAC1C181AF300F747CB /* ConsultingDoctorListViewController.m in Sources */,
+				D29664AA1C4109090017EB91 /* ADView.m in Sources */,
 				C05A96D91C1D934B0078433B /* AppointFinishViewController.m in Sources */,
 				D2D12CCB1C2E77F800E1196D /* OutpatientAppointTableViewCell.m in Sources */,
 				99DA41BC1C0BEB0500573D4C /* MTLReflection.m in Sources */,
@@ -3803,6 +3830,7 @@
 				99DA41B41C0BEB0500573D4C /* GetImageColor.m in Sources */,
 				99DA41931C0BEB0500573D4C /* BaseTableViewCell.m in Sources */,
 				D2D2F6191C297FA100A055FA /* FinishHeadView.m in Sources */,
+				D29664AB1C4109090017EB91 /* CycleScrollView.m in Sources */,
 				99DA41EF1C0BEB0500573D4C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				99DA41F31C0BEB0500573D4C /* TQRichTextURLRun.m in Sources */,
 				99D5442F1C1567E50081D1D3 /* BriefCaseTableViewCell.m in Sources */,
@@ -3854,6 +3882,7 @@
 				99DA41961C0BEB0500573D4C /* AFHTTPRequestOperation.m in Sources */,
 				99DA41AC1C0BEB0500573D4C /* UIView+BFExtension.m in Sources */,
 				99DA41C81C0BEB0500573D4C /* MJRefreshComponent.m in Sources */,
+				D29664AC1C4109090017EB91 /* NSTimer+Addition.m in Sources */,
 				99DA41CC1C0BEB0500573D4C /* MJRefreshAutoNormalFooter.m in Sources */,
 				C05A97B41C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m in Sources */,
 				99DA419F1C0BEB0500573D4C /* NSArray+SafeAccess.m in Sources */,
@@ -3937,6 +3966,7 @@
 				99DA41E21C0BEB0500573D4C /* SDWebImageDownloaderOperation.m in Sources */,
 				9929BCAF1C181B0900F747CB /* ConsultingDoctorListTableViewCell.m in Sources */,
 				C05A96EE1C1D9F220078433B /* FeedbackTableViewCell.m in Sources */,
+				D2628B9F1C411E3D00DC711B /* CartListModel.m in Sources */,
 				99DA41D21C0BEB0500573D4C /* MJRefreshNormalHeader.m in Sources */,
 				99DA41F51C0BEB0500573D4C /* UIBarButtonItemExtension.m in Sources */,
 				D2D2CAF81C2593AC0052F30B /* GoodsDetailModel.m in Sources */,

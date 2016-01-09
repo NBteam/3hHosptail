@@ -57,6 +57,7 @@
 - (CGFloat)confingWithModel:(DoctorInfoModel *)dic{
     self.labDetail.text = dic.desc;
     [self.labDetail sizeToFit];
+    self.labDetail.width = DeviceSize.width - 20;
     return self.labDetail.bottom +10;
 }
 /*

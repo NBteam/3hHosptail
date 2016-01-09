@@ -11,10 +11,14 @@
 //商品详情
 #import "ShopDetailViewController.h"
 #import "GoodsListModel.h"
+#import "ADView.h"
+#import "ShopPicModel.h"
 
 @interface ShopViewController ()
 
 @property (nonatomic, strong) UIImageView *imgHead;
+@property (nonatomic, strong) NSMutableArray *imgArray;
+@property (nonatomic,retain) ADView * rscrollView;
 @end
 
 @implementation ShopViewController
@@ -23,18 +27,33 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    self.tableView.tableHeaderView = self.imgHead;
+    self.tableView.tableHeaderView = self.rscrollView;
     self.tableView.separatorColor = self.view.backgroundColor;
     self.tableView.backgroundColor = self.view.backgroundColor;
     self.isOpenFooterRefresh = YES;
     self.isOpenHeaderRefresh = YES;
+
+    [self getPicInfoNetWork];
     [self getNetWork];
 }
 
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.rscrollView startTimer];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.rscrollView stopTimer];
+}
+- (NSMutableArray *)imgArray{
+    if (!_imgArray) {
+        _imgArray = [NSMutableArray array];
+    }
+    return _imgArray;
+}
 #pragma mark UI
 
 - (UIImageView *)imgHead{
@@ -44,7 +63,24 @@
     }
     return _imgHead;
 }
+- (ADView *)rscrollView{
+    if (!_rscrollView) {
+        _rscrollView = [[ADView alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, 160*DeviceSize.width/375) imagesArr:self.imgArray];
+        WeakSelf(ShopViewController);
+        _rscrollView.ADBlock=^(NSInteger tag){
+            if (tag>=1) {
+                ShopPicModel * model=weakSelf.imgArray[tag-1];
+//                if ([[NSString stringWithFormat:@"%@",model.close]isEqualToString:@"0"]) {
+//                    WebViewController * wvc=[[WebViewController alloc]init];
+//                    wvc.targetUrl=model.targetUrl;
+//                    [weak.navigationController pushViewController:wvc animated:YES];
+//                }
+            }
+        };
 
+    }
+    return _rscrollView;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -60,11 +96,12 @@
     if (self.dataArray.count==2*indexPath.section+1) {
         [cell hiddenItem];
     }else{
+        [cell noHiddenItem];
         GoodsListModel * model = self.dataArray[2*indexPath.section+1];
         [cell confingWithModel:model indexRow:(2*indexPath.section+1)];
     }
     cell.customViewBlock = ^(NSInteger tag){
-        GoodsListModel * model = self.dataArray[2 *indexPath.row +tag];
+        GoodsListModel * model = self.dataArray[2 *indexPath.section +tag];
         ShopDetailViewController *shopDetailVc= [[ShopDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         shopDetailVc.id = model.id;
         [self.navigationController pushViewController:shopDetailVc animated:YES];
@@ -139,6 +176,25 @@
 - (void)footerRequestWithData
 {
     [self getNetWork];
+}
+- (void)getPicInfoNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(ShopViewController);
+    [[THNetWorkManager shareNetWork]getGoodsFlashCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            for (NSDictionary * dic in response.dataDic[@"list"]) {
+                ShopPicModel * model = [response thParseDataFromDic:dic andModel:[ShopPicModel class]];
+                [weakSelf.imgArray addObject:model];
+                
+            }
+            [weakSelf.rscrollView configWithArray:weakSelf.imgArray];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
 }
 - (NSString *)title{
     return @"健康商城";

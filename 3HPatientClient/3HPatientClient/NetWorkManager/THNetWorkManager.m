@@ -297,6 +297,11 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"getMobilecode",@"mobile":mobile};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+#pragma mark 找回密码的短信验证码
+- (void)getPwdMobilecode:(NSString *)mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getPwdMobilecode",@"mobile":mobile};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 
 #pragma mark 获取我的病史
 - (void)getMySickHistoryCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
@@ -384,6 +389,12 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"getMyCheckList",@"token":GetToken,@"page":@(page)};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+#pragma mark 获取我的化验详情【20151213更新】
+- (void)getMyCheckId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMyCheck",@"token":GetToken,@"id":id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
 #pragma mark 获取我的化验详情【20151213更新】
 - (void)getMyAssayId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
     NSDictionary *paramDic = @{@"a":@"getMyAssay",@"token":GetToken,@"id":id};
@@ -604,6 +615,47 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark 【鉴权】消费记录——列表【20151223添加】
 - (void)getMyRecheckInfoListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
     NSDictionary *paramDic = @{@"a":@"getMyRecheckList",@"page":@(page),@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 【鉴权】配送地址——修改【20151217更新】
+- (void)addAddressName:(NSString *)name id:(NSString *)id mobile:(NSString *)mobile area_ids:(NSString *)area_ids address:(NSString *)address zipcode:(NSString *)zipcode is_default:(NSString *)is_default andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"editAddress",@"token":GetToken,@"mobile":mobile,@"area_ids":area_ids,@"address":address,@"zipcode":zipcode,@"is_default":is_default,@"name":name,@"id":id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 【鉴权】【收费会员权限】预约住院【20151109添加】
+- (void)orderHospitalContent:(NSString *)content andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"orderHospital",@"token":GetToken,@"content":content};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 获取商品频道轮播【20151021添加】
+- (void)getGoodsFlashCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getGoodsFlash",@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark【鉴权】购物车——加入商品【20151226添加】
+- (void)addCartGoods_id:(NSString *)goods_id qty:(NSString *)qty andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"addCart",@"token":GetToken,@"goods_id":goods_id,@"qty":qty};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 【鉴权】购物车——商品列表【20160104更新】
+- (void)getCartListCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getCartList",@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 【鉴权】购物车——商品数量加1【20160104添加】
+- (void)addCartNumGoods_id:(NSString *)goods_id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"addCartNum",@"token":GetToken,@"goods_id":goods_id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 【鉴权】购物车——商品数量减1【20160104添加】
+- (void)decreaseCartNumGoods_id:(NSString *)goods_id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"decreaseCartNum",@"token":GetToken,@"goods_id":goods_id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark【鉴权】购物车——删除商品【20160104添加】
+- (void)removeCartCids:(NSString *)cids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"removeCart",@"token":GetToken,@"cids":cids};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 @end

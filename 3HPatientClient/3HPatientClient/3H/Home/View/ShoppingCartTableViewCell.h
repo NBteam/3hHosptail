@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "CartListModel.h"
 
 @interface ShoppingCartTableViewCell : BaseTableViewCell
 
@@ -22,7 +23,9 @@
 @property (nonatomic, strong) UIButton *btnReduct;
 @property (nonatomic, strong) UIButton *btnAdd;
 @property (nonatomic, strong) UILabel *labNum;
-
-- (void)confingWithModel;
+@property (nonatomic, copy) void (^addCartNum)(void);
+@property (nonatomic, copy) void (^decreaseCartNum)(void);
+@property (nonatomic, copy) void (^btnSelectBlock)(BOOL chiose);
+- (void)confingWithModel:(CartListModel *)model;
 
 @end

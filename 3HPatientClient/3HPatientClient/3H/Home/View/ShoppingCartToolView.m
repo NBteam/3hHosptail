@@ -38,7 +38,7 @@
         _labTitle.font = [UIFont systemFontOfSize:15];
         _labTitle.textColor = AppDefaultColor;
         _labTitle.textAlignment = NSTextAlignmentRight;
-        _labTitle.text = @"总计:100元";
+        _labTitle.text = @"总计:0元";
         
     }
     
@@ -61,7 +61,9 @@
 }
 
 - (void)btnSelectClick{
-    
+    if (self.btnSelectBlock) {
+        self.btnSelectBlock();
+    }
 }
 
 - (UIButton *)btnSubmit{
@@ -81,7 +83,9 @@
 }
 
 - (void)btnSubmitClick{
-    
+    if (self.btnSubmitBlock) {
+        self.btnSubmitBlock();
+    }
 }
 
 /*

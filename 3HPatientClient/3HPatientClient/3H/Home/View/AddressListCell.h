@@ -16,4 +16,5 @@
 // 修改按钮
 @property (nonatomic, strong) UIButton * btnModify;
 - (CGFloat )configWithModel:(AddressListModel *)model;
+@property (nonatomic, copy) void (^btnModifyBlock)(void);
 @end

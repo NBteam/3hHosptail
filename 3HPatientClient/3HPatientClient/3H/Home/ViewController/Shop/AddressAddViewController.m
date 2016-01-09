@@ -37,11 +37,37 @@
     [self.view addSubview:self.codeView];
     [self.view addSubview:self.btnDefault];
     [self.view addSubview:self.labLine];
-    
-    // Do any additional setup after loading the view.
+    if (self.index == 1) {
+        self.cityId = self.model.area_ids;
+        self.nameView.textDetail.text = self.model.name;
+        self.phoneView.textDetail.text = self.model.mobile;
+        self.addressView.textDetail.text = self.model.area_names;
+        self.addressDetailView.textDetail.text = self.model.address;
+        self.codeView.textDetail.text = self.model.zipcode;
+        if ([self.model.is_default integerValue]==1) {
+            self.btnDefault.selected = YES;
+        }
+    }
 }
 - (void)rightAction{
-    [self getHomeData];
+    if ([self.nameView.textDetail.text isEqualToString:@""]) {
+        [self showHudAuto:@"请填写姓名" andDuration:@"2"];
+    }else if ([self.phoneView.textDetail.text isEqualToString:@""]){
+        [self showHudAuto:@"请填写手机号码" andDuration:@"2"];
+    }else if ([self.addressView.textDetail.text isEqualToString:@""]){
+        [self showHudAuto:@"请选择城市" andDuration:@"2"];
+    }else if ([self.addressDetailView.textDetail.text isEqualToString:@""]){
+        [self showHudAuto:@"请填写详细地址" andDuration:@"2"];
+    }else if ([self.codeView.textDetail.text isEqualToString:@""]){
+        [self showHudAuto:@"请填写邮政编码" andDuration:@"2"];
+    }else{
+        if (self.index == 1) {
+            [self editAddressNetWork];
+        }else{
+            [self getHomeData];
+        }
+        
+    }
 }
 - (AddressView *)nameView{
     if (!_nameView) {
@@ -125,10 +151,26 @@
     [self.navigationController pushViewController:CityListFirstLevelVc animated:YES];
 }
 - (void)getHomeData{
-
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(AddressAddViewController);
     [[THNetWorkManager shareNetWork]getAddAddressName:self.nameView.textDetail.text mobile:self.phoneView.textDetail.text area_ids:self.cityId address:self.addressDetailView.textDetail.text zipcode:self.codeView.textDetail.text is_default:[NSString stringWithFormat:@"%ld",self.selectIndex] andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            if (weakSelf.reloadInfo) {
+                weakSelf.reloadInfo();
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+- (void)editAddressNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(AddressAddViewController);
+    [[THNetWorkManager shareNetWork]addAddressName:self.nameView.textDetail.text id:self.model.id mobile:self.phoneView.textDetail.text area_ids:self.cityId address:self.addressDetailView.textDetail.text zipcode:self.codeView.textDetail.text is_default:[NSString stringWithFormat:@"%ld",self.selectIndex] andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             if (weakSelf.reloadInfo) {
@@ -148,8 +190,7 @@
     [[THNetWorkManager shareNetWork]setDefaultAddressId:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            
-            
+  
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

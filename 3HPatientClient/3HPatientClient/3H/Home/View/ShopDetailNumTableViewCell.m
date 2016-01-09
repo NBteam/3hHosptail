@@ -60,7 +60,7 @@
         _labNum = [[UILabel alloc] initWithFrame:CGRectMake(self.btnReduct.right, 0, 30, 30)];
         _labNum.textColor = [UIColor colorWithHEX:0x333333];
         _labNum.font = [UIFont systemFontOfSize:15];
-        _labNum.text = @"99";
+        _labNum.text = @"1";
         _labNum.textAlignment = NSTextAlignmentCenter;
     }
     return _labNum;

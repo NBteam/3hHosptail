@@ -45,8 +45,11 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                 andFailure:(FailureBlock) failure;
 
 #pragma mark 获取验证码
-- (void)getMobilecode:(NSString *)mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
-                andFailure:(FailureBlock) failure;
+- (void)getMobilecode:(NSString *)mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 找回密码的短信验证码
+- (void)getPwdMobilecode:(NSString *)mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
 
 #pragma mark 注册
 - (void)getRegMobile:(NSString *)mobile
@@ -108,7 +111,8 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark 获取我的检查列表
 - (void)getMyCheckListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                 andFailure:(FailureBlock) failure;
-
+#pragma mark 获取我的检查详情【20151213更新】
+- (void)getMyCheckId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 #pragma mark 获取我的化验详情【20151213更新】
 - (void)getMyAssayId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                 andFailure:(FailureBlock) failure;
@@ -245,4 +249,28 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 #pragma mark 【鉴权】消费记录——列表【20151223添加】
 - (void)getMyRecheckInfoListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 【鉴权】配送地址——修改【20151217更新】
+- (void)addAddressName:(NSString *)name id:(NSString *)id mobile:(NSString *)mobile area_ids:(NSString *)area_ids address:(NSString *)address zipcode:(NSString *)zipcode is_default:(NSString *)is_default andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 【鉴权】【收费会员权限】预约住院【20151109添加】
+- (void)orderHospitalContent:(NSString *)content andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 获取商品频道轮播【20151021添加】
+- (void)getGoodsFlashCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark【鉴权】购物车——加入商品【20151226添加】
+- (void)addCartGoods_id:(NSString *)goods_id qty:(NSString *)qty andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 【鉴权】购物车——商品列表【20160104更新】
+- (void)getCartListCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 【鉴权】购物车——商品数量加1【20160104添加】
+- (void)addCartNumGoods_id:(NSString *)goods_id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 【鉴权】购物车——商品数量减1【20160104添加】
+- (void)decreaseCartNumGoods_id:(NSString *)goods_id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark【鉴权】购物车——删除商品【20160104添加】
+- (void)removeCartCids:(NSString *)cids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 @end

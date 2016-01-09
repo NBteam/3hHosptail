@@ -7,7 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "AddressListModel.h"
 
 @interface AddressAddViewController : BaseViewController
 @property (nonatomic, copy) void (^reloadInfo)(void);
+@property (nonatomic, retain) AddressListModel * model;
+//0 添加 1 修改
+@property (nonatomic, assign) NSInteger index;
 @end

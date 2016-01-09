@@ -102,6 +102,7 @@
             DoctorInfoModel * model = [response thParseDataFromDic:response.dataDic andModel:[DoctorInfoModel class]];
             weakSelf.model = model;
             [weakSelf.headView confingWithModel:model];
+            [weakSelf.tableView reloadData];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

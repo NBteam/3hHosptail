@@ -22,7 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self getNetWork];
+    if (self.index == 0) {
+        [self getNetAWork];
+    }else{
+        [self getNetWork];
+    }
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
 }
 
@@ -83,7 +87,7 @@
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(CheckDataDetailViewController);
-    [[THNetWorkManager shareNetWork]getMyAssayId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getMyCheckId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
 
@@ -98,7 +102,24 @@
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
     }];
 }
-
+- (void)getNetAWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(CheckDataDetailViewController);
+    [[THNetWorkManager shareNetWork]getMyAssayId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            
+            CheckDetailModel * model = [response thParseDataFromDic:response.dataDic andModel:[CheckDetailModel class]];
+            weakSelf.model = model;
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

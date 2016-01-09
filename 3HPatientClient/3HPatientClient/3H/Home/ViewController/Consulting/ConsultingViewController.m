@@ -60,6 +60,7 @@
                 [weakSelf.navigationController pushViewController:consultingIsOnlineVc animated:YES];
             }else{
                 ConsultingIsPhoneViewController *consultingIsPhoneVc = [[ConsultingIsPhoneViewController alloc] init];
+                consultingIsPhoneVc.id =  weakSelf.model.id;
                 [weakSelf.navigationController pushViewController:consultingIsPhoneVc animated:YES];
             }
         }];

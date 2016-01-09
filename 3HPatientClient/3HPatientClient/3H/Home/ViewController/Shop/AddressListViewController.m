@@ -45,6 +45,17 @@
         AddressListModel * model  = self.dataArray[indexPath.row];
         self.cellHeight = [cell configWithModel:model];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        WeakSelf(AddressListViewController);
+        [cell setBtnModifyBlock:^{
+            AddressListModel * model = self.dataArray[indexPath.row];
+            AddressAddViewController * AddAddressVc = [[AddressAddViewController alloc]init];
+            AddAddressVc.index = 1;
+            AddAddressVc.model = model;
+            AddAddressVc.reloadInfo = ^{
+                [weakSelf getNetWork];
+            };
+            [self.navigationController pushViewController:AddAddressVc animated:YES];
+        }];
         return cell;
     }else{
         static NSString * cellId = @"AddressListDownCell";

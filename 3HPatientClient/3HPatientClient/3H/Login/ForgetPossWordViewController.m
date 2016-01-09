@@ -204,7 +204,7 @@
 - (void)getMobilecode{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(ForgetPossWordViewController);
-    [[THNetWorkManager shareNetWork]getMobilecode:self.txtUserName.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getPwdMobilecode:self.txtUserName.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             if (weakSelf.timer==nil) {

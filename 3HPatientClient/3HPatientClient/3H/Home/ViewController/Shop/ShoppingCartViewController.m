@@ -5,21 +5,26 @@
 //  Created by 范英强 on 15/12/27.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
-
+BOOL edit;
 #import "ShoppingCartViewController.h"
 #import "ShoppingCartTableViewCell.h"
 #import "ShoppingCartToolView.h"
+#import "CartListModel.h"
+
 @interface ShoppingCartViewController ()
 
 @property (nonatomic, strong) ShoppingCartToolView *toolView;
 
 @property (nonatomic, strong) UIButton *rightButton;
+@property (nonatomic, assign) double sum;
 @end
 
 @implementation ShoppingCartViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.sum = 0;
+    edit = NO;
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.tableView.height = self.tableView.height - 50;
@@ -29,7 +34,7 @@
     [self.view addSubview:self.toolView];
     self.isOpenFooterRefresh = YES;
     self.isOpenHeaderRefresh = YES;
-  //  [self getNetWork];
+    [self getNetWork];
 }
 
 - (UIButton *)rightButton{
@@ -47,9 +52,13 @@
 
 - (void)rightButtonAction:(UIButton *)btn{
     if (btn.selected) {
+        edit = NO;
         btn.selected = NO;
+        [self.toolView.btnSubmit setTitle:@"去结算" forState:UIControlStateNormal];
     }else{
+        edit = YES;
         btn.selected = YES;
+        [self.toolView.btnSubmit setTitle:@"删除" forState:UIControlStateNormal];
     }
 }
 - (void)backAction{
@@ -60,6 +69,30 @@
     if (!_toolView) {
         _toolView = [[ShoppingCartToolView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, DeviceSize.width, 50)];
         _toolView.backgroundColor = [UIColor colorWithHEX:0xffffff];
+        WeakSelf(ShoppingCartViewController);
+        [_toolView setBtnSelectBlock:^{
+            double subTotal = 0;
+            for (int i = 0; i< weakSelf.dataArray.count; i++) {
+                CartListModel * model = weakSelf.dataArray[i];
+                model.choice = YES;
+                subTotal += [model.price doubleValue]*[model.qty doubleValue];
+                weakSelf.sum = subTotal;
+            }
+            weakSelf.toolView.labTitle.text = [NSString stringWithFormat:@"总计:%.2f元",weakSelf.sum];
+            [weakSelf.tableView reloadData];
+        }];
+        [_toolView setBtnSubmitBlock:^{
+            if (edit) {
+                NSMutableArray * array = [NSMutableArray array];
+                for (int i = 0; i< weakSelf.dataArray.count; i++) {
+                    CartListModel * model = weakSelf.dataArray[i];
+                    if (model.choice) {
+                        [array addObject:model.id];
+                    }
+                }
+                [weakSelf removeCartCidsNetWork:[array componentsJoinedByString:@","]];
+            }
+        }];
     }
     return _toolView;
 }
@@ -72,7 +105,29 @@
         cell = [[ShoppingCartTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel];
+    CartListModel * model = self.dataArray[indexPath.section];
+    WeakSelf(ShoppingCartViewController);
+    [cell setAddCartNum:^{
+        CartListModel * model1 = weakSelf.dataArray[indexPath.section];
+        [weakSelf addCarNetWork:model1.goods_id];
+    }];
+    [cell setDecreaseCartNum:^{
+        CartListModel * model2 = weakSelf.dataArray[indexPath.section];
+        [weakSelf decreaseCartNumNetWork:model2.goods_id];
+    }];
+    [cell setBtnSelectBlock:^(BOOL choise){
+        CartListModel * model3 = weakSelf.dataArray[indexPath.section];
+        model3.choice = choise;
+        double subTotal = 0;
+        for (CartListModel * newModel in weakSelf.dataArray) {
+            if (newModel.choice) {
+                subTotal += [newModel.price doubleValue]*[newModel.qty doubleValue];
+            }
+            weakSelf.sum = subTotal;
+        }
+        weakSelf.toolView.labTitle.text = [NSString stringWithFormat:@"总计:%.2f元",subTotal];
+    }];
+    [cell confingWithModel:model];
     return cell;
 }
 
@@ -85,7 +140,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 10;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -94,6 +149,92 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return [[UIView alloc] init];
+}
+
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(ShoppingCartViewController);
+    [[THNetWorkManager shareNetWork]getCartListCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            if (weakSelf.pageNO == 1) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            for (NSDictionary * dic in response.dataDic[@"list"]) {
+                CartListModel * model = [response thParseDataFromDic:dic andModel:[CartListModel class]];
+                model.choice = NO;
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+            //  结束头部刷新
+            [weakSelf.tableView.header endRefreshing];
+            //  结束尾部刷新
+            [weakSelf.tableView.footer endRefreshing];
+        }else{
+            //  结束头部刷新
+            [weakSelf.tableView.header endRefreshing];
+            //  结束尾部刷新
+            [weakSelf.tableView.footer endRefreshing];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    [self getNetWork];
+}
+- (void)footerRequestWithData
+{
+    [self getNetWork];
+}
+#pragma mark ---- 加
+- (void)addCarNetWork:(NSString *)id{
+    WeakSelf(ShoppingCartViewController);
+    [[THNetWorkManager shareNetWork]addCartNumGoods_id:id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+#pragma mark ---- 减
+- (void)decreaseCartNumNetWork:(NSString *)id{
+    WeakSelf(ShoppingCartViewController);
+    [[THNetWorkManager shareNetWork]decreaseCartNumGoods_id:id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+- (void)removeCartCidsNetWork:(NSString *)id{
+    WeakSelf(ShoppingCartViewController);
+    [[THNetWorkManager shareNetWork]removeCartCids:id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            weakSelf.toolView.labTitle.text = [NSString stringWithFormat:@"总计:0元"];
+            [weakSelf getNetWork];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
 }
 
 - (NSString *)title{

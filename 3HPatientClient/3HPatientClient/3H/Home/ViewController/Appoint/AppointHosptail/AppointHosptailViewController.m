@@ -51,8 +51,7 @@
 }
 
 - (void)btnAppointAction{
-    AppointFinishViewController *appointFinishVc = [[AppointFinishViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-    [self.navigationController pushViewController:appointFinishVc animated:YES];
+    [self getNetWork];
 }
 
 - (TPKeyboardAvoidingTableView *)tableView{
@@ -104,6 +103,28 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
 }
+- (void)getNetWork{
+    
+    WeakSelf(AppointHosptailViewController);
+    AppointHosptailTableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    if ([cell.txtView.text isEqualToString:@""]) {
+        [self showHudAuto:@"请输入预约信息" andDuration:@"2"];
+    }else{
+        [self showHudWaitingView:WaitPrompt];
+        [[THNetWorkManager shareNetWork]orderHospitalContent:cell.txtView.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+            [weakSelf removeMBProgressHudInManaual];
+            if (response.responseCode == 1) {
+                AppointFinishViewController *appointFinishVc = [[AppointFinishViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+                [weakSelf.navigationController pushViewController:appointFinishVc animated:YES];
+            }else{
+                [weakSelf showHudAuto:response.message andDuration:@"2"];
+            }
+        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        }];
+    }
+}
+
 - (NSString *)title{
     return @"预约住院";
 }

@@ -86,7 +86,7 @@
             if (index == 0) {
                 [weakSelf favGoodsgoods_id];
             }else if(index == 1){
-                
+                [weakSelf getAddCardNetWork];
             }else if(index == 2){
                 ShopDetailBuyViewController *shopDetailBuyVc = [[ShopDetailBuyViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 [weakSelf.navigationController pushViewController:shopDetailBuyVc animated:YES];
@@ -221,7 +221,6 @@
     [[THNetWorkManager shareNetWork]getGoodsFlashId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            NSLog(@"-----%@",response.dataDic);
             GoodsDetailModel * model = [response thParseDataFromDic:response.dataDic andModel:[GoodsDetailModel class]];
             weakSelf.goodsDetailModel = model;
             [weakSelf.imgHead sd_setImageWithURL:SD_IMG(model.thumb)];
@@ -233,6 +232,23 @@
             }
             
             [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+#pragma mark --- 加入购物车
+- (void)getAddCardNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    ShopDetailNumTableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    WeakSelf(ShopDetailViewController);
+    [[THNetWorkManager shareNetWork]addCartGoods_id:self.id qty:cell.labNum.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"-----%@",response.dataDic);
             
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];

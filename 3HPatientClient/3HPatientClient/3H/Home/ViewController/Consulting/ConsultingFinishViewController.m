@@ -25,7 +25,8 @@
     // Do any additional setup after loading the view.
 }
 - (void)backAction{
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    [self.navigationController popToViewController:self.navigationController.viewControllers[3] animated:YES];
 }
 
 - (FinishHeadView *)headView{

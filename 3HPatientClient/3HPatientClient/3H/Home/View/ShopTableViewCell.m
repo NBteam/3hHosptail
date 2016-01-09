@@ -51,6 +51,9 @@
 - (void)hiddenItem{
     self.customView2.hidden = YES;
 }
+- (void)noHiddenItem{
+    self.customView2.hidden = NO;
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

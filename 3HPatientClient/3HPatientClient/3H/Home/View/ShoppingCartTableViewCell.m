@@ -5,7 +5,7 @@
 //  Created by 范英强 on 15/12/27.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
-
+extern BOOL edit;
 #import "ShoppingCartTableViewCell.h"
 
 @implementation ShoppingCartTableViewCell
@@ -39,6 +39,9 @@
     }else{
         self.btnSelect.selected = YES;
     }
+    if (self.btnSelectBlock) {
+        self.btnSelectBlock(self.btnSelect.selected);
+    } 
 }
 
 - (UIImageView *)imgLogo{
@@ -104,19 +107,23 @@
         _labNum = [[UILabel alloc] initWithFrame:CGRectMake(self.btnReduct.right, 0, 30, 30)];
         _labNum.textColor = [UIColor colorWithHEX:0x333333];
         _labNum.font = [UIFont systemFontOfSize:15];
-        _labNum.text = @"99";
+        _labNum.text = @"0";
         _labNum.textAlignment = NSTextAlignmentCenter;
     }
     return _labNum;
 }
 
 - (void)btnReductAction{
-    NSInteger num = [self.labNum.text integerValue];
-    if (num >1) {
-        num --;
-        self.labNum.text = [NSString stringWithFormat:@"%li",num];
+    if (edit) {
+        NSInteger num = [self.labNum.text integerValue];
+        if (num >1) {
+            num --;
+            self.labNum.text = [NSString stringWithFormat:@"%li",num];
+            if (self.decreaseCartNum) {
+                self.decreaseCartNum();
+            }
+        }
     }
-    
 }
 
 - (UIButton *)btnAdd{
@@ -133,19 +140,27 @@
 }
 
 - (void)btnAddAction{
-    NSInteger num = [self.labNum.text integerValue];
-    if (num <99) {
-        num ++;
-        self.labNum.text = [NSString stringWithFormat:@"%li",num];
+    if (edit) {
+        NSInteger num = [self.labNum.text integerValue];
+        if (num <99) {
+            num ++;
+            self.labNum.text = [NSString stringWithFormat:@"%li",num];
+            if (self.addCartNum) {
+                self.addCartNum();
+            }
+        }
     }
 }
 
-- (void)confingWithModel{
-    self.labTitle.text = @"首页-健康商城-商品详情_数量首页-健康商城-商品详情_数量首页-健康商城-商品详情_数量";
+- (void)confingWithModel:(CartListModel *)model{
+    self.labTitle.text = model.goods_name;
     [self.labTitle sizeToFit];
     self.labTitle.top = self.imgLogo.top;
     self.labTitle.width = DeviceSize.width -self.imgLogo.right -20;
-    self.labPrice.text = @"100元";
+    self.labPrice.text = [NSString stringWithFormat:@"%@",model.price];
+    self.btnSelect.selected = model.choice;
+    self.labNum.text = [NSString stringWithFormat:@"%@",model.qty];
+    [self.imgLogo sd_setImageWithURL:SD_IMG(model.thumb)];
 }
 
 /*

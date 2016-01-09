@@ -19,4 +19,7 @@
 
 @property (nonatomic, strong) UIButton *btnSubmit;
 
+@property (nonatomic, copy) void (^btnSelectBlock)(void);
+
+@property (nonatomic, copy) void (^btnSubmitBlock)(void);
 @end

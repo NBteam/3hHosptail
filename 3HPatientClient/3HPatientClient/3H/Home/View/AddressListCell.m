@@ -34,14 +34,16 @@
 - (UIButton *)btnModify{
     if (!_btnModify) {
         _btnModify = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btnModify.frame = CGRectMake(self.labDetail.right + 10, 20, 40, 40);
+        _btnModify.frame = CGRectMake(DeviceSize.width -  50, 20, 40, 40);
         [_btnModify addTarget:self action:@selector(btnModifyClick:) forControlEvents:UIControlEventTouchUpInside];
         [_btnModify setImage:[UIImage imageNamed:@"笔.jpg"] forState:UIControlStateNormal];
     }
     return _btnModify;
 }
 - (void)btnModifyClick:(UIButton *)button{
-
+    if (self.btnModifyBlock) {
+        self.btnModifyBlock();
+    }
 }
 - (CGFloat )configWithModel:(AddressListModel *)model{
     self.labDetail.text = model.address;
