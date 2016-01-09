@@ -9,6 +9,7 @@
 #import "AssistantDoctorViewController.h"
 #import "AssistantDoctorTableViewCell.h"
 #import "AddAssistantDoctorViewController.h"
+#import "AssistantDoctorModel.h"
 @interface AssistantDoctorViewController ()
 
 @end
@@ -20,6 +21,47 @@
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"];
+    self.isOpenHeaderRefresh = YES;
+    self.isOpenFooterRefresh = YES;
+    [self getAssistantDoctorData];
+}
+
+- (void)getAssistantDoctorData{
+    [self.dataArray removeAllObjects];
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(AssistantDoctorViewController);
+    
+    [[THNetWorkManager shareNetWork] myHelperspage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            
+            if (weakSelf.pageNO == 1) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            for (NSDictionary * dict in response.dataDic[@"list"]) {
+                AssistantDoctorModel * model = [response thParseDataFromDic:dict andModel:[AssistantDoctorModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+    } ];
+        
 }
 
 - (void)backAction{
@@ -41,7 +83,7 @@
         cell = [[AssistantDoctorTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:nil];
+    [cell confingWithModel:self.dataArray[indexPath.section]];
     return cell;
 }
 
@@ -50,7 +92,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 10;
+    return self.dataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 70;
@@ -64,8 +106,55 @@
     return 10.0f;
 }
 
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    
+    [self getAssistantDoctorData];
+}
+- (void)footerRequestWithData
+{
+    
+    [self getAssistantDoctorData];
+}
+
 - (NSString *)title{
     return @"助理医生";
+}
+
+#pragma mark 提交编辑操作时会调用这个方法(删除，添加)
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 删除操作
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // 1.删除数据
+        [self deleteCellIndexPath:indexPath];
+    }
+}
+- (void)deleteCellIndexPath:(NSIndexPath *)indexPath{
+    WeakSelf(AssistantDoctorViewController);
+    AssistantDoctorModel * model = self.dataArray[indexPath.section];
+    [self showHudAuto:@"删除中..."];
+    
+    [[THNetWorkManager shareNetWork] deleteMyHelperDoctorId:[model.id integerValue] andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        if (response.responseCode == 1) {
+            [weakSelf.dataArray removeObjectAtIndex:indexPath.section];
+            if (weakSelf.dataArray.count == 0) {
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }else{
+                NSLog(@"-------------%@",weakSelf.dataArray);
+                [weakSelf.tableView reloadData];
+            }
+            
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+        
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+    
 }
 
 - (void)didReceiveMemoryWarning {

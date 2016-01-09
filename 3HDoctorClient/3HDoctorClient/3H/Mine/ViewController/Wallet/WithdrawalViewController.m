@@ -125,13 +125,11 @@
 //    }
 }
 - (void)getNetWork{
+    [self.dataArray removeAllObjects];
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(WithdrawalViewController);
     [[THNetWorkManager shareNetWork]myBankCardListCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
-        if (weakSelf.pageNO == 1) {
-            [weakSelf.dataArray removeAllObjects];
-        }
         if (response.responseCode == 1) {
             for (NSDictionary * dict in response.dataDic[@"list"]) {
                 WithdrawaListModel * model = [response thParseDataFromDic:dict andModel:[WithdrawaListModel class]];
@@ -154,15 +152,15 @@
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"1"];
     }];
 }
-#pragma mark -- 重新父类方法进行刷新
-- (void)headerRequestWithData
-{
-    [self getNetWork];
-}
-- (void)footerRequestWithData
-{
-    [self getNetWork];
-}
+//#pragma mark -- 重新父类方法进行刷新
+//- (void)headerRequestWithData
+//{
+//    [self getNetWork];
+//}
+//- (void)footerRequestWithData
+//{
+//    [self getNetWork];
+//}
 #pragma mark 提交编辑操作时会调用这个方法(删除，添加)
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     // 删除操作

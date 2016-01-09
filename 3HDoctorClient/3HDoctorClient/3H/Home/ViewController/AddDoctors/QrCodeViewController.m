@@ -149,83 +149,6 @@
     
 }
 
-
-/*
- //注册键盘监听
- - (void)registerForKeyboardNotifications
- {
- //使用NSNotificationCenter 键盘出现时
- [[NSNotificationCenter defaultCenter] addObserver:self
- 
- selector:@selector(keyboardWillShown:)
- 
- name:UIKeyboardWillShowNotification object:nil];
- 
- //使用NSNotificationCenter 键盘隐藏时
- [[NSNotificationCenter defaultCenter] addObserver:self
- 
- selector:@selector(keyboardWillBeHidden:)
- 
- name:UIKeyboardWillHideNotification object:nil];
- 
- 
- }
- 
- #pragma mark - keyboardDelegate
- 
- //实现当键盘出现的时候计算键盘的高度大小。用于输入框显示位置
- - (void)keyboardWillShown:(NSNotification*)aNotification
- {
- if (!isKeyboardShow) {
- 
- NSDictionary* info = [aNotification userInfo];
- 
- //kbSize即为键盘尺寸 (有width, height)
- //得到鍵盤的高度
- CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
- keyboardHight =  kbSize.height;
- 
- //底部背景位置动画加载
- [self begainMoveUpAnimation:keyboardHight];
- 
- isKeyboardShow = YES;
- }
- }
- 
- 
- 
- //当键盘隐藏的时候
- - (void)keyboardWillBeHidden:(NSNotification*)aNotification
- {
- 
- [self begainMoveUpAnimation: (keyboardHight * -1)];
- isKeyboardShow = NO;
- 
- }
- 
- 
- 
- 
- - (void)begainMoveUpAnimation:(CGFloat)kbHeight
- {
- 
- [UIView animateWithDuration:1 animations:^{
- 
- CGRect rect = _bottomBackView.frame;
- _bottomBackView.frame = CGRectMake(rect.origin.x, rect.origin.y - kbHeight, rect.size.width, rect.size.height);
- 
- } completion:^(BOOL finished) {
- 
- }];
- 
- 
- 
- }
- 
- 
- */
-
-
 #pragma mark 获取扫描区域
 -(CGRect)getScanCrop:(CGRect)rect readerViewBounds:(CGRect)readerViewBounds
 {
@@ -316,20 +239,21 @@
     if (zbar_symbol_get_type(symbol) == ZBAR_QRCODE) {
         
         for (ZBarSymbol *symbol in symbols) {
-            
+           
             //扫描成功 推出详情页
-            [self pushChargePileDetailsViewController:symbol.data];
+            [self beHelperDoctor_id:symbol.data];
             
             break;
         }
         
     }
-    
     //停止扫描
     [readerView stop];
     
     //停止扫描后从俯视图上移除
     [readerView removeFromSuperview];
+    
+    
     
     
 }
@@ -362,13 +286,24 @@
 }
 
 
-- (void)pushChargePileDetailsViewController:(NSString*)chargePileNum
-{
-//    NSLog(@"erweima:%@",chargePileNum);
-//    InfDetailedViewController *ifd = [[InfDetailedViewController alloc] init];
-//    ifd.chargePileNum = chargePileNum;
-//    [self.navigationController pushViewController:ifd animated:YES];
-   
+- (void)beHelperDoctor_id:(NSString *)doctor_id{
+    NSLog(@"医生id%@",doctor_id);
+    [self showHudAuto:@"添加中..."];
+    WeakSelf(QrCodeViewController);
+    [[THNetWorkManager shareNetWork] beHelperDoctor_id:doctor_id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            [weakSelf showHudAuto:@"添加成功" andDuration:@"2"];
+ 
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+        [weakSelf backAction];
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+    
 }
 
 - (UILabel *)labTitle{

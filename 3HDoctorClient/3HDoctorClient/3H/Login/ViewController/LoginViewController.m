@@ -84,10 +84,10 @@
     [self.view addSubview:self.btnRemember];
     [self.view addSubview:self.btnForgetPassWord];
     [self.view addSubview:self.btnLogin];
-    [self.view addSubview:self.labLine];
-    [self.view addSubview:self.labLoginName];
+//    [self.view addSubview:self.labLine];
+//    [self.view addSubview:self.labLoginName];
     
-    [self customShareButtons];
+    //[self customShareButtons];
 }
 
 #pragma mark -UI

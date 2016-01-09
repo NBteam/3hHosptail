@@ -20,6 +20,7 @@
 - (UIImageView *)imgLogo{
     if (!_imgLogo) {
         _imgLogo = [[UIImageView alloc]initWithFrame:CGRectMake(10, (45-30)/2, 30, 30)];
+        _imgLogo.backgroundColor = AppDefaultColor;
         
     }
     return _imgLogo;
@@ -47,7 +48,7 @@
 //赋值
 - (void)confingWithModel:(WithdrawaListModel *)model{
     [self.imgLogo sd_setImageWithURL:URL(model.bank_pic)];
-    self.labTitle.attributedText = [self getName:model.bank_name AndAge:[NSString stringWithFormat:@"  (%@)",model.bank_info]];
+    self.labTitle.attributedText = [self getName:model.bank_type AndAge:[NSString stringWithFormat:@"  (%@)",model.bank_info]];
 }
 
 - (NSMutableAttributedString *)getName:(NSString *)name AndAge:(NSString *)card{

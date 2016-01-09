@@ -36,7 +36,6 @@
 }
 
 #pragma mark -ui
-
 - (UIView *)viewBack{
     if (!_viewBack) {
         _viewBack = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 44)];

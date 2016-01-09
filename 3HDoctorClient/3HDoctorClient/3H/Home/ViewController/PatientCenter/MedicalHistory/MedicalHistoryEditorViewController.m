@@ -53,9 +53,9 @@
 
 - (void)rightAction{
     MedicalHistoryDetailEditorTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.nIndexPath];
-    if ([self.guomin isEqualToString:@""]) {
+    if ([self.gmString isEqualToString:@""]) {
         [self showHudAuto:@"请填写过敏史" andDuration:@"2"];
-    }else if([self.blood_type isEqualToString:@""]){
+    }else if([self.xxString isEqualToString:@""]){
         [self showHudAuto:@"请填写血型" andDuration:@"2"];
     }else if([cell.txtView.text isEqualToString:@""]){
         [self showHudAuto:@"请填写病情描述" andDuration:@"2"];
@@ -121,7 +121,7 @@
 - (void)getDetailInfo:(NSString *)desc{
     WeakSelf(MedicalHistoryEditorViewController);
     [weakSelf showHudWaitingView:WaitPrompt];;
-    [[THNetWorkManager shareNetWork] editPatientSickHistoryMid:self.mid guomin:self.guomin blood_type:self.blood_type desc:desc andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork] editPatientSickHistoryMid:self.mid guomin:self.gmString blood_type:self.xxString desc:desc andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         NSLog(@"成功%@",response.dataDic);
         [weakSelf.dataArray removeAllObjects];
@@ -150,10 +150,13 @@
         [HospitalInputVc setHospitalBlock:^(NSString *str) {
             if (indexPath.section == 1) {
                 weakSelf.blood_type = str;
+                weakSelf.xxString = str;
             }else{
                 weakSelf.guomin = str;
+                weakSelf.gmString = str;
             }
             cell.labDetail.text = str;
+            weakSelf.detailString = str;
         }];
         [self.navigationController pushViewController:HospitalInputVc animated:YES];
     }

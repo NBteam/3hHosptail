@@ -21,4 +21,5 @@
 @property (nonatomic, strong) THUser *user;
 
 - (THUser *)refreshUserData;
+
 @end

@@ -643,6 +643,15 @@
 		C0B6FD8E1C2845DC003902AB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B6FD8D1C2845DC003902AB /* CoreTelephony.framework */; };
 		C0B6FD901C2845E9003902AB /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B6FD8F1C2845E9003902AB /* libstdc++.tbd */; };
 		C0B6FD921C2845F5003902AB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B6FD911C2845F5003902AB /* libz.tbd */; };
+		C0BFEB841C40FF7D005ADC28 /* BankListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BFEB831C40FF7D005ADC28 /* BankListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C0BFEB871C410025005ADC28 /* BankListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BFEB861C410025005ADC28 /* BankListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		C0BFEB8A1C41021F005ADC28 /* BankTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BFEB891C41021F005ADC28 /* BankTypeViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C0BFEB8D1C410278005ADC28 /* BankListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BFEB8C1C410278005ADC28 /* BankListModel.m */; settings = {ASSET_TAGS = (); }; };
+		C0BFEB901C4105FB005ADC28 /* BankTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BFEB8F1C4105FB005ADC28 /* BankTypeTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		C0BFEB931C411931005ADC28 /* AssistantDoctorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BFEB921C411931005ADC28 /* AssistantDoctorModel.m */; settings = {ASSET_TAGS = (); }; };
+		C0BFEB9A1C4136A1005ADC28 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BFEB961C4136A1005ADC28 /* libXG-SDK.a */; settings = {ASSET_TAGS = (); }; };
+		C0BFEB9B1C4136A1005ADC28 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C0BFEB971C4136A1005ADC28 /* ReleaseNotes.txt */; settings = {ASSET_TAGS = (); }; };
+		C0BFEB9D1C41375F005ADC28 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BFEB9C1C41375F005ADC28 /* CFNetwork.framework */; };
 		C0CA3E481C268BE500A47E8A /* PhoneAppointTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CA3E471C268BE500A47E8A /* PhoneAppointTimesViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C0CAB52A1C299DD0008EDEE5 /* BookIsPhoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CAB5291C299DD0008EDEE5 /* BookIsPhoneModel.m */; settings = {ASSET_TAGS = (); }; };
 		C0CAB52D1C29A4DE008EDEE5 /* PhoneDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CAB52C1C29A4DE008EDEE5 /* PhoneDetailModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -1661,6 +1670,23 @@
 		C0B6FD8D1C2845DC003902AB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C0B6FD8F1C2845E9003902AB /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		C0B6FD911C2845F5003902AB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		C0BFEB821C40FF7D005ADC28 /* BankListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankListViewController.h; sourceTree = "<group>"; };
+		C0BFEB831C40FF7D005ADC28 /* BankListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankListViewController.m; sourceTree = "<group>"; };
+		C0BFEB851C410025005ADC28 /* BankListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankListTableViewCell.h; sourceTree = "<group>"; };
+		C0BFEB861C410025005ADC28 /* BankListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankListTableViewCell.m; sourceTree = "<group>"; };
+		C0BFEB881C41021F005ADC28 /* BankTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankTypeViewController.h; sourceTree = "<group>"; };
+		C0BFEB891C41021F005ADC28 /* BankTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankTypeViewController.m; sourceTree = "<group>"; };
+		C0BFEB8B1C410278005ADC28 /* BankListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankListModel.h; sourceTree = "<group>"; };
+		C0BFEB8C1C410278005ADC28 /* BankListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankListModel.m; sourceTree = "<group>"; };
+		C0BFEB8E1C4105FB005ADC28 /* BankTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankTypeTableViewCell.h; sourceTree = "<group>"; };
+		C0BFEB8F1C4105FB005ADC28 /* BankTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankTypeTableViewCell.m; sourceTree = "<group>"; };
+		C0BFEB911C411931005ADC28 /* AssistantDoctorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssistantDoctorModel.h; sourceTree = "<group>"; };
+		C0BFEB921C411931005ADC28 /* AssistantDoctorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssistantDoctorModel.m; sourceTree = "<group>"; };
+		C0BFEB961C4136A1005ADC28 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		C0BFEB971C4136A1005ADC28 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
+		C0BFEB981C4136A1005ADC28 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		C0BFEB991C4136A1005ADC28 /* XGSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSetting.h; sourceTree = "<group>"; };
+		C0BFEB9C1C41375F005ADC28 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C0CA3E461C268BE500A47E8A /* PhoneAppointTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAppointTimesViewController.h; sourceTree = "<group>"; };
 		C0CA3E471C268BE500A47E8A /* PhoneAppointTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointTimesViewController.m; sourceTree = "<group>"; };
 		C0CAB5281C299DD0008EDEE5 /* BookIsPhoneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookIsPhoneModel.h; sourceTree = "<group>"; };
@@ -1691,6 +1717,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0B6FD8E1C2845DC003902AB /* CoreTelephony.framework in Frameworks */,
+				C0BFEB9D1C41375F005ADC28 /* CFNetwork.framework in Frameworks */,
 				C0B6FD861C2845A2003902AB /* libiconv.tbd in Frameworks */,
 				C0AEAEE11C2EAF0B0009A3F5 /* Foundation.framework in Frameworks */,
 				C0AEAEDF1C2EAEF70009A3F5 /* UIKit.framework in Frameworks */,
@@ -1701,7 +1729,6 @@
 				C0AEAED71C2EAECC0009A3F5 /* CoreMedia.framework in Frameworks */,
 				C0B6FD921C2845F5003902AB /* libz.tbd in Frameworks */,
 				C0B6FD901C2845E9003902AB /* libstdc++.tbd in Frameworks */,
-				C0B6FD8E1C2845DC003902AB /* CoreTelephony.framework in Frameworks */,
 				C0B6FD8C1C2845CC003902AB /* libsqlite3.tbd in Frameworks */,
 				C0B6FD881C2845AB003902AB /* SystemConfiguration.framework in Frameworks */,
 				C0B6FD841C284594003902AB /* Security.framework in Frameworks */,
@@ -1724,6 +1751,7 @@
 				C0B6FD711C283FB9003902AB /* libSocialAlipayShare.a in Frameworks */,
 				C0B6FD801C283FB9003902AB /* libSocialWechat.a in Frameworks */,
 				C0B6FD731C283FB9003902AB /* libSocialLaiWang.a in Frameworks */,
+				C0BFEB9A1C4136A1005ADC28 /* libXG-SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1810,6 +1838,10 @@
 				C0AEAEA41C2E8F070009A3F5 /* AddCardsViewController.m */,
 				C0AEAEA61C2E93AF0009A3F5 /* AddCardsResultViewController.h */,
 				C0AEAEA71C2E93AF0009A3F5 /* AddCardsResultViewController.m */,
+				C0BFEB821C40FF7D005ADC28 /* BankListViewController.h */,
+				C0BFEB831C40FF7D005ADC28 /* BankListViewController.m */,
+				C0BFEB881C41021F005ADC28 /* BankTypeViewController.h */,
+				C0BFEB891C41021F005ADC28 /* BankTypeViewController.m */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -1991,6 +2023,8 @@
 		99DA3ED71C0BE50300573D4C = {
 			isa = PBXGroup;
 			children = (
+				C0BFEB9C1C41375F005ADC28 /* CFNetwork.framework */,
+				C0BFEB941C4136A1005ADC28 /* XGPUSH */,
 				C0AEAEE01C2EAF0B0009A3F5 /* Foundation.framework */,
 				C0AEAEDE1C2EAEF70009A3F5 /* UIKit.framework */,
 				C0AEAEDC1C2EAEE80009A3F5 /* QuartzCore.framework */,
@@ -2671,6 +2705,10 @@
 				C051E5DD1C24561A005A3D2E /* PhoneAppointSetTableViewCell.m */,
 				C0AEAEA01C2E8B810009A3F5 /* WithdrawalTableViewCell.h */,
 				C0AEAEA11C2E8B810009A3F5 /* WithdrawalTableViewCell.m */,
+				C0BFEB851C410025005ADC28 /* BankListTableViewCell.h */,
+				C0BFEB861C410025005ADC28 /* BankListTableViewCell.m */,
+				C0BFEB8E1C4105FB005ADC28 /* BankTypeTableViewCell.h */,
+				C0BFEB8F1C4105FB005ADC28 /* BankTypeTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3589,6 +3627,8 @@
 				C0CAB52C1C29A4DE008EDEE5 /* PhoneDetailModel.m */,
 				D28D0A331C2FEC83002240BC /* ConsultingUnFinishedModel.h */,
 				D28D0A341C2FEC83002240BC /* ConsultingUnFinishedModel.m */,
+				C0BFEB911C411931005ADC28 /* AssistantDoctorModel.h */,
+				C0BFEB921C411931005ADC28 /* AssistantDoctorModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3604,6 +3644,8 @@
 				C0A0111F1C2695EE00A8E476 /* PhoneAppointTDetailModel.m */,
 				D28D0A301C2FD114002240BC /* WithdrawaListModel.h */,
 				D28D0A311C2FD114002240BC /* WithdrawaListModel.m */,
+				C0BFEB8B1C410278005ADC28 /* BankListModel.h */,
+				C0BFEB8C1C410278005ADC28 /* BankListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3964,6 +4006,26 @@
 			path = YiXin;
 			sourceTree = "<group>";
 		};
+		C0BFEB941C4136A1005ADC28 /* XGPUSH */ = {
+			isa = PBXGroup;
+			children = (
+				C0BFEB951C4136A1005ADC28 /* sdk */,
+			);
+			name = XGPUSH;
+			path = 3HDoctorClient/XGPUSH;
+			sourceTree = "<group>";
+		};
+		C0BFEB951C4136A1005ADC28 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+				C0BFEB961C4136A1005ADC28 /* libXG-SDK.a */,
+				C0BFEB971C4136A1005ADC28 /* ReleaseNotes.txt */,
+				C0BFEB981C4136A1005ADC28 /* XGPush.h */,
+				C0BFEB991C4136A1005ADC28 /* XGSetting.h */,
+			);
+			path = sdk;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -4013,7 +4075,7 @@
 				TargetAttributes = {
 					99DA3EDF1C0BE50300573D4C = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = N2UUE52R4J;
+						DevelopmentTeam = N5WJH3WGR8;
 					};
 					99DA3EF81C0BE50300573D4C = {
 						CreatedOnToolsVersion = 6.4;
@@ -4328,6 +4390,7 @@
 				99DA45CE1C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-拒绝理由-已拒绝_左键-灰色@2x.png in Resources */,
 				99DA44D51C0C4FED00573D4C /* 3H-我的_预约设置-未点击@2x.png in Resources */,
 				99DA45781C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检验_右键-白色@2x.png in Resources */,
+				C0BFEB9B1C4136A1005ADC28 /* ReleaseNotes.txt in Resources */,
 				99DA44D01C0C4FED00573D4C /* 3H-我的_白色@2x.png in Resources */,
 				991A31231C11E7E800E0313F /* 消息点击@2x.png in Resources */,
 				99DA453B1C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-助理医师-咨询详情-助理已回复_助理王一明已回复-未点击@2x.png in Resources */,
@@ -4380,6 +4443,7 @@
 				C0AEAEF81C2EC75C0009A3F5 /* mask.c in Sources */,
 				A9B5EA971C16E77E00D4046B /* OutpatientReservationView.m in Sources */,
 				99DA40401C0BE59A00573D4C /* SDWebImageDecoder.m in Sources */,
+				C0BFEB8D1C410278005ADC28 /* BankListModel.m in Sources */,
 				99DA40051C0BE59A00573D4C /* UIScreen+Extension.m in Sources */,
 				99DA3FFA1C0BE59A00573D4C /* NSDate+Extension.m in Sources */,
 				C051E6081C259548005A3D2E /* PhoneAppointModel.m in Sources */,
@@ -4504,6 +4568,7 @@
 				99D6EE861C0EC12500CB1829 /* PatientDetailTableViewCell.m in Sources */,
 				99DA40131C0BE59A00573D4C /* MTLManagedObjectAdapter.m in Sources */,
 				99D6EEC71C0EF0F000CB1829 /* LaboratoryTestsAddTableViewCell.m in Sources */,
+				C0BFEB841C40FF7D005ADC28 /* BankListViewController.m in Sources */,
 				991A31001C11D66E00E0313F /* WithdrawalViewController.m in Sources */,
 				99DA407A1C0BE85600573D4C /* BaseTabBarController.m in Sources */,
 				99DA40431C0BE59A00573D4C /* SDWebImageManager.m in Sources */,
@@ -4597,6 +4662,7 @@
 				99DA404B1C0BE59A00573D4C /* UIView+WebCacheOperation.m in Sources */,
 				99DA43711C0C383500573D4C /* WhatInvitationViewController.m in Sources */,
 				99D1424E1C0DA3CD002DA3AD /* ConsultingUnFinishedDetailToolView.m in Sources */,
+				C0BFEB901C4105FB005ADC28 /* BankTypeTableViewCell.m in Sources */,
 				99D141F41C0D5F27002DA3AD /* ConsultingServicesViewController.m in Sources */,
 				C08244991C205B4900783FD5 /* CheckDataDetailViewController.m in Sources */,
 				C0AEAEFC1C2EC75C0009A3F5 /* qrspec.c in Sources */,
@@ -4605,6 +4671,7 @@
 				99DA40291C0BE59A00573D4C /* MJRefreshBackNormalFooter.m in Sources */,
 				A98AC3C01C17F6120024177C /* AddPatientsPhoneView.m in Sources */,
 				99DA3FFD1C0BE59A00573D4C /* NSString+Extension.m in Sources */,
+				C0BFEB931C411931005ADC28 /* AssistantDoctorModel.m in Sources */,
 				C0AEAEA51C2E8F070009A3F5 /* AddCardsViewController.m in Sources */,
 				99DA40541C0BE59A00573D4C /* TQRichTextView.m in Sources */,
 				99D142181C0D7E87002DA3AD /* BookSuccessHeadTableViewCell.m in Sources */,
@@ -4625,6 +4692,7 @@
 				C0AEAEFB1C2EC75C0009A3F5 /* qrinput.c in Sources */,
 				C08244901C20175800783FD5 /* EvaluationTableViewCell.m in Sources */,
 				C08244B21C2130C300783FD5 /* OutpatientAppointTableViewCell.m in Sources */,
+				C0BFEB8A1C41021F005ADC28 /* BankTypeViewController.m in Sources */,
 				C0CAB52A1C299DD0008EDEE5 /* BookIsPhoneModel.m in Sources */,
 				A94B42EB1C1335C200B6D6AE /* DynamicToolView.m in Sources */,
 				C08244A21C205EF900783FD5 /* CheckDataDetailModel.m in Sources */,
@@ -4637,6 +4705,7 @@
 				99DA40071C0BE59A00573D4C /* UIView+Tag.m in Sources */,
 				99DA45EC1C0C71EA00573D4C /* PatientCenterTableViewCell.m in Sources */,
 				99D141D01C0D4D9D002DA3AD /* ConsultingDynamicTableViewCell.m in Sources */,
+				C0BFEB871C410025005ADC28 /* BankListTableViewCell.m in Sources */,
 				99DA402A1C0BE59A00573D4C /* MJRefreshBackStateFooter.m in Sources */,
 				C0AEAEF71C2EC75C0009A3F5 /* bitstream.c in Sources */,
 				C08244B81C214B2100783FD5 /* PerfectInformationTimeViewController.m in Sources */,
@@ -4837,6 +4906,7 @@
 					"$(PROJECT_DIR)/3HDoctorClient/UM/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(PROJECT_DIR)/3HDoctorClient/UM/UMSocial_Sdk_Extra_Frameworks/Whatsapp",
 					"$(PROJECT_DIR)/3HDoctorClient/PublicFramework/ZBarSDK",
+					"$(PROJECT_DIR)/3HDoctorClient/XGPUSH/sdk",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "";
@@ -4875,6 +4945,7 @@
 					"$(PROJECT_DIR)/3HDoctorClient/UM/UMSocial_Sdk_Extra_Frameworks/Wechat",
 					"$(PROJECT_DIR)/3HDoctorClient/UM/UMSocial_Sdk_Extra_Frameworks/Whatsapp",
 					"$(PROJECT_DIR)/3HDoctorClient/PublicFramework/ZBarSDK",
+					"$(PROJECT_DIR)/3HDoctorClient/XGPUSH/sdk",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "";

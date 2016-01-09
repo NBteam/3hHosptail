@@ -149,9 +149,45 @@
 
     [self getNetWorkInfo];
 }
+
+- (void)deleteMyPatientMember_id:(NSString *)member_id{
+    
+    
+}
+
+#pragma mark 提交编辑操作时会调用这个方法(删除，添加)
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 删除操作
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // 1.删除数据
+        [self deleteCellIndexPath:indexPath];
+    }
+}
+- (void)deleteCellIndexPath:(NSIndexPath *)indexPath{
+    WeakSelf(PatientCenterViewController);
+    PatientListModel * model = self.dataArray[indexPath.row];
+    [self showHudAuto:@"删除中..."];
+    
+    [[THNetWorkManager shareNetWork] deleteMyPatientMember_id:model.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+        
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+}
+
 - (NSString *)title{
     return @"患者中心";
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

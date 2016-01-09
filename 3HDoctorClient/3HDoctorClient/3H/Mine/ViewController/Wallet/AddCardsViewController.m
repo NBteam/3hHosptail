@@ -8,16 +8,25 @@
 
 #import "AddCardsViewController.h"
 #import "AddCardsResultViewController.h"
+
+#import "BankListViewController.h"
 @interface AddCardsViewController ()
 
 
 @property (nonatomic, strong) UILabel *labTitle;
 
+@property (nonatomic, copy) NSString *bankId;
+
+@property (nonatomic, copy) NSString *bankType;
+
 @end
 
 @implementation AddCardsViewController
 
-
+- (void)loadView{
+    [super loadView];
+    self.view = [[TPKeyboardAvoidingScrollView alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height)];
+}
 
 
 
@@ -27,15 +36,17 @@
     UITextField *textField3 = (UITextField *)[self.view viewWithTag:502];
     UITextField *textField4 = (UITextField *)[self.view viewWithTag:503];
     
-    NSArray *arrDetail = @[@"请输入持卡人姓名",@"卡类型",@"请输入完成银行卡号",@"请输入银行卡预留手机号"];
+    NSArray *arrDetail = @[@"请输入持卡人姓名",@"请输入卡类型",@"请输入完成银行卡号",@"请输入银行卡预留手机号"];
     if (textField1.text.length == 0) {
         [self showHudAuto:arrDetail[0] andDuration:@"2"];
+    }else if (textField2.text.length == 0){
+        [self showHudAuto:arrDetail[1] andDuration:@"2"];
     }else if (textField3.text.length == 0){
         [self showHudAuto:arrDetail[2] andDuration:@"2"];
     }else if (textField4.text.length == 0){
         [self showHudAuto:arrDetail[3] andDuration:@"2"];
     }else{
-        [self getNetWorkBank_id:@"" bank_account:textField3.text bank_username:textField1.text bank_type:textField2.text bank_bind_mobile:textField4.text];
+        [self getNetWorkBank_id:self.bankId bank_account:textField3.text bank_username:textField1.text bank_type:self.bankType bank_bind_mobile:textField4.text];
     }
     
 }
@@ -87,7 +98,7 @@
         txtField.font = [UIFont systemFontOfSize:15];
         //是否纠错
         txtField.autocorrectionType = UITextAutocorrectionTypeNo;
-        if (i == 0 ||i ==3) {
+        if (i == 2 ||i ==3) {
             txtField.keyboardType = UIKeyboardTypeNumberPad;
         }
         if (i == 1 ) {
@@ -112,7 +123,20 @@
     
 }
 - (void)tapView:(UITapGestureRecognizer *)tap{
-    NSLog(@"11111");
+    
+    UITextField *textField = (UITextField *)[self.view viewWithTag:501];
+    WeakSelf(AddCardsViewController);
+    BankListViewController *bankListVc = [[BankListViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    [bankListVc setBankBlock:^(NSString *bankName, NSString *bankId, NSString *bankType) {
+        textField.text = [NSString stringWithFormat:@"%@(%@)",bankName,bankType];
+        
+        weakSelf.bankId = bankId;
+        weakSelf.bankType = bankType;
+    }];
+    
+    
+    [self.navigationController pushViewController:bankListVc animated:YES];
+    
 }
 - (void)getNetWorkBank_id:(NSString *)Bank_id bank_account:(NSString *)bank_account bank_username:(NSString *)bank_username bank_type:(NSString *)bank_type bank_bind_mobile:(NSString *)bank_bind_mobile{
     WeakSelf(AddCardsViewController);

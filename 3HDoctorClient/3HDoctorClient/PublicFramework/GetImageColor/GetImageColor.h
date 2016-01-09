@@ -13,4 +13,5 @@
 
 //获取图片中单个点的颜色：
 - (UIColor*) getPixelColorAtImage:(UIImage *)image;
+
 @end

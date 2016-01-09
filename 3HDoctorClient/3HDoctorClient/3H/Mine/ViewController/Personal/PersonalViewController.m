@@ -45,17 +45,17 @@
     }else if ([self.dataArray[2][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[2][@"detail"] isEqualToString:@"未填写"]){
         [self showHudAuto:@"请选择城市" andDuration:@"2"];
     }
-    else if ([self.dataArray[3][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[2][@"detail"] isEqualToString:@"未填写"]){
+    else if ([self.dataArray[3][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[3][@"detail"] isEqualToString:@"未填写"]){
         [self showHudAuto:@"请选择医院" andDuration:@"2"];
-    }else if ([self.dataArray[4][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[3][@"detail"] isEqualToString:@"未填写"]){
+    }else if ([self.dataArray[4][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[4][@"detail"] isEqualToString:@"未填写"]){
         [self showHudAuto:@"请选择科室" andDuration:@"2"];
-    }else if ([self.dataArray[5][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[4][@"detail"] isEqualToString:@"未填写"]){
+    }else if ([self.dataArray[5][@"detail"] isEqualToString:@"未填写"]||[self.dataArray[5][@"detail"] isEqualToString:@"未填写"]){
         [self showHudAuto:@"请选择职称" andDuration:@"2"];
     }
     else{
         [self showHudAuto:WaitPrompt];
         WeakSelf(PersonalViewController);
-        [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.dataArray[0][@"detail"] sex:self.user.sex hospital:self.dataArray[3][@"detail"] department:self.dataArray[4][@"detail"] job_title:self.dataArray[5][@"detail"] sign_word:self.dataArray[6][@"detail"] work_week:self.user.work_week work_price:self.user.work_price area_ids:self.user.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [[THNetWorkManager shareNetWork]getUpdateUserInfoTruename:self.dataArray[0][@"detail"] sex:self.user.sex hospital:self.dataArray[3][@"detail"] department:self.dataArray[4][@"detail"] job_title:self.dataArray[5][@"detail"] sign_word:@"" work_week:self.user.work_week work_price:self.user.work_price area_ids:self.user.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
                 
@@ -171,7 +171,8 @@
                 }
                 weakSelf.sexStr = name;
                 weakSelf.user.sex = name;
-                [weakSelf.dataArray replaceObjectAtIndex:1 withObject:@{@"title":@"性别",@"detail":sex}];
+                [weakSelf.dataArray replaceObjectAtIndex:1 withObject:@{@"title":@"性别",@"detail":name}];
+                NSLog(@"%@",weakSelf.dataArray);
                 [weakSelf.tableView reloadData];
             }];
             
@@ -190,12 +191,12 @@
             }];
             [self.navigationController pushViewController:CityListFirstLevelVc animated:YES];
         }else if (indexPath.row == 3){//
-            if (self.idS==nil||[self.idS isEqualToString:@""]) {
+            if (self.user.area_ids==nil||[self.user.area_ids isEqualToString:@""]) {
                 [self showHudAuto:@"请先选择城市" andDuration:@"2"];
             }else{
                 
                 HospitalTableViewController*hospitalInputVc = [[HospitalTableViewController alloc] init];
-                hospitalInputVc.ids = self.idS;
+                hospitalInputVc.ids = self.user.area_ids;
                 [hospitalInputVc setHospitalBlock:^(NSString *str,NSString * id) {
                     weakSelf.hospital_id = id;
                     [weakSelf.dataArray replaceObjectAtIndex:3 withObject:@{@"title":@"医院",@"detail":str}];

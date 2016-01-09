@@ -114,7 +114,7 @@
     if (!_imgCode) {
         _imgCode = [[UIImageView alloc] initWithFrame:CGRectMake(30, 30, 260 -60, 260 -60)];
         _imgCode.backgroundColor = [UIColor colorWithHEX:0xffffff];
-        _imgCode.image = [QRCodeGenerator qrImageForString:@"9" imageSize:_imgCode.bounds.size.width];
+        _imgCode.image = [QRCodeGenerator qrImageForString:self.user.id imageSize:_imgCode.bounds.size.width];
         
     }
     return _imgCode;
