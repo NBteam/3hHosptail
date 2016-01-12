@@ -7,6 +7,8 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "ShopInfoModel.h"
+
 
 @interface ShopDetailBuyDescTableViewCell : BaseTableViewCell
 
@@ -28,7 +30,7 @@
 @property (nonatomic, strong) UIButton *btnAdd;
 
 //赋值
-- (void)confingWithModel:(NSString *)model;
+- (void)confingWithModel:(ShopInfoModel *)model;
 
 
 @end

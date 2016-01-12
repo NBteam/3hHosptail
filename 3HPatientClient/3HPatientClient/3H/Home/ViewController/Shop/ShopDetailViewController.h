@@ -8,6 +8,7 @@
 
 #import "BaseTableViewController.h"
 
+
 @interface ShopDetailViewController : BaseTableViewController
 @property (nonatomic, copy)NSString *id;
 @end

@@ -658,4 +658,19 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"removeCart",@"token":GetToken,@"cids":cids};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+#pragma mark【鉴权】订单——列表【20151226添加】
+- (void)getOrderListPage:(NSInteger)page kw:(NSString *)kw type:(NSString *)type andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getOrderList",@"token":GetToken,@"page":@(page),@"kw":kw,@"type":type};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark【鉴权】直接购买商品【20151208更新】
+- (void)getBuyGoodsId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"BuyGoods",@"token":GetToken,@"id":id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark【鉴权】直接购买商品——提交订单【20151208更新】
+- (void)getBuyGoodsPostId:(NSString *)id qty:(NSString *)qty address_id:(NSString *)address_id	 andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"BuyGoodsPost",@"token":GetToken,@"id":id,@"qty":qty,@"address_id":address_id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

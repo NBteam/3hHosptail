@@ -273,4 +273,15 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 #pragma mark【鉴权】购物车——删除商品【20160104添加】
 - (void)removeCartCids:(NSString *)cids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark【鉴权】订单——列表【20151226添加】
+- (void)getOrderListPage:(NSInteger)page kw:(NSString *)kw type:(NSString *)type andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark【鉴权】直接购买商品【20151208更新】
+- (void)getBuyGoodsId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark【鉴权】直接购买商品——提交订单【20151208更新】
+- (void)getBuyGoodsPostId:(NSString *)id qty:(NSString *)qty address_id:(NSString *)address_id	 andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+
 @end

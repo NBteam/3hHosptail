@@ -46,7 +46,7 @@
     }
 }
 - (CGFloat )configWithModel:(AddressListModel *)model{
-    self.labDetail.text = model.address;
+    self.labDetail.text = [NSString stringWithFormat:@"%@%@",model.area_names,model.address];
     [self.labDetail sizeToFit];
     self.labDetail.top = 15;
     self.labDetail.left = 15;

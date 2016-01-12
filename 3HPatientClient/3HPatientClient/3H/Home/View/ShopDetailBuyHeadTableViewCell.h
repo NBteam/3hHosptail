@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "AddressListModel.h"
 
 @interface ShopDetailBuyHeadTableViewCell : BaseTableViewCell
 
@@ -14,4 +15,5 @@
 @property (nonatomic, strong) UILabel *labTitle;
 
 @property (nonatomic, strong) UIImageView *imgArrow;
+- (void)configWithModel:(AddressListModel *)model;
 @end

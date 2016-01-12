@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "ShopInfoModel.h"
 
 @interface ShopDetailBuyPayTableViewCell : BaseTableViewCell
 
@@ -29,4 +30,6 @@
 @property (nonatomic, strong) UIButton *btnWX;
 //0 支付宝 1  微信
 @property (nonatomic,copy) void(^BuyPayBlock)(NSInteger index);
+
+- (void)configWithModel:(ShopInfoModel *)model;
 @end

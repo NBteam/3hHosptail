@@ -9,5 +9,6 @@
 #import "BaseTableViewController.h"
 
 @interface ShopDetailBuyViewController : BaseTableViewController
-
+@property (nonatomic, copy) NSString * id;
+@property (nonatomic, copy) NSString * indexStr;
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "BaseTableViewController.h"
+#import "AddressListModel.h"
 
 @interface AddressListViewController : BaseTableViewController
-
+@property (nonatomic, copy) void (^placeBlock)(AddressListModel *model);
 @end

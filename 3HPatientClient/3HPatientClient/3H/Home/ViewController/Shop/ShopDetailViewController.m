@@ -16,6 +16,7 @@
 #import "ShopDetailBuyViewController.h"
 #import "GoodsDetailModel.h"
 #import "ShoppingCartViewController.h"
+#import "CommentsModel.h"
 
 @interface ShopDetailViewController ()
 
@@ -88,7 +89,10 @@
             }else if(index == 1){
                 [weakSelf getAddCardNetWork];
             }else if(index == 2){
+                ShopDetailNumTableViewCell *cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
                 ShopDetailBuyViewController *shopDetailBuyVc = [[ShopDetailBuyViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+                shopDetailBuyVc.id = weakSelf.id;
+                shopDetailBuyVc.indexStr = cell.labNum.text;
                 [weakSelf.navigationController pushViewController:shopDetailBuyVc animated:YES];
             }else{
                 ShoppingCartViewController *shoppingCartVc = [[ShoppingCartViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
@@ -159,7 +163,8 @@
                 cell = [[ShopDetailCommentsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            [cell confingWithModel:@"评价"];
+            CommentsModel * model = self.dataArray[indexPath.row - 1];
+            [cell confingWithModel:model];
             
             return cell;
         }
@@ -172,7 +177,7 @@
     }else if(section == 2){
         return 2;
     }else{
-        return 3;
+        return self.dataArray.count + 1;
     }
 }
 
@@ -224,7 +229,10 @@
             GoodsDetailModel * model = [response thParseDataFromDic:response.dataDic andModel:[GoodsDetailModel class]];
             weakSelf.goodsDetailModel = model;
             [weakSelf.imgHead sd_setImageWithURL:SD_IMG(model.thumb)];
-            
+            for (NSDictionary * dict in response.dataDic[@""]) {
+                CommentsModel * cModel = [response thParseDataFromDic:dict andModel:[CommentsModel class]];
+                [weakSelf.dataArray addObject:cModel];
+            }
             if ([model.is_fav integerValue] == 0) {
                 weakSelf.toolView.btnCollection.backgroundColor = [UIColor colorWithHEX:0xfffffff];
             }else{

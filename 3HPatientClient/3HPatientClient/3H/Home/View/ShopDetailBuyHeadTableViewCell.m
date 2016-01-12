@@ -41,12 +41,11 @@
     }
     return _imgArrow;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)configWithModel:(AddressListModel *)model{
+    if (model.area_names) {
+        self.labTitle.text = [NSString stringWithFormat:@"%@%@",model.area_names,model.address];
+    }
 }
-*/
+
 
 @end

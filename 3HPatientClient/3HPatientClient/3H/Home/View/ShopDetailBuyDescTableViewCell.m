@@ -138,11 +138,13 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSString *)model{
-    self.labTitle.text = @"赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值";
+- (void)confingWithModel:(ShopInfoModel *)model{
+    self.labTitle.text = model.name;
     [self.labTitle sizeToFit];
-    self.labCode.text = @"编号:10222";
-    self.labPrice.text = @"价格:99";
+    self.labNum.text = model.indexStr;
+    [self.imgLogo sd_setImageWithURL:SD_IMG(model.thumb)];
+    self.labCode.text = [ NSString stringWithFormat:@"编号:%@",model.cusid];
+    self.labPrice.text = [NSString stringWithFormat:@"价格:%@",model.price];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

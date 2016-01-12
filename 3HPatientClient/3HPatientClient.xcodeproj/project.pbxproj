@@ -572,6 +572,8 @@
 		D2D373861C3170DE005E662D /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373851C3170DE005E662D /* MedicationAddInputViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D373891C317B51005E662D /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373881C317B51005E662D /* TimeView.m */; settings = {ASSET_TAGS = (); }; };
 		D2D3738C1C317E96005E662D /* ChangeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D3738B1C317E96005E662D /* ChangeInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2D699D61C4523CE00FDEB1D /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D699D51C4523CE00FDEB1D /* CommentsModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2D699D91C452E3B00FDEB1D /* ShopInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D699D81C452E3B00FDEB1D /* ShopInfoModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1512,6 +1514,10 @@
 		D2D373881C317B51005E662D /* TimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeView.m; sourceTree = "<group>"; };
 		D2D3738A1C317E96005E662D /* ChangeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeInfoViewController.h; sourceTree = "<group>"; };
 		D2D3738B1C317E96005E662D /* ChangeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeInfoViewController.m; sourceTree = "<group>"; };
+		D2D699D41C4523CE00FDEB1D /* CommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsModel.h; sourceTree = "<group>"; };
+		D2D699D51C4523CE00FDEB1D /* CommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsModel.m; sourceTree = "<group>"; };
+		D2D699D71C452E3B00FDEB1D /* ShopInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopInfoModel.h; sourceTree = "<group>"; };
+		D2D699D81C452E3B00FDEB1D /* ShopInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopInfoModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3296,6 +3302,10 @@
 				D29664AE1C410C880017EB91 /* ShopPicModel.m */,
 				D2628B9D1C411E3D00DC711B /* CartListModel.h */,
 				D2628B9E1C411E3D00DC711B /* CartListModel.m */,
+				D2D699D41C4523CE00FDEB1D /* CommentsModel.h */,
+				D2D699D51C4523CE00FDEB1D /* CommentsModel.m */,
+				D2D699D71C452E3B00FDEB1D /* ShopInfoModel.h */,
+				D2D699D81C452E3B00FDEB1D /* ShopInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3863,6 +3873,7 @@
 				99DA41B81C0BEB0500573D4C /* MTLJSONAdapter.m in Sources */,
 				D2CED1A11C2646C1004FAB33 /* CityListModel.m in Sources */,
 				9936699F1C13FE5400B3E1C7 /* IncomeRecordViewController.m in Sources */,
+				D2D699D61C4523CE00FDEB1D /* CommentsModel.m in Sources */,
 				993669CB1C1404D000B3E1C7 /* MyCollectionTableViewCell.m in Sources */,
 				99DA41F11C0BEB0500573D4C /* TQRichTextEmojiRun.m in Sources */,
 				991A32F71C12E61500E0313F /* AppointTableViewCell.m in Sources */,
@@ -3871,6 +3882,7 @@
 				99DA41981C0BEB0500573D4C /* AFHTTPSessionManager.m in Sources */,
 				991A33151C12FFE400E0313F /* PersonalViewController.m in Sources */,
 				991A312A1C11E9B600E0313F /* HomeFunctionTableViewCell.m in Sources */,
+				D2D699D91C452E3B00FDEB1D /* ShopInfoModel.m in Sources */,
 				D2D26A8C1C23EDC600066770 /* ConsultingDoctorListNewCell.m in Sources */,
 				99DA41E61C0BEB0500573D4C /* UIImage+GIF.m in Sources */,
 				C05810DE1C2FD3BF009A2567 /* MyCollectionModel.m in Sources */,

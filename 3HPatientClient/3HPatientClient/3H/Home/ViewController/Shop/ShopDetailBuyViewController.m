@@ -12,10 +12,13 @@
 #import "ShopDetailBuyPayTableViewCell.h"
 #import "AddressAddViewController.h"
 #import "AddressListViewController.h"
+#import "ShopInfoModel.h"
 
 @interface ShopDetailBuyViewController ()
 
 @property (nonatomic, strong) UIButton *btnPay;
+@property (nonatomic, strong) AddressListModel *model;
+@property (nonatomic, strong) ShopInfoModel *shopModel;
 @end
 
 @implementation ShopDetailBuyViewController
@@ -24,12 +27,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-  
+    self.shopModel.indexStr = self.indexStr;
     self.tableView.height = self.tableView.height -65;
     [self.view addSubview:self.btnPay];
-    
-    
-    
+    [self getNetWork];
+
 }
 
 - (void)backAction{
@@ -55,6 +57,7 @@
 
 - (void)btnPayAction{
     //  [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsLogin];
+    [self getUploadNetWork];
 }
 
 
@@ -67,7 +70,7 @@
             cell = [[ShopDetailBuyHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        [cell confingWithModel:nil];
+        [cell configWithModel:self.model];
         return cell;
     }else if (indexPath.section == 1){
         static NSString *identifier = @"ShopDetailBuyDescTableViewCell";
@@ -76,7 +79,7 @@
             cell = [[ShopDetailBuyDescTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:nil];
+        [cell confingWithModel:self.shopModel];
         return cell;
     }else{
         static NSString *identifier = @"ShopDetailBuyPayTableViewCell";
@@ -85,7 +88,7 @@
             cell = [[ShopDetailBuyPayTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-       // [cell confingWithModel:nil];
+        [cell configWithModel:self.shopModel];
         return cell;
     }
 }
@@ -118,11 +121,50 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     AddressListViewController *  AddressListVc = [[AddressListViewController alloc]init];
+    WeakSelf(ShopDetailBuyViewController);
+    [AddressListVc setPlaceBlock:^(AddressListModel *model) {
+        weakSelf.model = model;
+        [weakSelf.tableView reloadData];
+    }];
     [self.navigationController pushViewController:AddressListVc animated:YES];
 //    AddressAddViewController * AddAddressVc = [[AddressAddViewController alloc]init];
 //    [self.navigationController pushViewController:AddAddressVc animated:YES];
 }
+- (void)getNetWork{
+    WeakSelf(ShopDetailBuyViewController);
+    [[THNetWorkManager shareNetWork]getBuyGoodsId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            ShopInfoModel * model = [response thParseDataFromDic:response.dataDic andModel:[ShopInfoModel class]];
+            weakSelf.shopModel = model;
+            weakSelf.shopModel.indexStr = weakSelf.indexStr;
+            [weakSelf.tableView reloadData];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
 
+    }];
+}
+- (void)getUploadNetWork{
+    if (!self.model.area_ids) {
+        [self showHudAuto:@"请选择收货地址" andDuration:@"2"];
+    }else{
+        WeakSelf(ShopDetailBuyViewController);
+        [[THNetWorkManager shareNetWork]getBuyGoodsPostId:self.id qty:self.indexStr address_id:self.model.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+            [weakSelf removeMBProgressHudInManaual];
+            if (response.responseCode == 1) {
+                
+            }else{
+                [weakSelf showHudAuto:response.message andDuration:@"2"];
+            }
+        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        }];
+    }
+    
+}
 - (NSString *)title{
     return @"确认订单";
 }

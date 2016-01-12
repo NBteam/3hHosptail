@@ -34,7 +34,7 @@
         _labTitle.textColor = AppDefaultColor;
         _labTitle.font = [UIFont systemFontOfSize:15];
         _labTitle.textAlignment = NSTextAlignmentCenter;
-        _labTitle.text = @"总价:299元";
+        _labTitle.text = @"总价:0元";
     }
     return _labTitle;
 }
@@ -127,7 +127,9 @@
         self.BuyPayBlock(1);
     }
 }
-
+- (void)configWithModel:(ShopInfoModel *)model{
+    self.labTitle.text = [NSString stringWithFormat:@"总价:%.2f元",[model.price doubleValue]*[model.indexStr doubleValue]];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

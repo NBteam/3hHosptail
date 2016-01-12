@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "CommentsModel.h"
 
 @interface ShopDetailCommentsTableViewCell : BaseTableViewCell
 
@@ -16,5 +17,5 @@
 @property (nonatomic, strong) UILabel *labDetail;
 
 //赋值
-- (void)confingWithModel:(NSString *)model;
+- (void)confingWithModel:(CommentsModel *)model;
 @end

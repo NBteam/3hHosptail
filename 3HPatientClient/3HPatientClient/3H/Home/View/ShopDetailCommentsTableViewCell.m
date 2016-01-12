@@ -55,9 +55,10 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSString *)model{
-    self.labTitle.text = @"赋值赋值";
-    self.labDetail.text = @"赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值赋值";
+- (void)confingWithModel:(CommentsModel *)model{
+    self.labTitle.text = model.uname;
+    self.labDetail.text = model.content;
+    [self.imgLogo sd_setImageWithURL:SD_IMG(model.upic)];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

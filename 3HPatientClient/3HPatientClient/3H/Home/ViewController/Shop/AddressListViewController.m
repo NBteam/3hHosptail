@@ -9,7 +9,7 @@
 #import "AddressListViewController.h"
 #import "AddressListCell.h"
 #import "AddressListDownCell.h"
-#import "AddressListModel.h"
+
 #import "AddressAddViewController.h"
 
 @interface AddressListViewController ()
@@ -84,6 +84,12 @@
             [weakSelf getNetWork];
         };
         [self.navigationController pushViewController:AddAddressVc animated:YES];
+    }else{
+        AddressListModel * model = self.dataArray[indexPath.row ];
+        if (self.placeBlock) {
+            self.placeBlock(model);
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 }
 - (void)getNetWork{
