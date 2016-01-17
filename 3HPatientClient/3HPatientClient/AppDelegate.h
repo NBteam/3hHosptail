@@ -14,7 +14,8 @@
 
 - (void)setWindowRootViewControllerIsTabBar;
 - (void)setWindowRootViewControllerIsLogin;
-
+#pragma mark -----支付宝支付-----
+-(void)sendPay_demoName:(NSString *)name price:(NSString *)price desc:(NSString *)desc order_sn:(NSString *)order_sn;
 
 @end
 

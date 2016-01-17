@@ -13,6 +13,7 @@
 #import "AddressAddViewController.h"
 #import "AddressListViewController.h"
 #import "ShopInfoModel.h"
+#import "AppDelegate.h"
 
 @interface ShopDetailBuyViewController ()
 
@@ -151,11 +152,13 @@
     if (!self.model.area_ids) {
         [self showHudAuto:@"请选择收货地址" andDuration:@"2"];
     }else{
+        AppDelegate * app = [UIApplication sharedApplication].delegate;
         WeakSelf(ShopDetailBuyViewController);
         [[THNetWorkManager shareNetWork]getBuyGoodsPostId:self.id qty:self.indexStr address_id:self.model.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
                 
+                [app sendPay_demoName:@"111" price:response.dataDic[@"total"] desc:@"desc" order_sn:response.dataDic[@"order_sn"]];
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"2"];
             }

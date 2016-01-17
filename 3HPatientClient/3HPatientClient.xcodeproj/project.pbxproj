@@ -549,6 +549,7 @@
 		D2D12CCB1C2E77F800E1196D /* OutpatientAppointTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D12CCA1C2E77F800E1196D /* OutpatientAppointTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		D2D12CCE1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D12CCD1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D12CD11C2E837C00E1196D /* DoctorsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D12CD01C2E837C00E1196D /* DoctorsInfoModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2D1CEDD1C4BD8EE001824FC /* APAuthV2Info.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D1CEDC1C4BD8EE001824FC /* APAuthV2Info.m */; settings = {ASSET_TAGS = (); }; };
 		D2D26A891C23E40800066770 /* MyAppointmentRegisteredModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A881C23E40800066770 /* MyAppointmentRegisteredModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2D26A8C1C23EDC600066770 /* ConsultingDoctorListNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A8B1C23EDC600066770 /* ConsultingDoctorListNewCell.m */; settings = {ASSET_TAGS = (); }; };
 		D2D26A8F1C23FE6900066770 /* DoctorListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D26A8E1C23FE6900066770 /* DoctorListModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -1482,6 +1483,8 @@
 		D2D12CCD1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointDoctorsInfoViewController.m; sourceTree = "<group>"; };
 		D2D12CCF1C2E837C00E1196D /* DoctorsInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorsInfoModel.h; sourceTree = "<group>"; };
 		D2D12CD01C2E837C00E1196D /* DoctorsInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorsInfoModel.m; sourceTree = "<group>"; };
+		D2D1CEDB1C4BD8EE001824FC /* APAuthV2Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAuthV2Info.h; sourceTree = "<group>"; };
+		D2D1CEDC1C4BD8EE001824FC /* APAuthV2Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAuthV2Info.m; sourceTree = "<group>"; };
 		D2D26A871C23E40800066770 /* MyAppointmentRegisteredModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentRegisteredModel.h; sourceTree = "<group>"; };
 		D2D26A881C23E40800066770 /* MyAppointmentRegisteredModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAppointmentRegisteredModel.m; sourceTree = "<group>"; };
 		D2D26A8A1C23EDC600066770 /* ConsultingDoctorListNewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingDoctorListNewCell.h; sourceTree = "<group>"; };
@@ -3547,6 +3550,8 @@
 		D2D5A6671C47EAFC0056DF24 /* APPAY */ = {
 			isa = PBXGroup;
 			children = (
+				D2D1CEDB1C4BD8EE001824FC /* APAuthV2Info.h */,
+				D2D1CEDC1C4BD8EE001824FC /* APAuthV2Info.m */,
 				D2D5A7951C47F0110056DF24 /* Util */,
 				D2D5A7491C47EFFE0056DF24 /* openssl */,
 				D2D5A7451C47EFEB0056DF24 /* libcrypto.a */,
@@ -4108,6 +4113,7 @@
 				99DA41F21C0BEB0500573D4C /* TQRichTextImageRun.m in Sources */,
 				C05A96CD1C1D85CB0078433B /* AppointDoctorsTableViewCell.m in Sources */,
 				D2D5A7AE1C47F0110056DF24 /* RSADataVerifier.m in Sources */,
+				D2D1CEDD1C4BD8EE001824FC /* APAuthV2Info.m in Sources */,
 				991A330E1C12FFDA00E0313F /* SetUpTableViewCell.m in Sources */,
 				99DA41E51C0BEB0500573D4C /* UIButton+WebCache.m in Sources */,
 				99D544941C1592C40081D1D3 /* NSDate+convenience.m in Sources */,
@@ -4441,8 +4447,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Su (3G3LPK4522)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen Su (3G3LPK4522)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4492,8 +4498,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Su (3G3LPK4522)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen Su (3G3LPK4522)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

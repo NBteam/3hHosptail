@@ -16,10 +16,10 @@
 #import "UMSocialWechatHandler.h"
 #import "UMSocialSinaSSOHandler.h"
 #import "UMSocialQQHandler.h"
-//#import "DataSigner.h"
-//#import "Order.h"
-//#import <AlipaySDK/AlipaySDK.h>
-//#import "APAuthV2Info.h"
+#import "DataSigner.h"
+#import "Order.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "APAuthV2Info.h"
 @interface AppDelegate ()
 
 @end
@@ -57,86 +57,86 @@
 {
     return [UMSocialSnsService handleOpenURL:url];
 }
-//#pragma mark -----支付宝支付-----
-//-(void)sendPay_demoName:(NSString *)name price:(NSString *)price desc:(NSString *)desc order_sn:(NSString *)order_sn{
-//    //            支付宝
-//    NSString *partner =@"2088121354676261";
-//    NSString *seller =@"zhrkzhrk@sina.com";
-//    NSString *privateKey = PartnerPrivKey;
-//    //partner和seller获取失败,提示
-//    if ([partner length] == 0 || [seller length] == 0)
-//    {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-//                                                        message:@"缺少partner或者seller。"
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil];
-//        [alert show];
-//        return;
-//    }
-//    /*
-//     *生成订单信息及签名
-//     */
-//    //将商品信息赋予AlixPayOrder的成员变量
-//    Order *order = [[Order alloc] init];
-//    order.partner = partner;
-//    order.seller = seller;
-//    //            order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
-//    
-//    
-//    order.tradeNO = order_sn;
-//    order.productName = name; //商品标题
-//    order.productDescription = desc; //商品描述
-//    order.amount = price; //商品价格
-//    order.notifyURL =  @"http://123.57.231.12:84/notice_alipay.php"; //回调URL
-//    //    http://123.57.231.12:84/notice_alipay.php
-//    order.service = @"mobile.securitypay.pay";
-//    order.paymentType = @"1";
-//    order.inputCharset = @"utf-8";
-//    order.itBPay = @"30m"; //订单时间
-//    order.showUrl = @"m.alipay.com"; //商品链接
-//    
-//    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
-//    NSString *appScheme = @"alisdkdemo1";
-//    
-//    //将商品信息拼接成字符串
-//    NSString *orderSpec = [order description];
-//    NSLog(@"orderSpec = %@",orderSpec);
-//    
-//    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
-//    id<DataSigner> signer = CreateRSADataSigner(privateKey);
-//    NSString *signedString = [signer signString:orderSpec];
-//    
-//    //将签名成功字符串格式化为订单字符串,请严格按照该格式
-//    NSString *orderString = nil;
-//    if (signedString != nil) {
-//        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-//                       orderSpec, signedString, @"RSA"];
-//        NSLog(@"orderString===%@",orderString);
-//        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
-//            NSLog(@"resuluDic%@",resultDic);
-//            
-//        }];
-//        
-//    }
-//    
-//}
+#pragma mark -----支付宝支付-----
+-(void)sendPay_demoName:(NSString *)name price:(NSString *)price desc:(NSString *)desc order_sn:(NSString *)order_sn{
+    //            支付宝
+    NSString *partner =@"2088121354676261";
+    NSString *seller =@"zhrkzhrk@sina.com";
+    NSString *privateKey = PartnerPrivKey;
+    //partner和seller获取失败,提示
+    if ([partner length] == 0 || [seller length] == 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"缺少partner或者seller。"
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    /*
+     *生成订单信息及签名
+     */
+    //将商品信息赋予AlixPayOrder的成员变量
+    Order *order = [[Order alloc] init];
+    order.partner = partner;
+    order.seller = seller;
+    //            order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+    
+    
+    order.tradeNO = order_sn;
+    order.productName = name; //商品标题
+    order.productDescription = desc; //商品描述
+    order.amount = price; //商品价格
+    order.notifyURL =  @"http://123.57.231.12:84/notice_alipay.php"; //回调URL
+    //    http://123.57.231.12:84/notice_alipay.php
+    order.service = @"mobile.securitypay.pay";
+    order.paymentType = @"1";
+    order.inputCharset = @"utf-8";
+    order.itBPay = @"30m"; //订单时间
+    order.showUrl = @"m.alipay.com"; //商品链接
+    
+    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
+    NSString *appScheme = @"alisdkdemo1";
+    
+    //将商品信息拼接成字符串
+    NSString *orderSpec = [order description];
+    NSLog(@"orderSpec = %@",orderSpec);
+    
+    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+    id<DataSigner> signer = CreateRSADataSigner(privateKey);
+    NSString *signedString = [signer signString:orderSpec];
+    
+    //将签名成功字符串格式化为订单字符串,请严格按照该格式
+    NSString *orderString = nil;
+    if (signedString != nil) {
+        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                       orderSpec, signedString, @"RSA"];
+        NSLog(@"orderString===%@",orderString);
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            NSLog(@"resuluDic%@",resultDic);
+            
+        }];
+        
+    }
+    
+}
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     //如果极简SDK不可用，会跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
-//    if ([url.host isEqualToString:@"platformapi"]||[url.host isEqualToString:@"safepay"]) {
-//        if ([url.host isEqualToString:@"safepay"]) {
-//            [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-//                NSLog(@"result = %@",resultDic);
-//            }];
-//        }
-//        if ([url.host isEqualToString:@"platformapi"]){//支付宝钱包快登授权返回authCode
-//            [[AlipaySDK defaultService] processAuthResult:url standbyCallback:^(NSDictionary *resultDic) {
-//                NSLog(@"result = %@",resultDic);
-//            }];
-//        }
-//        return YES;
-//    }
+    if ([url.host isEqualToString:@"platformapi"]||[url.host isEqualToString:@"safepay"]) {
+        if ([url.host isEqualToString:@"safepay"]) {
+            [[AlipaySDK defaultService] processOderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+                NSLog(@"result = %@",resultDic);
+            }];
+        }
+        if ([url.host isEqualToString:@"platformapi"]){//支付宝钱包快登授权返回authCode
+            [[AlipaySDK defaultService] processAuthResult:url standbyCallback:^(NSDictionary *resultDic) {
+                NSLog(@"result = %@",resultDic);
+            }];
+        }
+        return YES;
+    }
     return [UMSocialSnsService handleOpenURL:url];
 }
 
