@@ -528,6 +528,11 @@
 		C082447F1C1FE96A00783FD5 /* CommentsCustomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C082447E1C1FE96A00783FD5 /* CommentsCustomKeyboard.m */; settings = {ASSET_TAGS = (); }; };
 		C08244821C20040000783FD5 /* BirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244811C20040000783FD5 /* BirthdayViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C0956A411C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */; settings = {ASSET_TAGS = (); }; };
+		C0BAE9DA1C4BE3660056FA11 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BAE9D61C4BE3660056FA11 /* libXG-SDK.a */; settings = {ASSET_TAGS = (); }; };
+		C0BAE9DB1C4BE3660056FA11 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C0BAE9D71C4BE3660056FA11 /* ReleaseNotes.txt */; settings = {ASSET_TAGS = (); }; };
+		C0BAE9DD1C4BE3A90056FA11 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BAE9DC1C4BE3A90056FA11 /* CFNetwork.framework */; };
+		C0BAE9DF1C4BE3B90056FA11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BAE9DE1C4BE3B90056FA11 /* Foundation.framework */; };
+		C0BAE9E11C4BE3C40056FA11 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BAE9E01C4BE3C40056FA11 /* UIKit.framework */; };
 		D2628B9F1C411E3D00DC711B /* CartListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2628B9E1C411E3D00DC711B /* CartListModel.m */; settings = {ASSET_TAGS = (); }; };
 		D29664AA1C4109090017EB91 /* ADView.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A51C4109090017EB91 /* ADView.m */; settings = {ASSET_TAGS = (); }; };
 		D29664AB1C4109090017EB91 /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A71C4109090017EB91 /* CycleScrollView.m */; settings = {ASSET_TAGS = (); }; };
@@ -1441,6 +1446,13 @@
 		C08244801C20040000783FD5 /* BirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdayViewController.h; sourceTree = "<group>"; };
 		C08244811C20040000783FD5 /* BirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdayViewController.m; sourceTree = "<group>"; };
 		C0956A401C1F01AD002C6F7B /* 首页-患者-添加按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-患者-添加按钮@2x.png"; sourceTree = "<group>"; };
+		C0BAE9D61C4BE3660056FA11 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		C0BAE9D71C4BE3660056FA11 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
+		C0BAE9D81C4BE3660056FA11 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		C0BAE9D91C4BE3660056FA11 /* XGSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSetting.h; sourceTree = "<group>"; };
+		C0BAE9DC1C4BE3A90056FA11 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C0BAE9DE1C4BE3B90056FA11 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C0BAE9E01C4BE3C40056FA11 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D2628B9D1C411E3D00DC711B /* CartListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartListModel.h; sourceTree = "<group>"; };
 		D2628B9E1C411E3D00DC711B /* CartListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartListModel.m; sourceTree = "<group>"; };
 		D29664A41C4109090017EB91 /* ADView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADView.h; sourceTree = "<group>"; };
@@ -1641,6 +1653,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0771B1F1C2EE55800D9387B /* CoreMedia.framework in Frameworks */,
+				C0BAE9E11C4BE3C40056FA11 /* UIKit.framework in Frameworks */,
+				C0BAE9DF1C4BE3B90056FA11 /* Foundation.framework in Frameworks */,
+				C0BAE9DD1C4BE3A90056FA11 /* CFNetwork.framework in Frameworks */,
 				C05A97971C1E80150078433B /* CoreGraphics.framework in Frameworks */,
 				C05A979B1C1E80470078433B /* CoreTelephony.framework in Frameworks */,
 				D2D5A5EB1C47E5AD0056DF24 /* CoreText.framework in Frameworks */,
@@ -1649,7 +1665,6 @@
 				C0771B231C2EE56F00D9387B /* libiconv.tbd in Frameworks */,
 				D2D5A7471C47EFEB0056DF24 /* libcrypto.a in Frameworks */,
 				C0771B211C2EE56200D9387B /* CoreVideo.framework in Frameworks */,
-				C0771B1F1C2EE55800D9387B /* CoreMedia.framework in Frameworks */,
 				C0771B1D1C2EE54C00D9387B /* AVFoundation.framework in Frameworks */,
 				C05A97A11C1E94490078433B /* ImageIO.framework in Frameworks */,
 				C05A979F1C1E80730078433B /* libz.tbd in Frameworks */,
@@ -1658,6 +1673,7 @@
 				C05A97951C1E7FF20078433B /* Security.framework in Frameworks */,
 				C05A97811C1E773A0078433B /* libSocialQQ.a in Frameworks */,
 				C05A977D1C1E773A0078433B /* libSocialSina.a in Frameworks */,
+				C0BAE9DA1C4BE3660056FA11 /* libXG-SDK.a in Frameworks */,
 				C05A977E1C1E773A0078433B /* libSocialSinaSSO.a in Frameworks */,
 				C0771B171C2EE4F000D9387B /* libzbar.a in Frameworks */,
 				C05A97671C1E77390078433B /* libUMSocial_Sdk_4.4.a in Frameworks */,
@@ -2330,6 +2346,10 @@
 		99DA3EA51C0BE4CF00573D4C = {
 			isa = PBXGroup;
 			children = (
+				C0BAE9E01C4BE3C40056FA11 /* UIKit.framework */,
+				C0BAE9DE1C4BE3B90056FA11 /* Foundation.framework */,
+				C0BAE9DC1C4BE3A90056FA11 /* CFNetwork.framework */,
+				C0BAE9D41C4BE3660056FA11 /* XGPUSH */,
 				D2D5A5EA1C47E5AD0056DF24 /* CoreText.framework */,
 				D2D5A5E81C47E59E0056DF24 /* QuartzCore.framework */,
 				C0771B221C2EE56F00D9387B /* libiconv.tbd */,
@@ -3532,6 +3552,26 @@
 			path = "购物车";
 			sourceTree = "<group>";
 		};
+		C0BAE9D41C4BE3660056FA11 /* XGPUSH */ = {
+			isa = PBXGroup;
+			children = (
+				C0BAE9D51C4BE3660056FA11 /* sdk */,
+			);
+			name = XGPUSH;
+			path = 3HPatientClient/XGPUSH;
+			sourceTree = "<group>";
+		};
+		C0BAE9D51C4BE3660056FA11 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+				C0BAE9D61C4BE3660056FA11 /* libXG-SDK.a */,
+				C0BAE9D71C4BE3660056FA11 /* ReleaseNotes.txt */,
+				C0BAE9D81C4BE3660056FA11 /* XGPush.h */,
+				C0BAE9D91C4BE3660056FA11 /* XGSetting.h */,
+			);
+			path = sdk;
+			sourceTree = "<group>";
+		};
 		D2D26A861C23E3BD00066770 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -3823,6 +3863,7 @@
 				99D544271C1563320081D1D3 /* 3H-首页_我的-未点击@2x.png in Resources */,
 				C0771B2A1C2EE68000D9387B /* 扫码bg.png in Resources */,
 				991A32511C12E2DC00E0313F /* 我的-设置_版本更新-非点击状态@2x.png in Resources */,
+				C0BAE9DB1C4BE3660056FA11 /* ReleaseNotes.txt in Resources */,
 				991A32861C12E2DC00E0313F /* 首页-健康商城-商品详情-立即购买_确认并支付@2x.png in Resources */,
 				991A32661C12E2DC00E0313F /* 3H-我的_我的钱包-点击状态@2x.png in Resources */,
 				991A32781C12E2DC00E0313F /* 新浪微博@2x.png in Resources */,
@@ -4486,6 +4527,7 @@
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/APPAY",
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/APPAY/libssl.a",
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/APPAY/libcrypto.a",
+					"$(PROJECT_DIR)/3HPatientClient/XGPUSH/sdk",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
@@ -4537,6 +4579,7 @@
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/APPAY",
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/APPAY/libssl.a",
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/APPAY/libcrypto.a",
+					"$(PROJECT_DIR)/3HPatientClient/XGPUSH/sdk",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
