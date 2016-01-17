@@ -20,5 +20,5 @@
 @property (nonatomic,copy) void(^shopDetailBlock)(NSInteger index);
 
 //赋值
-- (CGFloat)confingWithModel:(GoodsDetailModel *)model;
+- (CGFloat)confingWithGoodsDetailModel:(GoodsDetailModel *)model;
 @end

@@ -106,16 +106,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        static NSString *identifier = @"ShopDetailNameTableViewCell";
+        static NSString *identifier = @"ShopDetailNameTableViewCell0";
         ShopDetailNameTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
             cell = [[ShopDetailNameTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.cellHeightName = [cell confingWithModel:self.goodsDetailModel];
+        self.cellHeightName = [cell confingWithGoodsDetailModel:self.goodsDetailModel];
         return cell;
     }else if(indexPath.section == 1){
-        static NSString *identifier = @"ShopDetailNameTableViewCell";
+        static NSString *identifier = @"ShopDetailNumTableViewCell1";
         ShopDetailNumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
             cell = [[ShopDetailNumTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -125,7 +125,7 @@
         return cell;
     }else if (indexPath.section == 2){
         if (indexPath.row == 0) {
-            static NSString *identifier = @"ShopDetailNameTableViewCell";
+            static NSString *identifier = @"ShopDetailTitleTableViewCell2";
             ShopDetailTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (cell == nil) {
                 cell = [[ShopDetailTitleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -147,7 +147,7 @@
         }
     }else{
         if (indexPath.row == 0) {
-            static NSString *identifier = @"ShopDetailNameTableViewCell";
+            static NSString *identifier = @"ShopDetailTitleTableViewCellelse";
             ShopDetailTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (cell == nil) {
                 cell = [[ShopDetailTitleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -177,7 +177,7 @@
     }else if(section == 2){
         return 2;
     }else{
-        return self.dataArray.count + 1;
+        return  1;
     }
 }
 

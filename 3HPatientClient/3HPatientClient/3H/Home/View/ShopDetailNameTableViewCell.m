@@ -45,7 +45,7 @@
     return _labPrice;
 }
 //赋值
-- (CGFloat)confingWithModel:(GoodsDetailModel *)model{
+- (CGFloat)confingWithGoodsDetailModel:(GoodsDetailModel *)model{
     self.labTitle.text = model.name;
     self.labDetail.text = model.rec_title;
     [self.labDetail sizeToFit];

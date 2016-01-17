@@ -152,7 +152,7 @@
         [self showHudAuto:@"请选择收货地址" andDuration:@"2"];
     }else{
         WeakSelf(ShopDetailBuyViewController);
-        [[THNetWorkManager shareNetWork]getBuyGoodsPostId:self.id qty:self.indexStr address_id:self.model.area_ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [[THNetWorkManager shareNetWork]getBuyGoodsPostId:self.id qty:self.indexStr address_id:self.model.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
                 
