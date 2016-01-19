@@ -47,7 +47,7 @@
 
 - (NSArray *)titleArray{
     if (!_titleArray) {
-        _titleArray = @[@"待支付",@"待收货"];
+        _titleArray = @[@"全部订单",@"待付款",@"待收货"];
     }
     return _titleArray;
 }

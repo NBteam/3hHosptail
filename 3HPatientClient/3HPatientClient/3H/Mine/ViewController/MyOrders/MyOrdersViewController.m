@@ -21,6 +21,7 @@
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.tableView.height = self.tableView.height - 44;
     self.isOpenFooterRefresh = YES;
     self.isOpenHeaderRefresh = YES;
     [self getNetWork];

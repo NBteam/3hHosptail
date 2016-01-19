@@ -19,3 +19,4 @@
 
 - (void)confingWithName:(NSString * )name Sex:(NSString *)sex Pic:(NSString *)pic;
 @end
+

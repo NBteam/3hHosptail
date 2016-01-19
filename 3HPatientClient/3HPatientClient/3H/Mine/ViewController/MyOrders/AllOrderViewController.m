@@ -122,7 +122,7 @@
     [self.topView topButtonMenuSelectForIndex:pageIndex];
 }
 - (NSString *)title{
-    return @"化验及检查数据";
+    return @"我的订单";
 }
 
 - (void)didReceiveMemoryWarning {

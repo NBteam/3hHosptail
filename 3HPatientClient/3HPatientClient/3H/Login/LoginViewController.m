@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "UMSocial.h"
 #import "ForgetPossWordViewController.h"
+#import "EaseMob.h"
 
 @interface LoginViewController ()<UITextFieldDelegate,UMSocialUIDelegate>
 //背景
@@ -234,8 +235,32 @@
             [weakSelf removeMBProgressHudInManaual];
             NSLog(@"查看%@",response.dataDic);
             if (response.responseCode == 1) {
-                [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
-                [weakSelf getUserInfoToken:response.dataDic[@"token"]];
+                BOOL isAutoLogin = [[EaseMob sharedInstance].chatManager isAutoLoginEnabled];
+                if (!isAutoLogin) {
+                    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:weakSelf.textUserName.textField.text password:weakSelf.textUserPwd.textField.text completion:^(NSDictionary *loginInfo, EMError *error) {
+                        if (!error) {
+                            // 设置自动登录
+                            [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
+                        }
+                        if (error.errorCode == EMErrorServerTooManyOperations) {
+                            [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
+                            [weakSelf getUserInfoToken:response.dataDic[@"token"]];
+                        }
+                    } onQueue:nil];
+                }else{
+                    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:weakSelf.textUserName.textField.text password:weakSelf.textUserPwd.textField.text completion:^(NSDictionary *loginInfo, EMError *error) {
+                        if (!error && loginInfo) {
+                            NSLog(@"登陆成功");
+                            [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
+                            [weakSelf getUserInfoToken:response.dataDic[@"token"]];
+                        }
+                        if (error.errorCode == EMErrorServerTooManyOperations) {
+                            [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
+                            [weakSelf getUserInfoToken:response.dataDic[@"token"]];
+                        }
+                    } onQueue:nil];
+                    
+                }
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"1"];
             }
