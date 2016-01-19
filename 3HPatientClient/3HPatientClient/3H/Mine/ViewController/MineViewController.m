@@ -20,7 +20,7 @@
 //我的预约
 #import "MyAppointmentViewController.h"
 //我的订单
-#import "MyOrdersViewController.h"
+#import "AllOrderViewController.h"
 //我的收藏
 #import "MyCollectionViewController.h"
 //收货地址
@@ -144,7 +144,7 @@
         [self.navigationController pushViewController:walletVc animated:YES];
     }else if (indexPath.row ==4){
         
-        MyOrdersViewController *myOrdersVc = [[MyOrdersViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        AllOrderViewController *myOrdersVc = [[AllOrderViewController alloc] init];
         myOrdersVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:myOrdersVc animated:YES];
         

@@ -10,6 +10,7 @@ BOOL edit;
 #import "ShoppingCartTableViewCell.h"
 #import "ShoppingCartToolView.h"
 #import "CartListModel.h"
+#import "ShopDetailBuyViewController.h"
 
 @interface ShoppingCartViewController ()
 
@@ -91,6 +92,12 @@ BOOL edit;
                     }
                 }
                 [weakSelf removeCartCidsNetWork:[array componentsJoinedByString:@","]];
+            }else{
+                ShopDetailBuyViewController * ShopDetailBuyVc = [[ShopDetailBuyViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
+                ShopDetailBuyVc.type = 1;
+                ShopDetailBuyVc.infoArray = weakSelf.dataArray;
+//                    ShopDetailBuyVc.indexStr = weakSelf.indexString;
+                    [weakSelf.navigationController pushViewController:ShopDetailBuyVc animated:YES];
             }
         }];
     }

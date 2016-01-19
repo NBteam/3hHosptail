@@ -174,16 +174,30 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic{
-    self.labTitle.text = @"九康科技";
-    self.labState.text = @"交易成功";
-    self.labProduct.text = @"交易成功交易成功交易成功交易成功交易成功交易成功交易成功";
+- (void)confingWithModel:(OrderListNewModel *)model{
+    self.labTitle.text = model.ilist[0][@"goods_name"] ;
+    [self.imgProduct sd_setImageWithURL:SD_IMG(model.ilist[0][@"thumb"])];
+    if ([model.status doubleValue] == -1 ) {
+        self.labState.text = @"取消订单";
+    }else if ([model.status doubleValue] == 0 ){
+        self.labState.text = @"待支付";
+    }else if ([model.status doubleValue] == 1 ){
+        self.labState.text = @"已确认";
+    }else if ([model.status doubleValue] == 2 ){
+        self.labState.text = @"'已发货'";
+    }
+    if ([model.pay_status doubleValue] == 0) {
+        self.labProduct.text = 	@"未支付";
+    }else if ([model.pay_status doubleValue] == 1){
+        self.labProduct.text = 	@"已支付";
+    }
     [self.labProduct sizeToFit];
-    self.labSingePrice.text = @"￥99.00";
-    self.labNum.text = @"X1";
-    self.labPrice.attributedText = [self getLabTitle:[NSString stringWithFormat:@"共%@件商品 实付:",self.labNum.text] Detail:@"￥99.00"];
+    self.labSingePrice.text = [NSString stringWithFormat:@"￥%.2f",[model.ilist[0][@"price"] doubleValue]];
+    self.labNum.text = [NSString stringWithFormat:@"X%@",model.ilist[0][@"qty"]] ;
+    self.labPrice.attributedText = [self getLabTitle:[NSString stringWithFormat:@"共%@件商品 实付:",self.labNum.text] Detail:[NSString stringWithFormat:@"￥%.2f",[model.ilist[0][@"price"] doubleValue]]];
     
 }
+
 
 - (NSMutableAttributedString *)getLabTitle:(NSString *)title Detail:(NSString *)detail{
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@",title,detail]];

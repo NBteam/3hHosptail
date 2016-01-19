@@ -70,7 +70,10 @@
     NSInteger num = [self.labNum.text integerValue];
     if (num >1) {
         num --;
-        self.labNum.text = [NSString stringWithFormat:@"%li",num];
+        self.labNum.text = [NSString stringWithFormat:@"%li",(long)num];
+        if (self.changeIndex) {
+            self.changeIndex(self.labNum.text);
+        }
     }
     
 }
@@ -92,7 +95,10 @@
     NSInteger num = [self.labNum.text integerValue];
     if (num <99) {
         num ++;
-        self.labNum.text = [NSString stringWithFormat:@"%li",num];
+        self.labNum.text = [NSString stringWithFormat:@"%li",(long)num];
+        if (self.changeIndex) {
+            self.changeIndex(self.labNum.text);
+        }
     }
 }
 /*

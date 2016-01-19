@@ -8,6 +8,8 @@
 
 #import "MyOrdersViewController.h"
 #import "MyOrdersTableViewCell.h"
+#import "OrderModel.h"
+#import "OrderListNewModel.h"
 @interface MyOrdersViewController ()
 
 @end
@@ -18,6 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.isOpenFooterRefresh = YES;
     self.isOpenHeaderRefresh = YES;
     [self getNetWork];
@@ -36,7 +39,8 @@
         cell = [[MyOrdersTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:nil];
+    OrderListNewModel * model = self.dataArray[indexPath.section];
+    [cell confingWithModel:model];
     return cell;
     
     
@@ -51,7 +55,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -64,17 +68,20 @@
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(MyOrdersViewController);
-    [[THNetWorkManager shareNetWork]getOrderListPage:self.pageNO kw:@"" type:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getOrderListPage:self.pageNO kw:@"" type:@"UN_PAY" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             if (weakSelf.pageNO == 1) {
                 [weakSelf.dataArray removeAllObjects];
             }
-//            for (NSDictionary * dic in response.dataDic[@"list"]) {
-//                CartListModel * model = [response thParseDataFromDic:dic andModel:[CartListModel class]];
-//                model.choice = NO;
-//                [weakSelf.dataArray addObject:model];
-//            }
+            for (NSDictionary * dic in response.dataDic[@"list"]) {
+                OrderListNewModel * model = [response thParseDataFromDic:dic andModel:[OrderListNewModel class]];
+//                for (NSDictionary * infoDict in model.ilist) {
+//                    OrderModel * oModel = [response thParseDataFromDic:infoDict andModel:[OrderModel class]];
+//                    [weakSelf.dataArray addObject:oModel];
+//                }
+                [weakSelf.dataArray addObject:model];
+            }
             [weakSelf.tableView reloadData];
             //  结束头部刷新
             [weakSelf.tableView.header endRefreshing];

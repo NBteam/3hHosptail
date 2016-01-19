@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "OrderListNewModel.h"
 
 @interface MyOrdersTableViewCell : BaseTableViewCell
 
@@ -36,6 +37,6 @@
 
 @property (nonatomic, strong) UIButton *btnAppraise;
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic;
+- (void)confingWithModel:(OrderListNewModel *)dic;
 
 @end

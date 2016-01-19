@@ -16,5 +16,5 @@
 @property (nonatomic, strong) UIButton *btnReduct;
 @property (nonatomic, strong) UIButton *btnAdd;
 @property (nonatomic, strong) UILabel *labNum;
-
+@property (nonatomic, copy) void (^changeIndex)(NSString *index);
 @end

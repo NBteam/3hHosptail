@@ -31,7 +31,12 @@
     self.shopModel.indexStr = self.indexStr;
     self.tableView.height = self.tableView.height -65;
     [self.view addSubview:self.btnPay];
-    [self getNetWork];
+    if (self.type == 0) {
+        [self getNetWork];
+    }else{
+    
+    }
+    
 
 }
 

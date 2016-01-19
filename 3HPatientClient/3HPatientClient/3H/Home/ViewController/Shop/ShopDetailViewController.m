@@ -25,6 +25,7 @@
 @property (nonatomic, assign) CGFloat cellHeightName;
 @property (nonatomic, assign) CGFloat cellHeightDesc;
 @property (nonatomic, strong) GoodsDetailModel *goodsDetailModel;
+@property (nonatomic, strong) NSString *indexString;
 @end
 
 @implementation ShopDetailViewController
@@ -89,10 +90,11 @@
             }else if(index == 1){
                 [weakSelf getAddCardNetWork];
             }else if(index == 2){
-                ShopDetailNumTableViewCell *cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+                
                 ShopDetailBuyViewController *shopDetailBuyVc = [[ShopDetailBuyViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 shopDetailBuyVc.id = weakSelf.id;
-                shopDetailBuyVc.indexStr = cell.labNum.text;
+                shopDetailBuyVc.type = 0;
+                shopDetailBuyVc.indexStr = weakSelf.indexString;
                 [weakSelf.navigationController pushViewController:shopDetailBuyVc animated:YES];
             }else{
                 ShoppingCartViewController *shoppingCartVc = [[ShoppingCartViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
@@ -121,7 +123,11 @@
             cell = [[ShopDetailNumTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        self.indexString = cell.labNum.text;
+        WeakSelf(ShopDetailViewController);
+        [cell setChangeIndex:^(NSString *index) {
+            weakSelf.indexString = index;
+        }];
         return cell;
     }else if (indexPath.section == 2){
         if (indexPath.row == 0) {

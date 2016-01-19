@@ -12,6 +12,7 @@
 //神马是邀请码
 //#import "WhatInvitationViewController.h"
 #import "LoginInputView.h"
+#import "EaseMob.h"
 
 @interface RegisterViewController ()<UITextFieldDelegate>
 {
@@ -295,6 +296,7 @@
         [weakSelf removeMBProgressHudInManaual];
         NSLog(@"查看%@",response.dataDic);
         if (response.responseCode == 1) {
+            
             [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }else{
