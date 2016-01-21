@@ -1,12 +1,12 @@
 //
-//  PatientCenterViewController.m
+//  ConsultingMainViewController.m
 //  3HDoctorClient
 //
-//  Created by 范英强 on 15/11/30.
-//  Copyright (c) 2015年 fyq. All rights reserved.
+//  Created by 范英强 on 16/1/21.
+//  Copyright © 2016年 fyq. All rights reserved.
 //
 
-#import "PatientCenterViewController.h"
+#import "ConsultingMainViewController.h"
 #import "PatientCenterTableViewCell.h"
 #import "PatientAddRequestViewController.h"
 //患者详情
@@ -14,27 +14,21 @@
 #import "PatientListModel.h"
 #import "SearchViewController.h"
 #import "AddPatientsViewController.h"
-@interface PatientCenterViewController ()
+@interface ConsultingMainViewController ()
 
-//患者添加请求
-@property (nonatomic, strong) UIButton *btnPatientAddNum;
 @end
 
-@implementation PatientCenterViewController
+@implementation ConsultingMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     
     //患者搜索先关掉 因为没有接口
-//    self.navigationItem.rightBarButtonItems = @[[UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"],[UIBarButtonItemExtension rightButtonItem:@selector(searchAction) andTarget:self andImageName:@"首页-患者中心_搜索"]];
+    //    self.navigationItem.rightBarButtonItems = @[[UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"],[UIBarButtonItemExtension rightButtonItem:@selector(searchAction) andTarget:self andImageName:@"首页-患者中心_搜索"]];
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"];
-    [self.view addSubview:self.btnPatientAddNum];
-    self.tableView.top = self.btnPatientAddNum.bottom;
-    self.tableView.height = self.tableView.height - self.btnPatientAddNum.height;
     self.isOpenHeaderRefresh = YES;
     self.isOpenFooterRefresh = YES;
     [self getNetWorkInfo];
@@ -52,24 +46,6 @@
 - (void)addAction{
     AddPatientsViewController * addVc = [[AddPatientsViewController alloc]init];
     [self.navigationController pushViewController:addVc animated:YES];
-}
-
-- (UIButton *)btnPatientAddNum{
-    if (!_btnPatientAddNum) {
-        _btnPatientAddNum = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btnPatientAddNum.frame = CGRectMake(0, 0, DeviceSize.width, 44);
-        [_btnPatientAddNum setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
-        _btnPatientAddNum.titleLabel.font = [UIFont systemFontOfSize:15];
-        _btnPatientAddNum.backgroundColor = [UIColor colorWithHEX:0xff813c];
-        [_btnPatientAddNum setTitle:@"患者添加请求(0)" forState:UIControlStateNormal];
-        [_btnPatientAddNum addTarget:self action:@selector(btnPatientAddNumAction) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _btnPatientAddNum;
-}
-
-- (void)btnPatientAddNumAction{
-    PatientAddRequestViewController *patientAddRequestVc= [[PatientAddRequestViewController alloc] init];
-    [self.navigationController pushViewController:patientAddRequestVc animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -110,7 +86,7 @@
     
 }
 - (void)getNetWorkInfo{
-    WeakSelf(PatientCenterViewController);
+    WeakSelf(ConsultingMainViewController);
     [weakSelf showHudWaitingView:WaitPrompt];
     [[THNetWorkManager shareNetWork]getMyPatientsPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
@@ -119,10 +95,9 @@
         }
         
         if (response.responseCode == 1) {
-            [weakSelf.btnPatientAddNum setTitle:[NSString stringWithFormat:@"患者添加请求(%@)",response.dataDic[@"req_for_add_num"]] forState:UIControlStateNormal];
             NSLog(@"----%@",response.dataDic[@"list"]);
             for (NSDictionary * dict in response.dataDic[@"list"]) {
-            
+                
                 PatientListModel * model = [response thParseDataFromDic:dict andModel:[PatientListModel class]];
                 [weakSelf.dataArray addObject:model];
             }
@@ -143,12 +118,12 @@
 #pragma mark -- 重新父类方法进行刷新
 - (void)headerRequestWithData
 {
-
+    
     [self getNetWorkInfo];
 }
 - (void)footerRequestWithData
 {
-
+    
     [self getNetWorkInfo];
 }
 
@@ -166,7 +141,7 @@
     }
 }
 - (void)deleteCellIndexPath:(NSIndexPath *)indexPath{
-    WeakSelf(PatientCenterViewController);
+    WeakSelf(ConsultingMainViewController);
     PatientListModel * model = self.dataArray[indexPath.row];
     [self showHudAuto:@"删除中..."];
     
@@ -187,7 +162,7 @@
 }
 
 - (NSString *)title{
-    return @"患者中心";
+    return @"咨询服务";
 }
 
 - (void)didReceiveMemoryWarning {

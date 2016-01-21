@@ -13,7 +13,8 @@
 //患者中心
 #import "PatientCenterViewController.h"
 //咨询服务
-#import "ConsultingServicesViewController.h"
+//#import "ConsultingServicesViewController.h"
+#import "ConsultingMainViewController.h"
 //预约管理
 #import "BookManagementViewController.h"
 //助理医生
@@ -123,9 +124,12 @@
         
     }else if (indexPath.row == 1){//咨询服务
         
-        ConsultingServicesViewController *consultingServicesVc= [[ConsultingServicesViewController alloc] init];
+        ConsultingMainViewController *consultingServicesVc= [[ConsultingMainViewController alloc] init];
         consultingServicesVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:consultingServicesVc animated:YES];
+//        ConsultingServicesViewController *consultingServicesVc= [[ConsultingServicesViewController alloc] init];
+//        consultingServicesVc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:consultingServicesVc animated:YES];
         
     }else if (indexPath.row == 2){//预约管理
         

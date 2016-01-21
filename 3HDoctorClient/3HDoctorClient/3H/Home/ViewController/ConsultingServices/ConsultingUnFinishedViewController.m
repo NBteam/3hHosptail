@@ -34,8 +34,8 @@
         cell = [[ConsultingServicesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    ConsultingUnFinishedModel * model = self.dataArray[indexPath.section];
-    [cell confingWithModel:model];
+//    ConsultingUnFinishedModel * model = self.dataArray[indexPath.section];
+//    [cell confingWithModel:model];
     return cell;
 }
 
@@ -48,7 +48,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.dataArray.count;
+    return 10;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

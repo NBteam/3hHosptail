@@ -41,6 +41,10 @@
     
 }
 
+- (NSString *)title{
+    return @"关于";
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
