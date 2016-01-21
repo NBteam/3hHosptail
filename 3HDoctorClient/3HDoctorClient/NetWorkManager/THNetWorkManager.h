@@ -373,6 +373,11 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark【鉴权】我的助理——删除【20160107添加】
 - (void)deleteMyHelperDoctorId:(NSInteger)doctorId andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark【鉴权】发送邀请码给患者【20160110更新】
+- (void)sendInviteToPatientmobile:(NSString *)mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+
+
 
 
 @end

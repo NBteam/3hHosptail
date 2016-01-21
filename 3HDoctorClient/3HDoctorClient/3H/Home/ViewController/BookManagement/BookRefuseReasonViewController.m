@@ -60,7 +60,7 @@
 
 - (UIView *)viewBack{
     if (!_viewBack) {
-        _viewBack = [[UIView alloc] initWithFrame:CGRectMake(10, 10, DeviceSize.width -20, DeviceSize.width-20)];
+        _viewBack = [[UIView alloc] initWithFrame:CGRectMake(10, 10, DeviceSize.width -20, 200)];
         _viewBack.backgroundColor = [UIColor colorWithHEX:0xffffff];
         _viewBack.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
         _viewBack.layer.borderWidth = 0.5;

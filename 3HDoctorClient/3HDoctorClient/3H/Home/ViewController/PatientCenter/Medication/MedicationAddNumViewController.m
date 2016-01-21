@@ -100,7 +100,7 @@
 }
 
 - (void)btnDownAction{
-    if (self.num <4) {
+    if (self.num <3) {
         self.num ++ ;
         self.labTitle.text = [NSString stringWithFormat:@"设置用药次数 %li次",self.num];
         

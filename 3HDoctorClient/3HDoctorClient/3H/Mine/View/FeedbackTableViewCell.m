@@ -46,7 +46,7 @@
 
 - (CustomTextView *)txtView{
     if (!_txtView) {
-        _txtView = [[CustomTextView alloc] initWithFrame:CGRectMake(10, self.labLine.bottom +9, DeviceSize.width - 20, 300) placeholderFont:[UIFont systemFontOfSize:13] Color:[UIColor colorWithHEX:0x999999] Text:@"请输入您的反馈意见..."];
+        _txtView = [[CustomTextView alloc] initWithFrame:CGRectMake(10, self.labLine.bottom +9, DeviceSize.width - 20, 145) placeholderFont:[UIFont systemFontOfSize:13] Color:[UIColor colorWithHEX:0x999999] Text:@"请输入您的反馈意见..."];
         _txtView.font = [UIFont systemFontOfSize:13];
         _txtView.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
         _txtView.layer.borderWidth = 0.5;

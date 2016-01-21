@@ -851,5 +851,10 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 
+#pragma mark【鉴权】发送邀请码给患者【20160110更新】
+- (void)sendInviteToPatientmobile:(NSString *)mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"sendInviteToPatient",@"token":GetToken,@"mobile":mobile};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 
 @end

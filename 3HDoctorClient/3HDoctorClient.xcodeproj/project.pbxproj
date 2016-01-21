@@ -555,6 +555,9 @@
 		C0592D461C3177BA0071FCB5 /* 扫码边框.png in Resources */ = {isa = PBXBuildFile; fileRef = C0592D431C3177BA0071FCB5 /* 扫码边框.png */; settings = {ASSET_TAGS = (); }; };
 		C05C07F81C2AF60800C26B08 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05C07F71C2AF60800C26B08 /* ChangePasswordViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C05C07FB1C2AF82900C26B08 /* MedicationAddInputNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05C07FA1C2AF82900C26B08 /* MedicationAddInputNameViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C074ED0C1C4FCC27001CF23D /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C074ED061C4FCC27001CF23D /* SDBrowserImageView.m */; settings = {ASSET_TAGS = (); }; };
+		C074ED0D1C4FCC27001CF23D /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C074ED081C4FCC27001CF23D /* SDPhotoBrowser.m */; settings = {ASSET_TAGS = (); }; };
+		C074ED0E1C4FCC27001CF23D /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C074ED0B1C4FCC27001CF23D /* SDWaitingView.m */; settings = {ASSET_TAGS = (); }; };
 		C08244891C20173700783FD5 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244841C20173700783FD5 /* AboutViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C082448A1C20173700783FD5 /* EvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244861C20173700783FD5 /* EvaluationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C082448B1C20173700783FD5 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08244881C20173700783FD5 /* FeedbackViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -1494,6 +1497,13 @@
 		C05C07F71C2AF60800C26B08 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		C05C07F91C2AF82900C26B08 /* MedicationAddInputNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddInputNameViewController.h; sourceTree = "<group>"; };
 		C05C07FA1C2AF82900C26B08 /* MedicationAddInputNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationAddInputNameViewController.m; sourceTree = "<group>"; };
+		C074ED051C4FCC27001CF23D /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
+		C074ED061C4FCC27001CF23D /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
+		C074ED071C4FCC27001CF23D /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
+		C074ED081C4FCC27001CF23D /* SDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPhotoBrowser.m; sourceTree = "<group>"; };
+		C074ED091C4FCC27001CF23D /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
+		C074ED0A1C4FCC27001CF23D /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
+		C074ED0B1C4FCC27001CF23D /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
 		C08244831C20173700783FD5 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		C08244841C20173700783FD5 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		C08244851C20173700783FD5 /* EvaluationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationViewController.h; sourceTree = "<group>"; };
@@ -2106,6 +2116,7 @@
 		99DA3F091C0BE59A00573D4C /* PublicFramework */ = {
 			isa = PBXGroup;
 			children = (
+				C074ED041C4FCC27001CF23D /* SDPhotoBrowser */,
 				C0AEAEE61C2EC75C0009A3F5 /* libqrencode */,
 				C0AEAEB41C2EAEAE0009A3F5 /* ZBarSDK */,
 				99D6EEDA1C0EFF0A00CB1829 /* CustomTextView */,
@@ -3683,6 +3694,20 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		C074ED041C4FCC27001CF23D /* SDPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				C074ED051C4FCC27001CF23D /* SDBrowserImageView.h */,
+				C074ED061C4FCC27001CF23D /* SDBrowserImageView.m */,
+				C074ED071C4FCC27001CF23D /* SDPhotoBrowser.h */,
+				C074ED081C4FCC27001CF23D /* SDPhotoBrowser.m */,
+				C074ED091C4FCC27001CF23D /* SDPhotoBrowserConfig.h */,
+				C074ED0A1C4FCC27001CF23D /* SDWaitingView.h */,
+				C074ED0B1C4FCC27001CF23D /* SDWaitingView.m */,
+			);
+			path = SDPhotoBrowser;
+			sourceTree = "<group>";
+		};
 		C0AEAEB41C2EAEAE0009A3F5 /* ZBarSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -4531,6 +4556,7 @@
 				99DA40861C0BE8D000573D4C /* MessageViewController.m in Sources */,
 				A9B5EA941C16E75C00D4046B /* SearchCell.m in Sources */,
 				99DA45D71C0C5AF300573D4C /* HomeHeadView.m in Sources */,
+				C074ED0C1C4FCC27001CF23D /* SDBrowserImageView.m in Sources */,
 				99DA401B1C0BE59A00573D4C /* NSObject+MTLComparisonAdditions.m in Sources */,
 				991A310C1C11DFB900E0313F /* InvitationViewController.m in Sources */,
 				99DA400E1C0BE59A00573D4C /* GetImageColor.m in Sources */,
@@ -4624,6 +4650,7 @@
 				99DA40161C0BE59A00573D4C /* MTLReflection.m in Sources */,
 				991A30E51C11CA0F00E0313F /* WalletViewController.m in Sources */,
 				99D6EED31C0EF8A400CB1829 /* MedicalHistoryDetailTableViewCell.m in Sources */,
+				C074ED0E1C4FCC27001CF23D /* SDWaitingView.m in Sources */,
 				A94B160B1C15B7A100034029 /* TestModel.m in Sources */,
 				99D141F21C0D5F27002DA3AD /* ConsultingDynamicViewController.m in Sources */,
 				99D142061C0D6970002DA3AD /* PhoneDetailViewController.m in Sources */,
@@ -4707,6 +4734,7 @@
 				99D141D01C0D4D9D002DA3AD /* ConsultingDynamicTableViewCell.m in Sources */,
 				C0BFEB871C410025005ADC28 /* BankListTableViewCell.m in Sources */,
 				99DA402A1C0BE59A00573D4C /* MJRefreshBackStateFooter.m in Sources */,
+				C074ED0D1C4FCC27001CF23D /* SDPhotoBrowser.m in Sources */,
 				C0AEAEF71C2EC75C0009A3F5 /* bitstream.c in Sources */,
 				C08244B81C214B2100783FD5 /* PerfectInformationTimeViewController.m in Sources */,
 				A94B15F21C14430900034029 /* InformationModel.m in Sources */,

@@ -44,12 +44,17 @@
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             NSLog(@"查看%@",response.dataDic);
-            for (NSDictionary * dict in response.dataDic[@"list"]) {
-                DiagnosisListModel * model = [response thParseDataFromDic:dict andModel:[DiagnosisListModel class]];
-                [weakSelf.dataArray addObject:model];
+            if ([response.dataDic[@"list"] length] == 0) {
+                [weakSelf showHudAuto:@"找不到该药品" andDuration:@"2"];
+            }else {
+                for (NSDictionary * dict in response.dataDic[@"list"]) {
+                    DiagnosisListModel * model = [response thParseDataFromDic:dict andModel:[DiagnosisListModel class]];
+                    [weakSelf.dataArray addObject:model];
+                }
+                
+                [weakSelf.tableView reloadData];
+                
             }
-            
-            [weakSelf.tableView reloadData];
             
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];

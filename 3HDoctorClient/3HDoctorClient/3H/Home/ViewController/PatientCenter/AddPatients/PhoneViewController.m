@@ -17,6 +17,11 @@
 
 @implementation PhoneViewController
 
+- (void)loadView{
+    [super loadView];
+    self.view = [[TPKeyboardAvoidingScrollView alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, DeviceSize.height)];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.height = self.view.height - self.frameTopHeight -44;
@@ -51,8 +56,33 @@
 }
 
 - (void)btnCancelAction{
-  
+    if (self.phoneView.textField.text.length == 0) {
+        [self showHudAuto:@"请输入手机号" andDuration:@"2"];
+    }else{
+        [self sendInviteToPatient];
+    }
 }
+
+- (void)sendInviteToPatient{
+   
+    [self showHudAuto:@"发送中..."];
+    WeakSelf(PhoneViewController);
+    
+    [[THNetWorkManager shareNetWork] sendInviteToPatientmobile:self.phoneView.textField.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            [weakSelf showHudAuto:@"发送成功" andDuration:@"2"];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+        
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

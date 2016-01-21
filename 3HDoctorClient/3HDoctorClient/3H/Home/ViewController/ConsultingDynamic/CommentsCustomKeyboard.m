@@ -137,16 +137,9 @@ static CommentsCustomKeyboard *customKeyboard = nil;
     {
         [mDelegate talkBtnClick:self.mTextView];
         
-        if (self.mTextView.text.length==0)
-        {
-            NSLog(@"内容为空");
-        }
-        else
-        {
-            [self.mTextView resignFirstResponder];
-            if (self.mTalkBtnBlock) {
-                self.mTalkBtnBlock(self.self.mTextView.text);
-            }
+        [self.mTextView resignFirstResponder];
+        if (self.mTalkBtnBlock) {
+            self.mTalkBtnBlock(self.self.mTextView.text);
         }
     }
     

@@ -49,6 +49,7 @@
 //赋值
 - (CGFloat)confingWithModel:(NSString *)model{
     self.txtView.text = model;
+    
     if (model.length ==0) {
         
     }else{

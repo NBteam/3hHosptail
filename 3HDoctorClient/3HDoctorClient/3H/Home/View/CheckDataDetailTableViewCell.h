@@ -8,8 +8,12 @@
 
 #import "BaseTableViewCell.h"
 #import "CheckDataDetailModel.h"
-@interface CheckDataDetailTableViewCell : BaseTableViewCell
+#import "SDPhotoBrowser.h"
+@interface CheckDataDetailTableViewCell : BaseTableViewCell<SDPhotoBrowserDelegate>
 @property (nonatomic, strong) UILabel *labTitle;
+@property (nonatomic, strong) NSMutableArray *imgArray;
+@property (nonatomic, strong) NSMutableArray *imagesArrays;
+@property (nonatomic, strong) UIView *bgView;
 
 //赋值
 - (CGFloat)confingWithModel:(CheckDataDetailModel *)model;

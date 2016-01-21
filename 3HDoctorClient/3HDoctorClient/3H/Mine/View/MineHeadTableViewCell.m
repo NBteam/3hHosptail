@@ -76,9 +76,16 @@
 }
 //is_checked			认证状态，0未认证，1请求认证，2认证通过，3认证不通过
 - (void)confingWithModelOfName:(NSString *)name Hosptail:(NSString *)hosptail Job:(NSString *)job Pic:(NSString *)pic Checked:(NSString *)checked{
+    NSLog(@"----%@",pic);
     self.labDoctorName.text = name;
     self.labDoctorInfo.text = [NSString stringWithFormat:@"%@  %@",hosptail,job];
     [self.imgDoctorPic sd_setImageWithURL:URL(pic) placeholderImage:IMG(@"")];
+    
+    if ([checked isEqualToString:@"2"]) {
+        [self.btnAttestation setTitle:@"已认证" forState:UIControlStateNormal];
+    }else{
+        [self.btnAttestation setTitle:@"未认证" forState:UIControlStateNormal];
+    }
 }
 
 /*
