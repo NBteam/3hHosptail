@@ -24,6 +24,7 @@
 //信鸽
 #import "XGPush.h"
 #import "XGSetting.h"
+#import "EaseMob.h"
 
 #define _IPHONE80_ 80000
 @interface AppDelegate ()
@@ -35,7 +36,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:nil];
     
+    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"md5_id" password:@"123456" completion:^(NSDictionary *loginInfo, EMError *error) {
+        NSLog(@"loginInfo :%@",loginInfo);
+    } onQueue:nil];
     [self setUM];
     [self.window makeKeyAndVisible];
     [self setAppStyle];

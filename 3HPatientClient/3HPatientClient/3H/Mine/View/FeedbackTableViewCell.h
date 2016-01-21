@@ -20,4 +20,5 @@
 
 //赋值
 - (void)confingWithModel:(NSInteger )dic;
+- (void)resignFirst;
 @end

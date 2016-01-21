@@ -13,7 +13,7 @@
 
 - (void)customView{
     [self.contentView addSubview:self.imgLogo];
-    [self.contentView addSubview:self.imgArrow];
+//    [self.contentView addSubview:self.imgArrow];
     [self.contentView addSubview:self.labTitle];
 }
 
@@ -36,7 +36,7 @@
 - (UIImageView *)imgArrow{
     if (!_imgArrow) {
         _imgArrow = [[UIImageView alloc] initWithFrame:CGRectMake(DeviceSize.width -17/2 -10, (35 -15)/2, 17/2, 15)];
-        _imgArrow.image = [UIImage imageNamed:@"arrowImg"];
+        _imgArrow.image = [UIImage imageNamed:@""];
     }
     return _imgArrow;
 }

@@ -65,7 +65,7 @@
     [[THNetWorkManager shareNetWork] favGoodsgoods_id:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         if (response.responseCode == 1) {
             NSLog(@"查看%@",response.dataDic);
-            
+            [weakSelf showHudAuto:@"收藏成功" andDuration:@"2"];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

@@ -95,7 +95,11 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return [[UIView alloc] init];
 }
-
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    FeedbackTableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [cell resignFirst];
+    
+}
 - (NSString *)title{
     return @"意见反馈";
 }

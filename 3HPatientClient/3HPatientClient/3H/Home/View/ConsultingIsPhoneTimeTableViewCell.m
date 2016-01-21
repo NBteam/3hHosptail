@@ -148,7 +148,7 @@
             btn.layer.borderWidth = 0.25;
             btn.titleLabel.font = [UIFont systemFontOfSize:15];
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-            btn.tag = j * 1000 + i;
+            btn.tag = j * 1000 + i + 100;
             if ([model.times[i][@"is_empty"] doubleValue] == 0) {
                 btn.backgroundColor = [UIColor colorWithHEX:0xe7e7e7];
                 btn.layer.borderColor = AppDefaultColor.CGColor;
@@ -162,9 +162,8 @@
     self.scrollView.contentSize = CGSizeMake(self.viewBack.width *array.count, self.scrollView.height);
 }
 - (void)btnClick:(UIButton *)button{
-    AppointTimeModel * model = self.dataArray[button.tag/1000];
-    if ([[NSString stringWithFormat:@"%@",model.times[button.tag%1000][@"is_empty"]] isEqualToString:@"1"]) {
-        
+    AppointTimeModel * model = self.dataArray[(button.tag-100)/1000];
+    if ([[NSString stringWithFormat:@"%@",model.times[(button.tag-100)%1000][@"is_empty"]] isEqualToString:@"1"]) {
         for (UIView * view in self.scrollView.subviews) {
             if ([view isKindOfClass:[UIButton class]]) {
                 UIButton * btn = (UIButton *)view;
@@ -174,10 +173,10 @@
             }
         }
         for (int i = 0; i < self.dataArray.count; i++) {
-            AppointTimeModel * model = self.dataArray[i];
-            for (int j = 0 ; j < model.times.count; j++) {
+            AppointTimeModel * model1 = self.dataArray[i];
+            for (int j = 0 ; j < model1.times.count; j++) {
                 if ([[NSString stringWithFormat:@"%@",model.times[j][@"is_empty"]] isEqualToString:@"0"]) {
-                    UIButton * btnN = (UIButton *)[self.scrollView viewWithTag:i*1000+j];
+                    UIButton * btnN = (UIButton *)[self.scrollView viewWithTag:i*1000+j+100];
                     btnN.backgroundColor = [UIColor colorWithHEX:0xe7e7e7];
                     [btnN setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
                 }
@@ -187,7 +186,7 @@
         button.selected = YES;
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         if (self.btnBlock) {
-            self.btnBlock(model.times[button.tag%1000]);
+            self.btnBlock(model.times[(button.tag-100)%1000]);
         }
     }else{
         if (self.isEmptyBlock) {

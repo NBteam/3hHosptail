@@ -55,7 +55,9 @@
     }
     return _txtView;
 }
-
+- (void)resignFirst{
+    [self.txtView resignFirstResponder];
+}
 //赋值
 - (void)confingWithModel:(NSInteger )dic{
     

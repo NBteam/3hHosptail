@@ -9,6 +9,9 @@
 #import "MyCollectionViewController.h"
 #import "MyCollectionTableViewCell.h"
 #import "MyCollectionModel.h"
+#import "ShopDetailViewController.h"
+
+
 @interface MyCollectionViewController ()
 
 @end
@@ -107,7 +110,12 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return  [[UIView alloc] init];
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    MyCollectionModel * model = self.dataArray[indexPath.section];
+    ShopDetailViewController * ShopDetailVc = [[ShopDetailViewController alloc]init];
+    ShopDetailVc.id = model.id;
+    [self.navigationController pushViewController:ShopDetailVc animated:YES];
+}
 - (NSString *)title{
     return @"我的收藏";
 }
