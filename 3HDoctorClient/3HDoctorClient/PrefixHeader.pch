@@ -42,6 +42,11 @@
 #import "THUser.h"
 #define thServerHost @"http://123.57.231.12:85/dapi.php"
 
+//环信
+#import "EaseMob.h"
+#import "ChatDemoUIDefine.h"
+#import "EMAlertView.h"
+
 #define WaitPrompt @"请稍后..."
 #define InternetFailerPrompt @"网络有波动，请重新尝试~"
 
