@@ -296,11 +296,6 @@
         [weakSelf removeMBProgressHudInManaual];
         NSLog(@"查看%@",response.dataDic);
         if (response.responseCode == 1) {
-            [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:weakSelf.textUserName.textField.text password:weakSelf.txtPassWord.textField.text withCompletion:^(NSString *username, NSString *password, EMError *error) {
-                if (!error) {
-                    NSLog(@"注册成功");
-                }
-            } onQueue:nil];
             [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }else{

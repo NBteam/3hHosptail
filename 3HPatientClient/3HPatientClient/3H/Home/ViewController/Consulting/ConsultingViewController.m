@@ -15,6 +15,7 @@
 //电话咨询
 #import "ConsultingIsPhoneViewController.h"
 #import "DoctorInfoModel.h"
+#import "ChatViewController.h"
 
 @interface ConsultingViewController ()
 @property (nonatomic, strong) ConsultingHeadView *headView;
@@ -56,8 +57,15 @@
         _toolView = [[ConsultingToolView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, DeviceSize.width, 45)];
         [_toolView setToolBlock:^(NSInteger index) {
             if (index == 0) {
-                ConsultingIsOnlineViewController *consultingIsOnlineVc = [[ConsultingIsOnlineViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-                [weakSelf.navigationController pushViewController:consultingIsOnlineVc animated:YES];
+                
+                ChatViewController * ChatVc = [[ChatViewController alloc]initWithChatter:weakSelf.id conversationType:eConversationTypeChat];
+                ChatVc.title = [NSString stringWithFormat:@"您正在与%@聊天",weakSelf.model.truename];
+                ChatVc.myHeadImage = weakSelf.user.pic;
+                ChatVc.yourHeadImage = weakSelf.model.pic;
+                [weakSelf.navigationController pushViewController:ChatVc animated:YES];
+                
+//                ConsultingIsOnlineViewController *consultingIsOnlineVc = [[ConsultingIsOnlineViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+//                [weakSelf.navigationController pushViewController:consultingIsOnlineVc animated:YES];
             }else{
                 ConsultingIsPhoneViewController *consultingIsPhoneVc = [[ConsultingIsPhoneViewController alloc] init];
                 consultingIsPhoneVc.id =  weakSelf.model.id;

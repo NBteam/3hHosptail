@@ -33,6 +33,12 @@
 #import "SGSaveFile.h"
 #import "THUser.h"
 
+
+#import "EaseMob.h"
+#import "ChatDemoUIDefine.h"
+
+#import "EMAlertView.h"
+
 #import "THNetWorkManager.h"
 #define thServerHost @"http://123.57.231.12:85/api.php"
 

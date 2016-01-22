@@ -235,32 +235,9 @@
             [weakSelf removeMBProgressHudInManaual];
             NSLog(@"查看%@",response.dataDic);
             if (response.responseCode == 1) {
-                BOOL isAutoLogin = [[EaseMob sharedInstance].chatManager isAutoLoginEnabled];
-                if (!isAutoLogin) {
-                    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:weakSelf.textUserName.textField.text password:weakSelf.textUserPwd.textField.text completion:^(NSDictionary *loginInfo, EMError *error) {
-                        if (!error) {
-                            // 设置自动登录
-                            [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:YES];
-                        }
-                        if (error.errorCode == EMErrorServerTooManyOperations) {
-                            [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
-                            [weakSelf getUserInfoToken:response.dataDic[@"token"]];
-                        }
-                    } onQueue:nil];
-                }else{
-                    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:weakSelf.textUserName.textField.text password:weakSelf.textUserPwd.textField.text completion:^(NSDictionary *loginInfo, EMError *error) {
-                        if (!error && loginInfo) {
-                            NSLog(@"登陆成功");
-                            [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
-                            [weakSelf getUserInfoToken:response.dataDic[@"token"]];
-                        }
-                        if (error.errorCode == EMErrorServerTooManyOperations) {
-                            [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
-                            [weakSelf getUserInfoToken:response.dataDic[@"token"]];
-                        }
-                    } onQueue:nil];
-                    
-                }
+                [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
+                [weakSelf getUserInfoToken:response.dataDic[@"token"] pwd:weakSelf.textUserPwd.textField.text];
+                
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"1"];
             }
@@ -271,7 +248,7 @@
 
 }
 
-- (void)getUserInfoToken:(NSString *)token{
+- (void)getUserInfoToken:(NSString *)token pwd:(NSString *)pwd{
     WeakSelf(LoginViewController);
     
     [[THNetWorkManager shareNetWork] getUserinfoToken:token CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
@@ -283,12 +260,50 @@
             
             
             if (user) {
+                [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:user.id password:pwd withCompletion:^(NSString *username, NSString *password, EMError *error) {
+                    if (!error) {
+                        NSLog(@"注册成功");
+        
+                        BOOL isAutoLogin = [[EaseMob sharedInstance].chatManager isAutoLoginEnabled];
+                        if (!isAutoLogin) {
+                            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:user.id password:weakSelf.textUserPwd.textField.text completion:^(NSDictionary *loginInfo, EMError *error) {
+                                if (!error) {
+                                    // 设置自动登录
+                                    [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:NO];
+                                    [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+                                }
+                                if (error.errorCode == EMErrorServerTooManyOperations) {
+                                    [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+                                }
+                            } onQueue:nil];
+                        }else{
+                            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:user.id  password:weakSelf.textUserPwd.textField.text completion:^(NSDictionary *loginInfo, EMError *error) {
+                                if (!error && loginInfo) {
+                                    NSLog(@"登陆成功");
+                                    [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+                                }
+                                if (error.errorCode == EMErrorServerTooManyOperations) {
+                                    [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+                                }
+                            } onQueue:nil];
+        
+                        }
+                    }else{
+                        [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:user.id  password:weakSelf.textUserPwd.textField.text completion:^(NSDictionary *loginInfo, EMError *error) {
+                            if (!error && loginInfo) {
+                                NSLog(@"登陆成功");
+                                [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+                            }
+                            if (error.errorCode == EMErrorServerTooManyOperations) {
+                                [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
+                            }
+                        } onQueue:nil];
+                    }
+                } onQueue:nil];
+
                 //  写入本地
                 [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:user];
             }
-            
-            [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
-            NSLog(@"真的爱你%@",self.user.sex);
             
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
@@ -411,7 +426,8 @@
     WeakSelf(LoginViewController);
     [[THNetWorkManager shareNetWork] openLoginFornickname:self.nicknameString opened:self.openedString open_type:self.open_typeString pic:self.picString sex:self.sexString andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         
-        [weakSelf getUserInfoToken:response.dataDic[@"token"]];
+        [weakSelf getUserInfoToken:response.dataDic[@"token"] pwd:self.textUserPwd.textField.text
+         ];
         NSLog(@"查看%@",response.dataDic);
         
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {

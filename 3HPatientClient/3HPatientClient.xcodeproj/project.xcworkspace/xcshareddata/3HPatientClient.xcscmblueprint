@@ -1,0 +1,42 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F67E7C64B816C483EE606486424394ADFF6E39A5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++8962" : {
+
+    },
+    "254e1078-bab5-df40-a98b-31316f82f384++9800" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++8962" : 0,
+    "254e1078-bab5-df40-a98b-31316f82f384++9800" : 0,
+    "F67E7C64B816C483EE606486424394ADFF6E39A5" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4A96C459-BEE3-441C-AFDD-5819A71EF7B1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++8962" : "3HPatientClient\/3HPatientClient\/PublicFramework\/HXLibs\/ChatUtil\/",
+    "254e1078-bab5-df40-a98b-31316f82f384++9800" : "New3H\/3HPatientClient\/3HPatientClient\/PublicFramework\/HXLibs\/Core%20Data\/",
+    "F67E7C64B816C483EE606486424394ADFF6E39A5" : "3H_Hosptail"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "3HPatientClient",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "3HPatientClient\/3HPatientClient.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8962"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++9800"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NBteam\/3hHosptail.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F67E7C64B816C483EE606486424394ADFF6E39A5"
+    }
+  ]
+}
