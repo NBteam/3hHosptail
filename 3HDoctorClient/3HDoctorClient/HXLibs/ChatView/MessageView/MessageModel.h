@@ -58,4 +58,7 @@
 @property (nonatomic, strong)id<IEMMessageBody> messageBody;
 @property (nonatomic, strong)EMMessage *message;
 
+@property (nonatomic, strong) NSURL *myHeadImageURL;
+@property (nonatomic, strong) NSURL *youHeadImageURL;
+
 @end

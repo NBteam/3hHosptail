@@ -26,6 +26,11 @@
 @property (nonatomic) BOOL isInvisible;
 @property (nonatomic, assign) id <ChatViewControllerDelegate> delelgate;
 @property (strong, nonatomic) EMConversation *conversation;//会话管理者
+
+//患者头像
+@property (nonatomic, copy) NSString *youImageString;
+@property (nonatomic, copy) NSString *myImageString;
+
 - (instancetype)initWithChatter:(NSString *)chatter isGroup:(BOOL)isGroup;
 - (instancetype)initWithChatter:(NSString *)chatter conversationType:(EMConversationType)type;
 
@@ -44,4 +49,6 @@
                  andAddress:(NSString *)address;
 -(void)addMessage:(EMMessage *)message;
 - (EMMessageType)messageType;
+
+
 @end

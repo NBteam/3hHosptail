@@ -18,6 +18,12 @@
 //信鸽
 #import "XGPush.h"
 #import "XGSetting.h"
+//环信
+#define kSDKAppKey @"EASEMOB_APPKEY"
+#define kSDKApnsCertName @"EASEMOB_APNSCERTNAME"
+#define kSDKConfigEnableConsoleLogger @"EASEMOB_CONFIG_ENABLECONSOLELOGGER"
+#import "EaseMob.h"
+
 
 #define _IPHONE80_ 80000
 
@@ -34,12 +40,21 @@
     [self.window makeKeyAndVisible];
     [self setAppStyle];
     [self setWindowRootViewControllerIsLogin];
+    //友盟
     [self setUM];
     //信鸽推送
     [self setXGPUSHWithOptions:launchOptions];
+    //环信
+    [self setHX];
     
     return YES;
 }
+#pragma mark 环信相关
+
+- (void)setHX{
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:nil];
+}
+
 #pragma mark - 信鸽相关
 - (void)setXGPUSHWithOptions:(NSDictionary *)launchOptions{
     [XGPush startApp:2200176438 appKey:@"I85VC652DGFN"];

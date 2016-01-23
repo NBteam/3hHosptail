@@ -84,8 +84,16 @@ NSString *const kRouterEventChatHeadImageTapEventName = @"kRouterEventChatHeadIm
     _nameLabel.hidden = (messageModel.messageType == eMessageTypeChat);
     
     UIImage *placeholderImage = [UIImage imageNamed:@"photo"];
-    NSString *headImStr = [messageModel.message.ext objectForKey:@"userhead"];
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:headImStr] placeholderImage:placeholderImage];
+//    NSString *headImStr = [messageModel.message.ext objectForKey:@"userhead"];
+//    NSLog(@"-----------%@",messageModel.message.ext );
+//    [self.headImageView sd_setImageWithURL:messageModel.headImageURL placeholderImage:placeholderImage];
+//    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:headImStr] placeholderImage:placeholderImage];
+    
+    if (messageModel.isSender) {
+         [self.headImageView sd_setImageWithURL:messageModel.myHeadImageURL placeholderImage:placeholderImage];
+    }else{
+         [self.headImageView sd_setImageWithURL:messageModel.youHeadImageURL placeholderImage:placeholderImage];
+    }
 }
 
 #pragma mark - private

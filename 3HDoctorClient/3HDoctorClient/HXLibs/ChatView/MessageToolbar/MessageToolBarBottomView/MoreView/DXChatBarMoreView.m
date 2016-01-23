@@ -45,10 +45,7 @@
     [_locationButton setTitle:@"发送病例" forState:UIControlStateNormal];
     [_locationButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     _locationButton.titleLabel.font = [UIFont systemFontOfSize:12];
-//        [_locationButton setImage:[UIImage imageNamed:@"chatBar_colorMore_location"] forState:UIControlStateNormal];
-//        [_locationButton setImage:[UIImage imageNamed:@"chatBar_colorMore_locationSelected"] forState:UIControlStateHighlighted];
-        [_locationButton addTarget:self action:@selector(locationAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:_locationButton];
+
     
     _takePicButton =[UIButton buttonWithType:UIButtonTypeCustom];
     [_takePicButton setFrame:CGRectMake(insets*2  + CHAT_BUTTON_SIZE * 1, 10, CHAT_BUTTON_SIZE , CHAT_BUTTON_SIZE)];

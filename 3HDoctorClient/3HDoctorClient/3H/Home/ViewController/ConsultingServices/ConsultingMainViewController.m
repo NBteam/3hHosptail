@@ -14,6 +14,8 @@
 #import "PatientListModel.h"
 #import "SearchViewController.h"
 #import "AddPatientsViewController.h"
+//聊天页面
+#import "ChatViewController.h"
 @interface ConsultingMainViewController ()
 
 @end
@@ -22,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self registerNotifications];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     
@@ -79,11 +82,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    PatientListModel * model = self.dataArray[indexPath.row];
-    PatientDetailViewController *patientDetailVc= [[PatientDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-    patientDetailVc.model = model;
-    [self.navigationController pushViewController:patientDetailVc animated:YES];
     
+    PatientListModel *model = self.dataArray[indexPath.row];
+ 
+     ChatViewController*chatController = [[ChatViewController alloc] initWithChatter:model.id conversationType:eConversationTypeChat];
+    chatController.title = [NSString stringWithFormat:@"您正在与%@聊天",model.truename];
+    chatController.myImageString = self.user.pic;
+    chatController.youImageString = model.pic;
+    
+    [self.navigationController pushViewController:chatController animated:YES];
 }
 - (void)getNetWorkInfo{
     WeakSelf(ConsultingMainViewController);
@@ -168,6 +175,54 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - private
+
+-(void)registerNotifications
+{
+    [self unregisterNotifications];
+    
+    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
+}
+
+-(void)unregisterNotifications
+{
+    [[EaseMob sharedInstance].chatManager removeDelegate:self];
+}
+
+// 未读消息数量变化回调
+-(void)didUnreadMessagesCountChanged
+{
+    [self setupUnreadMessageCount];
+}
+
+- (void)didFinishedReceiveOfflineMessages
+{
+    [self setupUnreadMessageCount];
+}
+
+// 统计未读消息数
+-(void)setupUnreadMessageCount
+{
+    NSArray *conversations = [[[EaseMob sharedInstance] chatManager] conversations];
+    NSInteger unreadCount = 0;
+    for (EMConversation *conversation in conversations) {
+        unreadCount += conversation.unreadMessagesCount;
+        NSLog(@"-------- %@",conversation);
+    }
+    
+    NSLog(@"未度消息数%i",(int)unreadCount);
+//    if (_chatListVC) {
+//        if (unreadCount > 0) {
+//            _chatListVC.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",(int)unreadCount];
+//        }else{
+//            _chatListVC.tabBarItem.badgeValue = nil;
+//        }
+//    }
+//    
+//    UIApplication *application = [UIApplication sharedApplication];
+//    [application setApplicationIconBadgeNumber:unreadCount];
 }
 
 /*

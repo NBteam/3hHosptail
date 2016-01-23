@@ -171,15 +171,14 @@
     }];
 }
 
-- (void)leftAction
+- (void)backAction
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftButtonItem:@selector(leftAction) andTarget:self];
-//    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     [self registerBecomeActive];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = RGBACOLOR(248, 248, 248, 1);
@@ -205,7 +204,7 @@
     _messageQueue = dispatch_queue_create("easemob.com", NULL);
     _isScrollToBottom = YES;
     
-    [self setupBarButtonItem];
+    //[self setupBarButtonItem];
     [self.view addSubview:self.tableView];
     [self.tableView addSubview:self.slimeView];
     [self.view addSubview:self.chatToolBar];
@@ -533,6 +532,10 @@
         }
         else{
             MessageModel *model = (MessageModel *)obj;
+            
+            //设置头像
+            model.myHeadImageURL = [NSURL URLWithString:self.myImageString];
+            model.youHeadImageURL = [NSURL URLWithString:self.youImageString];
             NSString *cellIdentifier = [EMChatViewCell cellIdentifierForMessageModel:model];
             EMChatViewCell *cell = (EMChatViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             if (cell == nil) {
@@ -1506,6 +1509,7 @@
             }
             
             MessageModel *model = [MessageModelManager modelWithMessage:message];
+            model.headImageURL = [NSURL URLWithString:@"http://123.57.231.12:85/Public/uploads/mface/5668ec25318fb.png"];
             if ([_delelgate respondsToSelector:@selector(nickNameWithChatter:)]) {
                 NSString *showName = [_delelgate nickNameWithChatter:model.username];
                 model.nickName = showName?showName:model.username;
@@ -1519,6 +1523,7 @@
             
             //Demo集成Parse,获取用户个人信息
             UserProfileEntity *user = [[UserProfileManager sharedInstance] getUserProfileByUsername:model.username];
+            user.imageUrl = [NSString stringWithFormat:@"http://123.57.231.12:85/Public/uploads/mface/5668ec25318fb.png"];
             
             if (user && user.imageUrl.length > 0) {
                 model.headImageURL = [NSURL URLWithString:user.imageUrl];

@@ -260,6 +260,7 @@
                 }else{
                     [weakSelf getUserInfoData:1 Tokens:response.dataDic[@"token"]];
                 }
+                
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"2"];
             }
@@ -268,6 +269,31 @@
         } ];
     }
     
+}
+
+#pragma mark -环信注册
+- (void)HXReg{
+    WeakSelf(LoginViewController);
+    [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:self.user.id password:self.txtPassWord.text withCompletion:^(NSString *username, NSString *password, EMError *error) {
+        if (!error) {
+            NSLog(@"注册成功");
+            [weakSelf HXLogin];
+            
+        }else{
+            [weakSelf HXLogin];
+        }
+        
+    } onQueue:nil];
+}
+#pragma mark -环信登陆
+- (void)HXLogin{
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:self.user.id password:self.txtPassWord.text completion:^(NSDictionary *loginInfo, EMError *error) {
+        if (!error && loginInfo) {
+            NSLog(@"环信登陆成功");
+        }else{
+            
+        }
+    } onQueue:nil];
 }
 
 
@@ -463,6 +489,9 @@
                 //  写入本地
                 [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:user];
             }
+            NSLog(@"我的id%@",self.user.id);
+#pragma mark  环信注册
+            [weakSelf HXReg];
             
             if (index == 0) {
                 
@@ -472,6 +501,8 @@
                   [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
                 NSLog(@"真的爱你%@",self.user.sex);
             }
+            
+            
             
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"1"];

@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewController.h"
-
-@interface ConsultingMainViewController : BaseTableViewController
+#import "EMChatManagerDelegate.h"
+@interface ConsultingMainViewController : BaseTableViewController<IChatManagerDelegate>
 
 @end

@@ -1,0 +1,42 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F67E7C64B816C483EE606486424394ADFF6E39A5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++9800" : {
+
+    },
+    "254e1078-bab5-df40-a98b-31316f82f384++8693" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++8693" : 0,
+    "254e1078-bab5-df40-a98b-31316f82f384++9800" : 0,
+    "F67E7C64B816C483EE606486424394ADFF6E39A5" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5657A4B6-9552-4729-8687-B8F3D2D0AD18",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++8693" : "3H\/3HDoctorClient\/3HDoctorClient\/HXLibs\/ChatView\/",
+    "254e1078-bab5-df40-a98b-31316f82f384++9800" : "3H\/3HDoctorClient\/3HDoctorClient\/Images\/HXImages\/",
+    "F67E7C64B816C483EE606486424394ADFF6E39A5" : "3H\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "3HDoctorClient",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "3HDoctorClient\/3HDoctorClient.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8693"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++9800"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NBteam\/3hHosptail.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F67E7C64B816C483EE606486424394ADFF6E39A5"
+    }
+  ]
+}

@@ -27,6 +27,7 @@ NSString *const kShouldResendCell = @"kShouldResendCell";
         // Initialization code
         self.headImageView.clipsToBounds = YES;
         self.headImageView.layer.cornerRadius = 3.0;
+       // self.headImageView.image = [UIImage im]
     }
     return self;
 }

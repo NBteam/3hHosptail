@@ -39,13 +39,21 @@
         model.username = message.from;
     }
 
+//    if (isSender) {
+//        NSLog(@"第一个");
+//        model.headImageURL = [NSURL URLWithString:@"http://123.57.231.12:85/Public/uploads/mface/569c4ba719ab8.png"];
+//    }
+//    else{
+//        NSLog(@"第二个");
+//        model.headImageURL = [NSURL URLWithString:@"http://123.57.231.12:85/Public/uploads/mface/5668ec25318fb.png"];
+//    }
     /*
-    if (isSender) {
-        model.headImageURL = nil;
-    }
-    else{
-        model.headImageURL = nil;
-    }
+     if (isSender) {
+     model.headImageURL = nil;
+     }
+     else{
+     model.headImageURL = nil;
+     }
      */
     
     switch (messageBody.messageBodyType) {

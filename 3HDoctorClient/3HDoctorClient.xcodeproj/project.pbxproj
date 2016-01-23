@@ -555,6 +555,140 @@
 		C0592D461C3177BA0071FCB5 /* 扫码边框.png in Resources */ = {isa = PBXBuildFile; fileRef = C0592D431C3177BA0071FCB5 /* 扫码边框.png */; };
 		C05C07F81C2AF60800C26B08 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05C07F71C2AF60800C26B08 /* ChangePasswordViewController.m */; };
 		C05C07FB1C2AF82900C26B08 /* MedicationAddInputNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05C07FA1C2AF82900C26B08 /* MedicationAddInputNameViewController.m */; };
+		C06B92001C525D79007660FF /* VoiceSearchFeedback001.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B916D1C525D79007660FF /* VoiceSearchFeedback001.png */; };
+		C06B92011C525D79007660FF /* VoiceSearchFeedback001@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B916E1C525D79007660FF /* VoiceSearchFeedback001@2x.png */; };
+		C06B92021C525D79007660FF /* VoiceSearchFeedback002.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B916F1C525D79007660FF /* VoiceSearchFeedback002.png */; };
+		C06B92031C525D79007660FF /* VoiceSearchFeedback002@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91701C525D79007660FF /* VoiceSearchFeedback002@2x.png */; };
+		C06B92041C525D79007660FF /* VoiceSearchFeedback003.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91711C525D79007660FF /* VoiceSearchFeedback003.png */; };
+		C06B92051C525D79007660FF /* VoiceSearchFeedback003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91721C525D79007660FF /* VoiceSearchFeedback003@2x.png */; };
+		C06B92061C525D79007660FF /* VoiceSearchFeedback004.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91731C525D79007660FF /* VoiceSearchFeedback004.png */; };
+		C06B92071C525D79007660FF /* VoiceSearchFeedback004@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91741C525D79007660FF /* VoiceSearchFeedback004@2x.png */; };
+		C06B92081C525D79007660FF /* VoiceSearchFeedback005.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91751C525D79007660FF /* VoiceSearchFeedback005.png */; };
+		C06B92091C525D79007660FF /* VoiceSearchFeedback005@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91761C525D79007660FF /* VoiceSearchFeedback005@2x.png */; };
+		C06B920A1C525D79007660FF /* VoiceSearchFeedback006.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91771C525D79007660FF /* VoiceSearchFeedback006.png */; };
+		C06B920B1C525D79007660FF /* VoiceSearchFeedback006@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91781C525D79007660FF /* VoiceSearchFeedback006@2x.png */; };
+		C06B920C1C525D79007660FF /* VoiceSearchFeedback007.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91791C525D79007660FF /* VoiceSearchFeedback007.png */; };
+		C06B920D1C525D79007660FF /* VoiceSearchFeedback007@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B917A1C525D79007660FF /* VoiceSearchFeedback007@2x.png */; };
+		C06B920E1C525D79007660FF /* VoiceSearchFeedback008.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B917B1C525D79007660FF /* VoiceSearchFeedback008.png */; };
+		C06B920F1C525D79007660FF /* VoiceSearchFeedback008@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B917C1C525D79007660FF /* VoiceSearchFeedback008@2x.png */; };
+		C06B92101C525D79007660FF /* VoiceSearchFeedback009.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B917D1C525D79007660FF /* VoiceSearchFeedback009.png */; };
+		C06B92111C525D79007660FF /* VoiceSearchFeedback009@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B917E1C525D79007660FF /* VoiceSearchFeedback009@2x.png */; };
+		C06B92121C525D79007660FF /* VoiceSearchFeedback010.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B917F1C525D79007660FF /* VoiceSearchFeedback010.png */; };
+		C06B92131C525D79007660FF /* VoiceSearchFeedback010@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91801C525D79007660FF /* VoiceSearchFeedback010@2x.png */; };
+		C06B92141C525D79007660FF /* VoiceSearchFeedback011.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91811C525D79007660FF /* VoiceSearchFeedback011.png */; };
+		C06B92151C525D79007660FF /* VoiceSearchFeedback011@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91821C525D79007660FF /* VoiceSearchFeedback011@2x.png */; };
+		C06B92161C525D79007660FF /* VoiceSearchFeedback012.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91831C525D79007660FF /* VoiceSearchFeedback012.png */; };
+		C06B92171C525D79007660FF /* VoiceSearchFeedback012@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91841C525D79007660FF /* VoiceSearchFeedback012@2x.png */; };
+		C06B92181C525D79007660FF /* VoiceSearchFeedback013.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91851C525D79007660FF /* VoiceSearchFeedback013.png */; };
+		C06B92191C525D79007660FF /* VoiceSearchFeedback013@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91861C525D79007660FF /* VoiceSearchFeedback013@2x.png */; };
+		C06B921A1C525D79007660FF /* VoiceSearchFeedback014.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91871C525D79007660FF /* VoiceSearchFeedback014.png */; };
+		C06B921B1C525D79007660FF /* VoiceSearchFeedback014@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91881C525D79007660FF /* VoiceSearchFeedback014@2x.png */; };
+		C06B921C1C525D79007660FF /* VoiceSearchFeedback015.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91891C525D79007660FF /* VoiceSearchFeedback015.png */; };
+		C06B921D1C525D79007660FF /* VoiceSearchFeedback015@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B918A1C525D79007660FF /* VoiceSearchFeedback015@2x.png */; };
+		C06B921E1C525D79007660FF /* VoiceSearchFeedback016.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B918B1C525D79007660FF /* VoiceSearchFeedback016.png */; };
+		C06B921F1C525D79007660FF /* VoiceSearchFeedback016@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B918C1C525D79007660FF /* VoiceSearchFeedback016@2x.png */; };
+		C06B92201C525D79007660FF /* VoiceSearchFeedback017.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B918D1C525D79007660FF /* VoiceSearchFeedback017.png */; };
+		C06B92211C525D79007660FF /* VoiceSearchFeedback017@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B918E1C525D79007660FF /* VoiceSearchFeedback017@2x.png */; };
+		C06B92221C525D79007660FF /* VoiceSearchFeedback018.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B918F1C525D79007660FF /* VoiceSearchFeedback018.png */; };
+		C06B92231C525D79007660FF /* VoiceSearchFeedback018@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91901C525D79007660FF /* VoiceSearchFeedback018@2x.png */; };
+		C06B92241C525D79007660FF /* VoiceSearchFeedback019.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91911C525D79007660FF /* VoiceSearchFeedback019.png */; };
+		C06B92251C525D79007660FF /* VoiceSearchFeedback019@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91921C525D79007660FF /* VoiceSearchFeedback019@2x.png */; };
+		C06B92261C525D79007660FF /* VoiceSearchFeedback020.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91931C525D79007660FF /* VoiceSearchFeedback020.png */; };
+		C06B92271C525D79007660FF /* VoiceSearchFeedback020@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91941C525D79007660FF /* VoiceSearchFeedback020@2x.png */; };
+		C06B92281C525D79007660FF /* chat_video_play.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91951C525D79007660FF /* chat_video_play.png */; };
+		C06B92291C525D79007660FF /* chatBar_more_card.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91971C525D79007660FF /* chatBar_more_card.png */; };
+		C06B922A1C525D79007660FF /* chatBar_more_card@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91981C525D79007660FF /* chatBar_more_card@2x.png */; };
+		C06B922B1C525D79007660FF /* chatBar_more_cardSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91991C525D79007660FF /* chatBar_more_cardSelected.png */; };
+		C06B922C1C525D79007660FF /* chatBar_more_cardSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B919A1C525D79007660FF /* chatBar_more_cardSelected@2x.png */; };
+		C06B922D1C525D79007660FF /* chatBar_more_face.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B919B1C525D79007660FF /* chatBar_more_face.png */; };
+		C06B922E1C525D79007660FF /* chatBar_more_face@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B919C1C525D79007660FF /* chatBar_more_face@2x.png */; };
+		C06B922F1C525D79007660FF /* chatBar_more_faceSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B919D1C525D79007660FF /* chatBar_more_faceSelected.png */; };
+		C06B92301C525D79007660FF /* chatBar_more_faceSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B919E1C525D79007660FF /* chatBar_more_faceSelected@2x.png */; };
+		C06B92311C525D79007660FF /* chatBar_textBg.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B919F1C525D79007660FF /* chatBar_textBg.png */; };
+		C06B92321C525D79007660FF /* chatBar_textBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91A01C525D79007660FF /* chatBar_textBg@2x.png */; };
+		C06B92331C525D79007660FF /* chat_location_annotation_someone.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91A21C525D79007660FF /* chat_location_annotation_someone.png */; };
+		C06B92341C525D79007660FF /* chat_location_annotation_someone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91A31C525D79007660FF /* chat_location_annotation_someone@2x.png */; };
+		C06B92351C525D79007660FF /* chat_location_detail_disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91A41C525D79007660FF /* chat_location_detail_disclosure.png */; };
+		C06B92361C525D79007660FF /* chat_location_detail_disclosure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91A51C525D79007660FF /* chat_location_detail_disclosure@2x.png */; };
+		C06B92371C525D79007660FF /* chat_location_detail_disclosureHL.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91A61C525D79007660FF /* chat_location_detail_disclosureHL.png */; };
+		C06B92381C525D79007660FF /* chat_location_detail_disclosureHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91A71C525D79007660FF /* chat_location_detail_disclosureHL@2x.png */; };
+		C06B92391C525D79007660FF /* chat_location_preview.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91A81C525D79007660FF /* chat_location_preview.png */; };
+		C06B923A1C525D79007660FF /* chat_location_preview@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91A91C525D79007660FF /* chat_location_preview@2x.png */; };
+		C06B923B1C525D79007660FF /* faceDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91AB1C525D79007660FF /* faceDelete.png */; };
+		C06B923C1C525D79007660FF /* faceDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91AC1C525D79007660FF /* faceDelete@2x.png */; };
+		C06B923D1C525D79007660FF /* imageDownloadFail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91AD1C525D79007660FF /* imageDownloadFail@2x.png */; };
+		C06B923E1C525D79007660FF /* messageSendFail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91AE1C525D79007660FF /* messageSendFail@2x.png */; };
+		C06B923F1C525D79007660FF /* chatBar_face.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91B01C525D79007660FF /* chatBar_face.png */; };
+		C06B92401C525D79007660FF /* chatBar_face@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91B11C525D79007660FF /* chatBar_face@2x.png */; };
+		C06B92411C525D79007660FF /* chatBar_faceSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91B21C525D79007660FF /* chatBar_faceSelected.png */; };
+		C06B92421C525D79007660FF /* chatBar_faceSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91B31C525D79007660FF /* chatBar_faceSelected@2x.png */; };
+		C06B92431C525D79007660FF /* chatBar_keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91B41C525D79007660FF /* chatBar_keyboard.png */; };
+		C06B92441C525D79007660FF /* chatBar_keyboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91B51C525D79007660FF /* chatBar_keyboard@2x.png */; };
+		C06B92451C525D79007660FF /* chatBar_keyboardSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91B61C525D79007660FF /* chatBar_keyboardSelected.png */; };
+		C06B92461C525D79007660FF /* chatBar_keyboardSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91B71C525D79007660FF /* chatBar_keyboardSelected@2x.png */; };
+		C06B92471C525D79007660FF /* chatBar_more.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91B81C525D79007660FF /* chatBar_more.png */; };
+		C06B92481C525D79007660FF /* chatBar_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91B91C525D79007660FF /* chatBar_more@2x.png */; };
+		C06B92491C525D79007660FF /* chatBar_moreSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91BA1C525D79007660FF /* chatBar_moreSelected.png */; };
+		C06B924A1C525D79007660FF /* chatBar_moreSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91BB1C525D79007660FF /* chatBar_moreSelected@2x.png */; };
+		C06B924B1C525D79007660FF /* chatBar_record.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91BC1C525D79007660FF /* chatBar_record.png */; };
+		C06B924C1C525D79007660FF /* chatBar_record@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91BD1C525D79007660FF /* chatBar_record@2x.png */; };
+		C06B924D1C525D79007660FF /* chatBar_recordBg.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91BE1C525D79007660FF /* chatBar_recordBg.png */; };
+		C06B924E1C525D79007660FF /* chatBar_recordBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91BF1C525D79007660FF /* chatBar_recordBg@2x.png */; };
+		C06B924F1C525D79007660FF /* chatBar_recordSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91C01C525D79007660FF /* chatBar_recordSelected.png */; };
+		C06B92501C525D79007660FF /* chatBar_recordSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91C11C525D79007660FF /* chatBar_recordSelected@2x.png */; };
+		C06B92511C525D79007660FF /* chatBar_recordSelectedBg.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91C21C525D79007660FF /* chatBar_recordSelectedBg.png */; };
+		C06B92521C525D79007660FF /* chatBar_recordSelectedBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91C31C525D79007660FF /* chatBar_recordSelectedBg@2x.png */; };
+		C06B92531C525D79007660FF /* chatBar_colorMore_audioCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91C51C525D79007660FF /* chatBar_colorMore_audioCall@2x.png */; };
+		C06B92541C525D79007660FF /* chatBar_colorMore_audioCallSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91C61C525D79007660FF /* chatBar_colorMore_audioCallSelected@2x.png */; };
+		C06B92551C525D79007660FF /* chatBar_colorMore_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91C71C525D79007660FF /* chatBar_colorMore_camera@2x.png */; };
+		C06B92561C525D79007660FF /* chatBar_colorMore_cameraSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91C81C525D79007660FF /* chatBar_colorMore_cameraSelected@2x.png */; };
+		C06B92571C525D79007660FF /* chatBar_colorMore_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91C91C525D79007660FF /* chatBar_colorMore_location@2x.png */; };
+		C06B92581C525D79007660FF /* chatBar_colorMore_locationSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91CA1C525D79007660FF /* chatBar_colorMore_locationSelected@2x.png */; };
+		C06B92591C525D79007660FF /* chatBar_colorMore_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91CB1C525D79007660FF /* chatBar_colorMore_photo@2x.png */; };
+		C06B925A1C525D79007660FF /* chatBar_colorMore_photoSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91CC1C525D79007660FF /* chatBar_colorMore_photoSelected@2x.png */; };
+		C06B925B1C525D79007660FF /* chatBar_colorMore_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91CD1C525D79007660FF /* chatBar_colorMore_video@2x.png */; };
+		C06B925C1C525D79007660FF /* chatBar_colorMore_videoCall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91CE1C525D79007660FF /* chatBar_colorMore_videoCall@2x.png */; };
+		C06B925D1C525D79007660FF /* chatBar_colorMore_videoCallSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91CF1C525D79007660FF /* chatBar_colorMore_videoCallSelected@2x.png */; };
+		C06B925E1C525D79007660FF /* chatBar_colorMore_videoSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91D01C525D79007660FF /* chatBar_colorMore_videoSelected@2x.png */; };
+		C06B925F1C525D79007660FF /* chatBar_more_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91D21C525D79007660FF /* chatBar_more_camera.png */; };
+		C06B92601C525D79007660FF /* chatBar_more_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91D31C525D79007660FF /* chatBar_more_camera@2x.png */; };
+		C06B92611C525D79007660FF /* chatBar_more_cameraSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91D41C525D79007660FF /* chatBar_more_cameraSelected.png */; };
+		C06B92621C525D79007660FF /* chatBar_more_cameraSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91D51C525D79007660FF /* chatBar_more_cameraSelected@2x.png */; };
+		C06B92631C525D79007660FF /* chatBar_more_location.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91D61C525D79007660FF /* chatBar_more_location.png */; };
+		C06B92641C525D79007660FF /* chatBar_more_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91D71C525D79007660FF /* chatBar_more_location@2x.png */; };
+		C06B92651C525D79007660FF /* chatBar_more_locationSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91D81C525D79007660FF /* chatBar_more_locationSelected.png */; };
+		C06B92661C525D79007660FF /* chatBar_more_locationSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91D91C525D79007660FF /* chatBar_more_locationSelected@2x.png */; };
+		C06B92671C525D79007660FF /* chatBar_more_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91DA1C525D79007660FF /* chatBar_more_photo.png */; };
+		C06B92681C525D79007660FF /* chatBar_more_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91DB1C525D79007660FF /* chatBar_more_photo@2x.png */; };
+		C06B92691C525D79007660FF /* chatBar_more_photoSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91DC1C525D79007660FF /* chatBar_more_photoSelected.png */; };
+		C06B926A1C525D79007660FF /* chatBar_more_photoSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91DD1C525D79007660FF /* chatBar_more_photoSelected@2x.png */; };
+		C06B926B1C525D79007660FF /* messageToolbarBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91DE1C525D79007660FF /* messageToolbarBg@2x.png */; };
+		C06B926C1C525D79007660FF /* chat_receiver_audio_playing000.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91E01C525D79007660FF /* chat_receiver_audio_playing000.png */; };
+		C06B926D1C525D79007660FF /* chat_receiver_audio_playing000@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91E11C525D79007660FF /* chat_receiver_audio_playing000@2x.png */; };
+		C06B926E1C525D79007660FF /* chat_receiver_audio_playing001.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91E21C525D79007660FF /* chat_receiver_audio_playing001.png */; };
+		C06B926F1C525D79007660FF /* chat_receiver_audio_playing001@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91E31C525D79007660FF /* chat_receiver_audio_playing001@2x.png */; };
+		C06B92701C525D79007660FF /* chat_receiver_audio_playing002.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91E41C525D79007660FF /* chat_receiver_audio_playing002.png */; };
+		C06B92711C525D79007660FF /* chat_receiver_audio_playing002@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91E51C525D79007660FF /* chat_receiver_audio_playing002@2x.png */; };
+		C06B92721C525D79007660FF /* chat_receiver_audio_playing003.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91E61C525D79007660FF /* chat_receiver_audio_playing003.png */; };
+		C06B92731C525D79007660FF /* chat_receiver_audio_playing003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91E71C525D79007660FF /* chat_receiver_audio_playing003@2x.png */; };
+		C06B92741C525D79007660FF /* chat_receiver_audio_playing_full.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91E81C525D79007660FF /* chat_receiver_audio_playing_full.png */; };
+		C06B92751C525D79007660FF /* chat_receiver_audio_playing_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91E91C525D79007660FF /* chat_receiver_audio_playing_full@2x.png */; };
+		C06B92761C525D79007660FF /* chat_receiver_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91EA1C525D79007660FF /* chat_receiver_bg.png */; };
+		C06B92771C525D79007660FF /* chat_receiver_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91EB1C525D79007660FF /* chat_receiver_bg@2x.png */; };
+		C06B92781C525D79007660FF /* chat_sender_audio_playing_000.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91ED1C525D79007660FF /* chat_sender_audio_playing_000.png */; };
+		C06B92791C525D79007660FF /* chat_sender_audio_playing_000@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91EE1C525D79007660FF /* chat_sender_audio_playing_000@2x.png */; };
+		C06B927A1C525D79007660FF /* chat_sender_audio_playing_001.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91EF1C525D79007660FF /* chat_sender_audio_playing_001.png */; };
+		C06B927B1C525D79007660FF /* chat_sender_audio_playing_001@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91F01C525D79007660FF /* chat_sender_audio_playing_001@2x.png */; };
+		C06B927C1C525D79007660FF /* chat_sender_audio_playing_002.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91F11C525D79007660FF /* chat_sender_audio_playing_002.png */; };
+		C06B927D1C525D79007660FF /* chat_sender_audio_playing_002@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91F21C525D79007660FF /* chat_sender_audio_playing_002@2x.png */; };
+		C06B927E1C525D79007660FF /* chat_sender_audio_playing_003.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91F31C525D79007660FF /* chat_sender_audio_playing_003.png */; };
+		C06B927F1C525D79007660FF /* chat_sender_audio_playing_003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91F41C525D79007660FF /* chat_sender_audio_playing_003@2x.png */; };
+		C06B92801C525D79007660FF /* chat_sender_audio_playing_full.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91F51C525D79007660FF /* chat_sender_audio_playing_full.png */; };
+		C06B92811C525D79007660FF /* chat_sender_audio_playing_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91F61C525D79007660FF /* chat_sender_audio_playing_full@2x.png */; };
+		C06B92821C525D79007660FF /* chat_sender_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91F71C525D79007660FF /* chat_sender_bg.png */; };
+		C06B92831C525D79007660FF /* chat_sender_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91F81C525D79007660FF /* chat_sender_bg@2x.png */; };
+		C06B92861C525D79007660FF /* photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91FE1C525D79007660FF /* photo@2x.png */; };
+		C06B92871C525D79007660FF /* photo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B91FF1C525D79007660FF /* photo@3x.png */; };
 		C074ED0C1C4FCC27001CF23D /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C074ED061C4FCC27001CF23D /* SDBrowserImageView.m */; };
 		C074ED0D1C4FCC27001CF23D /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C074ED081C4FCC27001CF23D /* SDPhotoBrowser.m */; };
 		C074ED0E1C4FCC27001CF23D /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C074ED0B1C4FCC27001CF23D /* SDWaitingView.m */; };
@@ -1609,6 +1743,140 @@
 		C05C07F71C2AF60800C26B08 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		C05C07F91C2AF82900C26B08 /* MedicationAddInputNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddInputNameViewController.h; sourceTree = "<group>"; };
 		C05C07FA1C2AF82900C26B08 /* MedicationAddInputNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationAddInputNameViewController.m; sourceTree = "<group>"; };
+		C06B916D1C525D79007660FF /* VoiceSearchFeedback001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback001.png; sourceTree = "<group>"; };
+		C06B916E1C525D79007660FF /* VoiceSearchFeedback001@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback001@2x.png"; sourceTree = "<group>"; };
+		C06B916F1C525D79007660FF /* VoiceSearchFeedback002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback002.png; sourceTree = "<group>"; };
+		C06B91701C525D79007660FF /* VoiceSearchFeedback002@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback002@2x.png"; sourceTree = "<group>"; };
+		C06B91711C525D79007660FF /* VoiceSearchFeedback003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback003.png; sourceTree = "<group>"; };
+		C06B91721C525D79007660FF /* VoiceSearchFeedback003@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback003@2x.png"; sourceTree = "<group>"; };
+		C06B91731C525D79007660FF /* VoiceSearchFeedback004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback004.png; sourceTree = "<group>"; };
+		C06B91741C525D79007660FF /* VoiceSearchFeedback004@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback004@2x.png"; sourceTree = "<group>"; };
+		C06B91751C525D79007660FF /* VoiceSearchFeedback005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback005.png; sourceTree = "<group>"; };
+		C06B91761C525D79007660FF /* VoiceSearchFeedback005@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback005@2x.png"; sourceTree = "<group>"; };
+		C06B91771C525D79007660FF /* VoiceSearchFeedback006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback006.png; sourceTree = "<group>"; };
+		C06B91781C525D79007660FF /* VoiceSearchFeedback006@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback006@2x.png"; sourceTree = "<group>"; };
+		C06B91791C525D79007660FF /* VoiceSearchFeedback007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback007.png; sourceTree = "<group>"; };
+		C06B917A1C525D79007660FF /* VoiceSearchFeedback007@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback007@2x.png"; sourceTree = "<group>"; };
+		C06B917B1C525D79007660FF /* VoiceSearchFeedback008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback008.png; sourceTree = "<group>"; };
+		C06B917C1C525D79007660FF /* VoiceSearchFeedback008@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback008@2x.png"; sourceTree = "<group>"; };
+		C06B917D1C525D79007660FF /* VoiceSearchFeedback009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback009.png; sourceTree = "<group>"; };
+		C06B917E1C525D79007660FF /* VoiceSearchFeedback009@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback009@2x.png"; sourceTree = "<group>"; };
+		C06B917F1C525D79007660FF /* VoiceSearchFeedback010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback010.png; sourceTree = "<group>"; };
+		C06B91801C525D79007660FF /* VoiceSearchFeedback010@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback010@2x.png"; sourceTree = "<group>"; };
+		C06B91811C525D79007660FF /* VoiceSearchFeedback011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback011.png; sourceTree = "<group>"; };
+		C06B91821C525D79007660FF /* VoiceSearchFeedback011@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback011@2x.png"; sourceTree = "<group>"; };
+		C06B91831C525D79007660FF /* VoiceSearchFeedback012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback012.png; sourceTree = "<group>"; };
+		C06B91841C525D79007660FF /* VoiceSearchFeedback012@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback012@2x.png"; sourceTree = "<group>"; };
+		C06B91851C525D79007660FF /* VoiceSearchFeedback013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback013.png; sourceTree = "<group>"; };
+		C06B91861C525D79007660FF /* VoiceSearchFeedback013@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback013@2x.png"; sourceTree = "<group>"; };
+		C06B91871C525D79007660FF /* VoiceSearchFeedback014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback014.png; sourceTree = "<group>"; };
+		C06B91881C525D79007660FF /* VoiceSearchFeedback014@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback014@2x.png"; sourceTree = "<group>"; };
+		C06B91891C525D79007660FF /* VoiceSearchFeedback015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback015.png; sourceTree = "<group>"; };
+		C06B918A1C525D79007660FF /* VoiceSearchFeedback015@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback015@2x.png"; sourceTree = "<group>"; };
+		C06B918B1C525D79007660FF /* VoiceSearchFeedback016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback016.png; sourceTree = "<group>"; };
+		C06B918C1C525D79007660FF /* VoiceSearchFeedback016@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback016@2x.png"; sourceTree = "<group>"; };
+		C06B918D1C525D79007660FF /* VoiceSearchFeedback017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback017.png; sourceTree = "<group>"; };
+		C06B918E1C525D79007660FF /* VoiceSearchFeedback017@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback017@2x.png"; sourceTree = "<group>"; };
+		C06B918F1C525D79007660FF /* VoiceSearchFeedback018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback018.png; sourceTree = "<group>"; };
+		C06B91901C525D79007660FF /* VoiceSearchFeedback018@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback018@2x.png"; sourceTree = "<group>"; };
+		C06B91911C525D79007660FF /* VoiceSearchFeedback019.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback019.png; sourceTree = "<group>"; };
+		C06B91921C525D79007660FF /* VoiceSearchFeedback019@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback019@2x.png"; sourceTree = "<group>"; };
+		C06B91931C525D79007660FF /* VoiceSearchFeedback020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback020.png; sourceTree = "<group>"; };
+		C06B91941C525D79007660FF /* VoiceSearchFeedback020@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback020@2x.png"; sourceTree = "<group>"; };
+		C06B91951C525D79007660FF /* chat_video_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_video_play.png; sourceTree = "<group>"; };
+		C06B91971C525D79007660FF /* chatBar_more_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_more_card.png; sourceTree = "<group>"; };
+		C06B91981C525D79007660FF /* chatBar_more_card@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_more_card@2x.png"; sourceTree = "<group>"; };
+		C06B91991C525D79007660FF /* chatBar_more_cardSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_more_cardSelected.png; sourceTree = "<group>"; };
+		C06B919A1C525D79007660FF /* chatBar_more_cardSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_more_cardSelected@2x.png"; sourceTree = "<group>"; };
+		C06B919B1C525D79007660FF /* chatBar_more_face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_more_face.png; sourceTree = "<group>"; };
+		C06B919C1C525D79007660FF /* chatBar_more_face@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_more_face@2x.png"; sourceTree = "<group>"; };
+		C06B919D1C525D79007660FF /* chatBar_more_faceSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_more_faceSelected.png; sourceTree = "<group>"; };
+		C06B919E1C525D79007660FF /* chatBar_more_faceSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_more_faceSelected@2x.png"; sourceTree = "<group>"; };
+		C06B919F1C525D79007660FF /* chatBar_textBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_textBg.png; sourceTree = "<group>"; };
+		C06B91A01C525D79007660FF /* chatBar_textBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_textBg@2x.png"; sourceTree = "<group>"; };
+		C06B91A21C525D79007660FF /* chat_location_annotation_someone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_location_annotation_someone.png; sourceTree = "<group>"; };
+		C06B91A31C525D79007660FF /* chat_location_annotation_someone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_location_annotation_someone@2x.png"; sourceTree = "<group>"; };
+		C06B91A41C525D79007660FF /* chat_location_detail_disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_location_detail_disclosure.png; sourceTree = "<group>"; };
+		C06B91A51C525D79007660FF /* chat_location_detail_disclosure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_location_detail_disclosure@2x.png"; sourceTree = "<group>"; };
+		C06B91A61C525D79007660FF /* chat_location_detail_disclosureHL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_location_detail_disclosureHL.png; sourceTree = "<group>"; };
+		C06B91A71C525D79007660FF /* chat_location_detail_disclosureHL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_location_detail_disclosureHL@2x.png"; sourceTree = "<group>"; };
+		C06B91A81C525D79007660FF /* chat_location_preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_location_preview.png; sourceTree = "<group>"; };
+		C06B91A91C525D79007660FF /* chat_location_preview@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_location_preview@2x.png"; sourceTree = "<group>"; };
+		C06B91AB1C525D79007660FF /* faceDelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faceDelete.png; sourceTree = "<group>"; };
+		C06B91AC1C525D79007660FF /* faceDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceDelete@2x.png"; sourceTree = "<group>"; };
+		C06B91AD1C525D79007660FF /* imageDownloadFail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imageDownloadFail@2x.png"; sourceTree = "<group>"; };
+		C06B91AE1C525D79007660FF /* messageSendFail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messageSendFail@2x.png"; sourceTree = "<group>"; };
+		C06B91B01C525D79007660FF /* chatBar_face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_face.png; sourceTree = "<group>"; };
+		C06B91B11C525D79007660FF /* chatBar_face@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_face@2x.png"; sourceTree = "<group>"; };
+		C06B91B21C525D79007660FF /* chatBar_faceSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_faceSelected.png; sourceTree = "<group>"; };
+		C06B91B31C525D79007660FF /* chatBar_faceSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_faceSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91B41C525D79007660FF /* chatBar_keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_keyboard.png; sourceTree = "<group>"; };
+		C06B91B51C525D79007660FF /* chatBar_keyboard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_keyboard@2x.png"; sourceTree = "<group>"; };
+		C06B91B61C525D79007660FF /* chatBar_keyboardSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_keyboardSelected.png; sourceTree = "<group>"; };
+		C06B91B71C525D79007660FF /* chatBar_keyboardSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_keyboardSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91B81C525D79007660FF /* chatBar_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_more.png; sourceTree = "<group>"; };
+		C06B91B91C525D79007660FF /* chatBar_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_more@2x.png"; sourceTree = "<group>"; };
+		C06B91BA1C525D79007660FF /* chatBar_moreSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_moreSelected.png; sourceTree = "<group>"; };
+		C06B91BB1C525D79007660FF /* chatBar_moreSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_moreSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91BC1C525D79007660FF /* chatBar_record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_record.png; sourceTree = "<group>"; };
+		C06B91BD1C525D79007660FF /* chatBar_record@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_record@2x.png"; sourceTree = "<group>"; };
+		C06B91BE1C525D79007660FF /* chatBar_recordBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_recordBg.png; sourceTree = "<group>"; };
+		C06B91BF1C525D79007660FF /* chatBar_recordBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_recordBg@2x.png"; sourceTree = "<group>"; };
+		C06B91C01C525D79007660FF /* chatBar_recordSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_recordSelected.png; sourceTree = "<group>"; };
+		C06B91C11C525D79007660FF /* chatBar_recordSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_recordSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91C21C525D79007660FF /* chatBar_recordSelectedBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_recordSelectedBg.png; sourceTree = "<group>"; };
+		C06B91C31C525D79007660FF /* chatBar_recordSelectedBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_recordSelectedBg@2x.png"; sourceTree = "<group>"; };
+		C06B91C51C525D79007660FF /* chatBar_colorMore_audioCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_colorMore_audioCall@2x.png"; sourceTree = "<group>"; };
+		C06B91C61C525D79007660FF /* chatBar_colorMore_audioCallSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_colorMore_audioCallSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91C71C525D79007660FF /* chatBar_colorMore_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_colorMore_camera@2x.png"; sourceTree = "<group>"; };
+		C06B91C81C525D79007660FF /* chatBar_colorMore_cameraSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_colorMore_cameraSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91C91C525D79007660FF /* chatBar_colorMore_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_colorMore_location@2x.png"; sourceTree = "<group>"; };
+		C06B91CA1C525D79007660FF /* chatBar_colorMore_locationSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_colorMore_locationSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91CB1C525D79007660FF /* chatBar_colorMore_photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_colorMore_photo@2x.png"; sourceTree = "<group>"; };
+		C06B91CC1C525D79007660FF /* chatBar_colorMore_photoSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_colorMore_photoSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91CD1C525D79007660FF /* chatBar_colorMore_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_colorMore_video@2x.png"; sourceTree = "<group>"; };
+		C06B91CE1C525D79007660FF /* chatBar_colorMore_videoCall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_colorMore_videoCall@2x.png"; sourceTree = "<group>"; };
+		C06B91CF1C525D79007660FF /* chatBar_colorMore_videoCallSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_colorMore_videoCallSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91D01C525D79007660FF /* chatBar_colorMore_videoSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_colorMore_videoSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91D21C525D79007660FF /* chatBar_more_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_more_camera.png; sourceTree = "<group>"; };
+		C06B91D31C525D79007660FF /* chatBar_more_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_more_camera@2x.png"; sourceTree = "<group>"; };
+		C06B91D41C525D79007660FF /* chatBar_more_cameraSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_more_cameraSelected.png; sourceTree = "<group>"; };
+		C06B91D51C525D79007660FF /* chatBar_more_cameraSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_more_cameraSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91D61C525D79007660FF /* chatBar_more_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_more_location.png; sourceTree = "<group>"; };
+		C06B91D71C525D79007660FF /* chatBar_more_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_more_location@2x.png"; sourceTree = "<group>"; };
+		C06B91D81C525D79007660FF /* chatBar_more_locationSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_more_locationSelected.png; sourceTree = "<group>"; };
+		C06B91D91C525D79007660FF /* chatBar_more_locationSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_more_locationSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91DA1C525D79007660FF /* chatBar_more_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_more_photo.png; sourceTree = "<group>"; };
+		C06B91DB1C525D79007660FF /* chatBar_more_photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_more_photo@2x.png"; sourceTree = "<group>"; };
+		C06B91DC1C525D79007660FF /* chatBar_more_photoSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatBar_more_photoSelected.png; sourceTree = "<group>"; };
+		C06B91DD1C525D79007660FF /* chatBar_more_photoSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatBar_more_photoSelected@2x.png"; sourceTree = "<group>"; };
+		C06B91DE1C525D79007660FF /* messageToolbarBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messageToolbarBg@2x.png"; sourceTree = "<group>"; };
+		C06B91E01C525D79007660FF /* chat_receiver_audio_playing000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_receiver_audio_playing000.png; sourceTree = "<group>"; };
+		C06B91E11C525D79007660FF /* chat_receiver_audio_playing000@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_receiver_audio_playing000@2x.png"; sourceTree = "<group>"; };
+		C06B91E21C525D79007660FF /* chat_receiver_audio_playing001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_receiver_audio_playing001.png; sourceTree = "<group>"; };
+		C06B91E31C525D79007660FF /* chat_receiver_audio_playing001@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_receiver_audio_playing001@2x.png"; sourceTree = "<group>"; };
+		C06B91E41C525D79007660FF /* chat_receiver_audio_playing002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_receiver_audio_playing002.png; sourceTree = "<group>"; };
+		C06B91E51C525D79007660FF /* chat_receiver_audio_playing002@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_receiver_audio_playing002@2x.png"; sourceTree = "<group>"; };
+		C06B91E61C525D79007660FF /* chat_receiver_audio_playing003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_receiver_audio_playing003.png; sourceTree = "<group>"; };
+		C06B91E71C525D79007660FF /* chat_receiver_audio_playing003@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_receiver_audio_playing003@2x.png"; sourceTree = "<group>"; };
+		C06B91E81C525D79007660FF /* chat_receiver_audio_playing_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_receiver_audio_playing_full.png; sourceTree = "<group>"; };
+		C06B91E91C525D79007660FF /* chat_receiver_audio_playing_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_receiver_audio_playing_full@2x.png"; sourceTree = "<group>"; };
+		C06B91EA1C525D79007660FF /* chat_receiver_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_receiver_bg.png; sourceTree = "<group>"; };
+		C06B91EB1C525D79007660FF /* chat_receiver_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_receiver_bg@2x.png"; sourceTree = "<group>"; };
+		C06B91ED1C525D79007660FF /* chat_sender_audio_playing_000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_sender_audio_playing_000.png; sourceTree = "<group>"; };
+		C06B91EE1C525D79007660FF /* chat_sender_audio_playing_000@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_sender_audio_playing_000@2x.png"; sourceTree = "<group>"; };
+		C06B91EF1C525D79007660FF /* chat_sender_audio_playing_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_sender_audio_playing_001.png; sourceTree = "<group>"; };
+		C06B91F01C525D79007660FF /* chat_sender_audio_playing_001@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_sender_audio_playing_001@2x.png"; sourceTree = "<group>"; };
+		C06B91F11C525D79007660FF /* chat_sender_audio_playing_002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_sender_audio_playing_002.png; sourceTree = "<group>"; };
+		C06B91F21C525D79007660FF /* chat_sender_audio_playing_002@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_sender_audio_playing_002@2x.png"; sourceTree = "<group>"; };
+		C06B91F31C525D79007660FF /* chat_sender_audio_playing_003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_sender_audio_playing_003.png; sourceTree = "<group>"; };
+		C06B91F41C525D79007660FF /* chat_sender_audio_playing_003@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_sender_audio_playing_003@2x.png"; sourceTree = "<group>"; };
+		C06B91F51C525D79007660FF /* chat_sender_audio_playing_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_sender_audio_playing_full.png; sourceTree = "<group>"; };
+		C06B91F61C525D79007660FF /* chat_sender_audio_playing_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_sender_audio_playing_full@2x.png"; sourceTree = "<group>"; };
+		C06B91F71C525D79007660FF /* chat_sender_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_sender_bg.png; sourceTree = "<group>"; };
+		C06B91F81C525D79007660FF /* chat_sender_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_sender_bg@2x.png"; sourceTree = "<group>"; };
+		C06B91FE1C525D79007660FF /* photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo@2x.png"; sourceTree = "<group>"; };
+		C06B91FF1C525D79007660FF /* photo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo@3x.png"; sourceTree = "<group>"; };
 		C074ED051C4FCC27001CF23D /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
 		C074ED061C4FCC27001CF23D /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
 		C074ED071C4FCC27001CF23D /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
@@ -3200,6 +3468,7 @@
 		99DA40771C0BE85600573D4C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C06B916A1C525D79007660FF /* HXImages */,
 				99DA437C1C0C4FED00573D4C /* 3H医生端切图 */,
 			);
 			name = Images;
@@ -4131,6 +4400,251 @@
 				A9B5EA8D1C16E74400D4046B /* SearchViewController.m */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		C06B916A1C525D79007660FF /* HXImages */ = {
+			isa = PBXGroup;
+			children = (
+				C06B916B1C525D79007660FF /* Chat */,
+				C06B91F91C525D79007660FF /* Left */,
+				C06B91FA1C525D79007660FF /* Login */,
+				C06B91FB1C525D79007660FF /* Main */,
+				C06B91FE1C525D79007660FF /* photo@2x.png */,
+				C06B91FF1C525D79007660FF /* photo@3x.png */,
+			);
+			path = HXImages;
+			sourceTree = "<group>";
+		};
+		C06B916B1C525D79007660FF /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				C06B916C1C525D79007660FF /* audio */,
+				C06B91951C525D79007660FF /* chat_video_play.png */,
+				C06B91961C525D79007660FF /* ChatBarImages */,
+				C06B91A11C525D79007660FF /* chatLocation */,
+				C06B91AA1C525D79007660FF /* emoji */,
+				C06B91AD1C525D79007660FF /* imageDownloadFail@2x.png */,
+				C06B91AE1C525D79007660FF /* messageSendFail@2x.png */,
+				C06B91AF1C525D79007660FF /* MessageToolbarImages */,
+				C06B91DF1C525D79007660FF /* receiver_bubble */,
+				C06B91EC1C525D79007660FF /* sender_bubble */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		C06B916C1C525D79007660FF /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				C06B916D1C525D79007660FF /* VoiceSearchFeedback001.png */,
+				C06B916E1C525D79007660FF /* VoiceSearchFeedback001@2x.png */,
+				C06B916F1C525D79007660FF /* VoiceSearchFeedback002.png */,
+				C06B91701C525D79007660FF /* VoiceSearchFeedback002@2x.png */,
+				C06B91711C525D79007660FF /* VoiceSearchFeedback003.png */,
+				C06B91721C525D79007660FF /* VoiceSearchFeedback003@2x.png */,
+				C06B91731C525D79007660FF /* VoiceSearchFeedback004.png */,
+				C06B91741C525D79007660FF /* VoiceSearchFeedback004@2x.png */,
+				C06B91751C525D79007660FF /* VoiceSearchFeedback005.png */,
+				C06B91761C525D79007660FF /* VoiceSearchFeedback005@2x.png */,
+				C06B91771C525D79007660FF /* VoiceSearchFeedback006.png */,
+				C06B91781C525D79007660FF /* VoiceSearchFeedback006@2x.png */,
+				C06B91791C525D79007660FF /* VoiceSearchFeedback007.png */,
+				C06B917A1C525D79007660FF /* VoiceSearchFeedback007@2x.png */,
+				C06B917B1C525D79007660FF /* VoiceSearchFeedback008.png */,
+				C06B917C1C525D79007660FF /* VoiceSearchFeedback008@2x.png */,
+				C06B917D1C525D79007660FF /* VoiceSearchFeedback009.png */,
+				C06B917E1C525D79007660FF /* VoiceSearchFeedback009@2x.png */,
+				C06B917F1C525D79007660FF /* VoiceSearchFeedback010.png */,
+				C06B91801C525D79007660FF /* VoiceSearchFeedback010@2x.png */,
+				C06B91811C525D79007660FF /* VoiceSearchFeedback011.png */,
+				C06B91821C525D79007660FF /* VoiceSearchFeedback011@2x.png */,
+				C06B91831C525D79007660FF /* VoiceSearchFeedback012.png */,
+				C06B91841C525D79007660FF /* VoiceSearchFeedback012@2x.png */,
+				C06B91851C525D79007660FF /* VoiceSearchFeedback013.png */,
+				C06B91861C525D79007660FF /* VoiceSearchFeedback013@2x.png */,
+				C06B91871C525D79007660FF /* VoiceSearchFeedback014.png */,
+				C06B91881C525D79007660FF /* VoiceSearchFeedback014@2x.png */,
+				C06B91891C525D79007660FF /* VoiceSearchFeedback015.png */,
+				C06B918A1C525D79007660FF /* VoiceSearchFeedback015@2x.png */,
+				C06B918B1C525D79007660FF /* VoiceSearchFeedback016.png */,
+				C06B918C1C525D79007660FF /* VoiceSearchFeedback016@2x.png */,
+				C06B918D1C525D79007660FF /* VoiceSearchFeedback017.png */,
+				C06B918E1C525D79007660FF /* VoiceSearchFeedback017@2x.png */,
+				C06B918F1C525D79007660FF /* VoiceSearchFeedback018.png */,
+				C06B91901C525D79007660FF /* VoiceSearchFeedback018@2x.png */,
+				C06B91911C525D79007660FF /* VoiceSearchFeedback019.png */,
+				C06B91921C525D79007660FF /* VoiceSearchFeedback019@2x.png */,
+				C06B91931C525D79007660FF /* VoiceSearchFeedback020.png */,
+				C06B91941C525D79007660FF /* VoiceSearchFeedback020@2x.png */,
+			);
+			path = audio;
+			sourceTree = "<group>";
+		};
+		C06B91961C525D79007660FF /* ChatBarImages */ = {
+			isa = PBXGroup;
+			children = (
+				C06B91971C525D79007660FF /* chatBar_more_card.png */,
+				C06B91981C525D79007660FF /* chatBar_more_card@2x.png */,
+				C06B91991C525D79007660FF /* chatBar_more_cardSelected.png */,
+				C06B919A1C525D79007660FF /* chatBar_more_cardSelected@2x.png */,
+				C06B919B1C525D79007660FF /* chatBar_more_face.png */,
+				C06B919C1C525D79007660FF /* chatBar_more_face@2x.png */,
+				C06B919D1C525D79007660FF /* chatBar_more_faceSelected.png */,
+				C06B919E1C525D79007660FF /* chatBar_more_faceSelected@2x.png */,
+				C06B919F1C525D79007660FF /* chatBar_textBg.png */,
+				C06B91A01C525D79007660FF /* chatBar_textBg@2x.png */,
+			);
+			path = ChatBarImages;
+			sourceTree = "<group>";
+		};
+		C06B91A11C525D79007660FF /* chatLocation */ = {
+			isa = PBXGroup;
+			children = (
+				C06B91A21C525D79007660FF /* chat_location_annotation_someone.png */,
+				C06B91A31C525D79007660FF /* chat_location_annotation_someone@2x.png */,
+				C06B91A41C525D79007660FF /* chat_location_detail_disclosure.png */,
+				C06B91A51C525D79007660FF /* chat_location_detail_disclosure@2x.png */,
+				C06B91A61C525D79007660FF /* chat_location_detail_disclosureHL.png */,
+				C06B91A71C525D79007660FF /* chat_location_detail_disclosureHL@2x.png */,
+				C06B91A81C525D79007660FF /* chat_location_preview.png */,
+				C06B91A91C525D79007660FF /* chat_location_preview@2x.png */,
+			);
+			path = chatLocation;
+			sourceTree = "<group>";
+		};
+		C06B91AA1C525D79007660FF /* emoji */ = {
+			isa = PBXGroup;
+			children = (
+				C06B91AB1C525D79007660FF /* faceDelete.png */,
+				C06B91AC1C525D79007660FF /* faceDelete@2x.png */,
+			);
+			path = emoji;
+			sourceTree = "<group>";
+		};
+		C06B91AF1C525D79007660FF /* MessageToolbarImages */ = {
+			isa = PBXGroup;
+			children = (
+				C06B91B01C525D79007660FF /* chatBar_face.png */,
+				C06B91B11C525D79007660FF /* chatBar_face@2x.png */,
+				C06B91B21C525D79007660FF /* chatBar_faceSelected.png */,
+				C06B91B31C525D79007660FF /* chatBar_faceSelected@2x.png */,
+				C06B91B41C525D79007660FF /* chatBar_keyboard.png */,
+				C06B91B51C525D79007660FF /* chatBar_keyboard@2x.png */,
+				C06B91B61C525D79007660FF /* chatBar_keyboardSelected.png */,
+				C06B91B71C525D79007660FF /* chatBar_keyboardSelected@2x.png */,
+				C06B91B81C525D79007660FF /* chatBar_more.png */,
+				C06B91B91C525D79007660FF /* chatBar_more@2x.png */,
+				C06B91BA1C525D79007660FF /* chatBar_moreSelected.png */,
+				C06B91BB1C525D79007660FF /* chatBar_moreSelected@2x.png */,
+				C06B91BC1C525D79007660FF /* chatBar_record.png */,
+				C06B91BD1C525D79007660FF /* chatBar_record@2x.png */,
+				C06B91BE1C525D79007660FF /* chatBar_recordBg.png */,
+				C06B91BF1C525D79007660FF /* chatBar_recordBg@2x.png */,
+				C06B91C01C525D79007660FF /* chatBar_recordSelected.png */,
+				C06B91C11C525D79007660FF /* chatBar_recordSelected@2x.png */,
+				C06B91C21C525D79007660FF /* chatBar_recordSelectedBg.png */,
+				C06B91C31C525D79007660FF /* chatBar_recordSelectedBg@2x.png */,
+				C06B91C41C525D79007660FF /* Color */,
+				C06B91D11C525D79007660FF /* Gray */,
+				C06B91DE1C525D79007660FF /* messageToolbarBg@2x.png */,
+			);
+			path = MessageToolbarImages;
+			sourceTree = "<group>";
+		};
+		C06B91C41C525D79007660FF /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				C06B91C51C525D79007660FF /* chatBar_colorMore_audioCall@2x.png */,
+				C06B91C61C525D79007660FF /* chatBar_colorMore_audioCallSelected@2x.png */,
+				C06B91C71C525D79007660FF /* chatBar_colorMore_camera@2x.png */,
+				C06B91C81C525D79007660FF /* chatBar_colorMore_cameraSelected@2x.png */,
+				C06B91C91C525D79007660FF /* chatBar_colorMore_location@2x.png */,
+				C06B91CA1C525D79007660FF /* chatBar_colorMore_locationSelected@2x.png */,
+				C06B91CB1C525D79007660FF /* chatBar_colorMore_photo@2x.png */,
+				C06B91CC1C525D79007660FF /* chatBar_colorMore_photoSelected@2x.png */,
+				C06B91CD1C525D79007660FF /* chatBar_colorMore_video@2x.png */,
+				C06B91CE1C525D79007660FF /* chatBar_colorMore_videoCall@2x.png */,
+				C06B91CF1C525D79007660FF /* chatBar_colorMore_videoCallSelected@2x.png */,
+				C06B91D01C525D79007660FF /* chatBar_colorMore_videoSelected@2x.png */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		C06B91D11C525D79007660FF /* Gray */ = {
+			isa = PBXGroup;
+			children = (
+				C06B91D21C525D79007660FF /* chatBar_more_camera.png */,
+				C06B91D31C525D79007660FF /* chatBar_more_camera@2x.png */,
+				C06B91D41C525D79007660FF /* chatBar_more_cameraSelected.png */,
+				C06B91D51C525D79007660FF /* chatBar_more_cameraSelected@2x.png */,
+				C06B91D61C525D79007660FF /* chatBar_more_location.png */,
+				C06B91D71C525D79007660FF /* chatBar_more_location@2x.png */,
+				C06B91D81C525D79007660FF /* chatBar_more_locationSelected.png */,
+				C06B91D91C525D79007660FF /* chatBar_more_locationSelected@2x.png */,
+				C06B91DA1C525D79007660FF /* chatBar_more_photo.png */,
+				C06B91DB1C525D79007660FF /* chatBar_more_photo@2x.png */,
+				C06B91DC1C525D79007660FF /* chatBar_more_photoSelected.png */,
+				C06B91DD1C525D79007660FF /* chatBar_more_photoSelected@2x.png */,
+			);
+			path = Gray;
+			sourceTree = "<group>";
+		};
+		C06B91DF1C525D79007660FF /* receiver_bubble */ = {
+			isa = PBXGroup;
+			children = (
+				C06B91E01C525D79007660FF /* chat_receiver_audio_playing000.png */,
+				C06B91E11C525D79007660FF /* chat_receiver_audio_playing000@2x.png */,
+				C06B91E21C525D79007660FF /* chat_receiver_audio_playing001.png */,
+				C06B91E31C525D79007660FF /* chat_receiver_audio_playing001@2x.png */,
+				C06B91E41C525D79007660FF /* chat_receiver_audio_playing002.png */,
+				C06B91E51C525D79007660FF /* chat_receiver_audio_playing002@2x.png */,
+				C06B91E61C525D79007660FF /* chat_receiver_audio_playing003.png */,
+				C06B91E71C525D79007660FF /* chat_receiver_audio_playing003@2x.png */,
+				C06B91E81C525D79007660FF /* chat_receiver_audio_playing_full.png */,
+				C06B91E91C525D79007660FF /* chat_receiver_audio_playing_full@2x.png */,
+				C06B91EA1C525D79007660FF /* chat_receiver_bg.png */,
+				C06B91EB1C525D79007660FF /* chat_receiver_bg@2x.png */,
+			);
+			path = receiver_bubble;
+			sourceTree = "<group>";
+		};
+		C06B91EC1C525D79007660FF /* sender_bubble */ = {
+			isa = PBXGroup;
+			children = (
+				C06B91ED1C525D79007660FF /* chat_sender_audio_playing_000.png */,
+				C06B91EE1C525D79007660FF /* chat_sender_audio_playing_000@2x.png */,
+				C06B91EF1C525D79007660FF /* chat_sender_audio_playing_001.png */,
+				C06B91F01C525D79007660FF /* chat_sender_audio_playing_001@2x.png */,
+				C06B91F11C525D79007660FF /* chat_sender_audio_playing_002.png */,
+				C06B91F21C525D79007660FF /* chat_sender_audio_playing_002@2x.png */,
+				C06B91F31C525D79007660FF /* chat_sender_audio_playing_003.png */,
+				C06B91F41C525D79007660FF /* chat_sender_audio_playing_003@2x.png */,
+				C06B91F51C525D79007660FF /* chat_sender_audio_playing_full.png */,
+				C06B91F61C525D79007660FF /* chat_sender_audio_playing_full@2x.png */,
+				C06B91F71C525D79007660FF /* chat_sender_bg.png */,
+				C06B91F81C525D79007660FF /* chat_sender_bg@2x.png */,
+			);
+			path = sender_bubble;
+			sourceTree = "<group>";
+		};
+		C06B91F91C525D79007660FF /* Left */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Left;
+			sourceTree = "<group>";
+		};
+		C06B91FA1C525D79007660FF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C06B91FB1C525D79007660FF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		C074ED041C4FCC27001CF23D /* SDPhotoBrowser */ = {
@@ -5365,12 +5879,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C06B92041C525D79007660FF /* VoiceSearchFeedback003.png in Resources */,
 				99DA44EF1C0C4FED00573D4C /* 我的-邀请同行_QQ空间@2x.png in Resources */,
+				C06B923D1C525D79007660FF /* imageDownloadFail@2x.png in Resources */,
 				99DA45111C0C4FED00573D4C /* 3H-首页_头像@2x.png in Resources */,
 				99DA454C1C0C4FED00573D4C /* 首页-患者中心_6@2x.png in Resources */,
 				99DA455C1C0C4FED00573D4C /* 首页-患者中心-患者添加请求-拒绝_错@2x.png in Resources */,
 				99DA45041C0C4FED00573D4C /* 我的-预约设置-电话预约_门诊预约-未点击@2x.png in Resources */,
 				99DA44DE1C0C4FED00573D4C /* 我的-个人中心-我的钱包_月总收入@2x.png in Resources */,
+				C06B925A1C525D79007660FF /* chatBar_colorMore_photoSelected@2x.png in Resources */,
 				C0AEAED51C2EAEAE0009A3F5 /* zbar-samples.png in Resources */,
 				99DA454D1C0C4FED00573D4C /* 首页-患者中心_右键-白色@2x.png in Resources */,
 				C0AEAEAF1C2E94850009A3F5 /* 扫码line.png in Resources */,
@@ -5378,10 +5895,18 @@
 				C0AEAED41C2EAEAE0009A3F5 /* zbar-helpicons.png in Resources */,
 				99DA453C1C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-助理医师-咨询详情-助理已回复_回复-点击@2x.png in Resources */,
 				99DA45B41C0C4FED00573D4C /* 首页-预约管理-挂号预约_电话预约-非点击@2x.png in Resources */,
+				C06B92771C525D79007660FF /* chat_receiver_bg@2x.png in Resources */,
 				99DA45561C0C4FED00573D4C /* 首页-患者中心-患者添加请求_拒绝-点击@2x.png in Resources */,
 				99DA45B21C0C4FED00573D4C /* 首页-预约管理-挂号预约-预约详情-同意-成功接受-已同意@2x.png in Resources */,
+				C06B927C1C525D79007660FF /* chat_sender_audio_playing_002.png in Resources */,
+				C06B92091C525D79007660FF /* VoiceSearchFeedback005@2x.png in Resources */,
 				99DA45121C0C4FED00573D4C /* 3H-首页_患者中心@2x.png in Resources */,
+				C06B924C1C525D79007660FF /* chatBar_record@2x.png in Resources */,
 				99DA45CC1C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-拒绝理由-已拒绝_右键-白色@2x.png in Resources */,
+				C06B92031C525D79007660FF /* VoiceSearchFeedback002@2x.png in Resources */,
+				C06B925C1C525D79007660FF /* chatBar_colorMore_videoCall@2x.png in Resources */,
+				C06B920E1C525D79007660FF /* VoiceSearchFeedback008.png in Resources */,
+				C06B925F1C525D79007660FF /* chatBar_more_camera.png in Resources */,
 				99DA44CA1C0C4FED00573D4C /* 3H医生端-登录-完善资料_输入框@2x.png in Resources */,
 				99DA45141C0C4FED00573D4C /* 3H-首页_我的-未点击@2x.png in Resources */,
 				99DA45611C0C4FED00573D4C /* 首页-患者中心-患者详情_复查提醒-点击@2x.png in Resources */,
@@ -5389,62 +5914,97 @@
 				C0B6FD7C1C283FB9003902AB /* ios-social-sdk-shake.html in Resources */,
 				C0B6FD7E1C283FB9003902AB /* ios-social-sdk-shake.html in Resources */,
 				99DA3EEF1C0BE50300573D4C /* Main.storyboard in Resources */,
+				C06B92671C525D79007660FF /* chatBar_more_photo.png in Resources */,
 				99DA45921C0C4FED00573D4C /* 首页-患者中心-患者详情-诊断1_输入文本框@2x.png in Resources */,
 				99DA45201C0C4FED00573D4C /* 首页-助理医生_4@2x.png in Resources */,
 				99DA455F1C0C4FED00573D4C /* 首页-患者中心-患者详情_右键-白色@2x.png in Resources */,
+				C06B92181C525D79007660FF /* VoiceSearchFeedback013.png in Resources */,
+				C06B92321C525D79007660FF /* chatBar_textBg@2x.png in Resources */,
 				99DA45801C0C4FED00573D4C /* 首页-患者中心-患者详情-复查提醒-添加复查_发送提醒@2x.png in Resources */,
 				C0592D461C3177BA0071FCB5 /* 扫码边框.png in Resources */,
+				C06B92871C525D79007660FF /* photo@3x.png in Resources */,
+				C06B92431C525D79007660FF /* chatBar_keyboard.png in Resources */,
 				99DA45761C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查-添加检查-拍照_取消@2x.png in Resources */,
 				C0B6FD6A1C283FB9003902AB /* UMShareEditViewController.xib in Resources */,
+				C06B92451C525D79007660FF /* chatBar_keyboardSelected.png in Resources */,
 				99DA44D91C0C4FED00573D4C /* 我的-个人中心-我的钱包_总金额@2x.png in Resources */,
+				C06B925B1C525D79007660FF /* chatBar_colorMore_video@2x.png in Resources */,
 				99DA45901C0C4FED00573D4C /* 首页-患者中心-患者详情-病史-编辑_血型文本框@2x.png in Resources */,
+				C06B92751C525D79007660FF /* chat_receiver_audio_playing_full@2x.png in Resources */,
 				99DA45521C0C4FED00573D4C /* 首页-患者中心-患者添加请求_同意-未点击@2x.png in Resources */,
+				C06B923E1C525D79007660FF /* messageSendFail@2x.png in Resources */,
 				99DA455B1C0C4FED00573D4C /* 首页-患者中心-患者添加请求-拒绝_头像@2x.png in Resources */,
+				C06B921E1C525D79007660FF /* VoiceSearchFeedback016.png in Resources */,
 				99DA44D41C0C4FED00573D4C /* 3H-我的_邀请同行-点击@2x.png in Resources */,
 				99DA44E01C0C4FED00573D4C /* 我的-个人资料_头像@2x.png in Resources */,
+				C06B92801C525D79007660FF /* chat_sender_audio_playing_full.png in Resources */,
+				C06B926D1C525D79007660FF /* chat_receiver_audio_playing000@2x.png in Resources */,
+				C06B92701C525D79007660FF /* chat_receiver_audio_playing002.png in Resources */,
+				C06B92211C525D79007660FF /* VoiceSearchFeedback017@2x.png in Resources */,
+				C06B92621C525D79007660FF /* chatBar_more_cameraSelected@2x.png in Resources */,
+				C06B92681C525D79007660FF /* chatBar_more_photo@2x.png in Resources */,
 				99DA45341C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情_右键-白色@2x.png in Resources */,
 				99DA45091C0C4FED00573D4C /* 3H-消息_左键-灰色@2x.png in Resources */,
 				99DA45981C0C4FED00573D4C /* 首页-患者中心-搜索2_搜索@2x.png in Resources */,
 				99DA456F1C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查_检验-点击@2x.png in Resources */,
 				99DA45CD1C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-拒绝理由-已拒绝_头像@2x.png in Resources */,
+				C06B92501C525D79007660FF /* chatBar_recordSelected@2x.png in Resources */,
+				C06B92551C525D79007660FF /* chatBar_colorMore_camera@2x.png in Resources */,
+				C06B92101C525D79007660FF /* VoiceSearchFeedback009.png in Resources */,
 				99DA458C1C0C4FED00573D4C /* 首页-患者中心-患者详情-用药提醒-添加用药_提交@2x.png in Resources */,
+				C06B92361C525D79007660FF /* chat_location_detail_disclosure@2x.png in Resources */,
 				99DA455E1C0C4FED00573D4C /* 首页-患者中心-患者详情_化验及检查-点击@2x.png in Resources */,
+				C06B92811C525D79007660FF /* chat_sender_audio_playing_full@2x.png in Resources */,
 				99DA45911C0C4FED00573D4C /* 首页-患者中心-患者详情-诊断1_右键-白色@2x.png in Resources */,
+				C06B92821C525D79007660FF /* chat_sender_bg.png in Resources */,
 				991A31221C11E7E800E0313F /* 我的非点击@2x.png in Resources */,
 				99DA458E1C0C4FED00573D4C /* 首页-患者中心-患者详情-病史-编辑_是否有过敏史文本框@2x.png in Resources */,
 				99DA45671C0C4FED00573D4C /* 首页-患者中心-患者详情_病史-未点击@2x.png in Resources */,
 				99DA44F21C0C4FED00573D4C /* 我的-邀请同行_邮件@2x.png in Resources */,
 				99DA44DB1C0C4FED00573D4C /* 我的-个人中心-我的钱包_提现-点击@2x.png in Resources */,
+				C06B92601C525D79007660FF /* chatBar_more_camera@2x.png in Resources */,
 				99DA44D81C0C4FED00573D4C /* 我的-个人中心-我的钱包_左键-白色@2x.png in Resources */,
+				C06B92491C525D79007660FF /* chatBar_moreSelected.png in Resources */,
 				99DA45701C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查_添加@2x.png in Resources */,
 				99DA45721C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查-添加检查_报告单图片@2x.png in Resources */,
 				99DA45551C0C4FED00573D4C /* 首页-患者中心-患者添加请求_拒绝-未点击@2x.png in Resources */,
+				C06B924E1C525D79007660FF /* chatBar_recordBg@2x.png in Resources */,
 				99DA455D1C0C4FED00573D4C /* 首页-患者中心-患者详情_化验及检查-未点击@2x.png in Resources */,
 				99DA45AE1C0C4FED00573D4C /* 首页-资讯动态_时间@2x.png in Resources */,
 				99DA45991C0C4FED00573D4C /* 首页-患者中心-搜索2_搜索框@2x.png in Resources */,
+				C06B92391C525D79007660FF /* chat_location_preview.png in Resources */,
 				99DA453F1C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-在线咨询_头像2@2x.png in Resources */,
+				C06B92741C525D79007660FF /* chat_receiver_audio_playing_full.png in Resources */,
+				C06B92011C525D79007660FF /* VoiceSearchFeedback001@2x.png in Resources */,
 				C08244AE1C21192700783FD5 /* 首页-我要预约-预约挂号-2_右@2x.png in Resources */,
 				99DA44C41C0C4FED00573D4C /* 3H医生端-登录_QQ@2x.png in Resources */,
+				C06B92311C525D79007660FF /* chatBar_textBg.png in Resources */,
 				99DA45601C0C4FED00573D4C /* 首页-患者中心-患者详情_复查提醒-未点击@2x.png in Resources */,
 				99DA45891C0C4FED00573D4C /* 首页-患者中心-患者详情-用药提醒_添加药物@2x.png in Resources */,
 				99DA45451C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-在线咨询_输入框1@2x.png in Resources */,
+				C06B92831C525D79007660FF /* chat_sender_bg@2x.png in Resources */,
 				99DA44C31C0C4FED00573D4C /* 3H医生端-注册_获取验证码@2x.png in Resources */,
 				C0AEAEB01C2E94850009A3F5 /* 我的钱包－申请成功icon.png in Resources */,
 				99DA45A31C0C4FED00573D4C /* 首页-患者中心-添加患者-手机号_清除@2x.png in Resources */,
 				99DA450C1C0C4FED00573D4C /* 3H-消息_电话预约@2x.png in Resources */,
 				99DA44C11C0C4FED00573D4C /* 3H医生端-注册_立即注册@2x.png in Resources */,
 				C0B6FD6C1C283FB9003902AB /* UMSLoginViewController.xib in Resources */,
+				C06B92761C525D79007660FF /* chat_receiver_bg.png in Resources */,
 				99DA44C91C0C4FED00573D4C /* 3H医生端-登录-完善资料_提交@2x.png in Resources */,
 				C09AD2271C5132620063FD90 /* sr_refresh.png in Resources */,
+				C06B92051C525D79007660FF /* VoiceSearchFeedback003@2x.png in Resources */,
+				C06B924D1C525D79007660FF /* chatBar_recordBg.png in Resources */,
 				99DA45C01C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情_拒绝-未点击@2x.png in Resources */,
 				99DA455A1C0C4FED00573D4C /* 首页-患者中心-患者添加请求-拒绝_右键-白色@2x.png in Resources */,
 				99DA459D1C0C4FED00573D4C /* 首页-患者中心-添加患者(扫一扫)_手机号-未点击@2x.png in Resources */,
+				C06B921A1C525D79007660FF /* VoiceSearchFeedback014.png in Resources */,
 				99DA453D1C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-在线咨询_+@2x.png in Resources */,
 				99DA45331C0C4FED00573D4C /* 首页-咨询服务-未回复_未回复-点击@2x.png in Resources */,
 				99DA45AC1C0C4FED00573D4C /* 首页-资讯动态_左键-白色@2x.png in Resources */,
 				99DA45351C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情_回复-点击@2x.png in Resources */,
 				99DA45C31C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-同意_确定-点击@2x.png in Resources */,
 				99DA45481C0C4FED00573D4C /* 首页-患者中心_2@2x.png in Resources */,
+				C06B92221C525D79007660FF /* VoiceSearchFeedback018.png in Resources */,
 				99DA454E1C0C4FED00573D4C /* 首页-患者中心_左键-灰色@2x.png in Resources */,
 				99DA45C91C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-拒绝理由_右键-白色@2x.png in Resources */,
 				99DA45A41C0C4FED00573D4C /* 首页-患者中心-添加患者-手机号_输入文本框@2x.png in Resources */,
@@ -5460,24 +6020,38 @@
 				99D141D61C0D537D002DA3AD /* thLOGO@2x.png in Resources */,
 				99DA454B1C0C4FED00573D4C /* 首页-患者中心_5@2x.png in Resources */,
 				99DA45B81C0C4FED00573D4C /* 首页-预约管理-电话预约_4@2x.png in Resources */,
+				C06B92781C525D79007660FF /* chat_sender_audio_playing_000.png in Resources */,
+				C06B92511C525D79007660FF /* chatBar_recordSelectedBg.png in Resources */,
+				C06B92651C525D79007660FF /* chatBar_more_locationSelected.png in Resources */,
 				99DA452E1C0C4FED00573D4C /* 首页-咨询服务-未回复_3@2x.png in Resources */,
+				C06B92081C525D79007660FF /* VoiceSearchFeedback005.png in Resources */,
 				99DA451B1C0C4FED00573D4C /* 3H-首页_首页-未点击@2x.png in Resources */,
 				99DA44F41C0C4FED00573D4C /* 我的-预约设置_左@2x.png in Resources */,
+				C06B92121C525D79007660FF /* VoiceSearchFeedback010.png in Resources */,
+				C06B92241C525D79007660FF /* VoiceSearchFeedback019.png in Resources */,
 				99DA44F81C0C4FED00573D4C /* 我的-预约设置_未选中@2x.png in Resources */,
 				99DA457E1C0C4FED00573D4C /* 首页-患者中心-患者详情-复查提醒_添加@2x.png in Resources */,
 				99DA457B1C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检验_检验-点击@2x.png in Resources */,
+				C06B92381C525D79007660FF /* chat_location_detail_disclosureHL@2x.png in Resources */,
 				99DA45841C0C4FED00573D4C /* 首页-患者中心-患者详情-复查提醒-添加复查_未选中@2x.png in Resources */,
 				99DA45021C0C4FED00573D4C /* 我的-预约设置-电话预约_电话预约-点击@2x.png in Resources */,
 				99DA45081C0C4FED00573D4C /* 3H-消息_咨询信息@2x.png in Resources */,
 				99DA45A91C0C4FED00573D4C /* 首页-资讯动态_4@2x.png in Resources */,
+				C06B922A1C525D79007660FF /* chatBar_more_card@2x.png in Resources */,
+				C06B92301C525D79007660FF /* chatBar_more_faceSelected@2x.png in Resources */,
 				99DA45181C0C4FED00573D4C /* 3H-首页_背景@2x.png in Resources */,
+				C06B925E1C525D79007660FF /* chatBar_colorMore_videoSelected@2x.png in Resources */,
 				99DA44C51C0C4FED00573D4C /* 3H医生端-登录_微信@2x.png in Resources */,
 				99DA451A1C0C4FED00573D4C /* 3H-首页_预约管理@2x.png in Resources */,
+				C06B92721C525D79007660FF /* chat_receiver_audio_playing003.png in Resources */,
 				99DA45651C0C4FED00573D4C /* 首页-患者中心-患者详情_用药提醒-未点击@2x.png in Resources */,
+				C06B92791C525D79007660FF /* chat_sender_audio_playing_000@2x.png in Resources */,
 				99DA44E31C0C4FED00573D4C /* 我的-设置_关于-点击@2x.png in Resources */,
 				99DA45C51C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-同意-打电话1@2x.png in Resources */,
 				99DA45381C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情_转助理-未点击@2x.png in Resources */,
 				99DA45BF1C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情_左键-灰色@2x.png in Resources */,
+				C06B923A1C525D79007660FF /* chat_location_preview@2x.png in Resources */,
+				C06B927F1C525D79007660FF /* chat_sender_audio_playing_003@2x.png in Resources */,
 				99DA44EC1C0C4FED00573D4C /* 我的-设置_版本更新-点击@2x.png in Resources */,
 				99DA45CA1C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-拒绝理由_提交@2x.png in Resources */,
 				99DA44DD1C0C4FED00573D4C /* 我的-个人中心-我的钱包_收入记录-点击@2x.png in Resources */,
@@ -5489,21 +6063,33 @@
 				99DA45961C0C4FED00573D4C /* 首页-患者中心-搜索2_右键-白色@2x.png in Resources */,
 				99DA45941C0C4FED00573D4C /* 首页-患者中心-患者详情-诊断2_右键-白色@2x.png in Resources */,
 				99DA458F1C0C4FED00573D4C /* 首页-患者中心-患者详情-病史-编辑_病情描述文本框@2x.png in Resources */,
+				C06B92161C525D79007660FF /* VoiceSearchFeedback012.png in Resources */,
+				C06B92111C525D79007660FF /* VoiceSearchFeedback009@2x.png in Resources */,
 				99DA44F11C0C4FED00573D4C /* 我的-邀请同行_新浪微博@2x.png in Resources */,
 				99DA45251C0C4FED00573D4C /* 首页-咨询服务-已回复-咨询详情-查看咨询-2_右键-灰色@2x.png in Resources */,
 				99DA45751C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查-添加检查-拍照_从相册选择@2x.png in Resources */,
+				C06B925D1C525D79007660FF /* chatBar_colorMore_videoCallSelected@2x.png in Resources */,
 				99DA44EB1C0C4FED00573D4C /* 我的-设置_版本更新-未点击@2x.png in Resources */,
 				99DA458D1C0C4FED00573D4C /* 首页-患者中心-患者详情-病史-编辑_右键-白色@2x.png in Resources */,
 				99DA458B1C0C4FED00573D4C /* 首页-患者中心-患者详情-用药提醒-添加用药_左键-灰色@2x.png in Resources */,
 				99DA45BB1C0C4FED00573D4C /* 首页-预约管理-电话预约_电话预约-点击@2x.png in Resources */,
+				C06B927D1C525D79007660FF /* chat_sender_audio_playing_002@2x.png in Resources */,
 				99DA44ED1C0C4FED00573D4C /* 我的-设置_评价软件-未点击@2x.png in Resources */,
+				C06B92231C525D79007660FF /* VoiceSearchFeedback018@2x.png in Resources */,
 				99DA44FB1C0C4FED00573D4C /* 我的-预约设置_选中@2x.png in Resources */,
 				99DA45C61C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-同意-打电话2_取消-未点击@2x.png in Resources */,
 				99DA450E1C0C4FED00573D4C /* 3H-首页_助理医生@2x.png in Resources */,
+				C06B92251C525D79007660FF /* VoiceSearchFeedback019@2x.png in Resources */,
+				C06B927E1C525D79007660FF /* chat_sender_audio_playing_003.png in Resources */,
+				C06B927B1C525D79007660FF /* chat_sender_audio_playing_001@2x.png in Resources */,
+				C06B920C1C525D79007660FF /* VoiceSearchFeedback007.png in Resources */,
 				99DA44C81C0C4FED00573D4C /* 3H医生端-登录-完善资料_左键-白色@2x.png in Resources */,
+				C06B92611C525D79007660FF /* chatBar_more_cameraSelected.png in Resources */,
 				99DA45371C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情_左键-灰色@2x.png in Resources */,
+				C06B922F1C525D79007660FF /* chatBar_more_faceSelected.png in Resources */,
 				C08244AF1C21192700783FD5 /* 首页-我要预约-预约挂号-2_左@2x.png in Resources */,
 				99DA45B91C0C4FED00573D4C /* 首页-预约管理-电话预约_右键-白色@2x.png in Resources */,
+				C06B92071C525D79007660FF /* VoiceSearchFeedback004@2x.png in Resources */,
 				99DA454F1C0C4FED00573D4C /* 首页-患者中心_搜索@2x.png in Resources */,
 				99DA45301C0C4FED00573D4C /* 首页-咨询服务-未回复_已回复-未点击@2x.png in Resources */,
 				99DA456B1C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查_右键-白色@2x.png in Resources */,
@@ -5517,6 +6103,7 @@
 				99DA44E81C0C4FED00573D4C /* 我的-设置_注销@2x.png in Resources */,
 				99D141D71C0D537D002DA3AD /* thLOGOdoctor@2x.png in Resources */,
 				99DA452B1C0C4FED00573D4C /* 首页-咨询服务-已回复-咨询详情-查看咨询2-在线咨询_文本框2@2x.png in Resources */,
+				C06B923C1C525D79007660FF /* faceDelete@2x.png in Resources */,
 				99DA45B11C0C4FED00573D4C /* 首页-资讯动态-医疗资讯_更多@2x.png in Resources */,
 				99DA451C1C0C4FED00573D4C /* 3H-首页_首页-点击@2x.png in Resources */,
 				99DA45711C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查-添加检查_右键-白色@2x.png in Resources */,
@@ -5532,56 +6119,84 @@
 				99DA45B31C0C4FED00573D4C /* 首页-预约管理-挂号预约_挂号预约-点击@2x.png in Resources */,
 				99DA457C1C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检验_添加@2x.png in Resources */,
 				99DA45271C0C4FED00573D4C /* 首页-咨询服务-已回复-咨询详情-查看咨询-2_左键-白色@2x.png in Resources */,
+				C06B922D1C525D79007660FF /* chatBar_more_face.png in Resources */,
 				99DA45831C0C4FED00573D4C /* 首页-患者中心-患者详情-复查提醒-添加复查_左键-灰色@2x.png in Resources */,
+				C06B92561C525D79007660FF /* chatBar_colorMore_cameraSelected@2x.png in Resources */,
 				99DA45AB1C0C4FED00573D4C /* 首页-资讯动态_Banner@2x.png in Resources */,
 				99DA45261C0C4FED00573D4C /* 首页-咨询服务-已回复-咨询详情-查看咨询-2_头像@2x.png in Resources */,
+				C06B92141C525D79007660FF /* VoiceSearchFeedback011.png in Resources */,
+				C06B92291C525D79007660FF /* chatBar_more_card.png in Resources */,
+				C06B922C1C525D79007660FF /* chatBar_more_cardSelected@2x.png in Resources */,
 				99DA45621C0C4FED00573D4C /* 首页-患者中心-患者详情_头像@2x.png in Resources */,
+				C06B926A1C525D79007660FF /* chatBar_more_photoSelected@2x.png in Resources */,
 				99DA44CC1C0C4FED00573D4C /* 3H-我的_已认证@2x.png in Resources */,
+				C06B92191C525D79007660FF /* VoiceSearchFeedback013@2x.png in Resources */,
 				99DA44DC1C0C4FED00573D4C /* 我的-个人中心-我的钱包_收入记录-未点击@2x.png in Resources */,
 				99DA45A11C0C4FED00573D4C /* 首页-患者中心-添加患者-手机号_发送@2x.png in Resources */,
+				C06B920D1C525D79007660FF /* VoiceSearchFeedback007@2x.png in Resources */,
+				C06B92481C525D79007660FF /* chatBar_more@2x.png in Resources */,
+				C06B926B1C525D79007660FF /* messageToolbarBg@2x.png in Resources */,
+				C06B92261C525D79007660FF /* VoiceSearchFeedback020.png in Resources */,
 				99DA44F61C0C4FED00573D4C /* 我的-预约设置_提交@2x.png in Resources */,
 				99DA45541C0C4FED00573D4C /* 首页-患者中心-患者添加请求_头像@2x.png in Resources */,
 				99DA45291C0C4FED00573D4C /* 首页-咨询服务-已回复-咨询详情-查看咨询1_查看咨询.png in Resources */,
 				99DA45CB1C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-拒绝理由_文本框@2x.png in Resources */,
+				C06B924A1C525D79007660FF /* chatBar_moreSelected@2x.png in Resources */,
 				99DA3EF41C0BE50300573D4C /* LaunchScreen.xib in Resources */,
 				C0B6FD7B1C283FB9003902AB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				99DA457A1C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检验_检查-未点击@2x.png in Resources */,
 				99DA44CB1C0C4FED00573D4C /* 3H-我的_头像@2x.png in Resources */,
 				99DA45771C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查-添加检查-拍照_拍照@2x.png in Resources */,
 				99DA45C21C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-同意_外框@2x.png in Resources */,
+				C06B92571C525D79007660FF /* chatBar_colorMore_location@2x.png in Resources */,
+				C06B92531C525D79007660FF /* chatBar_colorMore_audioCall@2x.png in Resources */,
 				99DA45501C0C4FED00573D4C /* 首页-患者中心_添加@2x.png in Resources */,
 				99DA45A21C0C4FED00573D4C /* 首页-患者中心-添加患者-手机号_患者手机号文本框@2x.png in Resources */,
 				99DA45161C0C4FED00573D4C /* 3H-首页_消息-未点击@2x.png in Resources */,
 				99DA45311C0C4FED00573D4C /* 首页-咨询服务-未回复_已回复-点击@2x.png in Resources */,
+				C06B92271C525D79007660FF /* VoiceSearchFeedback020@2x.png in Resources */,
+				C06B927A1C525D79007660FF /* chat_sender_audio_playing_001.png in Resources */,
 				99DA45881C0C4FED00573D4C /* 首页-患者中心-患者详情-用药提醒_右键-白色@2x.png in Resources */,
+				C06B92581C525D79007660FF /* chatBar_colorMore_locationSelected@2x.png in Resources */,
 				C0AEAEAD1C2E94850009A3F5 /* 3H-首页+.png in Resources */,
 				99DA45421C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-在线咨询_表情@2x.png in Resources */,
 				99DA402E1C0BE59A00573D4C /* MJRefresh.bundle in Resources */,
+				C06B92731C525D79007660FF /* chat_receiver_audio_playing003@2x.png in Resources */,
 				99DA45211C0C4FED00573D4C /* 首页-助理医生_5@2x.png in Resources */,
 				99DA45A61C0C4FED00573D4C /* 首页-资讯动态_1@2x.png in Resources */,
+				C06B92691C525D79007660FF /* chatBar_more_photoSelected.png in Resources */,
 				99DA45691C0C4FED00573D4C /* 首页-患者中心-患者详情_诊断-未点击@2x.png in Resources */,
 				99DA44FC1C0C4FED00573D4C /* 我的-预约设置_门诊预约-未点击@2x.png in Resources */,
+				C06B92341C525D79007660FF /* chat_location_annotation_someone@2x.png in Resources */,
 				99DA44D61C0C4FED00573D4C /* 3H-我的_预约设置-点击@2x.png in Resources */,
 				99DA457F1C0C4FED00573D4C /* 首页-患者中心-患者详情-复查提醒_添加复查@2x.png in Resources */,
 				99DA450F1C0C4FED00573D4C /* 3H-首页_咨询动态@2x.png in Resources */,
+				C06B92151C525D79007660FF /* VoiceSearchFeedback011@2x.png in Resources */,
 				99DA44D31C0C4FED00573D4C /* 3H-我的_邀请同行-未点击@2x.png in Resources */,
+				C06B92541C525D79007660FF /* chatBar_colorMore_audioCallSelected@2x.png in Resources */,
 				C0AEAED31C2EAEAE0009A3F5 /* zbar-help.html in Resources */,
 				99DA45BD1C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情_同意-点击@2x.png in Resources */,
 				99DA456A1C0C4FED00573D4C /* 首页-患者中心-患者详情_诊断-点击@2x.png in Resources */,
 				99DA45241C0C4FED00573D4C /* 首页-助理医生_添加@2x.png in Resources */,
 				99DA45741C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查-添加检查_输入框@2x.png in Resources */,
 				99DA450A1C0C4FED00573D4C /* 3H-消息_患者添加请求@2x.png in Resources */,
+				C06B921F1C525D79007660FF /* VoiceSearchFeedback016@2x.png in Resources */,
 				99DA45851C0C4FED00573D4C /* 首页-患者中心-患者详情-复查提醒-添加复查_选中@2x.png in Resources */,
 				99DA45971C0C4FED00573D4C /* 首页-患者中心-搜索2_头像@2x.png in Resources */,
+				C06B921D1C525D79007660FF /* VoiceSearchFeedback015@2x.png in Resources */,
+				C06B92411C525D79007660FF /* chatBar_faceSelected.png in Resources */,
 				99DA44E61C0C4FED00573D4C /* 我的-设置_意见反馈-未点击@2x.png in Resources */,
 				99DA44D71C0C4FED00573D4C /* 我的-个人中心-我的钱包_右键-灰色@2x.png in Resources */,
 				99DA45CF1C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-拒绝理由-已拒绝_已拒绝@2x.png in Resources */,
+				C06B92281C525D79007660FF /* chat_video_play.png in Resources */,
 				99DA45731C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查-添加检查_相机@2x.png in Resources */,
 				99DA459E1C0C4FED00573D4C /* 首页-患者中心-添加患者(扫一扫)_手机号-点击@2x.png in Resources */,
+				C06B922B1C525D79007660FF /* chatBar_more_cardSelected.png in Resources */,
 				C0B6FD641C283FB9003902AB /* UMSocialLocalizable.strings in Resources */,
 				99DA44C21C0C4FED00573D4C /* 3H医生端-注册_背景@2x.png in Resources */,
 				99DA45821C0C4FED00573D4C /* 首页-患者中心-患者详情-复查提醒-添加复查_复查项目文本框@2x.png in Resources */,
 				99DA45AA1C0C4FED00573D4C /* 首页-资讯动态_50%半透明@2x.png in Resources */,
+				C06B921B1C525D79007660FF /* VoiceSearchFeedback014@2x.png in Resources */,
 				99DA45581C0C4FED00573D4C /* 首页-患者中心-患者添加请求-同意_头像@2x.png in Resources */,
 				99DA45A71C0C4FED00573D4C /* 首页-资讯动态_2@2x.png in Resources */,
 				99DA45951C0C4FED00573D4C /* 首页-患者中心-患者详情-诊断2_呼吸道感染文本框@2x.png in Resources */,
@@ -5589,6 +6204,7 @@
 				C0B6FD6E1C283FB9003902AB /* UMSShareListController.xib in Resources */,
 				C0B6FD691C283FB9003902AB /* UMSCommentInputControlleriPad.xib in Resources */,
 				99DA45B71C0C4FED00573D4C /* 首页-预约管理-电话预约_3@2x.png in Resources */,
+				C06B92371C525D79007660FF /* chat_location_detail_disclosureHL.png in Resources */,
 				99DA44DF1C0C4FED00573D4C /* 我的-个人资料_右键-灰色@2x.png in Resources */,
 				99DA45191C0C4FED00573D4C /* 3H-首页_键@2x.png in Resources */,
 				99DA45511C0C4FED00573D4C /* 首页-患者中心-患者添加请求_右键-白色@2x.png in Resources */,
@@ -5597,6 +6213,8 @@
 				99DA44E71C0C4FED00573D4C /* 我的-设置_意见反馈-点击@2x.png in Resources */,
 				99DA45A81C0C4FED00573D4C /* 首页-资讯动态_3@2x.png in Resources */,
 				99DA45011C0C4FED00573D4C /* 我的-预约设置-电话预约_电话预约-未点击@2x.png in Resources */,
+				C06B92441C525D79007660FF /* chatBar_keyboard@2x.png in Resources */,
+				C06B92461C525D79007660FF /* chatBar_keyboardSelected@2x.png in Resources */,
 				99DA45571C0C4FED00573D4C /* 首页-患者中心-患者添加请求-同意_右键-白色@2x.png in Resources */,
 				99DA453E1C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-在线咨询_头像1@2x.png in Resources */,
 				99DA45C41C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-同意-成功接受_图标@2x.png in Resources */,
@@ -5606,23 +6224,34 @@
 				99DA459A1C0C4FED00573D4C /* 首页-患者中心-添加患者(扫一扫)_二维码@2x.png in Resources */,
 				99DA44E41C0C4FED00573D4C /* 我的-设置_右键-灰色@2x.png in Resources */,
 				99DA44FE1C0C4FED00573D4C /* 我的-预约设置-电话预约_右@2x.png in Resources */,
+				C06B92661C525D79007660FF /* chatBar_more_locationSelected@2x.png in Resources */,
 				C09AD2281C5132620063FD90 /* sr_refresh@2X.png in Resources */,
+				C06B92631C525D79007660FF /* chatBar_more_location.png in Resources */,
 				99DA45681C0C4FED00573D4C /* 首页-患者中心-患者详情_病史-点击@2x.png in Resources */,
 				99DA454A1C0C4FED00573D4C /* 首页-患者中心_4@2x.png in Resources */,
 				99DA456E1C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查_检验-未点击@2x.png in Resources */,
+				C06B923F1C525D79007660FF /* chatBar_face.png in Resources */,
 				99DA45B51C0C4FED00573D4C /* 首页-预约管理-电话预约_1@2x.png in Resources */,
 				99DA45411C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-在线咨询_联系人@2x.png in Resources */,
 				99DA45061C0C4FED00573D4C /* 我的-预约设置-电话预约-30_已约@2x.png in Resources */,
 				C0B6FD6B1C283FB9003902AB /* UMShareEditViewControlleriPad.xib in Resources */,
+				C06B920F1C525D79007660FF /* VoiceSearchFeedback008@2x.png in Resources */,
 				991A31241C11E7E800E0313F /* 消息非点击@2x.png in Resources */,
 				99DA45431C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-在线咨询_语音@2x.png in Resources */,
 				99DA450D1C0C4FED00573D4C /* 3H-消息_系统消息@2x.png in Resources */,
 				99DA3EF11C0BE50300573D4C /* Images.xcassets in Resources */,
 				99DA45B01C0C4FED00573D4C /* 首页-资讯动态-医疗资讯_左键-白色@2x.png in Resources */,
+				C06B92861C525D79007660FF /* photo@2x.png in Resources */,
+				C06B92131C525D79007660FF /* VoiceSearchFeedback010@2x.png in Resources */,
+				C06B926C1C525D79007660FF /* chat_receiver_audio_playing000.png in Resources */,
 				99DA453A1C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-助理医师-咨询详情_已转至王一明-未点击@2x.png in Resources */,
 				99DA44F71C0C4FED00573D4C /* 我的-预约设置_时间@2x.png in Resources */,
+				C06B92331C525D79007660FF /* chat_location_annotation_someone.png in Resources */,
+				C06B92641C525D79007660FF /* chatBar_more_location@2x.png in Resources */,
 				99DA45321C0C4FED00573D4C /* 首页-咨询服务-未回复_未回复-未点击@2x.png in Resources */,
 				99DA45AD1C0C4FED00573D4C /* 首页-资讯动态_搜索@2x.png in Resources */,
+				C06B923B1C525D79007660FF /* faceDelete.png in Resources */,
+				C06B924B1C525D79007660FF /* chatBar_record.png in Resources */,
 				C0B6FD781C283FB9003902AB /* WeiboSDK.bundle in Resources */,
 				99DA44FA1C0C4FED00573D4C /* 我的-预约设置_电话预约-点击@2x.png in Resources */,
 				99DA45BC1C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情_右键-白色@2x.png in Resources */,
@@ -5630,7 +6259,10 @@
 				99DA45591C0C4FED00573D4C /* 首页-患者中心-患者添加请求-同意_对勾@2x.png in Resources */,
 				99DA450B1C0C4FED00573D4C /* 3H-消息_挂号预约@2x.png in Resources */,
 				99DA45461C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-在线咨询_输入框2@2x.png in Resources */,
+				C06B92201C525D79007660FF /* VoiceSearchFeedback017.png in Resources */,
 				99DA44DA1C0C4FED00573D4C /* 我的-个人中心-我的钱包_提现-未点击@2x.png in Resources */,
+				C06B92061C525D79007660FF /* VoiceSearchFeedback004.png in Resources */,
+				C06B92421C525D79007660FF /* chatBar_faceSelected@2x.png in Resources */,
 				99DA459F1C0C4FED00573D4C /* 首页-患者中心-添加患者(扫一扫)_扫一扫-未点击@2x.png in Resources */,
 				99DA45071C0C4FED00573D4C /* 3H-消息_助理添加请求@2x.png in Resources */,
 				99DA45661C0C4FED00573D4C /* 首页-患者中心-患者详情_用药提醒-点击@2x.png in Resources */,
@@ -5644,46 +6276,62 @@
 				99DA44E51C0C4FED00573D4C /* 我的-设置_左键-白色@2x.png in Resources */,
 				99DA44CE1C0C4FED00573D4C /* 3H-我的_我的钱包-点击@2x.png in Resources */,
 				99DA45631C0C4FED00573D4C /* 首页-患者中心-患者详情_左键-灰色@2x.png in Resources */,
+				C06B92021C525D79007660FF /* VoiceSearchFeedback002.png in Resources */,
 				99DA45641C0C4FED00573D4C /* 首页-患者中心-患者详情_左键-白色@2x.png in Resources */,
 				99DA45491C0C4FED00573D4C /* 首页-患者中心_3@2x.png in Resources */,
+				C06B92351C525D79007660FF /* chat_location_detail_disclosure.png in Resources */,
 				99DA456D1C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查_检查-点击@2x.png in Resources */,
+				C06B92401C525D79007660FF /* chatBar_face@2x.png in Resources */,
 				99DA45031C0C4FED00573D4C /* 我的-预约设置-电话预约_选择@2x.png in Resources */,
 				99DA45CE1C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-拒绝理由-已拒绝_左键-灰色@2x.png in Resources */,
 				99DA44D51C0C4FED00573D4C /* 3H-我的_预约设置-未点击@2x.png in Resources */,
 				99DA45781C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检验_右键-白色@2x.png in Resources */,
+				C06B92521C525D79007660FF /* chatBar_recordSelectedBg@2x.png in Resources */,
 				C0BFEB9B1C4136A1005ADC28 /* ReleaseNotes.txt in Resources */,
+				C06B926E1C525D79007660FF /* chat_receiver_audio_playing001.png in Resources */,
 				99DA44D01C0C4FED00573D4C /* 3H-我的_白色@2x.png in Resources */,
 				C09AD25B1C5132620063FD90 /* EaseUIResource.bundle in Resources */,
 				991A31231C11E7E800E0313F /* 消息点击@2x.png in Resources */,
 				99DA453B1C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-助理医师-咨询详情-助理已回复_助理王一明已回复-未点击@2x.png in Resources */,
+				C06B92591C525D79007660FF /* chatBar_colorMore_photo@2x.png in Resources */,
 				99DA452A1C0C4FED00573D4C /* 首页-咨询服务-已回复-咨询详情-查看咨询2-在线咨询_头像@2x.png in Resources */,
+				C06B926F1C525D79007660FF /* chat_receiver_audio_playing001@2x.png in Resources */,
 				99DA45441C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-在线咨询_输入@2x.png in Resources */,
+				C06B92711C525D79007660FF /* chat_receiver_audio_playing002@2x.png in Resources */,
 				99DA44CF1C0C4FED00573D4C /* 3H-我的_灰色@2x.png in Resources */,
 				C0B6FD6D1C283FB9003902AB /* UMSnsAccountViewController.xib in Resources */,
 				99DA44EE1C0C4FED00573D4C /* 我的-设置_评价软件-点击@2x.png in Resources */,
 				99DA459C1C0C4FED00573D4C /* 首页-患者中心-添加患者(扫一扫)_头像@2x.png in Resources */,
 				C0AEAED21C2EAEAE0009A3F5 /* zbar-back.png in Resources */,
+				C06B920A1C525D79007660FF /* VoiceSearchFeedback006.png in Resources */,
 				99DA451E1C0C4FED00573D4C /* 首页-助理医生_2@2x.png in Resources */,
 				99DA45281C0C4FED00573D4C /* 首页-咨询服务-已回复-咨询详情-查看咨询-2_查看咨询@2x.png in Resources */,
 				C0592D451C3177BA0071FCB5 /* 3H医生端-登录_未勾选@2x.png in Resources */,
 				99DA44F01C0C4FED00573D4C /* 我的-邀请同行_微信@2x.png in Resources */,
 				99DA44EA1C0C4FED00573D4C /* 我的-设置_清理缓存-点击@2x.png in Resources */,
+				C06B92001C525D79007660FF /* VoiceSearchFeedback001.png in Resources */,
 				99DA44F91C0C4FED00573D4C /* 我的-预约设置_电话预约-未点击@2x.png in Resources */,
+				C06B92171C525D79007660FF /* VoiceSearchFeedback012@2x.png in Resources */,
 				C0B6FD671C283FB9003902AB /* UMSCommentDetailController.xib in Resources */,
 				99DA44C61C0C4FED00573D4C /* 3H医生端-登录_新浪微博@2x.png in Resources */,
+				C06B920B1C525D79007660FF /* VoiceSearchFeedback006@2x.png in Resources */,
 				99DA45221C0C4FED00573D4C /* 首页-助理医生_6@2x.png in Resources */,
 				99DA451D1C0C4FED00573D4C /* 首页-助理医生_1@2x.png in Resources */,
 				99DA45391C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-助理医师-咨询详情_回复-点击@2x.png in Resources */,
+				C06B92471C525D79007660FF /* chatBar_more.png in Resources */,
 				99DA44D21C0C4FED00573D4C /* 3H-我的_设置-点击@2x.png in Resources */,
 				99DA44E21C0C4FED00573D4C /* 我的-设置_关于-未点击@2x.png in Resources */,
+				C06B921C1C525D79007660FF /* VoiceSearchFeedback015.png in Resources */,
 				99DA456C1C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查_检查-未点击@2x.png in Resources */,
 				99DA45231C0C4FED00573D4C /* 首页-助理医生_右键-白色@2x.png in Resources */,
 				D28D0A371C300FB2002240BC /* 绑定银行卡icon.png in Resources */,
 				99DA452C1C0C4FED00573D4C /* 首页-咨询服务-未回复_1@2x.png in Resources */,
+				C06B924F1C525D79007660FF /* chatBar_recordSelected.png in Resources */,
 				99DA457D1C0C4FED00573D4C /* 首页-患者中心-患者详情-复查提醒_右键-白色@2x.png in Resources */,
 				99DA459B1C0C4FED00573D4C /* 首页-患者中心-添加患者(扫一扫)_右键-白色@2x.png in Resources */,
 				C0B6FD681C283FB9003902AB /* UMSCommentInputController.xib in Resources */,
 				99DA45151C0C4FED00573D4C /* 3H-首页_我的-点击@2x.png in Resources */,
+				C06B922E1C525D79007660FF /* chatBar_more_face@2x.png in Resources */,
 				99DA45C71C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-同意-打电话2_外框@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
