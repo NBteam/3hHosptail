@@ -31,5 +31,5 @@
 //0 支付宝 1  微信
 @property (nonatomic,copy) void(^BuyPayBlock)(NSInteger index);
 
-- (void)configWithModel:(ShopInfoModel *)model;
+- (void)configWithModel:(id)model;
 @end

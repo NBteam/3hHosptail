@@ -551,6 +551,8 @@
 		D2CF7C2B1C22DF38008F2900 /* MyDiagnosisListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2A1C22DF38008F2900 /* MyDiagnosisListModel.m */; };
 		D2CF7C2E1C22E251008F2900 /* MyDiagnosisDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */; };
 		D2CF7C311C22E6C3008F2900 /* MyRecheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */; };
+		D2CF9DB81C564A470024E01A /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2CF9DB71C564A470024E01A /* Images-2.xcassets */; settings = {ASSET_TAGS = (); }; };
+		D2CF9DBB1C565C2A0024E01A /* WIthFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF9DBA1C565C2A0024E01A /* WIthFinishViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2CFD2D71C4E826900E3E3A6 /* libEaseMobClientSDKLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CFD2D41C4E826900E3E3A6 /* libEaseMobClientSDKLite.a */; };
 		D2CFD2D81C4E826900E3E3A6 /* EaseMob.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2CFD2D61C4E826900E3E3A6 /* EaseMob.bundle */; };
 		D2CFD2DD1C4E832400E3E3A6 /* AllOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CFD2DA1C4E832400E3E3A6 /* AllOrderViewController.m */; };
@@ -1746,6 +1748,9 @@
 		D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDiagnosisDetailModel.m; sourceTree = "<group>"; };
 		D2CF7C2F1C22E6C3008F2900 /* MyRecheckListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyRecheckListModel.h; path = 3HPatientClient/3H/Home/Model/MyRecheckListModel.h; sourceTree = SOURCE_ROOT; };
 		D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyRecheckListModel.m; path = 3HPatientClient/3H/Home/Model/MyRecheckListModel.m; sourceTree = SOURCE_ROOT; };
+		D2CF9DB71C564A470024E01A /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		D2CF9DB91C565C2A0024E01A /* WIthFinishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WIthFinishViewController.h; sourceTree = "<group>"; };
+		D2CF9DBA1C565C2A0024E01A /* WIthFinishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WIthFinishViewController.m; sourceTree = "<group>"; };
 		D2CFD26F1C4E826900E3E3A6 /* EMCallManagerCallDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallManagerCallDelegate.h; sourceTree = "<group>"; };
 		D2CFD2701C4E826900E3E3A6 /* EMCallManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallManagerDelegate.h; sourceTree = "<group>"; };
 		D2CFD2711C4E826900E3E3A6 /* EaseMob+CallService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EaseMob+CallService.h"; sourceTree = "<group>"; };
@@ -2900,6 +2905,8 @@
 				9936699C1C13FE5400B3E1C7 /* WalletViewController.m */,
 				9936699D1C13FE5400B3E1C7 /* WithdrawalViewController.h */,
 				9936699E1C13FE5400B3E1C7 /* WithdrawalViewController.m */,
+				D2CF9DB91C565C2A0024E01A /* WIthFinishViewController.h */,
+				D2CF9DBA1C565C2A0024E01A /* WIthFinishViewController.m */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -3125,6 +3132,7 @@
 				99DA3EBB1C0BE4CF00573D4C /* Main.storyboard */,
 				99DA3EBE1C0BE4CF00573D4C /* Images.xcassets */,
 				99DA3EC01C0BE4CF00573D4C /* LaunchScreen.xib */,
+				D2CF9DB71C564A470024E01A /* Images-2.xcassets */,
 				99DA3EB11C0BE4CF00573D4C /* Supporting Files */,
 			);
 			path = 3HPatientClient;
@@ -5783,6 +5791,7 @@
 				991A32701C12E2DC00E0313F /* 3H-消息-预约提醒-全选_删除@2x.png in Resources */,
 				991A32441C12E2DC00E0313F /* 我的-我要预约-预约挂号-预约挂号_头像2@2x.png in Resources */,
 				D2D0AA311C525DE2007F39F7 /* chat_sender_audio_playing_002@2x.png in Resources */,
+				D2CF9DB81C564A470024E01A /* Images-2.xcassets in Resources */,
 				99D5442C1C1563320081D1D3 /* 3H-首页_首页-点击@2x.png in Resources */,
 				D2D0A9E31C525DE2007F39F7 /* chatBar_more_faceSelected.png in Resources */,
 				D2D0AA001C525DE2007F39F7 /* chatBar_record@2x.png in Resources */,
@@ -6142,6 +6151,7 @@
 				99DA41E51C0BEB0500573D4C /* UIButton+WebCache.m in Sources */,
 				99D544941C1592C40081D1D3 /* NSDate+convenience.m in Sources */,
 				D2D3738C1C317E96005E662D /* ChangeInfoViewController.m in Sources */,
+				D2CF9DBB1C565C2A0024E01A /* WIthFinishViewController.m in Sources */,
 				993669661C132C6800B3E1C7 /* ConsultingDynamicViewController.m in Sources */,
 				9929BCA91C18160300F747CB /* ConsultingToolView.m in Sources */,
 				C05A97A81C1EAF000078433B /* HomeNewsModel.m in Sources */,
@@ -6534,6 +6544,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -6595,6 +6606,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;

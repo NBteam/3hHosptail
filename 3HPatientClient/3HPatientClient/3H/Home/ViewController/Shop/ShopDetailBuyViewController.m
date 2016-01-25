@@ -14,6 +14,7 @@
 #import "AddressListViewController.h"
 #import "ShopInfoModel.h"
 #import "AppDelegate.h"
+#import "CartListModel.h"
 
 @interface ShopDetailBuyViewController ()
 
@@ -34,10 +35,8 @@
     if (self.type == 0) {
         [self getNetWork];
     }else{
-    
+        
     }
-    
-
 }
 
 - (void)backAction{
@@ -63,39 +62,76 @@
 
 - (void)btnPayAction{
     //  [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsLogin];
-    [self getUploadNetWork];
+    if (self.type == 0) {
+        [self getUploadNetWork];
+    }else{
+        [self getUploadTypeNetWork];
+    }
+    
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        static NSString *identifier = @"ShopDetailBuyHeadTableViewCell";
-        ShopDetailBuyHeadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (cell == nil) {
-            cell = [[ShopDetailBuyHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    if (self.type == 0) {
+        if (indexPath.section == 0) {
+            static NSString *identifier = @"ShopDetailBuyHeadTableViewCell";
+            ShopDetailBuyHeadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (cell == nil) {
+                cell = [[ShopDetailBuyHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell configWithModel:self.model];
+            return cell;
+        }else if (indexPath.section == 1){
+            static NSString *identifier = @"ShopDetailBuyDescTableViewCell";
+            ShopDetailBuyDescTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (cell == nil) {
+                cell = [[ShopDetailBuyDescTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell confingWithModel:self.shopModel];
+            return cell;
+        }else{
+            static NSString *identifier = @"ShopDetailBuyPayTableViewCell";
+            ShopDetailBuyPayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (cell == nil) {
+                cell = [[ShopDetailBuyPayTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell configWithModel:self.shopModel];
+            return cell;
         }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell configWithModel:self.model];
-        return cell;
-    }else if (indexPath.section == 1){
-        static NSString *identifier = @"ShopDetailBuyDescTableViewCell";
-        ShopDetailBuyDescTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (cell == nil) {
-            cell = [[ShopDetailBuyDescTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.shopModel];
-        return cell;
     }else{
-        static NSString *identifier = @"ShopDetailBuyPayTableViewCell";
-        ShopDetailBuyPayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (cell == nil) {
-            cell = [[ShopDetailBuyPayTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        if (indexPath.section == 0) {
+            static NSString *identifier = @"ShopDetailBuyHeadTableViewCell";
+            ShopDetailBuyHeadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (cell == nil) {
+                cell = [[ShopDetailBuyHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell configWithModel:self.model];
+            return cell;
+        }else if (indexPath.section == self.infoArray.count+1){
+            static NSString *identifier = @"ShopDetailBuyPayTableViewCell";
+            ShopDetailBuyPayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (cell == nil) {
+                cell = [[ShopDetailBuyPayTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell configWithModel:self.infoArray];
+            return cell;
+        }else{
+            static NSString *identifier = @"ShopDetailBuyDescTableViewCell";
+            ShopDetailBuyDescTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (cell == nil) {
+                cell = [[ShopDetailBuyDescTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            CartListModel * model = self.infoArray[indexPath.section - 1];
+            [cell confingWithModel:model];
+            return cell;
         }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell configWithModel:self.shopModel];
-        return cell;
     }
 }
 
@@ -104,16 +140,31 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if (self.type == 0) {
+        return 3;
+    }else{
+        return self.infoArray.count + 2;
+    }
     return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        return 45;
-    }else if(indexPath.section ==1){
-        return 130;
+    if (self.type == 0 ) {
+        if (indexPath.section == 0) {
+            return 45;
+        }else if(indexPath.section ==1){
+            return 130;
+        }else{
+            return 125;
+        }
     }else{
-        return 125;
+        if (indexPath.section == 0) {
+            return 45;
+        }else if(indexPath.section == self.infoArray.count + 1){
+            return 125;
+        }else{
+            return 130;
+        }
     }
 }
 
@@ -163,7 +214,7 @@
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
                 
-                [app sendPay_demoName:@"111" price:response.dataDic[@"total"] desc:@"desc" order_sn:response.dataDic[@"order_sn"]];
+                [app sendPay_demoName:weakSelf.shopModel.name price:response.dataDic[@"total"] desc:@"desc" order_sn:response.dataDic[@"order_sn"]];
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"2"];
             }
@@ -171,7 +222,29 @@
             [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
         }];
     }
-    
+}
+- (void)getUploadTypeNetWork{
+    if (!self.model.area_ids) {
+        [self showHudAuto:@"请选择收货地址" andDuration:@"2"];
+    }else{
+        NSMutableArray * array = [NSMutableArray array];
+        for (CartListModel * model  in self.infoArray) {
+            [array addObject:model.id];
+        }
+        AppDelegate * app = [UIApplication sharedApplication].delegate;
+        WeakSelf(ShopDetailBuyViewController);
+        [[THNetWorkManager shareNetWork]getCartPostAddress_id:self.model.id cart_ids:[array componentsJoinedByString:@","] andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+            [weakSelf removeMBProgressHudInManaual];
+            if (response.responseCode == 1) {
+                
+                [app sendPay_demoName:@"3H商城" price:response.dataDic[@"total"] desc:@"desc" order_sn:response.dataDic[@"order_sn"]];
+            }else{
+                [weakSelf showHudAuto:response.message andDuration:@"2"];
+            }
+        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        }];
+    }
 }
 - (NSString *)title{
     return @"确认订单";

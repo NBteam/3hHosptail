@@ -7,7 +7,7 @@
 //
 
 #import "ShopDetailBuyDescTableViewCell.h"
-
+#import "CartListModel.h"
 @implementation ShopDetailBuyDescTableViewCell
 
 - (void)customView{
@@ -138,13 +138,25 @@
 }
 
 //赋值
-- (void)confingWithModel:(ShopInfoModel *)model{
-    self.labTitle.text = model.name;
-    [self.labTitle sizeToFit];
-    self.labNum.text = model.indexStr;
-    [self.imgLogo sd_setImageWithURL:SD_IMG(model.thumb)];
-    self.labCode.text = [ NSString stringWithFormat:@"编号:%@",model.cusid];
-    self.labPrice.text = [NSString stringWithFormat:@"价格:%@",model.price];
+- (void)confingWithModel:(id)model{
+    if ([model isKindOfClass:[ShopInfoModel class]]) {
+        ShopInfoModel * item = (ShopInfoModel *)model;
+        self.labTitle.text = item.name;
+        [self.labTitle sizeToFit];
+        self.labNum.text = item.indexStr;
+        [self.imgLogo sd_setImageWithURL:SD_IMG(item.thumb)];
+        self.labCode.text = [ NSString stringWithFormat:@"编号:%@",item.cusid];
+        self.labPrice.text = [NSString stringWithFormat:@"价格:%@",item.price];
+    }else{
+        CartListModel * item = (CartListModel *)model;
+        self.labTitle.text = item.goods_name;
+        [self.labTitle sizeToFit];
+        self.labNum.text = item.qty;
+        [self.imgLogo sd_setImageWithURL:SD_IMG(item.thumb)];
+        self.labCode.text = [ NSString stringWithFormat:@"编号:%@",item.goods_id];
+        self.labPrice.text = [NSString stringWithFormat:@"价格:%@",item.price];
+    }
+    
 }
 /*
 // Only override drawRect: if you perform custom drawing.

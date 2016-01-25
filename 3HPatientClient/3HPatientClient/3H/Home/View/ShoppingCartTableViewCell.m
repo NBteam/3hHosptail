@@ -120,6 +120,7 @@ extern BOOL edit;
             num --;
             self.labNum.text = [NSString stringWithFormat:@"%li",num];
             if (self.decreaseCartNum) {
+                self.model.qty = [NSString stringWithFormat:@"%ld",num];
                 self.decreaseCartNum();
             }
         }
@@ -146,6 +147,7 @@ extern BOOL edit;
             num ++;
             self.labNum.text = [NSString stringWithFormat:@"%li",num];
             if (self.addCartNum) {
+                self.model.qty = [NSString stringWithFormat:@"%ld",num];
                 self.addCartNum();
             }
         }
@@ -153,6 +155,7 @@ extern BOOL edit;
 }
 
 - (void)confingWithModel:(CartListModel *)model{
+    self.model = model;
     self.labTitle.text = model.goods_name;
     [self.labTitle sizeToFit];
     self.labTitle.top = self.imgLogo.top;

@@ -45,9 +45,9 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSDictionary *)dic{
+- (void)confingWithModel:(NSString *)dic{
     self.labTitle.text = @"账户余额";
-    self.labDetail.text = @"5000.00";
+    self.labDetail.text = dic;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

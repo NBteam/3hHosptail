@@ -87,7 +87,7 @@ BOOL edit;
                 NSMutableArray * array = [NSMutableArray array];
                 for (int i = 0; i< weakSelf.dataArray.count; i++) {
                     CartListModel * model = weakSelf.dataArray[i];
-                    if (model.choice) {
+                    if (model.choice ) {
                         [array addObject:model.id];
                     }
                 }
@@ -95,9 +95,13 @@ BOOL edit;
             }else{
                 ShopDetailBuyViewController * ShopDetailBuyVc = [[ShopDetailBuyViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
                 ShopDetailBuyVc.type = 1;
-                ShopDetailBuyVc.infoArray = weakSelf.dataArray;
-//                    ShopDetailBuyVc.indexStr = weakSelf.indexString;
-                    [weakSelf.navigationController pushViewController:ShopDetailBuyVc animated:YES];
+                ShopDetailBuyVc.infoArray = [NSMutableArray array];
+                for (CartListModel * model in weakSelf.dataArray) {
+                    if (model.choice) {
+                        [ShopDetailBuyVc.infoArray addObject:model];
+                    }
+                }
+                [weakSelf.navigationController pushViewController:ShopDetailBuyVc animated:YES];
             }
         }];
     }
@@ -115,10 +119,26 @@ BOOL edit;
     CartListModel * model = self.dataArray[indexPath.section];
     WeakSelf(ShoppingCartViewController);
     [cell setAddCartNum:^{
+        double subTotal = 0;
+        for (CartListModel * newModel in weakSelf.dataArray) {
+            if (newModel.choice) {
+                subTotal += [newModel.price doubleValue]*[newModel.qty doubleValue];
+            }
+            weakSelf.sum = subTotal;
+        }
+        weakSelf.toolView.labTitle.text = [NSString stringWithFormat:@"总计:%.2f元",subTotal];
         CartListModel * model1 = weakSelf.dataArray[indexPath.section];
         [weakSelf addCarNetWork:model1.goods_id];
     }];
     [cell setDecreaseCartNum:^{
+        double subTotal = 0;
+        for (CartListModel * newModel in weakSelf.dataArray) {
+            if (newModel.choice) {
+                subTotal += [newModel.price doubleValue]*[newModel.qty doubleValue];
+            }
+            weakSelf.sum = subTotal;
+        }
+        weakSelf.toolView.labTitle.text = [NSString stringWithFormat:@"总计:%.2f元",subTotal];
         CartListModel * model2 = weakSelf.dataArray[indexPath.section];
         [weakSelf decreaseCartNumNetWork:model2.goods_id];
     }];
@@ -236,6 +256,20 @@ BOOL edit;
         if (response.responseCode == 1) {
             weakSelf.toolView.labTitle.text = [NSString stringWithFormat:@"总计:0元"];
             [weakSelf getNetWork];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+- (void)butShopInfoNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(ShoppingCartViewController);
+    [[THNetWorkManager shareNetWork]getCartPostAddress_id:@"" cart_ids:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

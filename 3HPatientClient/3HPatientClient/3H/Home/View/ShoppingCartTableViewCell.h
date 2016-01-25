@@ -27,5 +27,5 @@
 @property (nonatomic, copy) void (^decreaseCartNum)(void);
 @property (nonatomic, copy) void (^btnSelectBlock)(BOOL chiose);
 - (void)confingWithModel:(CartListModel *)model;
-
+@property (nonatomic, strong) CartListModel * model;
 @end

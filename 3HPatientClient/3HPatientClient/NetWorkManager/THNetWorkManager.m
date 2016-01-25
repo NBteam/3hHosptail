@@ -673,4 +673,19 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"BuyGoodsPost",@"token":GetToken,@"id":id,@"qty":qty,@"address_id":address_id};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+#pragma mark 【鉴权】购物车——提交订单【20151226添加】
+- (void)getCartPostAddress_id:(NSString *)address_id cart_ids:(NSString *)cart_ids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"cartPost",@"token":GetToken,@"cart_ids":cart_ids,@"address_id":address_id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark 【鉴权】购物车——提交订单【20151226添加】
+- (void)getPostChargeTotal:(NSString *)total andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"postCharge",@"token":GetToken,@"total":total};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark  获取帐号余额【20160105更新】
+- (void)getMyAccountCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMyAccount",@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

@@ -283,5 +283,12 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark【鉴权】直接购买商品——提交订单【20151208更新】
 - (void)getBuyGoodsPostId:(NSString *)id qty:(NSString *)qty address_id:(NSString *)address_id	 andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 【鉴权】购物车——提交订单【20151226添加】
+- (void)getCartPostAddress_id:(NSString *)address_id cart_ids:(NSString *)cart_ids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 【鉴权】充值——提交订单【20151223添加】
+- (void)getPostChargeTotal:(NSString *)total andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark  获取帐号余额【20160105更新】
+- (void)getMyAccountCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 @end

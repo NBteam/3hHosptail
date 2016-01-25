@@ -7,7 +7,7 @@
 //
 
 #import "ShopDetailBuyPayTableViewCell.h"
-
+#import "CartListModel.h"
 @implementation ShopDetailBuyPayTableViewCell
 
 
@@ -127,8 +127,18 @@
         self.BuyPayBlock(1);
     }
 }
-- (void)configWithModel:(ShopInfoModel *)model{
-    self.labTitle.text = [NSString stringWithFormat:@"总价:%.2f元",[model.price doubleValue]*[model.indexStr doubleValue]];
+- (void)configWithModel:(id)model{
+    if ([model isKindOfClass:[ShopInfoModel class]]) {
+        ShopInfoModel * item = (ShopInfoModel *)model;
+        self.labTitle.text = [NSString stringWithFormat:@"总价:%.2f元",[item.price doubleValue]*[item.indexStr doubleValue]];
+    }else{
+        double price = 0;
+        for (CartListModel * item in model) {
+            price += [item.price doubleValue]*[item.qty doubleValue];
+        }
+        self.labTitle.text = [NSString stringWithFormat:@"总价:%.2f元",price];
+    }
+    
 }
 /*
 // Only override drawRect: if you perform custom drawing.

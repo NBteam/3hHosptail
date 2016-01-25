@@ -30,7 +30,7 @@
 @property (nonatomic, strong) UIButton *btnAdd;
 
 //赋值
-- (void)confingWithModel:(ShopInfoModel *)model;
+- (void)confingWithModel:(id)model;
 
 
 @end

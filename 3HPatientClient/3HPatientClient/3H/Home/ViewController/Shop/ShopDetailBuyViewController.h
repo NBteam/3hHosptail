@@ -11,6 +11,6 @@
 @interface ShopDetailBuyViewController : BaseTableViewController
 @property (nonatomic, copy) NSString * id;
 @property (nonatomic, copy) NSString * indexStr;
-@property (nonatomic, retain) NSArray * infoArray;
+@property (nonatomic, retain) NSMutableArray * infoArray;
 @property (nonatomic, assign) NSInteger type;//0 购物车  1 直接购买
 @end

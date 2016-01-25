@@ -35,7 +35,7 @@
 //添加医生
 #import "QrCodeViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController ()<IChatManagerDelegate, EMCallManagerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *newsArray;
 @end
@@ -49,9 +49,41 @@
     //
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页+"];
     [self getHomeData];
+    [self registerNotifications];
+    [self setupUnreadMessageCount];
     NSLog(@"MINGZI %@",self.user.sex);
 }
+#pragma mark - private
 
+-(void)registerNotifications
+{
+    [self unregisterNotifications];
+    
+    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
+}
+
+-(void)unregisterNotifications
+{
+    [[EaseMob sharedInstance].chatManager removeDelegate:self];
+}
+// 未读消息数量变化回调
+-(void)didUnreadMessagesCountChanged
+{
+    [self setupUnreadMessageCount];
+}
+// 统计未读消息数
+-(void)setupUnreadMessageCount
+{
+    NSArray *conversations = [[[EaseMob sharedInstance] chatManager] conversations];
+    NSInteger unreadCount = 0;
+    for (EMConversation *conversation in conversations) {
+        unreadCount += conversation.unreadMessagesCount;
+    }
+
+    NSLog(@"~~%ld",unreadCount);
+    UIApplication *application = [UIApplication sharedApplication];
+    [application setApplicationIconBadgeNumber:unreadCount];
+}
 - (void)addAction{
     QrCodeViewController *addDoctorVc = [[QrCodeViewController alloc] init];
     addDoctorVc.hidesBottomBarWhenPushed = YES;

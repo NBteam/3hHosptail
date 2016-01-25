@@ -15,7 +15,7 @@
 #import "WithdrawalViewController.h"
 
 @interface WalletViewController ()
-
+@property (nonatomic, copy) NSString * priceStr;
 @end
 
 @implementation WalletViewController
@@ -24,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    [self getNetWork];
 }
 
 - (void)backAction{
@@ -39,7 +40,7 @@
             cell = [[WalletHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:nil];
+        [cell confingWithModel:self.priceStr];
         return cell;
     }else{
         static NSString *identifier = @"WalletTableViewCell";
@@ -90,6 +91,21 @@
         WithdrawalViewController *withdrawalVc = [[WithdrawalViewController alloc] init];
         [self.navigationController pushViewController:withdrawalVc animated:YES];
     }
+}
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(WalletViewController);
+    [[THNetWorkManager shareNetWork]getMyAccountCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            weakSelf.priceStr = response.dataDic[@"total"];
+            [weakSelf.tableView reloadData];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
 }
 - (NSString *)title{
     return @"我的钱包";
