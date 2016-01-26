@@ -6,8 +6,8 @@
 //  Copyright © 2016年 fyq. All rights reserved.
 //
 
-#import "MessageModel.h"
+#import "MessageModels.h"
 
-@implementation MessageModel
+@implementation MessageModels
 
 @end

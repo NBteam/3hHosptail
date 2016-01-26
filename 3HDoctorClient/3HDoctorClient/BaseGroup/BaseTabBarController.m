@@ -16,6 +16,8 @@
 
 @property (nonatomic, retain) UIView *tabBarBackView;
 
+@property (nonatomic, strong) BaseNavigationController *naMessage;
+
 @end
 
 @implementation BaseTabBarController
@@ -25,6 +27,23 @@
     // Do any additional setup after loading the view.
     
     [self loadViewController];
+    
+    
+}
+
+- (void)loadData{
+    WeakSelf(BaseTabBarController);
+    [[THNetWorkManager shareNetWork] getMsgNumandCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        NSLog(@"---%@",response.dataDic);
+        if (response.responseCode == 1) {
+            weakSelf.naMessage.tabBarItem.badgeValue = [NSString stringWithFormat:@"%@",response.dataDic[@"msg_num"]];
+            
+        }else{
+                   }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        
+    } ];
 }
 
 - (void)loadViewController{
@@ -36,9 +55,10 @@
     
     MessageViewController *messageVc = [[MessageViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     messageVc.title = @"消息";
-    BaseNavigationController *naMessage = [[BaseNavigationController alloc] initWithRootViewController:messageVc];
-    naMessage.tabBarItem.image = [[UIImage imageNamed:@"消息非点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    naMessage.tabBarItem.selectedImage = [[UIImage imageNamed:@"消息点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    self.naMessage = [[BaseNavigationController alloc] initWithRootViewController:messageVc];
+    self.naMessage.tabBarItem.image = [[UIImage imageNamed:@"消息非点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.naMessage.tabBarItem.selectedImage = [[UIImage imageNamed:@"消息点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     MineViewController *mineVc = [[MineViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     mineVc.title = @"我的";
@@ -50,9 +70,9 @@
     
     [self.tabBar insertSubview:self.tabBarBackView atIndex:0];
     self.tabBar.opaque = YES;
-    self.viewControllers = @[naHome,naMessage,naMine];
+    self.viewControllers = @[naHome,self.naMessage,naMine];
     
-
+    [self loadData];
 }
 
 - (UIView *)tabBarBackView{

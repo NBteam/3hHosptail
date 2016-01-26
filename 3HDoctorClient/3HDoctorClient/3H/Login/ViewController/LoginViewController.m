@@ -141,7 +141,9 @@
 - (UITextField *)txtUserName{
     if (!_txtUserName) {
         _txtUserName = [[UITextField alloc] initWithFrame:CGRectMake(15, self.viewBlue.bottom +10, DeviceSize.width -30, 30)];
-        _txtUserName.text = @"15313371669";
+        if ([SGSaveFile getObjectFromSystemWithKey:RememberMe]&&[[SGSaveFile getObjectFromSystemWithKey:UserName] length]>0) {
+            _txtUserName.text = [SGSaveFile getObjectFromSystemWithKey:UserName];
+        }
         //是否纠错
         _txtUserName.autocorrectionType = UITextAutocorrectionTypeNo;
         _txtUserName.keyboardType = UIKeyboardTypeNumberPad;
@@ -163,7 +165,9 @@
 - (UITextField *)txtPassWord{
     if (!_txtPassWord) {
         _txtPassWord = [[UITextField alloc] initWithFrame:CGRectMake(15, self.labLineUserName.bottom +10, DeviceSize.width -30, 30)];
-        _txtPassWord.text = @"123456";
+        if ([SGSaveFile getObjectFromSystemWithKey:RememberMe] &&[[SGSaveFile getObjectFromSystemWithKey:UserPassword] length]>0) {
+            _txtPassWord.text = [SGSaveFile getObjectFromSystemWithKey:UserPassword];
+        }
         //是否纠错
         _txtPassWord.autocorrectionType = UITextAutocorrectionTypeNo;
         _txtPassWord.secureTextEntry = YES;
@@ -193,15 +197,30 @@
         [_btnRemember setTitleColor:[UIColor colorWithHEX:0x888888] forState:UIControlStateNormal];
         [_btnRemember addTarget:self action:@selector(btnRememberClick:) forControlEvents:UIControlEventTouchUpInside];
         _btnRemember.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        
+        if ([SGSaveFile getObjectFromSystemWithKey:RememberMe]) {
+            _btnRemember.selected = YES;
+        }
     }
     return _btnRemember;
 }
 
 - (void)btnRememberClick:(UIButton *)button{
-    if (button.selected) {
-        button.selected = NO;
+    if (self.txtUserName.text.length && self.txtPassWord.text) {
+        if (button.selected) {
+            button.selected = NO;
+            [SGSaveFile removeObjectFromSystemWithKey:RememberMe];
+            [SGSaveFile removeObjectFromSystemWithKey:UserName];
+            [SGSaveFile removeObjectFromSystemWithKey:UserPassword];
+        }else{
+            button.selected = YES;
+            [SGSaveFile saveObjectToSystem:RememberMe forKey:RememberMe];
+            [SGSaveFile saveObjectToSystem:self.txtUserName.text forKey:UserName];
+            [SGSaveFile saveObjectToSystem:self.txtPassWord.text forKey:UserPassword];
+            
+        }
     }else{
-        button.selected = YES;
+        [self showHudAuto:@"请输入手机号或者密码" andDuration:@"2"];
     }
 }
 

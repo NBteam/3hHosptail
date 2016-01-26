@@ -103,7 +103,6 @@
 		99DA3EEC1C0BE50300573D4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA3EEB1C0BE50300573D4C /* ViewController.m */; };
 		99DA3EEF1C0BE50300573D4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DA3EED1C0BE50300573D4C /* Main.storyboard */; };
 		99DA3EF11C0BE50300573D4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99DA3EF01C0BE50300573D4C /* Images.xcassets */; };
-		99DA3EF41C0BE50300573D4C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99DA3EF21C0BE50300573D4C /* LaunchScreen.xib */; };
 		99DA3F001C0BE50300573D4C /* _HDoctorClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA3EFF1C0BE50300573D4C /* _HDoctorClientTests.m */; };
 		99DA3FF01C0BE59A00573D4C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA3F0C1C0BE59A00573D4C /* AFHTTPRequestOperation.m */; };
 		99DA3FF11C0BE59A00573D4C /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA3F0E1C0BE59A00573D4C /* AFHTTPRequestOperationManager.m */; };
@@ -824,6 +823,11 @@
 		C09AD2D31C5134980063FD90 /* EaseMob.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C09AD2D11C5134980063FD90 /* EaseMob.bundle */; };
 		C0A0111D1C268E0F00A8E476 /* PhoneAppointSetPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A0111C1C268E0F00A8E476 /* PhoneAppointSetPriceViewController.m */; };
 		C0A011201C2695EE00A8E476 /* PhoneAppointTDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A0111F1C2695EE00A8E476 /* PhoneAppointTDetailModel.m */; };
+		C0ABB9711C57B4AC00999A5B /* MessageHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0ABB9701C57B4AC00999A5B /* MessageHomeModel.m */; };
+		C0AE3DA91C565200006D22A8 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AE3DA81C565200006D22A8 /* GuideViewController.m */; };
+		C0AE3DAD1C5652A5006D22A8 /* 3H医生端端-引导页1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0AE3DAB1C5652A5006D22A8 /* 3H医生端端-引导页1.jpg */; };
+		C0AE3DAE1C5652A5006D22A8 /* 3H医生端端-引导页2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0AE3DAC1C5652A5006D22A8 /* 3H医生端端-引导页2.jpg */; };
+		C0AE3DB41C56632F006D22A8 /* MessageModels.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AE3DB31C56632F006D22A8 /* MessageModels.m */; };
 		C0AEAEA21C2E8B810009A3F5 /* WithdrawalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AEAEA11C2E8B810009A3F5 /* WithdrawalTableViewCell.m */; };
 		C0AEAEA51C2E8F070009A3F5 /* AddCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AEAEA41C2E8F070009A3F5 /* AddCardsViewController.m */; };
 		C0AEAEA81C2E93AF0009A3F5 /* AddCardsResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AEAEA71C2E93AF0009A3F5 /* AddCardsResultViewController.m */; };
@@ -1109,7 +1113,6 @@
 		99DA3EEB1C0BE50300573D4C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		99DA3EEE1C0BE50300573D4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DA3EF01C0BE50300573D4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		99DA3EF31C0BE50300573D4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		99DA3EF91C0BE50300573D4C /* 3HDoctorClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 3HDoctorClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DA3EFE1C0BE50300573D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99DA3EFF1C0BE50300573D4C /* _HDoctorClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _HDoctorClientTests.m; sourceTree = "<group>"; };
@@ -2232,6 +2235,14 @@
 		C0A0111C1C268E0F00A8E476 /* PhoneAppointSetPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointSetPriceViewController.m; sourceTree = "<group>"; };
 		C0A0111E1C2695EE00A8E476 /* PhoneAppointTDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAppointTDetailModel.h; sourceTree = "<group>"; };
 		C0A0111F1C2695EE00A8E476 /* PhoneAppointTDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAppointTDetailModel.m; sourceTree = "<group>"; };
+		C0ABB96F1C57B4AC00999A5B /* MessageHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageHomeModel.h; sourceTree = "<group>"; };
+		C0ABB9701C57B4AC00999A5B /* MessageHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageHomeModel.m; sourceTree = "<group>"; };
+		C0AE3DA71C565200006D22A8 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
+		C0AE3DA81C565200006D22A8 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		C0AE3DAB1C5652A5006D22A8 /* 3H医生端端-引导页1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "3H医生端端-引导页1.jpg"; sourceTree = "<group>"; };
+		C0AE3DAC1C5652A5006D22A8 /* 3H医生端端-引导页2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "3H医生端端-引导页2.jpg"; sourceTree = "<group>"; };
+		C0AE3DB21C56632F006D22A8 /* MessageModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModels.h; sourceTree = "<group>"; };
+		C0AE3DB31C56632F006D22A8 /* MessageModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModels.m; sourceTree = "<group>"; };
 		C0AEAEA01C2E8B810009A3F5 /* WithdrawalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawalTableViewCell.h; sourceTree = "<group>"; };
 		C0AEAEA11C2E8B810009A3F5 /* WithdrawalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawalTableViewCell.m; sourceTree = "<group>"; };
 		C0AEAEA31C2E8F070009A3F5 /* AddCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCardsViewController.h; sourceTree = "<group>"; };
@@ -2778,7 +2789,6 @@
 				99DA3EEB1C0BE50300573D4C /* ViewController.m */,
 				99DA3EED1C0BE50300573D4C /* Main.storyboard */,
 				99DA3EF01C0BE50300573D4C /* Images.xcassets */,
-				99DA3EF21C0BE50300573D4C /* LaunchScreen.xib */,
 				99DA3EE31C0BE50300573D4C /* Supporting Files */,
 			);
 			path = 3HDoctorClient;
@@ -3192,6 +3202,7 @@
 		99DA40591C0BE84D00573D4C /* 3H */ = {
 			isa = PBXGroup;
 			children = (
+				C0AE3DA61C5651DD006D22A8 /* Guide */,
 				99DA43451C0BF3E500573D4C /* Login */,
 				99DA434B1C0BF3E500573D4C /* Register */,
 				99DA405E1C0BE84D00573D4C /* Home */,
@@ -3342,18 +3353,10 @@
 		99DA40621C0BE84D00573D4C /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				99DA40631C0BE84D00573D4C /* Model */,
 				99DA40641C0BE84D00573D4C /* View */,
 				99DA40651C0BE84D00573D4C /* ViewController */,
 			);
 			path = Message;
-			sourceTree = "<group>";
-		};
-		99DA40631C0BE84D00573D4C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		99DA40641C0BE84D00573D4C /* View */ = {
@@ -3361,6 +3364,10 @@
 			children = (
 				99D141C81C0D42DD002DA3AD /* MessageTableViewCell.h */,
 				99D141C91C0D42DD002DA3AD /* MessageTableViewCell.m */,
+				C0AE3DB21C56632F006D22A8 /* MessageModels.h */,
+				C0AE3DB31C56632F006D22A8 /* MessageModels.m */,
+				C0ABB96F1C57B4AC00999A5B /* MessageHomeModel.h */,
+				C0ABB9701C57B4AC00999A5B /* MessageHomeModel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3468,6 +3475,7 @@
 		99DA40771C0BE85600573D4C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C0AE3DAA1C5652A5006D22A8 /* 医生端引导 */,
 				C06B916A1C525D79007660FF /* HXImages */,
 				99DA437C1C0C4FED00573D4C /* 3H医生端切图 */,
 			);
@@ -5454,6 +5462,24 @@
 			path = resources;
 			sourceTree = "<group>";
 		};
+		C0AE3DA61C5651DD006D22A8 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				C0AE3DA71C565200006D22A8 /* GuideViewController.h */,
+				C0AE3DA81C565200006D22A8 /* GuideViewController.m */,
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
+		C0AE3DAA1C5652A5006D22A8 /* 医生端引导 */ = {
+			isa = PBXGroup;
+			children = (
+				C0AE3DAB1C5652A5006D22A8 /* 3H医生端端-引导页1.jpg */,
+				C0AE3DAC1C5652A5006D22A8 /* 3H医生端端-引导页2.jpg */,
+			);
+			path = "医生端引导";
+			sourceTree = "<group>";
+		};
 		C0AEAEB41C2EAEAE0009A3F5 /* ZBarSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -5934,6 +5960,7 @@
 				99DA45521C0C4FED00573D4C /* 首页-患者中心-患者添加请求_同意-未点击@2x.png in Resources */,
 				C06B923E1C525D79007660FF /* messageSendFail@2x.png in Resources */,
 				99DA455B1C0C4FED00573D4C /* 首页-患者中心-患者添加请求-拒绝_头像@2x.png in Resources */,
+				C0AE3DAD1C5652A5006D22A8 /* 3H医生端端-引导页1.jpg in Resources */,
 				C06B921E1C525D79007660FF /* VoiceSearchFeedback016.png in Resources */,
 				99DA44D41C0C4FED00573D4C /* 3H-我的_邀请同行-点击@2x.png in Resources */,
 				99DA44E01C0C4FED00573D4C /* 我的-个人资料_头像@2x.png in Resources */,
@@ -5980,6 +6007,7 @@
 				99DA44C41C0C4FED00573D4C /* 3H医生端-登录_QQ@2x.png in Resources */,
 				C06B92311C525D79007660FF /* chatBar_textBg.png in Resources */,
 				99DA45601C0C4FED00573D4C /* 首页-患者中心-患者详情_复查提醒-未点击@2x.png in Resources */,
+				C0AE3DAE1C5652A5006D22A8 /* 3H医生端端-引导页2.jpg in Resources */,
 				99DA45891C0C4FED00573D4C /* 首页-患者中心-患者详情-用药提醒_添加药物@2x.png in Resources */,
 				99DA45451C0C4FED00573D4C /* 首页-咨询服务-未回复-咨询详情-在线咨询_输入框1@2x.png in Resources */,
 				C06B92831C525D79007660FF /* chat_sender_bg@2x.png in Resources */,
@@ -6142,7 +6170,6 @@
 				99DA45291C0C4FED00573D4C /* 首页-咨询服务-已回复-咨询详情-查看咨询1_查看咨询.png in Resources */,
 				99DA45CB1C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-拒绝理由_文本框@2x.png in Resources */,
 				C06B924A1C525D79007660FF /* chatBar_moreSelected@2x.png in Resources */,
-				99DA3EF41C0BE50300573D4C /* LaunchScreen.xib in Resources */,
 				C0B6FD7B1C283FB9003902AB /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				99DA457A1C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检验_检查-未点击@2x.png in Resources */,
 				99DA44CB1C0C4FED00573D4C /* 3H-我的_头像@2x.png in Resources */,
@@ -6379,6 +6406,7 @@
 				99DA40111C0BE59A00573D4C /* EXTScope.m in Sources */,
 				99D6EE801C0EC0F400CB1829 /* PatientDetailViewController.m in Sources */,
 				99DA3EEC1C0BE50300573D4C /* ViewController.m in Sources */,
+				C0AE3DA91C565200006D22A8 /* GuideViewController.m in Sources */,
 				C09AD22A1C5132620063FD90 /* SRSlimeView.m in Sources */,
 				99D6EE941C0ECC5900CB1829 /* ReviewAddViewController.m in Sources */,
 				99D1422A1C0D957A002DA3AD /* ConsultingServicesTopView.m in Sources */,
@@ -6575,6 +6603,7 @@
 				C0CAB52D1C29A4DE008EDEE5 /* PhoneDetailModel.m in Sources */,
 				99DA43621C0C23A600573D4C /* PerfectInformationTableViewCell.m in Sources */,
 				C09AD1FC1C5132620063FD90 /* Emoji.m in Sources */,
+				C0AE3DB41C56632F006D22A8 /* MessageModels.m in Sources */,
 				D28D0A351C2FEC83002240BC /* ConsultingUnFinishedModel.m in Sources */,
 				99D142301C0D962B002DA3AD /* ConsultingUnFinishedViewController.m in Sources */,
 				C082449E1C205BC400783FD5 /* CheckDataDetailHeadTableViewCell.m in Sources */,
@@ -6646,6 +6675,7 @@
 				99DA3FF61C0BE59A00573D4C /* AFURLRequestSerialization.m in Sources */,
 				99D6EEA01C0EDA1C00CB1829 /* ReviewTableViewCell.m in Sources */,
 				99DA404B1C0BE59A00573D4C /* UIView+WebCacheOperation.m in Sources */,
+				C0ABB9711C57B4AC00999A5B /* MessageHomeModel.m in Sources */,
 				99DA43711C0C383500573D4C /* WhatInvitationViewController.m in Sources */,
 				99D1424E1C0DA3CD002DA3AD /* ConsultingUnFinishedDetailToolView.m in Sources */,
 				C0BFEB901C4105FB005ADC28 /* BankTypeTableViewCell.m in Sources */,
@@ -6787,14 +6817,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		99DA3EF21C0BE50300573D4C /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				99DA3EF31C0BE50300573D4C /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
 		C0B6FD0C1C283FB9003902AB /* UMSocialLocalizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -6891,6 +6913,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -6937,6 +6960,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;

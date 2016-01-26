@@ -10,6 +10,8 @@
 #import "BaseTabBarController.h"
 #import "BaseNavigationController.h"
 #import "LoginViewController.h"
+//引导页
+#import "GuideViewController.h"
 //友盟
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
@@ -39,7 +41,12 @@
     [self uploadDeviceVersion];
     [self.window makeKeyAndVisible];
     [self setAppStyle];
-    [self setWindowRootViewControllerIsLogin];
+    //是否是第一次登陆
+    if ([SGSaveFile getObjectFromSystemWithKey:IsFirst]) {
+        [self setWindowRootViewControllerIsLogin];
+    }else{
+        [self setWindowRootViewControllerIsGuide];
+    }
     //友盟
     [self setUM];
     //信鸽推送
@@ -301,6 +308,10 @@
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
         
     }];
+}
+
+- (void)setWindowRootViewControllerIsGuide{
+    [self restoreRootViewController:[[GuideViewController alloc] init]];
 }
 
 - (void)setWindowRootViewControllerIsTabBar{

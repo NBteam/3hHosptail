@@ -8,8 +8,18 @@
 
 #import "MessageViewController.h"
 #import "MessageTableViewCell.h"
+#import "MessageModels.h"
+#import "MessageHomeModel.h"
+//患者中心
+#import "PatientCenterViewController.h"
+//咨询服务
+//#import "ConsultingServicesViewController.h"
+#import "ConsultingMainViewController.h"
+//预约管理
+#import "BookManagementViewController.h"
 @interface MessageViewController ()
 
+@property (nonatomic, strong) NSMutableDictionary *dataDict;
 @end
 
 @implementation MessageViewController
@@ -17,7 +27,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.dataDict = [[NSMutableDictionary alloc] init];
+    [self sgetMsgHome];
+   
+    [self readAllMessage];
     
+}
+
+-(void)readAllMessage{
+    [self.dataArray removeAllObjects];
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(MessageViewController);
+    [[THNetWorkManager shareNetWork] readAllMsgandCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            
+             weakSelf.navigationController.tabBarItem.badgeValue = nil;
+        }else{
+           // [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+       // [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+}
+
+- (void)sgetMsgHome{
+    [self.dataDict removeAllObjects];
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(MessageViewController);
+
+    [[THNetWorkManager shareNetWork] sgetMsgHomeandCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            weakSelf.dataDict = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
     
 }
 
@@ -30,7 +84,7 @@
         cell = [[MessageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:indexPath.section];
+    [cell confingWithDict:self.dataDict Index:indexPath.section];
     return cell;
 }
 
@@ -43,7 +97,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 6;
+    return self.dataDict.count / 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -52,6 +106,22 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return  [[UIView alloc] init];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0 || indexPath.section == 1) {
+        BookManagementViewController *bookVc = [[BookManagementViewController alloc] init];
+        bookVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:bookVc animated:YES];
+    }else if(indexPath.section == 2){
+        ConsultingMainViewController *consultVc = [[ConsultingMainViewController alloc] init];
+        consultVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:consultVc animated:YES];
+    }else if(indexPath.section == 3){
+        PatientCenterViewController *patientVc = [[PatientCenterViewController alloc] init];
+        patientVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:patientVc animated:YES];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

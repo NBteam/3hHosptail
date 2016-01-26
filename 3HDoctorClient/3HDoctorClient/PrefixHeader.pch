@@ -81,6 +81,12 @@
 //  document路径
 #define DocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
 #define UserPath [DocumentPath stringByAppendingPathComponent:@"3HDoctorClient/THUser"]
+//是否第一次
+#define IsFirst @"3H_IsFirst"
+//记住我
+#define RememberMe @"3H_RememberMe"
+#define UserName @"3H_UserName"
+#define UserPassword @"3H_UserPassword"
 
 
 #endif

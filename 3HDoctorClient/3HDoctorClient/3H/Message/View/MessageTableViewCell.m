@@ -57,24 +57,24 @@
 
 //赋值
 
-- (void)confingWithModel:(NSInteger )model{
+- (void)confingWithDict:(NSMutableDictionary *)dict Index:(NSInteger)index{
     NSArray *arrImg = @[@"3H-消息_挂号预约",
                         @"3H-消息_电话预约",
                         @"3H-消息_咨询信息",
                         @"3H-消息_患者添加请求",
-                        @"3H-消息_助理添加请求",
                         @"3H-消息_系统消息"];
+    
+    NSArray *arr = @[@"guahao_msg_info",@"otel_msg_info",@"chat_msg_info",@"user_add_msg_info",@"sys_msg_info"];
     
     NSArray *arrTitle = @[@"挂号预约",
                           @"电话预约",
                           @"咨询信息",
-                          @"患者添加请求",
-                          @"助理添加请求",
-                          @"3H-消息_系统消息"];
+                          @"添加请求",
+                          @"系统消息"];
     
-    self.imgLogo.image = [UIImage imageNamed:arrImg[model]];
-    self.labTitle.text = arrTitle[model];
-    self.labDetail.text = @"患者添加请求患者添加请求患者添加请求";
+    self.imgLogo.image = [UIImage imageNamed:arrImg[index]];
+    self.labTitle.text = arrTitle[index];
+    self.labDetail.text = dict[arr[index]];
 }
 
 /*

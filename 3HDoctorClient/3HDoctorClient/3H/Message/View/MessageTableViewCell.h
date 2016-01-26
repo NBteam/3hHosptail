@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-
+#import "MessageModels.h"
 @interface MessageTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *imgLogo;
@@ -19,5 +19,5 @@
 @property (nonatomic, strong) UIImageView *imgArrow;
 //赋值
 
-- (void)confingWithModel:(NSInteger )model;
+- (void)confingWithDict:(NSMutableDictionary *)dict Index:(NSInteger)index;
 @end
