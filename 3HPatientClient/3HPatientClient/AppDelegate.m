@@ -5,7 +5,7 @@
 //  Created by 范英强 on 15/11/30.
 //  Copyright (c) 2015年 fyq. All rights reserved.
 //
-
+NSInteger payIndex;// 1 充值  2 购物
 #import "AppDelegate.h"
 
 #import "BaseTabBarController.h"
@@ -313,8 +313,8 @@
     order.productName = name; //商品标题
     order.productDescription = desc; //商品描述
     order.amount = price; //商品价格
-    order.notifyURL =  @"http://123.57.231.12:84/notice_alipay.php"; //回调URL
-    //    http://123.57.231.12:84/notice_alipay.php
+    order.notifyURL =  @"http://123.57.231.12:85/notice_alipay.php"; //回调URL
+//        http://123.57.231.12:85/notice_alipay.php
     order.service = @"mobile.securitypay.pay";
     order.paymentType = @"1";
     order.inputCharset = @"utf-8";
@@ -322,7 +322,7 @@
     order.showUrl = @"m.alipay.com"; //商品链接
     
     //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
-    NSString *appScheme = @"alisdkdemo1";
+    NSString *appScheme = @"alisdkdemo";
     
     //将商品信息拼接成字符串
     NSString *orderSpec = [order description];
@@ -352,12 +352,16 @@
     if ([url.host isEqualToString:@"platformapi"]||[url.host isEqualToString:@"safepay"]) {
         if ([url.host isEqualToString:@"safepay"]) {
             [[AlipaySDK defaultService] processOderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-                NSLog(@"result = %@",resultDic);
+                NSLog(@"result1 = %@",resultDic);
+                if (payIndex == 1) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"CZ" object:nil];    
+                }
+                
             }];
         }
         if ([url.host isEqualToString:@"platformapi"]){//支付宝钱包快登授权返回authCode
             [[AlipaySDK defaultService] processAuthResult:url standbyCallback:^(NSDictionary *resultDic) {
-                NSLog(@"result = %@",resultDic);
+                NSLog(@"result2 = %@",resultDic);
             }];
         }
         return YES;

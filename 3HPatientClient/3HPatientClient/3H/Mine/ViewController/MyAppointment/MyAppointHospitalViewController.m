@@ -8,8 +8,10 @@
 
 #import "MyAppointHospitalViewController.h"
 #import "MyAppointHospitalTableViewCell.h"
-@interface MyAppointHospitalViewController ()
+#import "HospitalModel.h"
 
+@interface MyAppointHospitalViewController ()
+@property (nonatomic,assign) CGFloat cellHeight;
 @end
 
 @implementation MyAppointHospitalViewController
@@ -17,8 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.isOpenFooterRefresh = YES;
+    self.isOpenHeaderRefresh = YES;
     self.tableView.separatorColor = [UIColor clearColor];
     self.tableView.height = self.tableView.height - 44;
+    [self getNetWork];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -30,16 +35,17 @@
     }
     cell.backgroundColor = self.view.backgroundColor;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:indexPath.row];
+    HospitalModel * model = self.dataArray[indexPath.row];
+    self.cellHeight = [cell confingWithModel:model];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return self.dataArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 155;
+    return self.cellHeight;
 }
 
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -52,6 +58,48 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return  [[UIView alloc] init];
+}
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(MyAppointHospitalViewController);
+    [[THNetWorkManager shareNetWork]getMyOrderHospitalListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            if (weakSelf.pageNO == 1) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            for (NSDictionary * dic in response.dataDic[@"list"]) {
+                HospitalModel * model = [response thParseDataFromDic:dic andModel:[HospitalModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
+            [weakSelf.tableView reloadData];
+            //  结束头部刷新
+            [weakSelf.tableView.header endRefreshing];
+            //  结束尾部刷新
+            [weakSelf.tableView.footer endRefreshing];
+        }else{
+            //  结束头部刷新
+            [weakSelf.tableView.header endRefreshing];
+            //  结束尾部刷新
+            [weakSelf.tableView.footer endRefreshing];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    [self getNetWork];
+}
+- (void)footerRequestWithData
+{
+    [self getNetWork];
 }
 
 - (void)didReceiveMemoryWarning {

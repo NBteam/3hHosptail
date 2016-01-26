@@ -548,6 +548,7 @@
 		D2CED19D1C26463D004FAB33 /* CityListFirstLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CED19A1C26463D004FAB33 /* CityListFirstLevelViewController.m */; };
 		D2CED19E1C26463D004FAB33 /* CityListSecondLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CED19C1C26463D004FAB33 /* CityListSecondLevelViewController.m */; };
 		D2CED1A11C2646C1004FAB33 /* CityListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CED1A01C2646C1004FAB33 /* CityListModel.m */; };
+		D2CF31D31C57C98E00325491 /* HospitalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF31D21C57C98E00325491 /* HospitalModel.m */; settings = {ASSET_TAGS = (); }; };
 		D2CF7C2B1C22DF38008F2900 /* MyDiagnosisListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2A1C22DF38008F2900 /* MyDiagnosisListModel.m */; };
 		D2CF7C2E1C22E251008F2900 /* MyDiagnosisDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */; };
 		D2CF7C311C22E6C3008F2900 /* MyRecheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */; };
@@ -1742,6 +1743,8 @@
 		D2CED19C1C26463D004FAB33 /* CityListSecondLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListSecondLevelViewController.m; sourceTree = "<group>"; };
 		D2CED19F1C2646C1004FAB33 /* CityListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListModel.h; sourceTree = "<group>"; };
 		D2CED1A01C2646C1004FAB33 /* CityListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListModel.m; sourceTree = "<group>"; };
+		D2CF31D11C57C98E00325491 /* HospitalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HospitalModel.h; sourceTree = "<group>"; };
+		D2CF31D21C57C98E00325491 /* HospitalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HospitalModel.m; sourceTree = "<group>"; };
 		D2CF7C291C22DF38008F2900 /* MyDiagnosisListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDiagnosisListModel.h; sourceTree = "<group>"; };
 		D2CF7C2A1C22DF38008F2900 /* MyDiagnosisListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDiagnosisListModel.m; sourceTree = "<group>"; };
 		D2CF7C2C1C22E251008F2900 /* MyDiagnosisDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDiagnosisDetailModel.h; sourceTree = "<group>"; };
@@ -5391,6 +5394,8 @@
 				D2CFD2E01C4E836A00E3E3A6 /* OrderListNewModel.m */,
 				D2CFD2E11C4E836A00E3E3A6 /* OrderModel.h */,
 				D2CFD2E21C4E836A00E3E3A6 /* OrderModel.m */,
+				D2CF31D11C57C98E00325491 /* HospitalModel.h */,
+				D2CF31D21C57C98E00325491 /* HospitalModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6273,6 +6278,7 @@
 				993669BA1C14046F00B3E1C7 /* MyArchivesViewController.m in Sources */,
 				D2D0C72F1C511D9200B0C853 /* PSTCollectionViewLayout.m in Sources */,
 				99DA41C31C0BEB0500573D4C /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
+				D2CF31D31C57C98E00325491 /* HospitalModel.m in Sources */,
 				D2D0C76A1C511D9200B0C853 /* UserProfileManager.m in Sources */,
 				99D33AB01C17FDBF0067E57C /* CheckDataTableViewCell.m in Sources */,
 				D2D0C7091C511D9200B0C853 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
@@ -6545,8 +6551,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Su (3G3LPK4522)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen Su (3G3LPK4522)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6598,7 +6604,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "273a9c05-e0a6-4aec-95aa-fc40798bce5c";
 			};
 			name = Debug;
 		};
@@ -6607,8 +6613,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Su (3G3LPK4522)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen Su (3G3LPK4522)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6660,7 +6666,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "273a9c05-e0a6-4aec-95aa-fc40798bce5c";
 			};
 			name = Release;
 		};

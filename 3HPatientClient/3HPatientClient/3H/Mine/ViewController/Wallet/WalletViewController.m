@@ -24,9 +24,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self getNetWork];
 }
-
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }

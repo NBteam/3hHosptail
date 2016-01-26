@@ -41,6 +41,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshBaseInfoOperation) name:@"refreshBaseInfoNatification" object:nil];
     [self.view insertSubview:self.viewBack belowSubview:self.tableView];
+    self.tableView.height =  self.tableView.height- 49;
     self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"3H-我的_我的健康档案-非点击状态",@"title":@"我的健康档案"},@{@"img":@"3H-我的_我的预约-非点击状态",@"title":@"我的预约"},@{@"img":@"3H-我的_我的积分-非点击状态",@"title":@"我的积分"},@{@"img":@"3H-我的_我的钱包-非点击状态",@"title":@"我的钱包"},@{@"img":@"3H-我的_我的订单-非点击状态",@"title":@"我的订单"},@{@"img":@"3H-我的_我的收藏-非点击状态",@"title":@"我的收藏"},@{@"img":@"3H-我的_我的收藏-非点击状态",@"title":@"收货地址"},@{@"img":@"3H-我的_设置-非点击状态",@"title":@"设置"}]];
     //self.tableView.tableHeaderView = self.headView;
 }

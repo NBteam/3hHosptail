@@ -291,4 +291,8 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 #pragma mark  获取帐号余额【20160105更新】
 - (void)getMyAccountCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark 预约住院——预约列表【20151221更新】
+- (void)getMyOrderHospitalListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
 @end

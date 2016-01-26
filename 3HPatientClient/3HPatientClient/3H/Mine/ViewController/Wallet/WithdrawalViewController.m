@@ -5,9 +5,10 @@
 //  Created by 范英强 on 15/12/4.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
-
+extern NSInteger payIndex;
 #import "WithdrawalViewController.h"
 #import "AppDelegate.h"
+#import "WIthFinishViewController.h"
 
 @interface WithdrawalViewController ()
 @property (nonatomic, strong) UILabel * labPrice;
@@ -26,10 +27,14 @@
 @property (nonatomic, strong) UIImageView * imgWX;
 @property (nonatomic, strong) UILabel * labWXInfo;
 @property (nonatomic, strong) UIButton * btnSure;
+
+@property (nonatomic, strong) NSString * priceStr;
 @end
 
 @implementation WithdrawalViewController
-
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"CZ" object:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -48,6 +53,8 @@
     [self.whiteView addSubview:self.imgWX];
     [self.whiteView addSubview:self.labWXInfo];
     [self.view addSubview:self.btnSure];
+    payIndex = 1;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(CZAction) name:@"CZ" object:nil];
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tableKey)];
     [self.tableView addGestureRecognizer:tap];
 }
@@ -199,8 +206,8 @@
         [[THNetWorkManager shareNetWork]getPostChargeTotal:self.textPrice.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
-                
                 [app sendPay_demoName:@"余额充值" price:response.dataDic[@"total"] desc:@"余额充值" order_sn:response.dataDic[@"order_sn"]];
+                weakSelf.priceStr = response.dataDic[@"total"];
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"2"];
             }
@@ -209,6 +216,11 @@
         }];
     }
     
+}
+- (void)CZAction{
+    WIthFinishViewController * WIthFinishVc = [[WIthFinishViewController alloc]init];
+    WIthFinishVc.priceStr = self.priceStr;
+    [self.navigationController pushViewController:WIthFinishVc animated:YES];
 }
 - (NSString *)title{
     return @"充值";

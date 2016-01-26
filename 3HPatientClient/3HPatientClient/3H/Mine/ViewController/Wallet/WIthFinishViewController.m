@@ -22,12 +22,14 @@
     [self.view addSubview:self.viewBack];
     [self.viewBack addSubview:self.imaGreen];
     [self.viewBack addSubview:self.labInfo];
+    self.viewBack.frame = CGRectMake(0, 10, DeviceSize.width, self.labInfo.bottom + 20);
     self.labInfo.text = [NSString stringWithFormat:@"您成功通过支付宝充值%@元",self.priceStr];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     // Do any additional setup after loading the view.
 }
 - (void)backAction{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
 }
 - (UIView *)viewBack{
     if (!_viewBack) {

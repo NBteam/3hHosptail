@@ -60,9 +60,16 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSInteger )index{
-    self.labTitle.text = @"李小光 主治医生李小光 主治医生李小光 主治医生李小光 主治医生李小光 主治医生李小光 主治医生李小光 主治医生李小光 主治医生李小光 主治医生李小光 主治医生";
-    self.labTime.text = @"2015-09-08";
+- (CGFloat)confingWithModel:(HospitalModel * )index{
+    self.labTitle.text = index.content;
+    [self.labTitle sizeToFit];
+    self.labTitle.left = 10;
+    self.labTitle.top = 5;
+    self.labTitle.width = self.viewBack.width -20;
+    self.labTime.top = self.labTitle.bottom + 10;
+    self.labTime.text = index.addtime;
+    self.viewBack.height = self.labTime.bottom + 10;
+    return self.viewBack.bottom + 10;
     
 }
 /*

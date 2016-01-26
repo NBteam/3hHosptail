@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    self.tableView.height = self.tableView.height -65;
+    self.tableView.height = self.tableView.height -65 - 49;
     [self.view addSubview:self.btnCancel];
     
 }

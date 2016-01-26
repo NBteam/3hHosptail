@@ -8,6 +8,7 @@
 
 #import "BaseTableViewCell.h"
 
+#import "HospitalModel.h"
 @interface MyAppointHospitalTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UIView *viewBack;
@@ -19,5 +20,5 @@
 @property (nonatomic, strong) UILabel *labTime;
 
 //赋值
-- (void)confingWithModel:(NSInteger )index;
+- (CGFloat )confingWithModel:(HospitalModel * )index;
 @end

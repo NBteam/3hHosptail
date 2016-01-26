@@ -51,29 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "3HPatientClient/3H/Home/ViewController/Shop/ShopDetailBuyViewController.m"
-            timestampString = "475426703.258372"
+            filePath = "3HPatientClient/AppDelegate.m"
+            timestampString = "475512634.736987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "-getUploadTypeNetWork"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "3HPatientClient/3H/Home/ViewController/Shop/ShopDetailBuyViewController.m"
-            timestampString = "475427531.298108"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "-getUploadNetWork"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "-sendPay_demoName:price:desc:order_sn:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
