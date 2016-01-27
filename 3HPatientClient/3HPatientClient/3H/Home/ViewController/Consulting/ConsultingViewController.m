@@ -58,7 +58,7 @@
         [_toolView setToolBlock:^(NSInteger index) {
             if (index == 0) {
                 
-                ChatViewController * ChatVc = [[ChatViewController alloc]initWithChatter:weakSelf.id conversationType:eConversationTypeChat];
+                ChatViewController * ChatVc = [[ChatViewController alloc]initWithChatter:weakSelf.md5_id conversationType:eConversationTypeChat];
                 ChatVc.title = [NSString stringWithFormat:@"您正在与%@聊天",weakSelf.model.truename];
                 ChatVc.myHeadImage = weakSelf.user.pic;
                 ChatVc.yourHeadImage = weakSelf.model.pic;

@@ -71,10 +71,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DoctorListModel * model = self.dataArray[indexPath.row];
+    AppointExpertListModel * model = self.dataArray[indexPath.row];
     
     ConsultingViewController *consultingVc = [[ConsultingViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     consultingVc.id = model.id;
+    consultingVc.md5_id = model.md5_id;
+    
     [self.navigationController pushViewController:consultingVc animated:YES];
 }
 - (NSString *)title{

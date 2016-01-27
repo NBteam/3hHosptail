@@ -260,13 +260,13 @@
             
             
             if (user) {
-                [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:user.id password:pwd withCompletion:^(NSString *username, NSString *password, EMError *error) {
+                [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:user.md5_id password:[user.md5_id substringToIndex:10] withCompletion:^(NSString *username, NSString *password, EMError *error) {
                     if (!error) {
                         NSLog(@"注册成功");
         
                         BOOL isAutoLogin = [[EaseMob sharedInstance].chatManager isAutoLoginEnabled];
                         if (!isAutoLogin) {
-                            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:user.id password:weakSelf.textUserPwd.textField.text completion:^(NSDictionary *loginInfo, EMError *error) {
+                            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:user.md5_id password:[user.md5_id substringToIndex:10] completion:^(NSDictionary *loginInfo, EMError *error) {
                                 if (!error) {
                                     // 设置自动登录
                                     [[EaseMob sharedInstance].chatManager setIsAutoLoginEnabled:NO];
@@ -277,7 +277,7 @@
                                 }
                             } onQueue:nil];
                         }else{
-                            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:user.id  password:weakSelf.textUserPwd.textField.text completion:^(NSDictionary *loginInfo, EMError *error) {
+                            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:user.md5_id  password:[user.md5_id substringToIndex:10] completion:^(NSDictionary *loginInfo, EMError *error) {
                                 if (!error && loginInfo) {
                                     NSLog(@"登陆成功");
                                     [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];
@@ -289,7 +289,7 @@
         
                         }
                     }else{
-                        [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:user.id  password:weakSelf.textUserPwd.textField.text completion:^(NSDictionary *loginInfo, EMError *error) {
+                        [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:user.md5_id  password:[user.md5_id substringToIndex:10] completion:^(NSDictionary *loginInfo, EMError *error) {
                             if (!error && loginInfo) {
                                 NSLog(@"登陆成功");
                                 [(AppDelegate*)[UIApplication sharedApplication].delegate setWindowRootViewControllerIsTabBar];

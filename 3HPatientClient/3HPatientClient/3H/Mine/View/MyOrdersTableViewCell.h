@@ -36,7 +36,9 @@
 @property (nonatomic, strong) UIButton *btnDelete;
 
 @property (nonatomic, strong) UIButton *btnAppraise;
+
+@property (nonatomic, strong) OrderListNewModel * model;
 //赋值
 - (void)confingWithModel:(OrderListNewModel *)dic;
-
+@property (nonatomic, copy) void (^confirmBlock)(NSInteger index);
 @end

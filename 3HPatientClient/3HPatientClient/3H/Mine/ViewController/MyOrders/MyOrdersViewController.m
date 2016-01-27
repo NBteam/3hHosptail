@@ -10,6 +10,8 @@
 #import "MyOrdersTableViewCell.h"
 #import "OrderModel.h"
 #import "OrderListNewModel.h"
+#import "AppDelegate.h"
+
 @interface MyOrdersViewController ()
 
 @end
@@ -40,11 +42,22 @@
         cell = [[MyOrdersTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    WeakSelf(MyOrdersViewController);
+    AppDelegate * app = [UIApplication sharedApplication].delegate;
+    [cell setConfirmBlock:^(NSInteger index) {
+        
+        if (index == 0 ){
+            OrderListNewModel * model1 = weakSelf.dataArray[indexPath.section];
+            [app sendPay_demoName:model1.ilist[0][@"goods_name"] price:model1.ilist[0][@"price"] desc:@"desc" order_sn:model1.order_sn];
+        }else if (index == 1 ){
+//            [self.btnAppraise setTitle:@"再次购买" forState:UIControlStateNormal];
+        }else if (index == 2 ){
+//            [self.btnAppraise setTitle:@"确认收货" forState:UIControlStateNormal];
+        }
+    }];
     OrderListNewModel * model = self.dataArray[indexPath.section];
     [cell confingWithModel:model];
     return cell;
-    
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -69,7 +82,7 @@
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(MyOrdersViewController);
-    [[THNetWorkManager shareNetWork]getOrderListPage:self.pageNO kw:@"" type:@"UN_PAY" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getOrderListPage:self.pageNO kw:@"" type:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             if (weakSelf.pageNO == 1) {

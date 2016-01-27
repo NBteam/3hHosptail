@@ -39,7 +39,7 @@
 
 - (UILabel *)labColorLine{
     if (!_labColorLine) {
-        _labColorLine = [[UILabel alloc] initWithFrame:CGRectMake(0, self.height - 2, DeviceSize.width/2, 2)];
+        _labColorLine = [[UILabel alloc] initWithFrame:CGRectMake(0, self.height - 2, DeviceSize.width/3, 2)];
         _labColorLine.backgroundColor = AppDefaultColor;
     }
     return _labColorLine;
@@ -55,7 +55,7 @@
 - (void)customButtons{
     for (int i = 0; i < self.titleArray.count; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(0 +DeviceSize.width/2*i, 0 , DeviceSize.width/2, self.height - self.labLine.height);
+        btn.frame = CGRectMake(0 +DeviceSize.width/3*i, 0 , DeviceSize.width/3, self.height - self.labLine.height);
         btn.titleLabel.font = [UIFont systemFontOfSize:15];
         [btn setTitle:self.titleArray[i] forState:UIControlStateNormal];
         [btn setTitleColor:AppDefaultColor forState:UIControlStateNormal];
@@ -73,7 +73,6 @@
 }
 
 - (void)topButtonMenuSelectForIndex:(NSInteger)index{
-    NSLog(@"查看%li",index);
     for (UIButton * btn in self.subviews) {
         if ([btn isKindOfClass:[UIButton class]]) {
             if (btn.tag == 100 +index) {
@@ -84,7 +83,7 @@
         }
     }
     [UIView animateWithDuration:0.25 animations:^{
-        self.labColorLine.left = 0 + index *DeviceSize.width/2;
+        self.labColorLine.left = 0 + index *DeviceSize.width/3;
     }];
     
 }

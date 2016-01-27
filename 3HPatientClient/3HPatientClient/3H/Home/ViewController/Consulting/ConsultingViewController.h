@@ -10,5 +10,6 @@
 
 @interface ConsultingViewController : BaseTableViewController
 @property (nonatomic, copy) NSString * id;
+@property (nonatomic, copy) NSString * md5_id;
 @property (nonatomic, copy) NSString * name;
 @end

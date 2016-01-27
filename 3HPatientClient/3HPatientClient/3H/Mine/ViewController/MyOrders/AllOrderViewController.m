@@ -10,6 +10,7 @@
 #import "AllHeadView.h"
 #import "MyOrdersViewController.h"
 #import "MyOrdersBViewController.h"
+#import "MyOrdersCViewController.h"
 
 @interface AllOrderViewController ()<UIScrollViewDelegate>
 
@@ -21,6 +22,7 @@
 
 @property (nonatomic, strong) MyOrdersBViewController *myOrdersBVc;
 
+@property (nonatomic, strong) MyOrdersCViewController *myOrdersCVc;
 @end
 
 @implementation AllOrderViewController
@@ -62,7 +64,7 @@
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.topView.bottom, DeviceSize.width, DeviceSize.height - self.frameTopHeight - self.topView.height)];
         _scrollView.delegate = self;
-        _scrollView.contentSize = CGSizeMake(DeviceSize.width * 2, DeviceSize.height - self.frameTopHeight -self.topView.height);
+        _scrollView.contentSize = CGSizeMake(DeviceSize.width * 3, DeviceSize.height - self.frameTopHeight -self.topView.height);
         
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
@@ -79,6 +81,13 @@
     return _myOrdersBVc;
 }
 
+- (MyOrdersCViewController *)myOrdersCVc{
+    if (!_myOrdersCVc) {
+        _myOrdersCVc = [[MyOrdersCViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    }
+    return _myOrdersCVc;
+}
+
 - (MyOrdersViewController *)myOrdersVc{
     if (!_myOrdersVc) {
         _myOrdersVc = [[MyOrdersViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
@@ -89,7 +98,7 @@
 - (void)customAddChildVc{
     [self addChildViewController:self.myOrdersVc];
     [self addChildViewController:self.myOrdersBVc];
-    
+    [self addChildViewController:self.myOrdersCVc];
     
     [self.myOrdersVc willMoveToParentViewController:self];
     self.myOrdersVc.view.height = self.scrollView.contentSize.height;
@@ -104,6 +113,13 @@
     self.myOrdersBVc.view.height = DeviceSize.height -self.frameTopHeight -self.topView.height;
     [self.scrollView addSubview:self.myOrdersBVc.view];
     [self.myOrdersBVc didMoveToParentViewController:self];
+    
+    [self.myOrdersCVc willMoveToParentViewController:self];
+    self.myOrdersCVc.view.height = self.scrollView.contentSize.height;
+    self.myOrdersCVc.view.left = DeviceSize.width *2;
+    self.myOrdersCVc.view.height = DeviceSize.height -self.frameTopHeight -self.topView.height;
+    [self.scrollView addSubview:self.myOrdersCVc.view];
+    [self.myOrdersCVc didMoveToParentViewController:self];
     
 }
 

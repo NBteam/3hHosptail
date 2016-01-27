@@ -80,7 +80,7 @@
         unreadCount += conversation.unreadMessagesCount;
     }
 
-    NSLog(@"~~%ld",unreadCount);
+    NSLog(@"~~%ld",(long)unreadCount);
     UIApplication *application = [UIApplication sharedApplication];
     [application setApplicationIconBadgeNumber:unreadCount];
 }

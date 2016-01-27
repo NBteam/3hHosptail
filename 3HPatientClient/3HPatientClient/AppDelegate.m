@@ -48,7 +48,8 @@ NSInteger payIndex;// 1 充值  2 购物
     [self setWindowRootViewControllerIsLogin];
     //信鸽推送
     [self setXGPUSHWithOptions:launchOptions];
-    
+    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    [self registerRemoteNotification];
     return YES;
 }
 
@@ -117,7 +118,30 @@ NSInteger payIndex;// 1 充值  2 购物
      [XGPush localNotification:fireDate alertBody:@"测试本地推送" badge:2 alertAction:@"确定" userInfo:userInfo];
      */
 }
-
+// 注册推送
+- (void)registerRemoteNotification{
+    UIApplication *application = [UIApplication sharedApplication];
+    application.applicationIconBadgeNumber = 0;
+    
+    if([application respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
+    
+#if !TARGET_IPHONE_SIMULATOR
+    //iOS8 注册APNS
+    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
+        [application registerForRemoteNotifications];
+    }else{
+        UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeBadge |
+        UIRemoteNotificationTypeSound |
+        UIRemoteNotificationTypeAlert;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
+    }
+#endif
+}
 - (void)registerPushForIOS8{
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
     
@@ -196,6 +220,7 @@ NSInteger payIndex;// 1 充值  2 购物
 #endif
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [[EaseMob sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
     
      NSString * deviceTokenStr1 = [XGPush registerDevice:deviceToken];
     
@@ -355,8 +380,9 @@ NSInteger payIndex;// 1 充值  2 购物
                 NSLog(@"result1 = %@",resultDic);
                 if (payIndex == 1) {
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"CZ" object:nil];    
+                }else{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"BuySuccess" object:nil];
                 }
-                
             }];
         }
         if ([url.host isEqualToString:@"platformapi"]){//支付宝钱包快登授权返回authCode
@@ -428,12 +454,14 @@ NSInteger payIndex;// 1 充值  2 购物
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    [[EaseMob sharedInstance] applicationDidEnterBackground:application];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[EaseMob sharedInstance] applicationWillEnterForeground:application];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -442,6 +470,7 @@ NSInteger payIndex;// 1 充值  2 购物
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [[EaseMob sharedInstance] applicationWillTerminate:application];
 }
 
 @end

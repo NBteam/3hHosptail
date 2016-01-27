@@ -5,7 +5,7 @@
 //  Created by 范英强 on 15/12/6.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
-
+extern NSInteger payIndex;
 #import "ShopDetailBuyViewController.h"
 #import "ShopDetailBuyHeadTableViewCell.h"
 #import "ShopDetailBuyDescTableViewCell.h"
@@ -15,23 +15,30 @@
 #import "ShopInfoModel.h"
 #import "AppDelegate.h"
 #import "CartListModel.h"
+#import "ShopBuyFinishViewController.h"
 
 @interface ShopDetailBuyViewController ()
 
 @property (nonatomic, strong) UIButton *btnPay;
 @property (nonatomic, strong) AddressListModel *model;
 @property (nonatomic, strong) ShopInfoModel *shopModel;
+@property (nonatomic, copy) NSString * priceStr;
 @end
 
 @implementation ShopDetailBuyViewController
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"BuySuccess" object:nil];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    payIndex = 2;
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.shopModel.indexStr = self.indexStr;
     self.tableView.height = self.tableView.height -65;
     [self.view addSubview:self.btnPay];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(BuySuccessAction) name:@"BuySuccess" object:nil];
     if (self.type == 0) {
         [self getNetWork];
     }else{
@@ -213,7 +220,7 @@
         [[THNetWorkManager shareNetWork]getBuyGoodsPostId:self.id qty:self.indexStr address_id:self.model.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
-                
+                weakSelf.priceStr = response.dataDic[@"total"] ;
                 [app sendPay_demoName:weakSelf.shopModel.name price:response.dataDic[@"total"] desc:@"desc" order_sn:response.dataDic[@"order_sn"]];
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"2"];
@@ -236,7 +243,7 @@
         [[THNetWorkManager shareNetWork]getCartPostAddress_id:self.model.id cart_ids:[array componentsJoinedByString:@","] andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
-                
+                weakSelf.priceStr = response.dataDic[@"total"] ;
                 [app sendPay_demoName:@"3H商城" price:response.dataDic[@"total"] desc:@"desc" order_sn:response.dataDic[@"order_sn"]];
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"2"];
@@ -245,6 +252,11 @@
             [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
         }];
     }
+}
+- (void)BuySuccessAction{
+    ShopBuyFinishViewController * shopBuyFinishVc = [[ShopBuyFinishViewController alloc]init];
+    shopBuyFinishVc.priceStr = self.priceStr;
+    [self.navigationController pushViewController:shopBuyFinishVc animated:YES];
 }
 - (NSString *)title{
     return @"确认订单";

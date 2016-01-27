@@ -1,33 +1,30 @@
 //
-//  MyOrdersBViewController.m
+//  MyOrdersCViewController.m
 //  3HPatientClient
 //
-//  Created by 郑彦华 on 16/1/18.
+//  Created by 郑彦华 on 16/1/27.
 //  Copyright © 2016年 fyq. All rights reserved.
 //
 
-#import "MyOrdersBViewController.h"
+#import "MyOrdersCViewController.h"
 #import "MyOrdersTableViewCell.h"
 #import "OrderModel.h"
 #import "OrderListNewModel.h"
 
-@interface MyOrdersBViewController ()
+@interface MyOrdersCViewController ()
 
 @end
 
-@implementation MyOrdersBViewController
+@implementation MyOrdersCViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.tableView.height = self.tableView.height - 44;
     self.isOpenFooterRefresh = YES;
     self.isOpenHeaderRefresh = YES;
     [self getNetWork];
-    
 }
-
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -68,8 +65,8 @@
 }
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
-    WeakSelf(MyOrdersBViewController);
-    [[THNetWorkManager shareNetWork]getOrderListPage:self.pageNO kw:@"" type:@"UN_PAY" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    WeakSelf(MyOrdersCViewController);
+    [[THNetWorkManager shareNetWork]getOrderListPage:self.pageNO kw:@"" type:@"UN_RECEIVE" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             if (weakSelf.pageNO == 1) {

@@ -837,6 +837,8 @@
 		D2D373861C3170DE005E662D /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373851C3170DE005E662D /* MedicationAddInputViewController.m */; };
 		D2D373891C317B51005E662D /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373881C317B51005E662D /* TimeView.m */; };
 		D2D3738C1C317E96005E662D /* ChangeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D3738B1C317E96005E662D /* ChangeInfoViewController.m */; };
+		D2D5310A1C58EB1E00BF1C59 /* ShopBuyFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D531091C58EB1E00BF1C59 /* ShopBuyFinishViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2D5310D1C58F2A500BF1C59 /* MyOrdersCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5310C1C58F2A500BF1C59 /* MyOrdersCViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D5A5E91C47E59E0056DF24 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D5A5E81C47E59E0056DF24 /* QuartzCore.framework */; };
 		D2D5A5EB1C47E5AD0056DF24 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D5A5EA1C47E5AD0056DF24 /* CoreText.framework */; };
 		D2D5A66D1C47EDC00056DF24 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D5A66C1C47EDC00056DF24 /* AlipaySDK.framework */; };
@@ -2270,6 +2272,10 @@
 		D2D373881C317B51005E662D /* TimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeView.m; sourceTree = "<group>"; };
 		D2D3738A1C317E96005E662D /* ChangeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeInfoViewController.h; sourceTree = "<group>"; };
 		D2D3738B1C317E96005E662D /* ChangeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeInfoViewController.m; sourceTree = "<group>"; };
+		D2D531081C58EB1E00BF1C59 /* ShopBuyFinishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopBuyFinishViewController.h; sourceTree = "<group>"; };
+		D2D531091C58EB1E00BF1C59 /* ShopBuyFinishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopBuyFinishViewController.m; sourceTree = "<group>"; };
+		D2D5310B1C58F2A500BF1C59 /* MyOrdersCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersCViewController.h; sourceTree = "<group>"; };
+		D2D5310C1C58F2A500BF1C59 /* MyOrdersCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrdersCViewController.m; sourceTree = "<group>"; };
 		D2D5A5E81C47E59E0056DF24 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D2D5A5EA1C47E5AD0056DF24 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		D2D5A66C1C47EDC00056DF24 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
@@ -2880,6 +2886,8 @@
 				D2CED19A1C26463D004FAB33 /* CityListFirstLevelViewController.m */,
 				D2CED19B1C26463D004FAB33 /* CityListSecondLevelViewController.h */,
 				D2CED19C1C26463D004FAB33 /* CityListSecondLevelViewController.m */,
+				D2D531081C58EB1E00BF1C59 /* ShopBuyFinishViewController.h */,
+				D2D531091C58EB1E00BF1C59 /* ShopBuyFinishViewController.m */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -2962,6 +2970,8 @@
 				D2CFD2DA1C4E832400E3E3A6 /* AllOrderViewController.m */,
 				D2CFD2DB1C4E832400E3E3A6 /* MyOrdersBViewController.h */,
 				D2CFD2DC1C4E832400E3E3A6 /* MyOrdersBViewController.m */,
+				D2D5310B1C58F2A500BF1C59 /* MyOrdersCViewController.h */,
+				D2D5310C1C58F2A500BF1C59 /* MyOrdersCViewController.m */,
 			);
 			path = MyOrders;
 			sourceTree = "<group>";
@@ -6121,6 +6131,7 @@
 				99D5449B1C1593AA0081D1D3 /* ScheduleViewController.m in Sources */,
 				99DA41901C0BEB0500573D4C /* BaseModel.m in Sources */,
 				993669671C132C6800B3E1C7 /* DynamicDetailViewController.m in Sources */,
+				D2D5310A1C58EB1E00BF1C59 /* ShopBuyFinishViewController.m in Sources */,
 				D2D0C7671C511D9200B0C853 /* MessageModelManager.m in Sources */,
 				99DA41E01C0BEB0500573D4C /* SDWebImageDecoder.m in Sources */,
 				993669CF1C14387E00B3E1C7 /* MyArchivesBaseTableViewCell.m in Sources */,
@@ -6339,6 +6350,7 @@
 				C06B92911C5346D9007660FF /* SDPhotoBrowser.m in Sources */,
 				99DA41D11C0BEB0500573D4C /* MJRefreshGifHeader.m in Sources */,
 				D2D373861C3170DE005E662D /* MedicationAddInputViewController.m in Sources */,
+				D2D5310D1C58F2A500BF1C59 /* MyOrdersCViewController.m in Sources */,
 				D2D0C7681C511D9200B0C853 /* MessageReadManager.m in Sources */,
 				C05A96D31C1D915D0078433B /* AppointFinishHeadTableViewCell.m in Sources */,
 				991A330C1C12FFDA00E0313F /* PersonalHeadTableViewCell.m in Sources */,

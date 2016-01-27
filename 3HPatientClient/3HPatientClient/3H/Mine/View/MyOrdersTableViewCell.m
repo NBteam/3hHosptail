@@ -23,7 +23,7 @@
     [self.contentView addSubview:self.labLine2];
     [self.contentView addSubview:self.labPrice];
     [self.contentView addSubview:self.labLine3];
-    [self.contentView addSubview:self.btnDelete];
+//    [self.contentView addSubview:self.btnDelete];
     [self.contentView addSubview:self.btnAppraise];
     
 }
@@ -158,8 +158,9 @@
         _btnAppraise.frame = CGRectMake(DeviceSize.width -65 -10, self.labLine3.bottom +7.5, 65, 30);
         _btnAppraise.backgroundColor = [UIColor colorWithHEX:0xffffff];
         _btnAppraise.titleLabel.font = [UIFont systemFontOfSize:13];
-        [_btnAppraise setTitle:@"评价订单" forState:UIControlStateNormal];
-        [_btnAppraise setTitleColor:AppDefaultColor forState:UIControlStateNormal];
+        [_btnAppraise setTitle:@"" forState:UIControlStateNormal];
+        _btnAppraise.backgroundColor = AppDefaultColor;
+        [_btnAppraise setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _btnAppraise.layer.masksToBounds = YES;
         _btnAppraise.layer.cornerRadius = 3;
         _btnAppraise.layer.borderColor = AppDefaultColor.CGColor;
@@ -170,21 +171,27 @@
 }
 
 - (void)btnAppraiseAction{
-    
+    if (self.confirmBlock) {
+        self.confirmBlock([self.model.status doubleValue]);
+    }
 }
 
 //赋值
 - (void)confingWithModel:(OrderListNewModel *)model{
-    self.labTitle.text = model.ilist[0][@"goods_name"] ;
+    self.model = model;
+    self.labTitle.text = model.ilist[0][@"goods_name"];
     [self.imgProduct sd_setImageWithURL:SD_IMG(model.ilist[0][@"thumb"])];
     if ([model.status doubleValue] == -1 ) {
         self.labState.text = @"取消订单";
     }else if ([model.status doubleValue] == 0 ){
         self.labState.text = @"待支付";
+        [self.btnAppraise setTitle:@"付款" forState:UIControlStateNormal];
     }else if ([model.status doubleValue] == 1 ){
         self.labState.text = @"已确认";
+        [self.btnAppraise setTitle:@"再次购买" forState:UIControlStateNormal];
     }else if ([model.status doubleValue] == 2 ){
-        self.labState.text = @"'已发货'";
+        self.labState.text = @"已发货";
+        [self.btnAppraise setTitle:@"确认收货" forState:UIControlStateNormal];
     }
     if ([model.pay_status doubleValue] == 0) {
         self.labProduct.text = 	@"未支付";

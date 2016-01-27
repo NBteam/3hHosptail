@@ -20,4 +20,5 @@
 @property (nonatomic, copy) NSString *hospital;
 @property (nonatomic, copy) NSString *department;
 @property (nonatomic, copy) NSString *pic;
+@property (nonatomic, copy) NSString *md5_id;
 @end
