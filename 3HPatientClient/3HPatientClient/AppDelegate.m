@@ -5,7 +5,7 @@
 //  Created by 范英强 on 15/11/30.
 //  Copyright (c) 2015年 fyq. All rights reserved.
 //
-NSInteger payIndex;// 1 充值  2 购物
+NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
 #import "AppDelegate.h"
 
 #import "BaseTabBarController.h"
@@ -36,12 +36,9 @@ NSInteger payIndex;// 1 充值  2 购物
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:nil];
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:@"kaifa"];
     
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:@"md5_id" password:@"123456" completion:^(NSDictionary *loginInfo, EMError *error) {
-        NSLog(@"loginInfo :%@",loginInfo);
-    } onQueue:nil];
     [self setUM];
     [self.window makeKeyAndVisible];
     [self setAppStyle];
@@ -378,11 +375,19 @@ NSInteger payIndex;// 1 充值  2 购物
         if ([url.host isEqualToString:@"safepay"]) {
             [[AlipaySDK defaultService] processOderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
                 NSLog(@"result1 = %@",resultDic);
-                if (payIndex == 1) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"CZ" object:nil];    
-                }else{
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"BuySuccess" object:nil];
+                if ([resultDic[@"resultStatus"] doubleValue] == 9000) {
+                    if (payIndex == 1) {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"CZ" object:nil];
+                    }else if (payIndex == 3){
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"allOrder" object:nil];
+                    }else if (payIndex == 4){
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"myOrder" object:nil];
+                    }
+                    else{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"BuySuccess" object:nil];
+                    }
                 }
+                
             }];
         }
         if ([url.host isEqualToString:@"platformapi"]){//支付宝钱包快登授权返回authCode

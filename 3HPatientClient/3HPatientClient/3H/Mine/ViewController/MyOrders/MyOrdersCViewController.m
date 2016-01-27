@@ -10,6 +10,8 @@
 #import "MyOrdersTableViewCell.h"
 #import "OrderModel.h"
 #import "OrderListNewModel.h"
+#import "AppDelegate.h"
+#import "ShopDetailViewController.h"
 
 @interface MyOrdersCViewController ()
 
@@ -38,6 +40,22 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     OrderListNewModel * model = self.dataArray[indexPath.section];
+    WeakSelf(MyOrdersCViewController);
+    AppDelegate * app = [UIApplication sharedApplication].delegate;
+    [cell setConfirmBlock:^(NSInteger index) {
+        OrderListNewModel * model1 = weakSelf.dataArray[indexPath.section];
+        if (index == 0 ){
+            NSString * price = [NSString stringWithFormat:@"%.2f",[model1.ilist[0][@"price"] doubleValue]* [model1.ilist[0][@"qty"] doubleValue]];
+//            weakSelf.priceStr = price;
+            [app sendPay_demoName:model1.ilist[0][@"goods_name"] price:price desc:@"desc" order_sn:model1.order_sn];
+        }else if (index == 1 ){
+            ShopDetailViewController * ShopDetailVc = [[ShopDetailViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
+            ShopDetailVc.id = model1.ilist[0][@"goods_id"];
+            [weakSelf.navigationController pushViewController:ShopDetailVc animated:YES];
+        }else if (index == 2 ){
+            [weakSelf orderReceiveNetWorkId:model1.ilist[0][@"goods_id"]];
+        }
+    }];
     [cell confingWithModel:model];
     return cell;
     
@@ -108,6 +126,20 @@
 - (void)footerRequestWithData
 {
     [self getNetWork];
+}
+- (void)orderReceiveNetWorkId:(NSString *)ids{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(MyOrdersCViewController);
+    [[THNetWorkManager shareNetWork]orderReceiveOrder_id:ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

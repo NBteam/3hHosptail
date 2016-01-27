@@ -295,4 +295,6 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark 预约住院——预约列表【20151221更新】
 - (void)getMyOrderHospitalListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 【鉴权】订单——确认收货【20151226添加】
+- (void)orderReceiveOrder_id:(NSString *)order_id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 @end

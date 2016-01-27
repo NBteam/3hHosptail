@@ -201,7 +201,7 @@
     [self.labProduct sizeToFit];
     self.labSingePrice.text = [NSString stringWithFormat:@"￥%.2f",[model.ilist[0][@"price"] doubleValue]];
     self.labNum.text = [NSString stringWithFormat:@"X%@",model.ilist[0][@"qty"]] ;
-    self.labPrice.attributedText = [self getLabTitle:[NSString stringWithFormat:@"共%@件商品 实付:",self.labNum.text] Detail:[NSString stringWithFormat:@"￥%.2f",[model.ilist[0][@"price"] doubleValue]]];
+    self.labPrice.attributedText = [self getLabTitle:[NSString stringWithFormat:@"共%@件商品 实付:",self.labNum.text] Detail:[NSString stringWithFormat:@"￥%.2f",[model.ilist[0][@"price"] doubleValue]*[model.ilist[0][@"qty"] doubleValue]]];
     
 }
 

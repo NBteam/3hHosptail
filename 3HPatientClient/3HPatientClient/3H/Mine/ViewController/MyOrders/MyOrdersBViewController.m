@@ -5,25 +5,32 @@
 //  Created by 郑彦华 on 16/1/18.
 //  Copyright © 2016年 fyq. All rights reserved.
 //
-
+extern NSInteger payIndex;
 #import "MyOrdersBViewController.h"
 #import "MyOrdersTableViewCell.h"
 #import "OrderModel.h"
 #import "OrderListNewModel.h"
+#import "AppDelegate.h"
+#import "ShopDetailViewController.h"
+#import "ShopBuyFinishViewController.h"
 
 @interface MyOrdersBViewController ()
-
+@property (nonatomic, copy) NSString * priceStr;
 @end
 
 @implementation MyOrdersBViewController
-
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"myOrder" object:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    payIndex = 4;
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.tableView.height = self.tableView.height - 44;
     self.isOpenFooterRefresh = YES;
     self.isOpenHeaderRefresh = YES;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(myOrderAction) name:@"myOrder" object:nil];
     [self getNetWork];
     
 }
@@ -41,6 +48,22 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     OrderListNewModel * model = self.dataArray[indexPath.section];
+    WeakSelf(MyOrdersBViewController);
+    AppDelegate * app = [UIApplication sharedApplication].delegate;
+    [cell setConfirmBlock:^(NSInteger index) {
+        OrderListNewModel * model1 = weakSelf.dataArray[indexPath.section];
+        if (index == 0 ){
+            NSString * price = [NSString stringWithFormat:@"%.2f",[model1.ilist[0][@"price"] doubleValue]* [model1.ilist[0][@"qty"] doubleValue]];
+            weakSelf.priceStr = price;
+            [app sendPay_demoName:model1.ilist[0][@"goods_name"] price:price desc:@"desc" order_sn:model1.order_sn];
+        }else if (index == 1 ){
+            ShopDetailViewController * ShopDetailVc = [[ShopDetailViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
+            ShopDetailVc.id = model1.ilist[0][@"goods_id"];
+            [weakSelf.navigationController pushViewController:ShopDetailVc animated:YES];
+        }else if (index == 2 ){
+            [weakSelf orderReceiveNetWorkId:model1.ilist[0][@"goods_id"]];
+        }
+    }];
     [cell confingWithModel:model];
     return cell;
     
@@ -111,6 +134,25 @@
 - (void)footerRequestWithData
 {
     [self getNetWork];
+}
+- (void)orderReceiveNetWorkId:(NSString *)ids{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(MyOrdersBViewController);
+    [[THNetWorkManager shareNetWork]orderReceiveOrder_id:ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+    
+}
+- (void)myOrderAction{
+    ShopBuyFinishViewController * shopBuyFinishVc = [[ShopBuyFinishViewController alloc]init];
+    shopBuyFinishVc.priceStr = self.priceStr;
+    [self.navigationController pushViewController:shopBuyFinishVc animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

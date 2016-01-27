@@ -5,27 +5,32 @@
 //  Created by 范英强 on 15/12/6.
 //  Copyright © 2015年 fyq. All rights reserved.
 //
-
+extern NSInteger payIndex;
 #import "MyOrdersViewController.h"
 #import "MyOrdersTableViewCell.h"
 #import "OrderModel.h"
 #import "OrderListNewModel.h"
 #import "AppDelegate.h"
-
+#import "ShopDetailViewController.h"
+#import "ShopBuyFinishViewController.h"
 @interface MyOrdersViewController ()
-
+@property (nonatomic, copy) NSString * priceStr;
 @end
 
 @implementation MyOrdersViewController
-
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"allOrder" object:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    payIndex = 3;
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.height = self.tableView.height - 44;
     self.isOpenFooterRefresh = YES;
     self.isOpenHeaderRefresh = YES;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(allOrderAction) name:@"allOrder" object:nil];
     [self getNetWork];
     
 }
@@ -45,14 +50,17 @@
     WeakSelf(MyOrdersViewController);
     AppDelegate * app = [UIApplication sharedApplication].delegate;
     [cell setConfirmBlock:^(NSInteger index) {
-        
+        OrderListNewModel * model1 = weakSelf.dataArray[indexPath.section];
         if (index == 0 ){
-            OrderListNewModel * model1 = weakSelf.dataArray[indexPath.section];
-            [app sendPay_demoName:model1.ilist[0][@"goods_name"] price:model1.ilist[0][@"price"] desc:@"desc" order_sn:model1.order_sn];
+            NSString * price = [NSString stringWithFormat:@"%.2f",[model1.ilist[0][@"price"] doubleValue]* [model1.ilist[0][@"qty"] doubleValue]];
+            weakSelf.priceStr = price;
+            [app sendPay_demoName:model1.ilist[0][@"goods_name"] price:price desc:@"desc" order_sn:model1.order_sn];
         }else if (index == 1 ){
-//            [self.btnAppraise setTitle:@"再次购买" forState:UIControlStateNormal];
+            ShopDetailViewController * ShopDetailVc = [[ShopDetailViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
+            ShopDetailVc.id = model1.ilist[0][@"goods_id"];
+            [weakSelf.navigationController pushViewController:ShopDetailVc animated:YES];
         }else if (index == 2 ){
-//            [self.btnAppraise setTitle:@"确认收货" forState:UIControlStateNormal];
+            [weakSelf orderReceiveNetWorkId:model1.ilist[0][@"goods_id"]];
         }
     }];
     OrderListNewModel * model = self.dataArray[indexPath.section];
@@ -124,6 +132,25 @@
 - (void)footerRequestWithData
 {
     [self getNetWork];
+}
+- (void)orderReceiveNetWorkId:(NSString *)ids{
+    [self showHudWaitingView:WaitPrompt];
+    WeakSelf(MyOrdersViewController);
+    [[THNetWorkManager shareNetWork]orderReceiveOrder_id:ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+    
+}
+- (void)allOrderAction{
+    ShopBuyFinishViewController * shopBuyFinishVc = [[ShopBuyFinishViewController alloc]init];
+    shopBuyFinishVc.priceStr = self.priceStr;
+    [self.navigationController pushViewController:shopBuyFinishVc animated:YES];
 }
 - (NSString *)title{
     return @"我的订单";
