@@ -11,6 +11,7 @@
 @interface IncomeRecordTableViewCell : BaseTableViewCell
 
 @property (nonatomic, strong) UILabel *labTitle;
+@property (nonatomic, strong) UILabel *labDetail;
 
 //赋值
 - (void)confingWithModel:(NSInteger )index;
