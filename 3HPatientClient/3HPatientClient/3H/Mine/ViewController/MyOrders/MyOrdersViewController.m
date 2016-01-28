@@ -13,8 +13,10 @@ extern NSInteger payIndex;
 #import "AppDelegate.h"
 #import "ShopDetailViewController.h"
 #import "ShopBuyFinishViewController.h"
-@interface MyOrdersViewController ()
+@interface MyOrdersViewController ()<UIAlertViewDelegate>
 @property (nonatomic, copy) NSString * priceStr;
+@property (nonatomic, strong) UIAlertView * alertView;
+@property (nonatomic, strong) NSIndexPath * indexPath;
 @end
 
 @implementation MyOrdersViewController
@@ -51,6 +53,7 @@ extern NSInteger payIndex;
     AppDelegate * app = [UIApplication sharedApplication].delegate;
     [cell setConfirmBlock:^(NSInteger index) {
         OrderListNewModel * model1 = weakSelf.dataArray[indexPath.section];
+        weakSelf.indexPath = indexPath;
         if (index == 0 ){
             NSString * price = [NSString stringWithFormat:@"%.2f",[model1.ilist[0][@"price"] doubleValue]* [model1.ilist[0][@"qty"] doubleValue]];
             weakSelf.priceStr = price;
@@ -59,8 +62,8 @@ extern NSInteger payIndex;
             ShopDetailViewController * ShopDetailVc = [[ShopDetailViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
             ShopDetailVc.id = model1.ilist[0][@"goods_id"];
             [weakSelf.navigationController pushViewController:ShopDetailVc animated:YES];
-        }else if (index == 2 ){
-            [weakSelf orderReceiveNetWorkId:model1.id];
+        }else if (index == 2 || index == 3){
+            [weakSelf.alertView show];
         }
     }];
     OrderListNewModel * model = self.dataArray[indexPath.section];
@@ -152,6 +155,18 @@ extern NSInteger payIndex;
     ShopBuyFinishViewController * shopBuyFinishVc = [[ShopBuyFinishViewController alloc]init];
     shopBuyFinishVc.priceStr = self.priceStr;
     [self.navigationController pushViewController:shopBuyFinishVc animated:YES];
+}
+- (UIAlertView *)alertView{
+    if (!_alertView) {
+        _alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"是否确认收货" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+    }
+    return _alertView;
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        OrderListNewModel * model1 = self.dataArray[self.indexPath.section];
+        [self orderReceiveNetWorkId:model1.id];
+    }
 }
 - (NSString *)title{
     return @"我的订单";

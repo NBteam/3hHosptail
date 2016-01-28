@@ -192,6 +192,9 @@
     }else if ([model.status doubleValue] == 2 ){
         self.labState.text = @"已发货";
         [self.btnAppraise setTitle:@"确认收货" forState:UIControlStateNormal];
+    }else if ([model.status doubleValue] == 3 ){
+        self.labState.text = @"确认收货";
+        [self.btnAppraise setTitle:@"确认收货" forState:UIControlStateNormal];
     }
     if ([model.pay_status doubleValue] == 0) {
         self.labProduct.text = 	@"未支付";
