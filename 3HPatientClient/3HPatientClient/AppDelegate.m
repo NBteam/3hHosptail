@@ -11,6 +11,7 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
 #import "BaseTabBarController.h"
 #import "BaseNavigationController.h"
 #import "LoginViewController.h"
+#import "GuideViewController.h"
 //友盟
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
@@ -42,7 +43,12 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
     [self setUM];
     [self.window makeKeyAndVisible];
     [self setAppStyle];
-    [self setWindowRootViewControllerIsLogin];
+    //是否是第一次登陆
+    if ([SGSaveFile getObjectFromSystemWithKey:IsFirst]) {
+        [self setWindowRootViewControllerIsLogin];
+    }else{
+        [self setWindowRootViewControllerIsGuide];
+    }
     //信鸽推送
     [self setXGPUSHWithOptions:launchOptions];
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
@@ -399,7 +405,9 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
     }
     return [UMSocialSnsService handleOpenURL:url];
 }
-
+- (void)setWindowRootViewControllerIsGuide{
+    [self restoreRootViewController:[[GuideViewController alloc] init]];
+}
 
 - (void)setWindowRootViewControllerIsTabBar{
     [self restoreRootViewController:[[BaseTabBarController alloc] init]];

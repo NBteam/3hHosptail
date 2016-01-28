@@ -91,7 +91,9 @@
         _textUserName.textField.delegate = self;
         _textUserName.textField.keyboardType=UIKeyboardTypePhonePad;
         _textUserName.textField.textColor = AppDefaultColor;
-        _textUserName.textField.text = @"18911412662";
+        if ([SGSaveFile getObjectFromSystemWithKey:RememberMe]&&[[SGSaveFile getObjectFromSystemWithKey:UserName] length]>0) {
+            _textUserName.textField.text = [SGSaveFile getObjectFromSystemWithKey:UserName];
+        }
     }
     return _textUserName;
 }
@@ -99,9 +101,10 @@
     if (!_textUserPwd) {
         _textUserPwd = [[LoginInputView alloc]initWithFrame:CGRectMake(0, self.textUserName.bottom+15, DeviceSize.width, 96/2) title:@"" placeholder:@"请输入密码"];
         _textUserPwd.textField.delegate = self;
-        _textUserPwd.textField.keyboardType=UIKeyboardTypePhonePad;
         _textUserPwd.textField.textColor = AppDefaultColor;
-        _textUserPwd.textField.text = @"123456";
+        if ([SGSaveFile getObjectFromSystemWithKey:RememberMe] &&[[SGSaveFile getObjectFromSystemWithKey:UserPassword] length]>0) {
+            _textUserPwd.textField.text = [SGSaveFile getObjectFromSystemWithKey:UserPassword];
+        }
     }
     return _textUserPwd;
 }
@@ -115,6 +118,9 @@
         [_btnRemember setTitle:@" 记住我" forState:UIControlStateNormal];
         [_btnRemember addTarget:self action:@selector(btnRememberClick:) forControlEvents:UIControlEventTouchUpInside];
         _btnRemember.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        if ([SGSaveFile getObjectFromSystemWithKey:RememberMe]) {
+            _btnRemember.selected = YES;
+        }
     }
     return _btnRemember;
 }
@@ -215,10 +221,21 @@
     return _btn3;
 }
 - (void)btnRememberClick:(UIButton *)button{
-    if (button.selected) {
-        button.selected = NO;
+    if (self.textUserName.textField.text.length && self.textUserPwd.textField.text) {
+        if (button.selected) {
+            button.selected = NO;
+            [SGSaveFile removeObjectFromSystemWithKey:RememberMe];
+            [SGSaveFile removeObjectFromSystemWithKey:UserName];
+            [SGSaveFile removeObjectFromSystemWithKey:UserPassword];
+        }else{
+            button.selected = YES;
+            [SGSaveFile saveObjectToSystem:RememberMe forKey:RememberMe];
+            [SGSaveFile saveObjectToSystem:self.textUserName.textField.text forKey:UserName];
+            [SGSaveFile saveObjectToSystem:self.textUserPwd.textField.text forKey:UserPassword];
+            
+        }
     }else{
-        button.selected = YES;
+        [self showHudAuto:@"请输入手机号或者密码" andDuration:@"2"];
     }
 }
 - (void)btnLoginClick:(UIButton *)button{

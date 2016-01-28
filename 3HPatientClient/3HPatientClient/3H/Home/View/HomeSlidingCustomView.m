@@ -35,7 +35,6 @@
         _imgLogo.image = [UIImage imageNamed:@""];
         _imgLogo.layer.borderWidth = 0.5;
         _imgLogo.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
-        _imgLogo.backgroundColor = [UIColor blueColor];
     }
     return _imgLogo;
 }

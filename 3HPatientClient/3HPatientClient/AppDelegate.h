@@ -11,7 +11,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+- (void)setWindowRootViewControllerIsGuide;
 - (void)setWindowRootViewControllerIsTabBar;
 - (void)setWindowRootViewControllerIsLogin;
 #pragma mark -----支付宝支付-----
