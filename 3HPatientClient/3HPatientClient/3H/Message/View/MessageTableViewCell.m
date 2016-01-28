@@ -58,6 +58,8 @@
 //赋值
 
 - (void)confingWithModel:(ScheduleCalendarDayModel *)model{
+    
+   
     NSArray *arrImg = @[@"3H-消息_预约提醒",
                         @"3H-消息_用药提醒",
                         @"3H-消息_复查提醒",

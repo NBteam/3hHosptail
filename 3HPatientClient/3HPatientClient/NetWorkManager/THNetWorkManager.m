@@ -699,4 +699,22 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"orderReceive",@"token":GetToken,@"order_id":order_id};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+
+#pragma mark【鉴权】消息——首页【20151222添加】
+- (void)sgetMsgHomeandCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMsgHome",@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark【鉴权】消息——获取未读消息数【20160114更新】
+- (void)getMsgNumandCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMsgNum",@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+    
+}
+#pragma mark【鉴权】消息——所有消息已读【20151222添加】
+- (void)readAllMsgandCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"readAllMsg",@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

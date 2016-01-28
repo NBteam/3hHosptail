@@ -16,7 +16,7 @@
 
 
 @property (nonatomic, retain) UIView *tabBarBackView;
-
+@property (nonatomic, strong) BaseNavigationController *naMessage;
 @end
 
 @implementation BaseTabBarController
@@ -45,9 +45,9 @@
     
     MessageViewController *messageVc = [[MessageViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     messageVc.title = @"消息";
-    BaseNavigationController *naMessage = [[BaseNavigationController alloc] initWithRootViewController:messageVc];
-    naMessage.tabBarItem.image = [[UIImage imageNamed:@"3H-首页_消息-未点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    naMessage.tabBarItem.selectedImage = [[UIImage imageNamed:@"3H-首页_消息-点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.naMessage = [[BaseNavigationController alloc] initWithRootViewController:messageVc];
+    self.naMessage.tabBarItem.image = [[UIImage imageNamed:@"3H-首页_消息-未点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.naMessage.tabBarItem.selectedImage = [[UIImage imageNamed:@"3H-首页_消息-点击"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     MineViewController *mineVc = [[MineViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     mineVc.title = @"我的";
@@ -59,7 +59,28 @@
     
     [self.tabBar insertSubview:self.tabBarBackView atIndex:0];
     self.tabBar.opaque = YES;
-    self.viewControllers = @[naHome,naHealth,naMessage,naMine];
+    self.viewControllers = @[naHome,naHealth,self.naMessage,naMine];
+    [self loadData];
+}
+
+
+- (void)loadData{
+    WeakSelf(BaseTabBarController);
+    [[THNetWorkManager shareNetWork] getMsgNumandCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        NSLog(@"---%@",response.dataDic);
+        if (response.responseCode == 1) {
+            if([response.dataDic[@"msg_num"] integerValue] != 0){
+                weakSelf.naMessage.tabBarItem.badgeValue = [NSString stringWithFormat:@"%@",response.dataDic[@"msg_num"]];
+            }
+            
+        
+            
+        }else{
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        
+    } ];
 }
 
 - (UIView *)tabBarBackView{

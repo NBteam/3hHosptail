@@ -7,9 +7,20 @@
 //
 
 #import "MessageViewController.h"
-#import "MessageTableViewCell.h"
+#import "MessageTableViewCells.h"
+#import "MessageModels.h"
+#import "MessageHomeModel.h"
+//用药指南
+#import "MedicationGuideViewController.h"
+//复查指南
+#import "ReviewGuideViewController.h"
+//咨询信息
+#import "ConsultingDoctorListViewController.h"
+//预约提醒
+#import "AppointViewController.h"
 @interface MessageViewController ()
 
+@property (nonatomic, strong) NSMutableDictionary *dataDict;
 @end
 
 @implementation MessageViewController
@@ -17,17 +28,64 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.dataDict = [[NSMutableDictionary alloc] init];
+    [self sgetMsgHome];
+   
+    [self readAllMessage];
+    
 }
+
+-(void)readAllMessage{
+    [self.dataArray removeAllObjects];
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(MessageViewController);
+    [[THNetWorkManager shareNetWork] readAllMsgandCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            
+             weakSelf.navigationController.tabBarItem.badgeValue = nil;
+        }else{
+           // [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+       // [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+}
+
+- (void)sgetMsgHome{
+    [self.dataDict removeAllObjects];
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(MessageViewController);
+
+    [[THNetWorkManager shareNetWork] sgetMsgHomeandCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            weakSelf.dataDict = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+    
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"idertifier";
-    MessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    MessageTableViewCells *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
-        cell = [[MessageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[MessageTableViewCells alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:nil];
+    [cell confingWithDict:self.dataDict Index:indexPath.section];
     return cell;
 }
 
@@ -40,7 +98,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return self.dataDict.count / 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -51,7 +109,35 @@
     return  [[UIView alloc] init];
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    //用药指南
+//#import "MedicationGuideViewController.h"
+//    //复查指南
+//#import "ReviewGuideViewController.h"
+//    //咨询信息
+//#import "ConsultingDoctorListViewController.h"
+//    //预约提醒
+//#import "AppointViewController.h"
+    
+    if (indexPath.section == 0) {
+        AppointViewController *appointVc = [[AppointViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        appointVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:appointVc animated:YES];
+    }else if(indexPath.section == 1){
+        MedicationGuideViewController *appointVc = [[MedicationGuideViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        appointVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:appointVc animated:YES];
+    }else if(indexPath.section == 2){
+        ConsultingDoctorListViewController *appointVc = [[ConsultingDoctorListViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        appointVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:appointVc animated:YES];
+        
+    }else if(indexPath.section == 3){
+        ReviewGuideViewController *appointVc = [[ReviewGuideViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        appointVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:appointVc animated:YES];
+    }
+ }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
