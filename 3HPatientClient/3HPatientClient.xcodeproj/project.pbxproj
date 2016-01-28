@@ -312,7 +312,6 @@
 		99DA3EBA1C0BE4CF00573D4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA3EB91C0BE4CF00573D4C /* ViewController.m */; };
 		99DA3EBD1C0BE4CF00573D4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DA3EBB1C0BE4CF00573D4C /* Main.storyboard */; };
 		99DA3EBF1C0BE4CF00573D4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99DA3EBE1C0BE4CF00573D4C /* Images.xcassets */; };
-		99DA3EC21C0BE4CF00573D4C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99DA3EC01C0BE4CF00573D4C /* LaunchScreen.xib */; };
 		99DA3ECE1C0BE4CF00573D4C /* _HPatientClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA3ECD1C0BE4CF00573D4C /* _HPatientClientTests.m */; };
 		99DA418C1C0BEB0500573D4C /* HealthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA40911C0BEB0500573D4C /* HealthViewController.m */; };
 		99DA418D1C0BEB0500573D4C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA40971C0BEB0500573D4C /* HomeViewController.m */; };
@@ -548,12 +547,11 @@
 		D2CED19D1C26463D004FAB33 /* CityListFirstLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CED19A1C26463D004FAB33 /* CityListFirstLevelViewController.m */; };
 		D2CED19E1C26463D004FAB33 /* CityListSecondLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CED19C1C26463D004FAB33 /* CityListSecondLevelViewController.m */; };
 		D2CED1A11C2646C1004FAB33 /* CityListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CED1A01C2646C1004FAB33 /* CityListModel.m */; };
-		D2CF31D31C57C98E00325491 /* HospitalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF31D21C57C98E00325491 /* HospitalModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2CF31D31C57C98E00325491 /* HospitalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF31D21C57C98E00325491 /* HospitalModel.m */; };
 		D2CF7C2B1C22DF38008F2900 /* MyDiagnosisListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2A1C22DF38008F2900 /* MyDiagnosisListModel.m */; };
 		D2CF7C2E1C22E251008F2900 /* MyDiagnosisDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */; };
 		D2CF7C311C22E6C3008F2900 /* MyRecheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */; };
-		D2CF9DB81C564A470024E01A /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2CF9DB71C564A470024E01A /* Images-2.xcassets */; settings = {ASSET_TAGS = (); }; };
-		D2CF9DBB1C565C2A0024E01A /* WIthFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF9DBA1C565C2A0024E01A /* WIthFinishViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2CF9DBB1C565C2A0024E01A /* WIthFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CF9DBA1C565C2A0024E01A /* WIthFinishViewController.m */; };
 		D2CFD2D71C4E826900E3E3A6 /* libEaseMobClientSDKLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CFD2D41C4E826900E3E3A6 /* libEaseMobClientSDKLite.a */; };
 		D2CFD2D81C4E826900E3E3A6 /* EaseMob.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2CFD2D61C4E826900E3E3A6 /* EaseMob.bundle */; };
 		D2CFD2DD1C4E832400E3E3A6 /* AllOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CFD2DA1C4E832400E3E3A6 /* AllOrderViewController.m */; };
@@ -837,8 +835,8 @@
 		D2D373861C3170DE005E662D /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373851C3170DE005E662D /* MedicationAddInputViewController.m */; };
 		D2D373891C317B51005E662D /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373881C317B51005E662D /* TimeView.m */; };
 		D2D3738C1C317E96005E662D /* ChangeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D3738B1C317E96005E662D /* ChangeInfoViewController.m */; };
-		D2D5310A1C58EB1E00BF1C59 /* ShopBuyFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D531091C58EB1E00BF1C59 /* ShopBuyFinishViewController.m */; settings = {ASSET_TAGS = (); }; };
-		D2D5310D1C58F2A500BF1C59 /* MyOrdersCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5310C1C58F2A500BF1C59 /* MyOrdersCViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2D5310A1C58EB1E00BF1C59 /* ShopBuyFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D531091C58EB1E00BF1C59 /* ShopBuyFinishViewController.m */; };
+		D2D5310D1C58F2A500BF1C59 /* MyOrdersCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5310C1C58F2A500BF1C59 /* MyOrdersCViewController.m */; };
 		D2D5A5E91C47E59E0056DF24 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D5A5E81C47E59E0056DF24 /* QuartzCore.framework */; };
 		D2D5A5EB1C47E5AD0056DF24 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D5A5EA1C47E5AD0056DF24 /* CoreText.framework */; };
 		D2D5A66D1C47EDC00056DF24 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D5A66C1C47EDC00056DF24 /* AlipaySDK.framework */; };
@@ -1272,7 +1270,6 @@
 		99DA3EB91C0BE4CF00573D4C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		99DA3EBC1C0BE4CF00573D4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99DA3EBE1C0BE4CF00573D4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		99DA3EC11C0BE4CF00573D4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		99DA3EC71C0BE4CF00573D4C /* 3HPatientClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 3HPatientClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DA3ECC1C0BE4CF00573D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99DA3ECD1C0BE4CF00573D4C /* _HPatientClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _HPatientClientTests.m; sourceTree = "<group>"; };
@@ -1753,7 +1750,6 @@
 		D2CF7C2D1C22E251008F2900 /* MyDiagnosisDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDiagnosisDetailModel.m; sourceTree = "<group>"; };
 		D2CF7C2F1C22E6C3008F2900 /* MyRecheckListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyRecheckListModel.h; path = 3HPatientClient/3H/Home/Model/MyRecheckListModel.h; sourceTree = SOURCE_ROOT; };
 		D2CF7C301C22E6C3008F2900 /* MyRecheckListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyRecheckListModel.m; path = 3HPatientClient/3H/Home/Model/MyRecheckListModel.m; sourceTree = SOURCE_ROOT; };
-		D2CF9DB71C564A470024E01A /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		D2CF9DB91C565C2A0024E01A /* WIthFinishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WIthFinishViewController.h; sourceTree = "<group>"; };
 		D2CF9DBA1C565C2A0024E01A /* WIthFinishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WIthFinishViewController.m; sourceTree = "<group>"; };
 		D2CFD26F1C4E826900E3E3A6 /* EMCallManagerCallDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallManagerCallDelegate.h; sourceTree = "<group>"; };
@@ -3144,8 +3140,6 @@
 				99DA3EB91C0BE4CF00573D4C /* ViewController.m */,
 				99DA3EBB1C0BE4CF00573D4C /* Main.storyboard */,
 				99DA3EBE1C0BE4CF00573D4C /* Images.xcassets */,
-				99DA3EC01C0BE4CF00573D4C /* LaunchScreen.xib */,
-				D2CF9DB71C564A470024E01A /* Images-2.xcassets */,
 				99DA3EB11C0BE4CF00573D4C /* Supporting Files */,
 			);
 			path = 3HPatientClient;
@@ -5667,7 +5661,6 @@
 				D2D0AA201C525DE2007F39F7 /* chat_receiver_audio_playing000.png in Resources */,
 				D2D0AA261C525DE2007F39F7 /* chat_receiver_audio_playing003.png in Resources */,
 				D2D0A9F91C525DE2007F39F7 /* chatBar_keyboardSelected.png in Resources */,
-				99DA3EC21C0BE4CF00573D4C /* LaunchScreen.xib in Resources */,
 				D2D0A9EB1C525DE2007F39F7 /* chat_location_detail_disclosureHL.png in Resources */,
 				991A32191C12E2DC00E0313F /* 3H-健康_健康日程@2x.png in Resources */,
 				D2D0A9E91C525DE2007F39F7 /* chat_location_detail_disclosure.png in Resources */,
@@ -5806,7 +5799,6 @@
 				991A32701C12E2DC00E0313F /* 3H-消息-预约提醒-全选_删除@2x.png in Resources */,
 				991A32441C12E2DC00E0313F /* 我的-我要预约-预约挂号-预约挂号_头像2@2x.png in Resources */,
 				D2D0AA311C525DE2007F39F7 /* chat_sender_audio_playing_002@2x.png in Resources */,
-				D2CF9DB81C564A470024E01A /* Images-2.xcassets in Resources */,
 				99D5442C1C1563320081D1D3 /* 3H-首页_首页-点击@2x.png in Resources */,
 				D2D0A9E31C525DE2007F39F7 /* chatBar_more_faceSelected.png in Resources */,
 				D2D0AA001C525DE2007F39F7 /* chatBar_record@2x.png in Resources */,
@@ -6458,14 +6450,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		99DA3EC01C0BE4CF00573D4C /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				99DA3EC11C0BE4CF00573D4C /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
 		C05A96FA1C1E77390078433B /* UMSocialLocalizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -6562,7 +6546,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Su (3G3LPK4522)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen Su (3G3LPK4522)";
 				ENABLE_BITCODE = NO;
@@ -6624,7 +6608,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Su (3G3LPK4522)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen Su (3G3LPK4522)";
 				ENABLE_BITCODE = NO;
