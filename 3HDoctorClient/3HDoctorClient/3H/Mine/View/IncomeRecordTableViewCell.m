@@ -40,9 +40,9 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSInteger )index{
-    self.labTitle.text = @"70元";
-    self.labDetail.text = @"2012-12-12";
+- (void)confingWithAddTime:(NSString *)addTime Total:(NSString *)total{
+    self.labTitle.text = total;
+    self.labDetail.text = addTime;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

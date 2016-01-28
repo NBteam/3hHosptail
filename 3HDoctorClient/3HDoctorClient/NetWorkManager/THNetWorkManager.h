@@ -383,6 +383,10 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark【鉴权】消息——所有消息已读【20151222添加】
 - (void)readAllMsgandCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark【鉴权】我的收入记录【20160114添加】
+- (void)myMonthAccLogsDate_m:(NSString *)date_m andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+
 
 
 

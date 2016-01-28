@@ -874,6 +874,11 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"readAllMsg",@"token":GetToken};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+#pragma mark【鉴权】我的收入记录【20160114添加】
+- (void)myMonthAccLogsDate_m:(NSString *)date_m andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"myMonthAccLogs",@"date_m":date_m,@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 
 
 @end

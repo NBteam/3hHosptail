@@ -14,5 +14,5 @@
 @property (nonatomic, strong) UILabel *labDetail;
 
 //赋值
-- (void)confingWithModel:(NSInteger )index;
+- (void)confingWithAddTime:(NSString *)addTime Total:(NSString *)total;
 @end

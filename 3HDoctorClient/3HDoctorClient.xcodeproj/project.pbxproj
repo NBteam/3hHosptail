@@ -554,6 +554,7 @@
 		C0592D461C3177BA0071FCB5 /* 扫码边框.png in Resources */ = {isa = PBXBuildFile; fileRef = C0592D431C3177BA0071FCB5 /* 扫码边框.png */; };
 		C05C07F81C2AF60800C26B08 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05C07F71C2AF60800C26B08 /* ChangePasswordViewController.m */; };
 		C05C07FB1C2AF82900C26B08 /* MedicationAddInputNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05C07FA1C2AF82900C26B08 /* MedicationAddInputNameViewController.m */; };
+		C06258E01C58EE170007A35F /* IncomeRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C06258DF1C58EE170007A35F /* IncomeRecordModel.m */; };
 		C06B92001C525D79007660FF /* VoiceSearchFeedback001.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B916D1C525D79007660FF /* VoiceSearchFeedback001.png */; };
 		C06B92011C525D79007660FF /* VoiceSearchFeedback001@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B916E1C525D79007660FF /* VoiceSearchFeedback001@2x.png */; };
 		C06B92021C525D79007660FF /* VoiceSearchFeedback002.png in Resources */ = {isa = PBXBuildFile; fileRef = C06B916F1C525D79007660FF /* VoiceSearchFeedback002.png */; };
@@ -1746,6 +1747,8 @@
 		C05C07F71C2AF60800C26B08 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		C05C07F91C2AF82900C26B08 /* MedicationAddInputNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddInputNameViewController.h; sourceTree = "<group>"; };
 		C05C07FA1C2AF82900C26B08 /* MedicationAddInputNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationAddInputNameViewController.m; sourceTree = "<group>"; };
+		C06258DE1C58EE170007A35F /* IncomeRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomeRecordModel.h; sourceTree = "<group>"; };
+		C06258DF1C58EE170007A35F /* IncomeRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomeRecordModel.m; sourceTree = "<group>"; };
 		C06B916D1C525D79007660FF /* VoiceSearchFeedback001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback001.png; sourceTree = "<group>"; };
 		C06B916E1C525D79007660FF /* VoiceSearchFeedback001@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback001@2x.png"; sourceTree = "<group>"; };
 		C06B916F1C525D79007660FF /* VoiceSearchFeedback002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceSearchFeedback002.png; sourceTree = "<group>"; };
@@ -4373,6 +4376,8 @@
 				D28D0A311C2FD114002240BC /* WithdrawaListModel.m */,
 				C0BFEB8B1C410278005ADC28 /* BankListModel.h */,
 				C0BFEB8C1C410278005ADC28 /* BankListModel.m */,
+				C06258DE1C58EE170007A35F /* IncomeRecordModel.h */,
+				C06258DF1C58EE170007A35F /* IncomeRecordModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6519,6 +6524,7 @@
 				C09AD20B1C5132620063FD90 /* EMSDWebImageDownloaderOperation.m in Sources */,
 				C051E5DE1C24561A005A3D2E /* PhoneAppointSetTableViewCell.m in Sources */,
 				99DA40411C0BE59A00573D4C /* SDWebImageDownloader.m in Sources */,
+				C06258E01C58EE170007A35F /* IncomeRecordModel.m in Sources */,
 				C09AD2411C5132620063FD90 /* XHMessageTextView.m in Sources */,
 				99DA40201C0BE59A00573D4C /* MJRefreshAutoFooter.m in Sources */,
 				99DA403C1C0BE59A00573D4C /* MKAnnotationView+WebCache.m in Sources */,
