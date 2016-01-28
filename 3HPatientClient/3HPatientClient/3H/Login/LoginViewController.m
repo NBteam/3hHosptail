@@ -101,6 +101,7 @@
     if (!_textUserPwd) {
         _textUserPwd = [[LoginInputView alloc]initWithFrame:CGRectMake(0, self.textUserName.bottom+15, DeviceSize.width, 96/2) title:@"" placeholder:@"请输入密码"];
         _textUserPwd.textField.delegate = self;
+        _textUserPwd.textField.secureTextEntry = YES;
         _textUserPwd.textField.textColor = AppDefaultColor;
         if ([SGSaveFile getObjectFromSystemWithKey:RememberMe] &&[[SGSaveFile getObjectFromSystemWithKey:UserPassword] length]>0) {
             _textUserPwd.textField.text = [SGSaveFile getObjectFromSystemWithKey:UserPassword];

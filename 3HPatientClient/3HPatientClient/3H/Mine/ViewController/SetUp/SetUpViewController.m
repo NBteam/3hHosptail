@@ -58,6 +58,8 @@
     
     //  删除本地数据
     [THUser removeUserDataWithPath:UserPath andFileName:@"User"];
+    //删除记住密码
+    [SGSaveFile removeObjectFromSystemWithKey:RememberMe];
     self.user = nil;
     [self performSelector:@selector(loginOut) withObject:nil afterDelay:0.01];
     

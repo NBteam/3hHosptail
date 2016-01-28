@@ -6632,7 +6632,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "990609fd-dbee-4da7-b67b-e46aa73ec283";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -6694,7 +6694,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "990609fd-dbee-4da7-b67b-e46aa73ec283";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
