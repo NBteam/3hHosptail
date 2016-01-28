@@ -8,6 +8,7 @@
 
 #import "IncomeRecordViewController.h"
 #import "IncomeRecordTableViewCell.h"
+#import "IncomeRecordModel.h"
 @interface IncomeRecordViewController ()
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) UILabel *labName;
@@ -29,13 +30,39 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    [self getmyMonthAccLogsDate:@""];
+}
+
+- (void)getmyMonthAccLogsDate:(NSString *)date{
+    [self.dataArray removeAllObjects];
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(IncomeRecordViewController);
     
+    [[THNetWorkManager shareNetWork] myMonthAccLogsDate_m:date andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            NSLog(@"查看%@",response.dataDic);
+            IncomeRecordModel * model = [response thParseDataFromDic:response.dataDic andModel:[IncomeRecordModel class]];
+            [weakSelf.dataArray addObject:model];
+            self.labName.text = model.cur_month;
+            self.labTitle.text = [NSString stringWithFormat:@"%@月份收入总金额",model.cur_month_num];
+            self.labDetail.text = [NSString stringWithFormat:@"%@.00",model.month_total];
+            [weakSelf.tableView reloadData];
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+        ;
+    } ];
+        
 }
 
 - (UIView *)bgView{
     if (!_bgView){
         _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 190)];
-        _bgView.backgroundColor = [UIColor clearColor];
+        _bgView.backgroundColor = self.view.backgroundColor;
         
     }
     return _bgView;
@@ -64,6 +91,13 @@
 
 - (void)btnUpAction{
     
+    if (self.dataArray.count) {
+        IncomeRecordModel *model = self.dataArray[0];
+        NSMutableString *str = [NSMutableString stringWithFormat:@"%@",[model.pre_month substringToIndex:model.pre_month.length - 1]];
+        [str replaceCharactersInRange:NSMakeRange(4, 1) withString:@"-"];
+        [self getmyMonthAccLogsDate:str];
+      }
+    
 }
 
 - (UILabel *)labName{
@@ -72,7 +106,7 @@
         _labName.font = [UIFont systemFontOfSize:18];
         _labName.textColor = [UIColor colorWithHEX:0x666666];
         _labName.textAlignment = NSTextAlignmentCenter;
-        _labName.text = @"2015年12月";
+
     }
     return _labName;
 }
@@ -92,12 +126,21 @@
 
 - (void)btnDownAction{
     
+    if (self.dataArray.count) {
+        IncomeRecordModel *model = self.dataArray[0];
+        if (model.next_month) {
+            NSMutableString *str = [NSMutableString stringWithFormat:@"%@",[model.next_month substringToIndex:model.next_month.length - 1]];
+            [str replaceCharactersInRange:NSMakeRange(4, 1) withString:@"-"];
+            [self getmyMonthAccLogsDate:str];
+        }
+    }
+    
 }
 
 - (UIView *)bgWhite{
     if (!_bgWhite) {
         _bgWhite = [[UIView alloc] initWithFrame:CGRectMake(0, self.blueView.bottom, DeviceSize.width, 90)];
-        _bgWhite.backgroundColor = [UIColor blackColor];
+        _bgWhite.backgroundColor = [UIColor whiteColor];
         UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, 90 - 0.5, DeviceSize.width, 0.5)];
         lab.backgroundColor = [UIColor colorWithHEX:0xcccccc];
         [_bgWhite addSubview:lab];
@@ -161,12 +204,20 @@
         cell = [[IncomeRecordTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:1];
+    IncomeRecordModel *model = self.dataArray[0];
+    NSMutableDictionary *dict = model.list[indexPath.row];
+    [cell confingWithAddTime:dict[@"addtime"] Total:dict[@"total"]];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+
+    if (self.dataArray.count) {
+        IncomeRecordModel *model = self.dataArray[0];
+        return model.list.count;
+    }
+    
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

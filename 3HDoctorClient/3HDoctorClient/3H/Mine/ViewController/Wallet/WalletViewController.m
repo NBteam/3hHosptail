@@ -96,7 +96,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 2) {
-        IncomeRecordViewController *incomeRecordVc = [[IncomeRecordViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        IncomeRecordViewController *incomeRecordVc = [[IncomeRecordViewController alloc] init];
         [self.navigationController pushViewController:incomeRecordVc animated:YES];
     }
     if (indexPath.section == 3) {

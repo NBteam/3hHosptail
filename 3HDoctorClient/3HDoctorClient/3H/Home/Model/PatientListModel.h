@@ -15,4 +15,9 @@
 @property (nonatomic, copy) NSString *age;
 @property (nonatomic, copy) NSString *pic;
 @property (nonatomic, copy) NSString *sick_desc;
+//环信群聊id
+@property (nonatomic, copy) NSString *group_id;
+@property (nonatomic, copy) NSString *md5_id;
+//是否是助理的患者 1 是 0 不是
+@property (nonatomic, copy) NSString *is_assist_patient;
 @end

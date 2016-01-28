@@ -47,19 +47,58 @@
     }else{
         [self setWindowRootViewControllerIsGuide];
     }
+    //  处理后台推送
+    [self handleProgramLaunchNotifaction:launchOptions];
     //友盟
     [self setUM];
     //信鸽推送
     [self setXGPUSHWithOptions:launchOptions];
     //环信
-    [self setHX];
+    [self registerHuanXin:application didFinishLaunchingWithOptions:launchOptions];
     
     return YES;
 }
+#pragma mark 处理后台推送
+- (void)handleProgramLaunchNotifaction:(NSDictionary *)notifacion
+{
+    NSDictionary * remoteNotification = [notifacion objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    NSLog(@"receiveRemoteNotifiction==========>>>>>GO, %@", remoteNotification);
+    
+}
 #pragma mark 环信相关
 
-- (void)setHX{
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:nil];
+- (void)registerHuanXin:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+    [self registerRemoteNotification];
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:@"3hDoctor_D"];
+
+    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    
+    
+}
+
+// 注册推送
+- (void)registerRemoteNotification{
+    UIApplication *application = [UIApplication sharedApplication];
+    application.applicationIconBadgeNumber = 0;
+    
+    if([application respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
+    
+#if !TARGET_IPHONE_SIMULATOR
+    //iOS8 注册APNS
+    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
+        [application registerForRemoteNotifications];
+    }else{
+        UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeBadge |
+        UIRemoteNotificationTypeSound |
+        UIRemoteNotificationTypeAlert;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
+    }
+#endif
 }
 
 #pragma mark - 信鸽相关
@@ -208,6 +247,7 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
    // NSString * deviceTokenStr1 = [XGPush registerDevice:deviceToken];
+    [[EaseMob sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
     [XGPush setAccount:@"fyq"];
     
     void (^successBlock)(void) = ^(void){
@@ -371,23 +411,37 @@
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
+
+
+//- (void)applicationWillEnterForeground:(UIApplication *)application {
+//    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+//    //角标清0
+//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+//}
+
+
+
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+  //  [[EaseMob sharedInstance] applicationDidEnterBackground:application];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    //角标清0
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+//    [[EaseMob sharedInstance] applicationWillEnterForeground:application];
+//    application.applicationIconBadgeNumber=0;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+   // [[EaseMob sharedInstance] applicationWillTerminate:application];
 }
+
 
 @end
