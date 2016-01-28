@@ -293,7 +293,7 @@
 #pragma mark -环信注册
 - (void)HXReg{
     WeakSelf(LoginViewController);
-    [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:self.user.md5_id password:[self.user.md5_id substringToIndex:9] withCompletion:^(NSString *username, NSString *password, EMError *error) {
+    [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:self.user.md5_id password:[self.user.md5_id substringToIndex:10] withCompletion:^(NSString *username, NSString *password, EMError *error) {
         if (!error) {
             NSLog(@"注册成功");
             [weakSelf HXLogin];
@@ -306,7 +306,7 @@
 }
 #pragma mark -环信登陆
 - (void)HXLogin{
-    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:self.user.md5_id password:[self.user.md5_id substringToIndex:9] completion:^(NSDictionary *loginInfo, EMError *error) {
+    [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:self.user.md5_id password:[self.user.md5_id substringToIndex:10] completion:^(NSDictionary *loginInfo, EMError *error) {
         if (!error && loginInfo) {
             NSLog(@"环信登陆成功");
         }else{

@@ -83,7 +83,8 @@
 - (DynamicToolView *)toolView{
     if (!_toolView) {
         WeakSelf(DynamicDetailViewController);
-        _toolView = [[DynamicToolView alloc]initWithFrame:CGRectMake(0, DeviceSize.height-44-64, DeviceSize.width, 44)];;
+        _toolView = [[DynamicToolView alloc]initWithFrame:CGRectMake(0, DeviceSize.height-44-64, DeviceSize.width, 44)];
+        _toolView.backgroundColor = [UIColor colorWithHEX:0xffffff];
         [_toolView setBtnRightBlock:^{
             [weakSelf getGoodNetWork];
         }];
