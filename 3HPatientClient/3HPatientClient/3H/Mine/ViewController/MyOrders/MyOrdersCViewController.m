@@ -53,13 +53,11 @@
             ShopDetailVc.id = model1.ilist[0][@"goods_id"];
             [weakSelf.navigationController pushViewController:ShopDetailVc animated:YES];
         }else if (index == 2 ){
-            [weakSelf orderReceiveNetWorkId:model1.ilist[0][@"goods_id"]];
+            [weakSelf orderReceiveNetWorkId:model1.id];
         }
     }];
     [cell confingWithModel:model];
     return cell;
-    
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -133,6 +131,7 @@
     [[THNetWorkManager shareNetWork]orderReceiveOrder_id:ids andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
+            [weakSelf getNetWork];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

@@ -51,8 +51,9 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
     }
     //信鸽推送
     [self setXGPUSHWithOptions:launchOptions];
-    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     [self registerRemoteNotification];
+    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    
     return YES;
 }
 

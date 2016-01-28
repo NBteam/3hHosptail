@@ -613,8 +613,8 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 #pragma mark 【鉴权】消费记录——列表【20151223添加】
-- (void)getMyRecheckInfoListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"getMyRecheckList",@"page":@(page),@"token":GetToken};
+- (void)getMyAccLogListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"myAccLogList",@"page":@(page),@"token":GetToken};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 

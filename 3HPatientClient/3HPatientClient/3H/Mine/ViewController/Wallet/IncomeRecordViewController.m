@@ -64,7 +64,7 @@
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(IncomeRecordViewController);
-    [[THNetWorkManager shareNetWork]getMyRecheckInfoListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getMyAccLogListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             if (weakSelf.pageNO == 1) {

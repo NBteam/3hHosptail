@@ -158,7 +158,6 @@
         _btnAppraise.frame = CGRectMake(DeviceSize.width -65 -10, self.labLine3.bottom +7.5, 65, 30);
         _btnAppraise.backgroundColor = [UIColor colorWithHEX:0xffffff];
         _btnAppraise.titleLabel.font = [UIFont systemFontOfSize:13];
-        [_btnAppraise setTitle:@"" forState:UIControlStateNormal];
         _btnAppraise.backgroundColor = AppDefaultColor;
         [_btnAppraise setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _btnAppraise.layer.masksToBounds = YES;
@@ -183,6 +182,7 @@
     [self.imgProduct sd_setImageWithURL:SD_IMG(model.ilist[0][@"thumb"])];
     if ([model.status doubleValue] == -1 ) {
         self.labState.text = @"取消订单";
+        [self.btnAppraise setTitle:@"取消订单" forState:UIControlStateNormal];
     }else if ([model.status doubleValue] == 0 ){
         self.labState.text = @"待支付";
         [self.btnAppraise setTitle:@"付款" forState:UIControlStateNormal];

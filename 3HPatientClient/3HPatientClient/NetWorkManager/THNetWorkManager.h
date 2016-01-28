@@ -248,7 +248,7 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
             andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
 #pragma mark 【鉴权】消费记录——列表【20151223添加】
-- (void)getMyRecheckInfoListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+- (void)getMyAccLogListPage:(NSInteger)page andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
 #pragma mark 【鉴权】配送地址——修改【20151217更新】
 - (void)addAddressName:(NSString *)name id:(NSString *)id mobile:(NSString *)mobile area_ids:(NSString *)area_ids address:(NSString *)address zipcode:(NSString *)zipcode is_default:(NSString *)is_default andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
