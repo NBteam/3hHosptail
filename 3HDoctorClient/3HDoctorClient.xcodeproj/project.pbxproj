@@ -532,6 +532,7 @@
 		A9B5EA941C16E75C00D4046B /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA921C16E75C00D4046B /* SearchCell.m */; };
 		A9B5EA971C16E77E00D4046B /* OutpatientReservationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */; };
 		C00C7B981C5DEBC000C1404C /* 转助理图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C00C7B971C5DEBC000C1404C /* 转助理图标@2x.png */; };
+		C00C7B9B1C5E2D9900C1404C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C00C7B9D1C5E2D9900C1404C /* Localizable.strings */; };
 		C027A73C1C22DE6500F6FA0C /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027A73B1C22DE6500F6FA0C /* MedicationAddInputViewController.m */; };
 		C027A73F1C22F33900F6FA0C /* MedicationAddNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027A73E1C22F33900F6FA0C /* MedicationAddNumViewController.m */; };
 		C051E5D81C245324005A3D2E /* PhoneAppointTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C051E5D71C245324005A3D2E /* PhoneAppointTDetailViewController.m */; };
@@ -1706,6 +1707,8 @@
 		A9B5EA951C16E77E00D4046B /* OutpatientReservationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutpatientReservationView.h; sourceTree = "<group>"; };
 		A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutpatientReservationView.m; sourceTree = "<group>"; };
 		C00C7B971C5DEBC000C1404C /* 转助理图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "转助理图标@2x.png"; sourceTree = "<group>"; };
+		C00C7B9C1C5E2D9900C1404C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C00C7B9E1C5E2D9C00C1404C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C027A73A1C22DE6500F6FA0C /* MedicationAddInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddInputViewController.h; sourceTree = "<group>"; };
 		C027A73B1C22DE6500F6FA0C /* MedicationAddInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationAddInputViewController.m; sourceTree = "<group>"; };
 		C027A73D1C22F33900F6FA0C /* MedicationAddNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddNumViewController.h; sourceTree = "<group>"; };
@@ -2751,6 +2754,7 @@
 		99DA3ED71C0BE50300573D4C = {
 			isa = PBXGroup;
 			children = (
+				C00C7B9D1C5E2D9900C1404C /* Localizable.strings */,
 				C09AD2631C5133E90063FD90 /* libxml2.tbd */,
 				C09AD2611C5133DB0063FD90 /* libresolv.tbd */,
 				C09AD25F1C5133B40063FD90 /* libstdc++.6.0.9.tbd */,
@@ -6238,6 +6242,7 @@
 				99DA45951C0C4FED00573D4C /* 首页-患者中心-患者详情-诊断2_呼吸道感染文本框@2x.png in Resources */,
 				99DA45C11C0C4FED00573D4C /* 首页-预约管理-电话预约-预约详情-同意_取消-未点击@2x.png in Resources */,
 				C0B6FD6E1C283FB9003902AB /* UMSShareListController.xib in Resources */,
+				C00C7B9B1C5E2D9900C1404C /* Localizable.strings in Resources */,
 				C0B6FD691C283FB9003902AB /* UMSCommentInputControlleriPad.xib in Resources */,
 				99DA45B71C0C4FED00573D4C /* 首页-预约管理-电话预约_3@2x.png in Resources */,
 				C06B92371C525D79007660FF /* chat_location_detail_disclosureHL.png in Resources */,
@@ -6825,6 +6830,15 @@
 				99DA3EEE1C0BE50300573D4C /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C00C7B9D1C5E2D9900C1404C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C00C7B9C1C5E2D9900C1404C /* en */,
+				C00C7B9E1C5E2D9C00C1404C /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		C0B6FD0C1C283FB9003902AB /* UMSocialLocalizable.strings */ = {
