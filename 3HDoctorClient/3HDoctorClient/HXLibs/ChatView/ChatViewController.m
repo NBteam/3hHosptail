@@ -180,7 +180,11 @@
 {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andImageName:@"转助理图标"];
+    if (self.is_assist_patient) {
+        
+    }else{
+        self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andImageName:@"转助理图标"];
+    }
     [self registerBecomeActive];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = RGBACOLOR(248, 248, 248, 1);
@@ -358,12 +362,6 @@
             NSLog(@"失败%@",error);
         } onQueue:nil];
         
-        
-        
-        
-        
-        
-        
     }];
     [self.navigationController pushViewController:assistantDoctorVc animated:YES];
 }
@@ -375,7 +373,7 @@
         if (response.responseCode == 1) {
             
         }else{
-            [weakSelf showHudAuto:response.message andDuration:@"10"];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
         
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
@@ -567,7 +565,6 @@
                 timeCell.backgroundColor = [UIColor clearColor];
                 timeCell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
-            
             timeCell.textLabel.text = (NSString *)obj;
             
             return timeCell;
@@ -1465,6 +1462,7 @@
             {
                 weakSelf.messages = [messages mutableCopy];
                 weakSelf.dataSource = [[weakSelf formatMessages:messages] mutableCopy];
+                NSLog(@"住宿%@",weakSelf.dataSource);
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf.tableView reloadData];
@@ -1551,7 +1549,7 @@
             }
             
             MessageModel *model = [MessageModelManager modelWithMessage:message];
-            model.headImageURL = [NSURL URLWithString:@"http://123.57.231.12:85/Public/uploads/mface/5668ec25318fb.png"];
+            //model.headImageURL = [NSURL URLWithString:@"http://123.57.231.12:85/Public/uploads/mface/5668ec25318fb.png"];
             if ([_delelgate respondsToSelector:@selector(nickNameWithChatter:)]) {
                 NSString *showName = [_delelgate nickNameWithChatter:model.username];
                 model.nickName = showName?showName:model.username;
@@ -1565,7 +1563,6 @@
             
             //Demo集成Parse,获取用户个人信息
             UserProfileEntity *user = [[UserProfileManager sharedInstance] getUserProfileByUsername:model.username];
-            user.imageUrl = [NSString stringWithFormat:@"http://123.57.231.12:85/Public/uploads/mface/5668ec25318fb.png"];
             
             if (user && user.imageUrl.length > 0) {
                 model.headImageURL = [NSURL URLWithString:user.imageUrl];

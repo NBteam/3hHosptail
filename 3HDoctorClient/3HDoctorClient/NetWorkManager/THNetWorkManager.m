@@ -886,7 +886,7 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 }
 
 - (void)switchDoctor_id:(NSString *)doctor_id member_id:(NSString *)member_id group_id:(NSString *)group_id	andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"switchHelper",@([doctor_id integerValue]):doctor_id,@"member_id":@([member_id integerValue]),@"token":GetToken,@"group_id":@([group_id integerValue])};
+    NSDictionary *paramDic = @{@"a":@"switchHelper",@"doctor_id":@([doctor_id integerValue]),@"member_id":@([member_id integerValue]),@"token":GetToken,@"group_id":@([group_id integerValue])};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 
