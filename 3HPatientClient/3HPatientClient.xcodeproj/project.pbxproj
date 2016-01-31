@@ -838,6 +838,7 @@
 		D2D31DEB1C26AB7000BBE60D /* AppointTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DEA1C26AB7000BBE60D /* AppointTimeModel.m */; };
 		D2D31DFD1C26D9E400BBE60D /* CommentsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DFC1C26D9E400BBE60D /* CommentsListModel.m */; };
 		D2D3615A1C5E10F400419147 /* HealthFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D361591C5E10F400419147 /* HealthFileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2D361611C5E2E1C00419147 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2D361601C5E2E1C00419147 /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
 		D2D373831C316323005E662D /* NewMyArchivesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373821C316323005E662D /* NewMyArchivesModel.m */; };
 		D2D373861C3170DE005E662D /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373851C3170DE005E662D /* MedicationAddInputViewController.m */; };
 		D2D373891C317B51005E662D /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373881C317B51005E662D /* TimeView.m */; };
@@ -2279,6 +2280,7 @@
 		D2D31DFC1C26D9E400BBE60D /* CommentsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsListModel.m; sourceTree = "<group>"; };
 		D2D361581C5E10F400419147 /* HealthFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthFileViewController.h; sourceTree = "<group>"; };
 		D2D361591C5E10F400419147 /* HealthFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthFileViewController.m; sourceTree = "<group>"; };
+		D2D361601C5E2E1C00419147 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D2D373811C316323005E662D /* NewMyArchivesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMyArchivesModel.h; sourceTree = "<group>"; };
 		D2D373821C316323005E662D /* NewMyArchivesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMyArchivesModel.m; sourceTree = "<group>"; };
 		D2D373841C3170DE005E662D /* MedicationAddInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddInputViewController.h; sourceTree = "<group>"; };
@@ -3183,6 +3185,7 @@
 				99DA3EB21C0BE4CF00573D4C /* Info.plist */,
 				99DA3EB31C0BE4CF00573D4C /* main.m */,
 				99DA408A1C0BEA3100573D4C /* PrefixHeader.pch */,
+				D2D361601C5E2E1C00419147 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -5796,6 +5799,7 @@
 				991A32281C12E2DC00E0313F /* 我的-个人资料_病人头像@2x.png in Resources */,
 				D2D0A9BC1C525DE2007F39F7 /* VoiceSearchFeedback005.png in Resources */,
 				D2D0A9DC1C525DE2007F39F7 /* chat_video_play.png in Resources */,
+				D2D361611C5E2E1C00419147 /* Localizable.strings in Resources */,
 				D2D0A9F81C525DE2007F39F7 /* chatBar_keyboard@2x.png in Resources */,
 				991A32211C12E2DC00E0313F /* 首页-健康管理_主要诊断@2x.png in Resources */,
 				991A328F1C12E2DC00E0313F /* 首页-健康商城-商品详情_立即购买@2x.png in Resources */,

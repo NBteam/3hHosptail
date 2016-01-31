@@ -1,42 +1,42 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F67E7C64B816C483EE606486424394ADFF6E39A5+++6AD6596",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F67E7C64B816C483EE606486424394ADFF6E39A5+++C8AE23E",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
-    "254e1078-bab5-df40-a98b-31316f82f384++8693+++070F96F" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++8962+++4CFD602" : {
 
     },
-    "254e1078-bab5-df40-a98b-31316f82f384++8962+++FABEFE6" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++8962+++81C4141" : {
 
     },
-    "254e1078-bab5-df40-a98b-31316f82f384++8693+++88F715C" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++8693+++F860A70" : {
 
     },
-    "254e1078-bab5-df40-a98b-31316f82f384++8693+++6D7E3C4" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++8693+++F9CB962" : {
 
     },
-    "254e1078-bab5-df40-a98b-31316f82f384++8962+++3A5CA6F" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++8693+++34A8A43" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "F67E7C64B816C483EE606486424394ADFF6E39A5+++3232790" : 0,
-    "F67E7C64B816C483EE606486424394ADFF6E39A5+++57C6291" : 0,
-    "254e1078-bab5-df40-a98b-31316f82f384++8693+++6D7E3C4" : 0,
-    "254e1078-bab5-df40-a98b-31316f82f384++8693+++88F715C" : 0,
-    "254e1078-bab5-df40-a98b-31316f82f384++8962+++FABEFE6" : 0,
-    "254e1078-bab5-df40-a98b-31316f82f384++8962+++3A5CA6F" : 0,
-    "254e1078-bab5-df40-a98b-31316f82f384++8693+++070F96F" : 0,
-    "F67E7C64B816C483EE606486424394ADFF6E39A5+++6AD6596" : 0
+    "F67E7C64B816C483EE606486424394ADFF6E39A5+++A17EFCC" : 0,
+    "254e1078-bab5-df40-a98b-31316f82f384++8693+++F9CB962" : 0,
+    "254e1078-bab5-df40-a98b-31316f82f384++8693+++34A8A43" : 0,
+    "254e1078-bab5-df40-a98b-31316f82f384++8693+++F860A70" : 0,
+    "F67E7C64B816C483EE606486424394ADFF6E39A5+++C8AE23E" : 0,
+    "254e1078-bab5-df40-a98b-31316f82f384++8962+++81C4141" : 0,
+    "254e1078-bab5-df40-a98b-31316f82f384++8962+++4CFD602" : 0,
+    "F67E7C64B816C483EE606486424394ADFF6E39A5+++83B7C25" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4A96C459-BEE3-441C-AFDD-5819A71EF7B1",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "F67E7C64B816C483EE606486424394ADFF6E39A5+++3232790" : "New3H\/",
-    "F67E7C64B816C483EE606486424394ADFF6E39A5+++57C6291" : "3H_Hosptail",
-    "254e1078-bab5-df40-a98b-31316f82f384++8693+++6D7E3C4" : "3H\/3HPatientClient\/3HPatientClient\/Images\/ChatImages\/",
-    "254e1078-bab5-df40-a98b-31316f82f384++8693+++88F715C" : "New3H\/3HPatientClient\/3HPatientClient\/PublicFramework\/HXLibs\/Core%20Data\/",
-    "254e1078-bab5-df40-a98b-31316f82f384++8962+++FABEFE6" : "3HPatientClient\/3HPatientClient\/PublicFramework\/HXLibs\/ChatUtil\/",
-    "254e1078-bab5-df40-a98b-31316f82f384++8962+++3A5CA6F" : "New3H\/3HPatientClient\/3HPatientClient\/PublicFramework\/HXLibs\/ChatUtil\/",
-    "254e1078-bab5-df40-a98b-31316f82f384++8693+++070F96F" : "New3H\/3HPatientClient\/3HPatientClient\/PublicFramework\/HXLibs\/Core%20Data\/",
-    "F67E7C64B816C483EE606486424394ADFF6E39A5+++6AD6596" : "3H\/"
+    "F67E7C64B816C483EE606486424394ADFF6E39A5+++A17EFCC" : "New3H\/",
+    "254e1078-bab5-df40-a98b-31316f82f384++8693+++F9CB962" : "3H\/3HPatientClient\/3HPatientClient\/Images\/ChatImages\/",
+    "254e1078-bab5-df40-a98b-31316f82f384++8693+++34A8A43" : "New3H\/3HPatientClient\/3HPatientClient\/PublicFramework\/HXLibs\/Core%20Data\/",
+    "254e1078-bab5-df40-a98b-31316f82f384++8693+++F860A70" : "New3H\/3HPatientClient\/3HPatientClient\/PublicFramework\/HXLibs\/Core%20Data\/",
+    "F67E7C64B816C483EE606486424394ADFF6E39A5+++C8AE23E" : "3H\/",
+    "254e1078-bab5-df40-a98b-31316f82f384++8962+++81C4141" : "3HPatientClient\/3HPatientClient\/PublicFramework\/HXLibs\/ChatUtil\/",
+    "254e1078-bab5-df40-a98b-31316f82f384++8962+++4CFD602" : "New3H\/3HPatientClient\/3HPatientClient\/PublicFramework\/HXLibs\/ChatUtil\/",
+    "F67E7C64B816C483EE606486424394ADFF6E39A5+++83B7C25" : "3H_Hosptail"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "3HPatientClient",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -45,42 +45,42 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8693+++070F96F"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8693+++34A8A43"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8693+++6D7E3C4"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8693+++F860A70"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8693+++88F715C"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8693+++F9CB962"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8962+++3A5CA6F"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8962+++4CFD602"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8962+++FABEFE6"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8962+++81C4141"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NBteam\/3hHosptail.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F67E7C64B816C483EE606486424394ADFF6E39A5+++3232790"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F67E7C64B816C483EE606486424394ADFF6E39A5+++83B7C25"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NBteam\/3hHosptail.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F67E7C64B816C483EE606486424394ADFF6E39A5+++57C6291"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F67E7C64B816C483EE606486424394ADFF6E39A5+++A17EFCC"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NBteam\/3hHosptail.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F67E7C64B816C483EE606486424394ADFF6E39A5+++6AD6596"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F67E7C64B816C483EE606486424394ADFF6E39A5+++C8AE23E"
     }
   ]
 }

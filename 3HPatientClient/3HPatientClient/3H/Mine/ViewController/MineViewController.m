@@ -16,7 +16,7 @@
 //钱包
 #import "WalletViewController.h"
 //我的档案
-#import "NewMyArchivesViewController.h"
+#import "HealthFileViewController.h"
 //我的预约
 #import "MyAppointmentViewController.h"
 //我的订单
@@ -127,7 +127,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row ==0) {
         
-        NewMyArchivesViewController *myArchivesVc = [[NewMyArchivesViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        HealthFileViewController *myArchivesVc = [[HealthFileViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         myArchivesVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:myArchivesVc animated:YES];
         

@@ -72,7 +72,7 @@
                     ChatViewController *chatController = [[ChatViewController alloc] initWithChatter:weakSelf.group_id conversationType:eConversationTypeGroupChat];
                     chatController.myHeadImage = weakSelf.user.pic;
                     chatController.yourHeadImage = weakSelf.model.pic;
-                    chatController.title = weakSelf.group_id;
+                    chatController.title =[NSString stringWithFormat:@"您正在与%@聊天",weakSelf.model.truename];
                     [weakSelf.navigationController pushViewController:chatController animated:YES];
                 }
             }else{
@@ -138,7 +138,7 @@
             ChatViewController *chatController = [[ChatViewController alloc] initWithChatter:group_id conversationType:eConversationTypeGroupChat];
             chatController.myHeadImage = weakSelf.user.pic;
             chatController.yourHeadImage = weakSelf.model.pic;
-            chatController.title = group_id;
+            chatController.title = [NSString stringWithFormat:@"您正在与%@聊天",weakSelf.model.truename];;
             [weakSelf.navigationController pushViewController:chatController animated:YES];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
