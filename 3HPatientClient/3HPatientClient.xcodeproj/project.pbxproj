@@ -839,6 +839,10 @@
 		D2D31DFD1C26D9E400BBE60D /* CommentsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DFC1C26D9E400BBE60D /* CommentsListModel.m */; };
 		D2D3615A1C5E10F400419147 /* HealthFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D361591C5E10F400419147 /* HealthFileViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D361611C5E2E1C00419147 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2D361601C5E2E1C00419147 /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
+		D2D3616B1C5E341000419147 /* 3H医生端-登录_QQ@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361631C5E341000419147 /* 3H医生端-登录_QQ@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D2D3616D1C5E341000419147 /* 3H医生端-登录_微信@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361651C5E341000419147 /* 3H医生端-登录_微信@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D2D3616E1C5E341000419147 /* 3H医生端-登录_新浪微博@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361661C5E341000419147 /* 3H医生端-登录_新浪微博@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D2D361711C5E341000419147 /* thLOGOdoctor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361691C5E341000419147 /* thLOGOdoctor@2x.png */; settings = {ASSET_TAGS = (); }; };
 		D2D373831C316323005E662D /* NewMyArchivesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373821C316323005E662D /* NewMyArchivesModel.m */; };
 		D2D373861C3170DE005E662D /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373851C3170DE005E662D /* MedicationAddInputViewController.m */; };
 		D2D373891C317B51005E662D /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373881C317B51005E662D /* TimeView.m */; };
@@ -2281,6 +2285,10 @@
 		D2D361581C5E10F400419147 /* HealthFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthFileViewController.h; sourceTree = "<group>"; };
 		D2D361591C5E10F400419147 /* HealthFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthFileViewController.m; sourceTree = "<group>"; };
 		D2D361601C5E2E1C00419147 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		D2D361631C5E341000419147 /* 3H医生端-登录_QQ@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3H医生端-登录_QQ@2x.png"; sourceTree = "<group>"; };
+		D2D361651C5E341000419147 /* 3H医生端-登录_微信@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3H医生端-登录_微信@2x.png"; sourceTree = "<group>"; };
+		D2D361661C5E341000419147 /* 3H医生端-登录_新浪微博@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3H医生端-登录_新浪微博@2x.png"; sourceTree = "<group>"; };
+		D2D361691C5E341000419147 /* thLOGOdoctor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thLOGOdoctor@2x.png"; sourceTree = "<group>"; };
 		D2D373811C316323005E662D /* NewMyArchivesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMyArchivesModel.h; sourceTree = "<group>"; };
 		D2D373821C316323005E662D /* NewMyArchivesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMyArchivesModel.m; sourceTree = "<group>"; };
 		D2D373841C3170DE005E662D /* MedicationAddInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddInputViewController.h; sourceTree = "<group>"; };
@@ -2636,6 +2644,7 @@
 		991A31A01C12E2DC00E0313F /* 登录 */ = {
 			isa = PBXGroup;
 			children = (
+				D2D361621C5E341000419147 /* 3H医生端-登录 */,
 				C07486CC1C5A40850034C40A /* 3H患者端-引导页1.jpg */,
 				C07486CD1C5A40850034C40A /* 3H患者端-引导页2.jpg */,
 				991A31A11C12E2DC00E0313F /* QQ@2x.png */,
@@ -5438,6 +5447,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D2D361621C5E341000419147 /* 3H医生端-登录 */ = {
+			isa = PBXGroup;
+			children = (
+				D2D361631C5E341000419147 /* 3H医生端-登录_QQ@2x.png */,
+				D2D361651C5E341000419147 /* 3H医生端-登录_微信@2x.png */,
+				D2D361661C5E341000419147 /* 3H医生端-登录_新浪微博@2x.png */,
+				D2D361691C5E341000419147 /* thLOGOdoctor@2x.png */,
+			);
+			path = "3H医生端-登录";
+			sourceTree = "<group>";
+		};
 		D2D5A6671C47EAFC0056DF24 /* APPAY */ = {
 			isa = PBXGroup;
 			children = (
@@ -5691,6 +5711,7 @@
 				D2D0AA0B1C525DE2007F39F7 /* chatBar_colorMore_location@2x.png in Resources */,
 				9929BCC11C1829B400F747CB /* 首页-我要预约-预约挂号-2_右@2x.png in Resources */,
 				D2D0A9CE1C525DE2007F39F7 /* VoiceSearchFeedback014.png in Resources */,
+				D2D3616B1C5E341000419147 /* 3H医生端-登录_QQ@2x.png in Resources */,
 				D2D0AA1B1C525DE2007F39F7 /* chatBar_more_photo.png in Resources */,
 				D2D0AA201C525DE2007F39F7 /* chat_receiver_audio_playing000.png in Resources */,
 				D2D0AA261C525DE2007F39F7 /* chat_receiver_audio_playing003.png in Resources */,
@@ -5791,6 +5812,7 @@
 				991A32A51C12E2DC00E0313F /* 首页-健康资讯-新闻资讯-评论_铅笔@2x.png in Resources */,
 				D2D0A9E41C525DE2007F39F7 /* chatBar_more_faceSelected@2x.png in Resources */,
 				991A326F1C12E2DC00E0313F /* 3H-我的_设置-非点击状态@2x.png in Resources */,
+				D2D3616D1C5E341000419147 /* 3H医生端-登录_微信@2x.png in Resources */,
 				D2D0AA091C525DE2007F39F7 /* chatBar_colorMore_camera@2x.png in Resources */,
 				D2D0AA2A1C525DE2007F39F7 /* chat_receiver_bg.png in Resources */,
 				991A32531C12E2DC00E0313F /* 我的-设置_评价软件-非点击状态@2x.png in Resources */,
@@ -5830,6 +5852,7 @@
 				99DA41D41C0BEB0500573D4C /* MJRefresh.bundle in Resources */,
 				D2D0A9EC1C525DE2007F39F7 /* chat_location_detail_disclosureHL@2x.png in Resources */,
 				991A325E1C12E2DC00E0313F /* 3H-我的_我的健康档案-点击状态@2x.png in Resources */,
+				D2D361711C5E341000419147 /* thLOGOdoctor@2x.png in Resources */,
 				C08244741C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png in Resources */,
 				991A32701C12E2DC00E0313F /* 3H-消息-预约提醒-全选_删除@2x.png in Resources */,
 				991A32441C12E2DC00E0313F /* 我的-我要预约-预约挂号-预约挂号_头像2@2x.png in Resources */,
@@ -5880,6 +5903,7 @@
 				991A32C81C12E2DC00E0313F /* 首页-我要咨询-在线咨询_3H头像@2x.png in Resources */,
 				991A32C21C12E2DC00E0313F /* 3H-首页_我要咨询 (2)@2x.png in Resources */,
 				991A32E11C12E2DC00E0313F /* 首页-我要预约-预约挂号_简介@2x.png in Resources */,
+				D2D3616E1C5E341000419147 /* 3H医生端-登录_新浪微博@2x.png in Resources */,
 				D2D0A9FD1C525DE2007F39F7 /* chatBar_moreSelected.png in Resources */,
 				D2D0A9FC1C525DE2007F39F7 /* chatBar_more@2x.png in Resources */,
 				991A32A31C12E2DC00E0313F /* 首页-健康资讯-新闻资讯-评论_分享@2x.png in Resources */,
