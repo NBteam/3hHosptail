@@ -277,7 +277,7 @@
         _labOtherLogin = [[UILabel alloc]initWithFrame:CGRectMake(0, self.btnLogin.bottom+20, 100, 13)];
         _labOtherLogin.text = @"使用以下账户登录";
         _labOtherLogin.font = [UIFont systemFontOfSize:13];
-//        _labOtherLogin.textColor = [UIColor whiteColor];
+        _labOtherLogin.textColor = [UIColor colorWithHEX:0x999999];
         [_labOtherLogin sizeToFit];
         _labOtherLogin.left = (DeviceSize.width - _labOtherLogin.width)/2;
         _labOtherLogin.top = self.btnLogin.bottom+20;
@@ -454,7 +454,7 @@
         _labLoginName.backgroundColor = [UIColor colorWithHEX:0xffffff];
         _labLoginName.text = @"使用以下账户直接登录";
         _labLoginName.textAlignment = NSTextAlignmentCenter;
-        _labLoginName.textColor = [UIColor colorWithHEX:0x888888];
+        _labLoginName.textColor = [UIColor colorWithHEX:0x999999];
         _labLoginName.font = [UIFont systemFontOfSize:13];
         [_labLoginName sizeToFit];
         

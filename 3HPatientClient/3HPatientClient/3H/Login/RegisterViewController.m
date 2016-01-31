@@ -27,28 +27,45 @@
 //注册按钮
 @property (nonatomic, strong) UIButton *btnLogin;
 //用户名
-@property (nonatomic, strong) LoginInputView * textUserName;
+@property (nonatomic, strong) UITextField * textUserName;
+//下划线
+@property (nonatomic, strong) UILabel *labLineUserName;
 //验证码
 @property (nonatomic, strong) UITextField *txtCode;
+//下划线
+@property (nonatomic, strong) UILabel *labLineCode;
 //验证码view
 @property (nonatomic, strong) UIView * viewCode;
 //获取验证码
 @property (nonatomic, strong) UIButton *btnGetCode;
 //密码
-@property (nonatomic, strong) LoginInputView *txtPassWord;
-
+@property (nonatomic, strong) UITextField *txtPassWord;
+//下划线
+@property (nonatomic, strong) UILabel *labLinePassWord;
 //用户协议
 @property (nonatomic, strong) UIButton *btnAgreement;
 //注册按钮
 @property (nonatomic, strong) UIButton *btnRegister;
 //邀请码
-@property (nonatomic, strong) LoginInputView *textInvitation;
+@property (nonatomic, strong) UITextField *textInvitation;
 
 //定时器
 @property (nonatomic,retain) NSTimer * timer;
+
+//下划线
+@property (nonatomic, strong) UILabel *labInvitation;
 @end
 
 @implementation RegisterViewController
+
+- (UILabel *)labLinePassWord{
+    if (!_labLinePassWord) {
+        _labLinePassWord = [[UILabel alloc] initWithFrame:CGRectMake(self.txtPassWord.left, self.txtPassWord.bottom +10, self.txtPassWord.width, 1)];
+        _labLinePassWord.backgroundColor = [UIColor colorWithHEX:0x888888];
+    }
+    return _labLinePassWord;
+}
+
 - (void)dealloc{
     if ([self.timer isValid]) {
         [self.timer invalidate];
@@ -65,19 +82,24 @@
     buttonIndex = 60;
     self.automaticallyAdjustsScrollViewInsets = NO;
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithHEX:0xff9358];;
+    self.view.backgroundColor = [UIColor colorWithHEX:0xffffff];;
     [self.viewBlue addSubview:self.imgLogo];
     [self.viewBlue addSubview:self.imgWhite];
+    
     self.viewBlue.height = self.imgWhite.bottom;
     [self.view addSubview:self.viewBlue];
     [self.view addSubview:self.textUserName];
-    [self.view addSubview:self.viewCode];
-    [self.viewCode addSubview:self.txtCode];
+    [self.view addSubview:self.labLineUserName];
+    [self.view addSubview:self.txtCode];
     [self.view addSubview:self.btnGetCode];
+    [self.view addSubview:self.labLineCode];
     [self.view addSubview:self.txtPassWord];
+    [self.view addSubview:self.labLinePassWord];
     [self.view addSubview:self.textInvitation];
+    [self.view addSubview:self.labInvitation];
     [self.view addSubview:self.btnAgreement];
     [self.view addSubview:self.btnRegister];
+    //[self.view addSubview:self.btnLogin];
     [self.view addSubview:self.btnLogin];
     
 //
@@ -85,10 +107,18 @@
 
 #pragma mark -UI
 
+- (UILabel *)labInvitation{
+    if (!_labInvitation) {
+        _labInvitation = [[UILabel alloc] initWithFrame:CGRectMake(self.txtPassWord.left, self.textInvitation.bottom +10, self.txtPassWord.width, 1)];
+        _labInvitation.backgroundColor = [UIColor colorWithHEX:0x888888];
+    }
+    return _labInvitation;
+}
+
 - (UIView *)viewBlue{
     if (!_viewBlue) {
         _viewBlue = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 0)];
-//        _viewBlue.backgroundColor = AppDefaultColor;
+        _viewBlue.backgroundColor = AppDefaultColor;
     }
     return _viewBlue;
 }
@@ -113,45 +143,69 @@
 - (void)btnLoginAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (LoginInputView *)textUserName{
+- (UITextField *)textUserName{
     if (!_textUserName) {
-        _textUserName = [[LoginInputView alloc]initWithFrame:CGRectMake(0, self.viewBlue.bottom, DeviceSize.width, 90/2) title:@"" placeholder:@"请输入手机号"];
-        _textUserName.textField.delegate = self;
-        _textUserName.textField.keyboardType=UIKeyboardTypePhonePad;
-        _textUserName.textField.textColor = AppDefaultColor;
+        _textUserName = [[UITextField alloc] initWithFrame:CGRectMake(15, self.viewBlue.bottom, DeviceSize.width -30, 30)];
+        
+        //是否纠错
+        _textUserName.autocorrectionType = UITextAutocorrectionTypeNo;
+        _textUserName.keyboardType = UIKeyboardTypeNumberPad;
+        _textUserName.font = [UIFont systemFontOfSize:15];
+        _textUserName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入手机号" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x999999]}];
+        _textUserName.textColor = AppDefaultColor;
     }
     return _textUserName;
 }
-- (UIView *)viewCode{
-    if (!_viewCode) {
-        _viewCode = [[UIView alloc]initWithFrame:CGRectMake(15, self.textUserName.bottom+10, DeviceSize.width-30-100, 90/2)];
-        _viewCode.backgroundColor = [UIColor whiteColor];
-        _viewCode.layer.masksToBounds = YES;
-        _viewCode.layer.cornerRadius = 3;
+
+- (UILabel *)labLineUserName{
+    if (!_labLineUserName) {
+        _labLineUserName = [[UILabel alloc] initWithFrame:CGRectMake(self.textUserName.left, self.textUserName.bottom +10, self.textUserName.width, 1)];
+        _labLineUserName.backgroundColor = [UIColor colorWithHEX:0x888888];
     }
-    return _viewCode;
+    return _labLineUserName;
 }
+
+//- (UIView *)viewCode{
+//    if (!_viewCode) {
+//        _viewCode = [[UIView alloc]initWithFrame:CGRectMake(15, self.textUserName.bottom+10, DeviceSize.width-30-100, 90/2)];
+//        _viewCode.backgroundColor = [UIColor whiteColor];
+//        _viewCode.layer.masksToBounds = YES;
+//        _viewCode.layer.cornerRadius = 3;
+//    }
+//    return _viewCode;
+//}
 - (UITextField *)txtCode{
     if (!_txtCode) {
-        _txtCode = [[UITextField alloc] initWithFrame:CGRectMake(15, 90/2/2-15, DeviceSize.width -30 - 90 -10, 30)];
+        _txtCode = [[UITextField alloc] initWithFrame:CGRectMake(15, self.labLineUserName.bottom +10, DeviceSize.width -30 - 90 -10, 30)];
+        
         //是否纠错
         _txtCode.autocorrectionType = UITextAutocorrectionTypeNo;
         _txtCode.keyboardType = UIKeyboardTypeNumberPad;
         _txtCode.font = [UIFont systemFontOfSize:15];
-        _txtCode.placeholder = @"验证码";
+        _txtCode.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入验证码" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x999999]}];
         _txtCode.textColor = AppDefaultColor;
     }
     return _txtCode;
 }
 
+- (UILabel *)labLineCode{
+    if (!_labLineCode) {
+        _labLineCode = [[UILabel alloc] initWithFrame:CGRectMake(self.txtCode.left, self.txtCode.bottom +10, self.labLineUserName.width, 1)];
+        _labLineCode.backgroundColor = [UIColor colorWithHEX:0x888888];
+    }
+    return _labLineCode;
+}
+
 - (UIButton *)btnGetCode{
     if (!_btnGetCode) {
         _btnGetCode = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btnGetCode.frame = CGRectMake(self.txtCode.right +10, self.textUserName.bottom +10, 90, 90/2);
+        _btnGetCode.frame = CGRectMake(self.txtCode.right +10, self.labLineUserName.bottom +15, 90, 25);
         _btnGetCode.backgroundColor = [UIColor orangeColor];
         _btnGetCode.titleLabel.font = [UIFont systemFontOfSize:13];
         [_btnGetCode setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_btnGetCode setTitle:@"免费获取" forState:UIControlStateNormal];
+        [_btnGetCode setTitle:@"获取验证码" forState:UIControlStateNormal];
+        _btnGetCode.layer.masksToBounds = YES;
+        _btnGetCode.layer.cornerRadius = 25/2;
         [_btnGetCode addTarget:self action:@selector(btnGetCodeAction) forControlEvents:UIControlEventTouchUpInside];
         
         
@@ -173,7 +227,7 @@
 }
 
 - (void)btnGetCodeAction{
-    if ([self.textUserName.textField.text isEqualToString:@""]) {
+    if ([self.textUserName.text isEqualToString:@""]) {
         [self showHudAuto:@"请输入手机号" andDuration:@"2"];
     }else{
         if (buttonIndex==60) {
@@ -182,24 +236,28 @@
         
     }
 }
-- (LoginInputView *)txtPassWord{
+- (UITextField *)txtPassWord{
     if (!_txtPassWord) {
-        _txtPassWord = [[LoginInputView alloc] initWithFrame:CGRectMake(0, self.viewCode.bottom +10, DeviceSize.width, 90/2) title:@"" placeholder:@"请输入密码"];
+        _txtPassWord = [[UITextField alloc] initWithFrame:CGRectMake(15, self.labLineCode.bottom +10, DeviceSize.width -30, 30)];
         
         //是否纠错
-        _txtPassWord.textField.autocorrectionType = UITextAutocorrectionTypeNo;
-        _txtPassWord.textField.font = [UIFont systemFontOfSize:15];
-        _txtPassWord.textField.secureTextEntry = YES;
-        _txtPassWord.textField.textColor = AppDefaultColor;
+        _txtPassWord.autocorrectionType = UITextAutocorrectionTypeNo;
+        _txtPassWord.font = [UIFont systemFontOfSize:15];
+        _txtPassWord.secureTextEntry = YES;
+        _txtPassWord.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入密码" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x999999]}];
+        _txtPassWord.textColor = AppDefaultColor;
     }
     return _txtPassWord;
 }
-- (LoginInputView *)textInvitation{
+- (UITextField *)textInvitation{
     if (!_textInvitation) {
-        _textInvitation = [[LoginInputView alloc]initWithFrame:CGRectMake(self.txtPassWord.left, self.txtPassWord.bottom+10, self.txtPassWord.width, self.txtPassWord.height) title:@"" placeholder:@"请输入邀请码"];
-        _textInvitation.textField.autocorrectionType = UITextAutocorrectionTypeNo;
-        _textInvitation.textField.font = [UIFont systemFontOfSize:15];
-        _textInvitation.textField.textColor = AppDefaultColor;
+        _textInvitation = [[UITextField alloc] initWithFrame:CGRectMake(15, self.labLinePassWord.bottom +10, DeviceSize.width -30, 30)];
+        
+        //是否纠错
+        _textInvitation.autocorrectionType = UITextAutocorrectionTypeNo;
+        _textInvitation.font = [UIFont systemFontOfSize:15];
+        _textInvitation.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入邀请码" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x999999]}];
+        _textInvitation.textColor = AppDefaultColor;
     }
     return _textInvitation;
 
@@ -209,9 +267,9 @@
 - (UIButton *)btnAgreement{
     if (!_btnAgreement) {
         _btnAgreement = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btnAgreement.frame = CGRectMake(15, self.textInvitation.bottom +10, 0, 20);
+        _btnAgreement.frame = CGRectMake(15, self.labInvitation.bottom +15, 0, 20);
         _btnAgreement.backgroundColor = [UIColor clearColor];
-        [_btnAgreement setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
+        [_btnAgreement setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
         _btnAgreement.titleLabel.font = [UIFont systemFontOfSize:12];
         
         [_btnAgreement setImage:[UIImage imageNamed:@"3H-注册_选框"] forState:UIControlStateNormal];
@@ -244,7 +302,7 @@
 - (UIButton *)btnRegister{
     if (!_btnRegister) {
         _btnRegister = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btnRegister.frame = CGRectMake(15, self.btnAgreement.bottom +10, DeviceSize.width-30, 45);
+        _btnRegister.frame = CGRectMake(15, self.btnAgreement.bottom +15, DeviceSize.width-30, 45);
         [_btnRegister setTitleColor:[UIColor colorWithHEX:0xffffff] forState:UIControlStateNormal];
         _btnRegister.backgroundColor = AppDefaultColor;
         _btnRegister.titleLabel.font = [UIFont systemFontOfSize:17];
@@ -261,26 +319,26 @@
 - (UIButton *)btnLogin{
     if (!_btnLogin) {
         _btnLogin = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btnLogin.frame = CGRectMake(15, self.btnRegister.bottom+10, DeviceSize.width-30, 20);
-        
-        NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:@"已有账号？马上登录"];
-        [title addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0,title.length)];
-        NSRange titleRange = {title.length-4,4};
-        [title addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:titleRange];
-        [_btnLogin setAttributedTitle:title forState:UIControlStateNormal];
+        _btnLogin.frame = CGRectMake(DeviceSize.width - 40 - 25, 11 +20, 40, 20);
+        [_btnLogin setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _btnLogin.titleLabel.font = [UIFont systemFontOfSize:15];
-        [_btnLogin addTarget:self action:@selector(btnLoginClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_btnLogin setTitle:@"登录" forState:UIControlStateNormal];
+        UILabel *labLine = [[UILabel alloc] initWithFrame:CGRectMake(5, 18, 30, 1)];
+        labLine.backgroundColor = [UIColor whiteColor];
+        [_btnLogin addSubview:labLine];
+        [_btnLogin addTarget:self action:@selector(btnLoginAction) forControlEvents:UIControlEventTouchUpInside];
+        
     }
     return _btnLogin;
 }
 - (void)btnRegisterAction{
-    if ([self.textUserName.textField.text isEqualToString:@""]) {
+    if ([self.textUserName.text isEqualToString:@""]) {
         [self showHudAuto:@"请输入手机号" andDuration:@"2"];
     }else if ([self.txtCode.text isEqualToString:@""]){
         [self showHudAuto:@"请输入验证码" andDuration:@"2"];
-    }else if ([self.txtPassWord.textField.text isEqualToString:@""]){
+    }else if ([self.txtPassWord.text isEqualToString:@""]){
         [self showHudAuto:@"请输入密码" andDuration:@"2"];
-    }else if ([self.textInvitation.textField.text isEqualToString:@""]){
+    }else if ([self.textInvitation.text isEqualToString:@""]){
         [self showHudAuto:@"请输入邀请码" andDuration:@"2"];
     }else if (!self.btnAgreement.selected){
         [self showHudAuto:@"请同意协议" andDuration:@"2"];
@@ -292,7 +350,7 @@
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(RegisterViewController);
-    [[THNetWorkManager shareNetWork]getRegMobile:self.textUserName.textField.text Password:self.txtPassWord.textField.text Sms_code:self.txtCode.text Fromcode:self.textInvitation.textField.text CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getRegMobile:self.textUserName.text Password:self.txtPassWord.text Sms_code:self.txtCode.text Fromcode:self.textInvitation.text CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         NSLog(@"查看%@",response.dataDic);
         if (response.responseCode == 1) {
@@ -308,7 +366,7 @@
 - (void)getMobilecode{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(RegisterViewController);
-    [[THNetWorkManager shareNetWork]getMobilecode:self.textUserName.textField.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getMobilecode:self.textUserName.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             if (weakSelf.timer==nil) {
@@ -336,6 +394,7 @@
     [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

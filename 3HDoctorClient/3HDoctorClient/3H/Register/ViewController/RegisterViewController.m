@@ -29,7 +29,7 @@
 @property (nonatomic, strong) UILabel *labLineUserName;
 //验证码
 @property (nonatomic, strong) UITextField *txtCode;
-//下划线
+//下划线1
 @property (nonatomic, strong) UILabel *labLineCode;
 //获取验证码
 @property (nonatomic, strong) UIButton *btnGetCode;
