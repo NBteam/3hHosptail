@@ -15,7 +15,7 @@
     [self.contentView addSubview:self.imgAssistant];
     [self.contentView addSubview:self.labAssistant];
     [self.contentView addSubview:self.imgArrow];
-    [self.contentView addSubview:self.labDetail];
+    //[self.contentView addSubview:self.labDetail];
 }
 
 - (UIImageView *)imgAssistant{
@@ -62,7 +62,7 @@
     NSLog(@"%@---",model);
     [self.imgAssistant sd_setImageWithURL:URL(model.pic) placeholderImage:[UIImage imageNamed:@""]];
     self.labAssistant.text = model.truename;
-    self.labDetail.text = [NSString stringWithFormat:@"%@ %@",model.hospital,model.job_title];
+//    self.labDetail.text = [NSString stringWithFormat:@"%@ %@",model.hospital,model.job_title];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

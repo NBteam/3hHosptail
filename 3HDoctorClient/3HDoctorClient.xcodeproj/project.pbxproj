@@ -531,6 +531,7 @@
 		A9B5EA931C16E75C00D4046B /* GuideSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA901C16E75C00D4046B /* GuideSearchView.m */; };
 		A9B5EA941C16E75C00D4046B /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA921C16E75C00D4046B /* SearchCell.m */; };
 		A9B5EA971C16E77E00D4046B /* OutpatientReservationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */; };
+		C00C7B981C5DEBC000C1404C /* 转助理图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C00C7B971C5DEBC000C1404C /* 转助理图标@2x.png */; };
 		C027A73C1C22DE6500F6FA0C /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027A73B1C22DE6500F6FA0C /* MedicationAddInputViewController.m */; };
 		C027A73F1C22F33900F6FA0C /* MedicationAddNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C027A73E1C22F33900F6FA0C /* MedicationAddNumViewController.m */; };
 		C051E5D81C245324005A3D2E /* PhoneAppointTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C051E5D71C245324005A3D2E /* PhoneAppointTDetailViewController.m */; };
@@ -1704,6 +1705,7 @@
 		A9B5EA921C16E75C00D4046B /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		A9B5EA951C16E77E00D4046B /* OutpatientReservationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutpatientReservationView.h; sourceTree = "<group>"; };
 		A9B5EA961C16E77E00D4046B /* OutpatientReservationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutpatientReservationView.m; sourceTree = "<group>"; };
+		C00C7B971C5DEBC000C1404C /* 转助理图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "转助理图标@2x.png"; sourceTree = "<group>"; };
 		C027A73A1C22DE6500F6FA0C /* MedicationAddInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddInputViewController.h; sourceTree = "<group>"; };
 		C027A73B1C22DE6500F6FA0C /* MedicationAddInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationAddInputViewController.m; sourceTree = "<group>"; };
 		C027A73D1C22F33900F6FA0C /* MedicationAddNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddNumViewController.h; sourceTree = "<group>"; };
@@ -5479,6 +5481,7 @@
 		C0AE3DAA1C5652A5006D22A8 /* 医生端引导 */ = {
 			isa = PBXGroup;
 			children = (
+				C00C7B971C5DEBC000C1404C /* 转助理图标@2x.png */,
 				C0AE3DAB1C5652A5006D22A8 /* 3H医生端端-引导页1.jpg */,
 				C0AE3DAC1C5652A5006D22A8 /* 3H医生端端-引导页2.jpg */,
 			);
@@ -6138,6 +6141,7 @@
 				99DA452B1C0C4FED00573D4C /* 首页-咨询服务-已回复-咨询详情-查看咨询2-在线咨询_文本框2@2x.png in Resources */,
 				C06B923C1C525D79007660FF /* faceDelete@2x.png in Resources */,
 				99DA45B11C0C4FED00573D4C /* 首页-资讯动态-医疗资讯_更多@2x.png in Resources */,
+				C00C7B981C5DEBC000C1404C /* 转助理图标@2x.png in Resources */,
 				99DA451C1C0C4FED00573D4C /* 3H-首页_首页-点击@2x.png in Resources */,
 				99DA45711C0C4FED00573D4C /* 首页-患者中心-患者详情--检验及检查-检查-添加检查_右键-白色@2x.png in Resources */,
 				99DA44F51C0C4FED00573D4C /* 我的-预约设置_左键-白色@2x.png in Resources */,

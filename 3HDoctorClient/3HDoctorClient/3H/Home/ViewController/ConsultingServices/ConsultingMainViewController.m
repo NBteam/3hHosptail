@@ -28,18 +28,37 @@
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     
+    
     //患者搜索先关掉 因为没有接口
     //    self.navigationItem.rightBarButtonItems = @[[UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"],[UIBarButtonItemExtension rightButtonItem:@selector(searchAction) andTarget:self andImageName:@"首页-患者中心_搜索"]];
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(btnn) andTarget:self andButtonTitle:@"测试"];
     self.isOpenHeaderRefresh = YES;
     self.isOpenFooterRefresh = YES;
     [self getNetWorkInfo];
 }
 
+- (void)btnn{
+    
+    ChatViewController*chatController = [[ChatViewController alloc] initWithChatter:@"1454230107375" conversationType:eConversationTypeGroupChat];
+    //chatController.title = [NSString stringWithFormat:@"%@",model.group_id];
+    chatController.myImageString = self.user.pic;
+//    chatController.youImageString = model.pic;
+//    chatController.patientId = [NSString stringWithFormat:@"%@",model.id];
+//    //        chatController.groupId = [NSString stringWithFormat:@"%@",model.group_id];
+    chatController.groupId = @"1454230107375";
+    chatController.doctorId = self.user.id;
+    
+    [self.navigationController pushViewController:chatController animated:YES];
+    
+}
+
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
 
 - (void)searchAction{
     SearchViewController * SearchVc = [[SearchViewController alloc]init];
@@ -84,14 +103,55 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     PatientListModel *model = self.dataArray[indexPath.row];
- 
-     ChatViewController*chatController = [[ChatViewController alloc] initWithChatter:model.md5_id conversationType:eConversationTypeChat];
-    chatController.title = [NSString stringWithFormat:@"您正在与%@聊天",model.truename];
-    chatController.myImageString = self.user.pic;
-    chatController.youImageString = model.pic;
-    
-    [self.navigationController pushViewController:chatController animated:YES];
+    if ([model.group_id doubleValue] != 0) {
+        ChatViewController*chatController = [[ChatViewController alloc] initWithChatter:@"1454230107375" conversationType:eConversationTypeGroupChat];
+        chatController.title = [NSString stringWithFormat:@"%@",model.group_id];
+        chatController.myImageString = self.user.pic;
+        chatController.youImageString = model.pic;
+        chatController.patientId = [NSString stringWithFormat:@"%@",model.id];
+//        chatController.groupId = [NSString stringWithFormat:@"%@",model.group_id];
+        chatController.groupId = @"1454230107375";
+        chatController.doctorId = self.user.id;
+        
+        [self.navigationController pushViewController:chatController animated:YES];
+    }else{
+        [self showHudWaitingView:@"请稍后"];
+        WeakSelf(ConsultingMainViewController);
+        EMGroupStyleSetting *groupStyleSetting = [[EMGroupStyleSetting alloc] init];
+        groupStyleSetting.groupMaxUsersCount = 500; // 创建500人的群，如果不设置，默认是200人。
+        groupStyleSetting.groupStyle = eGroupStyle_PublicJoinNeedApproval; // 创建不同类型的群组，这里需要才传入不同的类型
+        [[EaseMob sharedInstance].chatManager asyncCreateGroupWithSubject:@"群组名称" description:@"群组描述" invitees:@[model.md5_id] initialWelcomeMessage:@"邀请您加入群组" styleSetting:groupStyleSetting completion:^(EMGroup *group, EMError *error) {
+            if(!error){
+                NSLog(@"创建成功 -- %@",group);
+                [weakSelf getCreatGroup_id:group.groupId model:model];
+            }
+        } onQueue:nil];
+    }
 }
+
+- (void)getCreatGroup_id:(NSString *)group_id model:(PatientListModel *)model{
+    WeakSelf(ConsultingMainViewController);
+    [[THNetWorkManager shareNetWork]createGroupMember_id:model.id group_id:group_id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            ChatViewController*chatController = [[ChatViewController alloc] initWithChatter:model.group_id conversationType:eConversationTypeGroupChat];
+            chatController.title = [NSString stringWithFormat:@"%@",model.group_id];
+            chatController.myImageString = self.user.pic;
+            chatController.youImageString = model.pic;
+            chatController.patientId = [NSString stringWithFormat:@"%@",model.id];
+            chatController.groupId = [NSString stringWithFormat:@"%@",model.group_id];
+            chatController.doctorId = self.user.id;
+            
+            [self.navigationController pushViewController:chatController animated:YES];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+    
+}
+
 - (void)getNetWorkInfo{
     WeakSelf(ConsultingMainViewController);
     [weakSelf showHudWaitingView:WaitPrompt];

@@ -31,6 +31,10 @@
 @property (nonatomic, copy) NSString *youImageString;
 @property (nonatomic, copy) NSString *myImageString;
 
+@property (nonatomic, copy) NSString *patientId;
+@property (nonatomic, copy) NSString *doctorId;
+@property (nonatomic, copy) NSString *groupId;
+
 - (instancetype)initWithChatter:(NSString *)chatter isGroup:(BOOL)isGroup;
 - (instancetype)initWithChatter:(NSString *)chatter conversationType:(EMConversationType)type;
 

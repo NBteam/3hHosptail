@@ -37,6 +37,7 @@
 #import "UserProfileViewController.h"
 #import "UserProfileManager.h"
 #import "UIBarButtonItemExtension.h"
+#import "AssistantDoctorViewController.h"
 #define KPageCount 20
 #define KHintAdjustY    50
 //发送病例
@@ -179,6 +180,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andImageName:@"转助理图标"];
     [self registerBecomeActive];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = RGBACOLOR(248, 248, 248, 1);
@@ -339,6 +341,46 @@
     }
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)rightAction{
+    WeakSelf(ChatViewController);
+    AssistantDoctorViewController * assistantDoctorVc = [[AssistantDoctorViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    [assistantDoctorVc setChatBlock:^(AssistantDoctorModel *model) {
+        NSLog(@"------%@",model);
+        
+        [[EaseMob sharedInstance].chatManager asyncAddOccupants:@[[NSString stringWithFormat:@"%@",model.md5_id]] toGroup:weakSelf.groupId welcomeMessage:@"邀请信息"  completion:^(NSArray *occupants, EMGroup *group, NSString *welcomeMessage, EMError *error) {
+            if (!error) {
+                NSLog(@"添加成功");
+                [self switchHXAssistantDoctorId:model.id member_id:weakSelf.patientId group_id:weakSelf.groupId];
+            }
+            
+            NSLog(@"失败%@",error);
+        } onQueue:nil];
+        
+        
+        
+        
+        
+        
+        
+    }];
+    [self.navigationController pushViewController:assistantDoctorVc animated:YES];
+}
+//上传告知服务器助理
+- (void)switchHXAssistantDoctorId:(NSString *)doctorId member_id:(NSString *)member_id group_id:(NSString *)group_id{
+    WeakSelf(ChatViewController);
+    [[THNetWorkManager shareNetWork] switchDoctor_id:doctorId member_id:member_id group_id:group_id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        
+        if (response.responseCode == 1) {
+            
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"10"];
+        }
+        
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
 }
 
 - (void)setIsInvisible:(BOOL)isInvisible

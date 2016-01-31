@@ -293,7 +293,7 @@ static THNetWorkManager *thNetWorkManager = nil;
  * @param fromcode    邀请码
  */
 - (void)getRegisteredMobile:(NSString *)mobile password:(NSString *)password code:(NSString *)code fromcode:(NSString *)fromcode andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"reg",@"mobile":mobile,@"password":password,@"sms_code":code};
+    NSDictionary *paramDic = @{@"a":@"reg",@"mobile":mobile,@"password":password,@"sms_code":code,@"fromcode":fromcode};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 /**
@@ -877,6 +877,16 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark【鉴权】我的收入记录【20160114添加】
 - (void)myMonthAccLogsDate_m:(NSString *)date_m andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
     NSDictionary *paramDic = @{@"a":@"myMonthAccLogs",@"date_m":date_m,@"token":GetToken};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+#pragma mark【鉴权】咨询聊天——创建群组【20160129更新】
+- (void)createGroupMember_id:(NSString *)member_id group_id:(NSString *)group_id	 andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"createGroup",@"member_id":member_id,@"token":GetToken,@"group_id":group_id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+- (void)switchDoctor_id:(NSString *)doctor_id member_id:(NSString *)member_id group_id:(NSString *)group_id	andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"switchHelper",@([doctor_id integerValue]):doctor_id,@"member_id":@([member_id integerValue]),@"token":GetToken,@"group_id":@([group_id integerValue])};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 

@@ -9,7 +9,7 @@
 #import "AssistantDoctorViewController.h"
 #import "AssistantDoctorTableViewCell.h"
 #import "AddAssistantDoctorViewController.h"
-#import "AssistantDoctorModel.h"
+
 @interface AssistantDoctorViewController ()
 
 @end
@@ -130,6 +130,7 @@
         [self deleteCellIndexPath:indexPath];
     }
 }
+
 - (void)deleteCellIndexPath:(NSIndexPath *)indexPath{
     WeakSelf(AssistantDoctorViewController);
     AssistantDoctorModel * model = self.dataArray[indexPath.section];
@@ -155,6 +156,20 @@
         ;
     } ];
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    AssistantDoctorModel *model = self.dataArray[indexPath.section];
+    
+    //查看详情
+    if (self.isMain) {
+        
+    }else{//聊天需呀
+        if (self.chatBlock) {
+            self.chatBlock(model);
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {

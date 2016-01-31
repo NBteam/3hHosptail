@@ -7,7 +7,11 @@
 //
 
 #import "BaseTableViewController.h"
-
+#import "AssistantDoctorModel.h"
 @interface AssistantDoctorViewController : BaseTableViewController
 
+//是否是聊天过来的
+@property (nonatomic, assign) BOOL isMain;
+
+@property (nonatomic, copy) void (^chatBlock)(AssistantDoctorModel *model);
 @end

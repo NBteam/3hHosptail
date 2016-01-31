@@ -385,6 +385,13 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 #pragma mark【鉴权】我的收入记录【20160114添加】
 - (void)myMonthAccLogsDate_m:(NSString *)date_m andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+#pragma mark【鉴权】咨询聊天——创建群组【20160129更新】
+- (void)createGroupMember_id:(NSString *)member_id group_id:(NSString *)group_id	 andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
+#pragma mark【鉴权】咨询聊天——转助理【20160129更新】
+
+- (void)switchDoctor_id:(NSString *)doctor_id member_id:(NSString *)member_id group_id:(NSString *)group_id	andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
 
 
 
