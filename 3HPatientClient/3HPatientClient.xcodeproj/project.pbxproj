@@ -843,6 +843,10 @@
 		D2D3616D1C5E341000419147 /* 3H医生端-登录_微信@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361651C5E341000419147 /* 3H医生端-登录_微信@2x.png */; settings = {ASSET_TAGS = (); }; };
 		D2D3616E1C5E341000419147 /* 3H医生端-登录_新浪微博@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361661C5E341000419147 /* 3H医生端-登录_新浪微博@2x.png */; settings = {ASSET_TAGS = (); }; };
 		D2D361711C5E341000419147 /* thLOGOdoctor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361691C5E341000419147 /* thLOGOdoctor@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D2D361751C5E3F1D00419147 /* ArchiveListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D361741C5E3F1D00419147 /* ArchiveListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2D361781C5E400600419147 /* ArchiveListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D361771C5E400600419147 /* ArchiveListModel.m */; settings = {ASSET_TAGS = (); }; };
+		D2D3617B1C5E439000419147 /* ArchiveDescViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D3617A1C5E439000419147 /* ArchiveDescViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2D3617E1C5E456B00419147 /* ArchiveDescCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D3617D1C5E456B00419147 /* ArchiveDescCell.m */; settings = {ASSET_TAGS = (); }; };
 		D2D373831C316323005E662D /* NewMyArchivesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373821C316323005E662D /* NewMyArchivesModel.m */; };
 		D2D373861C3170DE005E662D /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373851C3170DE005E662D /* MedicationAddInputViewController.m */; };
 		D2D373891C317B51005E662D /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373881C317B51005E662D /* TimeView.m */; };
@@ -2289,6 +2293,14 @@
 		D2D361651C5E341000419147 /* 3H医生端-登录_微信@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3H医生端-登录_微信@2x.png"; sourceTree = "<group>"; };
 		D2D361661C5E341000419147 /* 3H医生端-登录_新浪微博@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3H医生端-登录_新浪微博@2x.png"; sourceTree = "<group>"; };
 		D2D361691C5E341000419147 /* thLOGOdoctor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thLOGOdoctor@2x.png"; sourceTree = "<group>"; };
+		D2D361731C5E3F1D00419147 /* ArchiveListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveListViewController.h; sourceTree = "<group>"; };
+		D2D361741C5E3F1D00419147 /* ArchiveListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveListViewController.m; sourceTree = "<group>"; };
+		D2D361761C5E400600419147 /* ArchiveListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveListModel.h; sourceTree = "<group>"; };
+		D2D361771C5E400600419147 /* ArchiveListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveListModel.m; sourceTree = "<group>"; };
+		D2D361791C5E439000419147 /* ArchiveDescViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveDescViewController.h; sourceTree = "<group>"; };
+		D2D3617A1C5E439000419147 /* ArchiveDescViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveDescViewController.m; sourceTree = "<group>"; };
+		D2D3617C1C5E456B00419147 /* ArchiveDescCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveDescCell.h; sourceTree = "<group>"; };
+		D2D3617D1C5E456B00419147 /* ArchiveDescCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveDescCell.m; sourceTree = "<group>"; };
 		D2D373811C316323005E662D /* NewMyArchivesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMyArchivesModel.h; sourceTree = "<group>"; };
 		D2D373821C316323005E662D /* NewMyArchivesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMyArchivesModel.m; sourceTree = "<group>"; };
 		D2D373841C3170DE005E662D /* MedicationAddInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddInputViewController.h; sourceTree = "<group>"; };
@@ -2976,6 +2988,10 @@
 				D2D126F21C245D3A00131C25 /* NewMyArchivesViewController.m */,
 				D2D361581C5E10F400419147 /* HealthFileViewController.h */,
 				D2D361591C5E10F400419147 /* HealthFileViewController.m */,
+				D2D361731C5E3F1D00419147 /* ArchiveListViewController.h */,
+				D2D361741C5E3F1D00419147 /* ArchiveListViewController.m */,
+				D2D361791C5E439000419147 /* ArchiveDescViewController.h */,
+				D2D3617A1C5E439000419147 /* ArchiveDescViewController.m */,
 				D2D3738A1C317E96005E662D /* ChangeInfoViewController.h */,
 				D2D3738B1C317E96005E662D /* ChangeInfoViewController.m */,
 			);
@@ -3483,6 +3499,8 @@
 				C08244481C1F1C1D00783FD5 /* MyAppointHospitalTableViewCell.m */,
 				C08244631C1FCE8500783FD5 /* MyAddressTableViewCell.h */,
 				C08244641C1FCE8500783FD5 /* MyAddressTableViewCell.m */,
+				D2D3617C1C5E456B00419147 /* ArchiveDescCell.h */,
+				D2D3617D1C5E456B00419147 /* ArchiveDescCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5443,6 +5461,8 @@
 				D2CFD2E21C4E836A00E3E3A6 /* OrderModel.m */,
 				D2CF31D11C57C98E00325491 /* HospitalModel.h */,
 				D2CF31D21C57C98E00325491 /* HospitalModel.m */,
+				D2D361761C5E400600419147 /* ArchiveListModel.h */,
+				D2D361771C5E400600419147 /* ArchiveListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6135,6 +6155,7 @@
 				99DA41AD1C0BEB0500573D4C /* UIView+Tag.m in Sources */,
 				C05810D21C2FB52B009A2567 /* ScheduleCalendarModel.m in Sources */,
 				993669761C132D5F00B3E1C7 /* ShopTableViewCell.m in Sources */,
+				D2D3617E1C5E456B00419147 /* ArchiveDescCell.m in Sources */,
 				99DA41AA1C0BEB0500573D4C /* UIDevice+Extension.m in Sources */,
 				D2D0C76D1C511D9200B0C853 /* UserProfileViewController.m in Sources */,
 				9929BCB81C18255800F747CB /* ConsultingIsPhoneTitleTableViewCell.m in Sources */,
@@ -6152,6 +6173,7 @@
 				D2D0C71C1C511D9200B0C853 /* EMSDWebImageDownloaderOperation.m in Sources */,
 				99DA418F1C0BEB0500573D4C /* MineViewController.m in Sources */,
 				D2D0C75B1C511D9200B0C853 /* DXChatBarMoreView.m in Sources */,
+				D2D361781C5E400600419147 /* ArchiveListModel.m in Sources */,
 				99DA41B71C0BEB0500573D4C /* EXTScope.m in Sources */,
 				C05A96C71C1D84070078433B /* AppointDoctorsViewController.m in Sources */,
 				D2D0C7251C511D9200B0C853 /* UIImageView+EMHighlightedWebCache.m in Sources */,
@@ -6162,6 +6184,7 @@
 				99DA419B1C0BEB0500573D4C /* AFURLConnectionOperation.m in Sources */,
 				99D544151C1562780081D1D3 /* MainDiagnosticViewController.m in Sources */,
 				991A330D1C12FFDA00E0313F /* PersonalTableViewCell.m in Sources */,
+				D2D361751C5E3F1D00419147 /* ArchiveListViewController.m in Sources */,
 				9929BCAC1C181AF300F747CB /* ConsultingDoctorListViewController.m in Sources */,
 				D2CFD2E41C4E836A00E3E3A6 /* OrderModel.m in Sources */,
 				D29664AA1C4109090017EB91 /* ADView.m in Sources */,
@@ -6465,6 +6488,7 @@
 				D2D0C7451C511D9200B0C853 /* NSString+Valid.m in Sources */,
 				D2D2F6161C297F7100A055FA /* ConsultingFinishViewController.m in Sources */,
 				9929BC9D1C180E9000F747CB /* ConsultingViewController.m in Sources */,
+				D2D3617B1C5E439000419147 /* ArchiveDescViewController.m in Sources */,
 				99DA41AE1C0BEB0500573D4C /* UIViewController+Extension.m in Sources */,
 				991A31271C11E94500E0313F /* HomeHeadTableViewCell.m in Sources */,
 				99DA3EB41C0BE4CF00573D4C /* main.m in Sources */,

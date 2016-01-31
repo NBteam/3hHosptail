@@ -8,6 +8,7 @@
 
 #import "HealthFileViewController.h"
 #import "NewMyArchivesViewController.h"
+#import "ArchiveListViewController.h"
 
 @interface HealthFileViewController ()
 
@@ -51,8 +52,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        NewMyArchivesViewController * NewMyArchivesVc = [[NewMyArchivesViewController alloc]init];
+        NewMyArchivesViewController * NewMyArchivesVc = [[NewMyArchivesViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:NewMyArchivesVc animated:YES];
+    }else{
+        ArchiveListViewController * ArchiveListVc = [[ArchiveListViewController alloc]init];
+        [self.navigationController pushViewController:ArchiveListVc animated:YES];
     }
 }
 - (void)didReceiveMemoryWarning {
