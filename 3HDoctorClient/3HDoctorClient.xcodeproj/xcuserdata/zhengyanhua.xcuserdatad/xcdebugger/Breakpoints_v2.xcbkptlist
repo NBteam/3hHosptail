@@ -75,38 +75,6 @@
             endingLineNumber = "225"
             landmarkName = "-getNetWorkInfo"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[PersonalViewController tableView:didSelectRowAtIndexPath:]"
-                  moduleName = "3HDoctorClient"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhengyanhua/Desktop/New3H/3HDoctorClient/3HDoctorClient/3H/Mine/ViewController/Personal/PersonalViewController.m"
-                  timestampString = "473001869.268621"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "225"
-                  endingLineNumber = "225"
-                  offsetFromSymbolStart = "4062">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__60-[PersonalViewController tableView:didSelectRowAtIndexPath:]_block_invoke267"
-                  moduleName = "3HDoctorClient"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhengyanhua/Desktop/New3H/3HDoctorClient/3HDoctorClient/3H/Mine/ViewController/Personal/PersonalViewController.m"
-                  timestampString = "473001869.268768"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "225"
-                  endingLineNumber = "225"
-                  offsetFromSymbolStart = "53">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,6 +122,38 @@
             startingLineNumber = "103"
             endingLineNumber = "103"
             landmarkName = "-getArtCmtListNetWork"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "3HDoctorClient/3H/Register/ViewController/RegisterViewController.m"
+            timestampString = "475922499.236804"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
+            landmarkName = "-btnRegisterAction"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "3HDoctorClient/3H/Register/ViewController/RegisterViewController.m"
+            timestampString = "475922509.544201"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
+            landmarkName = "-btnRegisterAction"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -837,6 +837,7 @@
 		D2D31DE81C26A02900BBE60D /* AppointExpertListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DE71C26A02900BBE60D /* AppointExpertListModel.m */; };
 		D2D31DEB1C26AB7000BBE60D /* AppointTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DEA1C26AB7000BBE60D /* AppointTimeModel.m */; };
 		D2D31DFD1C26D9E400BBE60D /* CommentsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DFC1C26D9E400BBE60D /* CommentsListModel.m */; };
+		D2D3615A1C5E10F400419147 /* HealthFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D361591C5E10F400419147 /* HealthFileViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D373831C316323005E662D /* NewMyArchivesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373821C316323005E662D /* NewMyArchivesModel.m */; };
 		D2D373861C3170DE005E662D /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373851C3170DE005E662D /* MedicationAddInputViewController.m */; };
 		D2D373891C317B51005E662D /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373881C317B51005E662D /* TimeView.m */; };
@@ -2276,6 +2277,8 @@
 		D2D31DEA1C26AB7000BBE60D /* AppointTimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointTimeModel.m; sourceTree = "<group>"; };
 		D2D31DFB1C26D9E400BBE60D /* CommentsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsListModel.h; sourceTree = "<group>"; };
 		D2D31DFC1C26D9E400BBE60D /* CommentsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsListModel.m; sourceTree = "<group>"; };
+		D2D361581C5E10F400419147 /* HealthFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthFileViewController.h; sourceTree = "<group>"; };
+		D2D361591C5E10F400419147 /* HealthFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthFileViewController.m; sourceTree = "<group>"; };
 		D2D373811C316323005E662D /* NewMyArchivesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMyArchivesModel.h; sourceTree = "<group>"; };
 		D2D373821C316323005E662D /* NewMyArchivesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMyArchivesModel.m; sourceTree = "<group>"; };
 		D2D373841C3170DE005E662D /* MedicationAddInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationAddInputViewController.h; sourceTree = "<group>"; };
@@ -2960,6 +2963,8 @@
 				993669B91C14046F00B3E1C7 /* MyArchivesViewController.m */,
 				D2D126F11C245D3A00131C25 /* NewMyArchivesViewController.h */,
 				D2D126F21C245D3A00131C25 /* NewMyArchivesViewController.m */,
+				D2D361581C5E10F400419147 /* HealthFileViewController.h */,
+				D2D361591C5E10F400419147 /* HealthFileViewController.m */,
 				D2D3738A1C317E96005E662D /* ChangeInfoViewController.h */,
 				D2D3738B1C317E96005E662D /* ChangeInfoViewController.m */,
 			);
@@ -6043,6 +6048,7 @@
 				99D33AA41C17BD0B0067E57C /* LoginInputView.m in Sources */,
 				99DA41EE1C0BEB0500573D4C /* TPKeyboardAvoidingTableView.m in Sources */,
 				99DA41D31C0BEB0500573D4C /* MJRefreshStateHeader.m in Sources */,
+				D2D3615A1C5E10F400419147 /* HealthFileViewController.m in Sources */,
 				99DA41CB1C0BEB0500573D4C /* MJRefreshAutoGifFooter.m in Sources */,
 				993669E11C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.m in Sources */,
 				D2D0C70B1C511D9200B0C853 /* EMCDDeviceManagerBase.m in Sources */,

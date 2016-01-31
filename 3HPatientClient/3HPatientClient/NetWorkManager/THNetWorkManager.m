@@ -717,4 +717,9 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"readAllMsg",@"token":GetToken};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+#pragma mark 咨询聊天——创建群组【20160129更新】
+- (void)createGroupDoctor_id:(NSString *)doctor_id group_id:(NSString *)group_id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"createGroup",@"token":GetToken,@"group_id":group_id,@"doctor_id":doctor_id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

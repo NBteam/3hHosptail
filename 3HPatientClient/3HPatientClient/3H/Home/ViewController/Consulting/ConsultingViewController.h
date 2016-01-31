@@ -12,4 +12,5 @@
 @property (nonatomic, copy) NSString * id;
 @property (nonatomic, copy) NSString * md5_id;
 @property (nonatomic, copy) NSString * name;
+@property (nonatomic, copy) NSString * group_id;
 @end

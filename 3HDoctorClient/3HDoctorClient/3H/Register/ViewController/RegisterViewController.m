@@ -334,6 +334,7 @@
 }
 
 - (void)btnRegisterAction{
+    
     if ([self.txtUserName.text isEqualToString:@""]) {
         [self showHudAuto:@"请输入手机号" andDuration:@"1"];
     }else if ([self.txtCode.text isEqualToString:@""]) {

@@ -246,7 +246,6 @@
     }else if ([self.textUserPwd.textField.text isEqualToString:@""]){
         [self showHudAuto:@"请输入密码" andDuration:@"2"];
     }else{
-        
         [self showHudWaitingView:WaitPrompt];
         WeakSelf(LoginViewController);
         [[THNetWorkManager shareNetWork] patientLoginMobile:self.textUserName.textField.text Password:self.textUserPwd.textField.text CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
@@ -254,6 +253,11 @@
             NSLog(@"查看%@",response.dataDic);
             if (response.responseCode == 1) {
                 [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:Token];
+                if (weakSelf.btnRemember.selected) {
+                    [SGSaveFile saveObjectToSystem:RememberMe forKey:RememberMe];
+                    [SGSaveFile saveObjectToSystem:weakSelf.textUserName.textField.text forKey:UserName];
+                    [SGSaveFile saveObjectToSystem:weakSelf.textUserPwd.textField.text forKey:UserPassword];
+                }
                 [weakSelf getUserInfoToken:response.dataDic[@"token"] pwd:weakSelf.textUserPwd.textField.text];
                 
             }else{

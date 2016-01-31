@@ -18,6 +18,7 @@
 @property (nonatomic, copy) NSString * desc;
 @property (nonatomic, copy) NSString * mobile;
 @property (nonatomic, copy) NSString * md5_id;
+@property (nonatomic, copy) NSString * group_id;
 @end
 //	id					记录ID
 //	truename			名称

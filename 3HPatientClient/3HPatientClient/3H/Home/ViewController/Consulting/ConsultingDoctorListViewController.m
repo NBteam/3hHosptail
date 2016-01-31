@@ -76,7 +76,7 @@
     ConsultingViewController *consultingVc = [[ConsultingViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     consultingVc.id = model.id;
     consultingVc.md5_id = model.md5_id;
-    
+    consultingVc.group_id = model.group_id;
     [self.navigationController pushViewController:consultingVc animated:YES];
 }
 - (NSString *)title{

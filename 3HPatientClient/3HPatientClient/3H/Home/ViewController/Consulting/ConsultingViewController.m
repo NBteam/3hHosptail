@@ -57,15 +57,24 @@
         _toolView = [[ConsultingToolView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, DeviceSize.width, 45)];
         [_toolView setToolBlock:^(NSInteger index) {
             if (index == 0) {
-                
-                ChatViewController * ChatVc = [[ChatViewController alloc]initWithChatter:weakSelf.md5_id conversationType:eConversationTypeChat];
-                ChatVc.title = [NSString stringWithFormat:@"您正在与%@聊天",weakSelf.model.truename];
-                ChatVc.myHeadImage = weakSelf.user.pic;
-                ChatVc.yourHeadImage = weakSelf.model.pic;
-                [weakSelf.navigationController pushViewController:ChatVc animated:YES];
-                
-//                ConsultingIsOnlineViewController *consultingIsOnlineVc = [[ConsultingIsOnlineViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-//                [weakSelf.navigationController pushViewController:consultingIsOnlineVc animated:YES];
+                if ([weakSelf.group_id doubleValue] == 0) {
+                    [weakSelf showHudWaitingView:@"请稍后"];
+                    EMGroupStyleSetting *groupStyleSetting = [[EMGroupStyleSetting alloc] init];
+                    groupStyleSetting.groupMaxUsersCount = 500; // 创建500人的群，如果不设置，默认是200人。
+                    groupStyleSetting.groupStyle = eGroupStyle_PrivateMemberCanInvite; // 创建不同类型的群组，这里需要才传入不同的类型
+                    [[EaseMob sharedInstance].chatManager asyncCreateGroupWithSubject:@"群组名称" description:@"群组描述" invitees:@[weakSelf.md5_id] initialWelcomeMessage:@"邀请您加入群组" styleSetting:groupStyleSetting completion:^(EMGroup *group, EMError *error) {
+                        if(!error){
+                            NSLog(@"创建成功 -- %@",group);
+                            [weakSelf getCreatGroup_id:group.groupId];
+                        }
+                    } onQueue:nil];
+                }else{
+                    ChatViewController *chatController = [[ChatViewController alloc] initWithChatter:weakSelf.group_id conversationType:eConversationTypeGroupChat];
+                    chatController.myHeadImage = weakSelf.user.pic;
+                    chatController.yourHeadImage = weakSelf.model.pic;
+                    chatController.title = weakSelf.group_id;
+                    [weakSelf.navigationController pushViewController:chatController animated:YES];
+                }
             }else{
                 ConsultingIsPhoneViewController *consultingIsPhoneVc = [[ConsultingIsPhoneViewController alloc] init];
                 consultingIsPhoneVc.id =  weakSelf.model.id;
@@ -120,6 +129,24 @@
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
     }];
+}
+- (void)getCreatGroup_id:(NSString *)group_id{
+    WeakSelf(ConsultingViewController);
+    [[THNetWorkManager shareNetWork]createGroupDoctor_id:self.id group_id:group_id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            ChatViewController *chatController = [[ChatViewController alloc] initWithChatter:group_id conversationType:eConversationTypeGroupChat];
+            chatController.myHeadImage = weakSelf.user.pic;
+            chatController.yourHeadImage = weakSelf.model.pic;
+            chatController.title = group_id;
+            [weakSelf.navigationController pushViewController:chatController animated:YES];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+    
 }
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 //    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 278/2)];

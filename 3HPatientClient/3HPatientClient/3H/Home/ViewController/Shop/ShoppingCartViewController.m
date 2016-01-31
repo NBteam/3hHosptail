@@ -101,7 +101,11 @@ BOOL edit;
                         [ShopDetailBuyVc.infoArray addObject:model];
                     }
                 }
-                [weakSelf.navigationController pushViewController:ShopDetailBuyVc animated:YES];
+                if (ShopDetailBuyVc.infoArray.count != 0) {
+                    [weakSelf.navigationController pushViewController:ShopDetailBuyVc animated:YES];
+                }else{
+                    [weakSelf showHudAuto:@"请选择商品" andDuration:@"2"];
+                }
             }
         }];
     }

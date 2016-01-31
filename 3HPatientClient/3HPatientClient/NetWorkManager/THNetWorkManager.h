@@ -304,4 +304,6 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 - (void)getMsgNumandCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 #pragma mark【鉴权】消息——所有消息已读【20151222添加】
 - (void)readAllMsgandCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+#pragma mark 咨询聊天——创建群组【20160129更新】
+- (void)createGroupDoctor_id:(NSString *)doctor_id group_id:(NSString *)group_id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 @end
