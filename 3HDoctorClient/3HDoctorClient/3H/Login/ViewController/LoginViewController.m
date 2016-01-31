@@ -206,22 +206,7 @@
 }
 
 - (void)btnRememberClick:(UIButton *)button{
-    if (self.txtUserName.text.length && self.txtPassWord.text) {
-        if (button.selected) {
-            button.selected = NO;
-            [SGSaveFile removeObjectFromSystemWithKey:RememberMe];
-            [SGSaveFile removeObjectFromSystemWithKey:UserName];
-            [SGSaveFile removeObjectFromSystemWithKey:UserPassword];
-        }else{
-            button.selected = YES;
-            [SGSaveFile saveObjectToSystem:RememberMe forKey:RememberMe];
-            [SGSaveFile saveObjectToSystem:self.txtUserName.text forKey:UserName];
-            [SGSaveFile saveObjectToSystem:self.txtPassWord.text forKey:UserPassword];
-            
-        }
-    }else{
-        [self showHudAuto:@"请输入手机号或者密码" andDuration:@"2"];
-    }
+    button.selected = !button.selected;
 }
 
 - (UIButton *)btnForgetPassWord{
@@ -266,11 +251,19 @@
     }else if ([self.txtPassWord.text isEqualToString:@""]){
         [self showHudAuto:@"请输入密码" andDuration:@"2"];
     }else{
+    
         [self showHudWaitingView:WaitPrompt];
         WeakSelf(LoginViewController);
         [[THNetWorkManager shareNetWork]getLoginMobile:self.txtUserName.text password:self.txtPassWord.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
+                
+                if (weakSelf.btnRemember.selected) {
+                    [SGSaveFile saveObjectToSystem:RememberMe forKey:RememberMe];
+                    [SGSaveFile saveObjectToSystem:self.txtUserName.text forKey:UserName];
+                    [SGSaveFile saveObjectToSystem:self.txtPassWord.text forKey:UserPassword];
+                }
+                
                 [SGSaveFile saveObjectToSystem:response.dataDic[@"token"] forKey:@"token"];
                 
                 NSLog(@"token:%@",response.dataDic[@"token"]);

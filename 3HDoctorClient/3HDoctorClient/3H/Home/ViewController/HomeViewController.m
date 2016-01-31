@@ -48,7 +48,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view insertSubview:self.changeView belowSubview:self.tableView];
     self.tableView.separatorColor = [UIColor colorWithHEX:0xffffff];
-    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"3H-首页_患者中心",@"title":@"患者中心"},@{@"img":@"3H-首页_咨询服务",@"title":@"咨询服务"},@{@"img":@"3H-首页_预约管理",@"title":@"预约管理"},@{@"img":@"3H-首页_助理医生",@"title":@"助理医生"},@{@"img":@"3H-首页_咨询动态",@"title":@"咨询动态"}]];
+    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"3H-首页_患者中心",@"title":@"患者中心"},@{@"img":@"3H-首页_咨询服务",@"title":@"咨询服务"},@{@"img":@"3H-首页_预约管理",@"title":@"预约管理"},@{@"img":@"3H-首页_助理医生",@"title":@"助理医生"},@{@"img":@"3H-首页_咨询动态",@"title":@"资讯动态"}]];
     self.tableView.top = 0;
     self.tableView.height = DeviceSize.height -49;
 //    self.tableView.tableHeaderView = self.headView;
