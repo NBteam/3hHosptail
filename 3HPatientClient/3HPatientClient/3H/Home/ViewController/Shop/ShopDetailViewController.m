@@ -59,13 +59,13 @@
 - (void)favGoodsgoods_id{
 
     [self showHudAuto:@"收藏中..." andDuration:@"2"];
-    ;
     WeakSelf(ShopDetailViewController);
     
     [[THNetWorkManager shareNetWork] favGoodsgoods_id:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         if (response.responseCode == 1) {
             NSLog(@"查看%@",response.dataDic);
             [weakSelf showHudAuto:@"收藏成功" andDuration:@"2"];
+            [weakSelf.toolView.btnCollection setImage:[UIImage imageNamed:@"首页-健康商城-商品详情_收藏（点击效果）"]forState:UIControlStateNormal];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
@@ -240,9 +240,10 @@
                 [weakSelf.dataArray addObject:cModel];
             }
             if ([model.is_fav integerValue] == 0) {
-                weakSelf.toolView.btnCollection.backgroundColor = [UIColor colorWithHEX:0xfffffff];
+                [weakSelf.toolView.btnCollection setImage:[UIImage imageNamed:@"首页-健康商城-商品详情_收藏"] forState:UIControlStateNormal];
             }else{
-                weakSelf.toolView.btnCollection.backgroundColor = AppDefaultColor;
+                [weakSelf.toolView.btnCollection setImage:[UIImage imageNamed:@"首页-健康商城-商品详情_收藏（点击效果）"] forState:UIControlStateNormal];
+                
             }
             
             [weakSelf.tableView reloadData];

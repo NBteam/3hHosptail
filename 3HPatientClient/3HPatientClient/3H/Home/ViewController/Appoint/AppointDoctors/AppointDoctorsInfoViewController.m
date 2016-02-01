@@ -109,9 +109,7 @@
     return [[UIView alloc] init];
 }
 
-- (NSString *)title{
-    return @"电话咨询";
-}
+
 - (void)getNetWork{
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(AppointDoctorsInfoViewController);

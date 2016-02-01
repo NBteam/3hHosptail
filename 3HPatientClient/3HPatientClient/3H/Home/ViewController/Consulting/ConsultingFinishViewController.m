@@ -25,8 +25,7 @@
     // Do any additional setup after loading the view.
 }
 - (void)backAction{
-    
-    [self.navigationController popToViewController:self.navigationController.viewControllers[3] animated:YES];
+    [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
 }
 
 - (FinishHeadView *)headView{

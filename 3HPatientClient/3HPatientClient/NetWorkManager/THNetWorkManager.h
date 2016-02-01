@@ -311,4 +311,7 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark 【鉴权】档案记录——详情【20160131更新】
 - (void)getArchiveDescId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 提交意见反馈
+- (void)feedbackContent:(NSString *)content andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+
 @end

@@ -258,6 +258,8 @@ extern NSInteger payIndex;
     shopBuyFinishVc.priceStr = self.priceStr;
     [self.navigationController pushViewController:shopBuyFinishVc animated:YES];
 }
+
+
 - (NSString *)title{
     return @"确认订单";
 }

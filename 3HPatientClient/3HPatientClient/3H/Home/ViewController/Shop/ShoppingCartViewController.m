@@ -82,6 +82,14 @@ BOOL edit;
             weakSelf.toolView.labTitle.text = [NSString stringWithFormat:@"总计:%.2f元",weakSelf.sum];
             [weakSelf.tableView reloadData];
         }];
+        [_toolView setCancelBlock:^{
+            for (int i = 0; i< weakSelf.dataArray.count; i++) {
+                CartListModel * model = weakSelf.dataArray[i];
+                model.choice = NO;
+            }
+            weakSelf.toolView.labTitle.text = [NSString stringWithFormat:@"总计:0元"];
+            [weakSelf.tableView reloadData];
+        }];
         [_toolView setBtnSubmitBlock:^{
             if (edit) {
                 NSMutableArray * array = [NSMutableArray array];
@@ -260,20 +268,6 @@ BOOL edit;
         if (response.responseCode == 1) {
             weakSelf.toolView.labTitle.text = [NSString stringWithFormat:@"总计:0元"];
             [weakSelf getNetWork];
-        }else{
-            [weakSelf showHudAuto:response.message andDuration:@"2"];
-        }
-    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
-    }];
-}
-- (void)butShopInfoNetWork{
-    [self showHudWaitingView:WaitPrompt];
-    WeakSelf(ShoppingCartViewController);
-    [[THNetWorkManager shareNetWork]getCartPostAddress_id:@"" cart_ids:@"" andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
-        [weakSelf removeMBProgressHudInManaual];
-        if (response.responseCode == 1) {
-            
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

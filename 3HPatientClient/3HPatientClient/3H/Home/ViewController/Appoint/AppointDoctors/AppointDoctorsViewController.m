@@ -70,6 +70,7 @@
 - (void)btnAppointAction{
     AppointDoctorsInfoViewController *  AppointDoctorsInfoVc = [[AppointDoctorsInfoViewController alloc]init];
     AppointDoctorsInfoVc.id = self.model.id;
+    AppointDoctorsInfoVc.title = @"挂号预约";
     [self.navigationController pushViewController:AppointDoctorsInfoVc animated:YES];
 }
 

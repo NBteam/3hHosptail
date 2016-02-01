@@ -49,7 +49,7 @@
 }
 
 - (void)btnSubmitAction{
-  
+    [self getNetWork];
 }
 
 - (TPKeyboardAvoidingTableView *)tableView{
@@ -81,7 +81,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 355;
+    return 255;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -99,6 +99,22 @@
     FeedbackTableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     [cell resignFirst];
     
+}
+- (void)getNetWork{
+    [self showHudWaitingView:WaitPrompt];
+    FeedbackTableViewCell * cell = (FeedbackTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    WeakSelf(FeedbackViewController);
+    [[THNetWorkManager shareNetWork]feedbackContent:cell.txtView.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+
+    }];
 }
 - (NSString *)title{
     return @"意见反馈";

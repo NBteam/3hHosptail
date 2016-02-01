@@ -61,9 +61,18 @@
 }
 
 - (void)btnSelectClick{
-    if (self.btnSelectBlock) {
-        self.btnSelectBlock();
+    if (!self.btnSelect.selected) {
+        if (self.btnSelectBlock) {
+            self.btnSelectBlock();
+        }
+        self.btnSelect.selected = YES;
+    }else{
+        if (self.cancelBlock) {
+            self.cancelBlock();
+        }
+        self.btnSelect.selected = NO;
     }
+    
 }
 
 - (UIButton *)btnSubmit{

@@ -531,7 +531,7 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 #pragma mark 挂号预约——余额支付【20151221更新】
 - (void)getOrderGuahaoAccountPayOrder_sn:(NSString *)order_sn andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"orderGuahao",@"order_sn":order_sn,@"token":GetToken};
+    NSDictionary *paramDic = @{@"a":@"orderGuahaoAccountPay",@"order_sn":order_sn,@"token":GetToken};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 #pragma mark 电话预约——余额支付【20151221更新】
@@ -731,6 +731,12 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark 【鉴权】档案记录——详情【20160131更新】
 - (void)getArchiveDescId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
     NSDictionary *paramDic = @{@"a":@"getArchiveDesc",@"token":GetToken,@"id":id};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
+#pragma mark 提交意见反馈
+- (void)feedbackContent:(NSString *)content andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"feedback",@"token":GetToken,@"content":content};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 @end

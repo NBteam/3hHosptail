@@ -869,6 +869,7 @@
 		D2D5A7AE1C47F0110056DF24 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5A7A61C47F0110056DF24 /* RSADataVerifier.m */; };
 		D2D699D61C4523CE00FDEB1D /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D699D51C4523CE00FDEB1D /* CommentsModel.m */; };
 		D2D699D91C452E3B00FDEB1D /* ShopInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D699D81C452E3B00FDEB1D /* ShopInfoModel.m */; };
+		D2EBACFB1C5F902D00F51731 /* 首页-健康商城-商品详情_收藏（点击效果）@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2EBACFA1C5F902D00F51731 /* 首页-健康商城-商品详情_收藏（点击效果）@2x.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2416,6 +2417,7 @@
 		D2D699D51C4523CE00FDEB1D /* CommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsModel.m; sourceTree = "<group>"; };
 		D2D699D71C452E3B00FDEB1D /* ShopInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopInfoModel.h; sourceTree = "<group>"; };
 		D2D699D81C452E3B00FDEB1D /* ShopInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopInfoModel.m; sourceTree = "<group>"; };
+		D2EBACFA1C5F902D00F51731 /* 首页-健康商城-商品详情_收藏（点击效果）@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-健康商城-商品详情_收藏（点击效果）@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4382,6 +4384,7 @@
 				C082446C1C1FD3BE00783FD5 /* 首页-健康商城-商品详情-立即购买-收货地址2@2x.png */,
 				C082446D1C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－未选中@2x.png */,
 				C082446E1C1FD3BE00783FD5 /* 首页-我要预约-预约挂号-2－选中@2x.png */,
+				D2EBACFA1C5F902D00F51731 /* 首页-健康商城-商品详情_收藏（点击效果）@2x.png */,
 			);
 			path = "购物车";
 			sourceTree = "<group>";
@@ -5927,6 +5930,7 @@
 				D2D0A9FD1C525DE2007F39F7 /* chatBar_moreSelected.png in Resources */,
 				D2D0A9FC1C525DE2007F39F7 /* chatBar_more@2x.png in Resources */,
 				991A32A31C12E2DC00E0313F /* 首页-健康资讯-新闻资讯-评论_分享@2x.png in Resources */,
+				D2EBACFB1C5F902D00F51731 /* 首页-健康商城-商品详情_收藏（点击效果）@2x.png in Resources */,
 				D2D0AA101C525DE2007F39F7 /* chatBar_colorMore_videoCall@2x.png in Resources */,
 				991A325A1C12E2DC00E0313F /* 3H-注册_选框@2x.png in Resources */,
 				C05A976E1C1E773A0078433B /* UMSLoginViewController.xib in Resources */,

@@ -22,4 +22,6 @@
 @property (nonatomic, copy) void (^btnSelectBlock)(void);
 
 @property (nonatomic, copy) void (^btnSubmitBlock)(void);
+
+@property (nonatomic, copy) void (^cancelBlock)(void);
 @end
