@@ -248,7 +248,7 @@
 #pragma mark 发布注意更换
     NSString * deviceTokenStr1 = [XGPush registerDevice:deviceToken];
     [[EaseMob sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-    [XGPush setAccount:deviceTokenStr1];
+    [XGPush setAccount:@"fyq"];
     
     void (^successBlock)(void) = ^(void){
         //成功之后的处理
