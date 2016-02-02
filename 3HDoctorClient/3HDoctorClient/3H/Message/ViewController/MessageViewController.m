@@ -112,7 +112,7 @@
     if (indexPath.section == 0 || indexPath.section == 1) {
         BookManagementViewController *bookVc = [[BookManagementViewController alloc] init];
         bookVc.hidesBottomBarWhenPushed = YES;
-        bookVc.isPhone = YES;
+        bookVc.isPhone = indexPath.section;
         [self.navigationController pushViewController:bookVc animated:YES];
     }else if(indexPath.section == 2){
         ConsultingMainViewController *consultVc = [[ConsultingMainViewController alloc] init];

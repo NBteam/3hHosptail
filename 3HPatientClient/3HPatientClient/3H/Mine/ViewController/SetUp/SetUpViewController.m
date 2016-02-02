@@ -55,14 +55,25 @@
 }
 
 - (void)btnCancelAction{
+
+    UIAlertView * uploadView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"是否确定要注销?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+    [uploadView show];
     
-    //  删除本地数据
-    [THUser removeUserDataWithPath:UserPath andFileName:@"User"];
-    //删除记住密码
-    [SGSaveFile removeObjectFromSystemWithKey:RememberMe];
-    self.user = nil;
-    [self performSelector:@selector(loginOut) withObject:nil afterDelay:0.01];
     
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0) {
+        
+    }else{
+        
+        //  删除本地数据
+        [THUser removeUserDataWithPath:UserPath andFileName:@"User"];
+        //删除记住密码
+        [SGSaveFile removeObjectFromSystemWithKey:RememberMe];
+        self.user = nil;
+        [self performSelector:@selector(loginOut) withObject:nil afterDelay:0.01];
+    }
 }
 
 - (void)loginOut{

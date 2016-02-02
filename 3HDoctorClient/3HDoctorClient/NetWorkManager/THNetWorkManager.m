@@ -664,7 +664,7 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 - (void)getSickListshort:(NSString *)shorts
 CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
               andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"getSickList",@"short":shorts};
+    NSDictionary *paramDic = @{@"a":@"getDrugList",@"short":shorts};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 #pragma mark 疾病详情

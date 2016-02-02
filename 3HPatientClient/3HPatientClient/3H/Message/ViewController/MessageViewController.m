@@ -17,7 +17,7 @@
 //咨询信息
 #import "ConsultingDoctorListViewController.h"
 //预约提醒
-#import "AppointViewController.h"
+#import "MyAppointmentViewController.h"
 @interface MessageViewController ()
 
 @property (nonatomic, strong) NSMutableDictionary *dataDict;
@@ -120,7 +120,7 @@
 //#import "AppointViewController.h"
     
     if (indexPath.section == 0) {
-        AppointViewController *appointVc = [[AppointViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        MyAppointmentViewController *appointVc = [[MyAppointmentViewController alloc] init];
         appointVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:appointVc animated:YES];
     }else if(indexPath.section == 1){

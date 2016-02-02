@@ -32,4 +32,5 @@
 @property (nonatomic, copy) NSString * birth_y;
 @property (nonatomic, copy) NSString * pic;
 @property (nonatomic, copy) NSString * addtime;
+@property(nonatomic,copy)NSString *order_date_n;
 @end

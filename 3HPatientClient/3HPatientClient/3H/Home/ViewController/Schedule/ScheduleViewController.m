@@ -11,6 +11,10 @@
 #import "MessageTableViewCell.h"
 #import "ScheduleCalendarModel.h"
 #import "ScheduleCalendarDayModel.h"
+#import "MyAppointmentViewController.h"
+#import "MedicationGuideViewController.h"
+#import "ReviewGuideViewController.h"
+#import "AllOrderViewController.h"
 @interface ScheduleViewController ()
 
 @property (nonatomic, strong) CalendarView *calendarView;
@@ -69,7 +73,7 @@
     [[THNetWorkManager shareNetWork] getHeathDayTipdate:date andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-
+            NSLog(@"sssss%@",response.dataDic[@"list"]);
             for (NSDictionary * dict in response.dataDic[@"list"]) {
                 ScheduleCalendarDayModel * model = [response thParseDataFromDic:dict andModel:[ScheduleCalendarDayModel class]];
                 [weakSelf.dayArray addObject:model];
@@ -143,6 +147,32 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return  [[UIView alloc] init];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    ScheduleCalendarDayModel *model = self.dayArray[indexPath.section];
+    
+    NSLog(@"测试%@",model);
+    if ([model.title isEqualToString:@"预约提醒"]) {
+        MyAppointmentViewController *appVc = [[MyAppointmentViewController alloc] init];
+        [self.navigationController pushViewController:appVc animated:YES];
+    }else if([model.title isEqualToString:@"用药提醒"]){
+        MedicationGuideViewController *medicaVc = [[MedicationGuideViewController alloc] init];
+        [self.navigationController pushViewController:medicaVc animated:YES];
+       
+    }else if([model.title isEqualToString:@"复查提醒"]){
+        
+        ReviewGuideViewController *reviewGuideVc = [[ReviewGuideViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:reviewGuideVc animated:YES];
+     
+    }else if([model.title isEqualToString:@"订单提醒"]){
+        AllOrderViewController *allVc = [[AllOrderViewController alloc] init];
+        [self.navigationController pushViewController:allVc animated:YES];
+    }else{//系统的不管
+       
+    }
 }
 
 - (NSString *)title{

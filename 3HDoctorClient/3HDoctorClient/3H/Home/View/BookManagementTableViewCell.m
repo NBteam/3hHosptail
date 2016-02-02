@@ -59,7 +59,7 @@
 - (void)confingWithModel:(ReservationListModel *)dic{
     self.labTitle.attributedText = [self getName:dic.truename AndAge:[NSString stringWithFormat:@"%@",@""] AndSex:[NSString stringWithFormat:@"  %@",dic.sex]];
     //  self.labDetail.attributedText
-    self.labTime.text = [NSString stringWithFormat:@"预约时间:%@",dic.addtime];
+    self.labTime.text = [NSString stringWithFormat:@"预约时间:%@",dic.order_date_n];
     [self.imgPatient sd_setImageWithURL:[NSURL URLWithString:dic.pic] placeholderImage:[UIImage imageNamed:@""]];
     self.labState.text = [NSString stringWithFormat:@"%@",dic.status_n];
 }
