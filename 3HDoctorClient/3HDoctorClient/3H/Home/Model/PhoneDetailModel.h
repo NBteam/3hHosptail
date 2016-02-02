@@ -27,4 +27,5 @@
 @property (nonatomic, copy) NSString *age		;//			年龄
 @property (nonatomic, copy) NSString *pic	;//					医生头像
 @property (nonatomic, copy) NSString *mobile	;//				患者电话
+
 @end

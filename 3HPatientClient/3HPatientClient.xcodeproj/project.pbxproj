@@ -492,6 +492,7 @@
 		C05A97AB1C1EBDC70078433B /* ConsultingDynamicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A97AA1C1EBDC70078433B /* ConsultingDynamicListModel.m */; };
 		C05A97AE1C1EC9DF0078433B /* DynamicDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A97AD1C1EC9DF0078433B /* DynamicDetailModel.m */; };
 		C05A97B41C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A97B31C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m */; };
+		C06774F21C606BE900FED5F8 /* CommentsToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C06774F11C606BE900FED5F8 /* CommentsToolBarView.m */; };
 		C06B92901C5346D9007660FF /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B928A1C5346D9007660FF /* SDBrowserImageView.m */; };
 		C06B92911C5346D9007660FF /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B928C1C5346D9007660FF /* SDPhotoBrowser.m */; };
 		C06B92921C5346D9007660FF /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B928F1C5346D9007660FF /* SDWaitingView.m */; };
@@ -837,16 +838,16 @@
 		D2D31DE81C26A02900BBE60D /* AppointExpertListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DE71C26A02900BBE60D /* AppointExpertListModel.m */; };
 		D2D31DEB1C26AB7000BBE60D /* AppointTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DEA1C26AB7000BBE60D /* AppointTimeModel.m */; };
 		D2D31DFD1C26D9E400BBE60D /* CommentsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D31DFC1C26D9E400BBE60D /* CommentsListModel.m */; };
-		D2D3615A1C5E10F400419147 /* HealthFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D361591C5E10F400419147 /* HealthFileViewController.m */; settings = {ASSET_TAGS = (); }; };
-		D2D361611C5E2E1C00419147 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2D361601C5E2E1C00419147 /* Localizable.strings */; settings = {ASSET_TAGS = (); }; };
-		D2D3616B1C5E341000419147 /* 3H医生端-登录_QQ@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361631C5E341000419147 /* 3H医生端-登录_QQ@2x.png */; settings = {ASSET_TAGS = (); }; };
-		D2D3616D1C5E341000419147 /* 3H医生端-登录_微信@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361651C5E341000419147 /* 3H医生端-登录_微信@2x.png */; settings = {ASSET_TAGS = (); }; };
-		D2D3616E1C5E341000419147 /* 3H医生端-登录_新浪微博@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361661C5E341000419147 /* 3H医生端-登录_新浪微博@2x.png */; settings = {ASSET_TAGS = (); }; };
-		D2D361711C5E341000419147 /* thLOGOdoctor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361691C5E341000419147 /* thLOGOdoctor@2x.png */; settings = {ASSET_TAGS = (); }; };
-		D2D361751C5E3F1D00419147 /* ArchiveListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D361741C5E3F1D00419147 /* ArchiveListViewController.m */; settings = {ASSET_TAGS = (); }; };
-		D2D361781C5E400600419147 /* ArchiveListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D361771C5E400600419147 /* ArchiveListModel.m */; settings = {ASSET_TAGS = (); }; };
-		D2D3617B1C5E439000419147 /* ArchiveDescViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D3617A1C5E439000419147 /* ArchiveDescViewController.m */; settings = {ASSET_TAGS = (); }; };
-		D2D3617E1C5E456B00419147 /* ArchiveDescCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D3617D1C5E456B00419147 /* ArchiveDescCell.m */; settings = {ASSET_TAGS = (); }; };
+		D2D3615A1C5E10F400419147 /* HealthFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D361591C5E10F400419147 /* HealthFileViewController.m */; };
+		D2D361611C5E2E1C00419147 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2D361601C5E2E1C00419147 /* Localizable.strings */; };
+		D2D3616B1C5E341000419147 /* 3H医生端-登录_QQ@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361631C5E341000419147 /* 3H医生端-登录_QQ@2x.png */; };
+		D2D3616D1C5E341000419147 /* 3H医生端-登录_微信@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361651C5E341000419147 /* 3H医生端-登录_微信@2x.png */; };
+		D2D3616E1C5E341000419147 /* 3H医生端-登录_新浪微博@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361661C5E341000419147 /* 3H医生端-登录_新浪微博@2x.png */; };
+		D2D361711C5E341000419147 /* thLOGOdoctor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D361691C5E341000419147 /* thLOGOdoctor@2x.png */; };
+		D2D361751C5E3F1D00419147 /* ArchiveListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D361741C5E3F1D00419147 /* ArchiveListViewController.m */; };
+		D2D361781C5E400600419147 /* ArchiveListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D361771C5E400600419147 /* ArchiveListModel.m */; };
+		D2D3617B1C5E439000419147 /* ArchiveDescViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D3617A1C5E439000419147 /* ArchiveDescViewController.m */; };
+		D2D3617E1C5E456B00419147 /* ArchiveDescCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D3617D1C5E456B00419147 /* ArchiveDescCell.m */; };
 		D2D373831C316323005E662D /* NewMyArchivesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373821C316323005E662D /* NewMyArchivesModel.m */; };
 		D2D373861C3170DE005E662D /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373851C3170DE005E662D /* MedicationAddInputViewController.m */; };
 		D2D373891C317B51005E662D /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373881C317B51005E662D /* TimeView.m */; };
@@ -869,7 +870,7 @@
 		D2D5A7AE1C47F0110056DF24 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5A7A61C47F0110056DF24 /* RSADataVerifier.m */; };
 		D2D699D61C4523CE00FDEB1D /* CommentsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D699D51C4523CE00FDEB1D /* CommentsModel.m */; };
 		D2D699D91C452E3B00FDEB1D /* ShopInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D699D81C452E3B00FDEB1D /* ShopInfoModel.m */; };
-		D2EBACFB1C5F902D00F51731 /* 首页-健康商城-商品详情_收藏（点击效果）@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2EBACFA1C5F902D00F51731 /* 首页-健康商城-商品详情_收藏（点击效果）@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D2EBACFB1C5F902D00F51731 /* 首页-健康商城-商品详情_收藏（点击效果）@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2EBACFA1C5F902D00F51731 /* 首页-健康商城-商品详情_收藏（点击效果）@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1651,6 +1652,8 @@
 		C05A97AD1C1EC9DF0078433B /* DynamicDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicDetailModel.m; sourceTree = "<group>"; };
 		C05A97B21C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingDynamicHeadTableViewCell.h; sourceTree = "<group>"; };
 		C05A97B31C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingDynamicHeadTableViewCell.m; sourceTree = "<group>"; };
+		C06774F01C606BE900FED5F8 /* CommentsToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsToolBarView.h; sourceTree = "<group>"; };
+		C06774F11C606BE900FED5F8 /* CommentsToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsToolBarView.m; sourceTree = "<group>"; };
 		C06B92891C5346D9007660FF /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
 		C06B928A1C5346D9007660FF /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
 		C06B928B1C5346D9007660FF /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
@@ -3296,6 +3299,8 @@
 		99DA40941C0BEB0500573D4C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C06774F01C606BE900FED5F8 /* CommentsToolBarView.h */,
+				C06774F11C606BE900FED5F8 /* CommentsToolBarView.m */,
 				D29664A41C4109090017EB91 /* ADView.h */,
 				D29664A51C4109090017EB91 /* ADView.m */,
 				D29664A61C4109090017EB91 /* CycleScrollView.h */,
@@ -6234,6 +6239,7 @@
 				D2D0C7241C511D9200B0C853 /* UIImage+EMWebP.m in Sources */,
 				D2D5A7AD1C47F0110056DF24 /* RSADataSigner.m in Sources */,
 				D2D31DE81C26A02900BBE60D /* AppointExpertListModel.m in Sources */,
+				C06774F21C606BE900FED5F8 /* CommentsToolBarView.m in Sources */,
 				D2CF7C2E1C22E251008F2900 /* MyDiagnosisDetailModel.m in Sources */,
 				99DA41AF1C0BEB0500573D4C /* FMDatabase.m in Sources */,
 				C08244651C1FCE8500783FD5 /* MyAddressTableViewCell.m in Sources */,

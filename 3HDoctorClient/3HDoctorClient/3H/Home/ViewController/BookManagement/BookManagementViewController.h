@@ -10,4 +10,6 @@
 
 @interface BookManagementViewController : BaseViewController
 
+
+@property (nonatomic, assign) BOOL isPhone;
 @end

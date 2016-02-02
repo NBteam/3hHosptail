@@ -11,6 +11,7 @@
 #import "DynamicToolView.h"
 #import "DynamicCommentsViewController.h"
 #import "DynamicDetailModel.h"
+#import "CommentsToolBarView.h"
 
 @interface DynamicDetailViewController ()
 //cell高度
@@ -18,6 +19,8 @@
 @property (nonatomic, retain) NSMutableDictionary * dict;
 @property (nonatomic, retain) DynamicToolView * toolView;
 @property (nonatomic, retain) DynamicDetailModel * detailModel;
+
+//@property (nonatomic, strong) CommentsToolBarView *toolBarView;
 @end
 
 @implementation DynamicDetailViewController
@@ -28,7 +31,9 @@
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.view.backgroundColor = [UIColor colorWithHEX:0xffffff];
     self.tableView.height = DeviceSize.height-44;
+    self.tableView.scrollEnabled = NO;
     [self.view addSubview:self.toolView];
+    
     [self getDetailInfo];
 }
 
@@ -64,6 +69,8 @@
     WeakSelf(DynamicDetailViewController);
     [weakSelf showHudWaitingView:WaitPrompt];
     [[THNetWorkManager shareNetWork]getArtInfoId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        
+        NSLog(@"----%@",response.dataDic);
         [weakSelf removeMBProgressHudInManaual];
         [weakSelf.dataArray removeAllObjects];
         if (response.responseCode == 1) {
@@ -89,7 +96,7 @@
             [weakSelf getGoodNetWork];
         }];
         [_toolView setBtnLeftBlock:^{
-            DynamicCommentsViewController * DynamicCommentsVc = [[DynamicCommentsViewController alloc]init];
+            DynamicCommentsViewController * DynamicCommentsVc = [[DynamicCommentsViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
 
             DynamicCommentsVc.id = weakSelf.detailModel.id;
             [weakSelf.navigationController pushViewController:DynamicCommentsVc animated:YES];
@@ -116,6 +123,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation

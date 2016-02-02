@@ -120,7 +120,7 @@
         if (buttonIndex==60) {
             [self showHudWaitingView:@"正在努力操作"];
             WeakSelf(ChangePasswordViewController);
-            [[THNetWorkManager shareNetWork] getCodeMobile:self.txtUserName.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+            [[THNetWorkManager shareNetWork] getPwdMobilecode:self.txtUserName.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
                 [weakSelf removeMBProgressHudInManaual];
                 if (response.responseCode == 1) {
                     if (weakSelf.timer==nil) {

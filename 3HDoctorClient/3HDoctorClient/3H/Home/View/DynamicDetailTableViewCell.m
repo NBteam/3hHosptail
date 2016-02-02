@@ -15,7 +15,7 @@
     [self.contentView addSubview:self.labAuthor];
     [self.contentView addSubview:self.labTime];
     [self.contentView addSubview:self.imgLogo];
-    [self.contentView addSubview:self.labDetail];
+    [self.contentView addSubview:self.webView];
 
 }
 
@@ -50,7 +50,6 @@
 - (UIImageView *)imgLogo{
     if (!_imgLogo) {
         _imgLogo = [[UIImageView alloc] initWithFrame:CGRectMake(10, self.labAuthor.bottom +10, DeviceSize.width -20, 145)];
-        _imgLogo.backgroundColor = [UIColor grayColor];
     }
     return _imgLogo;
 }
@@ -70,12 +69,23 @@
     self.labTitle.text = dic[@"title"];
     self.labAuthor.text = dic[@"author"];
     self.labTime.text = dic[@"addtime"];
-    self.labDetail.text = dic[@"content"];
+    //self.labDetail.text = dic[@"content"];
     [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:dic[@"thumb"]] placeholderImage:[UIImage imageNamed:@""]];
-    [self.labDetail sizeToFit];
-    self.labDetail.width = DeviceSize.width - 20;
-    self.labDetail.top = self.imgLogo.bottom +10;
-    return self.labDetail.bottom +44;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:dic[@"share_url"]]];
+    self.webView.height = DeviceSize.height - 64 - 44 - self.imgLogo.bottom;
+    [self.webView loadRequest:request];
+    
+
+    return self.webView.bottom;
+}
+
+- (UIWebView *)webView{
+    if (!_webView) {
+        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(10, self.imgLogo.bottom +10, DeviceSize.width -20, 0)];
+        _webView.backgroundColor = [UIColor colorWithHEX:0xffffff];
+        
+    }
+    return _webView;
 }
 
 /*

@@ -67,7 +67,7 @@
     [self.imgLogo sd_setImageWithURL:URL(model.upic)];
     self.labDetail.text = [NSString stringWithFormat:@"%@",model.content];
     [self.labDetail sizeToFit];
-    self.labDetail.width = DeviceSize.width - 20;
+    self.labDetail.width = self.labTitle.width;
     return self.labDetail.bottom +10;
 }
 /*

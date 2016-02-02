@@ -54,6 +54,8 @@
             [weakSelf.scrollView setContentOffset:CGPointMake(DeviceSize.width *index, 0) animated:YES];
         }];
         //  默认选中第一个
+        
+        
         [weakTopView topButtonMenuSelectForIndex:0];
     }
     return _topView;
@@ -104,6 +106,11 @@
      self.phoneVc.view.height = DeviceSize.height -self.frameTopHeight -self.topView.height;
     [self.scrollView addSubview:self.phoneVc.view];
     [self.phoneVc didMoveToParentViewController:self];
+    
+    if (self.isPhone) {
+        [self.topView topButtonMenuSelectForIndex:1];
+        [self.scrollView setContentOffset:CGPointMake(DeviceSize.width *1, 0) animated:YES];
+    }
     
 }
 

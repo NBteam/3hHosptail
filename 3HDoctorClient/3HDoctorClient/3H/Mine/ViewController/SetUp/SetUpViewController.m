@@ -156,8 +156,10 @@
         
     }else if (indexPath.row == 2){//评价
         
-        EvaluationViewController *evaluationVc = [[EvaluationViewController alloc] init];
-        [self.navigationController pushViewController:evaluationVc animated:YES];
+//        NSString *evaluateString = [NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1080098568"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@",@"1080098568"]]];
+//        NSURL *url = [NSURL URLWithString:@"tel:%23%2321%23"];
+//        [[UIApplication sharedApplication] openURL:url];
         
     }else if(indexPath.row == 3){//关于
         

@@ -22,7 +22,7 @@
     if (!_btnLeft) {
         _btnLeft = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnLeft.frame = CGRectMake(0, 0, DeviceSize.width/2-1, 44);
-        [_btnLeft setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_btnLeft setTitleColor:AppDefaultColor forState:UIControlStateNormal];
         [_btnLeft setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
         _btnLeft.titleLabel.font = [UIFont systemFontOfSize:16];
         [_btnLeft setTitle:@"  评论" forState:UIControlStateNormal];

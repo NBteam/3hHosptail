@@ -4,47 +4,37 @@
     "254e1078-bab5-df40-a98b-31316f82f384++8693+++3D8E26C" : {
 
     },
-    "254e1078-bab5-df40-a98b-31316f82f384++8693+++12BA694" : {
-
-    },
     "254e1078-bab5-df40-a98b-31316f82f384++8693+++40F92B8" : {
 
     },
-    "254e1078-bab5-df40-a98b-31316f82f384++7127+++A86AFE3" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++9800+++12BA694" : {
+
+    },
+    "254e1078-bab5-df40-a98b-31316f82f384++8693+++A86AFE3" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++8693+++A86AFE3" : 0,
     "254e1078-bab5-df40-a98b-31316f82f384++8693+++3D8E26C" : 0,
-    "254e1078-bab5-df40-a98b-31316f82f384++8693+++12BA694" : 0,
     "F67E7C64B816C483EE606486424394ADFF6E39A5+++8DE2639" : 0,
     "254e1078-bab5-df40-a98b-31316f82f384++8693+++40F92B8" : 0,
     "F67E7C64B816C483EE606486424394ADFF6E39A5+++DBF9D2F" : 0,
-    "254e1078-bab5-df40-a98b-31316f82f384++7127+++A86AFE3" : 0
+    "254e1078-bab5-df40-a98b-31316f82f384++9800+++12BA694" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5657A4B6-9552-4729-8687-B8F3D2D0AD18",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "254e1078-bab5-df40-a98b-31316f82f384++8693+++A86AFE3" : "3H\/3HDoctorClient\/3HDoctorClient\/HXLibs\/ChatView\/",
     "254e1078-bab5-df40-a98b-31316f82f384++8693+++3D8E26C" : "3H\/3HDoctorClient\/3HDoctorClient\/Images\/HXImages\/",
-    "254e1078-bab5-df40-a98b-31316f82f384++8693+++12BA694" : "3H\/3HDoctorClient\/3HDoctorClient\/HXLibs\/ChatView\/",
     "F67E7C64B816C483EE606486424394ADFF6E39A5+++8DE2639" : "3H\/",
     "254e1078-bab5-df40-a98b-31316f82f384++8693+++40F92B8" : "New3H\/3HDoctorClient\/3HDoctorClient\/Images\/HXImages\/",
     "F67E7C64B816C483EE606486424394ADFF6E39A5+++DBF9D2F" : "New3H\/",
-    "254e1078-bab5-df40-a98b-31316f82f384++7127+++A86AFE3" : "3H\/3HDoctorClient\/3HDoctorClient\/HXLibs\/ChatView\/"
+    "254e1078-bab5-df40-a98b-31316f82f384++9800+++12BA694" : "3H\/3HDoctorClient\/3HDoctorClient\/HXLibs\/ChatView\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "3HDoctorClient",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "3HDoctorClient\/3HDoctorClient.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
-    {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++7127+++A86AFE3"
-    },
-    {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8693+++12BA694"
-    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
@@ -54,6 +44,16 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8693+++40F92B8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++8693+++A86AFE3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.28.160.123\/svn\/carelink-app",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "254e1078-bab5-df40-a98b-31316f82f384++9800+++12BA694"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NBteam\/3hHosptail.git",

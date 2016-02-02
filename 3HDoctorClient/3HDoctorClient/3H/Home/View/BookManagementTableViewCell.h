@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
-#import "BookIsPhoneModel.h"
+#import "ReservationListModel.h"
 
 @interface BookManagementTableViewCell : BaseTableViewCell
 
@@ -20,6 +20,6 @@
 //状态
 @property (nonatomic, strong) UILabel *labState;
 //赋值
-- (void)confingWithModel:(BookIsPhoneModel *)dic;
+- (void)confingWithModel:(ReservationListModel *)dic;
 
 @end

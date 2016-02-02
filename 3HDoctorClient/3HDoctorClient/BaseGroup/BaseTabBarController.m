@@ -37,7 +37,9 @@
         [weakSelf removeMBProgressHudInManaual];
         NSLog(@"---%@",response.dataDic);
         if (response.responseCode == 1) {
-            weakSelf.naMessage.tabBarItem.badgeValue = [NSString stringWithFormat:@"%@",response.dataDic[@"msg_num"]];
+            if([response.dataDic[@"msg_num"] integerValue] != 0){
+                weakSelf.naMessage.tabBarItem.badgeValue = [NSString stringWithFormat:@"%@",response.dataDic[@"msg_num"]];
+            }
             
         }else{
                    }

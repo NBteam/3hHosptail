@@ -392,7 +392,11 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 - (void)switchDoctor_id:(NSString *)doctor_id member_id:(NSString *)member_id group_id:(NSString *)group_id	andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
-
+/**
+ *	修改密码获取验证码
+ * @param mobile      手机号
+ */
+- (void)getPwdMobilecode:(NSString *)mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
 
 

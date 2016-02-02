@@ -11,7 +11,7 @@
 #import "MessageModels.h"
 #import "MessageHomeModel.h"
 //患者中心
-#import "PatientCenterViewController.h"
+#import "PatientAddRequestViewController.h"
 //咨询服务
 //#import "ConsultingServicesViewController.h"
 #import "ConsultingMainViewController.h"
@@ -112,13 +112,14 @@
     if (indexPath.section == 0 || indexPath.section == 1) {
         BookManagementViewController *bookVc = [[BookManagementViewController alloc] init];
         bookVc.hidesBottomBarWhenPushed = YES;
+        bookVc.isPhone = YES;
         [self.navigationController pushViewController:bookVc animated:YES];
     }else if(indexPath.section == 2){
         ConsultingMainViewController *consultVc = [[ConsultingMainViewController alloc] init];
         consultVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:consultVc animated:YES];
     }else if(indexPath.section == 3){
-        PatientCenterViewController *patientVc = [[PatientCenterViewController alloc] init];
+        PatientAddRequestViewController *patientVc = [[PatientAddRequestViewController alloc] init];
         patientVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:patientVc animated:YES];
     }

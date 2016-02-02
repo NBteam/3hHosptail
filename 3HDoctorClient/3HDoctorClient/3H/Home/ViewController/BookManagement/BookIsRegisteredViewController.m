@@ -11,6 +11,7 @@
 #import "RegisteredDetailViewController.h"
 #import "ReservationListModel.h"
 
+
 @interface BookIsRegisteredViewController ()
 
 @end
@@ -22,6 +23,20 @@
     // Do any additional setup after loading the view.
     [self getNetWork];
     self.tableView.height = self.tableView.height -44;
+    self.isOpenHeaderRefresh = YES;
+    self.isOpenFooterRefresh = YES;
+}
+
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    
+    [self getNetWork];
+}
+- (void)footerRequestWithData
+{
+    
+    [self getNetWork];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -33,7 +48,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     ReservationListModel * model = self.dataArray[indexPath.section];
-    [cell confingWithModel:nil];
+    [cell confingWithModel:model];
     return cell;
 }
 
@@ -58,10 +73,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    ReservationListModel * model = self.dataArray[indexPath.section];
+    ReservationListModel * model = self.dataArray[indexPath.section];
     RegisteredDetailViewController *registeredDetailVc = [[RegisteredDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-//    registeredDetailVc.id = model.id;
-    registeredDetailVc.id = @"1";
+    registeredDetailVc.id = model.id;
+    //registeredDetailVc.id = @"1";
     [self.navigationController pushViewController:registeredDetailVc animated:YES];
 }
 - (void)getNetWork{
@@ -77,8 +92,19 @@
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"1"];
         }
+        [weakSelf.tableView reloadData];
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        //  重新加载数据
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
         [weakSelf showHudWaitingView:InternetFailerPrompt];
+        //  结束头部刷新
+        [weakSelf.tableView.header endRefreshing];
+        //  结束尾部刷新
+        [weakSelf.tableView.footer endRefreshing];
+        //  重新加载数据
     }];
 }
 - (void)didReceiveMemoryWarning {

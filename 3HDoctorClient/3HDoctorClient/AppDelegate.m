@@ -245,10 +245,10 @@
 #endif
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    
-   // NSString * deviceTokenStr1 = [XGPush registerDevice:deviceToken];
+#pragma mark 发布注意更换
+    NSString * deviceTokenStr1 = [XGPush registerDevice:deviceToken];
     [[EaseMob sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-    [XGPush setAccount:@"fyq"];
+    [XGPush setAccount:deviceTokenStr1];
     
     void (^successBlock)(void) = ^(void){
         //成功之后的处理

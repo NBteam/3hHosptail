@@ -49,12 +49,15 @@
 - (BookDetailToolView *)toolView{
     WeakSelf(RegisteredDetailViewController);
     if (!_toolView) {
+        
+
         _toolView = [[BookDetailToolView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, DeviceSize.width, 65)];
         _toolView.backgroundColor = self.view.backgroundColor;
         //同意
         [_toolView setAgreedBlock:^{
             weakSelf.stutas = 1;
-            UIAlertView * uploadView = [[UIAlertView alloc]initWithTitle:@"" message:@"确定要同意患者李可的挂号预约吗?" delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+            PhoneDetailModel *model = weakSelf.dataArray[0];
+            UIAlertView * uploadView = [[UIAlertView alloc]initWithTitle:@"" message:[NSString stringWithFormat:@"确定要同意患者%@的预约挂号吗?",model.truename] delegate:weakSelf cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
             [uploadView show];
             
         }];
@@ -88,7 +91,7 @@
             cell = [[BookDetailHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dict];
+        [cell confingWithModel:self.dataArray[0]];
         return cell;
     }else if (indexPath.section == 1){
         static NSString *identifier = @"idertifier";
@@ -97,7 +100,7 @@
             cell = [[BookDetailTimeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:self.dict];
+        [cell confingWithModel:self.dataArray[0]];
         return cell;
     }else{
         static NSString *identifier = @"idertifier";
@@ -106,13 +109,13 @@
             cell = [[BookDetailDescribeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.cellHeigth = [cell confingWithModel:self.dict];
+        [cell confingWithModel:self.dataArray[0]];
         return cell;
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.dataArray.count;;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -126,7 +129,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -140,9 +143,23 @@
     WeakSelf(RegisteredDetailViewController);
     [weakSelf showHudWaitingView:WaitPrompt];
     [[THNetWorkManager shareNetWork]getMyOrderguahaoInfoId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        
+        NSLog(@"-------%@",response.dataDic);
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            weakSelf.dict = [NSMutableDictionary dictionaryWithDictionary:response.dataDic];
+            PhoneDetailModel * model = [response thParseDataFromDic:response.dataDic andModel:[PhoneDetailModel class]];
+            [weakSelf.dataArray addObject:model];
+            [weakSelf.tableView reloadData];
+            
+            //假如已经支付了
+            if ([response.dataDic[@"status"] integerValue] == 1) {
+                [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已同意"];
+            }else if([response.dataDic[@"status"] integerValue] == -1){
+                [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已拒绝"];
+                
+            }else{
+                [self.toolView changeViewHide:BookDetailToolViewTypeIsUp andTitle:@""];
+            }
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"1"];
         }
@@ -156,21 +173,21 @@
 - (void)getNetWorkSta:(NSInteger)sta{
     WeakSelf(RegisteredDetailViewController);
     [weakSelf showHudWaitingView:WaitPrompt];
-    [[THNetWorkManager shareNetWork]processMyOrderguahaoId:@"" opt:sta andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]processMyOrderguahaoId:self.id opt:sta andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             if (sta==1) {
                 BookSuccessViewController *bookSuccessVc = [[BookSuccessViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-//                [bookSuccessVc setBookSuccessBlock:^{
-//                    [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已同意"];
-//                }];
+                [bookSuccessVc setReloadBlock:^{
+                    [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已同意"];
+                }];
                 [self.navigationController pushViewController:bookSuccessVc animated:YES];
             }else{
                 BookRefuseReasonViewController *bookRefuseReasonVc = [[BookRefuseReasonViewController alloc] init];
-//                [bookRefuseReasonVc setBookRefuseReasonBlock:^{
-//                    
-//                    [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已拒绝"];
-//                }];
+                [bookRefuseReasonVc setReloadBlock:^{
+                    
+                    [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已拒绝"];
+                }];
                 [weakSelf.navigationController pushViewController:bookRefuseReasonVc animated:YES];
             }
             

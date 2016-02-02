@@ -21,4 +21,6 @@
 @property (nonatomic, copy) NSString *title;
 
 @property (nonatomic, strong) NSNumber *good_num;
+
+@property (nonatomic, copy) NSString *share_url;
 @end

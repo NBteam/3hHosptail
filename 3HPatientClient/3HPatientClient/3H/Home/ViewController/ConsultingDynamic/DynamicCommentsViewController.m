@@ -10,19 +10,35 @@
 #import "DynamicCommentsTableViewCell.h"
 #import "CommentsCustomKeyboard.h"
 #import "CommentsListModel.h"
+#import "CommentsToolBarView.h"
 
 @interface DynamicCommentsViewController ()
 
 @property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, strong) CommentsToolBarView *toolBarView;
 @end
 
 @implementation DynamicCommentsViewController
+
+- (CommentsToolBarView *)toolBarView{
+    if (!_toolBarView) {
+        WeakSelf(DynamicCommentsViewController);
+        _toolBarView = [[CommentsToolBarView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, DeviceSize.width, 44)];
+        [_toolBarView setBtnCommentBlock:^{
+            [weakSelf btnAction];
+        }];
+    }
+    return _toolBarView;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     [[CommentsCustomKeyboard customKeyboard]textViewShowView:self customKeyboardDelegate:self];
+    self.tableView.height = self.tableView.height - 44;
+    [self.view addSubview:self.toolBarView];
     self.isOpenFooterRefresh = YES;
     self.isOpenHeaderRefresh = YES;
     [self getArtCmtListNetWork];
@@ -40,12 +56,16 @@
         cell = [[DynamicCommentsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    CommentsListModel * model = self.dataArray[indexPath.row];
+    CommentsListModel * model = self.dataArray[indexPath.section];
     self.cellHeight = [cell confingWithModel:model];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.dataArray.count;
 }
 
@@ -54,22 +74,12 @@
 }
 
 - (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 69/2 +10;
-}
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 69/2 +10)];
-    view.backgroundColor = [UIColor colorWithHEX:0xffffff];
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(10, 10, 55, 69/2);
-    [btn setImage:[UIImage imageNamed:@"首页-健康资讯-新闻资讯-评论"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:btn];
-//    UILabel *labLine = [[UILabel alloc] initWithFrame:CGRectMake(0, 69/2 +20 -0.5, DeviceSize.width, 0.5)];
-//    labLine.backgroundColor = [UIColor colorWithHEX:0xcccccc];
-//    [view addSubview:labLine];
-    return view;
+    return 10;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return [[UIView alloc] init];
+}
 - (void)btnAction{
     
     [[CommentsCustomKeyboard customKeyboard].mTalkBtn setTitle:@"提交评论" forState:UIControlStateNormal];

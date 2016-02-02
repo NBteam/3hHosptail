@@ -15,7 +15,7 @@
     [self.contentView addSubview:self.labAuthor];
     [self.contentView addSubview:self.labTime];
     [self.contentView addSubview:self.imgLogo];
-    [self.contentView addSubview:self.labDetail];
+    [self.contentView addSubview:self.webView];
 
 }
 
@@ -71,10 +71,12 @@
     self.labTitle.text = dic.title;
     self.labAuthor.text = [NSString stringWithFormat:@"创建者:%@",dic.author];
     self.labTime.text = dic.addtime;
-    self.labDetail.text = [self filterHTML:dic.content];
-    [self.labDetail sizeToFit];
-    self.labDetail.top = self.imgLogo.bottom +10;
-    return self.labDetail.bottom +44;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:dic.share_url]];
+    self.webView.height = DeviceSize.height - 64 - 44 - self.imgLogo.bottom;
+    [self.webView loadRequest:request];
+    
+    
+    return self.webView.bottom;
 }
 
 -(NSString *)filterHTML:(NSString *)html{
@@ -92,6 +94,15 @@
     // NSString * regEx = @"<([^>]*)>";
     // html = [html stringByReplacingOccurrencesOfString:regEx withString:@""];
     return html;
+}
+
+- (UIWebView *)webView{
+    if (!_webView) {
+        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(10, self.imgLogo.bottom +10, DeviceSize.width -20, 0)];
+        _webView.backgroundColor = [UIColor colorWithHEX:0xffffff];
+        
+    }
+    return _webView;
 }
 
 /*

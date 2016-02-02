@@ -54,6 +54,7 @@
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(ArchiveDescViewController);
     [[THNetWorkManager shareNetWork]getArchiveDescId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        NSLog(@"----%@",response.dataDic);
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             if (weakSelf.pageNO == 1) {

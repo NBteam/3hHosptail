@@ -19,6 +19,8 @@
 @property (nonatomic, strong) UIImageView *imgLogo;
 //内容
 @property (nonatomic, strong) UILabel *labDetail;
+
+@property (nonatomic, strong) UIWebView *webView;
 //赋值
 - (CGFloat )confingWithModel:(DynamicDetailModel *)dic;
 

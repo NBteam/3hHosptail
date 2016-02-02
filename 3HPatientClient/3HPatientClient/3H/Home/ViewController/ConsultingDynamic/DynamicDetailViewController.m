@@ -27,6 +27,7 @@
     self.tableView.height = self.tableView.height - 45;
     [self.view addSubview:self.toolView];
     self.view.backgroundColor = [UIColor colorWithHEX:0xffffff];
+    self.toolView.hidden = YES;
     [self getDynamicDetailData];
     
 }
@@ -43,6 +44,7 @@
             
             [weakSelf.toolView confingWithModel:weakSelf.dataArray[0]];
             [weakSelf.tableView reloadData];
+            self.toolView.hidden = NO;
             
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
@@ -66,7 +68,7 @@
         [_toolView setToolBlock:^(NSInteger index) {
             if (index == 0) {
                 DynamicDetailModel * model = weakSelf.dataArray[0];
-                DynamicCommentsViewController *dynamicCommentsVc = [[DynamicCommentsViewController alloc] init];
+                DynamicCommentsViewController *dynamicCommentsVc = [[DynamicCommentsViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 dynamicCommentsVc.id = model.id;
                 [weakSelf.navigationController pushViewController:dynamicCommentsVc animated:YES];
                 
