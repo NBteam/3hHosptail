@@ -852,6 +852,7 @@
 		D2D373861C3170DE005E662D /* MedicationAddInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373851C3170DE005E662D /* MedicationAddInputViewController.m */; };
 		D2D373891C317B51005E662D /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D373881C317B51005E662D /* TimeView.m */; };
 		D2D3738C1C317E96005E662D /* ChangeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D3738B1C317E96005E662D /* ChangeInfoViewController.m */; };
+		D2D417821C60DBCF00833564 /* ArchiveDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D417811C60DBCF00833564 /* ArchiveDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2D5310A1C58EB1E00BF1C59 /* ShopBuyFinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D531091C58EB1E00BF1C59 /* ShopBuyFinishViewController.m */; };
 		D2D5310D1C58F2A500BF1C59 /* MyOrdersCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5310C1C58F2A500BF1C59 /* MyOrdersCViewController.m */; };
 		D2D5A5E91C47E59E0056DF24 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D5A5E81C47E59E0056DF24 /* QuartzCore.framework */; };
@@ -2313,6 +2314,8 @@
 		D2D373881C317B51005E662D /* TimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeView.m; sourceTree = "<group>"; };
 		D2D3738A1C317E96005E662D /* ChangeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeInfoViewController.h; sourceTree = "<group>"; };
 		D2D3738B1C317E96005E662D /* ChangeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeInfoViewController.m; sourceTree = "<group>"; };
+		D2D417801C60DBCF00833564 /* ArchiveDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveDetailViewController.h; sourceTree = "<group>"; };
+		D2D417811C60DBCF00833564 /* ArchiveDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveDetailViewController.m; sourceTree = "<group>"; };
 		D2D531081C58EB1E00BF1C59 /* ShopBuyFinishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopBuyFinishViewController.h; sourceTree = "<group>"; };
 		D2D531091C58EB1E00BF1C59 /* ShopBuyFinishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopBuyFinishViewController.m; sourceTree = "<group>"; };
 		D2D5310B1C58F2A500BF1C59 /* MyOrdersCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersCViewController.h; sourceTree = "<group>"; };
@@ -2997,6 +3000,8 @@
 				D2D361741C5E3F1D00419147 /* ArchiveListViewController.m */,
 				D2D361791C5E439000419147 /* ArchiveDescViewController.h */,
 				D2D3617A1C5E439000419147 /* ArchiveDescViewController.m */,
+				D2D417801C60DBCF00833564 /* ArchiveDetailViewController.h */,
+				D2D417811C60DBCF00833564 /* ArchiveDetailViewController.m */,
 				D2D3738A1C317E96005E662D /* ChangeInfoViewController.h */,
 				D2D3738B1C317E96005E662D /* ChangeInfoViewController.m */,
 			);
@@ -6177,6 +6182,7 @@
 				99DA41A11C0BEB0500573D4C /* NSDictionary+SafeAccess.m in Sources */,
 				D2D12CCE1C2E7AAF00E1196D /* AppointDoctorsInfoViewController.m in Sources */,
 				99DA41DD1C0BEB0500573D4C /* NSData+ImageContentType.m in Sources */,
+				D2D417821C60DBCF00833564 /* ArchiveDetailViewController.m in Sources */,
 				99DA41CE1C0BEB0500573D4C /* MJRefreshBackGifFooter.m in Sources */,
 				991A32FC1C12ED7100E0313F /* HealthTableViewCell.m in Sources */,
 				D2D0C71C1C511D9200B0C853 /* EMSDWebImageDownloaderOperation.m in Sources */,

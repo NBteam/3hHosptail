@@ -41,7 +41,7 @@
 - (UIImageView *)imaGreen{
     if (!_imaGreen) {
         _imaGreen = [[UIImageView alloc]initWithFrame:CGRectMake(self.viewBack.width/2 - 25, 20, 50, 50)];
-        _imaGreen.backgroundColor = [UIColor greenColor];
+        _imaGreen.image = [UIImage imageNamed:@"首页-我要预约-预约挂号2-预约成功_预约成功"];
         _imaGreen.layer.cornerRadius = 25.f;
         _imaGreen.layer.masksToBounds = YES;
     }

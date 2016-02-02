@@ -40,9 +40,39 @@
     }
     return _labDesc;
 }
-- (CGFloat)cinfigWithModel:(id)model{
-    self.labTitle.text = @"11111";
-    self.labDesc.text = @"11111111111dsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa11111111111dsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+- (CGFloat)cinfigWithModel:(id)model index:(NSInteger)index{
+    if ([model isKindOfClass:[NSDictionary class]]) {
+        if (index == 0) {
+            self.labTitle.text = @"3H健康管理专家建议及指南";
+            self.labDesc.text = model[@"zhinan"];
+        }else if (index == 1){
+            self.labTitle.text = @"癌症早期筛查风险评估系统";
+            self.labDesc.text = model[@"xitong"];
+        }else if (index == 2){
+            self.labTitle.text = @"PET—CT检查报告";
+            self.labDesc.text = model[@"jiancha"];
+        }else if (index == 3){
+            self.labTitle.text = @"无痛胃镜检查报告";
+            self.labDesc.text = model[@"baogao"];
+        }else if (index == 4){
+            self.labTitle.text = @"常规查体报告";
+            self.labDesc.text = model[@"changgui"];
+        }
+    }else{
+        if (index == 0) {
+            self.labTitle.text = @"3H健康管理专家建议及指南";            
+        }else if (index == 1){
+            self.labTitle.text = @"癌症早期筛查风险评估系统";
+        }else if (index == 2){
+            self.labTitle.text = @"PET—CT检查报告";
+        }else if (index == 3){
+            self.labTitle.text = @"无痛胃镜检查报告";
+        }else if (index == 4){
+            self.labTitle.text = @"常规查体报告";
+        }
+        self.labDesc.text = model;
+    }
+    self.labDesc.numberOfLines = 0;
     [self.labDesc sizeToFit];
     self.labDesc.top = self.labLine.bottom + (44 - 15)/2;
     self.labDesc.left = 10 ;

@@ -46,6 +46,7 @@
         [cell.contentView addSubview:imgArrow];
     }
     cell.textLabel.text = self.dataArray[indexPath.row];
+    cell.textLabel.font = [UIFont systemFontOfSize:15];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

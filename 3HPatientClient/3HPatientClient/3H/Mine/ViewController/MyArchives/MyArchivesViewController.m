@@ -50,6 +50,7 @@
     }
     cell.backgroundColor = self.view.backgroundColor;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.font = [UIFont systemFontOfSize:15];
    // [cell confingWithModel:indexPath.row];
     return cell;
 }

@@ -8,15 +8,18 @@
 
 #import "ArchiveDescViewController.h"
 #import "ArchiveDescCell.h"
+#import "ArchiveDetailViewController.h"
 
 @interface ArchiveDescViewController ()
 @property (nonatomic, assign) CGFloat cellHeight;
+@property (nonatomic, strong) NSDictionary * dict;
 @end
 
 @implementation ArchiveDescViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dict = [NSDictionary dictionary];
     self.title = [NSString stringWithFormat:@"%@的健康档案",self.titleStr];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.isOpenFooterRefresh = YES;
@@ -44,7 +47,7 @@
         cell = [[ArchiveDescCell  alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.cellHeight = [cell cinfigWithModel:nil];
+    self.cellHeight = [cell cinfigWithModel:self.dict index:indexPath.section];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -54,12 +57,12 @@
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(ArchiveDescViewController);
     [[THNetWorkManager shareNetWork]getArchiveDescId:self.id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
-        NSLog(@"----%@",response.dataDic);
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             if (weakSelf.pageNO == 1) {
                 [weakSelf.dataArray removeAllObjects];
             }
+            weakSelf.dict = response.dataDic;
             [weakSelf.tableView reloadData];
             //  结束头部刷新
             [weakSelf.tableView.header endRefreshing];
@@ -89,6 +92,27 @@
 - (void)footerRequestWithData
 {
     [self getNetWork];
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ArchiveDetailViewController *  avc = [[ArchiveDetailViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
+    if (indexPath.section == 0) {
+        avc.title = @"3H健康管理专家建议及指南";
+        avc.detailStr = self.dict[@"zhinan"];
+    }else if (indexPath.section == 1){
+        avc.title = @"癌症早期筛查风险评估系统";
+        avc.detailStr = self.dict[@"xitong"];
+    }else if (indexPath.section == 2){
+        avc.title = @"PET—CT检查报告";
+        avc.detailStr = self.dict[@"jiancha"];
+    }else if (indexPath.section == 3){
+        avc.title = @"无痛胃镜检查报告";
+        avc.detailStr = self.dict[@"baogao"];
+    }else if (indexPath.section == 4){
+        avc.title = @"常规查体报告";
+        avc.detailStr = self.dict[@"changgui"];
+    }
+    avc.index = indexPath.section;
+    [self.navigationController pushViewController:avc animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

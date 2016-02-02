@@ -175,7 +175,7 @@
         for (int i = 0; i < self.dataArray.count; i++) {
             AppointTimeModel * model1 = self.dataArray[i];
             for (int j = 0 ; j < model1.times.count; j++) {
-                if ([[NSString stringWithFormat:@"%@",model.times[j][@"is_empty"]] isEqualToString:@"0"]) {
+                if ([[NSString stringWithFormat:@"%@",model1.times[j][@"is_empty"]] isEqualToString:@"0"]) {
                     UIButton * btnN = (UIButton *)[self.scrollView viewWithTag:i*1000+j+100];
                     btnN.backgroundColor = [UIColor colorWithHEX:0xe7e7e7];
                     [btnN setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
@@ -201,6 +201,4 @@
     self.dataArray = [NSMutableArray arrayWithArray:array];
     [self customScrollViewsArray:array];
 }
-
-
 @end

@@ -49,6 +49,7 @@
     }
     ArchiveListModel * model = self.dataArray[indexPath.row];
     cell.textLabel.text = model.title;
+    cell.textLabel.font = [UIFont systemFontOfSize:15];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -69,15 +70,10 @@
             if (weakSelf.pageNO == 1) {
                 [weakSelf.dataArray removeAllObjects];
             }
-            ArchiveListModel * model = [[ArchiveListModel alloc]init];
-            model.id = @"2";
-            model.title = @"健康档案";
-            [weakSelf.dataArray addObject:model];
-            [weakSelf.dataArray addObject:model];
-//            for (NSDictionary * dic in response.dataDic[@"list"]) {
-//                ArchiveListModel * model = [response thParseDataFromDic:dic andModel:[ArchiveListModel class]];
-//                [weakSelf.dataArray addObject:model];
-//            }
+            for (NSDictionary * dic in response.dataDic[@"list"]) {
+                ArchiveListModel * model = [response thParseDataFromDic:dic andModel:[ArchiveListModel class]];
+                [weakSelf.dataArray addObject:model];
+            }
             [weakSelf.tableView reloadData];
             //  结束头部刷新
             [weakSelf.tableView.header endRefreshing];

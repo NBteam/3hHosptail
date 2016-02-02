@@ -12,5 +12,5 @@
 @property (nonatomic, strong) UILabel * labTitle;
 @property (nonatomic, strong) UILabel * labLine;
 @property (nonatomic, strong) UILabel * labDesc;
-- (CGFloat)cinfigWithModel:(id)model;
+- (CGFloat)cinfigWithModel:(id)model index:(NSInteger)index;
 @end
