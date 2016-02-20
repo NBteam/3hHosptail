@@ -69,7 +69,7 @@
 
 - (void)registerHuanXin:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     [self registerRemoteNotification];
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:@"3hDoctor_D"];
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:@"3hDoctor_P"];
 
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
@@ -248,7 +248,7 @@
 #pragma mark 发布注意更换
     NSString * deviceTokenStr1 = [XGPush registerDevice:deviceToken];
     [[EaseMob sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-    [XGPush setAccount:@"fyq"];
+    [XGPush setAccount:deviceTokenStr1];
     
     void (^successBlock)(void) = ^(void){
         //成功之后的处理

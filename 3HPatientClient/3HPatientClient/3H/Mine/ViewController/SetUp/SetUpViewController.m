@@ -168,8 +168,9 @@
         
     }else if (indexPath.row == 2){//评价
         
-        EvaluationViewController *evaluationVc = [[EvaluationViewController alloc] init];
-        [self.navigationController pushViewController:evaluationVc animated:YES];
+//        EvaluationViewController *evaluationVc = [[EvaluationViewController alloc] init];
+//        [self.navigationController pushViewController:evaluationVc animated:YES];
+         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@",@"1080101695"]]];
         
     }else if(indexPath.row == 3){//关于
         

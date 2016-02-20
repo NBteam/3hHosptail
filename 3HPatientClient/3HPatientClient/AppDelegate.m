@@ -37,7 +37,7 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:@"kaifa"];
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:@"3hPatient_P"];
     
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     [self setUM];
@@ -229,7 +229,7 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
      NSString * deviceTokenStr1 = [XGPush registerDevice:deviceToken];
     
     NSLog(@"---%@",deviceTokenStr1);
-    [XGPush setAccount:@"fyq"];
+    [XGPush setAccount:deviceTokenStr1];
     
     void (^successBlock)(void) = ^(void){
         //成功之后的处理

@@ -52,6 +52,7 @@
         _scrollView.pagingEnabled = YES;
         _scrollView.bounces = NO;
         _scrollView.scrollEnabled = NO;
+       // _scrollView.backgroundColor = [UIColor orangeColor];
     }
     return _scrollView;
 }
@@ -138,33 +139,61 @@
         self.labTime.text = model.date;
     }
     for (int j = 0; j <array.count; j++) {
+        
+        
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.viewBack.width * j,  0, self.viewBack.width, 180)];
+        scrollView.delegate = self;
+        scrollView.showsHorizontalScrollIndicator = NO;
+        scrollView.showsVerticalScrollIndicator = NO;
+        scrollView.pagingEnabled = YES;
+        scrollView.backgroundColor = [UIColor redColor];
+        scrollView.bounces = NO;
+      // scrollView.scrollEnabled = NO;
+        scrollView.tag = 10000 *j + 400;
+        
         AppointTimeModel * model = array[j];
         for (int i = 0 ; i<model.times.count; i++) {
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            btn.frame = CGRectMake(j*self.viewBack.width +(i%3)*self.viewBack.width/3, (i/3)*45, self.viewBack.width/3, 45);
+            btn.frame = CGRectMake((i%3)*self.viewBack.width/3, (i/3)*45 , self.viewBack.width/3, 45);
             btn.backgroundColor = [UIColor colorWithHEX:0xffffff];
             btn.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
             [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
-            btn.layer.borderWidth = 0.25;
+            btn.layer.borderWidth = 0.5;
             btn.titleLabel.font = [UIFont systemFontOfSize:15];
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
             btn.tag = j * 1000 + i + 100;
             if ([model.times[i][@"is_empty"] doubleValue] == 0) {
                 btn.backgroundColor = [UIColor colorWithHEX:0xe7e7e7];
-                btn.layer.borderColor = AppDefaultColor.CGColor;
+                btn.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
                 [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
             }
             [btn setTitle:model.times[i][@"start_time"] forState:UIControlStateNormal];
+            NSLog(model.times[i][@"start_time"]);
+            //NSLog(model.times[i][@"start_time"]);
 //            [btn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
-            [self.scrollView addSubview:btn];
+            
+            scrollView.contentSize = CGSizeMake(self.viewBack.width, btn.bottom);
+            [scrollView addSubview:btn];
+            [self.scrollView addSubview:scrollView];
         }
     }
     self.scrollView.contentSize = CGSizeMake(self.viewBack.width *array.count, self.scrollView.height);
 }
 - (void)btnClick:(UIButton *)button{
+    
+    if (self.btnOld) {
+        self.btnOld.selected = NO;
+        self.btnOld.backgroundColor = [UIColor whiteColor];
+        [self.btnOld setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
+        self.btnOld = button;
+    }else{
+        self.btnOld = button;
+    }
+    UIScrollView *newScrollView = (UIScrollView *)[self.scrollView viewWithTag:((button.tag-100)/1000) * 10000 +400];
+    NSLog(@"华东%@",newScrollView);
     AppointTimeModel * model = self.dataArray[(button.tag-100)/1000];
     if ([[NSString stringWithFormat:@"%@",model.times[(button.tag-100)%1000][@"is_empty"]] isEqualToString:@"1"]) {
-        for (UIView * view in self.scrollView.subviews) {
+        for (UIView * view in newScrollView.subviews) {
             if ([view isKindOfClass:[UIButton class]]) {
                 UIButton * btn = (UIButton *)view;
                 btn.backgroundColor = [UIColor whiteColor];
@@ -176,7 +205,7 @@
             AppointTimeModel * model1 = self.dataArray[i];
             for (int j = 0 ; j < model1.times.count; j++) {
                 if ([[NSString stringWithFormat:@"%@",model1.times[j][@"is_empty"]] isEqualToString:@"0"]) {
-                    UIButton * btnN = (UIButton *)[self.scrollView viewWithTag:i*1000+j+100];
+                    UIButton * btnN = (UIButton *)[newScrollView viewWithTag:i*1000+j+100];
                     btnN.backgroundColor = [UIColor colorWithHEX:0xe7e7e7];
                     [btnN setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
                 }

@@ -81,4 +81,14 @@
 #define RememberMe @"3H_RememberMe"
 #define UserName @"3H_UserName"
 #define UserPassword @"3H_UserPassword"
+////线上关闭NsLog
+//#ifndef DEBUG
+//
+//#define NSLog(...) NSLog(__VA_ARGS__)
+//
+//#else
+//
+//#define NSLog(...) {}
+//
+//#endif
 #endif
