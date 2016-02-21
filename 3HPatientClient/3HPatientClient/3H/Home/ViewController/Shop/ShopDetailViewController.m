@@ -264,7 +264,7 @@
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             NSLog(@"-----%@",response.dataDic);
-            
+            [weakSelf showHudAuto:@"加入成功" andDuration:@"2"];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

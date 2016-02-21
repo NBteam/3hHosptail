@@ -349,7 +349,8 @@
         [[THNetWorkManager shareNetWork] getRegisteredMobile:self.txtUserName.text password:self.txtPassWord.text code:self.txtCode.text fromcode:self.txtInvitation.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
-                
+                [weakSelf showHudAuto:@"注册成功" andDuration:@"1"];
+                [weakSelf.navigationController popViewControllerAnimated:YES];
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"1"];
             }

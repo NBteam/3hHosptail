@@ -5,7 +5,7 @@
 //  Created by 范英强 on 15/11/30.
 //  Copyright (c) 2015年 fyq. All rights reserved.
 //
-
+NSString * checked;
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 //注册
@@ -492,7 +492,7 @@
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             
-            
+            checked = response.dataDic[@"is_checked"];
             NSLog(@"看一看%@",response.dataDic);
             THUser *user = [MTLJSONAdapter modelOfClass:[THUser class] fromJSONDictionary:response.dataDic error:nil];
             

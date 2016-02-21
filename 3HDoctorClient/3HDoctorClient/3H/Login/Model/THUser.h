@@ -31,7 +31,7 @@
 @property (nonatomic, copy) NSString *work_week;
 
 @property (nonatomic, copy) NSString *work_price;
-
+@property (nonatomic, copy) NSString *is_checked;
 
 //  读取本地文件加载实例
 + (THUser *)ReadLocalUserDataForPath:(NSString *)path;

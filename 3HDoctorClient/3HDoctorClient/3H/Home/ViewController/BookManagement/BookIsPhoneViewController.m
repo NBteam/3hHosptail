@@ -74,7 +74,9 @@
         cell = [[BookManagementTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithModel:self.dataArray[indexPath.section]];
+    if (self.dataArray.count != 0) {
+        [cell confingWithModel:self.dataArray[indexPath.section]];
+    }
     return cell;
 }
 

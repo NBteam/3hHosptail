@@ -5,7 +5,7 @@
 //  Created by 范英强 on 15/11/30.
 //  Copyright (c) 2015年 fyq. All rights reserved.
 //
-
+extern NSString * checked;
 #import "MineViewController.h"
 #import "MineHeadTableViewCell.h"
 #import "MineTableViewCell.h"
@@ -52,7 +52,7 @@
         }
         //Checked 认证状态
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModelOfName:self.user.truename Hosptail:self.user.hospital Job:self.user.job_title Pic:self.user.pic Checked:@""];
+        [cell confingWithModelOfName:self.user.truename Hosptail:self.user.hospital Job:self.user.job_title Pic:self.user.pic Checked:checked];
         return cell;
     }else{
         static NSString *identifier = @"idertifier";

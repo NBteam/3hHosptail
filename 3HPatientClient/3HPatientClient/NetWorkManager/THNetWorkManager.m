@@ -540,7 +540,7 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 
-#pragma mark 鉴权】健康日程¬——获取某月状况【20151221添加】
+#pragma mark 鉴权】健康日程——获取某月状况【20151221添加】
 - (void)getHeathMonthTipdate_m:(NSString *)date_m andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
     NSDictionary *paramDic = @{@"a":@"getHeathMonthTip",@"date_m":date_m,@"token":GetToken};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];

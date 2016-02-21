@@ -81,7 +81,7 @@
     self.labDoctorInfo.text = [NSString stringWithFormat:@"%@  %@",hosptail,job];
     [self.imgDoctorPic sd_setImageWithURL:URL(pic) placeholderImage:IMG(@"")];
     
-    if ([checked isEqualToString:@"2"]) {
+    if ([checked isEqualToString:@"1"]) {
         [self.btnAttestation setTitle:@"已认证" forState:UIControlStateNormal];
     }else{
         [self.btnAttestation setTitle:@"未认证" forState:UIControlStateNormal];

@@ -177,7 +177,11 @@
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             if (sta==1) {
+                PhoneDetailModel *model = weakSelf.dataArray[0];
+                
                 BookSuccessViewController *bookSuccessVc = [[BookSuccessViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+                bookSuccessVc.timeStrig = model.order_date_n;
+                bookSuccessVc.nameString = model.truename;
                 [bookSuccessVc setReloadBlock:^{
                     [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已同意"];
                 }];

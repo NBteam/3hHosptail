@@ -37,11 +37,12 @@
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             NSLog(@"查看%@",response.dataDic);
-            for (NSDictionary * dict in response.dataDic[@"list"]) {
-                DiagnosisListModel * model = [response thParseDataFromDic:dict andModel:[DiagnosisListModel class]];
-                [weakSelf.dataArray addObject:model];
+            if ([response.dataDic[@"list"] isKindOfClass:[NSDictionary class]]) {
+                for (NSDictionary * dict in response.dataDic[@"list"]) {
+                    DiagnosisListModel * model = [response thParseDataFromDic:dict andModel:[DiagnosisListModel class]];
+                    [weakSelf.dataArray addObject:model];
+                }
             }
-            
             [weakSelf.tableView reloadData];
             
         }else{

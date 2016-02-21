@@ -155,7 +155,12 @@
     self.labDetail.text = [NSString stringWithFormat:@"%@ %@",model.hospital,model.department];
     self.labTime.text = model.order_date_n;
     [self.imgDoctorPic sd_setImageWithURL:SD_IMG(model.pic)];
-    self.labPrice.text = [NSString stringWithFormat:@"实付:%@元",model.total] ;
+    if (model.total) {
+        self.labPrice.text = [NSString stringWithFormat:@"实付:%@元",model.total] ;
+    }else{
+        self.labPrice.text = [NSString stringWithFormat:@"实付:%@元",model.price] ;
+    }
+    
     self.labAppraise.text = model.order_date_n;
     if ([model.status_n isEqualToString:@"0"]) {
         self.labState.text = @"等待医生确认";
