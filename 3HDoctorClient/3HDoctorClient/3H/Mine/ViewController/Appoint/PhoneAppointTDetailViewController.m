@@ -8,13 +8,15 @@
 
 #import "PhoneAppointTDetailViewController.h"
 #import "PhoneAppointTDetailModel.h"
-@interface PhoneAppointTDetailViewController ()
+@interface PhoneAppointTDetailViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIView *viewBack;
 
 @property (nonatomic, strong) UILabel *labTitle;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+
+@property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
 @implementation PhoneAppointTDetailViewController
@@ -25,10 +27,25 @@
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"删除"];
     [self.view addSubview:self.viewBack];
+    [self.viewBack addSubview:self.scrollView];
     [self.viewBack addSubview:self.labTitle];
+   
     [self getOrderTelSetdate];
     
     
+}
+
+- (UIScrollView *)scrollView{
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width -20, DeviceSize.height - self.frameTopHeight - 10)];
+        _scrollView.delegate = self;
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.pagingEnabled = NO;
+        _scrollView.bounces = NO;
+        
+    }
+    return _scrollView;
 }
 
 - (NSMutableArray *)dataArray{
@@ -96,7 +113,8 @@
         }
         
         
-        [self.viewBack addSubview:btn];
+        [self.scrollView addSubview:btn];
+        self.scrollView.contentSize = CGSizeMake(DeviceSize.width - 20, btn.bottom);
         self.viewBack.height = btn.bottom;
     }
 }

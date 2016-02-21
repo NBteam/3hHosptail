@@ -6653,8 +6653,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Chen Su (N5WJH3WGR8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chen Su (N5WJH3WGR8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: QINLONG YANG (3KSNWACM5P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: QINLONG YANG (3KSNWACM5P)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6706,7 +6706,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "edf8d9f7-fdd9-4809-8915-c368a5b0455c";
+				PROVISIONING_PROFILE = "c5d69947-b808-4127-b4a3-25a2ec763866";
 			};
 			name = Debug;
 		};
@@ -6715,8 +6715,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Chen Su (N5WJH3WGR8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chen Su (N5WJH3WGR8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: QINLONG YANG (3KSNWACM5P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: QINLONG YANG (3KSNWACM5P)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6768,7 +6768,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "edf8d9f7-fdd9-4809-8915-c368a5b0455c";
+				PROVISIONING_PROFILE = "c5d69947-b808-4127-b4a3-25a2ec763866";
 			};
 			name = Release;
 		};

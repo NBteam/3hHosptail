@@ -36,6 +36,8 @@ extern NSString * checked;
     [self getNetWorkInfo];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getNetWorkInfo) name:@"reloadHomeInfo" object:nil];
     self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"3H-我的_我的钱包-未点击",@"title":@"我的钱包"},@{@"img":@"3H-我的_预约设置-未点击",@"title":@"预约设置"},@{@"img":@"3H-我的_邀请同行-未点击",@"title":@"邀请同行"},@{@"img":@"3H-我的_设置-未点击",@"title":@"设置"}]];
+//    self.dataArray = [NSMutableArray arrayWithArray:@[@{@"img":@"3H-我的_我的钱包-未点击",@"title":@"我的钱包"},@{@"img":@"3H-我的_预约设置-未点击",@"title":@"预约设置"},@{@"img":@"3H-我的_设置-未点击",@"title":@"设置"}]];
+
 }
 
 - (void)getNetWorkInfo{

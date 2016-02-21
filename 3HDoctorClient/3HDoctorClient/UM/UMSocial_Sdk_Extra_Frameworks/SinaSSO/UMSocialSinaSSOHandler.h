@@ -19,7 +19,7 @@
  
  @param appKey 新浪App Key
  @param redirectURL 回调URL
- 
+
  */
 
 +(void)openNewSinaSSOWithAppKey:(NSString *)appKey

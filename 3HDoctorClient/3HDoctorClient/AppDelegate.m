@@ -69,7 +69,7 @@
 
 - (void)registerHuanXin:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     [self registerRemoteNotification];
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:@"3hDoctor_P"];
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:@"3hDoctor_D"];
 
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
@@ -319,6 +319,7 @@
     
     [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:@"3794032235"
                                          RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+//    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:@"3794032235" secret:@"6b95d7c4755a82a3c001e2045f8d5c1f" RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
     
     //    //设置分享到QQ空间的应用Id，和分享url 链接
     [UMSocialQQHandler setQQWithAppId:@"1104933685" appKey:@"4aSRHf8jhu7dZeXw" url:@"http://www.umeng.com/social"];

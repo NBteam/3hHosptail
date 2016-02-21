@@ -344,7 +344,7 @@
 //扫描失败的回调
 -  (void)readerView:(ZBarReaderView *)readerView didStopWithError:(NSError *)error
 {
-    NSLog(@"//扫描失败的回调");
+    NSLog(@"//扫描失败的回调%@",error);
     
 }
 

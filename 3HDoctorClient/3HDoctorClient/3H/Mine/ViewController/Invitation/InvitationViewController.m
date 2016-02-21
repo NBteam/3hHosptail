@@ -7,7 +7,7 @@
 //
 
 #import "InvitationViewController.h"
-
+#import "UMSocial.h"
 @interface InvitationViewController ()
 
 @end
@@ -48,6 +48,40 @@
 }
 
 - (void)btnAction:(UIButton *)btn{
+    UIImage *image = [UIImage imageNamed:@"3Hlogo"];
+    //微博
+    if (btn.tag == 400){
+        
+        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:[NSString stringWithFormat:@"您的同行%@医生,邀请您一同加入3H健康管理,赶快注册吧!",self.user.truename] image:image location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                NSLog(@"分享成功！");
+            }
+        }];
+        
+        //邮件
+    }else if(btn.tag == 401){
+        
+        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToEmail] content:[NSString stringWithFormat:@"您的同行%@医生,邀请您一同加入3H健康管理,赶快注册吧!",self.user.truename] image:image location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                NSLog(@"分享成功！");
+            }
+        }];
+        
+        //维系
+    }else if(btn.tag == 402){
+        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToWechatTimeline] content:[NSString stringWithFormat:@"您的同行%@医生,邀请您一同加入3H健康管理,赶快注册吧!",self.user.truename] image:image location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                NSLog(@"分享成功！");
+            }
+        }];
+        //qq控件
+    }else{
+        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQzone] content:[NSString stringWithFormat:@"您的同行%@医生,邀请您一同加入3H健康管理,赶快注册吧!",self.user.truename] image:image location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response){
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                NSLog(@"分享成功！");
+            }
+        }];
+    }
     
 }
 

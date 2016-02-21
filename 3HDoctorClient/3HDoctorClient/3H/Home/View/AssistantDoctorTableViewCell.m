@@ -30,7 +30,7 @@
 
 - (UILabel *)labAssistant{
     if (!_labAssistant) {
-        _labAssistant = [[UILabel alloc] initWithFrame:CGRectMake(self.imgAssistant.right +10, self.imgAssistant.top +5, 100, 15)];
+        _labAssistant = [[UILabel alloc] initWithFrame:CGRectMake(self.imgAssistant.right +10, self.imgAssistant.top , 100, 50)];
         _labAssistant.textColor = [UIColor colorWithHEX:0x333333];
         _labAssistant.font = [UIFont systemFontOfSize:15];
         
@@ -62,7 +62,7 @@
     NSLog(@"%@---",model);
     [self.imgAssistant sd_setImageWithURL:URL(model.pic) placeholderImage:[UIImage imageNamed:@""]];
     self.labAssistant.text = model.truename;
-//    self.labDetail.text = [NSString stringWithFormat:@"%@ %@",model.hospital,model.job_title];
+   // self.labDetail.text = [NSString stringWithFormat:@"%@ %@",model.hospital,model.job_title];
 }
 /*
 // Only override drawRect: if you perform custom drawing.
