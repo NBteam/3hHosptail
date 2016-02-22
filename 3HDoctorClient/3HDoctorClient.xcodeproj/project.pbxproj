@@ -917,6 +917,7 @@
 		C0CA3E481C268BE500A47E8A /* PhoneAppointTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CA3E471C268BE500A47E8A /* PhoneAppointTimesViewController.m */; };
 		C0CAB52A1C299DD0008EDEE5 /* BookIsPhoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CAB5291C299DD0008EDEE5 /* BookIsPhoneModel.m */; };
 		C0CAB52D1C29A4DE008EDEE5 /* PhoneDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CAB52C1C29A4DE008EDEE5 /* PhoneDetailModel.m */; };
+		C0DB7E7B1C7B3D4B00A03712 /* InviteCodeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0DB7E7A1C7B3D4B00A03712 /* InviteCodeTableViewCell.m */; };
 		D24F418C1C1D7235004F8699 /* ReservationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D24F418B1C1D7235004F8699 /* ReservationListModel.m */; };
 		D28D0A321C2FD114002240BC /* WithdrawaListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D28D0A311C2FD114002240BC /* WithdrawaListModel.m */; };
 		D28D0A351C2FEC83002240BC /* ConsultingUnFinishedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D28D0A341C2FEC83002240BC /* ConsultingUnFinishedModel.m */; };
@@ -2426,6 +2427,8 @@
 		C0CAB5291C299DD0008EDEE5 /* BookIsPhoneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookIsPhoneModel.m; sourceTree = "<group>"; };
 		C0CAB52B1C29A4DE008EDEE5 /* PhoneDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneDetailModel.h; sourceTree = "<group>"; };
 		C0CAB52C1C29A4DE008EDEE5 /* PhoneDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneDetailModel.m; sourceTree = "<group>"; };
+		C0DB7E791C7B3D4B00A03712 /* InviteCodeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteCodeTableViewCell.h; sourceTree = "<group>"; };
+		C0DB7E7A1C7B3D4B00A03712 /* InviteCodeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteCodeTableViewCell.m; sourceTree = "<group>"; };
 		D24F418A1C1D7235004F8699 /* ReservationListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReservationListModel.h; sourceTree = "<group>"; };
 		D24F418B1C1D7235004F8699 /* ReservationListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReservationListModel.m; sourceTree = "<group>"; };
 		D28D0A301C2FD114002240BC /* WithdrawaListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawaListModel.h; sourceTree = "<group>"; };
@@ -3466,6 +3469,8 @@
 				C0BFEB861C410025005ADC28 /* BankListTableViewCell.m */,
 				C0BFEB8E1C4105FB005ADC28 /* BankTypeTableViewCell.h */,
 				C0BFEB8F1C4105FB005ADC28 /* BankTypeTableViewCell.m */,
+				C0DB7E791C7B3D4B00A03712 /* InviteCodeTableViewCell.h */,
+				C0DB7E7A1C7B3D4B00A03712 /* InviteCodeTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6447,6 +6452,7 @@
 				99D6EEBE1C0EEBBD00CB1829 /* LaboratoryTestsTopView.m in Sources */,
 				99DA40491C0BE59A00573D4C /* UIImageView+HighlightedWebCache.m in Sources */,
 				99DA3FFE1C0BE59A00573D4C /* NSString+Size.m in Sources */,
+				C0DB7E7B1C7B3D4B00A03712 /* InviteCodeTableViewCell.m in Sources */,
 				99D142211C0D8DDE002DA3AD /* DynamicDetailTableViewCell.m in Sources */,
 				99DA40091C0BE59A00573D4C /* FMDatabase.m in Sources */,
 				C09AD1F81C5132620063FD90 /* EMCDDeviceManager+ProximitySensor.m in Sources */,

@@ -20,6 +20,8 @@ extern NSString * checked;
 //预约设置
 #import "AppointViewController.h"
 
+#import "InviteCodeTableViewCell.h"
+
 @interface MineViewController ()
 @property (nonatomic, retain) NSDictionary * dict;
 @end
@@ -46,8 +48,10 @@ extern NSString * checked;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    WeakSelf(MineViewController);
     if (indexPath.section == 0) {
-        static NSString *identifier = @"idertifier";
+        static NSString *identifier = @"MineHeadTableViewCell";
         MineHeadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
             cell = [[MineHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
@@ -55,6 +59,18 @@ extern NSString * checked;
         //Checked 认证状态
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell confingWithModelOfName:self.user.truename Hosptail:self.user.hospital Job:self.user.job_title Pic:self.user.pic Checked:checked];
+        return cell;
+    }else if (indexPath.section == 1){
+        static NSString *identifier = @"InviteCodeTableViewCell";
+        InviteCodeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (cell == nil) {
+            cell = [[InviteCodeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell confingWithModel:self.user.invite_code];
+        [cell setBtnBlock:^{
+            [weakSelf showHudAuto:@"复制成功" andDuration:@"1"];
+        }];
         return cell;
     }else{
         static NSString *identifier = @"idertifier";
@@ -71,7 +87,7 @@ extern NSString * checked;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
+    if (section == 0 || section == 1) {
         return 1;
     }else{
         return self.dataArray.count;
@@ -87,7 +103,7 @@ extern NSString * checked;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
