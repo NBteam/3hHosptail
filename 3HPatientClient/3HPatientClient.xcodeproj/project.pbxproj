@@ -492,6 +492,9 @@
 		C05A97AB1C1EBDC70078433B /* ConsultingDynamicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A97AA1C1EBDC70078433B /* ConsultingDynamicListModel.m */; };
 		C05A97AE1C1EC9DF0078433B /* DynamicDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A97AD1C1EC9DF0078433B /* DynamicDetailModel.m */; };
 		C05A97B41C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A97B31C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m */; };
+		C05D91ED1C7B500B00DED6F7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05D91EC1C7B500B00DED6F7 /* Social.framework */; };
+		C05D91EF1C7B501C00DED6F7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05D91EE1C7B501C00DED6F7 /* Accounts.framework */; };
+		C05D91F11C7B502800DED6F7 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05D91F01C7B502800DED6F7 /* Twitter.framework */; };
 		C06774F21C606BE900FED5F8 /* CommentsToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C06774F11C606BE900FED5F8 /* CommentsToolBarView.m */; };
 		C06B92901C5346D9007660FF /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B928A1C5346D9007660FF /* SDBrowserImageView.m */; };
 		C06B92911C5346D9007660FF /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B928C1C5346D9007660FF /* SDPhotoBrowser.m */; };
@@ -543,8 +546,8 @@
 		C0BAE9DD1C4BE3A90056FA11 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BAE9DC1C4BE3A90056FA11 /* CFNetwork.framework */; };
 		C0BAE9DF1C4BE3B90056FA11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BAE9DE1C4BE3B90056FA11 /* Foundation.framework */; };
 		C0BAE9E11C4BE3C40056FA11 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BAE9E01C4BE3C40056FA11 /* UIKit.framework */; };
-		D23B79D41C7B44C200BFEB32 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B79D11C7B44C200BFEB32 /* WeatherModel.m */; settings = {ASSET_TAGS = (); }; };
-		D23B79D51C7B44C200BFEB32 /* XianXing.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B79D31C7B44C200BFEB32 /* XianXing.m */; settings = {ASSET_TAGS = (); }; };
+		D23B79D41C7B44C200BFEB32 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B79D11C7B44C200BFEB32 /* WeatherModel.m */; };
+		D23B79D51C7B44C200BFEB32 /* XianXing.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B79D31C7B44C200BFEB32 /* XianXing.m */; };
 		D2628B9F1C411E3D00DC711B /* CartListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2628B9E1C411E3D00DC711B /* CartListModel.m */; };
 		D29664AA1C4109090017EB91 /* ADView.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A51C4109090017EB91 /* ADView.m */; };
 		D29664AB1C4109090017EB91 /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A71C4109090017EB91 /* CycleScrollView.m */; };
@@ -1655,6 +1658,9 @@
 		C05A97AD1C1EC9DF0078433B /* DynamicDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicDetailModel.m; sourceTree = "<group>"; };
 		C05A97B21C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultingDynamicHeadTableViewCell.h; sourceTree = "<group>"; };
 		C05A97B31C1ECCA10078433B /* ConsultingDynamicHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultingDynamicHeadTableViewCell.m; sourceTree = "<group>"; };
+		C05D91EC1C7B500B00DED6F7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		C05D91EE1C7B501C00DED6F7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		C05D91F01C7B502800DED6F7 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		C06774F01C606BE900FED5F8 /* CommentsToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsToolBarView.h; sourceTree = "<group>"; };
 		C06774F11C606BE900FED5F8 /* CommentsToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsToolBarView.m; sourceTree = "<group>"; };
 		C06B92891C5346D9007660FF /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
@@ -2437,6 +2443,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C05D91F11C7B502800DED6F7 /* Twitter.framework in Frameworks */,
+				C05D91EF1C7B501C00DED6F7 /* Accounts.framework in Frameworks */,
+				C05D91ED1C7B500B00DED6F7 /* Social.framework in Frameworks */,
 				D2CFD2F11C4E84C200E3E3A6 /* libxml2.tbd in Frameworks */,
 				D2CFD2EF1C4E84B900E3E3A6 /* libresolv.tbd in Frameworks */,
 				C05A979F1C1E80730078433B /* libz.tbd in Frameworks */,
@@ -3161,6 +3170,9 @@
 		99DA3EA51C0BE4CF00573D4C = {
 			isa = PBXGroup;
 			children = (
+				C05D91F01C7B502800DED6F7 /* Twitter.framework */,
+				C05D91EE1C7B501C00DED6F7 /* Accounts.framework */,
+				C05D91EC1C7B500B00DED6F7 /* Social.framework */,
 				D2CFD2F01C4E84C200E3E3A6 /* libxml2.tbd */,
 				D2CFD2EE1C4E84B900E3E3A6 /* libresolv.tbd */,
 				D2CFD2EC1C4E849500E3E3A6 /* libstdc++.6.0.9.tbd */,
@@ -6665,8 +6677,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Su (3G3LPK4522)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen Su (3G3LPK4522)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6712,13 +6724,10 @@
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/HXLibs/ChatUtil/3rdparty/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/HXLibs/ChatUtil/3rdparty/VoiceConvert/opencore-amrwb",
 				);
-				OTHER_LDFLAGS = (
-					"-force_load",
-					"\"$(SRCROOT)/3HPatientClient/PublicFramework/EaseMobSDK/lib/libEaseMobClientSDKLite.a\"",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "73fcd68b-37c5-477c-b6e4-fb247d71a701";
 			};
 			name = Debug;
 		};
@@ -6727,8 +6736,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Su (3G3LPK4522)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen Su (3G3LPK4522)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6774,13 +6783,10 @@
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/HXLibs/ChatUtil/3rdparty/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/HXLibs/ChatUtil/3rdparty/VoiceConvert/opencore-amrwb",
 				);
-				OTHER_LDFLAGS = (
-					"-force_load",
-					"\"$(SRCROOT)/3HPatientClient/PublicFramework/EaseMobSDK/lib/libEaseMobClientSDKLite.a\"",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "73fcd68b-37c5-477c-b6e4-fb247d71a701";
 			};
 			name = Release;
 		};

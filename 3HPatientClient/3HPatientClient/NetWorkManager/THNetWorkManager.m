@@ -405,6 +405,12 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"getMyDrugList",@"token":GetToken,@"page":@(page)};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+
+#pragma mark 获取我的用药提醒列表【20151130添加】
+- (void)getMyDrugandIds:(NSString *)ids CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMyDrug",@"token":GetToken,@"id":ids};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 #pragma mark 获取我的诊断列表【20151127添加】
 - (void)getMyDiagnosisListCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
     NSDictionary *paramDic = @{@"a":@"getMyDiagnosisList",@"token":GetToken};
@@ -420,6 +426,13 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"getMyRecheckList",@"token":GetToken,@"page":@(page)};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+
+#pragma mark 获取我的复查提醒列表【20151130添加】
+- (void)getMyRecheckIds:(NSString *)ids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMyRecheck",@"token":GetToken,@"id":ids};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
 #pragma mark 文章点赞接口【20151030添加】
 - (void)voteArtId:(NSString *)id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
     NSDictionary *paramDic = @{@"a":@"voteArt",@"token":GetToken,@"id":id};

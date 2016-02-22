@@ -364,11 +364,27 @@
 
 - (void)pushChargePileDetailsViewController:(NSString*)chargePileNum
 {
-//    NSLog(@"erweima:%@",chargePileNum);
-//    InfDetailedViewController *ifd = [[InfDetailedViewController alloc] init];
-//    ifd.chargePileNum = chargePileNum;
-//    [self.navigationController pushViewController:ifd animated:YES];
-   
+    [self addDoctor:chargePileNum];
+}
+
+- (void)addDoctor:(NSString *)ids{
+    
+    [self showHudAuto:@"添加中..."];
+    WeakSelf(QrCodeViewController);
+    [[THNetWorkManager shareNetWork] addDoctorIds:ids CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        
+        if (response.responseCode == 1) {
+            [weakSelf showHudAuto:@"添加成功" andDuration:@"2"];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }else{
+            [weakSelf showHudAuto:@"添加失败,请重新添加" andDuration:@"2"];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
+        
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:@"添加失败,请重新添加" andDuration:@"2"];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 - (UILabel *)labTitle{
