@@ -32,7 +32,15 @@
     [self sgetMsgHome];
    
     [self readAllMessage];
+    self.isOpenHeaderRefresh = YES;
     
+}
+
+#pragma mark -- 重新父类方法进行刷新
+- (void)headerRequestWithData
+{
+    
+    [self sgetMsgHome];
 }
 
 -(void)readAllMessage{
@@ -69,9 +77,11 @@
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
+        [weakSelf.tableView.header endRefreshing];
     } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
         ;
+        [weakSelf.tableView.header endRefreshing];
     } ];
     
 }

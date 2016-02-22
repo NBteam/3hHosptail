@@ -7,19 +7,13 @@
 //
 
 #import "MyAddressViewController.h"
-#import "MyAddressTableViewCell.h"
-#import "AddressListModel.h"
+#import "AddressListCell.h"
+#import "AddressListDownCell.h"
+
 #import "AddressAddViewController.h"
 
 @interface MyAddressViewController ()
 
-@property (nonatomic, strong) UIView *viewTool;
-
-@property (nonatomic, strong) UILabel *labLine;
-
-@property (nonatomic, strong) UILabel *labTitle;
-
-@property (nonatomic, strong) UIButton *btnAdd;
 @property (nonatomic, assign) CGFloat cellHeight;
 @end
 
@@ -27,103 +21,61 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    
-    self.tableView.height = self.tableView.height - 40;
-    [self.view addSubview:self.viewTool];
-    [self.viewTool addSubview:self.labLine];
-    [self.viewTool addSubview:self.labTitle];
-    [self.viewTool addSubview:self.btnAdd];
+    self.title = @"收货地址";
+    self.isOpenFooterRefresh = YES;
+    self.isOpenHeaderRefresh = YES;
     [self getNetWork];
 }
-
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-
-- (UIView *)viewTool{
-    if (!_viewTool) {
-        _viewTool = [[UIView alloc] initWithFrame:CGRectMake(0, self.tableView.bottom, DeviceSize.width, 40)];
-        _viewTool.backgroundColor = [UIColor colorWithHEX:0xffffff];
-        
-    }
-    return _viewTool;
-}
-
-- (UILabel *)labLine{
-    if (!_labLine) {
-        _labLine = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 0.5)];
-        _labLine.backgroundColor = [UIColor colorWithHEX:0xcccccc];
-    }
-    return _labLine;
-}
-
-- (UILabel *)labTitle{
-    if (!_labTitle) {
-        _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 150, 40)];
-        _labTitle.font = [UIFont systemFontOfSize:13];
-        _labTitle.textColor = [UIColor colorWithHEX:0x999999];
-        _labTitle.text = @"新增收货地址";
-    }
-    return _labTitle;
-}
-
-- (UIButton *)btnAdd{
-    if (!_btnAdd) {
-        _btnAdd = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btnAdd.frame = CGRectMake(DeviceSize.width -47,0 , 47, 40);
-        [_btnAdd setImage:[UIImage imageNamed:@"首页-健康商城-商品详情-立即购买-收货地址2"] forState:UIControlStateNormal];
-        [_btnAdd addTarget:self action:@selector(btnAddAction) forControlEvents:UIControlEventTouchUpInside];
-
-    }
-    return _btnAdd;
-}
-
-- (void)btnAddAction{
-    WeakSelf(MyAddressViewController);
-    AddressAddViewController * AddAddressVc = [[AddressAddViewController alloc]init];
-    AddAddressVc.reloadInfo = ^{
-        [weakSelf getNetWork];
-    };
-    [self.navigationController pushViewController:AddAddressVc animated:YES];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *identifier = @"idertifier";
-    MyAddressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        cell = [[MyAddressTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    AddressListModel * model = self.dataArray[indexPath.section];
-    self.cellHeight = [cell confingWithModel:model];
-    return cell;
-    
-    
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.dataArray.count+1;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row != self.dataArray.count) {//
+        static NSString * cellId = @"AddressListCell";
+        AddressListCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        if (cell == nil) {
+            cell = [[AddressListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        }
+        AddressListModel * model  = self.dataArray[indexPath.row];
+        self.cellHeight = [cell configWithModel:model];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        WeakSelf(MyAddressViewController);
+        [cell setBtnModifyBlock:^{
+            AddressListModel * model = self.dataArray[indexPath.row];
+            AddressAddViewController * AddAddressVc = [[AddressAddViewController alloc]init];
+            AddAddressVc.index = 1;
+            AddAddressVc.model = model;
+            AddAddressVc.reloadInfo = ^{
+                [weakSelf getNetWork];
+            };
+            [self.navigationController pushViewController:AddAddressVc animated:YES];
+        }];
+        return cell;
+    }else{
+        static NSString * cellId = @"AddressListDownCell";
+        AddressListDownCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        if (cell == nil) {
+            cell = [[AddressListDownCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == self.dataArray.count ) {
+        return 44;
+    }
     return self.cellHeight;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.dataArray.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    return [[UIView alloc] init];
-}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.row == self.dataArray.count) {
@@ -133,6 +85,12 @@
             [weakSelf getNetWork];
         };
         [self.navigationController pushViewController:AddAddressVc animated:YES];
+    }else{
+        AddressListModel * model = self.dataArray[indexPath.row ];
+//        if (self.placeBlock) {
+//            self.placeBlock(model);
+//            [self.navigationController popViewControllerAnimated:YES];
+//        }
     }
 }
 - (void)getNetWork{
@@ -192,9 +150,8 @@
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             
-            [weakSelf.dataArray removeObjectAtIndex:indexPath.section];
-            [weakSelf.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
-    
+            [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
+            [weakSelf.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
             [weakSelf.tableView reloadData];
             
         } else {
@@ -205,8 +162,11 @@
     }];
     [weakSelf showHudWaitingView:WaitPrompt];
 }
-- (NSString *)title{
-    return @"收货地址";
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.dataArray.count == indexPath.row) {
+        return NO;
+    }
+    return YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
