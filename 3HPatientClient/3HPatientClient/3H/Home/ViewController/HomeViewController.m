@@ -333,18 +333,26 @@
     [geocoder reverseGeocodeLocation:currLocation completionHandler:^(NSArray *placemarks,NSError *error){
         if (placemarks.count > 0) {
             CLPlacemark *placemark = [placemarks objectAtIndex:0];
-            NSLog(@"###~~%@",[NSString stringWithFormat:@"%@%@%@%@%@%@\n经度=%f 纬度=%f 高度=%f",placemark.country,placemark.administrativeArea,placemark.locality,placemark.subLocality,placemark.thoroughfare,placemark.subThoroughfare,currLocation.coordinate.latitude, currLocation.coordinate.longitude, currLocation.altitude]);
-            NSString *hanziText = @"我是中国人";
+            NSLog(@"~~%@",[NSString stringWithFormat:@"%@%@%@%@%@%@\n经度=%f 纬度=%f 高度=%f",placemark.country,placemark.administrativeArea,placemark.locality,placemark.subLocality,placemark.thoroughfare,placemark.subThoroughfare,currLocation.coordinate.latitude, currLocation.coordinate.longitude, currLocation.altitude]);
+            NSMutableArray * arr = [NSMutableArray array];
+            NSString *hanziText = placemark.administrativeArea;
             if ([hanziText length]) {
                 NSMutableString *ms = [[NSMutableString alloc] initWithString:hanziText];
                 if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformMandarinLatin, NO)) {
                     NSLog(@"pinyin: %@", ms);
                 }
                 if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformStripDiacritics, NO)) {
-                    NSLog(@"pinyin: %@", ms);  
+                    arr = [NSMutableArray arrayWithArray:[ms componentsSeparatedByString:@" "]];
+                    [arr removeLastObject];
                 }  
             }
-            [weakSelf getWeatherXianxingInfoNetWork:[NSString stringWithFormat:@"%f",currLocation.coordinate.latitude] lng:[NSString stringWithFormat:@"%f",currLocation.coordinate.longitude] city:@"beijing"];
+            [weakSelf getWeatherXianxingInfoNetWork:[NSString stringWithFormat:@"%f",currLocation.coordinate.latitude] lng:[NSString stringWithFormat:@"%f",currLocation.coordinate.longitude] city:[arr componentsJoinedByString:@""]];
+//            for (CLPlacemark * placemark in placemarks) {
+//                
+//                NSDictionary *test = [placemark addressDictionary];
+//                //  Country(国家)  State(城市)  SubLocality(区)
+//                NSLog(@"%@", test[@"Country"]);
+//                NSLog(@"%@", test[@"State"]);
 //            }
         }
     }];
@@ -364,8 +372,10 @@
         if (response.responseCode == 1) {
             WeatherModel * model = [response thParseDataFromDic:response.dataDic[@"tianqi"] andModel:[WeatherModel class]];
             weakSelf.weatherModel = model;
-            XianXing * item = [response thParseDataFromDic:response.dataDic[@"xianxing"] andModel:[XianXing class]];
-            weakSelf.xianxingItem = item;
+            if ([response.dataDic[@"xianxing"] isKindOfClass:[NSDictionary class]]) {
+                XianXing * item = [response thParseDataFromDic:response.dataDic[@"xianxing"] andModel:[XianXing class]];
+                weakSelf.xianxingItem = item;
+            }
             [weakSelf.tableView reloadData];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];

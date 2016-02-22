@@ -76,6 +76,11 @@
     self.imgLogo.image = [UIImage imageNamed:arrImg[index]];
     self.labTitle.text = arrTitle[index];
     self.labDetail.text = dict[arr[index]];
+    if ([dict[arr[index]] length] == 0) {
+        self.labDetail.text = @"暂无最新消息";
+    }else{
+        self.labDetail.text = dict[arr[index]];
+    }
 }
 
 /*
