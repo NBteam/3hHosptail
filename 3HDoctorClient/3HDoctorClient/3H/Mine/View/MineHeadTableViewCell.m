@@ -83,8 +83,10 @@
     
     if ([checked isEqualToString:@"1"]) {
         [self.btnAttestation setTitle:@"已认证" forState:UIControlStateNormal];
+        self.btnAttestation.backgroundColor = [UIColor colorWithRed:94/255.f green:166/255.f blue:83/255.f alpha:1];
     }else{
         [self.btnAttestation setTitle:@"未认证" forState:UIControlStateNormal];
+        self.btnAttestation.backgroundColor = AppDefaultColor;
     }
 }
 

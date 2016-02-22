@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) UIImageView *imgArrow;
 //赋值
+@property (nonatomic, strong) UILabel *labNum;
 
 - (void)confingWithDict:(NSMutableDictionary *)dict Index:(NSInteger)index;
 @end

@@ -38,6 +38,13 @@
     self.isOpenHeaderRefresh = YES;
     self.isOpenFooterRefresh = YES;
     [self getNetWorkInfo];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNetWorkInfo) name:@"reloadCenter" object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)backAction{

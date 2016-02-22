@@ -377,7 +377,7 @@
             [weakSelf showHudAuto:@"添加成功" andDuration:@"2"];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }else{
-            [weakSelf showHudAuto:@"添加失败,请重新添加" andDuration:@"2"];
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }
         
@@ -385,6 +385,7 @@
         [weakSelf showHudAuto:@"添加失败,请重新添加" andDuration:@"2"];
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
+    
 }
 
 - (UILabel *)labTitle{

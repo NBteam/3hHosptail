@@ -344,7 +344,7 @@
 }
 - (void)getUserInfoToken:(NSString *)token pwd:(NSString *)pwd{
     WeakSelf(LoginViewController);
-    
+    [SGSaveFile saveObjectToSystem:token forKey:Token];
     [[THNetWorkManager shareNetWork] getUserinfoToken:token CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         
@@ -507,7 +507,7 @@
                 //性别，0保密，1男，2女
                 weakSelf.sexString = [NSString stringWithFormat:@"%@",response.data[@"gender"]];
                 
-                weakSelf.openedString = response.data[@"uid"];;
+                weakSelf.openedString = response.data[@"uid"];
                 [weakSelf openLoginFornickname];
             }];
         }
@@ -541,6 +541,7 @@
                 weakSelf.picString = response.data[@"profile_image_url"];
                 //性别，0保密，1男，2女
                 weakSelf.sexString = [NSString stringWithFormat:@"%@",response.data[@"gender"]];
+                weakSelf.openedString = response.data[@"openid"];
                 
                 [weakSelf openLoginFornickname];
             }];
@@ -554,7 +555,7 @@
     UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
     
     snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
-        
+        NSLog(@"%@",response);
         if (response.responseCode == UMSResponseCodeSuccess) {
             
             UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];

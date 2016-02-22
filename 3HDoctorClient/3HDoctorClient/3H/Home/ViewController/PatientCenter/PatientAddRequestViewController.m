@@ -117,7 +117,7 @@
     [[THNetWorkManager shareNetWork]getMyPatientReqProcessReq_id:Req_id process:process andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCenter" object:nil];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"1"];
         }
