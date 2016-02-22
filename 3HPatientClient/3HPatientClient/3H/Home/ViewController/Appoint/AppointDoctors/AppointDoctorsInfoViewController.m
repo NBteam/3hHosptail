@@ -21,11 +21,13 @@
 @property (nonatomic, retain) NSMutableArray * dataArray;
 @property (nonatomic, assign) CGFloat priceStr;
 @property (nonatomic, strong) ConsultingIsPhoneTitleTableViewCell *headView;
-@property (nonatomic, strong) NSDictionary * dicInfo;
+
 @property (nonatomic, strong) NSIndexPath * indexPaths;
 @property (nonatomic, strong) NSArray *infoArray;
 @property (nonatomic, assign) CGFloat cellHeight;
 @property (nonatomic, copy) NSString *  work_price;
+@property (nonatomic, strong) NSMutableDictionary * dict1Info;
+@property (nonatomic, copy) NSString * string;
 @end
 
 @implementation AppointDoctorsInfoViewController
@@ -34,12 +36,13 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.dataArray = [NSMutableArray array];
+    self.dict1Info = [NSMutableDictionary dictionary];
     self.infoArray = [NSArray array];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    self.tableView.tableHeaderView = self.headView;
+//    self.tableView.tableHeaderView = self.headView;
     [self.view addSubview:self.tableView];
-    [self getNetWork];
+    [self getNetWork:0];
 }
 
 - (void)backAction{
@@ -56,12 +59,12 @@
     }
     return _tableView;
 }
-- (ConsultingIsPhoneTitleTableViewCell *)headView{
-    if (!_headView) {
-        _headView = [[ConsultingIsPhoneTitleTableViewCell alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, 55)];
-    }
-    return _headView;
-}
+//- (ConsultingIsPhoneTitleTableViewCell *)headView{
+//    if (!_headView) {
+//        _headView = [[ConsultingIsPhoneTitleTableViewCell alloc]initWithFrame:CGRectMake(0, 0, DeviceSize.width, 55)];
+//    }
+//    return _headView;
+//}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0){
@@ -71,13 +74,16 @@
             cell = [[OutpatientAppointTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.cellHeight = [cell confingWithModelWeeks:self.infoArray Price:@"" clickArray:self.dataArray];
+        self.cellHeight = [cell confingWithModelWeeks:self.infoArray Price:@"" clickArray:self.dataArray dict:self.dict1Info];
         WeakSelf(AppointDoctorsInfoViewController);
         [cell setOutpatientAppontBlcok:^(DoctorsInfoModel *model, NSString *string) {
             [weakSelf orderGuahaoNetWorkModel:model string:string];
         }];
         [cell setAlertBlock:^{
             [weakSelf showHudAuto:@"该时段不能预约" andDuration:@"2"];
+        }];
+        [cell setWeekBlock:^(NSString *week) {
+            [weakSelf getNetWork:[week integerValue]];
         }];
         return cell;
     }
@@ -110,11 +116,13 @@
 }
 
 
-- (void)getNetWork{
+- (void)getNetWork:(NSInteger)index{
+    
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(AppointDoctorsInfoViewController);
-    [[THNetWorkManager shareNetWork]getDoctorGuahaoDatesDoctor_id:self.id page_week:0 andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork]getDoctorGuahaoDatesDoctor_id:self.id page_week:index andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
+        [weakSelf.dataArray removeAllObjects];
         if (response.responseCode == 1) {
             for (NSDictionary * dict in response.dataDic[@"list"]) {
                 DoctorsInfoModel * model = [response thParseDataFromDic:dict andModel:[DoctorsInfoModel class]];
@@ -122,6 +130,8 @@
             }
             [weakSelf.headView confingWithModel:[response.dataDic[@"work_price"] doubleValue]];
             weakSelf.infoArray = response.dataDic[@"work_weeks"];
+            [weakSelf.dict1Info setObject:[NSString  stringWithFormat:@"%@",response.dataDic[@"pre_page"]] forKey:@"pre"];
+            [weakSelf.dict1Info setObject:response.dataDic[@"next_page"] forKey:@"next"];
             [weakSelf.tableView reloadData];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
@@ -136,6 +146,7 @@
 }
 
 - (void)orderGuahaoNetWorkModel:(DoctorsInfoModel *)model string:(NSString *)string{
+    self.string = model.date;
     if (!model.date) {
         [self showHudAuto:@"请选择预约时间" andDuration:@"2"];
     }else{
@@ -160,6 +171,7 @@
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             ConsultingFinishViewController * cvc = [[ConsultingFinishViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
+            cvc.str = weakSelf.string;
             [weakSelf.navigationController pushViewController:cvc animated:YES];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];

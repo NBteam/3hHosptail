@@ -7,6 +7,8 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "XianXing.h"
+#import "WeatherModel.h"
 
 @interface HomeHeadTableViewCell : BaseTableViewCell
 //天气img
@@ -27,7 +29,7 @@
 @property (nonatomic, strong) UILabel *labHeartRate;
 
 //赋值
-- (void)confingWithModel:(NSString *)model;
+- (void)confingWithModel:(WeatherModel *)model item:(XianXing *)item;
 
 
 @end

@@ -57,7 +57,7 @@
     if (cell == nil) {
         cell = [[FinishTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
-    self.cellHeight = [cell configWithModel:nil];
+    self.cellHeight = [cell configWithModel:self.str];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

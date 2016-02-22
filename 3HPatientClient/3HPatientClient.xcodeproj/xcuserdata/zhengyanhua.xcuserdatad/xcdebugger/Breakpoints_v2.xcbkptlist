@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "3HPatientClient/3H/Home/ViewController/Appoint/AppointDoctors/AppointDoctorsInfoViewController.m"
-            timestampString = "476028423.253624"
+            timestampString = "477746380.506477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "-getOrderGuahaoAccountPayOrder_sn:"
             landmarkType = "5">
          </BreakpointContent>
@@ -36,12 +36,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "3HPatientClient/3H/Home/ViewController/Appoint/AppointDoctors/AppointDoctorsInfoViewController.m"
-            timestampString = "476028500.229085"
+            timestampString = "477746380.506477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-getOrderGuahaoAccountPayOrder_sn:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "3HPatientClient/3H/Home/ViewController/Appoint/AppointDoctors/AppointDoctorsInfoViewController.m"
+            timestampString = "477746380.506477"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-getNetWork:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "3HPatientClient/3H/Home/ViewController/Appoint/AppointDoctors/AppointDoctorsInfoViewController.m"
+            timestampString = "477746380.506477"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "3HPatientClient/3H/Home/View/OutpatientAppointTableViewCell.m"
+            timestampString = "477745191.661188"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-btnLeftClick:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

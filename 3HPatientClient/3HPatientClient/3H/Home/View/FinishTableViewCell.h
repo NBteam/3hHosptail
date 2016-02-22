@@ -13,5 +13,5 @@
 @property (nonatomic, retain) UILabel * labFirst;
 @property (nonatomic, retain) UILabel * labSecond;
 @property (nonatomic, retain) UILabel * labThird;
-- (CGFloat )configWithModel:(id)model;
+- (CGFloat )configWithModel:(NSString *)model;
 @end

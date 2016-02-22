@@ -18,6 +18,9 @@
 
 @property (nonatomic, strong) UIButton *btnSubmit;
 
+@property (nonatomic, strong) UIButton * btnLeft;
+@property (nonatomic, copy) void (^weekBlock)(NSString *week);
+@property (nonatomic, strong) UIButton * btnRight;
 //背景
 @property (nonatomic, strong) UIView *backViewss;
 //
@@ -28,8 +31,9 @@
 
 @property (nonatomic, copy) void(^outpatientAppontBlcok)(DoctorsInfoModel *model,NSString *string);
 @property (nonatomic, copy) void(^alertBlock)(void);
+@property (nonatomic, strong) NSMutableDictionary * dict;
 //赋值
-- (CGFloat)confingWithModelWeeks:(NSArray *)week Price:(NSString *)price clickArray:(NSArray *)clickArray;
+- (CGFloat)confingWithModelWeeks:(NSArray *)week Price:(NSString *)price clickArray:(NSArray *)clickArray dict:(NSMutableDictionary *)dict;
 
 
 

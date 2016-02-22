@@ -125,13 +125,20 @@
 }
 
 //赋值
-- (void)confingWithModel:(NSString *)model{
-    self.imgWeather.image = [UIImage imageNamed:@"3H-首页-天气"];
-    self.labWeatherWD.attributedText = [self getLabTitle:@"25~28" Detail:@"  ℃"];
-    self.labWeatherTQ.text = @"晴 微风<2级";
-    self.labLimit.text = @"今日限号 2、1";
-    self.labHeartRateNum.text = @"85";
-    self.labHeartRate.text = @"85次/分";
+- (void)confingWithModel:(WeatherModel *)model item:(XianXing *)item{
+//    self.imgWeather.image = [UIImage imageNamed:@"3H-首页-天气"];
+    if (model) {
+        [self.imgWeather sd_setImageWithURL:SD_IMG(model.weather_url)];
+        self.labWeatherWD.attributedText = [self getLabTitle:model.temperature Detail:@""];
+        self.labWeatherTQ.text = [NSString stringWithFormat:@"%@ %@",model.wind,model.weather];
+        if ([item.isxianxing isEqualToString:@"0"]) {
+            self.labLimit.text = [NSString stringWithFormat:@"今日不限号"];
+        }else{
+            self.labLimit.text = [NSString stringWithFormat:@"日限号 %@",item.xxweihao];
+        }
+        self.labHeartRateNum.text = @"85";
+        self.labHeartRate.text = @"85次/分";
+    }
 }
 
 - (NSMutableAttributedString *)getLabTitle:(NSString *)title Detail:(NSString *)detail{

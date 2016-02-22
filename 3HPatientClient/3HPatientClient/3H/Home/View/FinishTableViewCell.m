@@ -42,9 +42,10 @@
     }
     return _labThird;
 }
-- (CGFloat )configWithModel:(id)model{
+- (CGFloat )configWithModel:(NSString *)model{
     self.labFirst.text = @"您的预约提交成功";
-    self.labSecond.text = @"预约时间：2016年01月10日";
+    NSString * str = (NSString *)model;
+    self.labSecond.text = [NSString stringWithFormat:@"预约时间：%@",str];
     self.labThird.text = @"请您按时就诊";
     return self.labThird.bottom + 10;
 }

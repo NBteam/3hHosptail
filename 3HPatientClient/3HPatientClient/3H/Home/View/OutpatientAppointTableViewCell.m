@@ -11,9 +11,12 @@
 @implementation OutpatientAppointTableViewCell
 
 - (void)customView{
+    self.dict = [NSMutableDictionary dictionary];
     [self.contentView addSubview:self.imgLogo];
     [self.contentView addSubview:self.labTitle];
     [self.contentView addSubview:self.labDate];
+    [self.labDate addSubview:self.btnLeft];
+    [self.labDate addSubview:self.btnRight];
     [self.contentView addSubview:self.viewBack];
     
     [self.contentView addSubview:self.btnSubmit];
@@ -46,7 +49,7 @@
         _labDate.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
         _labDate.layer.borderWidth = 0.5;
         NSDate *  senddate=[NSDate date];
-        
+        _labDate.userInteractionEnabled = YES;
         NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
         _labDate.font = [UIFont systemFontOfSize:15];
         [dateformatter setDateFormat:@"YYYY年MM月dd日"];
@@ -56,6 +59,38 @@
         _labDate.textColor = AppDefaultColor;
     }
     return _labDate;
+}
+- (UIButton *)btnLeft{
+    if (!_btnLeft) {
+        _btnLeft = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btnLeft.frame = CGRectMake(0, 0, 60, 40);
+        [_btnLeft setTitle:@"上一周" forState:UIControlStateNormal];
+        _btnLeft.titleLabel.font = [UIFont systemFontOfSize:15];
+        [_btnLeft setTitleColor:AppDefaultColor forState:UIControlStateNormal];
+        [_btnLeft addTarget:self action:@selector(btnLeftClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnLeft;
+}
+- (void)btnLeftClick:(UIButton *)button{
+    if (self.weekBlock) {
+        self.weekBlock([self.dict objectForKey:@"pre"]);
+    }
+}
+- (UIButton *)btnRight{
+    if (!_btnRight) {
+        _btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btnRight.frame = CGRectMake(self.labDate.width - 60, 0,60 , 40);
+        [_btnRight setTitle:@"下一周" forState:UIControlStateNormal];
+        _btnRight.titleLabel.font = [UIFont systemFontOfSize:15];
+        [_btnRight setTitleColor:AppDefaultColor forState:UIControlStateNormal];
+        [_btnRight addTarget:self action:@selector(btnRightClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnRight;
+}
+- (void)btnRightClick:(UIButton *)button{
+    if (self.weekBlock) {
+        self.weekBlock([self.dict objectForKey:@"next"]);
+    }
 }
 - (UIView *)viewBack{
     if (!_viewBack) {
@@ -168,8 +203,24 @@
 }
 
 //赋值
-- (CGFloat)confingWithModelWeeks:(NSArray *)week Price:(NSString *)price clickArray:(NSArray *)clickArray{
+- (CGFloat)confingWithModelWeeks:(NSArray *)week Price:(NSString *)price clickArray:(NSArray *)clickArray dict:(NSMutableDictionary *)dict{
     self.infoArray = clickArray;
+    self.dict = dict;
+    for(id tmpView in [self.viewBack subviews])
+    {
+        //找到要删除的子视图的对象
+        if([tmpView isKindOfClass:[UILabel class]])
+        {
+            UILabel *labView = (UILabel *)tmpView;
+             [labView removeFromSuperview];
+        }
+        if([tmpView isKindOfClass:[UIButton class]])
+        {
+            UIButton *btnView = (UIButton *)tmpView;
+            [btnView removeFromSuperview];
+        }
+    }
+
     [self customWeekView:clickArray];
     self.backViewss.top = self.viewBack.bottom +10;
     self.btnSubmit.frame = CGRectMake(10, self.viewBack.bottom +25, DeviceSize.width -20, 45);
