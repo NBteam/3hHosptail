@@ -34,10 +34,15 @@
 #import "HomeNewsModel.h"
 //添加医生
 #import "QrCodeViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import "WeatherModel.h"
+#import "XianXing.h"
 
-@interface HomeViewController ()<IChatManagerDelegate, EMCallManagerDelegate>
-
+@interface HomeViewController ()<IChatManagerDelegate, EMCallManagerDelegate,CLLocationManagerDelegate>
+@property (nonatomic,retain) CLLocationManager * locationManager;
 @property (nonatomic, strong) NSMutableArray *newsArray;
+@property (nonatomic, strong) WeatherModel * weatherModel;
+@property (nonatomic, strong) XianXing * xianxingItem;
 @end
 
 @implementation HomeViewController
@@ -51,7 +56,7 @@
     [self getHomeData];
     [self registerNotifications];
     [self setupUnreadMessageCount];
-    NSLog(@"MINGZI %@",self.user.sex);
+    [self createLoction];
 }
 #pragma mark - private
 
@@ -135,7 +140,7 @@
             cell = [[HomeHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell confingWithModel:@""];
+        [cell confingWithModel:self.weatherModel item:self.xianxingItem];
         return cell;
     }else if(indexPath.section == 1){
         static NSString *identifier = @"HomeFunctionTableViewCell";
@@ -298,19 +303,83 @@
         }
     }
 }
+
+#pragma mark - CoreLocation 代理
+- (void)createLoction{
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [UIApplication sharedApplication].idleTimerDisabled = TRUE;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter = 3600.0f; // 如果设为kCLDistanceFilterNone，则每秒更新一次;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8) {
+        //        [self.locationManager requestAlwaysAuthorization];
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    [self positioning];
+}
+-(void)positioning{
+    if ([CLLocationManager locationServicesEnabled]) {
+        [self.locationManager startUpdatingLocation];
+    }else {
+        NSLog(@"请开启定位功能！");
+    }
+}
+#pragma mark - CLLocationManagerDelegate
+// 地理位置发生改变时触发0
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    CLLocation *currLocation = [locations lastObject];
+    CLGeocoder *geocoder=[[CLGeocoder alloc]init];
+    WeakSelf(HomeViewController);
+    [geocoder reverseGeocodeLocation:currLocation completionHandler:^(NSArray *placemarks,NSError *error){
+        if (placemarks.count > 0) {
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            NSLog(@"###~~%@",[NSString stringWithFormat:@"%@%@%@%@%@%@\n经度=%f 纬度=%f 高度=%f",placemark.country,placemark.administrativeArea,placemark.locality,placemark.subLocality,placemark.thoroughfare,placemark.subThoroughfare,currLocation.coordinate.latitude, currLocation.coordinate.longitude, currLocation.altitude]);
+            NSString *hanziText = @"我是中国人";
+            if ([hanziText length]) {
+                NSMutableString *ms = [[NSMutableString alloc] initWithString:hanziText];
+                if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformMandarinLatin, NO)) {
+                    NSLog(@"pinyin: %@", ms);
+                }
+                if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformStripDiacritics, NO)) {
+                    NSLog(@"pinyin: %@", ms);  
+                }  
+            }
+            [weakSelf getWeatherXianxingInfoNetWork:[NSString stringWithFormat:@"%f",currLocation.coordinate.latitude] lng:[NSString stringWithFormat:@"%f",currLocation.coordinate.longitude] city:@"beijing"];
+//            }
+        }
+    }];
+    [manager stopUpdatingLocation];
+}
+// 定位失误时触发
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"error:%@",error);
+    [self positioning];
+}
+#
+- (void)getWeatherXianxingInfoNetWork:(NSString *)lat lng:(NSString *)lng city:(NSString *)city{
+    [self showHudAuto:WaitPrompt];
+    WeakSelf(HomeViewController);
+    [[THNetWorkManager shareNetWork]getWeatherXianxingInfo:lat lng:lng city:city andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            WeatherModel * model = [response thParseDataFromDic:response.dataDic[@"tianqi"] andModel:[WeatherModel class]];
+            weakSelf.weatherModel = model;
+            XianXing * item = [response thParseDataFromDic:response.dataDic[@"xianxing"] andModel:[XianXing class]];
+            weakSelf.xianxingItem = item;
+            [weakSelf.tableView reloadData];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end

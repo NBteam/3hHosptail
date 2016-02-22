@@ -9,5 +9,5 @@
 #import "BaseTableViewController.h"
 
 @interface ConsultingFinishViewController : BaseTableViewController
-
+@property (nonatomic, copy) NSString * str;
 @end

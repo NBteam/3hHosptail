@@ -739,4 +739,10 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"feedback",@"token":GetToken,@"content":content};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+
+#pragma mark 天气  信息
+- (void)getWeatherXianxingInfo:(NSString *)lat lng:(NSString *)lng city:(NSString *)city andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getWeatherXianxingInfo",@"token":GetToken,@"lat":lat,@"lng":lng,@"city":city};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

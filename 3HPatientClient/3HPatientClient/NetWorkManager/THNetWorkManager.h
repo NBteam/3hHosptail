@@ -314,4 +314,6 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark 提交意见反馈
 - (void)feedbackContent:(NSString *)content andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+#pragma mark 天气  信息
+- (void)getWeatherXianxingInfo:(NSString *)lat lng:(NSString *)lng city:(NSString *)city andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 @end
