@@ -44,12 +44,24 @@
         _imgMyPicture.backgroundColor = [UIColor grayColor];
         _imgMyPicture.layer.masksToBounds = YES;
         _imgMyPicture.layer.cornerRadius = 42;
+        _imgMyPicture.userInteractionEnabled = YES;
         _imgMyPicture.layer.borderColor = [UIColor colorWithHEX:0xffffff].CGColor;
         _imgMyPicture.layer.borderWidth = 2;
+        
         
     }
     return _imgMyPicture;
 }
+
+- (void)UesrC111licked{
+    
+    
+    if (self.imgHeadBlock) {
+        self.imgHeadBlock();
+    }
+}
+
+
 
 - (UILabel *)labName{
     if (!_labName) {

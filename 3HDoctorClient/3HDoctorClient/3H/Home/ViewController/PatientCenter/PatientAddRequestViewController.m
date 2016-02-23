@@ -77,7 +77,7 @@
     WeakSelf(PatientAddRequestViewController);
     [[THNetWorkManager shareNetWork]getmyPatientReqsPage:self.number andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
-        if (weakSelf.number == 0) {
+        if (weakSelf.pageNO == 0) {
             [weakSelf.dataArray removeAllObjects];
         }
         if (response.responseCode == 1) {
@@ -102,13 +102,10 @@
 #pragma mark -- 重新父类方法进行刷新
 - (void)headerRequestWithData
 {
-    self.number = 0;
-    
     [self getNetWork];
 }
 - (void)footerRequestWithData
 {
-    self.number += 5;
     [self getNetWork];
 }
 - (void)getMyPatientReqProcessNetWorkprocess:(NSInteger)process Req_id:(NSString *)Req_id{
@@ -118,6 +115,8 @@
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCenter" object:nil];
+            weakSelf.pageNO = 0;
+            [weakSelf getNetWork];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"1"];
         }

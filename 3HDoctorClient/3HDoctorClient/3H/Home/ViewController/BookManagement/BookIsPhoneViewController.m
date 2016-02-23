@@ -26,8 +26,6 @@
 }
 
 - (void)getBookIsPhoneData{
-    
-    [self.dataArray removeAllObjects];
     [self showHudAuto:WaitPrompt];
     WeakSelf(BookIsPhoneViewController);
     [[THNetWorkManager shareNetWork] getMyOrdertelListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {

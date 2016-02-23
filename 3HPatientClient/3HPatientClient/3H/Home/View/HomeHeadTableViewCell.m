@@ -131,7 +131,7 @@
         [self.imgWeather sd_setImageWithURL:SD_IMG(model.weather_url)];
         self.labWeatherWD.attributedText = [self getLabTitle:model.temperature Detail:@""];
         self.labWeatherTQ.text = [NSString stringWithFormat:@"%@ %@",model.wind,model.weather];
-        if ([item.isxianxing isEqualToString:@"0"]) {
+        if ([item.isxianxing integerValue] == 0) {
             self.labLimit.text = [NSString stringWithFormat:@"今日不限号"];
         }else{
             self.labLimit.text = [NSString stringWithFormat:@"日限号 %@",item.xxweihao];

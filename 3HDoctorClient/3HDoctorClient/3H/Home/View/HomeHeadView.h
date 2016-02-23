@@ -16,10 +16,14 @@
 @property (nonatomic, strong) UIImageView *imgBack;
 //头像
 @property (nonatomic, strong) UIImageView *imgMyPicture;
+
+@property (nonatomic, strong) UIButton *btnImg;
 //名字
 @property (nonatomic, strong) UILabel *labName;
 //详细
 @property (nonatomic, strong) UILabel *labDetail;
+
+@property (nonatomic, copy) void (^imgHeadBlock)();
 
 //赋值
 - (void)confingWithModelOfName:(NSString *)name Hosptail:(NSString *)hosptail Job:(NSString *)job Pic:(NSString *)pic;

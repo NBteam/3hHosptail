@@ -23,6 +23,8 @@
 #import "ConsultingDynamicViewController.h"
 //二维码
 #import "QrCodeViewController.h"
+//个人资料
+#import "PersonalViewController.h"
 
 @interface HomeViewController ()
 
@@ -81,10 +83,28 @@
 
 - (HomeHeadView *)headView{
     if (!_headView) {
+        WeakSelf(HomeViewController);
         _headView = [[HomeHeadView alloc] initWithFrame:CGRectMake(0, 0, DeviceSize.width, 230 -64)];
+        UITapGestureRecognizer *singleTap =           [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(UesrClicked)];
+        [_headView.imgMyPicture addGestureRecognizer:singleTap];
+        //点击的次数
+        singleTap.numberOfTapsRequired = 1; // 单击
+        //点击的手指数
+        singleTap.numberOfTouchesRequired = 1;
+        [_headView setImgHeadBlock:^{
+            PersonalViewController *personalVc = [[PersonalViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+            personalVc.hidesBottomBarWhenPushed = YES;
+            [weakSelf.navigationController pushViewController:personalVc animated:YES];
+        }];
         
     }
     return _headView;
+}
+
+- (void)UesrClicked{
+    PersonalViewController *personalVc = [[PersonalViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    personalVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:personalVc animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

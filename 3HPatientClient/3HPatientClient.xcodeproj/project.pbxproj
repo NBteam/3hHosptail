@@ -6725,7 +6725,7 @@
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/HXLibs/ChatUtil/3rdparty/VoiceConvert/opencore-amrwb",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
+				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.wwwD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -6784,7 +6784,7 @@
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/HXLibs/ChatUtil/3rdparty/VoiceConvert/opencore-amrwb",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.www;
+				PRODUCT_BUNDLE_IDENTIFIER = com.THPatientClient.wwwD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
