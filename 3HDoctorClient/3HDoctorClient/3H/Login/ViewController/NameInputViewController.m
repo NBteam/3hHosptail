@@ -91,9 +91,13 @@
 }
 
 - (void)btnSaveAction{
-    if (self.nameBlock) {
-        self.nameBlock(self.txtNameInput.text);
-        [self.navigationController popViewControllerAnimated:YES];
+    if ([self.txtNameInput.text isEqualToString:@""]) {
+        [self showHudAuto:@"请填写信息" andDuration:@"2"];
+    }else{
+        if (self.nameBlock) {
+            self.nameBlock(self.txtNameInput.text);
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 }
 

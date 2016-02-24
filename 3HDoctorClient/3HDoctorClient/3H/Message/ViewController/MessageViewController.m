@@ -28,13 +28,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.dataDict = [[NSMutableDictionary alloc] init];
-    [self sgetMsgHome];
+    
    
     [self readAllMessage];
     
     self.isOpenHeaderRefresh = YES;
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self sgetMsgHome];
+}
 #pragma mark -- 重新父类方法进行刷新
 - (void)headerRequestWithData
 {

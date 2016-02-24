@@ -164,7 +164,7 @@
     
     if (indexPath.section == 2) {
         [self showViewAnimate];
-    }else{
+    }else if(indexPath.section != 3){
         WeakSelf(LaboratoryTestsAddViewController);
         HospitalInputViewController * HospitalInputVc = [[HospitalInputViewController alloc]init];
         if (indexPath.section == 0) {

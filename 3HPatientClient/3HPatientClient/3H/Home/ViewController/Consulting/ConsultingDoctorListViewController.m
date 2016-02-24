@@ -19,10 +19,15 @@
 
 @implementation ConsultingDoctorListViewController
 
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(headerRequestWithData) name:@"reloadInfo" object:nil];
      self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     self.isOpenFooterRefresh = YES ;
     self.isOpenHeaderRefresh = YES;

@@ -132,6 +132,10 @@
                 AppointTimeModel * model = [response thParseDataFromDic:dict andModel:[AppointTimeModel class]];
                 [weakSelf.dataArray addObject:model];
             }
+            if (weakSelf.dataArray.count == 0) {
+                [weakSelf showHudAuto:@"医生为设置预约时间" andDuration:@"2"];
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }
             [weakSelf.tableView reloadData];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];

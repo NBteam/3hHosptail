@@ -116,7 +116,13 @@
         if (response.responseCode == 1) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCenter" object:nil];
             weakSelf.pageNO = 0;
-            [weakSelf getNetWork];
+//            [weakSelf getNetWork];
+            if (process == 1) {
+                [weakSelf showHudAuto:@"已同意患者请求" andDuration:@"2"];
+            }else{
+                [weakSelf showHudAuto:@"已拒绝患者请求" andDuration:@"2"];
+            }
+            [weakSelf.navigationController popViewControllerAnimated:YES];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"1"];
         }

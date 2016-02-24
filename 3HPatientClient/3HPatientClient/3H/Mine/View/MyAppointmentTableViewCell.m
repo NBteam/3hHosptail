@@ -121,7 +121,7 @@
 
 - (UILabel *)labAppraise{
     if (!_labAppraise) {
-        _labAppraise = [[UILabel alloc] initWithFrame:CGRectMake(self.viewBack.width -10 -120, self.labLine.bottom -0.5, 120, 40)];
+        _labAppraise = [[UILabel alloc] initWithFrame:CGRectMake(self.viewBack.width -10 -160, self.labLine.bottom -0.5, 160, 40)];
         _labAppraise.textColor = [UIColor colorWithHEX:0x999999];
         _labAppraise.font = [UIFont systemFontOfSize:13];
         _labAppraise.textAlignment = NSTextAlignmentRight;
@@ -150,7 +150,7 @@
 //	department				医生科室
 //	pic						医生头像
 //赋值
-- (void)confingWithModel:(MyAppointmentRegisteredModel *)model{
+- (void)confingWithModel:(MyAppointmentRegisteredModel *)model index:(NSInteger)index{
     self.labTitle.text = [NSString stringWithFormat:@"%@ %@",model.truename,model.job_title];
     self.labDetail.text = [NSString stringWithFormat:@"%@ %@",model.hospital,model.department];
     self.labTime.text = model.order_date_n;
@@ -160,7 +160,13 @@
     }else{
         self.labPrice.text = [NSString stringWithFormat:@"实付:%@元",model.price] ;
     }
-    
+    if (index == 0) {
+        self.labPrice.hidden = YES;
+        self.imgLogo.hidden = YES;
+    }else{
+        self.labPrice.hidden = NO;
+        self.imgLogo.hidden = NO;
+    }
     self.labAppraise.text = model.order_date_n;
     if ([model.status_n isEqualToString:@"0"]) {
         self.labState.text = @"等待医生确认";

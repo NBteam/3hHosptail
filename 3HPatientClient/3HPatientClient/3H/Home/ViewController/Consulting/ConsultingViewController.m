@@ -135,6 +135,8 @@
     [[THNetWorkManager shareNetWork]createGroupDoctor_id:self.id group_id:group_id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
+            weakSelf.group_id = group_id;
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"reloadInfo" object:nil];
             ChatViewController *chatController = [[ChatViewController alloc] initWithChatter:group_id conversationType:eConversationTypeGroupChat];
             chatController.myHeadImage = weakSelf.user.pic;
             chatController.yourHeadImage = weakSelf.model.pic;

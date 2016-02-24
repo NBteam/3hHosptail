@@ -17,7 +17,7 @@
     
     [self.contentView addSubview:self.btnSubmit];
     [self.contentView addSubview:self.backViewss];
-    [self.backViewss addSubview:self.txtNameInput];
+//    [self.backViewss addSubview:self.txtNameInput];
  
 }
 
@@ -55,26 +55,26 @@
     if (!_backViewss) {
         _backViewss = [[UIView alloc] initWithFrame:CGRectMake(10, 12, DeviceSize.width - 20, 45)];
         _backViewss.backgroundColor = [UIColor whiteColor];
-        _backViewss.layer.masksToBounds = YES;
-        _backViewss.layer.cornerRadius = 5;
-        _backViewss.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
-        _backViewss.layer.borderWidth = 0.5;
+//        _backViewss.layer.masksToBounds = YES;
+//        _backViewss.layer.cornerRadius = 5;
+//        _backViewss.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
+//        _backViewss.layer.borderWidth = 0.5;
     }
     return _backViewss;
 }
-- (UITextField *)txtNameInput{
-    if (!_txtNameInput) {
-        _txtNameInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, self.backViewss.width -20, 45)];
-        
-        //是否纠错
-        _txtNameInput.autocorrectionType = UITextAutocorrectionTypeNo;
-        _txtNameInput.font = [UIFont systemFontOfSize:15];
-        _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请设置收费金额" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
-        _txtNameInput.backgroundColor = [UIColor whiteColor];
-        
-    }
-    return _txtNameInput;
-}
+//- (UITextField *)txtNameInput{
+//    if (!_txtNameInput) {
+//        _txtNameInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, self.backViewss.width -20, 45)];
+//        
+//        //是否纠错
+//        _txtNameInput.autocorrectionType = UITextAutocorrectionTypeNo;
+//        _txtNameInput.font = [UIFont systemFontOfSize:15];
+//        _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请设置收费金额" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
+//        _txtNameInput.backgroundColor = [UIColor whiteColor];
+//        
+//    }
+//    return _txtNameInput;
+//}
 
 - (UIButton *)btnSubmit{
     if (!_btnSubmit) {
@@ -132,7 +132,7 @@
     }
     
     if (self.outpatientAppontBlcok) {
-        self.outpatientAppontBlcok([NSArray arrayWithArray:arr],self.txtNameInput.text);
+        self.outpatientAppontBlcok([NSArray arrayWithArray:arr],@"0");
     }
     
 }
@@ -142,7 +142,7 @@
     [self customWeekView:[week componentsSeparatedByString:@","]];
     self.backViewss.top = self.viewBack.bottom +10;
     self.btnSubmit.frame = CGRectMake(10, self.backViewss.bottom +25, DeviceSize.width -20, 45);
-    self.txtNameInput.text = price;
+//    self.txtNameInput.text = price;
     NSLog(@"钱呢%@",price);
     return self.btnSubmit.bottom +10;
 }

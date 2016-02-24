@@ -27,7 +27,7 @@
    // [self registerNotifications];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-
+    
     self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(addAction) andTarget:self andImageName:@"首页-患者中心_添加"];
     self.isOpenHeaderRefresh = YES;
     self.isOpenFooterRefresh = YES;
@@ -115,6 +115,7 @@
     [[THNetWorkManager shareNetWork]createGroupMember_id:model.id group_id:group_id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
+            [weakSelf headerRequestWithData];
             ChatViewController*chatController = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"%@",model.group_id] conversationType:eConversationTypeGroupChat];
             chatController.title = [NSString stringWithFormat:@"您正在与%@聊天",model.truename];
             chatController.myImageString = self.user.pic;

@@ -21,7 +21,7 @@
 //背景
 @property (nonatomic, strong) UIView *backViewss;
 //
-@property (nonatomic, strong) UITextField *txtNameInput;
+//@property (nonatomic, strong) UITextField *txtNameInput;
 
 
 

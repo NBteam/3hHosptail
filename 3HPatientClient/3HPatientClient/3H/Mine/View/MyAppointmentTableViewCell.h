@@ -36,6 +36,6 @@
 @property (nonatomic, strong) UILabel *labAppraise;
 
 //赋值
-- (void)confingWithModel:(MyAppointmentRegisteredModel *)model;
+- (void)confingWithModel:(MyAppointmentRegisteredModel *)model index:(NSInteger)index;
 
 @end

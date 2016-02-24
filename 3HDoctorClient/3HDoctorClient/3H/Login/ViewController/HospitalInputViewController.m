@@ -58,6 +58,9 @@
         //是否纠错
         _txtNameInput.autocorrectionType = UITextAutocorrectionTypeNo;
         _txtNameInput.font = [UIFont systemFontOfSize:15];
+        if (!self.titleStr) {
+            self.titleStr = @"";
+        }
         _txtNameInput.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.titleStr attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHEX:0x888888]}];
         _txtNameInput.backgroundColor = [UIColor whiteColor];
         
@@ -82,9 +85,13 @@
 }
 
 - (void)btnSaveAction{
-    if (self.hospitalBlock) {
-        self.hospitalBlock(self.txtNameInput.text);
-        [self.navigationController popViewControllerAnimated:YES];
+    if ([self.txtNameInput.text isEqualToString:@""]) {
+        [self showHudAuto:@"请完善信息" andDuration:@"2"];
+    }else{
+        if (self.hospitalBlock) {
+            self.hospitalBlock(self.txtNameInput.text);
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 }
 

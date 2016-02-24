@@ -34,7 +34,7 @@
     cell.backgroundColor = self.view.backgroundColor;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     MyAppointmentRegisteredModel *model = self.dataArray[indexPath.row];
-    [cell confingWithModel:model];
+    [cell confingWithModel:model index:1];
     return cell;
 }
 
