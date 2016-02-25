@@ -37,7 +37,7 @@
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             NSLog(@"查看%@",response.dataDic);
-            if ([response.dataDic[@"list"] isKindOfClass:[NSDictionary class]]) {
+            if ([response.dataDic[@"list"] isKindOfClass:[NSArray class]]) {
                 for (NSDictionary * dict in response.dataDic[@"list"]) {
                     DiagnosisListModel * model = [response thParseDataFromDic:dict andModel:[DiagnosisListModel class]];
                     [weakSelf.dataArray addObject:model];

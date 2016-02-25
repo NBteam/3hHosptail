@@ -17,7 +17,9 @@
 @end
 
 @implementation BookIsRegisteredViewController
-
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -25,6 +27,7 @@
     self.tableView.height = self.tableView.height -44;
     self.isOpenHeaderRefresh = YES;
     self.isOpenFooterRefresh = YES;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(headerRequestWithData) name:@"ReReloadInfo" object:nil];
 }
 
 #pragma mark -- 重新父类方法进行刷新
@@ -84,6 +87,9 @@
     [weakSelf showHudWaitingView:WaitPrompt];
     [[THNetWorkManager shareNetWork]getMyOrderguahaoListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
+        if (weakSelf.pageNO == 1) {
+            [weakSelf.dataArray removeAllObjects];
+        }
         if (response.responseCode == 1) {
             for (NSDictionary * dict in response.dataDic[@"list"]) {
                 ReservationListModel * model = [response thParseDataFromDic:dict andModel:[ReservationListModel class]];

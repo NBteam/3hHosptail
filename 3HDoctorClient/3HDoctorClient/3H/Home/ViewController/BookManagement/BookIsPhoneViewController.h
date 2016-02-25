@@ -9,5 +9,5 @@
 #import "BaseTableViewController.h"
 
 @interface BookIsPhoneViewController : BaseTableViewController
-
+@property (nonatomic, copy) void(^reloadBlock)(void);
 @end

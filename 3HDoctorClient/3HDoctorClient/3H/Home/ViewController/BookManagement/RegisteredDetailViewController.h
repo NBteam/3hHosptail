@@ -10,4 +10,5 @@
 
 @interface RegisteredDetailViewController : BaseTableViewController
 @property (nonatomic, copy) NSString * id;
+
 @end

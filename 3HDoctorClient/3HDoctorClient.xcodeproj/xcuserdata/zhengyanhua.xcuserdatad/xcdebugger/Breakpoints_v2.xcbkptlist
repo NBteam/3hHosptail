@@ -35,13 +35,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "3HDoctorClient/3H/Login/ViewController/NameInputViewController.m"
-            timestampString = "478010713.42045"
+            filePath = "3HDoctorClient/3H/Home/ViewController/BookManagement/BookIsPhoneViewController.m"
+            timestampString = "478097464.152292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "3HDoctorClient/3H/Home/ViewController/BookManagement/BookRefuseReasonViewController.m"
+            timestampString = "478099559.831839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "-getPhoneDetailDataOfOpt:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

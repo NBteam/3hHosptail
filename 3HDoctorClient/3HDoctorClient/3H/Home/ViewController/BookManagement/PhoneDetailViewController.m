@@ -88,6 +88,7 @@
             NSLog(@"查看%@",response.dataDic[@"status"]);
             WeakSelf(PhoneDetailViewController);
             BookSuccessViewController *bookSuccessVc = [[BookSuccessViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+            bookSuccessVc.index = 2;
             bookSuccessVc.reloadBlock = weakSelf.reloadBlock;
             bookSuccessVc.timeStrig = model.order_date_n;
             bookSuccessVc.nameString = model.truename;
@@ -126,6 +127,7 @@
             BookRefuseReasonViewController *bookRefuseReasonVc = [[BookRefuseReasonViewController alloc] init];
             bookRefuseReasonVc.ids = weakSelf.ids;
             bookRefuseReasonVc.reloadBlock = weakSelf.reloadBlock;
+            bookRefuseReasonVc.index = 2;
             [weakSelf.navigationController pushViewController:bookRefuseReasonVc animated:YES];
         }];
         //打电话

@@ -104,7 +104,7 @@
     PhoneDetailViewController *phoneDetailVc = [[PhoneDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
     phoneDetailVc.ids = model.id;
     [phoneDetailVc setReloadBlock:^{
-        [weakSelf.tableView reloadData];
+        [weakSelf headerRequestWithData];
     }];
     [self.navigationController pushViewController:phoneDetailVc animated:YES];
 }

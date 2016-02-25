@@ -25,11 +25,14 @@
 
 - (void)backAction{
     
-    if (self.reloadBlock) {
-        self.reloadBlock();
-        [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
+    if (self.index != 1) {
+        if (self.reloadBlock) {
+            self.reloadBlock();
+        }
+    }else{
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"ReReloadInfo" object:nil];
     }
-    
+    [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

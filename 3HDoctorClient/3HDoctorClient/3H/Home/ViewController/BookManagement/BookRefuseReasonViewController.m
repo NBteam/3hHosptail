@@ -41,11 +41,14 @@
     [[THNetWorkManager shareNetWork] processMyOrdertelId:self.ids opt:opt reason:self.txtView.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            if (weakSelf.reloadBlock) {
-                weakSelf.reloadBlock();
-                [weakSelf.navigationController popToViewController:weakSelf.navigationController.viewControllers[1] animated:YES];
+            if (weakSelf.index != 1) {
+                if (weakSelf.reloadBlock) {
+                    weakSelf.reloadBlock();
+                }
+            }else{
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"ReReloadInfo" object:nil];
             }
-            
+            [weakSelf.navigationController popToViewController:weakSelf.navigationController.viewControllers[1] animated:YES];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

@@ -61,6 +61,13 @@
     //  self.labDetail.attributedText
     self.labTime.text = [NSString stringWithFormat:@"预约时间:%@",dic.order_date_n];
     [self.imgPatient sd_setImageWithURL:[NSURL URLWithString:dic.pic] placeholderImage:[UIImage imageNamed:@""]];
+    if ([dic.status_n isEqualToString:@"已拒绝"]) {
+        self.labState.textColor = [UIColor orangeColor];
+    }else if ([dic.status_n isEqualToString:@"已确认"]){
+        self.labState.textColor = [UIColor greenColor];
+    }else if ([dic.status_n isEqualToString:@"待确认"]){
+        self.labState.textColor = AppDefaultColor;
+    }
     self.labState.text = [NSString stringWithFormat:@"%@",dic.status_n];
 }
 

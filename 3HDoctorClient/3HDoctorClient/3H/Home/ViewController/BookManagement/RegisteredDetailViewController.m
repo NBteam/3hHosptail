@@ -182,12 +182,15 @@
                 BookSuccessViewController *bookSuccessVc = [[BookSuccessViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
                 bookSuccessVc.timeStrig = model.order_date_n;
                 bookSuccessVc.nameString = model.truename;
+                bookSuccessVc.index = 1;
                 [bookSuccessVc setReloadBlock:^{
                     [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已同意"];
                 }];
                 [self.navigationController pushViewController:bookSuccessVc animated:YES];
             }else{
                 BookRefuseReasonViewController *bookRefuseReasonVc = [[BookRefuseReasonViewController alloc] init];
+                bookRefuseReasonVc.ids = weakSelf.id;
+                bookRefuseReasonVc.index = 1;
                 [bookRefuseReasonVc setReloadBlock:^{
                     
                     [weakSelf.toolView changeViewHide:BookDetailToolViewTypeIsDown andTitle:@"已拒绝"];

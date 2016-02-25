@@ -683,6 +683,15 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                            desc:(NSString *)desc
      CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                      andFailure:(FailureBlock) failure{
+    if (!sick_id) {
+        sick_id = @"";
+    }
+    if (!diag_name) {
+        diag_name = @"";
+    }
+    if (!desc) {
+        desc = @"";
+    }
     NSDictionary *paramDic = @{@"a":@"editPatientDiagnosis",Token:GetToken,@"mid":mid,@"idx":idx,@"sick_id":sick_id,@"diag_name":diag_name,@"desc":desc};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }

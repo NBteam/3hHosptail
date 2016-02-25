@@ -15,4 +15,7 @@
 @property (nonatomic, strong) PhoneDetailModel *model;
 //拒绝提交完拒绝理由后回调
 @property (nonatomic, copy) void(^reloadBlock)(void);
+//1 代表挂号预约
+//2 代表电话预约
+@property (nonatomic, assign)NSInteger index;
 @end
