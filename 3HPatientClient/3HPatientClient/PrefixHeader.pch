@@ -91,4 +91,11 @@
 //#define NSLog(...) {}
 //
 //#endif
+
+//微信支付
+#import "WXApi.h"
+#import "lhSharePay.h"
+#define webUrl @"填写app服务器的请求前缀"
+#define TIME_OUT_INTERVAL 30
+
 #endif

@@ -22,6 +22,7 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
 #import "Order.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "APAuthV2Info.h"
+
 //信鸽
 #import "XGPush.h"
 #import "XGSetting.h"
@@ -293,6 +294,8 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
 
 #pragma mark  友盟
 - (void)setUM{
+    
+    [WXApi registerApp:@"wx0863c23f9e3f8d86" withDescription:@"3hheath"];
     
     [UMSocialData setAppKey:@"566e3e94e0f55ac832003f56"];
     

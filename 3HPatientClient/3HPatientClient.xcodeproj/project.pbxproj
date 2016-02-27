@@ -427,6 +427,11 @@
 		C05810DB1C2FC652009A2567 /* ShoppingCartToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810DA1C2FC652009A2567 /* ShoppingCartToolView.m */; };
 		C05810DE1C2FD3BF009A2567 /* MyCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810DD1C2FD3BF009A2567 /* MyCollectionModel.m */; };
 		C05810E51C3020F8009A2567 /* ScheduleCalendarDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810E41C3020F8009A2567 /* ScheduleCalendarDayModel.m */; };
+		C058845E1C7CAA9A002D34DA /* ApiXml.mm in Sources */ = {isa = PBXBuildFile; fileRef = C05884551C7CAA9A002D34DA /* ApiXml.mm */; };
+		C058845F1C7CAA9A002D34DA /* lhMyConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C05884571C7CAA9A002D34DA /* lhMyConnection.m */; };
+		C05884601C7CAA9A002D34DA /* lhSharePay.m in Sources */ = {isa = PBXBuildFile; fileRef = C05884591C7CAA9A002D34DA /* lhSharePay.m */; };
+		C05884611C7CAA9A002D34DA /* WeChatPayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C058845B1C7CAA9A002D34DA /* WeChatPayManager.m */; };
+		C05884621C7CAA9A002D34DA /* WXUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = C058845D1C7CAA9A002D34DA /* WXUtil.mm */; };
 		C05A96BB1C1D83360078433B /* AppointDoctorsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A96BA1C1D83360078433B /* AppointDoctorsListViewController.m */; };
 		C05A96BE1C1D83570078433B /* AppointHosptailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A96BD1C1D83570078433B /* AppointHosptailViewController.m */; };
 		C05A96C11C1D836C0078433B /* AppointExpertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A96C01C1D836C0078433B /* AppointExpertViewController.m */; };
@@ -1530,6 +1535,16 @@
 		C05810DD1C2FD3BF009A2567 /* MyCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionModel.m; sourceTree = "<group>"; };
 		C05810E31C3020F8009A2567 /* ScheduleCalendarDayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCalendarDayModel.h; sourceTree = "<group>"; };
 		C05810E41C3020F8009A2567 /* ScheduleCalendarDayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCalendarDayModel.m; sourceTree = "<group>"; };
+		C05884541C7CAA9A002D34DA /* ApiXml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiXml.h; sourceTree = "<group>"; };
+		C05884551C7CAA9A002D34DA /* ApiXml.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ApiXml.mm; sourceTree = "<group>"; };
+		C05884561C7CAA9A002D34DA /* lhMyConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lhMyConnection.h; sourceTree = "<group>"; };
+		C05884571C7CAA9A002D34DA /* lhMyConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lhMyConnection.m; sourceTree = "<group>"; };
+		C05884581C7CAA9A002D34DA /* lhSharePay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lhSharePay.h; sourceTree = "<group>"; };
+		C05884591C7CAA9A002D34DA /* lhSharePay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lhSharePay.m; sourceTree = "<group>"; };
+		C058845A1C7CAA9A002D34DA /* WeChatPayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatPayManager.h; sourceTree = "<group>"; };
+		C058845B1C7CAA9A002D34DA /* WeChatPayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeChatPayManager.m; sourceTree = "<group>"; };
+		C058845C1C7CAA9A002D34DA /* WXUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUtil.h; sourceTree = "<group>"; };
+		C058845D1C7CAA9A002D34DA /* WXUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXUtil.mm; sourceTree = "<group>"; };
 		C05A96B91C1D83360078433B /* AppointDoctorsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointDoctorsListViewController.h; sourceTree = "<group>"; };
 		C05A96BA1C1D83360078433B /* AppointDoctorsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointDoctorsListViewController.m; sourceTree = "<group>"; };
 		C05A96BC1C1D83570078433B /* AppointHosptailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointHosptailViewController.h; sourceTree = "<group>"; };
@@ -2973,6 +2988,7 @@
 		993669981C13FE5400B3E1C7 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				C05884531C7CAA9A002D34DA /* wxlib */,
 				993669991C13FE5400B3E1C7 /* IncomeRecordViewController.h */,
 				9936699A1C13FE5400B3E1C7 /* IncomeRecordViewController.m */,
 				9936699B1C13FE5400B3E1C7 /* WalletViewController.h */,
@@ -3973,6 +3989,23 @@
 			);
 			name = NetWorkManager;
 			path = 3HPatientClient/NetWorkManager;
+			sourceTree = "<group>";
+		};
+		C05884531C7CAA9A002D34DA /* wxlib */ = {
+			isa = PBXGroup;
+			children = (
+				C05884541C7CAA9A002D34DA /* ApiXml.h */,
+				C05884551C7CAA9A002D34DA /* ApiXml.mm */,
+				C05884561C7CAA9A002D34DA /* lhMyConnection.h */,
+				C05884571C7CAA9A002D34DA /* lhMyConnection.m */,
+				C05884581C7CAA9A002D34DA /* lhSharePay.h */,
+				C05884591C7CAA9A002D34DA /* lhSharePay.m */,
+				C058845A1C7CAA9A002D34DA /* WeChatPayManager.h */,
+				C058845B1C7CAA9A002D34DA /* WeChatPayManager.m */,
+				C058845C1C7CAA9A002D34DA /* WXUtil.h */,
+				C058845D1C7CAA9A002D34DA /* WXUtil.mm */,
+			);
+			path = wxlib;
 			sourceTree = "<group>";
 		};
 		C05A96B61C1D83150078433B /* AppointDoctors */ = {
@@ -6176,6 +6209,7 @@
 				D2D0C7051C511D9200B0C853 /* EMAudioPlayerUtil.m in Sources */,
 				D2D0C7611C511D9200B0C853 /* EMChatTextBubbleView.m in Sources */,
 				99DA41971C0BEB0500573D4C /* AFHTTPRequestOperationManager.m in Sources */,
+				C05884601C7CAA9A002D34DA /* lhSharePay.m in Sources */,
 				D2D0C72A1C511D9200B0C853 /* PSTCollectionViewCell.m in Sources */,
 				993669951C13FE4C00B3E1C7 /* WalletHeadTableViewCell.m in Sources */,
 				99DA41D01C0BEB0500573D4C /* MJRefreshBackStateFooter.m in Sources */,
@@ -6370,6 +6404,7 @@
 				D2D0C7261C511D9200B0C853 /* UIImageView+EMWebCache.m in Sources */,
 				D2D31DE21C2696BB00BBE60D /* AppointExpertInfoViewController.m in Sources */,
 				9936697F1C13335D00B3E1C7 /* ShopDetailNameTableViewCell.m in Sources */,
+				C05884621C7CAA9A002D34DA /* WXUtil.mm in Sources */,
 				99DA41911C0BEB0500573D4C /* BaseNavigationController.m in Sources */,
 				D2D0C72D1C511D9200B0C853 /* PSTCollectionViewFlowLayout.m in Sources */,
 				D2D0C7541C511D9200B0C853 /* ChatViewController+Category.m in Sources */,
@@ -6423,6 +6458,7 @@
 				993669C91C1404D000B3E1C7 /* MyAppointmentTableViewCell.m in Sources */,
 				D2D26A891C23E40800066770 /* MyAppointmentRegisteredModel.m in Sources */,
 				993669D51C1438CD00B3E1C7 /* MyArchivesConcurrentTableViewCell.m in Sources */,
+				C05884611C7CAA9A002D34DA /* WeChatPayManager.m in Sources */,
 				C043F6C41C1D7E8100EC1B43 /* THNetWorkManager.m in Sources */,
 				99DA41A91C0BEB0500573D4C /* UIColor+ColorExtension.m in Sources */,
 				9929BCB51C181E0D00F747CB /* ConsultingIsOnlineViewController.m in Sources */,
@@ -6449,6 +6485,7 @@
 				D2D0C7121C511D9200B0C853 /* MWPhoto.m in Sources */,
 				C05A97AE1C1EC9DF0078433B /* DynamicDetailModel.m in Sources */,
 				C05A97A51C1EAEA00078433B /* HomeGoodsModel.m in Sources */,
+				C058845E1C7CAA9A002D34DA /* ApiXml.mm in Sources */,
 				C082447C1C1FE62400783FD5 /* DynamicCommentsTableViewCell.m in Sources */,
 				D2D2F61C1C2988DE00A055FA /* FinishTableViewCell.m in Sources */,
 				D2D26A8F1C23FE6900066770 /* DoctorListModel.m in Sources */,
@@ -6468,6 +6505,7 @@
 				99DA41D11C0BEB0500573D4C /* MJRefreshGifHeader.m in Sources */,
 				D2D373861C3170DE005E662D /* MedicationAddInputViewController.m in Sources */,
 				D2D5310D1C58F2A500BF1C59 /* MyOrdersCViewController.m in Sources */,
+				C058845F1C7CAA9A002D34DA /* lhMyConnection.m in Sources */,
 				D2D0C7681C511D9200B0C853 /* MessageReadManager.m in Sources */,
 				C05A96D31C1D915D0078433B /* AppointFinishHeadTableViewCell.m in Sources */,
 				991A330C1C12FFDA00E0313F /* PersonalHeadTableViewCell.m in Sources */,
