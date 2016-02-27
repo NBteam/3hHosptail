@@ -250,7 +250,7 @@
 		993669961C13FE4C00B3E1C7 /* WalletTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669921C13FE4C00B3E1C7 /* WalletTableViewCell.m */; };
 		9936699F1C13FE5400B3E1C7 /* IncomeRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9936699A1C13FE5400B3E1C7 /* IncomeRecordViewController.m */; };
 		993669A01C13FE5400B3E1C7 /* WalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9936699C1C13FE5400B3E1C7 /* WalletViewController.m */; };
-		993669A11C13FE5400B3E1C7 /* WithdrawalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9936699E1C13FE5400B3E1C7 /* WithdrawalViewController.m */; };
+		993669A11C13FE5400B3E1C7 /* WithdrawalViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9936699E1C13FE5400B3E1C7 /* WithdrawalViewController.mm */; };
 		993669A41C13FF6C00B3E1C7 /* IncomeRecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669A31C13FF6C00B3E1C7 /* IncomeRecordTableViewCell.m */; };
 		993669B71C14045F00B3E1C7 /* MyAppointmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669B61C14045F00B3E1C7 /* MyAppointmentViewController.m */; };
 		993669BA1C14046F00B3E1C7 /* MyArchivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669B91C14046F00B3E1C7 /* MyArchivesViewController.m */; };
@@ -504,6 +504,9 @@
 		C06B92901C5346D9007660FF /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B928A1C5346D9007660FF /* SDBrowserImageView.m */; };
 		C06B92911C5346D9007660FF /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B928C1C5346D9007660FF /* SDPhotoBrowser.m */; };
 		C06B92921C5346D9007660FF /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C06B928F1C5346D9007660FF /* SDWaitingView.m */; };
+		C0732BB41C81F5A50089A54A /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C0732BB11C81F5A50089A54A /* CommonUtil.m */; };
+		C0732BB51C81F5A50089A54A /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C0732BB31C81F5A50089A54A /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C0732BB71C81F9000089A54A /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C0732BB61C81F9000089A54A /* libxml2.2.tbd */; };
 		C07486CE1C5A40850034C40A /* 3H患者端-引导页1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C07486CC1C5A40850034C40A /* 3H患者端-引导页1.jpg */; };
 		C07486CF1C5A40850034C40A /* 3H患者端-引导页2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C07486CD1C5A40850034C40A /* 3H患者端-引导页2.jpg */; };
 		C07486D31C5A40B80034C40A /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C07486D21C5A40B80034C40A /* GuideViewController.m */; };
@@ -1189,7 +1192,7 @@
 		9936699B1C13FE5400B3E1C7 /* WalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletViewController.h; sourceTree = "<group>"; };
 		9936699C1C13FE5400B3E1C7 /* WalletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletViewController.m; sourceTree = "<group>"; };
 		9936699D1C13FE5400B3E1C7 /* WithdrawalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawalViewController.h; sourceTree = "<group>"; };
-		9936699E1C13FE5400B3E1C7 /* WithdrawalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawalViewController.m; sourceTree = "<group>"; };
+		9936699E1C13FE5400B3E1C7 /* WithdrawalViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WithdrawalViewController.mm; sourceTree = "<group>"; };
 		993669A21C13FF6C00B3E1C7 /* IncomeRecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomeRecordTableViewCell.h; sourceTree = "<group>"; };
 		993669A31C13FF6C00B3E1C7 /* IncomeRecordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomeRecordTableViewCell.m; sourceTree = "<group>"; };
 		993669B51C14045F00B3E1C7 /* MyAppointmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAppointmentViewController.h; sourceTree = "<group>"; };
@@ -1685,6 +1688,11 @@
 		C06B928D1C5346D9007660FF /* SDPhotoBrowserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowserConfig.h; sourceTree = "<group>"; };
 		C06B928E1C5346D9007660FF /* SDWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWaitingView.h; sourceTree = "<group>"; };
 		C06B928F1C5346D9007660FF /* SDWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWaitingView.m; sourceTree = "<group>"; };
+		C0732BB01C81F5A50089A54A /* CommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
+		C0732BB11C81F5A50089A54A /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
+		C0732BB21C81F5A50089A54A /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		C0732BB31C81F5A50089A54A /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		C0732BB61C81F9000089A54A /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		C07486CC1C5A40850034C40A /* 3H患者端-引导页1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "3H患者端-引导页1.jpg"; sourceTree = "<group>"; };
 		C07486CD1C5A40850034C40A /* 3H患者端-引导页2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "3H患者端-引导页2.jpg"; sourceTree = "<group>"; };
 		C07486D11C5A40B80034C40A /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
@@ -2458,12 +2466,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0732BB71C81F9000089A54A /* libxml2.2.tbd in Frameworks */,
+				D2CFD2F11C4E84C200E3E3A6 /* libxml2.tbd in Frameworks */,
+				C05A979F1C1E80730078433B /* libz.tbd in Frameworks */,
 				C05D91F11C7B502800DED6F7 /* Twitter.framework in Frameworks */,
 				C05D91EF1C7B501C00DED6F7 /* Accounts.framework in Frameworks */,
 				C05D91ED1C7B500B00DED6F7 /* Social.framework in Frameworks */,
-				D2CFD2F11C4E84C200E3E3A6 /* libxml2.tbd in Frameworks */,
 				D2CFD2EF1C4E84B900E3E3A6 /* libresolv.tbd in Frameworks */,
-				C05A979F1C1E80730078433B /* libz.tbd in Frameworks */,
 				D2CFD2ED1C4E849500E3E3A6 /* libstdc++.6.0.9.tbd in Frameworks */,
 				D2D0C7361C511D9200B0C853 /* Bolts.framework in Frameworks */,
 				D2CFD2EB1C4E845700E3E3A6 /* libsqlite3.tbd in Frameworks */,
@@ -2994,7 +3003,7 @@
 				9936699B1C13FE5400B3E1C7 /* WalletViewController.h */,
 				9936699C1C13FE5400B3E1C7 /* WalletViewController.m */,
 				9936699D1C13FE5400B3E1C7 /* WithdrawalViewController.h */,
-				9936699E1C13FE5400B3E1C7 /* WithdrawalViewController.m */,
+				9936699E1C13FE5400B3E1C7 /* WithdrawalViewController.mm */,
 				D2CF9DB91C565C2A0024E01A /* WIthFinishViewController.h */,
 				D2CF9DBA1C565C2A0024E01A /* WIthFinishViewController.m */,
 			);
@@ -3186,6 +3195,7 @@
 		99DA3EA51C0BE4CF00573D4C = {
 			isa = PBXGroup;
 			children = (
+				C0732BB61C81F9000089A54A /* libxml2.2.tbd */,
 				C05D91F01C7B502800DED6F7 /* Twitter.framework */,
 				C05D91EE1C7B501C00DED6F7 /* Accounts.framework */,
 				C05D91EC1C7B500B00DED6F7 /* Social.framework */,
@@ -3601,6 +3611,7 @@
 		99DA40B21C0BEB0500573D4C /* PublicFramework */ = {
 			isa = PBXGroup;
 			children = (
+				C0732BAF1C81F5A50089A54A /* WXPayManager */,
 				C06B92881C5346D9007660FF /* SDPhotoBrowser */,
 				D2D0C6041C511D9100B0C853 /* HXLibs */,
 				D2CFD26A1C4E826900E3E3A6 /* EaseMobSDK */,
@@ -4309,6 +4320,17 @@
 				C06B928F1C5346D9007660FF /* SDWaitingView.m */,
 			);
 			path = SDPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		C0732BAF1C81F5A50089A54A /* WXPayManager */ = {
+			isa = PBXGroup;
+			children = (
+				C0732BB01C81F5A50089A54A /* CommonUtil.h */,
+				C0732BB11C81F5A50089A54A /* CommonUtil.m */,
+				C0732BB21C81F5A50089A54A /* GDataXMLNode.h */,
+				C0732BB31C81F5A50089A54A /* GDataXMLNode.m */,
+			);
+			path = WXPayManager;
 			sourceTree = "<group>";
 		};
 		C07486D01C5A40B80034C40A /* Guide */ = {
@@ -6287,7 +6309,7 @@
 				D2D0C7531C511D9200B0C853 /* ChatSendHelper.m in Sources */,
 				993669881C1333ED00B3E1C7 /* ShopDetailTitleTableViewCell.m in Sources */,
 				D2D0C71D1C511D9200B0C853 /* EMSDWebImageManager.m in Sources */,
-				993669A11C13FE5400B3E1C7 /* WithdrawalViewController.m in Sources */,
+				993669A11C13FE5400B3E1C7 /* WithdrawalViewController.mm in Sources */,
 				D2D26A921C24076200066770 /* DoctorInfoModel.m in Sources */,
 				C05A96E21C1D9B1B0078433B /* MainDiagnosticDetailViewController.m in Sources */,
 				D2D0C75E1C511D9200B0C853 /* EMChatBaseBubbleView.m in Sources */,
@@ -6311,6 +6333,7 @@
 				D2D0C7311C511D9200B0C853 /* PSTGridLayoutInfo.m in Sources */,
 				D2D5A7AE1C47F0110056DF24 /* RSADataVerifier.m in Sources */,
 				D2D1CEDD1C4BD8EE001824FC /* APAuthV2Info.m in Sources */,
+				C0732BB41C81F5A50089A54A /* CommonUtil.m in Sources */,
 				991A330E1C12FFDA00E0313F /* SetUpTableViewCell.m in Sources */,
 				99DA41E51C0BEB0500573D4C /* UIButton+WebCache.m in Sources */,
 				99D544941C1592C40081D1D3 /* NSDate+convenience.m in Sources */,
@@ -6336,6 +6359,7 @@
 				991A312A1C11E9B600E0313F /* HomeFunctionTableViewCell.m in Sources */,
 				D2D699D91C452E3B00FDEB1D /* ShopInfoModel.m in Sources */,
 				D2D0C75F1C511D9200B0C853 /* EMChatImageBubbleView.m in Sources */,
+				C0732BB51C81F5A50089A54A /* GDataXMLNode.m in Sources */,
 				D2D0C7181C511D9200B0C853 /* EMSDImageCache.m in Sources */,
 				D2D26A8C1C23EDC600066770 /* ConsultingDoctorListNewCell.m in Sources */,
 				99DA41E61C0BEB0500573D4C /* UIImage+GIF.m in Sources */,
@@ -6730,7 +6754,10 @@
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/HXLibs/ChatUtil/3rdparty/Parse",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/3HPatientClient/PrefixHeader.pch";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/3HPatientClient/PublicFramework/APPAY";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/3HPatientClient/PublicFramework/APPAY",
+					"${SDK_ROOT}/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = 3HPatientClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -6789,7 +6816,10 @@
 					"$(PROJECT_DIR)/3HPatientClient/PublicFramework/HXLibs/ChatUtil/3rdparty/Parse",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/3HPatientClient/PrefixHeader.pch";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/3HPatientClient/PublicFramework/APPAY";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/3HPatientClient/PublicFramework/APPAY",
+					"${SDK_ROOT}/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = 3HPatientClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

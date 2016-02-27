@@ -29,8 +29,7 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
 #import "EaseMob.h"
 
 #define _IPHONE80_ 80000
-@interface AppDelegate ()
-
+@interface AppDelegate ()<WXApiDelegate>
 @end
 
 @implementation AppDelegate
@@ -295,7 +294,8 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
 #pragma mark  友盟
 - (void)setUM{
     
-    [WXApi registerApp:@"wx0863c23f9e3f8d86" withDescription:@"3hheath"];
+    //[WXApi registerApp:@"wx0863c23f9e3f8d86" withDescription:@"3hheath"];
+    [WXApi registerApp:@"wx0863c23f9e3f8d86"];
     
     [UMSocialData setAppKey:@"566e3e94e0f55ac832003f56"];
     
@@ -488,6 +488,25 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [[EaseMob sharedInstance] applicationWillTerminate:application];
+}
+
+- (void)onResp:(BaseResp *)resp
+{
+    if ([resp isKindOfClass:[PayResp class]]) {
+        
+        NSString *strTitle = [NSString stringWithFormat:@"支付结果"];
+        NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle
+                                                        message:strMsg
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:HUDDismissNotification object:nil userInfo:nil];
+        //这里可以向外面跑消息
+    }
 }
 
 @end
