@@ -20,12 +20,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "3HPatientClient/AppDelegate.m"
-            timestampString = "478281695.632869"
+            timestampString = "478444342.839942"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "495"
-            endingLineNumber = "495"
-            landmarkName = "-onResp:"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
+            landmarkName = "-application:handleOpenURL:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

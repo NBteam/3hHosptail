@@ -80,6 +80,7 @@
     self.imgZFB.image = [UIImage imageNamed:@"首页-健康商城-商品详情-立即购买_支付-点击状态"];
     self.imgWX.image = [UIImage imageNamed:@"首页-健康商城-商品详情-立即购买_点击-非点击状态"];
     if (self.BuyPayBlock) {
+        
         self.BuyPayBlock(0);
     }
 }

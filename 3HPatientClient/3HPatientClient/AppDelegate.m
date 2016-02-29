@@ -312,6 +312,9 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
+    
+    NSLog(@"打印窗口%@",url);
+    
     return [UMSocialSnsService handleOpenURL:url];
 }
 #pragma mark -----支付宝支付-----
@@ -380,6 +383,8 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
+    
+    NSLog(@"微信支付%@",url);
     //如果极简SDK不可用，会跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
     if ([url.host isEqualToString:@"platformapi"]||[url.host isEqualToString:@"safepay"]) {
         if ([url.host isEqualToString:@"safepay"]) {
@@ -396,6 +401,8 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
                     else{
                         [[NSNotificationCenter defaultCenter] postNotificationName:@"BuySuccess" object:nil];
                     }
+                }else{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"zfFailure" object:nil];
                 }
                 
             }];
@@ -406,6 +413,25 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
             }];
         }
         return YES;
+    }
+    
+    
+    NSString *urlString = [url absoluteString];
+    NSRange range = [urlString rangeOfString:@"wx0863c23f9e3f8d86"];
+    
+    if (range.location != NSNotFound) {
+        NSArray *arr = [urlString componentsSeparatedByString:@"="];
+        NSString *str = arr.lastObject;
+        
+        NSLog(@"我呀结果%@",str);
+        //成功
+        if ([str isEqualToString:@"0"]) {
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CZ" object:nil];
+        }else{// 失败
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"zfFailure" object:nil];
+        }
+        return [WXApi handleOpenURL:url delegate:self];
     }
     return [UMSocialSnsService handleOpenURL:url];
 }
@@ -490,23 +516,23 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
     [[EaseMob sharedInstance] applicationWillTerminate:application];
 }
 
-- (void)onResp:(BaseResp *)resp
-{
-    if ([resp isKindOfClass:[PayResp class]]) {
-        
-        NSString *strTitle = [NSString stringWithFormat:@"支付结果"];
-        NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle
-                                                        message:strMsg
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil, nil];
-        [alert show];
-        
-        //        [[NSNotificationCenter defaultCenter] postNotificationName:HUDDismissNotification object:nil userInfo:nil];
-        //这里可以向外面跑消息
-    }
-}
+//- (void)onResp:(BaseResp *)resp
+//{
+//    if ([resp isKindOfClass:[PayResp class]]) {
+//        
+//        NSString *strTitle = [NSString stringWithFormat:@"支付结果"];
+//        NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+//        
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle
+//                                                        message:strMsg
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"OK"
+//                                              otherButtonTitles:nil, nil];
+//        [alert show];
+//        
+//        //        [[NSNotificationCenter defaultCenter] postNotificationName:HUDDismissNotification object:nil userInfo:nil];
+//        //这里可以向外面跑消息
+//    }
+//}
 
 @end

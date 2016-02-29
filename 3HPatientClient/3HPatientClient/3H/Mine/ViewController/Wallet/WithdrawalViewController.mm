@@ -50,17 +50,22 @@ NSString * const getPrePayIdUrl = @"https://api.mch.weixin.qq.com/pay/unifiedord
 @property (nonatomic, strong) UIButton * btnSure;
 
 @property (nonatomic, strong) NSString * priceStr;
+
+@property (nonatomic, assign) BOOL isZhiFuType;
 @end
 
 @implementation WithdrawalViewController
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"CZ" object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"zfFailure" object:nil];
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItemExtension rightButtonItem:@selector(rightAction) andTarget:self andButtonTitle:@"保存"];
+    // 默认支付宝
+    self.isZhiFuType = YES;
     [self.view addSubview:self.labPrice];
     [self.view addSubview:self.textPrice];
     [self.view addSubview:self.labText];
@@ -79,11 +84,18 @@ NSString * const getPrePayIdUrl = @"https://api.mch.weixin.qq.com/pay/unifiedord
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(CZAction) name:@"CZ" object:nil];
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tableKey)];
     [self.tableView addGestureRecognizer:tap];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(zfFailureAction) name:@"zfFailure" object:nil];
 }
 
-- (void)rightAction{
-    [self getWeChatPayWithOrderName:@"郑彦华" price:@"1"];
-    //getWeChatPayWithOrderName
+- (void)zfFailureAction{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"支付结果"
+                                                    message:@"支付失败"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil, nil];
+    [alert show];
     
 }
 
@@ -248,6 +260,7 @@ NSString * const getPrePayIdUrl = @"https://api.mch.weixin.qq.com/pay/unifiedord
 - (void)btnZFBAction{
     self.imgZFB.image = [UIImage imageNamed:@"首页-健康商城-商品详情-立即购买_支付-点击状态"];
     self.imgWX.image = [UIImage imageNamed:@"首页-健康商城-商品详情-立即购买_点击-非点击状态"];
+    self.isZhiFuType = YES;
 
 }
 - (UIImageView *)imgWX{
@@ -269,6 +282,7 @@ NSString * const getPrePayIdUrl = @"https://api.mch.weixin.qq.com/pay/unifiedord
 - (void)btnWXAction{
     self.imgWX.image = [UIImage imageNamed:@"首页-健康商城-商品详情-立即购买_支付-点击状态"];
     self.imgZFB.image = [UIImage imageNamed:@"首页-健康商城-商品详情-立即购买_点击-非点击状态"];
+    self.isZhiFuType = NO;
 }
 - (UIButton *)btnSure{
     if (!_btnSure) {
@@ -291,18 +305,26 @@ NSString * const getPrePayIdUrl = @"https://api.mch.weixin.qq.com/pay/unifiedord
     if ([self.textPrice.text isEqualToString:@""]) {
         [self showHudAuto:@"请输入金额" andDuration:@"2"];
     }else{
-        AppDelegate * app = [UIApplication sharedApplication].delegate;
-        [[THNetWorkManager shareNetWork]getPostChargeTotal:self.textPrice.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
-            [weakSelf removeMBProgressHudInManaual];
-            if (response.responseCode == 1) {
-                [app sendPay_demoName:@"余额充值" price:response.dataDic[@"total"] desc:@"余额充值" order_sn:response.dataDic[@"order_sn"]];
-                weakSelf.priceStr = response.dataDic[@"total"];
-            }else{
-                [weakSelf showHudAuto:response.message andDuration:@"2"];
-            }
-        } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-            [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
-        }];
+        if (self.isZhiFuType) {
+            AppDelegate * app = [UIApplication sharedApplication].delegate;
+            [[THNetWorkManager shareNetWork]getPostChargeTotal:self.textPrice.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+                [weakSelf removeMBProgressHudInManaual];
+                if (response.responseCode == 1) {
+                    [app sendPay_demoName:@"余额充值" price:response.dataDic[@"total"] desc:@"余额充值" order_sn:response.dataDic[@"order_sn"]];
+                    weakSelf.priceStr = response.dataDic[@"total"];
+                }else{
+                    [weakSelf showHudAuto:response.message andDuration:@"2"];
+                }
+            } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+                [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+            }];
+        }else{
+            
+            double folat = [self.textPrice.text doubleValue] *100;
+            NSLog(@"钱数%f",folat);
+            NSLog(@"hhahaah%@",[NSString stringWithFormat:@"%.0f",folat]);
+            [self getWeChatPayWithOrderName:@"3H健康管理充值" price:[NSString stringWithFormat:@"%.0f",folat]];
+        }
     }
     
 }
