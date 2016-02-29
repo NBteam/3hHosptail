@@ -264,7 +264,7 @@
 		993669D21C1438A000B3E1C7 /* MyArchivesConditionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669D11C1438A000B3E1C7 /* MyArchivesConditionTableViewCell.m */; };
 		993669D51C1438CD00B3E1C7 /* MyArchivesConcurrentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669D41C1438CD00B3E1C7 /* MyArchivesConcurrentTableViewCell.m */; };
 		993669D81C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669D71C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.m */; };
-		993669DB1C144F2000B3E1C7 /* ShopDetailBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669DA1C144F2000B3E1C7 /* ShopDetailBuyViewController.m */; };
+		993669DB1C144F2000B3E1C7 /* ShopDetailBuyViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 993669DA1C144F2000B3E1C7 /* ShopDetailBuyViewController.mm */; };
 		993669DE1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669DD1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.m */; };
 		993669E11C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669E01C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.m */; };
 		993669E41C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 993669E31C144F9200B3E1C7 /* ShopDetailBuyPayTableViewCell.m */; };
@@ -561,6 +561,7 @@
 		D29664AB1C4109090017EB91 /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A71C4109090017EB91 /* CycleScrollView.m */; };
 		D29664AC1C4109090017EB91 /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A91C4109090017EB91 /* NSTimer+Addition.m */; };
 		D29664AF1C410C880017EB91 /* ShopPicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664AE1C410C880017EB91 /* ShopPicModel.m */; };
+		D2B777A01C849CFE000D8D5B /* MyOrdersBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B7779E1C849CFE000D8D5B /* MyOrdersBViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2CE7BB91C20557900BB169F /* CheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BB81C20557900BB169F /* CheckListModel.m */; };
 		D2CE7BBC1C205D9500BB169F /* CheckDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBB1C205D9500BB169F /* CheckDetailModel.m */; };
 		D2CE7BBF1C20669100BB169F /* MessageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBE1C20669100BB169F /* MessageListModel.m */; };
@@ -575,7 +576,6 @@
 		D2CFD2D71C4E826900E3E3A6 /* libEaseMobClientSDKLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CFD2D41C4E826900E3E3A6 /* libEaseMobClientSDKLite.a */; };
 		D2CFD2D81C4E826900E3E3A6 /* EaseMob.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2CFD2D61C4E826900E3E3A6 /* EaseMob.bundle */; };
 		D2CFD2DD1C4E832400E3E3A6 /* AllOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CFD2DA1C4E832400E3E3A6 /* AllOrderViewController.m */; };
-		D2CFD2DE1C4E832400E3E3A6 /* MyOrdersBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CFD2DC1C4E832400E3E3A6 /* MyOrdersBViewController.m */; };
 		D2CFD2E31C4E836A00E3E3A6 /* OrderListNewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CFD2E01C4E836A00E3E3A6 /* OrderListNewModel.m */; };
 		D2CFD2E41C4E836A00E3E3A6 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CFD2E21C4E836A00E3E3A6 /* OrderModel.m */; };
 		D2CFD2E71C4E83CB00E3E3A6 /* AllHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CFD2E61C4E83CB00E3E3A6 /* AllHeadView.m */; };
@@ -1220,7 +1220,7 @@
 		993669D61C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyArchivesPreferencesTableViewCell.h; sourceTree = "<group>"; };
 		993669D71C1438E300B3E1C7 /* MyArchivesPreferencesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyArchivesPreferencesTableViewCell.m; sourceTree = "<group>"; };
 		993669D91C144F2000B3E1C7 /* ShopDetailBuyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailBuyViewController.h; sourceTree = "<group>"; };
-		993669DA1C144F2000B3E1C7 /* ShopDetailBuyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailBuyViewController.m; sourceTree = "<group>"; };
+		993669DA1C144F2000B3E1C7 /* ShopDetailBuyViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShopDetailBuyViewController.mm; sourceTree = "<group>"; };
 		993669DC1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailBuyHeadTableViewCell.h; sourceTree = "<group>"; };
 		993669DD1C144F5500B3E1C7 /* ShopDetailBuyHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetailBuyHeadTableViewCell.m; sourceTree = "<group>"; };
 		993669DF1C144F7000B3E1C7 /* ShopDetailBuyDescTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetailBuyDescTableViewCell.h; sourceTree = "<group>"; };
@@ -1796,6 +1796,8 @@
 		D29664A91C4109090017EB91 /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
 		D29664AD1C410C880017EB91 /* ShopPicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopPicModel.h; sourceTree = "<group>"; };
 		D29664AE1C410C880017EB91 /* ShopPicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopPicModel.m; sourceTree = "<group>"; };
+		D2B7779E1C849CFE000D8D5B /* MyOrdersBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrdersBViewController.m; sourceTree = "<group>"; };
+		D2B7779F1C849CFE000D8D5B /* MyOrdersBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersBViewController.h; sourceTree = "<group>"; };
 		D2CE7BB71C20557900BB169F /* CheckListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckListModel.h; sourceTree = "<group>"; };
 		D2CE7BB81C20557900BB169F /* CheckListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckListModel.m; sourceTree = "<group>"; };
 		D2CE7BBA1C205D9500BB169F /* CheckDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailModel.h; sourceTree = "<group>"; };
@@ -1906,8 +1908,6 @@
 		D2CFD2D61C4E826900E3E3A6 /* EaseMob.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EaseMob.bundle; sourceTree = "<group>"; };
 		D2CFD2D91C4E832400E3E3A6 /* AllOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllOrderViewController.h; sourceTree = "<group>"; };
 		D2CFD2DA1C4E832400E3E3A6 /* AllOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllOrderViewController.m; sourceTree = "<group>"; };
-		D2CFD2DB1C4E832400E3E3A6 /* MyOrdersBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrdersBViewController.h; sourceTree = "<group>"; };
-		D2CFD2DC1C4E832400E3E3A6 /* MyOrdersBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrdersBViewController.m; sourceTree = "<group>"; };
 		D2CFD2DF1C4E836A00E3E3A6 /* OrderListNewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListNewModel.h; sourceTree = "<group>"; };
 		D2CFD2E01C4E836A00E3E3A6 /* OrderListNewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListNewModel.m; sourceTree = "<group>"; };
 		D2CFD2E11C4E836A00E3E3A6 /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
@@ -2962,7 +2962,7 @@
 				9936697A1C13331400B3E1C7 /* ShopDetailViewController.h */,
 				9936697B1C13331400B3E1C7 /* ShopDetailViewController.m */,
 				993669D91C144F2000B3E1C7 /* ShopDetailBuyViewController.h */,
-				993669DA1C144F2000B3E1C7 /* ShopDetailBuyViewController.m */,
+				993669DA1C144F2000B3E1C7 /* ShopDetailBuyViewController.mm */,
 				D2D2CAF91C25A1EA0052F30B /* AddressListViewController.h */,
 				D2D2CAFA1C25A1EA0052F30B /* AddressListViewController.m */,
 				C05810D31C2FBAE9009A2567 /* ShoppingCartViewController.h */,
@@ -3060,12 +3060,12 @@
 		993669A81C1403F000B3E1C7 /* MyOrders */ = {
 			isa = PBXGroup;
 			children = (
+				D2B7779F1C849CFE000D8D5B /* MyOrdersBViewController.h */,
+				D2B7779E1C849CFE000D8D5B /* MyOrdersBViewController.m */,
 				993669BE1C14048D00B3E1C7 /* MyOrdersViewController.h */,
 				993669BF1C14048D00B3E1C7 /* MyOrdersViewController.m */,
 				D2CFD2D91C4E832400E3E3A6 /* AllOrderViewController.h */,
 				D2CFD2DA1C4E832400E3E3A6 /* AllOrderViewController.m */,
-				D2CFD2DB1C4E832400E3E3A6 /* MyOrdersBViewController.h */,
-				D2CFD2DC1C4E832400E3E3A6 /* MyOrdersBViewController.m */,
 				D2D5310B1C58F2A500BF1C59 /* MyOrdersCViewController.h */,
 				D2D5310C1C58F2A500BF1C59 /* MyOrdersCViewController.m */,
 			);
@@ -6214,7 +6214,6 @@
 				99DA41BA1C0BEB0500573D4C /* MTLModel+NSCoding.m in Sources */,
 				D2D0C71B1C511D9200B0C853 /* EMSDWebImageDownloader.m in Sources */,
 				99D544121C15625D0081D1D3 /* CheckDataViewController.m in Sources */,
-				D2CFD2DE1C4E832400E3E3A6 /* MyOrdersBViewController.m in Sources */,
 				991A31301C11E9EC00E0313F /* HomeTableViewCell.m in Sources */,
 				99DA41921C0BEB0500573D4C /* BaseTabBarController.m in Sources */,
 				99DA41D61C0BEB0500573D4C /* UIScrollView+MJExtension.m in Sources */,
@@ -6268,6 +6267,7 @@
 				D2D0C75B1C511D9200B0C853 /* DXChatBarMoreView.m in Sources */,
 				D2D361781C5E400600419147 /* ArchiveListModel.m in Sources */,
 				99DA41B71C0BEB0500573D4C /* EXTScope.m in Sources */,
+				D2B777A01C849CFE000D8D5B /* MyOrdersBViewController.m in Sources */,
 				C05A96C71C1D84070078433B /* AppointDoctorsViewController.m in Sources */,
 				D2D0C7251C511D9200B0C853 /* UIImageView+EMHighlightedWebCache.m in Sources */,
 				99D544961C1592C40081D1D3 /* UIColor+expanded.m in Sources */,
@@ -6533,7 +6533,7 @@
 				D2D0C7681C511D9200B0C853 /* MessageReadManager.m in Sources */,
 				C05A96D31C1D915D0078433B /* AppointFinishHeadTableViewCell.m in Sources */,
 				991A330C1C12FFDA00E0313F /* PersonalHeadTableViewCell.m in Sources */,
-				993669DB1C144F2000B3E1C7 /* ShopDetailBuyViewController.m in Sources */,
+				993669DB1C144F2000B3E1C7 /* ShopDetailBuyViewController.mm in Sources */,
 				D2D0C7281C511D9200B0C853 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				99DA418D1C0BEB0500573D4C /* HomeViewController.m in Sources */,
 				99D33AA71C17F8830067E57C /* CheckDataTopView.m in Sources */,

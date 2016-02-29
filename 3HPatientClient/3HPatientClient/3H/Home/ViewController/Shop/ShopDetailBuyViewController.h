@@ -12,5 +12,5 @@
 @property (nonatomic, copy) NSString * id;
 @property (nonatomic, copy) NSString * indexStr;
 @property (nonatomic, retain) NSMutableArray * infoArray;
-@property (nonatomic, assign) NSInteger type;//0 购物车  1 直接购买
+@property (nonatomic, assign) NSInteger type;//1 购物车  0 直接购买
 @end

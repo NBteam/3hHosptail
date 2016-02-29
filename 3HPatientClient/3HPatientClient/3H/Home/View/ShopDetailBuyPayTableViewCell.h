@@ -29,7 +29,7 @@
 
 @property (nonatomic, strong) UIButton *btnWX;
 //0 支付宝 1  微信
-@property (nonatomic,copy) void(^BuyPayBlock)(NSInteger index);
+@property (nonatomic,copy) void(^payBlock)(NSInteger index);
 
 - (void)configWithModel:(id)model;
 @end

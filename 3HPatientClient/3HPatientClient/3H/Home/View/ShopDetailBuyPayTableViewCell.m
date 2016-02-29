@@ -23,8 +23,8 @@
     [self.contentView addSubview:self.labWX];
     [self.contentView addSubview:self.btnWX];
     
-    if (self.BuyPayBlock) {
-        self.BuyPayBlock(0);
+    if (self.payBlock) {
+        self.payBlock(0);
     }
 }
 
@@ -79,9 +79,9 @@
 - (void)btnZFBAction{
     self.imgZFB.image = [UIImage imageNamed:@"首页-健康商城-商品详情-立即购买_支付-点击状态"];
     self.imgWX.image = [UIImage imageNamed:@"首页-健康商城-商品详情-立即购买_点击-非点击状态"];
-    if (self.BuyPayBlock) {
+    if (self.payBlock) {
         
-        self.BuyPayBlock(0);
+        self.payBlock(0);
     }
 }
 
@@ -124,8 +124,8 @@
 - (void)btnWXAction{
     self.imgWX.image = [UIImage imageNamed:@"首页-健康商城-商品详情-立即购买_支付-点击状态"];
     self.imgZFB.image = [UIImage imageNamed:@"首页-健康商城-商品详情-立即购买_点击-非点击状态"];
-    if (self.BuyPayBlock) {
-        self.BuyPayBlock(1);
+    if (self.payBlock) {
+        self.payBlock(1);
     }
 }
 - (void)configWithModel:(id)model{

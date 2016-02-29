@@ -375,7 +375,7 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
         NSLog(@"orderString===%@",orderString);
         [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
             NSLog(@"resuluDic%@",resultDic);
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"zfFailure" object:nil];
         }];
         
     }
@@ -426,8 +426,16 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
         NSLog(@"我呀结果%@",str);
         //成功
         if ([str isEqualToString:@"0"]) {
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"CZ" object:nil];
+            if (payIndex == 1) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"CZ" object:nil];
+            }else if (payIndex == 3){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"allOrder" object:nil];
+            }else if (payIndex == 4){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"myOrder" object:nil];
+            }
+            else{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"BuySuccess" object:nil];
+            }
         }else{// 失败
             [[NSNotificationCenter defaultCenter] postNotificationName:@"zfFailure" object:nil];
         }
