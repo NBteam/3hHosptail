@@ -913,5 +913,14 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"getPwdMobilecode",@"mobile":mobile};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+//	【鉴权】消息——列表【20151222添加】
+- (void)getMsgList:(NSString *)type andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMsgList",@"token":GetToken,@"type":type};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+- (void)getMsgInfo:(NSString *)ids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMsgInfo",@"token":GetToken,@"id":ids};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 
 @end

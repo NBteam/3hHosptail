@@ -918,6 +918,11 @@
 		C0CAB52A1C299DD0008EDEE5 /* BookIsPhoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CAB5291C299DD0008EDEE5 /* BookIsPhoneModel.m */; };
 		C0CAB52D1C29A4DE008EDEE5 /* PhoneDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CAB52C1C29A4DE008EDEE5 /* PhoneDetailModel.m */; };
 		C0DB7E7B1C7B3D4B00A03712 /* InviteCodeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0DB7E7A1C7B3D4B00A03712 /* InviteCodeTableViewCell.m */; };
+		C0E5059C1C8489F5007FB407 /* MessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E5059B1C8489F5007FB407 /* MessageListViewController.m */; };
+		C0E5059F1C848A15007FB407 /* MessageListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E5059E1C848A15007FB407 /* MessageListTableViewCell.m */; };
+		C0E505A21C848BE6007FB407 /* MessageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E505A11C848BE6007FB407 /* MessageListModel.m */; };
+		C0E505A51C8493A7007FB407 /* MessageListDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E505A41C8493A7007FB407 /* MessageListDetailTableViewCell.m */; };
+		C0E505A81C8494D2007FB407 /* MessageListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E505A71C8494D2007FB407 /* MessageListDetailViewController.m */; };
 		D24F418C1C1D7235004F8699 /* ReservationListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D24F418B1C1D7235004F8699 /* ReservationListModel.m */; };
 		D28D0A321C2FD114002240BC /* WithdrawaListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D28D0A311C2FD114002240BC /* WithdrawaListModel.m */; };
 		D28D0A351C2FEC83002240BC /* ConsultingUnFinishedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D28D0A341C2FEC83002240BC /* ConsultingUnFinishedModel.m */; };
@@ -2429,6 +2434,16 @@
 		C0CAB52C1C29A4DE008EDEE5 /* PhoneDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneDetailModel.m; sourceTree = "<group>"; };
 		C0DB7E791C7B3D4B00A03712 /* InviteCodeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteCodeTableViewCell.h; sourceTree = "<group>"; };
 		C0DB7E7A1C7B3D4B00A03712 /* InviteCodeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteCodeTableViewCell.m; sourceTree = "<group>"; };
+		C0E5059A1C8489F5007FB407 /* MessageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListViewController.h; sourceTree = "<group>"; };
+		C0E5059B1C8489F5007FB407 /* MessageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListViewController.m; sourceTree = "<group>"; };
+		C0E5059D1C848A15007FB407 /* MessageListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListTableViewCell.h; sourceTree = "<group>"; };
+		C0E5059E1C848A15007FB407 /* MessageListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListTableViewCell.m; sourceTree = "<group>"; };
+		C0E505A01C848BE6007FB407 /* MessageListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListModel.h; sourceTree = "<group>"; };
+		C0E505A11C848BE6007FB407 /* MessageListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListModel.m; sourceTree = "<group>"; };
+		C0E505A31C8493A7007FB407 /* MessageListDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListDetailTableViewCell.h; sourceTree = "<group>"; };
+		C0E505A41C8493A7007FB407 /* MessageListDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListDetailTableViewCell.m; sourceTree = "<group>"; };
+		C0E505A61C8494D2007FB407 /* MessageListDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListDetailViewController.h; sourceTree = "<group>"; };
+		C0E505A71C8494D2007FB407 /* MessageListDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListDetailViewController.m; sourceTree = "<group>"; };
 		D24F418A1C1D7235004F8699 /* ReservationListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReservationListModel.h; sourceTree = "<group>"; };
 		D24F418B1C1D7235004F8699 /* ReservationListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReservationListModel.m; sourceTree = "<group>"; };
 		D28D0A301C2FD114002240BC /* WithdrawaListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawaListModel.h; sourceTree = "<group>"; };
@@ -3401,8 +3416,14 @@
 				99D141C91C0D42DD002DA3AD /* MessageTableViewCell.m */,
 				C0AE3DB21C56632F006D22A8 /* MessageModels.h */,
 				C0AE3DB31C56632F006D22A8 /* MessageModels.m */,
+				C0E505A01C848BE6007FB407 /* MessageListModel.h */,
+				C0E505A11C848BE6007FB407 /* MessageListModel.m */,
 				C0ABB96F1C57B4AC00999A5B /* MessageHomeModel.h */,
 				C0ABB9701C57B4AC00999A5B /* MessageHomeModel.m */,
+				C0E5059D1C848A15007FB407 /* MessageListTableViewCell.h */,
+				C0E5059E1C848A15007FB407 /* MessageListTableViewCell.m */,
+				C0E505A31C8493A7007FB407 /* MessageListDetailTableViewCell.h */,
+				C0E505A41C8493A7007FB407 /* MessageListDetailTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3412,6 +3433,10 @@
 			children = (
 				99DA40841C0BE8D000573D4C /* MessageViewController.h */,
 				99DA40851C0BE8D000573D4C /* MessageViewController.m */,
+				C0E5059A1C8489F5007FB407 /* MessageListViewController.h */,
+				C0E5059B1C8489F5007FB407 /* MessageListViewController.m */,
+				C0E505A61C8494D2007FB407 /* MessageListDetailViewController.h */,
+				C0E505A71C8494D2007FB407 /* MessageListDetailViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -6501,6 +6526,7 @@
 				A93F23191C13153000AA7756 /* HospitalTableViewController.m in Sources */,
 				D2D31DF41C26CDD500BBE60D /* DynamicCommentsTableViewCell.m in Sources */,
 				C09AD2211C5132620063FD90 /* PSTGridLayoutItem.m in Sources */,
+				C0E5059F1C848A15007FB407 /* MessageListTableViewCell.m in Sources */,
 				C051E5FC1C25608E005A3D2E /* DiagnosisAddInputViewController.m in Sources */,
 				C09AD2191C5132620063FD90 /* PSTCollectionViewCell.m in Sources */,
 				A98AC3B71C17D7B90024177C /* AddPatientsViewController.m in Sources */,
@@ -6651,6 +6677,7 @@
 				99D142031C0D694F002DA3AD /* RegisteredDetailViewController.m in Sources */,
 				C09AD21E1C5132620063FD90 /* PSTCollectionViewLayout.m in Sources */,
 				C06774F51C606D0A00FED5F8 /* CommentsToolBarView.m in Sources */,
+				C0E505A21C848BE6007FB407 /* MessageListModel.m in Sources */,
 				99DA40161C0BE59A00573D4C /* MTLReflection.m in Sources */,
 				991A30E51C11CA0F00E0313F /* WalletViewController.m in Sources */,
 				99D6EED31C0EF8A400CB1829 /* MedicalHistoryDetailTableViewCell.m in Sources */,
@@ -6767,6 +6794,7 @@
 				C0AEAEF71C2EC75C0009A3F5 /* bitstream.c in Sources */,
 				C08244B81C214B2100783FD5 /* PerfectInformationTimeViewController.m in Sources */,
 				A94B15F21C14430900034029 /* InformationModel.m in Sources */,
+				C0E5059C1C8489F5007FB407 /* MessageListViewController.m in Sources */,
 				99DA404F1C0BE59A00573D4C /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				99D6EEAC1C0EDEDE00CB1829 /* MedicationAddTableViewCell.m in Sources */,
 				99DA435F1C0C1CAF00573D4C /* PerfectInformationViewController.m in Sources */,
@@ -6783,6 +6811,7 @@
 				C09AD22C1C5132620063FD90 /* TTGlobalUICommon.m in Sources */,
 				C09AD20D1C5132620063FD90 /* EMSDWebImagePrefetcher.m in Sources */,
 				C09AD1F71C5132620063FD90 /* EMCDDeviceManager+Microphone.m in Sources */,
+				C0E505A51C8493A7007FB407 /* MessageListDetailTableViewCell.m in Sources */,
 				C08244A51C20682E00783FD5 /* ConsultingDynamicHeadTableViewCell.m in Sources */,
 				99DA40181C0BE59A00573D4C /* NSArray+MTLManipulationAdditions.m in Sources */,
 				99DA3EE61C0BE50300573D4C /* main.m in Sources */,
@@ -6806,6 +6835,7 @@
 				C051E6051C2573EC005A3D2E /* DiagnosisListDetailViewController.m in Sources */,
 				A98AC3C61C17FC930024177C /* NSTimer+Addition.m in Sources */,
 				A98AC3BD1C17D8830024177C /* CodeViewController.m in Sources */,
+				C0E505A81C8494D2007FB407 /* MessageListDetailViewController.m in Sources */,
 				99D1421E1C0D8274002DA3AD /* BookRefuseReasonViewController.m in Sources */,
 				99DA40451C0BE59A00573D4C /* UIButton+WebCache.m in Sources */,
 				99DA404A1C0BE59A00573D4C /* UIImageView+WebCache.m in Sources */,

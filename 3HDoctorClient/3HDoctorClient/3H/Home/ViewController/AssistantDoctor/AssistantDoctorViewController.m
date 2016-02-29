@@ -27,7 +27,6 @@
 }
 
 - (void)getAssistantDoctorData{
-    [self.dataArray removeAllObjects];
     [self showHudAuto:WaitPrompt];
     WeakSelf(AssistantDoctorViewController);
     

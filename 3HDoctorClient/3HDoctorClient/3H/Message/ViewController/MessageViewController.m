@@ -17,6 +17,8 @@
 #import "ConsultingMainViewController.h"
 //预约管理
 #import "BookManagementViewController.h"
+
+#import "MessageListViewController.h"
 @interface MessageViewController ()
 
 @property (nonatomic, strong) NSMutableDictionary *dataDict;
@@ -124,20 +126,45 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0 || indexPath.section == 1) {
-        BookManagementViewController *bookVc = [[BookManagementViewController alloc] init];
-        bookVc.hidesBottomBarWhenPushed = YES;
-        bookVc.isPhone = indexPath.section;
-        [self.navigationController pushViewController:bookVc animated:YES];
-    }else if(indexPath.section == 2){
-        ConsultingMainViewController *consultVc = [[ConsultingMainViewController alloc] init];
-        consultVc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:consultVc animated:YES];
-    }else if(indexPath.section == 3){
-        PatientAddRequestViewController *patientVc = [[PatientAddRequestViewController alloc] init];
-        patientVc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:patientVc animated:YES];
-    }
+    
+    
+    NSArray *arrImg = @[@"3H-消息_挂号预约",
+                        @"3H-消息_电话预约",
+                        @"3H-消息_咨询信息",
+                        @"3H-消息_患者添加请求",
+                        @"3H-消息_系统消息"];
+    
+    NSArray *arr = @[@"guahao_msg",@"otel_msg",@"chat_msg",@"user_add_msg",@"sys_msg"];
+    NSArray *arrNum = @[@"guahao_msg_num",@"otel_msg_num",@"chat_msg_num",@"user_add_msg_num",@"sys_msg_num"];
+    
+    NSArray *arrTitle = @[@"挂号预约",
+                          @"电话预约",
+                          @"咨询信息",
+                          @"添加请求",
+                          @"系统消息"];
+    
+    MessageListViewController *messageListVc = [[MessageListViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+    messageListVc.titleString = arrTitle[indexPath.section];
+    
+    messageListVc.typeString = arr[indexPath.section];
+    messageListVc.imgString = arrImg[indexPath.section];
+    messageListVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:messageListVc animated:YES];
+    
+//    if (indexPath.section == 0 || indexPath.section == 1) {
+//        BookManagementViewController *bookVc = [[BookManagementViewController alloc] init];
+//        bookVc.hidesBottomBarWhenPushed = YES;
+//        bookVc.isPhone = indexPath.section;
+//        [self.navigationController pushViewController:bookVc animated:YES];
+//    }else if(indexPath.section == 2){
+//        ConsultingMainViewController *consultVc = [[ConsultingMainViewController alloc] init];
+//        consultVc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:consultVc animated:YES];
+//    }else if(indexPath.section == 3){
+//        PatientAddRequestViewController *patientVc = [[PatientAddRequestViewController alloc] init];
+//        patientVc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:patientVc animated:YES];
+//    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

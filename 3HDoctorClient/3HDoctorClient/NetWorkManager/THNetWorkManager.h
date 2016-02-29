@@ -404,7 +404,11 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
               andFailure:(FailureBlock) failure;
 
+//	【鉴权】消息——列表【20151222添加】
+- (void)getMsgList:(NSString *)type andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
+//	【鉴权】消息——详情同时设置已读【20151222添加】
+- (void)getMsgInfo:(NSString *)ids andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
 
 
