@@ -660,11 +660,19 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"getPatientDiagnosis",Token:GetToken,@"mid":mid,@"idx":idx};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+#pragma mark 药物列表
+- (void)getDrugListshort:(NSString *)shorts
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+              andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getDrugList",@"short":shorts};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
+
 #pragma mark 疾病列表
 - (void)getSickListshort:(NSString *)shorts
 CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
               andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"getDrugList",@"short":shorts};
+    NSDictionary *paramDic = @{@"a":@"getSickList",@"short":shorts};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 #pragma mark 疾病详情
@@ -740,6 +748,8 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     }
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+
+
 
 #pragma mark 公共）提交意见反馈
 - (void)feedbackcontent:(NSString *)content andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{

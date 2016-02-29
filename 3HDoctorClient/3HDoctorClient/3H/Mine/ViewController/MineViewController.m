@@ -120,6 +120,8 @@ extern NSString * checked;
         personalVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:personalVc animated:YES];
         
+    }else if (indexPath.section == 1){
+    
     }else{
         if (indexPath.row == 0) {
             WalletViewController *wallVc = [[WalletViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];

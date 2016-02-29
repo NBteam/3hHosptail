@@ -40,7 +40,7 @@
     [self.dataArray removeAllObjects];
     [self showHudAuto:WaitPrompt];
     WeakSelf(MedicationAddInputNameViewController);
-    [[THNetWorkManager shareNetWork] getSickListshort:self.txtNameInput.text CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork] getDrugListshort:self.txtNameInput.text CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             

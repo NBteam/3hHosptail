@@ -268,7 +268,7 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
    CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                    andFailure:(FailureBlock) failure;
 #pragma mark 疾病列表
-- (void)getSickListshort:(NSString *)shorts
+- (void)getDrugListshort:(NSString *)shorts
     CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
                     andFailure:(FailureBlock) failure;
 
@@ -399,7 +399,10 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 - (void)getPwdMobilecode:(NSString *)mobile andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 
 
-
+#pragma mark 药物列表
+- (void)getSickListshort:(NSString *)shorts
+CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
+              andFailure:(FailureBlock) failure;
 
 
 
