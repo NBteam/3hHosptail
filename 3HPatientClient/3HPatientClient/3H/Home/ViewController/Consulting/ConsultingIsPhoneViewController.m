@@ -12,6 +12,7 @@
 #import "ConsultingIsPhoneDescTableViewCell.h"
 #import "AppointTimeModel.h"
 #import "ConsultingFinishViewController.h"
+#import "PayWayViewController.h"
 
 @interface ConsultingIsPhoneViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -164,7 +165,10 @@
     [[THNetWorkManager shareNetWork]getAddOrderTelOrder_tel_id:self.dicInfo[@"id"] desc:text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            [weakSelf getOrderTelAccountPayOrder_sn:response.dataDic[@"order_sn"]];
+            PayWayViewController * pvc = [[PayWayViewController alloc]init];
+            pvc.orderSn = response.dataDic[@"order_sn"];
+            [weakSelf.navigationController pushViewController:pvc animated:YES];
+//            [weakSelf getOrderTelAccountPayOrder_sn:response.dataDic[@"order_sn"]];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

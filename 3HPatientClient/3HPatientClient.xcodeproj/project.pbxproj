@@ -556,6 +556,7 @@
 		C0BAE9E11C4BE3C40056FA11 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BAE9E01C4BE3C40056FA11 /* UIKit.framework */; };
 		D23B79D41C7B44C200BFEB32 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B79D11C7B44C200BFEB32 /* WeatherModel.m */; };
 		D23B79D51C7B44C200BFEB32 /* XianXing.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B79D31C7B44C200BFEB32 /* XianXing.m */; };
+		D25C06D71C85D80C00EFA5C8 /* PayWayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D25C06D61C85D80C00EFA5C8 /* PayWayViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D2628B9F1C411E3D00DC711B /* CartListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2628B9E1C411E3D00DC711B /* CartListModel.m */; };
 		D29664AA1C4109090017EB91 /* ADView.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A51C4109090017EB91 /* ADView.m */; };
 		D29664AB1C4109090017EB91 /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A71C4109090017EB91 /* CycleScrollView.m */; };
@@ -1786,6 +1787,8 @@
 		D23B79D11C7B44C200BFEB32 /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
 		D23B79D21C7B44C200BFEB32 /* XianXing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XianXing.h; sourceTree = "<group>"; };
 		D23B79D31C7B44C200BFEB32 /* XianXing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XianXing.m; sourceTree = "<group>"; };
+		D25C06D51C85D80B00EFA5C8 /* PayWayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayWayViewController.h; sourceTree = "<group>"; };
+		D25C06D61C85D80C00EFA5C8 /* PayWayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayWayViewController.m; sourceTree = "<group>"; };
 		D2628B9D1C411E3D00DC711B /* CartListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartListModel.h; sourceTree = "<group>"; };
 		D2628B9E1C411E3D00DC711B /* CartListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartListModel.m; sourceTree = "<group>"; };
 		D29664A41C4109090017EB91 /* ADView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADView.h; sourceTree = "<group>"; };
@@ -2897,6 +2900,8 @@
 				9929BCAB1C181AF300F747CB /* ConsultingDoctorListViewController.m */,
 				D2D2F6141C297F7100A055FA /* ConsultingFinishViewController.h */,
 				D2D2F6151C297F7100A055FA /* ConsultingFinishViewController.m */,
+				D25C06D51C85D80B00EFA5C8 /* PayWayViewController.h */,
+				D25C06D61C85D80C00EFA5C8 /* PayWayViewController.m */,
 			);
 			path = Consulting;
 			sourceTree = "<group>";
@@ -6452,6 +6457,7 @@
 				D2D0C7161C511D9200B0C853 /* MWZoomingScrollView.m in Sources */,
 				D2D0C7491C511D9200B0C853 /* UIViewController+HUD.m in Sources */,
 				99DA41991C0BEB0500573D4C /* AFNetworkReachabilityManager.m in Sources */,
+				D25C06D71C85D80C00EFA5C8 /* PayWayViewController.m in Sources */,
 				99DA41BF1C0BEB0500573D4C /* NSDictionary+MTLManipulationAdditions.m in Sources */,
 				99DA41DE1C0BEB0500573D4C /* SDImageCache.m in Sources */,
 				99DA41B51C0BEB0500573D4C /* JSONKit.m in Sources */,
