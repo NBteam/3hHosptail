@@ -167,8 +167,9 @@
         if (response.responseCode == 1) {
             PayWayViewController * pvc = [[PayWayViewController alloc]init];
             pvc.orderSn = response.dataDic[@"order_sn"];
+            pvc.dateStr = weakSelf.dateStr;
+            pvc.priceStr = [NSString stringWithFormat:@"%.2f",weakSelf.priceStr];
             [weakSelf.navigationController pushViewController:pvc animated:YES];
-//            [weakSelf getOrderTelAccountPayOrder_sn:response.dataDic[@"order_sn"]];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }
@@ -177,22 +178,7 @@
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
     }];
 }
-- (void)getOrderTelAccountPayOrder_sn:(NSString *)text{
-    [self showHudWaitingView:WaitPrompt];
-    WeakSelf(ConsultingIsPhoneViewController);
-    [[THNetWorkManager shareNetWork]getOrderTelAccountPayOrder_sn:text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
-        [weakSelf removeMBProgressHudInManaual];
-        if (response.responseCode == 1) {
-            ConsultingFinishViewController * cvc = [[ConsultingFinishViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
-            cvc.str = weakSelf.dateStr;
-            [weakSelf.navigationController pushViewController:cvc animated:YES];
-        }else{
-            [weakSelf showHudAuto:response.message andDuration:@"2"];
-        }
-    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
-        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
-    }];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

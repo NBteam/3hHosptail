@@ -10,4 +10,6 @@
 
 @interface PayWayViewController : BaseTableViewController
 @property (nonatomic, copy) NSString * orderSn;
+@property (nonatomic, copy) NSString * dateStr;
+@property (nonatomic, copy) NSString * priceStr;
 @end

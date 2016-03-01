@@ -5,7 +5,7 @@
 //  Created by 范英强 on 15/11/30.
 //  Copyright (c) 2015年 fyq. All rights reserved.
 //
-NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
+NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付 5 电话支付
 #import "AppDelegate.h"
 
 #import "BaseTabBarController.h"
@@ -397,10 +397,13 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
                         [[NSNotificationCenter defaultCenter] postNotificationName:@"allOrder" object:nil];
                     }else if (payIndex == 4){
                         [[NSNotificationCenter defaultCenter] postNotificationName:@"myOrder" object:nil];
+                    }else if (payIndex == 5){
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"telPay" object:nil];
                     }
                     else{
                         [[NSNotificationCenter defaultCenter] postNotificationName:@"BuySuccess" object:nil];
                     }
+                    
                 }else{
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"zfFailure" object:nil];
                 }
@@ -432,6 +435,8 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"allOrder" object:nil];
             }else if (payIndex == 4){
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"myOrder" object:nil];
+            }else if (payIndex == 5){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"telPay" object:nil];
             }
             else{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"BuySuccess" object:nil];

@@ -156,6 +156,7 @@
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
                 ConsultingFinishViewController * cvc = [[ConsultingFinishViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
+                cvc.type = 11;
                 cvc.str = response.dataDic[@"order_date_str"];
                 [weakSelf.navigationController pushViewController:cvc animated:YES];
 //                [weakSelf getOrderGuahaoAccountPayOrder_sn:response.dataDic[@"order_sn"]];

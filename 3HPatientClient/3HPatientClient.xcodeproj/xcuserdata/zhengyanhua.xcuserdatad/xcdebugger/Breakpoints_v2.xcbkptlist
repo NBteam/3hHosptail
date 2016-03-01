@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "3HPatientClient/3H/Home/ViewController/Appoint/AppointDoctors/AppointDoctorsInfoViewController.m"
-            timestampString = "478527448.633033"
+            timestampString = "478535871.064358"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "-getOrderGuahaoAccountPayOrder_sn:"
             landmarkType = "5">
          </BreakpointContent>

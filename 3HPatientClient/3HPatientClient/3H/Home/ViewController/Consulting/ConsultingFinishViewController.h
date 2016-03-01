@@ -10,4 +10,5 @@
 
 @interface ConsultingFinishViewController : BaseTableViewController
 @property (nonatomic, copy) NSString * str;
+@property (nonatomic, assign) NSInteger type;
 @end

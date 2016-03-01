@@ -146,7 +146,7 @@
         scrollView.showsHorizontalScrollIndicator = NO;
         scrollView.showsVerticalScrollIndicator = NO;
         scrollView.pagingEnabled = YES;
-        scrollView.backgroundColor = [UIColor redColor];
+        scrollView.backgroundColor = [UIColor whiteColor];
         scrollView.bounces = NO;
       // scrollView.scrollEnabled = NO;
         scrollView.tag = 10000 *j + 400;
