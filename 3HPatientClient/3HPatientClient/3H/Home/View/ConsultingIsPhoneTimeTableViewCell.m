@@ -168,7 +168,6 @@
                 [btn setTitleColor:[UIColor colorWithHEX:0x999999] forState:UIControlStateNormal];
             }
             [btn setTitle:model.times[i][@"start_time"] forState:UIControlStateNormal];
-            NSLog(model.times[i][@"start_time"]);
             //NSLog(model.times[i][@"start_time"]);
 //            [btn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
             
@@ -190,7 +189,6 @@
         self.btnOld = button;
     }
     UIScrollView *newScrollView = (UIScrollView *)[self.scrollView viewWithTag:((button.tag-100)/1000) * 10000 +400];
-    NSLog(@"华东%@",newScrollView);
     AppointTimeModel * model = self.dataArray[(button.tag-100)/1000];
     if ([[NSString stringWithFormat:@"%@",model.times[(button.tag-100)%1000][@"is_empty"]] isEqualToString:@"1"]) {
         for (UIView * view in newScrollView.subviews) {
@@ -215,7 +213,7 @@
         button.selected = YES;
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         if (self.btnBlock) {
-            self.btnBlock(model.times[(button.tag-100)%1000]);
+            self.btnBlock(model.times[(button.tag-100)%1000],model.date);
         }
     }else{
         if (self.isEmptyBlock) {

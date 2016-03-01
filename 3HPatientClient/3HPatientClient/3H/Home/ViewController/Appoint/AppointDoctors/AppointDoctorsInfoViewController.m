@@ -155,7 +155,10 @@
         [[THNetWorkManager shareNetWork]orderGuahaoDoctor_id:self.id date:model.date date_type:string andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
             [weakSelf removeMBProgressHudInManaual];
             if (response.responseCode == 1) {
-                [weakSelf getOrderGuahaoAccountPayOrder_sn:response.dataDic[@"order_sn"]];
+                ConsultingFinishViewController * cvc = [[ConsultingFinishViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
+                cvc.str = response.dataDic[@"order_date_str"];
+                [weakSelf.navigationController pushViewController:cvc animated:YES];
+//                [weakSelf getOrderGuahaoAccountPayOrder_sn:response.dataDic[@"order_sn"]];
             }else{
                 [weakSelf showHudAuto:response.message andDuration:@"2"];
             }
@@ -170,9 +173,7 @@
     [[THNetWorkManager shareNetWork]getOrderGuahaoAccountPayOrder_sn:text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            ConsultingFinishViewController * cvc = [[ConsultingFinishViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
-            cvc.str = weakSelf.string;
-            [weakSelf.navigationController pushViewController:cvc animated:YES];
+            
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

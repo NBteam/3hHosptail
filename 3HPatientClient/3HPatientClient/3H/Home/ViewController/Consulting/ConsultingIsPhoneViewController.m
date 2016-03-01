@@ -21,6 +21,7 @@
 @property (nonatomic, strong) ConsultingIsPhoneTitleTableViewCell *headView;
 @property (nonatomic, strong) NSDictionary * dicInfo;
 @property (nonatomic, strong) NSIndexPath * indexPaths;
+@property (nonatomic, copy) NSString * dateStr;
 @end
 
 @implementation ConsultingIsPhoneViewController
@@ -67,9 +68,10 @@
         }
         WeakSelf(ConsultingIsPhoneViewController);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell setBtnBlock:^(NSDictionary * dict) {
+        [cell setBtnBlock:^(NSDictionary * dict,NSString * string) {
             weakSelf.dicInfo = [NSDictionary dictionaryWithDictionary:dict];
             weakSelf.priceStr = [dict[@"price"] doubleValue];
+            weakSelf.dateStr = [NSString stringWithFormat:@"%@  %@",string,dict[@"start_time"]];
             [weakSelf.headView confingWithModel:weakSelf.priceStr];
         }];
         [cell setIsEmptyBlock:^{
@@ -157,8 +159,6 @@
     }
 }
 - (void)getConsultingNetWorkText:(NSString *)text{
-    NSLog(@"%@",self.dicInfo);
-    
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(ConsultingIsPhoneViewController);
     [[THNetWorkManager shareNetWork]getAddOrderTelOrder_tel_id:self.dicInfo[@"id"] desc:text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
@@ -180,6 +180,7 @@
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             ConsultingFinishViewController * cvc = [[ConsultingFinishViewController alloc]initWithTableViewStyle:UITableViewStyleGrouped];
+            cvc.str = weakSelf.dateStr;
             [weakSelf.navigationController pushViewController:cvc animated:YES];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];

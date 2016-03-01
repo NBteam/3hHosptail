@@ -32,6 +32,6 @@
 //赋值
 - (void)confingWithModel:(NSMutableArray *)array;
 
-@property (nonatomic, copy) void (^btnBlock)(NSDictionary *dict);
+@property (nonatomic, copy) void (^btnBlock)(NSDictionary *dict,NSString * string);
 @property (nonatomic, copy) void (^isEmptyBlock)(void);
 @end
