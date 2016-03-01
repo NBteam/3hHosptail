@@ -63,9 +63,45 @@
         [btn setTitleColor:AppDefaultColor forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
         btn.tag = 100 +i;
+        
+        if (i == 0) {
+             self.labGuaHao.left = btn.width - self.labGuaHao.width - 20;
+            [btn addSubview:self.labGuaHao];
+        }else{
+            self.labDianHua.left = btn.width - self.labDianHua.width - 20;
+            [btn addSubview:self.labDianHua];
+        }
         [self addSubview:btn];
         
     }
+}
+
+- (UILabel *)labGuaHao{
+    if (!_labGuaHao) {
+        _labGuaHao = [[UILabel alloc] initWithFrame:CGRectMake(0, 12, 20, 20)];
+        _labGuaHao.backgroundColor = [UIColor redColor];
+        _labGuaHao.text = @"99";
+        _labGuaHao.textColor = [UIColor whiteColor];
+        _labGuaHao.font = [UIFont systemFontOfSize:13];
+        _labGuaHao.textAlignment = NSTextAlignmentCenter;
+        _labGuaHao.layer.cornerRadius = 10;
+        _labGuaHao.layer.masksToBounds = YES;
+    }
+    return _labGuaHao;
+}
+
+- (UILabel *)labDianHua{
+    if (!_labDianHua) {
+        _labDianHua = [[UILabel alloc] initWithFrame:CGRectMake(0, 12, 20, 20)];
+        _labDianHua.backgroundColor = [UIColor redColor];
+        _labDianHua.text = @"99";
+        _labDianHua.textColor = [UIColor whiteColor];
+        _labDianHua.font = [UIFont systemFontOfSize:13];
+        _labDianHua.textAlignment = NSTextAlignmentCenter;
+        _labDianHua.layer.cornerRadius = 10;
+        _labDianHua.layer.masksToBounds = YES;
+    }
+    return _labDianHua;
 }
 
 - (void)btnAction:(UIButton *)btn{

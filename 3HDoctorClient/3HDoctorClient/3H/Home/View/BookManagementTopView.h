@@ -14,6 +14,10 @@
 
 @property (nonatomic, strong) UILabel *labColorLine;
 
+@property (nonatomic, strong) UILabel *labGuaHao;
+
+@property (nonatomic, strong) UILabel *labDianHua;
+
 
 //  设置头部按钮的选中方法
 - (void)topButtonMenuSelectForIndex:(NSInteger)index;

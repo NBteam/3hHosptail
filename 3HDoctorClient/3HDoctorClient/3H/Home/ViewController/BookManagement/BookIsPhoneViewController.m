@@ -35,6 +35,11 @@
             if (weakSelf.pageNO == 1) {
                 [weakSelf.dataArray removeAllObjects];
             }
+            
+            if (weakSelf.reloadBlock) {
+                weakSelf.reloadBlock(response.dataDic[@"dh_num"]);
+            }
+            
             for (NSDictionary * dict in response.dataDic[@"list"]) {
                 BookIsPhoneModel * model = [response thParseDataFromDic:dict andModel:[BookIsPhoneModel class]];
                 [weakSelf.dataArray addObject:model];

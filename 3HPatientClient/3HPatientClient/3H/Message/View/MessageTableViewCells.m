@@ -77,13 +77,15 @@
                         @"3H-消息_复查提醒",
                         @"3H-消息_订单提醒",
                         @"3H-消息_系统消息"];
+//    默认全部，preorder_msg预约提醒，drug_msg用药提醒，recheck_msg复查提醒，
+//    order_msg订单提醒，sys_msg系统消息
     
-    NSArray *arr = @[@"otel_msg_info",@"drug_msg_info",@"recheck_msg_info",@"order_msg_info",@"sys_msg_info"];
-    NSArray *arrNum = @[@"guahao_msg_num",@"otel_msg_num",@"chat_msg_num",@"user_add_msg_num",@"sys_msg_num"];
+    NSArray *arr = @[@"preorder_msg",@"drug_msg_info",@"recheck_msg_info",@"order_msg_info",@"sys_msg_info"];
+    NSArray *arrNum = @[@"preorder_msg_num",@"drug_msg_num",@"recheck_msg_num",@"order_msg_num",@"sys_msg_num"];
     NSArray *arrTitle = @[@"预约提醒",
                           @"用药提醒",
-                          @"咨询信息",
                           @"复查提醒",
+                          @"订单提醒",
                           @"系统消息"];
     
     self.imgLogo.image = [UIImage imageNamed:arrImg[index]];

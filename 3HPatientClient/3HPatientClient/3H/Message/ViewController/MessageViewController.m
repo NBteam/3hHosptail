@@ -18,6 +18,7 @@
 #import "ConsultingDoctorListViewController.h"
 //预约提醒
 #import "MyAppointmentViewController.h"
+#import "AllOrderViewController.h"
 @interface MessageViewController ()
 
 @property (nonatomic, strong) NSMutableDictionary *dataDict;
@@ -30,8 +31,6 @@
     // Do any additional setup after loading the view.
     self.dataDict = [[NSMutableDictionary alloc] init];
     [self sgetMsgHome];
-   
-    [self readAllMessage];
     self.isOpenHeaderRefresh = YES;
     
 }
@@ -43,11 +42,11 @@
     [self sgetMsgHome];
 }
 
--(void)readAllMessage{
+-(void)readAllMessageType:(NSString *)type{
     [self.dataArray removeAllObjects];
     [self showHudAuto:WaitPrompt];
     WeakSelf(MessageViewController);
-    [[THNetWorkManager shareNetWork] readAllMsgandCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+    [[THNetWorkManager shareNetWork] readAllMsgtype:type andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             NSLog(@"查看%@",response.dataDic);
@@ -128,25 +127,29 @@
 //#import "ConsultingDoctorListViewController.h"
 //    //预约提醒
 //#import "AppointViewController.h"
-    
-    if (indexPath.section == 0) {
+    NSArray *arr = @[@"preorder_msg",@"drug_msg",@"",@"recheck_msg",@"sys_msg"];
+//    默认全部，preorder_msg预约提醒，drug_msg用药提醒，
+//    recheck_msg复查提醒， order_msg订单提醒，sys_msg系统消息
+    if (indexPath.section == 0) {//预约提醒
         MyAppointmentViewController *appointVc = [[MyAppointmentViewController alloc] init];
         appointVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:appointVc animated:YES];
-    }else if(indexPath.section == 1){
+    }else if(indexPath.section == 1){//用药提醒
         MedicationGuideViewController *appointVc = [[MedicationGuideViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         appointVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:appointVc animated:YES];
-    }else if(indexPath.section == 2){
-        ConsultingDoctorListViewController *appointVc = [[ConsultingDoctorListViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-        appointVc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:appointVc animated:YES];
-        
-    }else if(indexPath.section == 3){
+    }else if(indexPath.section == 2){//复查提醒
         ReviewGuideViewController *appointVc = [[ReviewGuideViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         appointVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:appointVc animated:YES];
+        
+    }else if(indexPath.section == 3){//订单提醒
+        AllOrderViewController *appointVc = [[AllOrderViewController alloc] init];
+        appointVc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:appointVc animated:YES];
     }
+    
+    
  }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -9,5 +9,6 @@
 #import "BaseTableViewController.h"
 
 @interface BookIsRegisteredViewController : BaseTableViewController
+@property (nonatomic, copy) void(^reloadBlock)(NSString *numString);
 
 @end

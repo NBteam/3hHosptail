@@ -100,12 +100,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    MessageListModel *model = self.dataArray[indexPath.section];
-    MessageListDetailViewController *messageListDetailVc = [[MessageListDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
-    messageListDetailVc.titleString = self.titleString;
-    messageListDetailVc.imgString = self.imgString;
-    messageListDetailVc.ids = model.id;
-    [self.navigationController pushViewController:messageListDetailVc animated:YES];
+//    MessageListModel *model = self.dataArray[indexPath.section];
+//    MessageListDetailViewController *messageListDetailVc = [[MessageListDetailViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+//    messageListDetailVc.titleString = self.titleString;
+//    messageListDetailVc.imgString = self.imgString;
+//    messageListDetailVc.ids = model.id;
+//    [self.navigationController pushViewController:messageListDetailVc animated:YES];
     
 }
 

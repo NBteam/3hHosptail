@@ -87,8 +87,14 @@
     [weakSelf showHudWaitingView:WaitPrompt];
     [[THNetWorkManager shareNetWork]getMyOrderguahaoListPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
+        
+        NSLog(@"我奥看%@",response.dataDic);
         if (weakSelf.pageNO == 1) {
             [weakSelf.dataArray removeAllObjects];
+        }
+        
+        if (weakSelf.reloadBlock) {
+            weakSelf.reloadBlock(response.dataDic[@"gh_num"]);
         }
         if (response.responseCode == 1) {
             for (NSDictionary * dict in response.dataDic[@"list"]) {

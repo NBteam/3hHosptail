@@ -889,8 +889,8 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     
 }
 #pragma mark【鉴权】消息——所有消息已读【20151222添加】
-- (void)readAllMsgandCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
-    NSDictionary *paramDic = @{@"a":@"readAllMsg",@"token":GetToken};
+- (void)readAllMsg:(NSString *)type andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"readAllMsg",@"token":GetToken,@"type":type};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
 #pragma mark【鉴权】我的收入记录【20160114添加】

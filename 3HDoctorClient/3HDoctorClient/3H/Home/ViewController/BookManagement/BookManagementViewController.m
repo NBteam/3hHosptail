@@ -76,14 +76,22 @@
 
 - (BookIsRegisteredViewController *)registerVc{
     if (!_registerVc) {
+        WeakSelf(BookManagementViewController);
         _registerVc = [[BookIsRegisteredViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        [_registerVc setReloadBlock:^(NSString *numString) {
+            weakSelf.topView.labGuaHao.text = [NSString stringWithFormat:@"%@",numString];
+        }];
     }
     return _registerVc;
 }
 
 - (BookIsPhoneViewController *)phoneVc{
     if (!_phoneVc) {
+        WeakSelf(BookManagementViewController);
         _phoneVc = [[BookIsPhoneViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        [_phoneVc setReloadBlock:^(NSString *numString) {
+            weakSelf.topView.labDianHua.text = [NSString stringWithFormat:@"%@",numString];
+        }];
     }
     return _phoneVc;
 }

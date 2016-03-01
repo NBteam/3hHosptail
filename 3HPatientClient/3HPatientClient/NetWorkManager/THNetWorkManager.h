@@ -309,7 +309,7 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 #pragma mark【鉴权】消息——获取未读消息数【20160114更新】
 - (void)getMsgNumandCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 #pragma mark【鉴权】消息——所有消息已读【20151222添加】
-- (void)readAllMsgandCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+- (void)readAllMsgtype:(NSString *)type andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 #pragma mark 咨询聊天——创建群组【20160129更新】
 - (void)createGroupDoctor_id:(NSString *)doctor_id group_id:(NSString *)group_id andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 #pragma mark 【鉴权】档案记录——列表【20160131更新】

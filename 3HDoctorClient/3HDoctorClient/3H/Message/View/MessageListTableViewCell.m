@@ -14,7 +14,7 @@
     [self.contentView addSubview:self.labTitle];
     [self.contentView addSubview:self.labDetail];
     [self.contentView addSubview:self.labTime];
-    [self.contentView addSubview:self.labRead];
+   // [self.contentView addSubview:self.labRead];
 }
 
 - (UIImageView *)imgLogo{
