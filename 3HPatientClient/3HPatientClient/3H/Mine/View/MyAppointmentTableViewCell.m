@@ -185,6 +185,7 @@
         self.labDetail.textColor = [UIColor colorWithHEX:0x888888];
         self.labTime.textColor = [UIColor colorWithHEX:0x888888];
     }
+    self.labState.text = model.status_n;
 }
 /*
 // Only override drawRect: if you perform custom drawing.
