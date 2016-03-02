@@ -36,6 +36,7 @@
 @property (nonatomic, copy) NSString *groupId;
 //是否显示转助理按钮
 @property (nonatomic, assign) NSInteger is_assist_patient;
+@property (nonatomic, copy) void(^reloadBlock)();
 
 - (instancetype)initWithChatter:(NSString *)chatter isGroup:(BOOL)isGroup;
 - (instancetype)initWithChatter:(NSString *)chatter conversationType:(EMConversationType)type;

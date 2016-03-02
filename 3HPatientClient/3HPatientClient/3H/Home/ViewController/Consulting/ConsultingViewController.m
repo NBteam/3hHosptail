@@ -38,6 +38,10 @@
 }
 
 - (void)backAction{
+    
+    if (self.reloadBlock) {
+        self.reloadBlock();
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -18,6 +18,8 @@
 @property (nonatomic, strong) UILabel *labDetail;
 //箭头
 @property (nonatomic, strong) UIImageView *imgArrow;
+
+@property (nonatomic, strong) UIView *redView;
 //赋值
 - (void)confingWithModel:(PatientListModel *)dic;
 @end

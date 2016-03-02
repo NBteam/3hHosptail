@@ -20,4 +20,7 @@
 @property (nonatomic, copy) NSString *md5_id;
 //是否是助理的患者 1 是 0 不是
 @property (nonatomic, copy) NSString *is_assist_patient;
+
+//是否有消息
+@property (nonatomic, assign) BOOL isMessages;
 @end

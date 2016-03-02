@@ -419,6 +419,9 @@
 		99DA41F51C0BEB0500573D4C /* UIBarButtonItemExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DA418B1C0BEB0500573D4C /* UIBarButtonItemExtension.m */; };
 		99DA41F71C0BEB9E00573D4C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 99DA41F61C0BEB9E00573D4C /* libsqlite3.0.dylib */; };
 		99DBE3371C1922E700965290 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DBE3361C1922E700965290 /* CustomTextView.m */; };
+		C019D6FC1C87094900E530B6 /* MessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C019D6FB1C87094900E530B6 /* MessageListViewController.m */; };
+		C019D6FF1C87097000E530B6 /* MessageListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C019D6FE1C87097000E530B6 /* MessageListTableViewCell.m */; };
+		C019D7021C87098E00E530B6 /* MessageListsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C019D7011C87098E00E530B6 /* MessageListsModel.m */; };
 		C043F6C11C1D7E4B00EC1B43 /* THHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C043F6C01C1D7E4B00EC1B43 /* THHttpResponse.m */; };
 		C043F6C41C1D7E8100EC1B43 /* THNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C043F6C31C1D7E8100EC1B43 /* THNetWorkManager.m */; };
 		C05810D21C2FB52B009A2567 /* ScheduleCalendarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C05810D11C2FB52B009A2567 /* ScheduleCalendarModel.m */; };
@@ -556,13 +559,13 @@
 		C0BAE9E11C4BE3C40056FA11 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BAE9E01C4BE3C40056FA11 /* UIKit.framework */; };
 		D23B79D41C7B44C200BFEB32 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B79D11C7B44C200BFEB32 /* WeatherModel.m */; };
 		D23B79D51C7B44C200BFEB32 /* XianXing.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B79D31C7B44C200BFEB32 /* XianXing.m */; };
-		D25C06D71C85D80C00EFA5C8 /* PayWayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D25C06D61C85D80C00EFA5C8 /* PayWayViewController.mm */; settings = {ASSET_TAGS = (); }; };
+		D25C06D71C85D80C00EFA5C8 /* PayWayViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D25C06D61C85D80C00EFA5C8 /* PayWayViewController.mm */; };
 		D2628B9F1C411E3D00DC711B /* CartListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2628B9E1C411E3D00DC711B /* CartListModel.m */; };
 		D29664AA1C4109090017EB91 /* ADView.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A51C4109090017EB91 /* ADView.m */; };
 		D29664AB1C4109090017EB91 /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A71C4109090017EB91 /* CycleScrollView.m */; };
 		D29664AC1C4109090017EB91 /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664A91C4109090017EB91 /* NSTimer+Addition.m */; };
 		D29664AF1C410C880017EB91 /* ShopPicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D29664AE1C410C880017EB91 /* ShopPicModel.m */; };
-		D2B777A01C849CFE000D8D5B /* MyOrdersBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B7779E1C849CFE000D8D5B /* MyOrdersBViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D2B777A01C849CFE000D8D5B /* MyOrdersBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B7779E1C849CFE000D8D5B /* MyOrdersBViewController.m */; };
 		D2CE7BB91C20557900BB169F /* CheckListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BB81C20557900BB169F /* CheckListModel.m */; };
 		D2CE7BBC1C205D9500BB169F /* CheckDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBB1C205D9500BB169F /* CheckDetailModel.m */; };
 		D2CE7BBF1C20669100BB169F /* MessageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CE7BBE1C20669100BB169F /* MessageListModel.m */; };
@@ -1523,6 +1526,12 @@
 		99DA41F61C0BEB9E00573D4C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		99DBE3351C1922E700965290 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
 		99DBE3361C1922E700965290 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
+		C019D6FA1C87094900E530B6 /* MessageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListViewController.h; sourceTree = "<group>"; };
+		C019D6FB1C87094900E530B6 /* MessageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListViewController.m; sourceTree = "<group>"; };
+		C019D6FD1C87097000E530B6 /* MessageListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListTableViewCell.h; sourceTree = "<group>"; };
+		C019D6FE1C87097000E530B6 /* MessageListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListTableViewCell.m; sourceTree = "<group>"; };
+		C019D7001C87098E00E530B6 /* MessageListsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListsModel.h; sourceTree = "<group>"; };
+		C019D7011C87098E00E530B6 /* MessageListsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListsModel.m; sourceTree = "<group>"; };
 		C043F6BF1C1D7E4B00EC1B43 /* THHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THHttpResponse.h; sourceTree = "<group>"; };
 		C043F6C01C1D7E4B00EC1B43 /* THHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THHttpResponse.m; sourceTree = "<group>"; };
 		C043F6C21C1D7E8100EC1B43 /* THNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THNetWorkManager.h; sourceTree = "<group>"; };
@@ -4369,6 +4378,10 @@
 				C07486D91C5A46F50034C40A /* MessageModels.m */,
 				C07486DA1C5A46F50034C40A /* MessageTableViewCell.h */,
 				C07486DB1C5A46F50034C40A /* MessageTableViewCell.m */,
+				C019D6FD1C87097000E530B6 /* MessageListTableViewCell.h */,
+				C019D6FE1C87097000E530B6 /* MessageListTableViewCell.m */,
+				C019D7001C87098E00E530B6 /* MessageListsModel.h */,
+				C019D7011C87098E00E530B6 /* MessageListsModel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4378,6 +4391,8 @@
 			children = (
 				C07486DD1C5A46F50034C40A /* MessageViewController.h */,
 				C07486DE1C5A46F50034C40A /* MessageViewController.m */,
+				C019D6FA1C87094900E530B6 /* MessageListViewController.h */,
+				C019D6FB1C87094900E530B6 /* MessageListViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -6235,6 +6250,7 @@
 				D2D0C7051C511D9200B0C853 /* EMAudioPlayerUtil.m in Sources */,
 				D2D0C7611C511D9200B0C853 /* EMChatTextBubbleView.m in Sources */,
 				99DA41971C0BEB0500573D4C /* AFHTTPRequestOperationManager.m in Sources */,
+				C019D6FF1C87097000E530B6 /* MessageListTableViewCell.m in Sources */,
 				C05884601C7CAA9A002D34DA /* lhSharePay.m in Sources */,
 				D2D0C72A1C511D9200B0C853 /* PSTCollectionViewCell.m in Sources */,
 				993669951C13FE4C00B3E1C7 /* WalletHeadTableViewCell.m in Sources */,
@@ -6471,6 +6487,7 @@
 				993669BA1C14046F00B3E1C7 /* MyArchivesViewController.m in Sources */,
 				D2D0C72F1C511D9200B0C853 /* PSTCollectionViewLayout.m in Sources */,
 				99DA41C31C0BEB0500573D4C /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */,
+				C019D7021C87098E00E530B6 /* MessageListsModel.m in Sources */,
 				D2CF31D31C57C98E00325491 /* HospitalModel.m in Sources */,
 				D2D0C76A1C511D9200B0C853 /* UserProfileManager.m in Sources */,
 				99D33AB01C17FDBF0067E57C /* CheckDataTableViewCell.m in Sources */,
@@ -6506,6 +6523,7 @@
 				99DA418C1C0BEB0500573D4C /* HealthViewController.m in Sources */,
 				99DA41E21C0BEB0500573D4C /* SDWebImageDownloaderOperation.m in Sources */,
 				9929BCAF1C181B0900F747CB /* ConsultingDoctorListTableViewCell.m in Sources */,
+				C019D6FC1C87094900E530B6 /* MessageListViewController.m in Sources */,
 				C05A96EE1C1D9F220078433B /* FeedbackTableViewCell.m in Sources */,
 				D2628B9F1C411E3D00DC711B /* CartListModel.m in Sources */,
 				99DA41D21C0BEB0500573D4C /* MJRefreshNormalHeader.m in Sources */,

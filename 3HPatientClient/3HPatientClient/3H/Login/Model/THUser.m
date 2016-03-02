@@ -33,6 +33,7 @@
     [aCoder encodeObject:self.sex forKey:@"sex"];
     [aCoder encodeObject:self.mobile forKey:@"tel"];
     [aCoder encodeObject:self.truename forKey:@"truename"];
+    [aCoder encodeObject:self.dictHX forKey:@"dictHX"];
 
 }
 
@@ -54,8 +55,8 @@
         self.sex = [aDecoder decodeObjectForKey:@"sex"];
         self.tel = [aDecoder decodeObjectForKey:@"tel"];
         self.truename = [aDecoder decodeObjectForKey:@"truename"];
-        
-        
+        self.dictHX = [aDecoder decodeObjectForKey:@"dictHX"];
+
     }
     return self;
 }

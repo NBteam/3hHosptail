@@ -322,4 +322,6 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
 
 #pragma mark 天气  信息
 - (void)getWeatherXianxingInfo:(NSString *)lat lng:(NSString *)lng city:(NSString *)city andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
+//	【鉴权】消息——列表【20151222添加】
+- (void)getMsgList:(NSString *)type andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure;
 @end

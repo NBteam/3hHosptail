@@ -26,7 +26,7 @@
 //个人资料
 #import "PersonalViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController ()<EMChatManagerChatDelegate>
 
 
 @property (nonatomic, strong) HomeHeadView *headView;
@@ -58,6 +58,98 @@
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getHomeInfo) name:@"reloadHomeInfo" object:nil];
 
+    [self registerNotifications];
+    [self setupUnreadMessageCount];
+}
+#pragma mark - private
+
+-(void)registerNotifications
+{
+    [self unregisterNotifications];
+    
+    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
+}
+
+-(void)unregisterNotifications
+{
+    [[EaseMob sharedInstance].chatManager removeDelegate:self];
+}
+// 未读消息数量变化回调
+-(void)didUnreadMessagesCountChanged
+{
+    [self setupUnreadMessageCount];
+}
+// 统计未读消息数
+-(void)setupUnreadMessageCount
+{
+    NSArray *conversations = [[[EaseMob sharedInstance] chatManager] conversations];
+    NSInteger unreadCount = 0;
+    for (EMConversation *conversation in conversations) {
+        
+        if (!conversation.latestMessageFromOthers.isRead) {
+            [self hxloadNum:conversation.latestMessageFromOthers.from];
+        }
+        
+        unreadCount += conversation.unreadMessagesCount;
+    }
+    NSLog(@"~~%ld",(long)unreadCount);
+    if (unreadCount) {
+        self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",unreadCount];
+    }else{
+        self.navigationController.tabBarItem.badgeValue = nil;
+    }
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    [application setApplicationIconBadgeNumber:unreadCount];
+}
+// 计算未读数量
+- (void)hxloadNum:(NSString *)hxNum{
+    
+    
+    // 把环信群组id进行保存
+    self.user = nil;
+    self.user = [self refreshUserData];
+    NSMutableDictionary *dict = self.user.dictHX;
+    
+    if (dict) {
+        
+        if ([self isMessagesKey:hxNum dict:dict]) {
+            
+        }else{
+            
+            [dict setObject:hxNum forKey:hxNum];
+            self.user.dictHX = dict;
+            //  写入本地
+            [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:self.user];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:HXMessagesLogs object:nil];
+        }
+        
+    }else{
+        if (hxNum) {
+            NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+            [dic setObject:hxNum forKey:hxNum];
+            self.user.dictHX = nil;
+            self.user.dictHX = dic;
+            
+            
+            //  写入本地
+            [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:self.user];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:HXMessagesLogs object:nil];
+        }
+    }
+    
+}
+
+- (BOOL)isMessagesKey:(NSString *)keys dict:(NSMutableDictionary *)dict{
+    
+    for (id key in dict) {
+        if ([key isEqualToString:keys]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 - (void)addAction{
@@ -200,35 +292,9 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)registerNotifications
-{
-    [self unregisterNotifications];
-    
-    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
-}
 
--(void)unregisterNotifications
-{
-    [[EaseMob sharedInstance].chatManager removeDelegate:self];
-}
-// 未读消息数量变化回调
--(void)didUnreadMessagesCountChanged
-{
-    [self setupUnreadMessageCount];
-}
-// 统计未读消息数
--(void)setupUnreadMessageCount
-{
-    NSArray *conversations = [[[EaseMob sharedInstance] chatManager] conversations];
-    NSInteger unreadCount = 0;
-    for (EMConversation *conversation in conversations) {
-        unreadCount += conversation.unreadMessagesCount;
-    }
-    
-    NSLog(@"~~%ld",(long)unreadCount);
-    UIApplication *application = [UIApplication sharedApplication];
-    [application setApplicationIconBadgeNumber:unreadCount];
-}
+
+
 
 /*
 #pragma mark - Navigation

@@ -13,4 +13,6 @@
 @property (nonatomic, copy) NSString * md5_id;
 @property (nonatomic, copy) NSString * name;
 @property (nonatomic, copy) NSString * group_id;
+
+@property (nonatomic, copy) void(^reloadBlock)();
 @end

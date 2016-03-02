@@ -26,6 +26,9 @@
 @property (nonatomic, copy) NSString *tel;
 @property (nonatomic, copy) NSString *truename;
 
+// 环信使用的
+@property (nonatomic, strong) NSMutableDictionary *dictHX;
+
 //  读取本地文件加载实例
 + (THUser *)ReadLocalUserDataForPath:(NSString *)path;
 //  写入本地文件

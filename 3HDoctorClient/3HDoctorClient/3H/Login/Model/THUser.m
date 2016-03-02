@@ -40,6 +40,7 @@
     [aCoder encodeObject:self.truename forKey:@"truename"];
     [aCoder encodeObject:self.work_week forKey:@"work_week"];
     [aCoder encodeObject:self.work_price forKey:@"work_price"];
+    [aCoder encodeObject:self.dictHX forKey:@"dictHX"];
  
 }
 
@@ -66,7 +67,7 @@
         self.truename = [aDecoder decodeObjectForKey:@"truename"];
         self.work_week = [aDecoder decodeObjectForKey:@"work_week"];
         self.work_price = [aDecoder decodeObjectForKey:@"work_price"];
-
+        self.dictHX = [aDecoder decodeObjectForKey:@"dictHX"];
  
         
         

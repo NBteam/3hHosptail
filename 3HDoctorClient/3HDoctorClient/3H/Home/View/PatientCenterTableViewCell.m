@@ -15,6 +15,17 @@
     [self.contentView addSubview:self.labTitle];
     [self.contentView addSubview:self.labDetail];
     [self.contentView addSubview:self.imgArrow];
+    [self.contentView addSubview:self.redView];
+}
+
+- (UIView *)redView{
+    if (!_redView){
+        _redView = [[UIView alloc] initWithFrame:CGRectMake(self.imgPatient.right -8, self.imgPatient.top, 8, 8)];
+        _redView.backgroundColor = [UIColor redColor];
+        _redView.layer.cornerRadius = 4;
+        _redView.layer.masksToBounds = YES;
+    }
+    return _redView;
 }
 
 - (UIImageView *)imgPatient{
@@ -59,6 +70,12 @@
     self.labTitle.attributedText = [self getName:dic.truename AndAge:[NSString stringWithFormat:@"  %@",dic.age] AndSex:[NSString stringWithFormat:@"  %@",dic.sex]];
   //  self.labDetail.attributedText
     self.labDetail.text = dic.sick_desc;
+    
+    if (dic.isMessages) {
+        self.redView.hidden = NO;
+    }else{
+        self.redView.hidden = YES;
+    }
     [self.imgPatient sd_setImageWithURL:[NSURL URLWithString:dic.pic]];
 }
 

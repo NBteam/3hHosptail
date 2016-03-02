@@ -15,6 +15,7 @@
 
 @interface ConsultingDoctorListViewController ()
 @property (nonatomic, assign) CGFloat cellHeight;
+
 @end
 
 @implementation ConsultingDoctorListViewController
@@ -32,6 +33,22 @@
     self.isOpenFooterRefresh = YES ;
     self.isOpenHeaderRefresh = YES;
     [self getNetWork];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:HXMessagesLogs object:nil];
+}
+
+- (void)reloadTableView{
+    
+    
+    for (int i = 0; i< self.dataArray.count; i++) {
+        AppointExpertListModel * model = self.dataArray[i];
+        model.isMessages = [self isMessages:[NSString stringWithFormat:@"%@",model.group_id]];
+        NSLog(@"我的住%d",model.isMessages);
+        [self.dataArray replaceObjectAtIndex:i withObject:model];
+    }
+    
+    
+    [self.tableView reloadData];
 }
 
 - (void)backAction{
@@ -82,6 +99,15 @@
     consultingVc.id = model.id;
     consultingVc.md5_id = model.md5_id;
     consultingVc.group_id = model.group_id;
+    WeakSelf(ConsultingDoctorListViewController);
+    [consultingVc setReloadBlock:^{
+        
+        [self.user.dictHX removeObjectForKey:[NSString stringWithFormat:@"%@",model.group_id]];
+        //  写入本地
+        NSLog(@"字典内容%@",self.user.dictHX);
+        [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:self.user];
+        [weakSelf reloadTableView];
+    }];
     [self.navigationController pushViewController:consultingVc animated:YES];
 }
 - (NSString *)title{
@@ -89,6 +115,8 @@
 }
 
 - (void)getNetWork{
+    
+    
     [self showHudWaitingView:WaitPrompt];
     WeakSelf(ConsultingDoctorListViewController);
     [[THNetWorkManager shareNetWork]getMyDoctorsPage:self.pageNO andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
@@ -99,6 +127,9 @@
             }
             for (NSDictionary * dic in response.dataDic[@"list"]) {
                 AppointExpertListModel * model = [response thParseDataFromDic:dic andModel:[AppointExpertListModel class]];
+                
+                model.isMessages = [weakSelf isMessages:[NSString stringWithFormat:@"%@",model.group_id]];
+                
                 [weakSelf.dataArray addObject:model];
             }
             [weakSelf.tableView reloadData];
@@ -120,6 +151,20 @@
         [weakSelf.tableView.footer endRefreshing];
         [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
     }];
+}
+
+// 是否有这个环信id
+- (BOOL)isMessages:(NSString *)groupId{
+    self.user = nil;
+    self.user = [self refreshUserData];
+    NSMutableDictionary *dic = self.user.dictHX;
+    for(id key in [dic allKeys]){
+        NSLog(@"key%@",key);
+        if ([key isEqualToString:groupId]) {
+            return YES;
+        }
+    }
+    return  NO;
 }
 #pragma mark -- 重新父类方法进行刷新
 - (void)headerRequestWithData

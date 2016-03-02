@@ -19,6 +19,7 @@
 //预约提醒
 #import "MyAppointmentViewController.h"
 #import "AllOrderViewController.h"
+#import "MessageListViewController.h"
 @interface MessageViewController ()
 
 @property (nonatomic, strong) NSMutableDictionary *dataDict;
@@ -119,14 +120,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    //用药指南
-//#import "MedicationGuideViewController.h"
-//    //复查指南
-//#import "ReviewGuideViewController.h"
-//    //咨询信息
-//#import "ConsultingDoctorListViewController.h"
-//    //预约提醒
-//#import "AppointViewController.h"
+
     NSArray *arr = @[@"preorder_msg",@"drug_msg",@"",@"recheck_msg",@"sys_msg"];
 //    默认全部，preorder_msg预约提醒，drug_msg用药提醒，
 //    recheck_msg复查提醒， order_msg订单提醒，sys_msg系统消息
@@ -147,10 +141,44 @@
         AllOrderViewController *appointVc = [[AllOrderViewController alloc] init];
         appointVc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:appointVc animated:YES];
+    }else{
+        MessageListViewController *appointVc = [[MessageListViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
+        appointVc.hidesBottomBarWhenPushed = YES;
+        appointVc.titleString = @"系统消息";
+        appointVc.imgString = @"3H-消息_系统消息";
+        appointVc.typeString = @"sys_msg";
+        [self.navigationController pushViewController:appointVc animated:YES];
     }
+    
+    [self readAllMessageType:arr[indexPath.section]];
     
     
  }
+
+- (void)loadData{
+    WeakSelf(MessageViewController);
+    [[THNetWorkManager shareNetWork] getMsgNumandCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        NSLog(@"---%@",response.dataDic);
+        if (response.responseCode == 1) {
+            if([response.dataDic[@"msg_num"] integerValue] != 0){
+                weakSelf.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%@",response.dataDic[@"msg_num"]];
+            }
+            
+            
+            
+        }else{
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        
+    } ];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self loadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

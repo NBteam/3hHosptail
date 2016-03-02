@@ -23,6 +23,8 @@
 @property (nonatomic, strong) UILabel * labHospital;
 //详细内容
 @property (nonatomic, strong) UILabel * labDetail;
+
+@property (nonatomic, strong) UIView *redView;
 - (CGFloat)confingWithModel:(DoctorListModel *)model;
 - (CGFloat)confingWithAppointExpertListModel:(AppointExpertListModel *)model;
 @end

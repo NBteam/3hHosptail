@@ -39,7 +39,7 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付 5 电话支付
     // Override point for customization after application launch.
     [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:@"3hPatient_P"];
     
-    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+
     [self setUM];
     [self.window makeKeyAndVisible];
     [self setAppStyle];

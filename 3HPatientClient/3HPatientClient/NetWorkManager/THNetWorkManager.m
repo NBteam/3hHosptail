@@ -758,4 +758,10 @@ CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success
     NSDictionary *paramDic = @{@"a":@"getWeatherXianxingInfo",@"token":GetToken,@"lat":lat,@"lng":lng,@"city":city};
     [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
 }
+
+//	【鉴权】消息——列表【20151222添加】
+- (void)getMsgList:(NSString *)type andCompletionBlockWithSuccess:(CompletionBlockWithSuccess) success andFailure:(FailureBlock) failure{
+    NSDictionary *paramDic = @{@"a":@"getMsgList",@"token":GetToken,@"type":type};
+    [self GETRequestOperationWithUrlPort:@"" params:paramDic successBlock:success failureBlock:failure];
+}
 @end

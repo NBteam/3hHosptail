@@ -71,10 +71,10 @@
         NSLog(@"---%@",response.dataDic);
         if (response.responseCode == 1) {
             if([response.dataDic[@"msg_num"] integerValue] != 0){
-                weakSelf.naMessage.tabBarItem.badgeValue = [NSString stringWithFormat:@"%@",response.dataDic[@"msg_num"]];
+                weakSelf.naMessage.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%@",response.dataDic[@"msg_num"]];
             }
             
-        
+            
             
         }else{
         }

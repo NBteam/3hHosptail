@@ -98,4 +98,7 @@
 #define webUrl @"填写app服务器的请求前缀"
 #define TIME_OUT_INTERVAL 30
 
+// 环信消息记录通知
+#define HXMessagesLogs @"HXMessagesLogs"
+
 #endif

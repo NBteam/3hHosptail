@@ -13,6 +13,7 @@
     [self.contentView addSubview:self.viewBack];
     [self.viewBack addSubview:self.viewOrange];
     [self.viewOrange addSubview:self.imgHead];
+    [self.viewOrange addSubview:self.redView];
     [self.viewOrange addSubview:self.labName];
     [self.viewOrange addSubview:self.labHospital];
     [self.viewBack addSubview:self.labDetail];
@@ -46,6 +47,16 @@
         _imgHead.layer.borderColor = [UIColor orangeColor].CGColor;//边框颜色,要为CGColor
     }
     return _imgHead;
+}
+
+- (UIView *)redView{
+    if (!_redView){
+        _redView = [[UIView alloc] initWithFrame:CGRectMake(self.imgHead.right -10, 15, 10, 10)];
+        _redView.backgroundColor = [UIColor redColor];
+        _redView.layer.cornerRadius = 5;
+        _redView.layer.masksToBounds = YES;
+    }
+    return _redView;
 }
 
 - (UILabel *)labName{
@@ -95,6 +106,12 @@
     self.viewOrange.height = self.labHospital.bottom + 10;
     self.labDetail.top = self.viewOrange.bottom + 5;
     self.viewBack.height = self.labDetail.bottom + 5;
+    if (model.isMessages) {
+        self.redView.hidden = NO;
+    }else{
+        self.redView.hidden = YES;
+    }
+    
     return self.viewBack.bottom;
 }
 @end

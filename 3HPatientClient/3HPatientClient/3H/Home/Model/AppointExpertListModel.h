@@ -19,6 +19,8 @@
 @property (nonatomic, copy) NSString * mobile;
 @property (nonatomic, copy) NSString * md5_id;
 @property (nonatomic, copy) NSString * group_id;
+//是否有消息
+@property (nonatomic, assign) BOOL isMessages;
 @end
 //	id					记录ID
 //	truename			名称

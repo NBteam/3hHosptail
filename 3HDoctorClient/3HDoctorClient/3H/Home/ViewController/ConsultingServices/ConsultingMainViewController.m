@@ -32,6 +32,35 @@
     self.isOpenHeaderRefresh = YES;
     self.isOpenFooterRefresh = YES;
     [self getNetWorkInfo];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:HXMessagesLogs object:nil];
+}
+
+- (void)reloadTableView{
+    
+    
+    for (int i = 0; i< self.dataArray.count; i++) {
+        PatientListModel * model = self.dataArray[i];
+        model.isMessages = [self isMessages:[NSString stringWithFormat:@"%@",model.group_id]];
+        NSLog(@"我的住%d",model.isMessages);
+        [self.dataArray replaceObjectAtIndex:i withObject:model];
+    }
+    
+    
+    [self.tableView reloadData];
+}
+
+// 是否有这个环信id
+- (BOOL)isMessages:(NSString *)groupId{
+    self.user = nil;
+    self.user = [self refreshUserData];
+    NSMutableDictionary *dic = self.user.dictHX;
+    for(id key in [dic allKeys]){
+        NSLog(@"key%@",key);
+        if ([key isEqualToString:groupId]) {
+            return YES;
+        }
+    }
+    return  NO;
 }
 
 - (void)backAction{
@@ -93,6 +122,14 @@
         chatController.is_assist_patient = [model.is_assist_patient integerValue];
 //        chatController.groupId = @"1454230107375";
         chatController.doctorId = self.user.id;
+        WeakSelf(ConsultingMainViewController);
+        [chatController setReloadBlock:^{
+            
+            [weakSelf.user.dictHX removeObjectForKey:[NSString stringWithFormat:@"%@",model.group_id]];
+            //  写入本地
+            [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:weakSelf.user];
+            [weakSelf reloadTableView];
+        }];
         
         [self.navigationController pushViewController:chatController animated:YES];
     }else{
@@ -124,6 +161,15 @@
             chatController.groupId = [NSString stringWithFormat:@"%@",model.group_id];
             chatController.doctorId = self.user.id;
             chatController.is_assist_patient = [model.is_assist_patient integerValue];
+            [chatController setReloadBlock:^{
+                
+                [weakSelf.user.dictHX removeObjectForKey:[NSString stringWithFormat:@"%@",model.group_id]];
+                //  写入本地
+                [THUser writeUserToLacalPath:UserPath andFileName:@"User" andWriteClass:weakSelf.user];
+                [weakSelf reloadTableView];
+            }];
+
+            
             [self.navigationController pushViewController:chatController animated:YES];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
@@ -148,6 +194,7 @@
             for (NSDictionary * dict in response.dataDic[@"list"]) {
                 
                 PatientListModel * model = [response thParseDataFromDic:dict andModel:[PatientListModel class]];
+                model.isMessages = [weakSelf isMessages:[NSString stringWithFormat:@"%@",model.group_id]];
                 [weakSelf.dataArray addObject:model];
             }
             [weakSelf.tableView reloadData];
