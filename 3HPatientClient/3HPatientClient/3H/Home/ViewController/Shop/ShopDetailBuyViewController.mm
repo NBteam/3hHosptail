@@ -120,6 +120,12 @@ NSString * const getPrePayIdUrl = @"https://api.mch.weixin.qq.com/pay/unifiedord
                 cell = [[ShopDetailBuyDescTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            WeakSelf(ShopDetailBuyViewController);
+            [cell setChangeInfoBlock:^(NSInteger index, NSInteger num) {
+                weakSelf.shopModel.indexStr = [NSString stringWithFormat:@"%ld",(long)num];
+                weakSelf.indexStr = [NSString stringWithFormat:@"%ld",(long)num];
+                [weakSelf.tableView reloadData];
+            }];
             [cell confingWithModel:self.shopModel];
             return cell;
         }else{
@@ -167,7 +173,19 @@ NSString * const getPrePayIdUrl = @"https://api.mch.weixin.qq.com/pay/unifiedord
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             CartListModel * model = self.infoArray[indexPath.section - 1];
-
+            WeakSelf(ShopDetailBuyViewController);
+            [cell setChangeInfoBlock:^(NSInteger index, NSInteger num) {
+                model.qty = [NSString stringWithFormat:@"%ld",(long)num];
+                weakSelf.indexStr = [NSString stringWithFormat:@"%ld",(long)num];
+                if (index == 0) {
+                    CartListModel * model1 = weakSelf.infoArray[indexPath.section - 1];
+                    [weakSelf decreaseCartNumNetWork:model1.goods_id];
+                }else{
+                    CartListModel * item1 = weakSelf.infoArray[indexPath.section - 1];
+                    [weakSelf addCarNetWork:item1.goods_id];
+                }
+                
+            }];
             [cell confingWithModel:model];
             return cell;
         }
@@ -216,13 +234,15 @@ NSString * const getPrePayIdUrl = @"https://api.mch.weixin.qq.com/pay/unifiedord
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    AddressListViewController *  AddressListVc = [[AddressListViewController alloc]init];
-    WeakSelf(ShopDetailBuyViewController);
-    [AddressListVc setPlaceBlock:^(AddressListModel *model) {
-        weakSelf.model = model;
-        [weakSelf.tableView reloadData];
-    }];
-    [self.navigationController pushViewController:AddressListVc animated:YES];
+    if (indexPath.section == 0) {
+        AddressListViewController *  AddressListVc = [[AddressListViewController alloc]init];
+        WeakSelf(ShopDetailBuyViewController);
+        [AddressListVc setPlaceBlock:^(AddressListModel *model) {
+            weakSelf.model = model;
+            [weakSelf.tableView reloadData];
+        }];
+        [self.navigationController pushViewController:AddressListVc animated:YES];
+    }
 //    AddressAddViewController * AddAddressVc = [[AddressAddViewController alloc]init];
 //    [self.navigationController pushViewController:AddAddressVc animated:YES];
 }
@@ -320,7 +340,34 @@ NSString * const getPrePayIdUrl = @"https://api.mch.weixin.qq.com/pay/unifiedord
         }
     }
 }
-
+#pragma mark ---- 加
+- (void)addCarNetWork:(NSString *)id{
+    WeakSelf(ShopDetailBuyViewController);
+    [[THNetWorkManager shareNetWork]addCartNumGoods_id:id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            [weakSelf.tableView reloadData];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
+#pragma mark ---- 减
+- (void)decreaseCartNumNetWork:(NSString *)id{
+    WeakSelf(ShopDetailBuyViewController);
+    [[THNetWorkManager shareNetWork]decreaseCartNumGoods_id:id andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        [weakSelf removeMBProgressHudInManaual];
+        if (response.responseCode == 1) {
+            [weakSelf.tableView reloadData];
+        }else{
+            [weakSelf showHudAuto:response.message andDuration:@"2"];
+        }
+    } andFailure:^(NSURLSessionDataTask *urlSessionDataTask, NSError *error) {
+        [weakSelf showHudAuto:InternetFailerPrompt andDuration:@"2"];
+    }];
+}
 - (NSString *)title{
     return @"确认订单";
 }
@@ -365,11 +412,7 @@ NSString * const getPrePayIdUrl = @"https://api.mch.weixin.qq.com/pay/unifiedord
     NSString *prePayid;
     prePayid = [self sendPrepay:packageParams];
     //---------------------------获取prePayId结束------------------------------
-    
-    
-    
-    
-    
+
     if(prePayid){
         NSString *timeStamp = [self genTimeStamp];
         // 调起微信支付

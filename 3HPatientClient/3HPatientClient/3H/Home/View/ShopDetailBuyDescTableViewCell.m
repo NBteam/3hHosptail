@@ -92,6 +92,9 @@
     NSInteger num = [self.labNum.text integerValue];
     if (num >1) {
         num --;
+        if (self.changeInfoBlock) {
+            self.changeInfoBlock(0,num);
+        }
         self.labNum.text = [NSString stringWithFormat:@"%li",num];
     }
     
@@ -115,6 +118,9 @@
     NSInteger num = [self.labNum.text integerValue];
     if (num <99) {
         num ++;
+        if (self.changeInfoBlock) {
+            self.changeInfoBlock(1,num);
+        }
         self.labNum.text = [NSString stringWithFormat:@"%li",num];
     }
 }

@@ -32,5 +32,5 @@
 //赋值
 - (void)confingWithModel:(id)model;
 
-
+@property (nonatomic, copy) void (^changeInfoBlock)(NSInteger index,NSInteger num);
 @end
