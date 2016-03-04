@@ -21,7 +21,7 @@
         _labTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, DeviceSize.width/2, 45)];
         _labTitle.textColor = [UIColor colorWithHEX:0x333333];
         _labTitle.font = [UIFont systemFontOfSize:15];
-        _labTitle.text =@"复查医院";
+        
     }
     return _labTitle;
 }
@@ -47,6 +47,12 @@
 
 //赋值
 - (void)confingWithModel:(NSString *)model{
+    
+    if ([model isEqualToString:@"复查日期"]) {
+        self.labTitle.text =@"复查日期:";
+    }else{
+        self.labTitle.text =@"复查医院:";
+    }
     self.labDetail.text = model;
 }
 /*

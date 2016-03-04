@@ -111,7 +111,7 @@
     [self.navigationController pushViewController:consultingVc animated:YES];
 }
 - (NSString *)title{
-    return @"医生列表";
+    return @"专家团队";
 }
 
 - (void)getNetWork{

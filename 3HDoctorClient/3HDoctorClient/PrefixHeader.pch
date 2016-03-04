@@ -101,6 +101,8 @@
 
 // 环信消息记录通知
 #define HXMessagesLogs @"HXMessagesLogs"
+//版本
+#define THDoctorVersionKey @"THDoctorVersionKey"
 
 
 #endif

@@ -150,6 +150,7 @@
         _txtPassWord.layer.borderWidth = 0.5;
         _txtPassWord.layer.masksToBounds = YES;
         _txtPassWord.layer.cornerRadius = 4;
+        _txtPassWord.secureTextEntry = YES;
         _txtPassWord.backgroundColor = [UIColor colorWithHEX:0xffffff];
         UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 10, 40)];
         _txtPassWord.leftView = img;
@@ -210,6 +211,7 @@
     [[THNetWorkManager shareNetWork]getPwdMobile:self.txtUserName.text sms_code:self.txtCode.text password:self.txtPassWord.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
+            [weakSelf showHudAuto:@"修改密码成功" andDuration:@"1"];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];

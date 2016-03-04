@@ -225,7 +225,7 @@
     [[THNetWorkManager shareNetWork]getPwdMobile:self.txtUserName.text sms_code:self.txtCode.text password:self.txtPassWord.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            [weakSelf showHudAuto:@"修改成功" andDuration:@"2"];
+            [weakSelf showHudAuto:@"密码修改成功" andDuration:@"2"];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];

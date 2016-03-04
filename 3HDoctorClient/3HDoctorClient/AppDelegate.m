@@ -43,7 +43,12 @@
     [self setAppStyle];
     //是否是第一次登陆
     if ([SGSaveFile getObjectFromSystemWithKey:IsFirst]) {
-        [self setWindowRootViewControllerIsLogin];
+        
+        if ([self hasNewVersion]) {
+            [self setWindowRootViewControllerIsGuide];
+        }else{
+            [self setWindowRootViewControllerIsLogin];
+        }
     }else{
         [self setWindowRootViewControllerIsGuide];
     }
@@ -57,6 +62,21 @@
     [self registerHuanXin:application didFinishLaunchingWithOptions:launchOptions];
     
     return YES;
+}
+
+- (BOOL)hasNewVersion{
+    // 取出本地保存的版本号
+    NSString *oldVersion = [SGSaveFile getIdFromObjectWithKey:THDoctorVersionKey];
+    // 获取当前版本
+    NSString *currentVersion = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
+    // 把当前版本号保存到本地
+    [SGSaveFile saveObjectToSystem:currentVersion forKey:THDoctorVersionKey];
+    //升序
+    if ([oldVersion compare:currentVersion] == NSOrderedAscending) {
+        return YES;
+    }
+    return NO;
+    
 }
 #pragma mark 处理后台推送
 - (void)handleProgramLaunchNotifaction:(NSDictionary *)notifacion

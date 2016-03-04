@@ -374,7 +374,7 @@
     [[THNetWorkManager shareNetWork] addDoctorIds:ids CompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
         
         if (response.responseCode == 1) {
-            [weakSelf showHudAuto:@"添加成功" andDuration:@"2"];
+            [weakSelf showHudAuto:@"请求已发送" andDuration:@"2"];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
