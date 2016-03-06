@@ -89,15 +89,15 @@
 #define UserPassword @"3H_UserPassword"
 
 //线上关闭NsLog
-//#ifndef DEBUG
-//
-//#define NSLog(...) NSLog(__VA_ARGS__)
-//
-//#else
-//
-//#define NSLog(...) {}
-//
-//#endif
+#ifndef DEBUG
+
+#define NSLog(...) NSLog(__VA_ARGS__)
+
+#else
+
+#define NSLog(...) {}
+
+#endif
 
 // 环信消息记录通知
 #define HXMessagesLogs @"HXMessagesLogs"

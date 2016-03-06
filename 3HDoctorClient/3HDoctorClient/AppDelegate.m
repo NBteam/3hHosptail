@@ -76,7 +76,6 @@
         return YES;
     }
     return NO;
-    
 }
 #pragma mark 处理后台推送
 - (void)handleProgramLaunchNotifaction:(NSDictionary *)notifacion
@@ -89,7 +88,7 @@
 
 - (void)registerHuanXin:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     [self registerRemoteNotification];
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:@"3hDoctor_D"];
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"91361002ma35fm500l#3hhealth" apnsCertName:@"3hDoctor_P"];
 
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
