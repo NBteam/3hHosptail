@@ -80,7 +80,10 @@
         _registerVc = [[BookIsRegisteredViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         [_registerVc setReloadBlock:^(NSString *numString) {
             if (![numString isEqualToString:@"0"]) {
+                weakSelf.topView.labGuaHao.hidden = NO;
                 weakSelf.topView.labGuaHao.text = [NSString stringWithFormat:@"%@",numString];
+            }else{
+                weakSelf.topView.labGuaHao.hidden = YES;
             }
         }];
     }
@@ -93,7 +96,10 @@
         _phoneVc = [[BookIsPhoneViewController alloc] initWithTableViewStyle:UITableViewStyleGrouped];
         [_phoneVc setReloadBlock:^(NSString *numString) {
             if (![numString isEqualToString:@"0"]) {
+                weakSelf.topView.labDianHua.hidden = NO;
                 weakSelf.topView.labDianHua.text = [NSString stringWithFormat:@"%@",numString];
+            }else{
+                weakSelf.topView.labDianHua.hidden = YES;
             }
         }];
     }

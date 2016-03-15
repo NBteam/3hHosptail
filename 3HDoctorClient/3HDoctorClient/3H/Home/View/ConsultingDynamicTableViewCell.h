@@ -22,6 +22,6 @@
 @property (nonatomic, strong) UIImageView *imgTime;
 
 //赋值
-- (void)confingWithModel:(InformationModel *)model;
+- (void)confingWithModel:(InformationModel *)model draging:(BOOL)draging;
 
 @end

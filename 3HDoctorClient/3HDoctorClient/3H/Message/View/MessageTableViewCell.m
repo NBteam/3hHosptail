@@ -72,7 +72,9 @@
 
 //赋值
 
-- (void)confingWithDict:(NSMutableDictionary *)dict Index:(NSInteger)index{
+- (void)confingWithDict:(NSMutableDictionary *)dict Index:(NSInteger)index draging:(BOOL)draging{
+    
+
     NSArray *arrImg = @[@"3H-消息_挂号预约",
                         @"3H-消息_电话预约",
                         @"3H-消息_咨询信息",

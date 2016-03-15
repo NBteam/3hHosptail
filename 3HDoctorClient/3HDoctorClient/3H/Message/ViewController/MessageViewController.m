@@ -101,7 +101,7 @@
         cell = [[MessageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell confingWithDict:self.dataDict Index:indexPath.section];
+    [cell confingWithDict:self.dataDict Index:indexPath.section draging:tableView.dragging];
     return cell;
 }
 

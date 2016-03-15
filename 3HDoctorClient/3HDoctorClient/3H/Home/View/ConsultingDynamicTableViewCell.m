@@ -68,7 +68,8 @@
 }
 
 //赋值
-- (void)confingWithModel:(InformationModel *)model{
+- (void)confingWithModel:(InformationModel *)model draging:(BOOL)draging{
+
 
     self.labDetail.text = model.desc;
     [self.labDetail sizeToFit];

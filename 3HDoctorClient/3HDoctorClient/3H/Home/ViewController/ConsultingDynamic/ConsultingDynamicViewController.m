@@ -72,7 +72,7 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         InformationModel * model = self.dataArray[indexPath.section];
-        [cell confingWithModel:model];
+        [cell confingWithModel:model draging:tableView.dragging];
         return cell;
     }
     

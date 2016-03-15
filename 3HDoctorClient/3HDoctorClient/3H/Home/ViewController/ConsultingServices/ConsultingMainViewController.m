@@ -154,6 +154,7 @@
         if (response.responseCode == 1) {
             [weakSelf headerRequestWithData];
             ChatViewController*chatController = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"%@",model.group_id] conversationType:eConversationTypeGroupChat];
+            
             chatController.title = [NSString stringWithFormat:@"您正在与%@聊天",model.truename];
             chatController.myImageString = self.user.pic;
             chatController.youImageString = model.pic;

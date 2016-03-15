@@ -80,7 +80,6 @@
     if (!_labGuaHao) {
         _labGuaHao = [[UILabel alloc] initWithFrame:CGRectMake(0, 12, 20, 20)];
         _labGuaHao.backgroundColor = [UIColor redColor];
-        _labGuaHao.text = @"99";
         _labGuaHao.textColor = [UIColor whiteColor];
         _labGuaHao.font = [UIFont systemFontOfSize:13];
         _labGuaHao.textAlignment = NSTextAlignmentCenter;
@@ -94,7 +93,7 @@
     if (!_labDianHua) {
         _labDianHua = [[UILabel alloc] initWithFrame:CGRectMake(0, 12, 20, 20)];
         _labDianHua.backgroundColor = [UIColor redColor];
-        _labDianHua.text = @"99";
+
         _labDianHua.textColor = [UIColor whiteColor];
         _labDianHua.font = [UIFont systemFontOfSize:13];
         _labDianHua.textAlignment = NSTextAlignmentCenter;

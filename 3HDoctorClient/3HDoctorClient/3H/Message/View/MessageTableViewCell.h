@@ -21,5 +21,5 @@
 @property (nonatomic, strong) UILabel *labNum;
 //赋值
 
-- (void)confingWithDict:(NSMutableDictionary *)dict Index:(NSInteger)index;
+- (void)confingWithDict:(NSMutableDictionary *)dict Index:(NSInteger)index draging:(BOOL)draging;
 @end
