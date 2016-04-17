@@ -127,6 +127,12 @@
 //赋值
 - (void)confingWithModel:(WeatherModel *)model item:(XianXing *)item{
 //    self.imgWeather.image = [UIImage imageNamed:@"3H-首页-天气"];
+    NSLog(@"%@",model.weather_url);
+    NSLog(@"%@",model.temperature);
+    NSLog(@"%@",model.wind);
+    NSLog(@"%@",model.weather);
+    NSLog(@"%@",item.xxweihao);
+    NSLog(@"%@",item.isxianxing);
     if (model) {
         [self.imgWeather sd_setImageWithURL:SD_IMG(model.weather_url)];
         self.labWeatherWD.attributedText = [self getLabTitle:model.temperature Detail:@""];

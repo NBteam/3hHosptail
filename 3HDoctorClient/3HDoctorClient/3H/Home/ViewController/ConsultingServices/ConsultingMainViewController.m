@@ -153,13 +153,13 @@
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
             [weakSelf headerRequestWithData];
-            ChatViewController*chatController = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"%@",model.group_id] conversationType:eConversationTypeGroupChat];
+            ChatViewController*chatController = [[ChatViewController alloc] initWithChatter:[NSString stringWithFormat:@"%@",group_id] conversationType:eConversationTypeGroupChat];
             
             chatController.title = [NSString stringWithFormat:@"您正在与%@聊天",model.truename];
             chatController.myImageString = self.user.pic;
             chatController.youImageString = model.pic;
             chatController.patientId = [NSString stringWithFormat:@"%@",model.id];
-            chatController.groupId = [NSString stringWithFormat:@"%@",model.group_id];
+            chatController.groupId = [NSString stringWithFormat:@"%@",group_id];
             chatController.doctorId = self.user.id;
             chatController.is_assist_patient = [model.is_assist_patient integerValue];
             [chatController setReloadBlock:^{

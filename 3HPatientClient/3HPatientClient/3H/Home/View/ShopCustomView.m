@@ -25,8 +25,8 @@
     [self addSubview:self.imgLogo];
     [self addSubview:self.labTitle];
     [self addSubview:self.labNowPrice];
-    [self addSubview:self.labOldPriceName];
-    [self addSubview:self.labOldPrice];
+//    [self addSubview:self.labOldPriceName];
+//    [self addSubview:self.labOldPrice];
 }
 
 - (UIImageView *)imgLogo{
@@ -36,6 +36,8 @@
         _imgLogo.layer.borderWidth = 0.5;
         _imgLogo.layer.borderColor = [UIColor colorWithHEX:0xcccccc].CGColor;
         _imgLogo.backgroundColor = [UIColor whiteColor];
+//        _imgLogo.contentMode = UIViewContentModeScaleAspectFill;
+//        _imgLogo.clipsToBounds = true;
     }
     return _imgLogo;
 }
@@ -51,7 +53,7 @@
 
 - (UILabel *)labNowPrice{
     if (!_labNowPrice) {
-        _labNowPrice = [[UILabel alloc] initWithFrame:CGRectMake(self.labTitle.left, self.labTitle.bottom +5, self.imgLogo.width -10, 13)];
+        _labNowPrice = [[UILabel alloc] initWithFrame:CGRectMake(self.labTitle.left, self.labTitle.bottom +5 +18, self.imgLogo.width -10, 13)];
         _labNowPrice.textColor = AppDefaultColor;
         _labNowPrice.font = [UIFont systemFontOfSize:13];
     }
@@ -85,10 +87,10 @@
 - (void)confingWithModel:(GoodsListModel *)model{
     self.labTitle.text = model.name;
     self.labNowPrice.text = [NSString stringWithFormat:@"会员价:￥%@元",model.price];
-    NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+    //NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
     [self.imgLogo sd_setImageWithURL:SD_IMG(model.thumb)];
-    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@元",model.market_price] attributes:attribtDic];
-    self.labOldPrice.attributedText = attribtStr;
+//    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@元",model.market_price] attributes:attribtDic];
+//    self.labOldPrice.attributedText = attribtStr;
 }
 
 /*

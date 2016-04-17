@@ -239,11 +239,12 @@ NSString * const getPrePayIdUrl = @"https://api.mch.weixin.qq.com/pay/unifiedord
     [self getNetWork];
 }
 - (void)getNetWork{
-    [self showHudWaitingView:WaitPrompt];
+    
     WeakSelf(WithdrawalViewController);
     if ([self.textPrice.text isEqualToString:@""]) {
         [self showHudAuto:@"请输入金额" andDuration:@"2"];
     }else{
+        [self showHudWaitingView:WaitPrompt];
         if (self.isZhiFuType) {
             AppDelegate * app = [UIApplication sharedApplication].delegate;
             [[THNetWorkManager shareNetWork]getPostChargeTotal:self.textPrice.text andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
@@ -263,13 +264,14 @@ NSString * const getPrePayIdUrl = @"https://api.mch.weixin.qq.com/pay/unifiedord
             NSLog(@"钱数%f",folat);
             NSLog(@"hhahaah%@",[NSString stringWithFormat:@"%.0f",folat]);
             [self getWeChatPayWithOrderName:@"3H健康管理充值" price:[NSString stringWithFormat:@"%.0f",folat]];
+            [weakSelf removeMBProgressHudInManaual];
         }
     }
     
 }
 - (void)CZAction{
     WIthFinishViewController * WIthFinishVc = [[WIthFinishViewController alloc]init];
-    WIthFinishVc.priceStr = self.priceStr;
+    WIthFinishVc.priceStr = self.textPrice.text;
     [self.navigationController pushViewController:WIthFinishVc animated:YES];
 }
 - (NSString *)title{

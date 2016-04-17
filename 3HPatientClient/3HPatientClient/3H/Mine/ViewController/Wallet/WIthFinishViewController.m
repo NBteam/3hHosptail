@@ -23,7 +23,7 @@
     [self.viewBack addSubview:self.imaGreen];
     [self.viewBack addSubview:self.labInfo];
     self.viewBack.frame = CGRectMake(0, 10, DeviceSize.width, self.labInfo.bottom + 20);
-    self.labInfo.text = [NSString stringWithFormat:@"您成功通过支付宝充值%@元",self.priceStr];
+    self.labInfo.text = [NSString stringWithFormat:@"您已成功充值%@元",self.priceStr];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItemExtension leftBackButtonItem:@selector(backAction) andTarget:self];
     // Do any additional setup after loading the view.
 }

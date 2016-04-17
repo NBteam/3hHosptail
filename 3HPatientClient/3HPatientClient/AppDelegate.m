@@ -418,7 +418,8 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付 5 电话支付
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    
+  //wx0863c23f9e3f8d86://oauth?code=0017229764147247c0e3ec97e524c2cQ&state=
+    //wx0863c23f9e3f8d86://oauth?code=021adb8b6a9df11317f014bce2ea335W&state=
     NSLog(@"微信支付%@",url);
     //如果极简SDK不可用，会跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
     if ([url.host isEqualToString:@"platformapi"]||[url.host isEqualToString:@"safepay"]) {
@@ -476,6 +477,8 @@ NSInteger payIndex;// 1 充值  2 购物 3 全部  4 待支付 5 电话支付
             else{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"BuySuccess" object:nil];
             }
+        }else if ([str isEqualToString:@""]){
+            return [UMSocialSnsService handleOpenURL:url];
         }else{// 失败
             [[NSNotificationCenter defaultCenter] postNotificationName:@"zfFailure" object:nil];
         }

@@ -299,6 +299,7 @@ NSString * checked;
 }
 #pragma mark -环信登陆
 - (void)HXLogin{
+    NSLog(@"%@",[self.user.md5_id substringToIndex:10]);
     [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:self.user.md5_id password:[self.user.md5_id substringToIndex:10] completion:^(NSDictionary *loginInfo, EMError *error) {
         if (!error && loginInfo) {
             NSLog(@"环信登陆成功");

@@ -428,15 +428,22 @@
     [self showHudAuto:WaitPrompt];
     WeakSelf(HomeViewController);
     [[THNetWorkManager shareNetWork]getWeatherXianxingInfo:lat lng:lng city:city andCompletionBlockWithSuccess:^(NSURLSessionDataTask *urlSessionDataTask, THHttpResponse *response) {
+        
         [weakSelf removeMBProgressHudInManaual];
         if (response.responseCode == 1) {
-            WeatherModel * model = [response thParseDataFromDic:response.dataDic[@"tianqi"] andModel:[WeatherModel class]];
-            weakSelf.weatherModel = model;
+
+            if ([response.dataDic[@"tianqi"] isKindOfClass:[NSDictionary class]]) {
+                WeatherModel * model = [response thParseDataFromDic:response.dataDic[@"tianqi"] andModel:[WeatherModel class]];
+
+                weakSelf.weatherModel = model;
+            }
+
             if ([response.dataDic[@"xianxing"] isKindOfClass:[NSDictionary class]]) {
                 XianXing * item = [response thParseDataFromDic:response.dataDic[@"xianxing"] andModel:[XianXing class]];
                 weakSelf.xianxingItem = item;
             }
             [weakSelf.tableView reloadData];
+            
         }else{
             [weakSelf showHudAuto:response.message andDuration:@"2"];
         }

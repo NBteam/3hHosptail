@@ -274,6 +274,7 @@ static THNetWorkManager *thNetWorkManager = nil;
 
 #pragma mark 登陆
 //http://123.57.231.12:85/api.php?a=login&mobile=13355667788&password=123
+//http://www.3hhealth.cn/api.php?a=login&mobile=13370183330&password=123456
 - (void)patientLoginMobile:(NSString *)mobile
                   Password:(NSString *)password
 CompletionBlockWithSuccess:(CompletionBlockWithSuccess) success

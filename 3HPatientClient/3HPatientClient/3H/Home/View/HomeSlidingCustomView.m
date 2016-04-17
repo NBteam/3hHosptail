@@ -25,8 +25,8 @@
     [self addSubview:self.imgLogo];
     [self addSubview:self.labTitle];
     [self addSubview:self.labNowPrice];
-    [self addSubview:self.labOldPriceName];
-    [self addSubview:self.labOldPrice];
+//    [self addSubview:self.labOldPriceName];
+//    [self addSubview:self.labOldPrice];
 }
 
 - (UIImageView *)imgLogo{
@@ -50,7 +50,7 @@
 
 - (UILabel *)labNowPrice{
     if (!_labNowPrice) {
-        _labNowPrice = [[UILabel alloc] initWithFrame:CGRectMake(self.labTitle.left, self.labTitle.bottom +5, self.imgLogo.width -10, 13)];
+        _labNowPrice = [[UILabel alloc] initWithFrame:CGRectMake(self.labTitle.left, self.labTitle.bottom +5 + 18, self.imgLogo.width -10, 13)];
         _labNowPrice.textColor = AppDefaultColor;
         _labNowPrice.font = [UIFont systemFontOfSize:13];
     }
@@ -85,10 +85,10 @@
     self.labTitle.text = model.name;
     [self.imgLogo sd_setImageWithURL:[NSURL URLWithString:model.thumb]];
     self.labNowPrice.text = [NSString stringWithFormat:@"会员价:￥%@元",model.price];
-    NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
-    
-    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"￥%@元",model.market_price] attributes:attribtDic];
-    self.labOldPrice.attributedText = attribtStr;
+//    NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+//    
+//    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"￥%@元",model.market_price] attributes:attribtDic];
+//    self.labOldPrice.attributedText = attribtStr;
 }
 /*
 // Only override drawRect: if you perform custom drawing.
